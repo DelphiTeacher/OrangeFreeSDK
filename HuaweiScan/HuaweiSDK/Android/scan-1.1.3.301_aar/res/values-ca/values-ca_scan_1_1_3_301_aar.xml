@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">D\'ACORD</string>
+    <string name="scankit_light">Toqueu per a més il·luminació</string>
+    <string name="scankit_light_off">Apagar el llum</string>
+    <string name="scankit_no_code_tip">No s\'ha detectat cap codi.</string>
+    <string name="scankit_scan_tip">Col·loqueu el codi dins del marc</string>
+    <string name="scankit_title">Escaneja</string>
+</resources>

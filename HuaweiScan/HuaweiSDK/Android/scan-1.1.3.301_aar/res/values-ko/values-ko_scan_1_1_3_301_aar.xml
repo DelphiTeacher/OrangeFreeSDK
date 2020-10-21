@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">확인</string>
+    <string name="scankit_light">터치하여 조명을 높입니다</string>
+    <string name="scankit_light_off">조명을 끕니다</string>
+    <string name="scankit_no_code_tip">코드가 감지되지 않았습니다.</string>
+    <string name="scankit_scan_tip">프레임 안에 코드를 넣습니다</string>
+    <string name="scankit_title">스캔</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">אישור</string>
+    <string name="scankit_light">גע להגברת האור</string>
+    <string name="scankit_light_off">כבה את האור</string>
+    <string name="scankit_no_code_tip">לא זוהה קוד.</string>
+    <string name="scankit_scan_tip">מקם את הקוד בתוך המסגרת</string>
+    <string name="scankit_title">סרוק</string>
+</resources>

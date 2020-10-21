@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">حسنًا</string>
+    <string name="scankit_light">انقر هنا لتشغيل الإضاءة</string>
+    <string name="scankit_light_off">إغلاق الإضاءة</string>
+    <string name="scankit_no_code_tip">تعذر العثور على الرمز.</string>
+    <string name="scankit_scan_tip">أظهر الرمز ضمن الإطار</string>
+    <string name="scankit_title">قراءة الرموز</string>
+</resources>

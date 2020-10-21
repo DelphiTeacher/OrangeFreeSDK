@@ -1,0 +1,30 @@
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+-keep class com.huawei.hms.framework.network.grs.GrsApi {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsBaseInfo {   *; }
+-keep public interface com.huawei.hms.framework.network.grs.GrsBaseInfo$CountryCodeSource {*;}
+-keep class com.huawei.hms.framework.network.grs.IQueryUrlCallBack {   *; }
+-keep class com.huawei.hms.framework.network.grs.IQueryUrlsCallBack {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsClient {   *; }
+-keep class com.huawei.hms.framework.network.grs.local.model.CountryCodeBean {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsManager {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsConfig {   *; }

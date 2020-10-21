@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">ठीक छ</string>
+    <string name="scankit_light">थप प्रकाशको लागि टच गर्नुहोस्</string>
+    <string name="scankit_light_off">लाइट अफ गर्नुहोस्</string>
+    <string name="scankit_no_code_tip">कुनै कोड पत्ता लागेन ।</string>
+    <string name="scankit_scan_tip">कोडलाई फ्रेमभित्र राख्नुहोस्</string>
+    <string name="scankit_title">स्क्यान गर्नुहोस्</string>
+</resources>

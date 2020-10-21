@@ -1,0 +1,7 @@
+int id mlkit_camera_auto_focus 0x7f0b0001
+int id mlkit_camera_ha_quit 0x7f0b0002
+int id mlkit_camera_picture_ha_begin 0x7f0b0003
+int id mlkit_camera_picture_ha_end 0x7f0b0004
+int id mlkit_camera_preview_ha_begin 0x7f0b0005
+int id mlkit_camera_preview_ha_end 0x7f0b0006
+int string app_name 0x7f140001

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Chạm để bổ sung thêm ánh sáng</string>
+    <string name="scankit_light_off">Tắt đèn</string>
+    <string name="scankit_no_code_tip">Không phát hiện mã.</string>
+    <string name="scankit_scan_tip">Đặt mã bên trong khung</string>
+    <string name="scankit_title">Quét</string>
+</resources>

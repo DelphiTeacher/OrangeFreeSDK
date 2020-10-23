@@ -1,0 +1,1 @@
+'SGQRCode.framework\SGQRCode'

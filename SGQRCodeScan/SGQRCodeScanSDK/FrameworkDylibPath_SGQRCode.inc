@@ -1,0 +1,1 @@
+'SGQRCodeScanSDK\SGQRCode.framework\SGQRCode'

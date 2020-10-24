@@ -14,20 +14,32 @@ object Form2: TForm2
     Size.Width = 346.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
-    Text = 'Button1'
+    TabOrder = 2
+    Text = #21326#20026#25195#30721'-'#20869#32622#39029#38754
     OnClick = Button1Click
   end
   object Memo1: TMemo
     Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
     DataDetectorTypes = []
     Align = Top
-    Position.Y = 22.000000000000000000
+    Margins.Top = 20.000000000000000000
+    Position.Y = 84.000000000000000000
     Size.Width = 346.000000000000000000
     Size.Height = 163.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
+    TabOrder = 3
     Viewport.Width = 342.000000000000000000
     Viewport.Height = 159.000000000000000000
+  end
+  object Button2: TButton
+    Align = Top
+    Margins.Top = 20.000000000000000000
+    Position.Y = 42.000000000000000000
+    Size.Width = 346.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #21326#20026#25195#30721'-OrangeSDK'#25511#20214#27979#35797
+    OnClick = Button2Click
   end
 end

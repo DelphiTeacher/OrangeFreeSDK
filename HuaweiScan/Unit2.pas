@@ -2,6 +2,8 @@
 
 interface
 
+{$DEFINE OrangeSDK_TEST}
+
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 
@@ -9,7 +11,6 @@ uses
   System.Messaging,
 
   {$IFDEF ANDROID}
-
   FMX.Platform.Android,
   Androidapi.JNIBridge,
   Androidapi.JNI.Widget,
@@ -28,6 +29,10 @@ uses
     {$ENDIF}
   {$ENDIF}
 
+  {$IFDEF OrangeSDK_TEST}
+  uOrangeScanCodeForm,
+  {$ENDIF OrangeSDK_TEST}
+
 
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.ScrollBox, FMX.Memo;
@@ -36,8 +41,10 @@ type
   TForm2 = class(TForm)
     Button1: TButton;
     Memo1: TMemo;
+    Button2: TButton;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     FStartTime:TDateTime;
 
@@ -52,6 +59,10 @@ type
                             AFormat:String;
                             //是否继续扫描
                             var AIsNeedContinue:Boolean);
+  public
+    {$IFDEF OrangeSDK_TEST}
+    FOrangeScanCodeForm:TOrangeScanCodeForm;
+    {$ENDIF OrangeSDK_TEST}
     { Public declarations }
   end;
 
@@ -144,6 +155,22 @@ begin
   FMX.Types.Log.d('OrangeUI TForm2.HandleActivityMessage End');
 
 
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+  //OrangeSDK封装测试
+  {$IFDEF OrangeSDK_TEST}
+  FStartTime:=Now;
+
+  if FOrangeScanCodeForm=nil then
+  begin
+    FOrangeScanCodeForm:=TOrangeScanCodeForm.Create(Self);
+    FOrangeScanCodeForm.AndroidScanCodeUIType:=ascutHuawei;
+    FOrangeScanCodeForm.OnScanResult:=DoScanResultEvent;
+  end;
+  FOrangeScanCodeForm.StartScan;
+  {$ENDIF OrangeSDK_TEST}
 end;
 
 procedure TForm2.DoScanResultEvent(Sender: TObject; ACode, AFormat: String;

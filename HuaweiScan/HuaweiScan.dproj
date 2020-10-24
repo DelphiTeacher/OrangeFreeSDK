@@ -118,6 +118,7 @@
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
         <SanitizedProjectName>HuaweiScan</SanitizedProjectName>
+        <DCC_UnitSearchPath>C:\MyFiles\OrangeProjectCommon;C:\MyFiles\OrangeSDKDesign\DCU\FMX\D10_3\$(Platform)\$(Config);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DBXInterBaseDriver;emsclientfiredac;DataSnapFireDAC;tethering;bindcompfmx;FireDACIBDriver;fmx;FireDACDBXDriver;dbexpress;IndyCore;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;soapserver;bindengine;CloudService;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;IndyIPServer;IndySystem;fmxFireDAC;FireDAC;FireDACSqliteDriver;ibmonitor;soaprtl;DbxCommonDriver;ibxpress;ibxbindings;xmlrtl;DataSnapNativeClient;FireDACDSDriver;soapmidas;rtl;DbxClientDriver;CustomIPTransport;bindcomp;IndyIPClient;dbxcds;ChinaCock;DataSnapProviderClient;dsnapxml;dbrtl;IndyProtocols;$(DCC_UsePackage)</DCC_UsePackage>
@@ -395,9 +396,9 @@
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
         <VerInfo_Keys>package=com.ggggcexx.huaweipushtest;label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <PF_KeyStore>huaweipushtest.keystore</PF_KeyStore>
-        <PF_KeyStorePass>857E479A5FCF07DFCF26E560A4467BA2819E0544A01C97EF97BC0FF08E723CD8DB42A384E34B1C30C1EA5730FA9DC338BAE2360A044B22FC162B45DFE5E522CFC948F34CD576FAD0BFE4AF4607021D58F7D53319C3477255EB006E7F</PF_KeyStorePass>
+        <PF_KeyStorePass>857E479A5FCF07DFCF26E560D171E33F81850535A05F97C997AA0FF88E783C8ADB56A385E3111C2FC1E2577DFAC4C363BA95367E043722D3163A459DE5E4229DC938F341D558FA9BBFF8AF117237859AF7D53319C3477255EB006E7F</PF_KeyStorePass>
         <PF_AliasKey>jj</PF_AliasKey>
-        <PF_AliasKeyPass>857E479A5FCF07DFCF26E560D171E33F81850535A05F97C997AA0FF88E783C8ADB56A385E3111C2FC1E2577DFAC4C363BA95367E043722D3163A459DE5E4229DC938F341D558FA9BBFF8AF117237859AF7D53319C3477255EB006E7F</PF_AliasKeyPass>
+        <PF_AliasKeyPass>857E479A5FCF07DFCF26E560A4467BA2E4480846A007979E97FF0FD68E643CD0DB48A3D6E35F1C31C1B0572FFA95C375BABB3651043C2288165745F0E5F4228DC949F31ED506FADDBFCAAF0D071E1D0F92013E44C3477255EB006E7F</PF_AliasKeyPass>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -415,7 +416,7 @@
             <Form>Form2</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="HuaweiSDK\Androidapi.JNI.scan_1_1_3_301_aar.pas"/>
+        <DCCReference Include="Androidapi.JNI.scan_1_1_3_301_aar.pas"/>
         <JavaReference Include="HuaweiSDK\Android\agconnect-core-1.0.0.300_aar\agconnect-core-1.0.0.300.aar.jar">
             <Disabled/>
         </JavaReference>
@@ -535,6 +536,11 @@
                         <RemoteDir>res\values-vi\</RemoteDir>
                         <RemoteName>values-vi_scan_1_1_3_301_aar.xml</RemoteName>
                         <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Configuration="Release" Class="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lv\values-lv_scan_1_1_3_301_aar.xml" Class="File">
@@ -748,6 +754,12 @@
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteName>libHuaweiScan.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sw\values-sw_scan_1_1_3_301_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-sw\</RemoteDir>
@@ -769,12 +781,6 @@
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\release\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
-                    <Platform Name="Android">
-                        <RemoteName>libHuaweiScan.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lt\values-lt_scan_1_1_3_301_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-lt\</RemoteDir>
@@ -785,12 +791,6 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Release" Class="Android_NotificationIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile">
-                    <Platform Name="Android">
-                        <RemoteName>libHuaweiScan.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1045,6 +1045,12 @@
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteName>libHuaweiScan.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

@@ -4,8 +4,8 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'"/>
-        <DeviceId Condition="'$(Platform)'=='Android64'"/>
+        <DeviceId Condition="'$(Platform)'=='Android'">b559c25e02ef</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android64'">b559c25e02ef</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSDevice32'">bb71c0fa911c33225d7711495470c9c631f22cc8</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'">bb71c0fa911c33225d7711495470c9c631f22cc8</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSSimulator'">04FA1EA7-2794-4641-81C4-A1E19282CE06</DeviceId>

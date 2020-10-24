@@ -20,13 +20,24 @@ object Form2: TForm2
   end
   object Button2: TButton
     Align = Top
-    Margins.Top = 10.000000000000000000
-    Position.Y = 32.000000000000000000
+    Margins.Top = 20.000000000000000000
+    Position.Y = 42.000000000000000000
     Size.Width = 339.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
     Text = #25195#30721'2'
     OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = Top
+    Margins.Top = 20.000000000000000000
+    Position.Y = 84.000000000000000000
+    Size.Width = 339.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #25195#30721'-OrangeSDK'#25511#20214#27979#35797
+    OnClick = Button3Click
   end
 end

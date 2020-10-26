@@ -1,11 +1,13 @@
 unit Unit2;
 
 interface
-{$DEFINE OrangeSDK_TEST}
+//{$DEFINE OrangeSDK_TEST}
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 
+
+  {$IFDEF IOS}
   iOSApi.WBQRCodeVC,
   iOSApi.WCQRCodeVC,
   iOSApi.SGQRCodeObtain,
@@ -14,6 +16,7 @@ uses
   FMX.Platform.iOS,
 	MacApi.ObjectiveC,
   Macapi.Helpers,
+  {$ENDIF IOS}
 
   {$IFDEF OrangeSDK_TEST}
   uOrangeScanCodeForm,
@@ -33,9 +36,11 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
   private
+    {$IFDEF IOS}
     WBVC:WBQRCodeVC;
     WCVC:WCQRCodeVC;
   	procedure SGQRCodeObtainScanResultBlockEvent(obtain:SGQRCodeObtain;result:NSString);
+    {$ENDIF IOS}
     procedure DoScanResultEvent(Sender:TObject;
                             //É¨Ãèµ½µÄ¶þÎ¬Âë
                             ACode:String;
@@ -59,20 +64,24 @@ implementation
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
+  {$IFDEF IOS}
   WBVC:=TWBQRCodeVC.Wrap(TWBQRCodeVC.Alloc.init);
   WBVC.setBlockWithQRCodeObtainScanResult(SGQRCodeObtainScanResultBlockEvent);
   WindowHandleToPlatform(Self.Handle).Wnd.rootViewController.presentViewController(
     WBVC,True,nil
     );
+  {$ENDIF IOS}
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
 begin
+  {$IFDEF IOS}
   WCVC:=TWCQRCodeVC.Wrap(TWCQRCodeVC.Alloc.init);
   WCVC.setBlockWithQRCodeObtainScanResult(SGQRCodeObtainScanResultBlockEvent);
   WindowHandleToPlatform(Self.Handle).Wnd.rootViewController.presentViewController(
     WCVC,True,nil
     );
+  {$ENDIF IOS}
 end;
 
 procedure TForm2.Button3Click(Sender: TObject);
@@ -98,10 +107,12 @@ begin
   ShowMessage(ACode);
 end;
 
+{$IFDEF IOS}
 procedure TForm2.SGQRCodeObtainScanResultBlockEvent(obtain: SGQRCodeObtain;
   result: NSString);
 begin
   ShowMessage(NSStrToStr(result));
 end;
+{$ENDIF IOS}
 
 end.

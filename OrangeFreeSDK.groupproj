@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{0E85B0B7-5766-473E-A6B5-2C1F595A5A04}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="HuaweiScan\HuaweiScan.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SGQRCodeScan\TestSGQRCodeScan.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="HuaweiScan">
+        <MSBuild Projects="HuaweiScan\HuaweiScan.dproj"/>
+    </Target>
+    <Target Name="HuaweiScan:Clean">
+        <MSBuild Projects="HuaweiScan\HuaweiScan.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="HuaweiScan:Make">
+        <MSBuild Projects="HuaweiScan\HuaweiScan.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestSGQRCodeScan">
+        <MSBuild Projects="SGQRCodeScan\TestSGQRCodeScan.dproj"/>
+    </Target>
+    <Target Name="TestSGQRCodeScan:Clean">
+        <MSBuild Projects="SGQRCodeScan\TestSGQRCodeScan.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestSGQRCodeScan:Make">
+        <MSBuild Projects="SGQRCodeScan\TestSGQRCodeScan.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeSDK_SmartDeploy">
+        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj"/>
+    </Target>
+    <Target Name="OrangeSDK_SmartDeploy:Clean">
+        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeSDK_SmartDeploy:Make">
+        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="HuaweiScan;TestSGQRCodeScan;OrangeSDK_SmartDeploy"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="HuaweiScan:Clean;TestSGQRCodeScan:Clean;OrangeSDK_SmartDeploy:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="HuaweiScan:Make;TestSGQRCodeScan:Make;OrangeSDK_SmartDeploy:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

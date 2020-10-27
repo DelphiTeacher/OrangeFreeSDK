@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.036,=C:\OrangeFreeSDK\电子称重\EScaleSDK\Androidapi.JNI.tsscale_aar.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.724,C:\OrangeFreeSDK\电子称重\Project4.dproj=C:\OrangeFreeSDK\电子称重\TestEScale.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.838,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project4.dproj=C:\OrangeFreeSDK\电子称重\Project4.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.554,=C:\OrangeFreeSDK\电子称重\OrangeSDK_JarGen\TestEScale\R_JAVA_TestEScale.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.988,=C:\OrangeFreeSDK\电子称重\EScaleSDK\Androidapi.JNI.libserial_release_aar.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.813,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit4.pas=C:\OrangeFreeSDK\电子称重\Unit4.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.817,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.813,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit4.fmx=C:\OrangeFreeSDK\电子称重\Unit4.fmx</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<PMyMac iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>

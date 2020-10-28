@@ -1,0 +1,43 @@
+<key>CFBundleURLTypes</key>
+
+<array>
+
+
+	<dict>
+				
+		<key>CFBundleURLName</key>
+			
+		<string>tencent</string>
+			
+		<key>CFBundleURLSchemes</key>
+			
+		<array>
+				
+			<string>tencent1105449331</string>
+		</array>
+		
+	</dict>
+	
+</array>
+
+
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>mqqOpensdkSSoLogin</string>
+    <string>mqzone</string>
+    <string>sinaweibo</string>
+    <string>alipayauth</string>
+    <string>alipay</string>
+    <string>safepay</string>
+    <string>mqq</string>
+    <string>mqqapi</string>
+    <string>mqqopensdkapiV3</string>
+    <string>mqqopensdkapiV2</string>
+    <string>mqqapiwallet</string>
+    <string>mqqwpa</string>
+    <string>mqqbrowser</string>
+    <string>wtloginmqq2</string>
+    <string>weixin</string>
+    <string>wechat</string>
+    <string>tencent</string>
+</array>

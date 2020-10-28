@@ -1,0 +1,1 @@
+'TencentSDK\IOS\TencentOpenAPI.framework\TencentOpenAPI'

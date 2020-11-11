@@ -2,28 +2,29 @@
 <BorlandProject>
 	<ActiveMobileDevice>
 		<P192.168.1.6 iOSSimulator="iPhone5"/>
-		<PMyMac iOSSimulator="iPhone5"/>  <NoProfile Android="b559c25e02ef" Android64="b559c25e02ef"/>
-  </ActiveMobileDevice>
+		<PMyMac iOSSimulator="iPhone5"/>
+		<NoProfile Android="b559c25e02ef" Android64="b559c25e02ef"/>
+	</ActiveMobileDevice>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.275,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK_XE10.dproj=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK_D10_1.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.527,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentDylibName.inc</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.508,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\QQApiInterfaceObject_iOSApi.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.918,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\uTencentQQAPI.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.553,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\uTencentQQAPI.pas=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.533,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentMessageObject_iOSApi.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.503,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\QQApiInterface_iOSApi.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.514,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\sdkdef_iOSApi.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.217,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\QQApiInterfaceObject_iOSApi.pas=</Transaction>
     <Transaction>1899-12-30 00:00:00.000.513,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\TencentOAuthObject_iOSApi.pas=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.494,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\TencentMessageObject_iOSApi.pas=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.533,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\TencentOAuth_iOSApi.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.553,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\uTencentQQAPI.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.918,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\uTencentQQAPI.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.508,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\QQApiInterfaceObject_iOSApi.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.527,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentDylibName.inc</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.347,C:\OrangeFreeSDK\腾讯接口\TencentSDK_D10_1.dproj=C:\OrangeFreeSDK\腾讯接口\IOSTencentSDK_D10_1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.503,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\QQApiInterface_iOSApi.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.533,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentMessageObject_iOSApi.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.217,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\QQApiInterfaceObject_iOSApi.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.514,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\sdkdef_iOSApi.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.277,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\QQApiInterface_iOSApi.pas=</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.533,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\TencentOAuth_iOSApi.pas=</Transaction>
     <Transaction>1899-12-30 00:00:00.000.492,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentOAuth_iOSApi.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.275,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK_D10_1.dproj=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK_XE10.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.847,C:\OrangeFreeSDK\腾讯接口\IOSTencentSDK_D10_1.dproj=C:\OrangeFreeSDK\腾讯接口\IOSTencentSDK_D10_3.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.498,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentOAuthObject_iOSApi.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.474,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\TencentApiInterface_iOSApi.pas=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.519,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentApiInterface_iOSApi.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.454,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\sdkdef_iOSApi.pas=</Transaction>
-    <Transaction>2020-10-28 10:32:51.347,C:\OrangeFreeSDK\腾讯接口\IOSTencentSDK_D10_1.dproj=C:\OrangeFreeSDK\腾讯接口\TencentSDK_D10_1.dproj</Transaction>
-    <Transaction>2020-10-28 11:01:39.847,C:\OrangeFreeSDK\腾讯接口\IOSTencentSDK_D10_3.dproj=C:\OrangeFreeSDK\腾讯接口\IOSTencentSDK_D10_1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.519,=E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\IOS\TencentApiInterface_iOSApi.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.494,E:\OrangeUIThirdPartySDK\腾讯接口\TencentSDK\TencentMessageObject_iOSApi.pas=</Transaction>
   </Transactions>
 </BorlandProject>

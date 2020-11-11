@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.129,C:\OrangeFreeSDK\IOS判断网络权限\Unit5.fmx=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit5.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.404,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.129,C:\OrangeFreeSDK\IOS判断网络权限\Unit5.pas=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit5.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.971,C:\OrangeFreeSDK\IOS判断网络权限\Project4.dproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project4.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.072,C:\OrangeFreeSDK\IOS判断网络权限\TestCoreTelephony.dproj=C:\OrangeFreeSDK\IOS判断网络权限\Project4.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.238,=C:\OrangeFreeSDK\IOS判断网络权限\CoreTelephonySDK\iOSApi.CTCellularData.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64="_iosdevice_bb71c0fa911c33225d7711495470c9c631f22cc8"/>
+		<NoProfile Android="b559c25e02ef" Android64="b559c25e02ef"/>
+	</ActiveMobileDevice>
+</BorlandProject>

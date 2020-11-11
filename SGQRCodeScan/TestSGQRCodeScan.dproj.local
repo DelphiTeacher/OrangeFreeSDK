@@ -14,14 +14,14 @@
     <Transaction>1899-12-30 00:00:00.000.364,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WCQRCodeVC.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.774,C:\OrangeFreeSDK\SGQRCodeScan\Test.dproj=C:\OrangeFreeSDK\SGQRCodeScan\TestSGQRCodeScan.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.246,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeObtain.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.354,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WBQRCodeVC.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.021,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtain.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.140,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.MBProgressHUD.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.120,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.MBProgressHUD_SGQRCode.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.051,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.WBQRCodeVC.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.021,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtain.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.354,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WBQRCodeVC.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice64="" iOSDevice32=""/>
-		<NoProfile Android="" Android64=""/>
+		<NoProfile Android="CYSBBBE6B1928750" Android64=""/>
 	</ActiveMobileDevice>
 </BorlandProject>

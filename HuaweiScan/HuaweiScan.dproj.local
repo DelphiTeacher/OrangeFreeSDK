@@ -12,7 +12,7 @@
   </Transactions>
 	<ActiveMobileDevice>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice32="" iOSDevice64=""/>
-		<NoProfile Android="" Android64=""/>
+		<NoProfile Android="CYSBBBE6B1928750" Android64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

@@ -2,24 +2,26 @@
 <BorlandProject>
 	<ActiveMobileDevice>
 		<P192.168.1.6 iOSSimulator="iPhone5"/>
-		<PMyMac iOSSimulator="iPhone5"/>  <NoProfile Android="b559c25e02ef" Android64="b559c25e02ef"/>
-  </ActiveMobileDevice>  <Transactions>
-    <Transaction>2020-10-28 10:32:47.119,C:\OrangeFreeSDK\腾讯接口\AndroidQQSDK_D10_1.dproj=C:\OrangeFreeSDK\腾讯接口\QQSDK_D10_1.dproj</Transaction>
-    <Transaction>2020-10-28 10:32:57.353,C:\OrangeFreeSDK\腾讯接口\AndroidQQSDK_D10_3.dproj=C:\OrangeFreeSDK\腾讯接口\AndroidQQSDK_D10_1.dproj</Transaction>
-    <Transaction>2020-10-28 10:42:21.317,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_extensions-1.1.1_aar\lifecycle_extensions-1.1.1.aar.jar</Transaction>
-    <Transaction>2020-10-28 10:42:28.061,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_runtime-1.1.1_aar\lifecycle_runtime-1.1.1.aar.jar</Transaction>
-    <Transaction>2020-10-28 10:42:35.154,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_viewmodel-1.1.1_aar\lifecycle_viewmodel-1.1.1.aar.jar</Transaction>
-    <Transaction>2020-10-28 10:49:45.200,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_common-1.1.1-2.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.107,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\commons-codec-1.9.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.117,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\commons-logging-1.2.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.127,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\fluent-hc-4.5.3.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.137,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient-4.5.3.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.137,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.147,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient-cache-4.5.3.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.157,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient-win-4.5.3.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.167,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpcore-4.4.6.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.177,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpmime-4.5.3.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.187,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\jna-4.1.0.jar</Transaction>
-    <Transaction>2020-10-28 10:54:35.197,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\jna-platform-4.1.0.jar</Transaction>
+		<PMyMac iOSSimulator="iPhone5"/>
+		<NoProfile Android="b559c25e02ef" Android64="b559c25e02ef"/>
+	</ActiveMobileDevice>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.127,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\fluent-hc-4.5.3.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.107,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\commons-codec-1.9.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.154,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_viewmodel-1.1.1_aar\lifecycle_viewmodel-1.1.1.aar.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.353,C:\OrangeFreeSDK\腾讯接口\AndroidQQSDK_D10_1.dproj=C:\OrangeFreeSDK\腾讯接口\AndroidQQSDK_D10_3.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.197,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\jna-platform-4.1.0.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.200,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_common-1.1.1-2.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.119,C:\OrangeFreeSDK\腾讯接口\QQSDK_D10_1.dproj=C:\OrangeFreeSDK\腾讯接口\AndroidQQSDK_D10_1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.137,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient-4.5.3.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.157,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient-win-4.5.3.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.117,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\commons-logging-1.2.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.061,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_runtime-1.1.1_aar\lifecycle_runtime-1.1.1.aar.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.137,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.177,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpmime-4.5.3.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.147,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpclient-cache-4.5.3.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.187,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\jna-4.1.0.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.167,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\http_jar\httpcore-4.4.6.jar</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.317,=C:\OrangeFreeSDK\腾讯接口\TencentSDK\Android\lifecycle_extensions-1.1.1_aar\lifecycle_extensions-1.1.1.aar.jar</Transaction>
   </Transactions>
 </BorlandProject>

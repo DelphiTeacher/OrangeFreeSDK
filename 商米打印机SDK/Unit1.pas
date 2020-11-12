@@ -92,6 +92,8 @@ begin
 //*/
 						//printer.printColumnsText(new String[]{"名稱單價金額"}, new int[]{24}, new int[]{0});
 
+    FV1Printer.beginTransaction;
+
     //printer.printText("支付宝\n");
     FV1Printer.printText(StringToJString('支付宝'+#13#10));
     //printer.printText("Alipay\n");
@@ -141,7 +143,16 @@ begin
     //printer.lineWrap(6);
     FV1Printer.lineWrap(6);
 
+    //打印二维码
+    FV1Printer.sendRAWData(TJBytesUtil.JavaClass.getZXingQRCode(StringToJString('www.orangeui.cn'),300));
 
+    //切纸
+    FV1Printer.sendRAWData(TJBytesUtil.JavaClass.CutPaper);
+
+    //自检
+    FV1Printer.sendRAWData(TJBytesUtil.JavaClass.selfCheck);
+
+    FV1Printer.commitTransaction;
 
 end;
 

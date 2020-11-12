@@ -1,4 +1,4 @@
-program TestSunmiPrinter_D10_3;
+program TestSunmiPrinter;
 
 uses
   System.StartUpCopy,

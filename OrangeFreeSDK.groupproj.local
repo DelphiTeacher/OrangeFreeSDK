@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2020-10-26 16:22:12.327,C:\OrangeFreeSDK\OrangeFreeSDK.groupproj=C:\OrangeFreeSDK\HuaweiScan\ProjectGroup1.groupproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.327,C:\OrangeFreeSDK\OrangeFreeSDK.groupproj=C:\OrangeFreeSDK\HuaweiScan\ProjectGroup1.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="C:\OrangeFreeSDK\SGQRCodeScan\TestSGQRCodeScan.dproj"/>
+		<Projects ActiveProject="C:\OrangeFreeSDK\OrangeJava2PasFixer\OrangeJava2PasFixer.dproj"/>
 	</Default.Personality>
 </BorlandProject>

@@ -12,6 +12,21 @@
         <Projects Include="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="商米打印机SDK\TestSunmiPrinter.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OrangeJava2PasFixer\OrangeJava2PasFixer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Android图片视频选择器DVMediaSelector\TestDVMediaSelector.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -47,14 +62,59 @@
     <Target Name="OrangeSDK_SmartDeploy:Make">
         <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Make"/>
     </Target>
+    <Target Name="TestSunmiPrinter">
+        <MSBuild Projects="商米打印机SDK\TestSunmiPrinter.dproj"/>
+    </Target>
+    <Target Name="TestSunmiPrinter:Clean">
+        <MSBuild Projects="商米打印机SDK\TestSunmiPrinter.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestSunmiPrinter:Make">
+        <MSBuild Projects="商米打印机SDK\TestSunmiPrinter.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeJava2PasFixer">
+        <MSBuild Projects="OrangeJava2PasFixer\OrangeJava2PasFixer.dproj"/>
+    </Target>
+    <Target Name="OrangeJava2PasFixer:Clean">
+        <MSBuild Projects="OrangeJava2PasFixer\OrangeJava2PasFixer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeJava2PasFixer:Make">
+        <MSBuild Projects="OrangeJava2PasFixer\OrangeJava2PasFixer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestDVMediaSelector">
+        <MSBuild Projects="Android图片视频选择器DVMediaSelector\TestDVMediaSelector.dproj"/>
+    </Target>
+    <Target Name="TestDVMediaSelector:Clean">
+        <MSBuild Projects="Android图片视频选择器DVMediaSelector\TestDVMediaSelector.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestDVMediaSelector:Make">
+        <MSBuild Projects="Android图片视频选择器DVMediaSelector\TestDVMediaSelector.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestMediaPicker">
+        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj"/>
+    </Target>
+    <Target Name="TestMediaPicker:Clean">
+        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestMediaPicker:Make">
+        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="GameOnLineClient_D10_4">
+        <MSBuild Projects="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj"/>
+    </Target>
+    <Target Name="GameOnLineClient_D10_4:Clean">
+        <MSBuild Projects="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GameOnLineClient_D10_4:Make">
+        <MSBuild Projects="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="HuaweiScan;TestSGQRCodeScan;OrangeSDK_SmartDeploy"/>
+        <CallTarget Targets="HuaweiScan;TestSGQRCodeScan;OrangeSDK_SmartDeploy;TestSunmiPrinter;OrangeJava2PasFixer;TestDVMediaSelector;TestMediaPicker;GameOnLineClient_D10_4"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="HuaweiScan:Clean;TestSGQRCodeScan:Clean;OrangeSDK_SmartDeploy:Clean"/>
+        <CallTarget Targets="HuaweiScan:Clean;TestSGQRCodeScan:Clean;OrangeSDK_SmartDeploy:Clean;TestSunmiPrinter:Clean;OrangeJava2PasFixer:Clean;TestDVMediaSelector:Clean;TestMediaPicker:Clean;GameOnLineClient_D10_4:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="HuaweiScan:Make;TestSGQRCodeScan:Make;OrangeSDK_SmartDeploy:Make"/>
+        <CallTarget Targets="HuaweiScan:Make;TestSGQRCodeScan:Make;OrangeSDK_SmartDeploy:Make;TestSunmiPrinter:Make;OrangeJava2PasFixer:Make;TestDVMediaSelector:Make;TestMediaPicker:Make;GameOnLineClient_D10_4:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

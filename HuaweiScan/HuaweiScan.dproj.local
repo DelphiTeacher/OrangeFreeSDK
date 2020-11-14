@@ -1,18 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.211,C:\OrangeFreeSDK\HuaweiScan\Unit2.pas=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.211,C:\OrangeFreeSDK\HuaweiScan\Unit2.fmx=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.fmx</Transaction>
     <Transaction>1899-12-30 00:00:00.000.184,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.192,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\OrangeFreeSDK\HuaweiScan\Project2.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.211,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.fmx=C:\OrangeFreeSDK\HuaweiScan\Unit2.fmx</Transaction>
     <Transaction>1899-12-30 00:00:00.000.705,=C:\OrangeFreeSDK\HuaweiScan\Androidapi.JNI.scan_1_1_3_301_aar.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.846,=C:\OrangeFreeSDK\HuaweiScan\HuaweiSDK\Androidapi.JNI.scan_1_1_3_301_aar.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.214,=C:\OrangeFreeSDK\HuaweiScan\OrangeSDK_JarGen\HuaweiScan\R_JAVA_HuaweiScan.jar</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.215,C:\OrangeFreeSDK\HuaweiScan\Project2.dproj=C:\OrangeFreeSDK\HuaweiScan\HuaweiScan.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.211,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\OrangeFreeSDK\HuaweiScan\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.215,C:\OrangeFreeSDK\HuaweiScan\HuaweiScan.dproj=C:\OrangeFreeSDK\HuaweiScan\Project2.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.192,C:\OrangeFreeSDK\HuaweiScan\Project2.dproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice32="" iOSDevice64=""/>
-		<NoProfile Android="CYSBBBE6B1928750" Android64=""/>
+		<NoProfile Android="" Android64=""/>
+		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64=""/>
 	</ActiveMobileDevice>
 	<BT_BuildType>Debug</BT_BuildType>
 </BorlandProject>

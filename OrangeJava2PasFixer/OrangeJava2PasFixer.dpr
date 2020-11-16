@@ -2,7 +2,8 @@ program OrangeJava2PasFixer;
 
 uses
   Vcl.Forms,
-  MainForm in 'MainForm.pas' {frmMain};
+  MainForm in 'MainForm.pas' {frmMain},
+  UnitOrangeUIJava2PasFixer in 'UnitOrangeUIJava2PasFixer.pas';
 
 {$R *.res}
 

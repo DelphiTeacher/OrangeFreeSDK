@@ -20,8 +20,29 @@ object frmMain: TfrmMain
     Height = 463
     Align = alLeft
     Lines.Strings = (
+      'unit utest;'
+      ''
+      ''
+      'interface'
+      ''
+      '{$IFDEF ANDROID}'
+      'uses'
+      '  Androidapi.JNIBridge,'
+      '  Androidapi.JNI.JavaTypes,'
+      '  Androidapi.JNI.GraphicsContentViewText,'
+      '  Androidapi.JNI.os,'
+      '  Androidapi.JNI.App,'
+      '  Androidapi.JNI.Util,'
+      '  Androidapi.JNI.Hardware;'
+      ''
+      'type'
+      '  Ja = interface; //com.baidu.location.Poi$1'
+      '  Ja_a = interface; //com.baidu.location.Poi$1'
       '  JPoi_1 = interface; //com.baidu.location.Poi$1'
       '  JPoi = interface; //com.baidu.location.Poi'
+      '  JAppGlideModule = interface;'
+      '  JAppGlideModuleClass = interface;'
+      ''
       ''
       '// ===== Interface declarations ====='
       ''
@@ -79,9 +100,9 @@ object frmMain: TfrmMain
         'dAppGlideModuleClass, JGeneratedAppGlideModule>) end;'
       ''
       
-        '  JAppGlideModuleClass = interface(JLibraryGlideModuleClass) // ' +
-        'or JObjectClass // SuperSignature: com/bumptech/glide/module/Lib' +
-        'raryGlideModule'
+        '  JAppGlideModuleClass = interface(JObjectClass) // or JObjectCl' +
+        'ass // SuperSignature: com/bumptech/glide/module/LibraryGlideMod' +
+        'ule'
       '  ['#39'{42121904-4E5A-48A8-9E68-249859F15A90}'#39']'
       '    { static Property Methods }'
       ''
@@ -93,8 +114,8 @@ object frmMain: TfrmMain
       ''
       '  [JavaSignature('#39'com/bumptech/glide/module/AppGlideModule'#39')]'
       
-        '  JAppGlideModule = interface(JLibraryGlideModule) // or JObject' +
-        ' // SuperSignature: com/bumptech/glide/module/LibraryGlideModule'
+        '  JAppGlideModule = interface(JObject) // or JObject // SuperSig' +
+        'nature: com/bumptech/glide/module/LibraryGlideModule'
       '  ['#39'{0C36AEA2-E39B-4B0C-98FE-9F7607454D0A}'#39']'
       '    { Property Methods }'
       ''
@@ -110,7 +131,11 @@ object frmMain: TfrmMain
       ''
       
         '  TJAppGlideModule = class(TJavaGenericImport<JAppGlideModuleCla' +
-        'ss, JAppGlideModule>) end;')
+        'ss, JAppGlideModule>) end;'
+      ''
+      'implementation'
+      ''
+      'end.')
     ScrollBars = ssBoth
     TabOrder = 0
     OnDblClick = memOriginDblClick

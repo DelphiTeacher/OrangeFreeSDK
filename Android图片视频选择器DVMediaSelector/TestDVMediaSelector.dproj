@@ -696,17 +696,17 @@
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_list_menu_item_layout.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\layout\</RemoteDir>
                         <RemoteName>abc_list_menu_item_layout.xml</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Support_V4\support-compat-28.0.0_aar\res\values-ta\values-ta_support_compat_28_0_0_aar.xml" Class="File">
@@ -1676,6 +1676,13 @@
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_select_dialog_material.xml" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\layout\</RemoteDir>
+                        <RemoteName>abc_select_dialog_material.xml</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xxhdpi-v4\abc_list_focused_holo.9.png" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
@@ -1694,13 +1701,6 @@
                     <Platform Name="Android">
                         <RemoteDir>res\layout\</RemoteDir>
                         <RemoteName>abc_search_view.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_select_dialog_material.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\layout\</RemoteDir>
-                        <RemoteName>abc_select_dialog_material.xml</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -2893,27 +2893,6 @@
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\values-et\values-et_appcompat_v7_28_0_0_aar.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values-et\</RemoteDir>
-                        <RemoteName>values-et_appcompat_v7_28_0_0_aar.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable\abc_ratingbar_indicator_material.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable\</RemoteDir>
-                        <RemoteName>abc_ratingbar_indicator_material.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xhdpi-v4\abc_list_focused_holo.9.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-xhdpi-v4\</RemoteDir>
-                        <RemoteName>abc_list_focused_holo.9.png</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-v21\abc_action_bar_item_background_material.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-v21\</RemoteDir>
@@ -2925,6 +2904,27 @@
                     <Platform Name="Android">
                         <RemoteDir>res\values-km\</RemoteDir>
                         <RemoteName>values-km_support_compat_28_0_0_aar.xml</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xhdpi-v4\abc_list_focused_holo.9.png" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi-v4\</RemoteDir>
+                        <RemoteName>abc_list_focused_holo.9.png</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\values-et\values-et_appcompat_v7_28_0_0_aar.xml" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values-et\</RemoteDir>
+                        <RemoteName>values-et_appcompat_v7_28_0_0_aar.xml</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable\abc_ratingbar_indicator_material.xml" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable\</RemoteDir>
+                        <RemoteName>abc_ratingbar_indicator_material.xml</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>

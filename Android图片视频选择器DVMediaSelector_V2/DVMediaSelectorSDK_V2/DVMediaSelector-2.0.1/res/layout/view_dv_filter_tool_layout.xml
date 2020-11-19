@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_filter_tab"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+    <HorizontalScrollView
+        android:id="@+id/sv_topContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <RadioGroup
+            android:id="@+id/rg_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <RadioButton
+                android:id="@+id/rb_colorFilter"
+                android:text="@string/edit_filter"
+                android:checked="true"
+                style="@style/filter_radiobutton"/>
+
+            <RadioButton
+                android:id="@+id/rb_adjust"
+                android:text="@string/edit_edit"
+                style="@style/filter_radiobutton"/>
+
+        </RadioGroup>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="94.0dip"
+            android:padding="5.0dip"
+            android:scrollbars="none"
+            android:background="@android:color/white"/>
+        <com.devil.library.media.view.FilterAdjustView
+            android:id="@+id/view_adjust"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@android:color/black"/>
+
+    <ImageView
+        android:background="@android:color/white"
+        android:id="@+id/image_closeFilter"
+        android:layout_width="match_parent" 
+        android:layout_height="26dip"
+        android:scaleType="center"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/btn_layout_filters_bar_close" />
+</LinearLayout>

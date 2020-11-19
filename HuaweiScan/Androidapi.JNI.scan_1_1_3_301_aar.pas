@@ -24,19 +24,19 @@ interface
 
 {$IFDEF ANDROID}
 uses
-  Androidapi.JNIBridge, 
-  Androidapi.JNI.JavaTypes, 
-  Androidapi.JNI.GraphicsContentViewText, 
-  Androidapi.JNI.os, 
-//  Androidapi.JNI.com.huawei.hms.feature.dynamic.IObjectWrapper,
+  Androidapi.JNIBridge,
+  Androidapi.JNI.JavaTypes,
+  Androidapi.JNI.GraphicsContentViewText,
+  Androidapi.JNI.os,
   Androidapi.JNI.App,
-//  Androidapi.JNI.com.huawei.hms.mlsdk.common.MLFrame,
   Androidapi.JNI.Util,
+  Androidapi.JNI.Hardware;
+//  Androidapi.JNI.com.huawei.hms.mlsdk.common.MLFrame,
 //  Androidapi.JNI.com.huawei.hmf.tasks.Task,
 //  Androidapi.JNI.com.huawei.hms.ml.camera.CameraManager,
 //  Androidapi.JNI.java.nio.ByteBuffer,
 //  Androidapi.JNI.java.nio.charset.Charset,
-  Androidapi.JNI.Hardware;
+//  Androidapi.JNI.com.huawei.hms.feature.dynamic.IObjectWrapper,
 
 
 type

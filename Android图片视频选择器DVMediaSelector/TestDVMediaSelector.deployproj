@@ -378,15 +378,6 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_list_menu_item_layout.xml">
-            <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
-            <RemoteName>abc_list_menu_item_layout.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>TestDVMediaSelector\res\drawable-mdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
@@ -395,6 +386,15 @@
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_list_menu_item_layout.xml">
+            <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
+            <RemoteName>abc_list_menu_item_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
         </DeployFile>
         <DeployFile Include="Support_V4\support-compat-28.0.0_aar\res\values-ta\values-ta_support_compat_28_0_0_aar.xml">
             <RemoteDir>TestDVMediaSelector\res\values-ta\</RemoteDir>
@@ -1647,6 +1647,15 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_select_dialog_material.xml">
+            <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
+            <RemoteName>abc_select_dialog_material.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
+        </DeployFile>
         <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xxhdpi-v4\abc_list_focused_holo.9.png">
             <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
             <RemoteName>abc_list_focused_holo.9.png</RemoteName>
@@ -1668,15 +1677,6 @@
         <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_search_view.xml">
             <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
             <RemoteName>abc_search_view.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_select_dialog_material.xml">
-            <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
-            <RemoteName>abc_select_dialog_material.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3222,18 +3222,18 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\values-et\values-et_appcompat_v7_28_0_0_aar.xml">
-            <RemoteDir>TestDVMediaSelector\res\values-et\</RemoteDir>
-            <RemoteName>values-et_appcompat_v7_28_0_0_aar.xml</RemoteName>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-v21\abc_action_bar_item_background_material.xml">
+            <RemoteDir>TestDVMediaSelector\res\drawable-v21\</RemoteDir>
+            <RemoteName>abc_action_bar_item_background_material.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable\abc_ratingbar_indicator_material.xml">
-            <RemoteDir>TestDVMediaSelector\res\drawable\</RemoteDir>
-            <RemoteName>abc_ratingbar_indicator_material.xml</RemoteName>
+        <DeployFile Include="Support_V4\support-compat-28.0.0_aar\res\values-km\values-km_support_compat_28_0_0_aar.xml">
+            <RemoteDir>TestDVMediaSelector\res\values-km\</RemoteDir>
+            <RemoteName>values-km_support_compat_28_0_0_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3249,18 +3249,18 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-v21\abc_action_bar_item_background_material.xml">
-            <RemoteDir>TestDVMediaSelector\res\drawable-v21\</RemoteDir>
-            <RemoteName>abc_action_bar_item_background_material.xml</RemoteName>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\values-et\values-et_appcompat_v7_28_0_0_aar.xml">
+            <RemoteDir>TestDVMediaSelector\res\values-et\</RemoteDir>
+            <RemoteName>values-et_appcompat_v7_28_0_0_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Support_V4\support-compat-28.0.0_aar\res\values-km\values-km_support_compat_28_0_0_aar.xml">
-            <RemoteDir>TestDVMediaSelector\res\values-km\</RemoteDir>
-            <RemoteName>values-km_support_compat_28_0_0_aar.xml</RemoteName>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable\abc_ratingbar_indicator_material.xml">
+            <RemoteDir>TestDVMediaSelector\res\drawable\</RemoteDir>
+            <RemoteName>abc_ratingbar_indicator_material.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>

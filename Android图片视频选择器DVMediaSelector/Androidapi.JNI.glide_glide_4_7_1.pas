@@ -12195,6 +12195,7 @@ type
 
   TJViewPreloadSizeProvider = class(TJavaGenericImport<JViewPreloadSizeProviderClass, JViewPreloadSizeProvider>) end;
 
+{$ENDIF ANDROID}
 
 implementation
 

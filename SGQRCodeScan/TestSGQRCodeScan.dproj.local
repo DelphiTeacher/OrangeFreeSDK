@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.262,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeObtainConfigure.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.031,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtainConfigure.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.785,C:\OrangeFreeSDK\SGQRCodeScan\Project2.dproj=C:\OrangeFreeSDK\SGQRCodeScan\Test.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.011,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.WCQRCodeVC.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.262,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeObtainConfigure.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.632,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\OrangeFreeSDK\SGQRCodeScan\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.632,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.fmx=C:\OrangeFreeSDK\SGQRCodeScan\Unit2.fmx</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.615,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\OrangeFreeSDK\SGQRCodeScan\Project2.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.041,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeScanView.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.336,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.262,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeScanView.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.364,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WCQRCodeVC.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.774,C:\OrangeFreeSDK\SGQRCodeScan\Test.dproj=C:\OrangeFreeSDK\SGQRCodeScan\TestSGQRCodeScan.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.246,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeObtain.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.354,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WBQRCodeVC.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.140,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.MBProgressHUD.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.120,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.MBProgressHUD_SGQRCode.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.031,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtainConfigure.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.632,C:\OrangeFreeSDK\SGQRCodeScan\Unit2.pas=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.336,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.041,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeScanView.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.615,C:\OrangeFreeSDK\SGQRCodeScan\Project2.dproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.364,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WCQRCodeVC.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.632,C:\OrangeFreeSDK\SGQRCodeScan\Unit2.fmx=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit2.fmx</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.785,C:\OrangeFreeSDK\SGQRCodeScan\Test.dproj=C:\OrangeFreeSDK\SGQRCodeScan\Project2.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.246,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeObtain.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.262,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeScanView.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.774,C:\OrangeFreeSDK\SGQRCodeScan\TestSGQRCodeScan.dproj=C:\OrangeFreeSDK\SGQRCodeScan\Test.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.051,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.WBQRCodeVC.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.354,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WBQRCodeVC.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.021,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtain.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>

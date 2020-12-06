@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.430,=C:\OrangeFreeSDK\OrangeJava2PasFixer\UnitOrangeUIJava2PasFixer.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.827,C:\OrangeFreeSDK\OrangeJava2PasFixer\OrangeUIJava2PasFixer.dproj=C:\OrangeFreeSDK\OrangeJava2PasFixer\OrangeJava2PasFixer.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.430,=C:\OrangeFreeSDK\OrangeJava2PasFixer\UnitOrangeUIJava2PasFixer.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.827,C:\OrangeFreeSDK\OrangeJava2PasFixer\OrangeUIJava2PasFixer.dproj=C:\OrangeFreeSDK\OrangeJava2PasFixer\OrangeJava2PasFixer.dproj</Transaction>
   </Transactions>
 </BorlandProject>

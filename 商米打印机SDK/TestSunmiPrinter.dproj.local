@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899-12-30 00:00:00.000.803,=C:\OrangeFreeSDK\商米打印机SDK\utest.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.082,C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\zxing_3.2.0.jar=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.111,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\zxing_3.2.0.jar</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.804,C:\OrangeFreeSDK\商米打印机SDK\TestSunmiPrinter_D10_3.dproj=C:\OrangeFreeSDK\商米打印机SDK\TestSunmiPrinter.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.853,C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.zxing_3_2_0.pas=</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.561,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.zxing_3_2_0.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.121,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\sunmiprinter.jar</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.993,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\zxing_core_3_4_0.jar</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.545,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.sunmiprinter.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.177,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project3.dproj=C:\OrangeFreeSDK\商米打印机SDK\Project3.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.184,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\OrangeFreeSDK\商米打印机SDK\Unit1.fmx</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.912,C:\OrangeFreeSDK\商米打印机SDK\Project3.dproj=C:\OrangeFreeSDK\商米打印机SDK\TestSunmiPrinter_D10_3.dproj</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.222,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.zxing_core_3_4_0.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.184,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\OrangeFreeSDK\商米打印机SDK\Unit1.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.481,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.481,=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.177,C:\OrangeFreeSDK\商米打印机SDK\Project3.dproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project3.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.804,C:\OrangeFreeSDK\商米打印机SDK\TestSunmiPrinter.dproj=C:\OrangeFreeSDK\商米打印机SDK\TestSunmiPrinter_D10_3.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.222,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.zxing_core_3_4_0.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.803,=C:\OrangeFreeSDK\商米打印机SDK\utest.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.111,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\zxing_3.2.0.jar</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.082,C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\zxing_3.2.0.jar=</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.561,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.zxing_3_2_0.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.993,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\zxing_core_3_4_0.jar</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.184,C:\OrangeFreeSDK\商米打印机SDK\Unit1.fmx=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.545,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.sunmiprinter.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.184,C:\OrangeFreeSDK\商米打印机SDK\Unit1.pas=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.853,C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\Androidapi.JNI.zxing_3_2_0.pas=</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.912,C:\OrangeFreeSDK\商米打印机SDK\TestSunmiPrinter_D10_3.dproj=C:\OrangeFreeSDK\商米打印机SDK\Project3.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.121,=C:\OrangeFreeSDK\商米打印机SDK\SunmiPrinterSDK\sunmiprinter.jar</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<PMyMac iOSSimulator="iPhone5"/>
+		<PMyMac iOSSimulator="iPhone5" iOSDevice64=""/>
 		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64=""/>
-		<NoProfile Android="" Android64=""/>
+		<NoProfile Android="" Android64="" iOSSimulator="iPhone5"/>
 	</ActiveMobileDevice>
 </BorlandProject>

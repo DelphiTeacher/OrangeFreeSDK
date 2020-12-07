@@ -8,3 +8,5 @@
 *.local
 *.local
 *.local
+*.identcache
+*.identcache

@@ -1,0 +1,62 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = 'Form3'
+  ClientHeight = 407
+  ClientWidth = 326
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #36830#25509'RFID'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #25195#25551'RFID'
+    TextSettings.WordWrap = True
+    OnClick = Button2Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 16.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 257.000000000000000000
+    Size.Height = 145.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 253.000000000000000000
+    Viewport.Height = 141.000000000000000000
+  end
+  object Button4: TButton
+    Position.X = 168.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = #36830#25509#25195#25551
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Position.X = 104.000000000000000000
+    Position.Y = 184.000000000000000000
+    TabOrder = 5
+    Text = #29992#23436#20102
+    OnClick = Button5Click
+  end
+end

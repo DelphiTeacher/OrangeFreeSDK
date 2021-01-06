@@ -3,6 +3,9 @@
         <ProjectGuid>{0E85B0B7-5766-473E-A6B5-2C1F595A5A04}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="1D_PDA_RFID\PDA_RFID.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="商米打印SunmiPrinter_V2\TestSunmiPrinter_V2.dproj">
             <Dependencies/>
         </Projects>
@@ -33,6 +36,9 @@
         <Projects Include="商米摄像头扫码SunmiCameraScan\sunmiscan_Test.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -41,6 +47,15 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="PDA_RFID">
+        <MSBuild Projects="1D_PDA_RFID\PDA_RFID.dproj"/>
+    </Target>
+    <Target Name="PDA_RFID:Clean">
+        <MSBuild Projects="1D_PDA_RFID\PDA_RFID.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PDA_RFID:Make">
+        <MSBuild Projects="1D_PDA_RFID\PDA_RFID.dproj" Targets="Make"/>
+    </Target>
     <Target Name="TestSunmiPrinter_V2">
         <MSBuild Projects="商米打印SunmiPrinter_V2\TestSunmiPrinter_V2.dproj"/>
     </Target>
@@ -131,14 +146,23 @@
     <Target Name="sunmiscan_Test:Make">
         <MSBuild Projects="商米摄像头扫码SunmiCameraScan\sunmiscan_Test.dproj" Targets="Make"/>
     </Target>
+    <Target Name="Project3">
+        <MSBuild Projects="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj"/>
+    </Target>
+    <Target Name="Project3:Clean">
+        <MSBuild Projects="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project3:Make">
+        <MSBuild Projects="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="TestSunmiPrinter_V2;OrangeSDKControl_FMX_D10_4;TestDVMediaSelector_V2;HuaweiScan;TestSGQRCodeScan;OrangeSDK_SmartDeploy;GameOnLineClient_D10_4;TestSunmiPrinter;TestSunmiRFID;sunmiscan_Test"/>
+        <CallTarget Targets="PDA_RFID;TestSunmiPrinter_V2;OrangeSDKControl_FMX_D10_4;TestDVMediaSelector_V2;HuaweiScan;TestSGQRCodeScan;OrangeSDK_SmartDeploy;GameOnLineClient_D10_4;TestSunmiPrinter;TestSunmiRFID;sunmiscan_Test;Project3"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="TestSunmiPrinter_V2:Clean;OrangeSDKControl_FMX_D10_4:Clean;TestDVMediaSelector_V2:Clean;HuaweiScan:Clean;TestSGQRCodeScan:Clean;OrangeSDK_SmartDeploy:Clean;GameOnLineClient_D10_4:Clean;TestSunmiPrinter:Clean;TestSunmiRFID:Clean;sunmiscan_Test:Clean"/>
+        <CallTarget Targets="PDA_RFID:Clean;TestSunmiPrinter_V2:Clean;OrangeSDKControl_FMX_D10_4:Clean;TestDVMediaSelector_V2:Clean;HuaweiScan:Clean;TestSGQRCodeScan:Clean;OrangeSDK_SmartDeploy:Clean;GameOnLineClient_D10_4:Clean;TestSunmiPrinter:Clean;TestSunmiRFID:Clean;sunmiscan_Test:Clean;Project3:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="TestSunmiPrinter_V2:Make;OrangeSDKControl_FMX_D10_4:Make;TestDVMediaSelector_V2:Make;HuaweiScan:Make;TestSGQRCodeScan:Make;OrangeSDK_SmartDeploy:Make;GameOnLineClient_D10_4:Make;TestSunmiPrinter:Make;TestSunmiRFID:Make;sunmiscan_Test:Make"/>
+        <CallTarget Targets="PDA_RFID:Make;TestSunmiPrinter_V2:Make;OrangeSDKControl_FMX_D10_4:Make;TestDVMediaSelector_V2:Make;HuaweiScan:Make;TestSGQRCodeScan:Make;OrangeSDK_SmartDeploy:Make;GameOnLineClient_D10_4:Make;TestSunmiPrinter:Make;TestSunmiRFID:Make;sunmiscan_Test:Make;Project3:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

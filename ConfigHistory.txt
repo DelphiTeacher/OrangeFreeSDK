@@ -1,1 +1,2 @@
+C:\OrangeFreeSDK\1D_PDA_RFID\1D_PDA_RFID_SDK\DeployConfig.ini
 C:\OrangeFreeSDK\ÉÌÃ×RFID\SunmiRFIDSDK\DeployConfig.ini

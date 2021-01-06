@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.760,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz.dproj</Transaction>
     <Transaction>1899/12/30 00:00:00.000.452,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\OrangeSDK_JarGen\TestDVMediaSelector\R_JAVA_TestDVMediaSelector.jar</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.096,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Unit17.fmx=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit17.fmx</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.565,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.glide_glide_4_7_1.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.103,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.glide_glide_4_7_1.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.799,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker_D10_4.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.384,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker_D10_4.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.197,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Test.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.654,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector.dproj=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.168,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.926,C:\MyFiles\OrangeSDKControl\Source\dmcBig_MediaPicker\Androidapi.JNI.glide_4_0_0.pas=</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.596,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\OrangeSDK_JarGen\TestMediaPicker\R_JAVA_TestMediaPicker.jar=</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.552,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\DVMediaSelectorSDK\glide-compiler-4.7.1.jar</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.626,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\Androidapi.JNI.DVMediaSelector_2_0_1.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.551,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\Androidapi.JNI.DVMediaSelector_2_0_1.pas=</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.975,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\TestMediaPicker.dproj=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\TestDVMediaSelector.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.106,=C:\MyFiles\OrangeSDKControl\Source\dmcBig_MediaPicker\Androidapi.JNI.glide_4_0_0.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.972,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.mediaselector_1_0_0.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.760,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.168,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.001,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project15.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Project15.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.096,C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Unit17.fmx=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Unit17.fmx</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.975,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\TestDVMediaSelector.dproj=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\TestMediaPicker.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.910,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Test.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Project15.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.197,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Test.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.384,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker_D10_4.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.799,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\TestMediaPicker_D10_4.dproj</Transaction>
     <Transaction>1899/12/30 00:00:00.000.323,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.mediaselector_1_0_0.pas</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.910,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Project15.dproj=C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Test.dproj</Transaction>
-    <Transaction>1899/12/30 00:00:00.000.001,C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Project15.dproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\Project15.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.596,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\OrangeSDK_JarGen\TestMediaPicker\R_JAVA_TestMediaPicker.jar=</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.654,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector.dproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.552,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\DVMediaSelectorSDK\glide-compiler-4.7.1.jar</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.551,C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\Androidapi.JNI.DVMediaSelector_2_0_1.pas=</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.626,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V2\Androidapi.JNI.DVMediaSelector_2_0_1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.972,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.mediaselector_1_0_0.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.103,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.glide_glide_4_7_1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.565,=C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector\Androidapi.JNI.glide_glide_4_7_1.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.106,=C:\MyFiles\OrangeSDKControl\Source\dmcBig_MediaPicker\Androidapi.JNI.glide_4_0_0.pas</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.926,C:\MyFiles\OrangeSDKControl\Source\dmcBig_MediaPicker\Androidapi.JNI.glide_4_0_0.pas=</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile Android64="" Android=""/>
+		<NoProfile Android64="V201D88200845" Android="V201D88200845"/>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice32="" iOSDevice64=""/>
 		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64=""/>
 	</ActiveMobileDevice>

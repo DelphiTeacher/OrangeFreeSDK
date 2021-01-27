@@ -1,0 +1,99 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 316
+  ClientWidth = 320
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Align = Top
+    Position.Y = 41.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #20889#20837' INI '#27979#35797
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Align = Top
+    Position.Y = 71.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #35835#21462' INI '#27979#35797
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = Top
+    Position.Y = 101.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = #21152#36733#25972#20010' INI'
+    OnClick = Button3Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    ReadOnly = True
+    Align = Client
+    Margins.Left = 10.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 135.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Viewport.Width = 292.000000000000000000
+    Viewport.Height = 127.000000000000000000
+  end
+  object Button4: TButton
+    Align = Top
+    Position.Y = 131.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #21024#38500' INI '#25991#20214
+    OnClick = Button4Click
+  end
+  object Rectangle1: TRectangle
+    Align = Top
+    Padding.Left = 8.000000000000000000
+    Padding.Top = 2.000000000000000000
+    Padding.Bottom = 2.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    object RadioButton1: TRadioButton
+      Align = Left
+      Position.X = 8.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 177.000000000000000000
+      Size.Height = 37.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'ANSI INI'
+    end
+    object RadioButton2: TRadioButton
+      Align = Left
+      IsChecked = True
+      Position.X = 185.000000000000000000
+      Position.Y = 2.000000000000000000
+      Size.Width = 144.000000000000000000
+      Size.Height = 37.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = 'Unicode INI'
+    end
+  end
+end

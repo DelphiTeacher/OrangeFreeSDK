@@ -1,0 +1,76 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  ActiveControl = CheckBox1
+  Caption = 'Form1'
+  ClientHeight = 375
+  ClientWidth = 323
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  DesignerMasterStyle = 0
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Position.X = 40.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 31.000000000000000000
+    Size.PlatformDefault = False
+    OnEnter = Edit1Enter
+    OnExit = Edit1Exit
+  end
+  object Button1: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 184.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #26174#31034' VK'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Position.X = 176.000000000000000000
+    Position.Y = 184.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = #38544#34255' VK'
+    OnClick = Button2Click
+    OnExit = Button2Exit
+  end
+  object Button3: TButton
+    Position.X = 48.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = #26174#31034' VK 2'
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Position.X = 176.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = #38544#34255' VK 2'
+    OnClick = Button4Click
+    OnExit = Button4Exit
+  end
+  object CheckBox1: TCheckBox
+    IsChecked = True
+    Position.X = 16.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 297.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #20248#20808#20351#29992#26032#29256#26412#30340#34394#25311#38190#30424#31243#24207'(TabTip.exe)'
+  end
+end

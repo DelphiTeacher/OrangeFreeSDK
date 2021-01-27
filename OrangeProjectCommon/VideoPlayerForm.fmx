@@ -1,0 +1,22 @@
+object frmVideoPlayer: TfrmVideoPlayer
+  Left = 0
+  Top = 0
+  ClientHeight = 480
+  ClientWidth = 383
+  Fill.Color = claBlack
+  Fill.Kind = Solid
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object SkinTencentSuperPlayerView1: TSkinTencentSuperPlayerView
+    Align = Client
+    Fill.Color = claBlack
+    Size.Width = 383.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    OnPaint = SkinTencentSuperPlayerView1Paint
+    TabOrder = 3
+    OnClickReturnButton = SkinTencentSuperPlayerView1ClickReturnButton
+  end
+end

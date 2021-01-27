@@ -1,0 +1,227 @@
+; VCLZip Help File
+; 1996-2008
+
+; This help file was created with HelpScribble 7.7.2
+; Licensed to: KpGb Software
+
+; HelpScribble is copyright (c) 1996-2007  Jan Goyvaerts
+; Visit http://www.helpscribble.com/ for more information
+
+
+[OPTIONS]
+REPORT=YES
+BMROOT=C:\dev\KpGb\VCLZIP~4,C:\PROGRA~1\JGsoft\HELPSC~1
+COMPRESS=True
+LCID=0x0409
+CNT=VCLZip.cnt
+COPYRIGHT=1996-2008
+ROOT=C:\dev\KpGb\VCLZIP~4
+TITLE=VCLZip Help File
+
+[CONFIG]
+BrowseButtons()
+
+[FILES]
+C:\dev\KpGb\VCLZIP~4\VCLZip.rtf
+
+[MAP]
+PG2   2
+PG3   3
+Scribble4   4
+Scribble5   5
+Scribble6   6
+Scribble7   7
+Scribble8   8
+Scribble10   10
+Scribble11   11
+Scribble13   13
+Scribble15   15
+PG18   18
+PG62   62
+PG87   87
+PG88   88
+Scribble105   105
+PG152   152
+PG174   174
+PG175   175
+PG176   176
+PG700   700
+PG2000   850
+Scribble2300   2300
+Scribble2301   2301
+Scribble2302   2302
+Scribble2303   2303
+Scribble2304   2304
+Scribble2310   2310
+Scribble2315   2315
+Scribble2320   2320
+Scribble2325   2325
+Scribble2330   2330
+Scribble2335   2335
+Scribble2340   2340
+Scribble2345   2345
+Scribble2350   2350
+Scribble2355   2355
+Scribble2360   2360
+Scribble2365   2365
+Scribble2370   2370
+Scribble2375   2375
+Scribble2380   2380
+Scribble2385   2385
+Scribble2390   2390
+Scribble2395   2395
+Scribble2400   2400
+Scribble2405   2405
+Scribble2410   2410
+Scribble2415   2415
+Scribble2420   2420
+Scribble2425   2425
+Scribble2430   2430
+Scribble2435   2435
+Scribble2440   2440
+Scribble2445   2445
+Scribble2450   2450
+Scribble2455   2455
+Scribble2460   2460
+Scribble2465   2465
+Scribble2470   2470
+Scribble2475   2475
+Scribble2480   2480
+Scribble2485   2485
+Scribble2490   2490
+Scribble2495   2495
+Scribble2500   2500
+Scribble2505   2505
+Scribble2510   2510
+Scribble2515   2515
+Scribble2520   2520
+Scribble2525   2525
+Scribble2530   2530
+Scribble2535   2535
+Scribble2540   2540
+Scribble2545   2545
+Scribble2550   2550
+Scribble2553   2553
+Scribble2554   2554
+Scribble2555   2555
+Scribble2560   2560
+Scribble2565   2565
+Scribble2570   2570
+Scribble2575   2575
+Scribble2580   2580
+Scribble2585   2585
+Scribble2590   2590
+Scribble2595   2595
+Scribble2598   2598
+Scribble2600   2600
+Scribble2605   2605
+Scribble2610   2610
+Scribble2615   2615
+Scribble2620   2620
+Scribble2625   2625
+Scribble2630   2630
+Scribble2635   2635
+Scribble2640   2640
+Scribble2645   2645
+Scribble2650   2650
+Scribble2655   2655
+Scribble2660   2660
+Scribble2665   2665
+Scribble2670   2670
+Scribble2675   2675
+Scribble2680   2680
+Scribble2685   2685
+Scribble2695   2695
+Scribble2700   2700
+Scribble2705   2705
+Scribble2710   2710
+Scribble2715   2715
+Scribble2720   2720
+Scribble2725   2725
+Scribble2730   2730
+Scribble2735   2735
+Scribble2740   2740
+Scribble2745   2745
+Scribble2750   2750
+Scribble2755   2755
+Scribble2760   2760
+Scribble3110   3110
+Scribble3120   3120
+Scribble3125   3125
+Scribble3130   3130
+Scribble3135   3135
+Scribble3140   3140
+Scribble3200   3200
+Scribble3201   3201
+Scribble3202   3202
+Scribble3203   3203
+Scribble3204   3204
+Scribble3210   3210
+Scribble3211   3211
+Scribble3225   3225
+Scribble3230   3230
+Scribble3245   3245
+Scribble3250   3250
+Scribble3255   3255
+Scribble3260   3260
+Scribble3265   3265
+Scribble3270   3270
+Scribble3280   3280
+Scribble3282   3282
+Scribble3285   3285
+Scribble3290   3290
+Scribble3295   3295
+Scribble3300   3300
+Scribble3305   3305
+Scribble3310   3310
+Scribble3320   3320
+Scribble3330   3330
+Scribble3335   3335
+Scribble3340   3340
+Scribble3345   3345
+Scribble3350   3350
+Scribble3355   3355
+Scribble3360   3360
+Scribble3365   3365
+Scribble3370   3370
+Scribble3375   3375
+Scribble3385   3385
+Scribble3390   3390
+Scribble3395   3395
+Scribble3400   3400
+Scribble3405   3405
+Scribble3410   3410
+Scribble3415   3415
+Scribble3425   3425
+Scribble3440   3440
+Scribble3445   3445
+Scribble3450   3450
+Scribble3455   3455
+Scribble3460   3460
+Scribble3465   3465
+Scribble3470   3470
+Scribble3475   3475
+Scribble3478   3478
+Scribble3480   3480
+Scribble3485   3485
+Scribble3490   3490
+Scribble4010   4010
+Scribble4011   4011
+Scribble4012   4012
+Scribble4013   4013
+Scribble4020   4020
+Scribble4023   4023
+Scribble4025   4025
+Scribble4030   4030
+Scribble4035   4035
+Scribble4040   4040
+Scribble4045   4045
+Scribble4050   4050
+Scribble4060   4060
+Scribble4065   4065
+Scribble4070   4070
+Scribble4073   4073
+Scribble4075   4075
+Scribble4080   4080
+Scribble4100   4100
+

@@ -1,0 +1,19 @@
+﻿不推荐本解决方案了。
+http://bbs.2ccc.com/topic.asp?topicid=544553
+https://bitbucket.org/freeonterminate/scriptgate
+推荐用上面的解决方案。
+
+但是 本修改，依然有其他作用。
+1. 修改部分 bug（如果有的话）
+2. 新增 跨平台属性 GetRealWebBrowserObject 获取各个平台下 原生的 浏览器对象。
+
+注意，如果您以前使用过旧版本的 fix code ，请检查新版本是不是少了一些文件，因为这些文件不再需要 fix 了。请您也删错对应的 fix 保留您自己的 fix 。
+
+他们复制到其他目录，例如您的工程目录，也可以放到统一的目录，您所有的工程都从这个统一的目录加载这些文件。
+
+将这些文件中您需要的文件【加入】到您的工程中。
+
+FMX.WebBrowser. 开头的几个，他们是一套的。
+
+E2051 Unit XXX was complied with a different version of YYY .
+说明 XXX 需要从官方源码中复制到 YYY 所在目录。

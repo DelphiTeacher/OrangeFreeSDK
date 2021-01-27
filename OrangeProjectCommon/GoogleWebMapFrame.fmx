@@ -1,0 +1,201 @@
+object FrameGoogleWebMap: TFrameGoogleWebMap
+  Size.Width = 353.000000000000000000
+  Size.Height = 474.000000000000000000
+  Size.PlatformDefault = False
+  object pnlToolBar: TSkinFMXPanel
+    ParentMouseEvent = False
+    ComponentTypeUseKind = ctukDefault
+    MaterialUseKind = mukSelfOwn
+    KeepSelfOwnMaterial = True
+    SelfOwnMaterial.BackColor.BorderEadges = [beBottom]
+    SelfOwnMaterial.BackColor.IsFill = True
+    SelfOwnMaterial.BackColor.FillColor.Color = xFF0199FF
+    SelfOwnMaterial.BackColor.BorderColor.Color = xFFEDEDED
+    SelfOwnMaterial.BackColor.DrawRectSetting.Left = -10.000000000000000000
+    SelfOwnMaterial.BackColor.DrawRectSetting.Right = -10.000000000000000000
+    SelfOwnMaterial.BackColor.DrawRectSetting.SizeType = dpstPixel
+    SelfOwnMaterial.IsTransparent = False
+    SelfOwnMaterial.DrawCaptionParam.FontName = #24494#36719#38597#40657
+    SelfOwnMaterial.DrawCaptionParam.FontSize = 16.000000000000000000
+    SelfOwnMaterial.DrawCaptionParam.FontColor = claWhite
+    SelfOwnMaterial.DrawCaptionParam.DrawFont.Family = #24494#36719#38597#40657
+    SelfOwnMaterial.DrawCaptionParam.DrawFont.Size = 16.000000000000000000
+    SelfOwnMaterial.DrawCaptionParam.DrawFont.Color = claWhite
+    SelfOwnMaterial.DrawCaptionParam.DrawFont.FontColor.Color = claWhite
+    SelfOwnMaterial.DrawCaptionParam.FontTrimming = fttNone
+    SelfOwnMaterial.DrawCaptionParam.FontHorzAlign = fhaLeft
+    SelfOwnMaterial.DrawCaptionParam.FontVertAlign = fvaCenter
+    SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.Left = 50.000000000000000000
+    SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.Enabled = True
+    SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
+    MouseDownFocus = False
+    Align = Top
+    Size.Width = 353.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Caption = #22320#22270
+    Text = #22320#22270
+    Properties.IsToolBar = False
+    object btnReturn: TSkinFMXButton
+      ParentMouseEvent = False
+      ComponentTypeUseKind = ctukDefault
+      MaterialUseKind = mukSelfOwn
+      KeepSelfOwnMaterial = True
+      SelfOwnMaterial.BackColor.IsFill = True
+      SelfOwnMaterial.IsAutoCenterIconAndCaption = False
+      SelfOwnMaterial.DrawDetailParam.FontTrimming = fttNone
+      SelfOwnMaterial.DrawDetailParam.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawDetailParam.FontVertAlign = fvaBottom
+      SelfOwnMaterial.DrawDetail1Param.FontTrimming = fttNone
+      SelfOwnMaterial.DrawDetail1Param.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawDetail1Param.FontVertAlign = fvaTop
+      SelfOwnMaterial.DrawHelpTextParam.FontColor = claGray
+      SelfOwnMaterial.DrawHelpTextParam.DrawFont.Color = claGray
+      SelfOwnMaterial.DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+      SelfOwnMaterial.DrawHelpTextParam.FontTrimming = fttNone
+      SelfOwnMaterial.DrawHelpTextParam.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawHelpTextParam.FontVertAlign = fvaTop
+      SelfOwnMaterial.DrawIconParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+      SelfOwnMaterial.DrawCaptionParam.FontSize = 18.000000000000000000
+      SelfOwnMaterial.DrawCaptionParam.FontColor = claWhite
+      SelfOwnMaterial.DrawCaptionParam.DrawFont.Size = 18.000000000000000000
+      SelfOwnMaterial.DrawCaptionParam.DrawFont.Color = claWhite
+      SelfOwnMaterial.DrawCaptionParam.DrawFont.FontColor.Color = claWhite
+      SelfOwnMaterial.DrawCaptionParam.FontTrimming = fttNone
+      SelfOwnMaterial.DrawCaptionParam.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawCaptionParam.FontVertAlign = fvaCenter
+      SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.Left = 36.000000000000000000
+      SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.Enabled = True
+      SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
+      SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+      SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.MouseDownEffect.FontColor.Color = claGray
+      SelfOwnMaterial.NormalPicture.IsClipRound = False
+      SelfOwnMaterial.NormalPicture.PNG = {
+        89504E470D0A1A0A0000000D4948445200000040000000400806000000AA6971
+        DE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+        01E749444154785EED9AEB6DC2401084F10112FF921252825341288112488749
+        05712A0854105241C82F107E905967B148C4E123320F2FF349ABD5A13BC933F7
+        F0B1728710420821E45A89349F8CA2281E908688C439F75AFE780DACD7EB38CB
+        B237E40A6DC7DAC52E2272B1587C96AAFF90A6E93BD2AD76B507C479C56F31D2
+        EE27C7693E0A10162F97CB97C1605037C3F6B681880F98F90D675B0147018282
+        C5AF56AB19929D3300620E99F939C2CEF21731141F06C5EBD0F62362283E0C8A
+        D7A1ED47C4507C1814AF43DB8F88A1F830285E87B682BD35411113F87FBEA428
+        8AA7288A26DABC34123CDB1431D77689D78043C5B7813CCF27DD6EF7717B92BC
+        0648C1129DEDEC6505BA66BD5EEF7EB3127696C430FB438BE20588BF4392B27C
+        89AF265875304A35B93E0312CD56A9CE809D06607F243830A6DA34459AA61F48
+        D5047BCBE23803C6485F3F2D1B88F87EBF3FDA7E15D6DE0390C4AD9BF2871A70
+        0F7876CE5DEA3D409E4BEE02BFEE01B5880908B9E1D5A237467B6F0F1185A009
+        089A80A009089A80A009089A80A009089A80A009089A80A009089A800832C1EC
+        778210156C02B0F79DA0969EA5B618525439DB36389A01C201265C6A11A519B0
+        C4BDDBC1DC77823E203256B115DA3EEB5B606F4DB0692056665AB68488FE5F8D
+        8E10420869884EE71B6792CBCB8C385AEA0000000049454E44AE426082}
+      SelfOwnMaterial.HoverPicture.IsClipRound = False
+      SelfOwnMaterial.DownPicture.IsClipRound = False
+      SelfOwnMaterial.DownPicture.ImageIndex = 1
+      SelfOwnMaterial.DisabledPicture.IsClipRound = False
+      SelfOwnMaterial.FocusedPicture.IsClipRound = False
+      SelfOwnMaterial.PushedPicture.IsClipRound = False
+      SelfOwnMaterial.DrawPictureParam.IsAutoFit = True
+      SelfOwnMaterial.DrawPictureParam.PictureVertAlign = pvaCenter
+      SelfOwnMaterial.DrawPictureParam.DrawRectSetting.Left = 16.000000000000000000
+      SelfOwnMaterial.DrawPictureParam.DrawRectSetting.Height = 22.000000000000000000
+      SelfOwnMaterial.DrawPictureParam.DrawRectSetting.Enabled = True
+      SelfOwnMaterial.DrawPictureParam.DrawRectSetting.SizeType = dpstPixel
+      SelfOwnMaterial.DrawPictureParam.DrawRectSetting.PositionVertType = dppvtCenter
+      SelfOwnMaterial.DrawPictureParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+      MouseDownFocus = False
+      Align = Left
+      Size.Width = 89.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      OnClick = btnReturnClick
+      Properties.AutoSize = False
+      Properties.IsAutoPush = False
+      Properties.IsPushed = False
+      Properties.Icon.IsClipRound = False
+      Properties.PushedIcon.IsClipRound = False
+      Properties.ButtonIndex = -1
+      Properties.PushedGroupIndex = 0
+    end
+    object btnNavi: TSkinFMXButton
+      ParentMouseEvent = False
+      ComponentTypeUseKind = ctukDefault
+      MaterialUseKind = mukSelfOwn
+      KeepSelfOwnMaterial = True
+      SelfOwnMaterial.IsAutoCenterIconAndCaption = False
+      SelfOwnMaterial.DrawDetailParam.FontTrimming = fttNone
+      SelfOwnMaterial.DrawDetailParam.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawDetailParam.FontVertAlign = fvaTop
+      SelfOwnMaterial.DrawDetail1Param.FontTrimming = fttNone
+      SelfOwnMaterial.DrawDetail1Param.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawDetail1Param.FontVertAlign = fvaTop
+      SelfOwnMaterial.DrawHelpTextParam.FontColor = claGray
+      SelfOwnMaterial.DrawHelpTextParam.DrawFont.Color = claGray
+      SelfOwnMaterial.DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+      SelfOwnMaterial.DrawHelpTextParam.FontTrimming = fttNone
+      SelfOwnMaterial.DrawHelpTextParam.FontHorzAlign = fhaLeft
+      SelfOwnMaterial.DrawHelpTextParam.FontVertAlign = fvaTop
+      SelfOwnMaterial.DrawCaptionParam.FontSize = 16.000000000000000000
+      SelfOwnMaterial.DrawCaptionParam.FontColor = claWhite
+      SelfOwnMaterial.DrawCaptionParam.DrawFont.Size = 16.000000000000000000
+      SelfOwnMaterial.DrawCaptionParam.DrawFont.Color = claWhite
+      SelfOwnMaterial.DrawCaptionParam.DrawFont.FontColor.Color = claWhite
+      SelfOwnMaterial.DrawCaptionParam.FontTrimming = fttNone
+      SelfOwnMaterial.DrawCaptionParam.FontHorzAlign = fhaCenter
+      SelfOwnMaterial.DrawCaptionParam.FontVertAlign = fvaCenter
+      SelfOwnMaterial.NormalPicture.IsClipRound = False
+      SelfOwnMaterial.HoverPicture.IsClipRound = False
+      SelfOwnMaterial.DownPicture.IsClipRound = False
+      SelfOwnMaterial.DisabledPicture.IsClipRound = False
+      SelfOwnMaterial.FocusedPicture.IsClipRound = False
+      SelfOwnMaterial.PushedPicture.IsClipRound = False
+      MouseDownFocus = False
+      Align = Right
+      Position.X = 253.000000000000000000
+      Size.Width = 100.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Caption = #23548#33322
+      Text = #23548#33322
+      Properties.AutoSize = False
+      Properties.IsAutoPush = False
+      Properties.IsPushed = False
+      Properties.Icon.IsClipRound = False
+      Properties.PushedIcon.IsClipRound = False
+      Properties.ButtonIndex = -1
+      Properties.PushedGroupIndex = 0
+    end
+  end
+  object ProcessNativeControlModalShowPanel1: TProcessNativeControlModalShowPanel
+    ParentMouseEvent = False
+    ComponentTypeUseKind = ctukDefault
+    MaterialUseKind = mukSelfOwn
+    KeepSelfOwnMaterial = True
+    MouseDownFocus = False
+    Align = Client
+    Size.Width = 353.000000000000000000
+    Size.Height = 424.000000000000000000
+    Size.PlatformDefault = False
+    OnClick = ProcessNativeControlModalShowPanel1Click
+    OnResize = ProcessNativeControlModalShowPanel1Resize
+  end
+  object tteGetRoutePlan: TTimerTaskEvent
+    TaskID = 0
+    TaskTag = 0
+    OnExecute = tteGetRoutePlanExecute
+    OnExecuteEnd = tteGetRoutePlanExecuteEnd
+    Left = 160
+    Top = 144
+  end
+  object tteGetPointAddr: TTimerTaskEvent
+    TaskID = 0
+    TaskTag = 0
+    OnExecute = tteGetPointAddrExecute
+    OnExecuteEnd = tteGetPointAddrExecuteEnd
+    Left = 160
+    Top = 258
+  end
+end

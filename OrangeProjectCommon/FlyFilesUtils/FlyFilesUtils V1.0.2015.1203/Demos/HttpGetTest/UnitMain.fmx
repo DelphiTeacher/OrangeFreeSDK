@@ -1,0 +1,52 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'Http Get Test'
+  ClientHeight = 328
+  ClientWidth = 250
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object ButtonHttpGet: TButton
+    Align = Top
+    Position.Y = 39.000000000000000000
+    Size.Width = 250.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'ButtonHttpGet'
+    OnClick = ButtonHttpGetClick
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    ReadOnly = True
+    TextSettings.WordWrap = True
+    Align = Client
+    Size.Width = 250.000000000000000000
+    Size.Height = 267.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Viewport.Width = 246.000000000000000000
+    Viewport.Height = 263.000000000000000000
+  end
+  object LabelURL: TLabel
+    Align = Top
+    Size.Width = 250.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #35831#36755#20837' URL'#65306
+  end
+  object EditURL: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Top
+    TabOrder = 7
+    KeyboardType = URL
+    Text = 'http://wthrcdn.etouch.cn/weather_mini?city='#21271#20140
+    Position.Y = 17.000000000000000000
+    Size.Width = 250.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

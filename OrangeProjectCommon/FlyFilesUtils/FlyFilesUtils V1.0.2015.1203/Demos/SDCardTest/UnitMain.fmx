@@ -1,0 +1,67 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 402
+  ClientWidth = 320
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Align = Top
+    Size.Width = 320.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #22312#25163#26426#23384#20648'(sd0)'#19978#24314#31435' 1.TXT'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Align = Top
+    Position.Y = 44.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #22312'SD'#21345'(TF or sd1)'#19978#24314#31435' 2.TXT'
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = Top
+    Position.Y = 88.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #22312' U '#30424#19978#24314#31435' 3.TXT'
+    OnClick = Button3Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    ReadOnly = True
+    Align = Client
+    Margins.Left = 10.000000000000000000
+    Margins.Top = 10.000000000000000000
+    Margins.Right = 10.000000000000000000
+    Margins.Bottom = 10.000000000000000000
+    Size.Width = 300.000000000000000000
+    Size.Height = 206.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 292.000000000000000000
+    Viewport.Height = 198.000000000000000000
+  end
+  object Button4: TButton
+    Align = Top
+    Position.Y = 132.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = #35835#21462#25163#26426#23384#20648#26681#19979#30340#25991#20214#21644#30446#24405
+    OnClick = Button4Click
+  end
+end

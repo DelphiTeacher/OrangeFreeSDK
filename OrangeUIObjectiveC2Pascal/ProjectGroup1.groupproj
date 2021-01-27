@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C7D81825-E8F8-4A3C-941F-5804973063D5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="OCHeader2Pas.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\OrangeUIProduct\微信接口\WeiChatSDK_XE10.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="OCHeader2Pas">
+        <MSBuild Projects="OCHeader2Pas.dproj"/>
+    </Target>
+    <Target Name="OCHeader2Pas:Clean">
+        <MSBuild Projects="OCHeader2Pas.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OCHeader2Pas:Make">
+        <MSBuild Projects="OCHeader2Pas.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WeiChatSDK_XE10">
+        <MSBuild Projects="..\OrangeUIProduct\微信接口\WeiChatSDK_XE10.dproj"/>
+    </Target>
+    <Target Name="WeiChatSDK_XE10:Clean">
+        <MSBuild Projects="..\OrangeUIProduct\微信接口\WeiChatSDK_XE10.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WeiChatSDK_XE10:Make">
+        <MSBuild Projects="..\OrangeUIProduct\微信接口\WeiChatSDK_XE10.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="OCHeader2Pas;WeiChatSDK_XE10"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="OCHeader2Pas:Clean;WeiChatSDK_XE10:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="OCHeader2Pas:Make;WeiChatSDK_XE10:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,46 @@
+package OrangeUIStyles_VCL_D10_3;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vclimg,
+  dbrtl,
+  OrangeUIDesign_VCL_D10_3;
+
+contains
+  ListItemStyle_IconTop_CaptionBottom in 'ListItemStyle_IconTop_CaptionBottom.pas' {FrameListItemStyle_IconTop_CaptionBottom: TFrame},
+  ListItemStyle_TreeMainMenu in 'ListItemStyle_TreeMainMenu.pas',
+  ListItemStyle_TreeMainMenuItem in 'ListItemStyle_TreeMainMenuItem.pas',
+  ListItemStyle_TreeHistoryMadicalList_Child in 'ListItemStyle_TreeHistoryMadicalList_Child.pas' {FrameListItemStyle_TreeHistoryMadicalList_Child: TFrame},
+  ListItemStyle_TreeHistoryMadicalList_Item in 'ListItemStyle_TreeHistoryMadicalList_Item.pas' {FrameListItemStyle_TreeHistoryMadicalList_Item: TFrame},
+  ListItemStyle_TreeHistoryMadicalList_Diag in 'ListItemStyle_TreeHistoryMadicalList_Diag.pas' {FrameListItemStyle_TreeHistoryMadicalList_Diag: TFrame},
+  ListItemStyle_TreeChildListBox in 'ListItemStyle_TreeChildListBox.pas' {FrameListItemStyle_TreeChildListBox: TFrame};
+
+end.

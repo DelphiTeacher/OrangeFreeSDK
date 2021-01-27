@@ -1,0 +1,96 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'FormMain'
+  ClientHeight = 368
+  ClientWidth = 311
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Align = Top
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 61.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 49.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #25171#24320#25991#20214#23545#35805#26694
+    OnClick = Button1Click
+  end
+  object Layout1: TLayout
+    Align = Top
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 23.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 0
+      Text = 'txt'
+      Size.Width = 166.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      TextPrompt = #35831#36755#20837#25193#23637#21517#65306
+    end
+    object Label1: TLabel
+      Align = Left
+      Size.Width = 137.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.WordWrap = False
+      Text = #35831#36755#20837#25193#23637#21517#65306
+    end
+  end
+  object Layout2: TLayout
+    Align = Top
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 114.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 108.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Label2: TLabel
+      Align = Contents
+      Size.Width = 303.000000000000000000
+      Size.Height = 108.000000000000000000
+      Size.PlatformDefault = False
+      Text = #32467#26524#65306
+    end
+  end
+  object Label3: TLabel
+    Align = Top
+    AutoSize = True
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 2.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.WordWrap = False
+    Text = #23433#21331#19979#38754' '#25193#23637#21517' '#26080#25928
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 200
+    Top = 112
+  end
+end

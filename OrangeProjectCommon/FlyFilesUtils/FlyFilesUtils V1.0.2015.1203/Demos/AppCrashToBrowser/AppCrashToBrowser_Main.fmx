@@ -1,0 +1,56 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'FormMain'
+  ClientHeight = 368
+  ClientWidth = 311
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Button1: TButton
+    Align = Top
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 2.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Raise an error'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Align = Top
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 79.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Raise an Crash error'
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = Top
+    Margins.Left = 4.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 4.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 4.000000000000000000
+    Position.Y = 156.000000000000000000
+    Size.Width = 303.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Raise a JNI Crash error (May not open url)'
+    OnClick = Button3Click
+  end
+end

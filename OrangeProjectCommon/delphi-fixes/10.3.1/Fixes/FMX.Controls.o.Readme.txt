@@ -1,0 +1,15 @@
+﻿由于
+https://quality.embarcadero.com/browse/RSP-15747
+如果修改了
+FMX.Controls.pas
+就需要 Debug 版的 FMX.Controls.o
+先到
+安装目录下 lib\android\debug
+和
+安装目录下 lib\android\release
+下面
+将 FMX.Controls.o 文件备份，或 重命名为 FMX.Controls.o.backup。
+
+将本压缩包内的 FMX.Controls.o 覆盖到上述目录中。
+本压缩包内的 FMX.Controls.o 是用 修改后 pas 生成的 Debug 版本。
+源码文件为：FMX.Controls.pas.Please Use .o.txt

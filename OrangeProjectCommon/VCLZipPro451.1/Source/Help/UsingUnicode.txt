@@ -1,0 +1,28 @@
+Using Unicode Filenames and Paths in VCLZip
+  
+Beginning with VCLZip 4.50, VCLZip is able to store Unicode filenames and paths as well as use Unicode in archive filenames and paths.
+
+IMPORTANT: If you are using Delphi or BCB 2009 do not create the following conditional define.
+
+In order to allow VCLZip to implement Unicode filenames, you must create a compiler define if you are not using Delphi/BCB 2009...
+
+...(DO NOT DO THIS FOR DELPHI/BCB 2009)... 
+When you install VCLZip 4.50 the following should already be done.  But to verify that it is done, open up the VCLZip package with the package editor.  In Project | Options, select the Directories/Conditionals tab and if it is not there already, type  IMPLEMENT_UNICODE into the conditionals text box and save.
+
+In order to implement Unicode, VCLZip uses WideStrings wherever filenames and paths are used.  Defining IMPLEMENT_UNICODE will cause VCLZip to compile all such strings as WideStrings and cause WideString functions to be called instead of the normal Ansii String functions.  When IMPLEMENT_UNICODE is not defined, VCLZip is compiled as it always was in earlier versions using regular Ansii strings and functions.  
+..........................................
+
+When compiling under Delphi/BCB 2009, regular strings are defined as UnicodeStrings.  Your application will require few if any changes to work with VCLZip 4.5.  The one change you will have to make is anywhere that the Password property is used (including event declarations) you will have to use an AnsiString.  The Password cannot be a UnicodeString (but it can be UTF8 stored in an AnsiString).   
+
+VERY IMPORTANT
+
+Only Delphi 6 and above, and BCB 6 and above are supported when implementing Unicode. Delphi 5 and below and BCB 5 and below are not supported for Unicode.
+
+If you are NOT using Delphi/BCB 2009 and if you are upgrading an existing application that uses VCLZip, this will cause many events to require changes since parameters that were regular strings will now be widestrings in a lot of instances.
+
+The Password property is defined as an AnsiString, not a UnicodeString.  A password can be UTF8 however, since UTF8 is stored in an AnsiString.
+Except for Delphi/BCB 2009, Delphi GUI components do not support Unicode.  Therefore, if you wish to implement Unicode in your GUI you will need to add Unicode capable components.  When modifying the VCLZip Zip Utility Example to work with VCLZip 4.50, we used the TMS Unicode Component Pack which you can find at
+
+            http://www.tmssoftware.com/site/tmsuni.asp
+
+The VCLZip Zip Utility Example uses TMS Unicode controls for all but Delphi/BCB 2009, but does not include the TMS controls themselves. You will have to purchase TMS Unicode if you do not already own it for the example project to work.  However, it is not needed for VCLZip itself to support Unicode, nor is it needed for Delphi/BCB 2009.

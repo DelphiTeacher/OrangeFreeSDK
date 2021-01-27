@@ -1,0 +1,216 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 343
+  ClientWidth = 670
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object AniIndicator1: TAniIndicator
+    Align = VertCenter
+    Position.Y = 114.000000000000000000
+    Scale.X = 2.000000000000000000
+    Scale.Y = 2.000000000000000000
+    Size.Width = 335.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #31169#38053#65306
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 6
+    Text = '0D59BE2E5563469FA3A6FD1A218F7266'
+    Position.X = 80.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label3: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 136.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #20844#38053#65306
+  end
+  object Edit2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    Text = 'C52A'
+    Position.X = 80.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button2: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 551.000000000000000000
+    Position.Y = 80.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = #29983#25104#20844#38053
+    OnClick = Button2Click
+  end
+  object Label4: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #26126#25991#65306
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 3
+    Text = #22825#21738#65281#25105#30340#34915#26381#21448#32933#20102#12290
+    Position.X = 80.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label5: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #23494#25991#65306
+  end
+  object Edit4: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 2
+    Position.X = 80.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 552.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label6: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 296.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #35299#23494#21518#30340#26126#25991#65306
+  end
+  object Edit5: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 1
+    Position.X = 152.000000000000000000
+    Position.Y = 288.000000000000000000
+    Size.Width = 480.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button3: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 551.000000000000000000
+    Position.Y = 136.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    Text = #21152#23494
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 551.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = #35299#23494
+    OnClick = Button4Click
+  end
+  object ProgressBarMain: TProgressBar
+    Align = Bottom
+    Orientation = Horizontal
+    Margins.Left = 2.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 2.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 2.000000000000000000
+    Position.Y = 331.000000000000000000
+    Size.Width = 666.000000000000000000
+    Size.Height = 10.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label7: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 46.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #20301#25968#65306
+  end
+  object ComboBox1: TComboBox
+    Items.Strings = (
+      '128'
+      '256'
+      '512'
+      '768'
+      '1024')
+    ItemIndex = 0
+    Position.X = 88.000000000000000000
+    Position.Y = 41.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+  end
+  object Label8: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 465.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.WordWrap = False
+    Text = 'Please USE https://github.com/TurboPack/LockBox'
+  end
+  object Label9: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 176.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #27169#25968#65306
+  end
+  object EditM: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 4
+    Text = '93A29081019B595865D608BE8C144885'
+    Position.X = 80.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 448.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object CheckBoxHex: TCheckBox
+    Position.X = 520.000000000000000000
+    Position.Y = 16.000000000000000000
+    TabOrder = 11
+    Text = 'Hex '#32534#30721
+  end
+end

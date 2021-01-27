@@ -1,0 +1,134 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'FormMain'
+  ClientHeight = 415
+  ClientWidth = 320
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Button2: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'CnMD5 '#35745#31639' '#8595
+    OnClick = Button2Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      #20320#22909#20013#25991
+      #36825#26159#31532#20108#34892)
+    TextSettings.WordWrap = True
+    Position.X = 32.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 81.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 257.000000000000000000
+    Viewport.Height = 73.000000000000000000
+  end
+  object Memo2: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    TextSettings.WordWrap = True
+    Position.X = 16.000000000000000000
+    Position.Y = 288.000000000000000000
+    Size.Width = 273.000000000000000000
+    Size.Height = 97.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 265.000000000000000000
+    Viewport.Height = 89.000000000000000000
+  end
+  object RadioButton_Ansi: TRadioButton
+    IsChecked = True
+    Position.X = 24.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Ansi'
+  end
+  object RadioButton_Wide: TRadioButton
+    Position.X = 128.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Text = 'WideString'
+  end
+  object RadioButton_UTF8: TRadioButton
+    Position.X = 24.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'UTF8'
+  end
+  object Popup1: TPopup
+    Position.X = 56.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    object Label2: TLabel
+      Position.X = 24.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Key'
+    end
+  end
+  object ProgressBarMain: TProgressBar
+    Align = Bottom
+    Orientation = Horizontal
+    Margins.Left = 2.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 2.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 2.000000000000000000
+    Position.Y = 403.000000000000000000
+    Size.Width = 316.000000000000000000
+    Size.Height = 10.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object CheckBoxHmac: TCheckBox
+    Position.X = 104.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 216.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    Text = 'Hmac '#27169#24335
+  end
+  object Label1: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'HmacKey'
+  end
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Text = 'test key'
+    Position.X = 32.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 233.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

@@ -1,0 +1,17 @@
+program FlyUtilsAESSHA256Key;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  UnitAESSHA256KeyMain in 'UnitAESSHA256KeyMain.pas' {FormMain},
+  FlyUtils.CnXXX.Common in '..\..\Source\FlyUtils.CnXXX.Common.pas',
+  FlyUtils.AES in '..\..\Source\FlyUtils.AES.pas',
+  FlyUtils.AES.ElAES in '..\..\Source\FlyUtils.AES.ElAES.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFormMain, FormMain);
+  Application.Run;
+end.

@@ -1,0 +1,49 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 450
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object lblNum: TLabel
+    Position.X = 56.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object BtnRandom: TButton
+    Position.X = 200.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #26680#23545#39564#35777#30721
+    OnClick = BtnRandomClick
+  end
+  object ImgCode: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Position.X = 56.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 73.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object BtnImage: TButton
+    Position.X = 200.000000000000000000
+    Position.Y = 136.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #29983#25104#22270#29255#39564#35777#30721
+    OnClick = BtnImageClick
+  end
+end

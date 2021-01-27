@@ -1,0 +1,131 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'FormMain'
+  ClientHeight = 415
+  ClientWidth = 320
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object Button2: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 185.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'CRC '#35745#31639' '#8595
+    OnClick = Button2Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Lines.Strings = (
+      #20320#22909#20013#25991
+      #36825#26159#31532#20108#34892)
+    TextSettings.WordWrap = True
+    Position.X = 16.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 265.000000000000000000
+    Size.Height = 105.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 257.000000000000000000
+    Viewport.Height = 97.000000000000000000
+  end
+  object Memo2: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    TextSettings.WordWrap = True
+    Position.X = 16.000000000000000000
+    Position.Y = 280.000000000000000000
+    Size.Width = 273.000000000000000000
+    Size.Height = 129.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 265.000000000000000000
+    Viewport.Height = 121.000000000000000000
+  end
+  object RadioButton_Ansi: TRadioButton
+    GroupName = 'Code'
+    IsChecked = True
+    Position.X = 24.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Text = 'Ansi'
+  end
+  object RadioButton_Wide: TRadioButton
+    GroupName = 'Code'
+    Position.X = 128.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'WideString'
+  end
+  object RadioButton_UTF8: TRadioButton
+    GroupName = 'Code'
+    Position.X = 24.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    Text = 'UTF8'
+  end
+  object Popup1: TPopup
+    Position.X = 56.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    object Label2: TLabel
+      Position.X = 24.000000000000000000
+      Position.Y = 11.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      Text = 'Key'
+    end
+  end
+  object ProgressBarMain: TProgressBar
+    Align = Bottom
+    Orientation = Horizontal
+    Margins.Left = 2.000000000000000000
+    Margins.Top = 2.000000000000000000
+    Margins.Right = 2.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.X = 2.000000000000000000
+    Position.Y = 403.000000000000000000
+    Size.Width = 316.000000000000000000
+    Size.Height = 10.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object RadioButton32: TRadioButton
+    GroupName = '3264'
+    IsChecked = True
+    Position.X = 24.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = '32Bit'
+  end
+  object RadioButton64: TRadioButton
+    GroupName = '3264'
+    Position.X = 128.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 120.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = '64Bit'
+  end
+end

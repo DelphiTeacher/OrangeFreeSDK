@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{55D3A30A-5BB9-4756-B6EE-E872AF31A1B9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="FlyUtilsAES.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\..\ThirdPartySDK\青浦卫生院支付接口\DES_DLL\AES.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="FlyUtilsAES">
+        <MSBuild Projects="FlyUtilsAES.dproj"/>
+    </Target>
+    <Target Name="FlyUtilsAES:Clean">
+        <MSBuild Projects="FlyUtilsAES.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="FlyUtilsAES:Make">
+        <MSBuild Projects="FlyUtilsAES.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="AES">
+        <MSBuild Projects="..\..\..\..\ThirdPartySDK\青浦卫生院支付接口\DES_DLL\AES.dproj"/>
+    </Target>
+    <Target Name="AES:Clean">
+        <MSBuild Projects="..\..\..\..\ThirdPartySDK\青浦卫生院支付接口\DES_DLL\AES.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AES:Make">
+        <MSBuild Projects="..\..\..\..\ThirdPartySDK\青浦卫生院支付接口\DES_DLL\AES.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="FlyUtilsAES;AES"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="FlyUtilsAES:Clean;AES:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="FlyUtilsAES:Make;AES:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

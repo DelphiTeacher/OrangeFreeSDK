@@ -1,0 +1,583 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uFuncCommon" platform="Android">
+  <devnotes>
+     <summary>
+       <para>
+         公共函数
+       </para>
+       <para>
+         Public function
+       </para>
+     </summary>
+  </devnotes>
+  <const name="Const_ThumbPrefix" type="string">
+    <value>
+      thumb_
+    </value>
+  </const>
+  <const name="Precision" type="Double" visibility="public" />
+  <array name="TVariantDynArray">
+    <element type="Variant" />
+  </array>
+  <array name="TStringDynArray">
+    <element type="string" />
+  </array>
+  <variable name="GlobalStandardFmtSettings" type="TFormatSettings" />
+  <variable name="AndroidStartActivityForRequestCodes" type="TStringList" />
+  <function name="IsVideoFile" visibility="public">
+    <parameters>
+      <parameter name="AFilePath" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetUniqueAndroidStartActivityForRequestCode" visibility="public">
+    <parameters>
+      <parameter name="ARequestName" type="string" />
+      <parameter name="ABaseIndex" type="Integer">
+        <value>
+          $3E8
+        </value>
+      </parameter>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SettingChatTime" visibility="public">
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" />
+      <parameter name="AIsRecentChat" type="Boolean" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="IsPadDevice" visibility="public">
+    <parameters>
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="HexToInt" visibility="public">
+    <parameters>
+      <parameter name="AHex" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="CheckEmail" visibility="public">
+    <parameters>
+      <parameter name="email" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="checkBankCardNo" visibility="public">
+    <parameters>
+      <parameter name="cardNo" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="HideMobPhone" visibility="public">
+    <parameters>
+      <parameter name="num" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="HideBankCardNumber" visibility="public">
+    <parameters>
+      <parameter name="num" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="IsMobPhone" visibility="public">
+    <parameters>
+      <parameter name="num" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsVirtualMobPhone" visibility="public">
+    <parameters>
+      <parameter name="num" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="ValidatePID" visibility="public">
+    <parameters>
+      <parameter name="APID" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetThumbFilePrefix" visibility="public">
+    <parameters>
+      <parameter name="AIsThumb" type="Boolean" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="NewDelphiSubString" visibility="public">
+    <parameters>
+      <parameter name="AStr" type="string" />
+      <parameter name="AIndex_StartWith0" type="Integer" />
+      <parameter name="ALength" type="Integer" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="NewDelphiStringIndexOfName" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="ASubStr" type="string" />
+      <parameter name="AStr" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="NewDelphiStringIndexOf" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="ASubStr" type="string" />
+      <parameter name="AStr" type="string" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetTimeHowLong" visibility="public">
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="timeIntervalSince1970" visibility="public">
+    <devnotes>
+      /var
+      /  SysTime:TSystemTime;
+      /  GetSystemTime(SysTime);
+      /  Result:=SystemTimeToDateTime(SysTime);
+      /var
+      /  SysTime:TSystemTime;
+      /  GetSystemTime(SysTime);
+    </devnotes>
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" paramflags="const" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="timeMillionSecondsIntervalSince1970" visibility="public">
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" paramflags="const" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="timeSince1970Interval" visibility="public">
+    <parameters>
+      <parameter name="AInterval" type="Int64" paramflags="const" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="timeSince1970MillionSecondsInterval" visibility="public">
+    <parameters>
+      <parameter name="AMillionSecondsInterval" type="Int64" paramflags="const" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="GetOS" visibility="public">
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetRandStr" visibility="public">
+    <parameters>
+      <parameter name="len" type="Integer" />
+      <parameter name="lowercase" type="Boolean">
+        <value>
+          True
+        </value>
+      </parameter>
+      <parameter name="num" type="Boolean">
+        <value>
+          True
+        </value>
+      </parameter>
+      <parameter name="uppercase" type="Boolean">
+        <value>
+          False
+        </value>
+      </parameter>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GenerateCaptcha" visibility="public">
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GenerateCaptcha_5" visibility="public">
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GenerateCaptcha_6" visibility="public">
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetStringFromTextFile" visibility="public">
+    <parameters>
+      <parameter name="AFilePath" type="string" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="SaveStringToFile" visibility="public">
+    <parameters>
+      <parameter name="AString" type="string" />
+      <parameter name="AFilePath" type="string" />
+      <parameter name="AEncoding" type="TEncoding" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="GetStringFromFile" visibility="public">
+    <parameters>
+      <parameter name="AFilePath" type="string" />
+      <parameter name="AEncoding" type="TEncoding" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="AddStrToArray" visibility="public">
+    <parameters>
+      <parameter name="AArray">
+        <array name="AArray">
+          <element type="string" />
+        </array>
+      </parameter>
+      <parameter name="AStr" type="string" />
+      <retval type="TStringDynArray" />
+    </parameters>
+  </function>
+  <function name="AddValueToArray" visibility="public">
+    <parameters>
+      <parameter name="AValues">
+        <array name="AValues">
+          <element type="Variant" />
+        </array>
+      </parameter>
+      <parameter name="AValue" type="Variant" />
+      <retval type="TVariantDynArray">
+        <devnotes>
+          /  MaxWidth = 500 ;
+          /  MaxHigth = 500 ;
+        </devnotes>
+      </retval>
+    </parameters>
+  </function>
+  <procedure name="CopyStringArray" visibility="public">
+    <parameters>
+      <parameter name="ASrcArray" paramflags="var">
+        <array name="ASrcArray">
+          <element type="string" />
+        </array>
+      </parameter>
+      <parameter name="ADestArray" paramflags="var">
+        <array name="ADestArray">
+          <element type="string" />
+        </array>
+      </parameter>
+    </parameters>
+  </procedure>
+  <procedure name="CopyVariantArray" visibility="public">
+    <parameters>
+      <parameter name="ASrcArray" paramflags="var">
+        <array name="ASrcArray">
+          <element type="Variant" />
+        </array>
+      </parameter>
+      <parameter name="ADestArray" paramflags="var">
+        <array name="ADestArray">
+          <element type="Variant" />
+        </array>
+      </parameter>
+    </parameters>
+  </procedure>
+  <function name="FindInArray" visibility="public">
+    <parameters>
+      <parameter name="AStr" type="string" />
+      <parameter name="AArray">
+        <array name="AArray">
+          <element type="string" />
+        </array>
+      </parameter>
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="ConvertToStringDynArray" visibility="public">
+    <parameters>
+      <parameter name="AArray">
+        <array name="AArray">
+          <element type="string" />
+        </array>
+      </parameter>
+      <retval type="TStringDynArray" />
+    </parameters>
+  </function>
+  <function name="ConvertToVariantDynArray" visibility="public">
+    <parameters>
+      <parameter name="AVariants">
+        <array name="AVariants">
+          <element type="Variant" />
+        </array>
+      </parameter>
+      <retval type="TVariantDynArray">
+        <devnotes>
+          /  MaxWidth = 500 ;
+          /  MaxHigth = 500 ;
+        </devnotes>
+      </retval>
+    </parameters>
+  </function>
+  <procedure name="FreeStringListObjects" visibility="public">
+    <parameters>
+      <parameter name="AStringList" type="TStringList" />
+    </parameters>
+  </procedure>
+  <function name="GetStringListArray" visibility="public">
+    <parameters>
+      <parameter name="AStringList" type="TStringList" />
+      <retval type="TStringDynArray" />
+    </parameters>
+  </function>
+  <function name="GetStringListNameArray" visibility="public">
+    <parameters>
+      <parameter name="AStringList" type="TStringList" />
+      <retval type="TStringDynArray" />
+    </parameters>
+  </function>
+  <function name="GetStringListValueArray" visibility="public">
+    <parameters>
+      <parameter name="AStringList" type="TStringList" />
+      <retval type="TStringDynArray" />
+    </parameters>
+  </function>
+  <function name="GetStringArray" visibility="public">
+    <parameters>
+      <parameter name="ACommaText" type="string" />
+      <retval type="TStringDynArray" />
+    </parameters>
+  </function>
+  <function name="LowStr" visibility="public">
+    <parameters>
+      <parameter name="AStr" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="HighStr" visibility="public">
+    <parameters>
+      <parameter name="AStr" type="string" />
+      <retval type="Integer" />
+    </parameters>
+  </function>
+  <function name="SmallerDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="BiggerDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="SmallerEqualDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="BiggerEqualDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsSameDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="IsNotSameDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="EqualDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="NotEqualDouble" visibility="public">
+    <parameters>
+      <parameter name="A" type="Double" />
+      <parameter name="B" type="Double" />
+      <retval type="Boolean" />
+    </parameters>
+  </function>
+  <function name="CreateGUIDString" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           创建GUID字符串
+         </para>
+         <para>
+           Create GUID string
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="CreateGUIDStringHasDevide" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           创建GUID字符串(带分隔符-)
+         </para>
+         <para>
+           Create GUID string
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StdDateTimeToStr" visibility="public">
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StandardDateTimeToStr" visibility="public">
+    <devnotes>
+       <summary>
+         标准日期格式转换
+           <para>
+           Standard date convert
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StdDateToStr" visibility="public">
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StandardDateToStr" visibility="public">
+    <devnotes>
+       <summary>
+         标准日期格式转换
+         <para>
+           Standard date convert
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="ADateTime" type="TDateTime" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StdStrToDateTime" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" paramflags="const" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="StandardStrToDateTime" visibility="public">
+    <devnotes>
+       <summary>
+         标准日期格式转换
+          <para>
+           Standard date convert
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="Str" type="string" paramflags="const" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="StdStrToDateStr" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="StdStrToDate" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" paramflags="const" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="StandardStrToDate" visibility="public">
+    <parameters>
+      <parameter name="Str" type="string" paramflags="const" />
+      <retval type="TDateTime" />
+    </parameters>
+  </function>
+  <function name="UIGetTickCount" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           获取CPU时间
+         </para>
+         <para>
+           Get tick time of CPU
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <retval type="Cardinal" />
+    </parameters>
+  </function>
+  <procedure name="ObjAddRef" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           增加引用
+         </para>
+         <para>
+           Add refrence
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="Obj" type="TObject" />
+    </parameters>
+  </procedure>
+  <procedure name="ObjRelease" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           减少引用
+         </para>
+         <para>
+           Reduce refrence
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="Obj" type="TObject" />
+    </parameters>
+  </procedure>
+  <procedure name="FreeAndNil" visibility="public">
+    <parameters>
+      <parameter name="Obj" type="TObject" paramflags="const">
+        <attributes>
+          <attribute name="TObject" />
+        </attributes>
+      </parameter>
+    </parameters>
+  </procedure>
+</namespace>

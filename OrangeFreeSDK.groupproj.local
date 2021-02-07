@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899/12/30 00:00:00.000.327,C:\OrangeFreeSDK\HuaweiScan\ProjectGroup1.groupproj=C:\OrangeFreeSDK\OrangeFreeSDK.groupproj</Transaction>
+    <Transaction>1899/12/30 00:00:00.000.327,C:\OrangeFreeSDK\OrangeFreeSDK.groupproj=C:\OrangeFreeSDK\HuaweiScan\ProjectGroup1.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="C:\OrangeFreeSDK\1D_PDA_RFID\PDA_RFID.dproj"/>
+		<Projects ActiveProject="C:\OrangeFreeSDK\OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj"/>
 	</Default.Personality>
 </BorlandProject>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <com.devil.library.media.view.RatioImageView
+        android:id="@+id/iv_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_margin="1dp"
+        android:src="@mipmap/icon_dv_default_image"
+        app:ratio="1"/>
+
+    <ImageView
+        android:id="@+id/iv_videoPlayIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/icon_dv_video_play"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/line_checkBox"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:gravity="right|bottom">
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:button="@null"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon_dv_unchecked"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

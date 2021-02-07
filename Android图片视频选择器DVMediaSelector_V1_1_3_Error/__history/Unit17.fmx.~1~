@@ -1,0 +1,80 @@
+object Form17: TForm17
+  Left = 0
+  Top = 0
+  Caption = 'Form17'
+  ClientHeight = 480
+  ClientWidth = 359
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object btnInit: TButton
+    Align = Top
+    Size.Width = 359.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #21021#22987
+    OnClick = btnInitClick
+  end
+  object Button2: TButton
+    Align = Top
+    Margins.Top = 20.000000000000000000
+    Position.Y = 84.000000000000000000
+    Size.Width = 359.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = #33258#23450#20041#21442#25968
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Align = Top
+    Margins.Top = 20.000000000000000000
+    Position.Y = 126.000000000000000000
+    Size.Width = 359.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = #27979#35797#26159#21542#24433#21709#26412#22320#36890#30693
+    OnClick = Button3Click
+  end
+  object Image1: TImage
+    MultiResBitmap = <
+      item
+      end>
+    Align = Top
+    Position.Y = 148.000000000000000000
+    Size.Width = 359.000000000000000000
+    Size.Height = 93.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button4: TButton
+    Align = Top
+    Margins.Top = 20.000000000000000000
+    Position.Y = 42.000000000000000000
+    Size.Width = 359.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #40664#35748#37197#32622#30340#22810#36873#27979#35797
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Client
+    Size.Width = 359.000000000000000000
+    Size.Height = 239.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Viewport.Width = 355.000000000000000000
+    Viewport.Height = 235.000000000000000000
+  end
+  object NotificationCenter1: TNotificationCenter
+    Left = 144
+    Top = 312
+  end
+end

@@ -1831,7 +1831,7 @@ begin
           
           //传入工程项目的res目录和AndroidManifest.xml路径列表
           //生成R.java,Gen_R_Java_***.bat列表
-          Self.FProjectConfig.GenerateR_Java_And_Jar_BatStringList(
+          if not Self.FProjectConfig.GenerateR_Java_And_Jar_BatStringList(
                                         //C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\JarGen\目录
                                         ATempRootDir,
                                         //资源文件目录
@@ -1850,7 +1850,10 @@ begin
                                         AAndroidSDKBuildTools,
 
                                         ABatStringList
-                                        );
+                                        ) then
+          begin
+            //Self.memLog.Lines.Add();
+          end;
 
 
 

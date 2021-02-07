@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- BEGIN_INCLUDE(manifest) -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="%package%"
+        android:versionCode="%versionCode%"
+        android:versionName="28"
+        android:installLocation="%installLocation%">
+
+    <uses-sdk android:minSdkVersion="%minSdkVersion%" android:targetSdkVersion="28" />
+
+
+
+
+
+<uses-permission android:name="android.permission.CAMERA" />
+
+
+
+
+
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+
+<uses-permission android:name="android.permission.FLASHLIGHT" />
+<uses-feature
+android:name="android.hardware.camera.autofocus"
+android:required="false" />
+<uses-feature
+android:name="android.hardware.camera.flash"
+android:required="false" />
+
+
+
+    <%uses-permission%>
+    <uses-feature android:glEsVersion="0x00020000" android:required="True"/>
+    <application android:persistent="%persistent%" 
+        android:restoreAnyVersion="%restoreAnyVersion%" 
+        android:label="%label%" 
+        android:debuggable="%debuggable%" 
+        android:largeHeap="%largeHeap%"
+        android:icon="%icon%"
+        android:theme="%theme%"
+        android:hardwareAccelerated="%hardwareAccelerated%"
+        android:resizeableActivity="false"
+        android:allowBackup="true"
+        android:supportsRtl="true">
+
+        <%provider%>
+        <%application-meta-data%>
+        <%services%>
+        <!-- Our activity is a subclass of the built-in NativeActivity framework class.
+             This will take care of integrating with our NDK code. -->
+        <activity android:name="com.embarcadero.firemonkey.FMXNativeActivity"
+                android:label="%activityLabel%"
+                android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+                android:launchMode="singleTask">
+            <!-- Tell NativeActivity the name of our .so -->
+            <meta-data android:name="android.app.lib_name"
+                android:value="%libNameValue%" />
+            <intent-filter>  
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
+        <%activity%>
+        <%receivers%>
+
+
+
+
+
+
+
+
+
+<activity android:name="cn.bingoogolapple.qrcode.zbar.ZBarActivity"></activity>
+
+
+
+
+
+
+
+        <activity
+            android:name="com.miyouquan.library.DVPermissionUtils$RequestPermissionsActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+        <activity
+            android:name="com.devil.library.media.ui.activity.DVMediaSelectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.devil.library.media.ui.activity.DVSystemCameraActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.devil.library.media.ui.activity.DVCameraActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.devil.library.media.ui.activity.DVEasyVideoPlayActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name="com.devil.library.media.ui.activity.SelectMediaTempActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <meta-data
+            android:name="APP_ID"
+            android:value="%package%" />
+
+        <provider
+            android:name="com.devil.library.media.utils.DVFileProvider"
+            android:authorities="%package%.file_provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+
+
+
+    </application>
+</manifest>
+<!-- END_INCLUDE(manifest) -->

@@ -9,9 +9,6 @@
         <Projects Include="商米打印SunmiPrinter_V2\TestSunmiPrinter_V2.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="C:\MyFiles\OrangeSDKControl\OrangeSDKControl_FMX_D10_4.dproj">
-            <Dependencies/>
-        </Projects>
         <Projects Include="Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj">
             <Dependencies/>
         </Projects>
@@ -19,12 +16,6 @@
             <Dependencies/>
         </Projects>
         <Projects Include="SGQRCodeScan\TestSGQRCodeScan.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="商米打印SunmiPrinter\TestSunmiPrinter.dproj">
@@ -36,7 +27,10 @@
         <Projects Include="商米摄像头扫码SunmiCameraScan\sunmiscan_Test.dproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj">
+        <Projects Include="OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -65,15 +59,6 @@
     <Target Name="TestSunmiPrinter_V2:Make">
         <MSBuild Projects="商米打印SunmiPrinter_V2\TestSunmiPrinter_V2.dproj" Targets="Make"/>
     </Target>
-    <Target Name="OrangeSDKControl_FMX_D10_4">
-        <MSBuild Projects="C:\MyFiles\OrangeSDKControl\OrangeSDKControl_FMX_D10_4.dproj"/>
-    </Target>
-    <Target Name="OrangeSDKControl_FMX_D10_4:Clean">
-        <MSBuild Projects="C:\MyFiles\OrangeSDKControl\OrangeSDKControl_FMX_D10_4.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="OrangeSDKControl_FMX_D10_4:Make">
-        <MSBuild Projects="C:\MyFiles\OrangeSDKControl\OrangeSDKControl_FMX_D10_4.dproj" Targets="Make"/>
-    </Target>
     <Target Name="TestDVMediaSelector_V2">
         <MSBuild Projects="Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj"/>
     </Target>
@@ -100,24 +85,6 @@
     </Target>
     <Target Name="TestSGQRCodeScan:Make">
         <MSBuild Projects="SGQRCodeScan\TestSGQRCodeScan.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="OrangeSDK_SmartDeploy">
-        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj"/>
-    </Target>
-    <Target Name="OrangeSDK_SmartDeploy:Clean">
-        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="OrangeSDK_SmartDeploy:Make">
-        <MSBuild Projects="C:\MyFiles\ThirdPartySDK\OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="GameOnLineClient_D10_4">
-        <MSBuild Projects="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj"/>
-    </Target>
-    <Target Name="GameOnLineClient_D10_4:Clean">
-        <MSBuild Projects="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="GameOnLineClient_D10_4:Make">
-        <MSBuild Projects="C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\GameOnLineClient_D10_4.dproj" Targets="Make"/>
     </Target>
     <Target Name="TestSunmiPrinter">
         <MSBuild Projects="商米打印SunmiPrinter\TestSunmiPrinter.dproj"/>
@@ -146,23 +113,32 @@
     <Target Name="sunmiscan_Test:Make">
         <MSBuild Projects="商米摄像头扫码SunmiCameraScan\sunmiscan_Test.dproj" Targets="Make"/>
     </Target>
-    <Target Name="Project3">
-        <MSBuild Projects="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj"/>
+    <Target Name="OrangeSDK_SmartDeploy">
+        <MSBuild Projects="OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj"/>
     </Target>
-    <Target Name="Project3:Clean">
-        <MSBuild Projects="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj" Targets="Clean"/>
+    <Target Name="OrangeSDK_SmartDeploy:Clean">
+        <MSBuild Projects="OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="Project3:Make">
-        <MSBuild Projects="C:\Users\ggggcexx\Documents\Embarcadero\Studio\Projects\Project3.dproj" Targets="Make"/>
+    <Target Name="OrangeSDK_SmartDeploy:Make">
+        <MSBuild Projects="OrangeSDKSmartDeployment\OrangeSDK_SmartDeploy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OCHeader2Pas">
+        <MSBuild Projects="OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj"/>
+    </Target>
+    <Target Name="OCHeader2Pas:Clean">
+        <MSBuild Projects="OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OCHeader2Pas:Make">
+        <MSBuild Projects="OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="PDA_RFID;TestSunmiPrinter_V2;OrangeSDKControl_FMX_D10_4;TestDVMediaSelector_V2;HuaweiScan;TestSGQRCodeScan;OrangeSDK_SmartDeploy;GameOnLineClient_D10_4;TestSunmiPrinter;TestSunmiRFID;sunmiscan_Test;Project3"/>
+        <CallTarget Targets="PDA_RFID;TestSunmiPrinter_V2;TestDVMediaSelector_V2;HuaweiScan;TestSGQRCodeScan;TestSunmiPrinter;TestSunmiRFID;sunmiscan_Test;OrangeSDK_SmartDeploy;OCHeader2Pas"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PDA_RFID:Clean;TestSunmiPrinter_V2:Clean;OrangeSDKControl_FMX_D10_4:Clean;TestDVMediaSelector_V2:Clean;HuaweiScan:Clean;TestSGQRCodeScan:Clean;OrangeSDK_SmartDeploy:Clean;GameOnLineClient_D10_4:Clean;TestSunmiPrinter:Clean;TestSunmiRFID:Clean;sunmiscan_Test:Clean;Project3:Clean"/>
+        <CallTarget Targets="PDA_RFID:Clean;TestSunmiPrinter_V2:Clean;TestDVMediaSelector_V2:Clean;HuaweiScan:Clean;TestSGQRCodeScan:Clean;TestSunmiPrinter:Clean;TestSunmiRFID:Clean;sunmiscan_Test:Clean;OrangeSDK_SmartDeploy:Clean;OCHeader2Pas:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PDA_RFID:Make;TestSunmiPrinter_V2:Make;OrangeSDKControl_FMX_D10_4:Make;TestDVMediaSelector_V2:Make;HuaweiScan:Make;TestSGQRCodeScan:Make;OrangeSDK_SmartDeploy:Make;GameOnLineClient_D10_4:Make;TestSunmiPrinter:Make;TestSunmiRFID:Make;sunmiscan_Test:Make;Project3:Make"/>
+        <CallTarget Targets="PDA_RFID:Make;TestSunmiPrinter_V2:Make;TestDVMediaSelector_V2:Make;HuaweiScan:Make;TestSGQRCodeScan:Make;TestSunmiPrinter:Make;TestSunmiRFID:Make;sunmiscan_Test:Make;OrangeSDK_SmartDeploy:Make;OCHeader2Pas:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

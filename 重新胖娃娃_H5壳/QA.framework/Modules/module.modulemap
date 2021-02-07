@@ -1,0 +1,6 @@
+framework module QA {
+  umbrella header "QA.h"
+
+  export *
+  module * { export * }
+}

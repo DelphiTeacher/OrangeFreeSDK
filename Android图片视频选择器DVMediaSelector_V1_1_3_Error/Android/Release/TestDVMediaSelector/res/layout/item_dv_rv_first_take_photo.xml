@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.devil.library.media.view.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#F5F5F5"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_takePhoto"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/icon_dv_camera"
+        android:scaleType="fitCenter" />
+
+
+</com.devil.library.media.view.SquareRelativeLayout>

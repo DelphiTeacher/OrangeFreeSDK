@@ -1,3 +1,5 @@
+C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V1_1_3\DVMediaSelectorSDK_V1_1_3\DeployConfig.ini
+C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V1_0_0\DVMediaSelectorSDK_V1_1_3\DeployConfig.ini
 C:\MyFiles\ThirdPartySDK\腾讯超级播放器\App\SuperPlayer\DeployConfig.ini
 C:\MyFiles\ThirdPartySDK\腾讯超级播放器\App\Compat_V7\DeployConfig.ini
 C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\dmcBig_MediaPicker\DeployConfig.ini

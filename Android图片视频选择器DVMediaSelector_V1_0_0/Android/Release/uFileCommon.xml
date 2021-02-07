@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uFileCommon" platform="Android">
+  <devnotes>
+     <summary>
+       <para>
+         文件以及目录的操作
+       </para>
+       <para>
+         Operate of file and directory
+       </para>
+     </summary>
+  </devnotes>
+  <function name="GetFileNameWithoutExt" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           去掉文件夹最后一个路径分隔符(C:\----C:)
+         </para>
+         <para>
+           Delete last path delimiter of file(C:\-----C:)
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AFilePath" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetSizeOfFile" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           获取文件大小
+         </para>
+         <para>
+           Get file size
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AFile" type="string" paramflags="const" />
+      <retval type="Int64" />
+    </parameters>
+  </function>
+  <function name="GetValidFileName" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           获取合法的文件名
+         </para>
+         <para>
+           Get valid file name
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AInvalidFileName" type="string" paramflags="const" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetFileSizeStr" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           获取文件大小的字符串(比如1024=1k)
+         </para>
+         <para>
+           Get string of file size (such as1024=1k)
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AFileSize" type="Int64" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <function name="GetFileSizeStr2" visibility="public">
+    <parameters>
+      <parameter name="AFileSize" type="Int64" />
+      <retval type="string" />
+    </parameters>
+  </function>
+  <procedure name="CreateFileDir" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           创建目录
+         </para>
+         <para>
+           Create directory
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AFileName" type="string" paramflags="const" />
+    </parameters>
+  </procedure>
+  <function name="GetApplicationPath" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           获取程序的根目录
+         </para>
+         <para>
+           Get program's root directory
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <retval type="string" />
+    </parameters>
+  </function>
+</namespace>

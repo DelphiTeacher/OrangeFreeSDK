@@ -504,7 +504,7 @@ type
                             ):Boolean;
     //传入AndroidManifest.xml列表和工程的res目录
     //生成R.java的bat文件和R.jar的bat文件
-    procedure GenerateR_Java_And_Jar_BatStringList(
+    function GenerateR_Java_And_Jar_BatStringList(
                                         //jar生成目录
                                         ATempRootDir:String;
                                         //工程生成目录中的res目录
@@ -519,7 +519,7 @@ type
                                         AAndroidSDKBuildTools:String;
 
                                         ABatStringList:TStringList
-                                        );
+                                        ):Boolean;
 //    procedure GenerateR_Java_And_Jar_Bat_List(ATempRootDir:String;
 //                                          AProjectResPath:String;
 //                                          AAndroidManifestXmlFilePaths:TStringList;
@@ -2507,6 +2507,8 @@ begin
 //      +' '+'-M '+'"'+'AndroidManifest.xml'+'"'
       //AndroidManifest.xml路径,主要使用了里面的包名
       +' '+'-M '+'"'+AAndroidManifestXmlFilePath+'"'
+//      +#13#10
+//      +'PAUSE'
       ;
   //立即执行
   //ShellExecute不立即生成
@@ -3241,7 +3243,7 @@ end;
 //end;
 
 
-procedure TProjectConfig.GenerateR_Java_And_Jar_BatStringList(ATempRootDir:String;
+function TProjectConfig.GenerateR_Java_And_Jar_BatStringList(ATempRootDir:String;
                                                     AProjectResPath:String;
                                                     AAndroidManifestXmlFilePath:String;
                                                     AGenJarFileNameNoExt:String;
@@ -3251,7 +3253,7 @@ procedure TProjectConfig.GenerateR_Java_And_Jar_BatStringList(ATempRootDir:Strin
                                                     AAndroidSDKBuildTools:String;
 
                                                     ABatStringList:TStringList
-                                                    );
+                                                    ):Boolean;
 var
   I:Integer;
   ATempJarDir:String;
@@ -3265,7 +3267,12 @@ var
   AR_TXT_FilePath:String;
   AR_JAVA_FilePath:String;
   AR_JAVA_FilePath1:String;
+
+  ARetryCount:Integer;
 begin
+      Result:=False;
+
+
       //ATempRootDir为ProjectFilePath\JarGen\Project1\
 
       //先创建临时文件夹Temp,以aar为命名
@@ -3334,24 +3341,37 @@ begin
                           );
 
 
-//      ABatStringList.Add(AGenR_Java_Command);
+      ABatStringList.Add(AGenR_Java_Command);
+
+
 
 //      //等待R.java生成
 //      Sleep(3000);
 
+
+
+
       //判断是否生成成功
 
 
+
+      ARetryCount:=10;
       if FileExists(AR_TXT_FilePath) then
       begin
         //等R.Java生成好
-        while not FileExists(AR_JAVA_FilePath) do
+        while not FileExists(AR_JAVA_FilePath) and (ARetryCount>0) do
         begin
           Application.ProcessMessages;
           Sleep(1000);
+          Dec(ARetryCount);
         end;
         Sleep(3000);
 
+        if ARetryCount<=0 then
+        begin
+          ShowMessage('R.java生成失败'+AAndroidManifestXmlFilePath);
+          Exit;
+        end;
 
         if FileExists(AR_JAVA_FilePath) then
         begin
@@ -3429,6 +3449,8 @@ begin
 
 
       AJavaSourceFiles.Free;
+
+      Result:=True;
 
 end;
 

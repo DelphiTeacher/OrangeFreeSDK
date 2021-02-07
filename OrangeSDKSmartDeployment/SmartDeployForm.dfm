@@ -1120,8 +1120,6 @@ object frmSmartDeploy: TfrmSmartDeploy
             Height = 47
             Align = alBottom
             TabOrder = 0
-            ExplicitLeft = -15
-            ExplicitTop = 174
             object btnAddAndroidAar: TButton
               Left = 0
               Top = 16

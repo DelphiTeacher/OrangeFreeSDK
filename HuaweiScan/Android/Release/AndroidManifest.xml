@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BEGIN_INCLUDE(manifest) -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.ggggcexx.huaweipushtest"
+        android:versionCode="1"
+        android:versionName="1.0.0"
+        android:installLocation="auto">
+
+    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="29" />
+
+
+    <!--���Ȩ��-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--���ļ�Ȩ��-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--ʹ������-->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:glEsVersion="0x00020000" android:required="True"/>
+    <application android:persistent="False" 
+        android:restoreAnyVersion="False" 
+        android:label="HuaweiScan" 
+        android:debuggable="True" 
+        android:largeHeap="False"
+        android:icon="@drawable/ic_launcher"
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
+        android:resizeableActivity="false">
+
+        
+        
+        
+        <!-- Our activity is a subclass of the built-in NativeActivity framework class.
+             This will take care of integrating with our NDK code. -->
+        <activity android:name="com.embarcadero.firemonkey.FMXNativeActivity"
+                android:label="HuaweiScan"
+                android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+                android:launchMode="singleTask">
+            <!-- Tell NativeActivity the name of our .so -->
+            <meta-data android:name="android.app.lib_name"
+                android:value="HuaweiScan" />
+            <intent-filter>  
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
+        
+        <receiver android:name="com.embarcadero.rtl.notifications.NotificationAlarm" />
+
+
+
+
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:dynamic-api"
+            android:value="dynamic-api:1.0.13.303" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:dynamic-api:huawei_module_dynamicloader"
+            android:value="2" />
+        <provider
+            android:name="com.huawei.agconnect.core.provider.AGConnectInitializeProvider"
+            android:authorities="com.ggggcexx.huaweipushtest.AGCInitializeProvider"
+            android:exported="false" />
+
+        <service
+            android:name="com.huawei.agconnect.core.ServiceDiscovery"
+            android:exported="false" />
+
+        <meta-data
+            android:name="huawei_module_scankit_local"
+            android:value="1030100" />
+        <meta-data
+            android:name="huawei_module_scankit_sdk_version"
+            android:value="scan:1.1.3.301" />
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:scan"
+            android:value="scan:1.1.3.301" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:scan:huawei_module_scankit"
+            android:value="1" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:scan:hmscore"
+            android:value="1" />
+
+        <activity
+            android:name="com.huawei.hms.hmsscankit.ScanKitActivity"
+            android:screenOrientation="portrait" />
+
+
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:ml-computer-vision-base"
+            android:value="ml-computer-vision-base:1.0.0.301" />
+
+        <provider
+            android:name="com.huawei.hms.mlsdk.common.Provider.MLInitializerProvider"
+            android:authorities="com.ggggcexx.huaweipushtest.MLInitializerProvider"
+            android:exported="false" />
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:ml-computer-ha-inner"
+            android:value="ml-computer-ha-inner:1.0.3.340" />
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:ml-computer-camera-inner"
+            android:value="ml-computer-camera-inner:1.0.3.340" />
+
+
+    </application>
+</manifest>
+<!-- END_INCLUDE(manifest) -->

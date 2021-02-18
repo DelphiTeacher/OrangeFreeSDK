@@ -145,8 +145,6 @@ object FrameListItemStyle_TreeChildListBox: TFrameListItemStyle_TreeChildListBox
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 1
-      Caption = ''
-      Text = ''
       Properties.AutoSize = False
     end
     object swlblroom: TSkinWinLabel
@@ -197,8 +195,6 @@ object FrameListItemStyle_TreeChildListBox: TFrameListItemStyle_TreeChildListBox
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 2
-      Caption = ''
-      Text = ''
       Properties.AutoSize = False
     end
     object swlblDoctor: TSkinWinLabel
@@ -249,8 +245,6 @@ object FrameListItemStyle_TreeChildListBox: TFrameListItemStyle_TreeChildListBox
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 3
-      Caption = ''
-      Text = ''
       Properties.AutoSize = False
     end
     object swlblDiag: TSkinWinLabel
@@ -301,8 +295,6 @@ object FrameListItemStyle_TreeChildListBox: TFrameListItemStyle_TreeChildListBox
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 4
-      Caption = ''
-      Text = ''
       Properties.AutoSize = False
     end
     object swlblStarttime: TSkinWinLabel
@@ -353,8 +345,6 @@ object FrameListItemStyle_TreeChildListBox: TFrameListItemStyle_TreeChildListBox
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 5
-      Caption = ''
-      Text = ''
       Properties.AutoSize = False
     end
   end

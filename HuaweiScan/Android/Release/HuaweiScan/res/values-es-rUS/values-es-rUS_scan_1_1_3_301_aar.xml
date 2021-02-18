@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">Aceptar</string>
+    <string name="scankit_light">Presione para obtener más luz</string>
+    <string name="scankit_light_off">Apagar luz</string>
+    <string name="scankit_no_code_tip">No se detectó ningún código.</string>
+    <string name="scankit_scan_tip">Coloque el código dentro del recuadro</string>
+    <string name="scankit_title">Escanear</string>
+</resources>

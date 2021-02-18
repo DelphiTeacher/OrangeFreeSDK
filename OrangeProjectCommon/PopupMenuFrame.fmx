@@ -15,6 +15,7 @@ object FramePopupMenu: TFramePopupMenu
   end
   object pnlPopupMenu: TSkinFMXPanel
     ParentMouseEvent = False
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -34,6 +35,7 @@ object FramePopupMenu: TFramePopupMenu
     Top = 54
     object pnlTopDevide: TSkinFMXPanel
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -63,6 +65,7 @@ object FramePopupMenu: TFramePopupMenu
     end
     object lbMenus: TSkinFMXTreeView
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -247,6 +250,7 @@ object FramePopupMenu: TFramePopupMenu
       Size.PlatformDefault = False
       TabOrder = 4
       VertScrollBar.ParentMouseEvent = False
+      VertScrollBar.DirectUIVisible = False
       VertScrollBar.ComponentTypeUseKind = ctukDefault
       VertScrollBar.MaterialUseKind = mukSelfOwn
       VertScrollBar.KeepSelfOwnMaterial = True
@@ -264,6 +268,7 @@ object FramePopupMenu: TFramePopupMenu
       VertScrollBar.Properties.LargeChange = 10
       VertScrollBar.Properties.CanOverRangeTypes = []
       HorzScrollBar.ParentMouseEvent = False
+      HorzScrollBar.DirectUIVisible = False
       HorzScrollBar.ComponentTypeUseKind = ctukDefault
       HorzScrollBar.MaterialUseKind = mukSelfOwn
       HorzScrollBar.KeepSelfOwnMaterial = True
@@ -281,6 +286,7 @@ object FramePopupMenu: TFramePopupMenu
       HorzScrollBar.Properties.LargeChange = 10
       HorzScrollBar.Properties.CanOverRangeTypes = []
       ScrollControlCorner.ParentMouseEvent = False
+      ScrollControlCorner.DirectUIVisible = False
       ScrollControlCorner.ComponentTypeUseKind = ctukDefault
       ScrollControlCorner.MaterialUseKind = mukSelfOwn
       ScrollControlCorner.KeepSelfOwnMaterial = True
@@ -401,6 +407,7 @@ object FramePopupMenu: TFramePopupMenu
     end
     object lblCaption: TSkinFMXLabel
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -446,6 +453,7 @@ object FramePopupMenu: TFramePopupMenu
       OnChange = edtFilterChange
       OnChangeTracking = edtFilterChangeTracking
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -502,6 +510,7 @@ object FramePopupMenu: TFramePopupMenu
     end
     object lbItemCategory: TSkinFMXListBox
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -639,6 +648,7 @@ object FramePopupMenu: TFramePopupMenu
       Size.PlatformDefault = False
       TabOrder = 3
       VertScrollBar.ParentMouseEvent = False
+      VertScrollBar.DirectUIVisible = False
       VertScrollBar.ComponentTypeUseKind = ctukDefault
       VertScrollBar.MaterialUseKind = mukSelfOwn
       VertScrollBar.KeepSelfOwnMaterial = True
@@ -666,6 +676,7 @@ object FramePopupMenu: TFramePopupMenu
       VertScrollBar.Properties.LargeChange = 10
       VertScrollBar.Properties.CanOverRangeTypes = [cortMin, cortMax]
       HorzScrollBar.ParentMouseEvent = False
+      HorzScrollBar.DirectUIVisible = False
       HorzScrollBar.ComponentTypeUseKind = ctukDefault
       HorzScrollBar.MaterialUseKind = mukSelfOwn
       HorzScrollBar.KeepSelfOwnMaterial = True
@@ -683,6 +694,7 @@ object FramePopupMenu: TFramePopupMenu
       HorzScrollBar.Properties.LargeChange = 10
       HorzScrollBar.Properties.CanOverRangeTypes = []
       ScrollControlCorner.ParentMouseEvent = False
+      ScrollControlCorner.DirectUIVisible = False
       ScrollControlCorner.ComponentTypeUseKind = ctukDefault
       ScrollControlCorner.MaterialUseKind = mukSelfOwn
       ScrollControlCorner.KeepSelfOwnMaterial = True
@@ -926,13 +938,14 @@ object FramePopupMenu: TFramePopupMenu
       OnClickItem = lbItemCategoryClickItem
       object idpCategory: TSkinFMXItemDesignerPanel
         ParentMouseEvent = False
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukSelfOwn
         KeepSelfOwnMaterial = True
         SelfOwnMaterial.BackColor.IsFill = True
         SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.IsFill = True
         SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-        SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.Color = xFF478F72
+        SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
         SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
         SelfOwnMaterial.IsTransparent = False
         MouseDownFocus = False
@@ -963,6 +976,7 @@ object FramePopupMenu: TFramePopupMenu
         Properties.ItemStringsBindingControlCollection = <>
         object lblCategoryName: TSkinFMXLabel
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukDefault
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True

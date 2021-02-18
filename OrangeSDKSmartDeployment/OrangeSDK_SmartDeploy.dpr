@@ -5,7 +5,8 @@ program OrangeSDK_SmartDeploy;
 uses
   Vcl.Forms,
   SmartDeployForm in 'SmartDeployForm.pas' {frmSmartDeploy},
-  uOrangeUISmartSDKDeployment in 'uOrangeUISmartSDKDeployment.pas';
+  uOrangeUISmartSDKDeployment in 'uOrangeUISmartSDKDeployment.pas',
+  uCommandLineHelper in 'uCommandLineHelper.pas';
 
 {$R *.res}
 

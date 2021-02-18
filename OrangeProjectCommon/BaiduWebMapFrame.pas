@@ -73,7 +73,7 @@ type
     procedure tteGetPointAddrExecuteEnd(ATimerTask: TTimerTask);
     procedure tmrNavigateTimer(Sender: TObject);
   private
-    FScriptGate:TScriptGate;
+//    FScriptGate:TScriptGate;
 
     FWebBrowser: TWebBrowser;
 
@@ -198,18 +198,28 @@ begin
 //    FMX.WebBrowser.Android.WebBrowserSystemStatusBarHeight:=
 //          uComponentType.SystemStatusBarHeight;
 //    {$ENDIF}
+
+
+    uBaseLog.OutputDebugString('TFrameBaiduWebMap.DoShow 1');
+
     FWebBrowser:=TWebBrowser.Create(Self);
-    FWebBrowser.Parent:=ProcessNativeControlModalShowPanel1;
+    FWebBrowser.Parent:=Self;//ProcessNativeControlModalShowPanel1;
+
+
+    uBaseLog.OutputDebugString('TFrameBaiduWebMap.DoShow 2');
 
 
     FWebBrowser.Align:=TAlignLayout.alClient;
     FWebBrowser.Visible:=True;
 
 
-    FScriptGate := TScriptGate.Create(Self, FWebBrowser, 'delphi');
+    uBaseLog.OutputDebugString('TFrameBaiduWebMap.DoShow 3');
 
 
-    ProcessNativeControlModalShowPanel1.UpdateModalShow;
+    //FScriptGate := TScriptGate.Create(Self, FWebBrowser, 'delphi');
+
+
+//    ProcessNativeControlModalShowPanel1.UpdateModalShow;
 
 
 
@@ -277,7 +287,7 @@ begin
 
   //默认是关闭的
   //使用图片来显示原生控件
-  Self.ProcessNativeControlModalShowPanel1.IsEnableModalShow:=False;
+//  Self.ProcessNativeControlModalShowPanel1.IsEnableModalShow:=False;
 
   Self.pnlToolBar.SelfOwnMaterialToDefault.BackColor.FillColor.Color:=SkinThemeColor;
 
@@ -407,7 +417,7 @@ end;
 
 destructor TFrameBaiduWebMap.Destroy;
 begin
-  FreeAndNil(FScriptGate);
+//  FreeAndNil(FScriptGate);
 
   FreeAndNil(SetPointAnnotation);
   FreeAndNil(FMapAnnotationList);
@@ -477,10 +487,10 @@ end;
 procedure TFrameBaiduWebMap.ProcessNativeControlModalShowPanel1Resize(
   Sender: TObject);
 begin
-  if ProcessNativeControlModalShowPanel1<>nil then
-  begin
-    Self.ProcessNativeControlModalShowPanel1.UpdateModalShow;
-  end;
+//  if ProcessNativeControlModalShowPanel1<>nil then
+//  begin
+//    Self.ProcessNativeControlModalShowPanel1.UpdateModalShow;
+//  end;
 end;
 
 procedure TFrameBaiduWebMap.SetPointFromJavaScript(const ALongitude, ALatitude: Double);
@@ -510,10 +520,12 @@ begin
   if FUpdateCount<>0 then Exit;
 
 
+  uBaseLog.OutputDebugString('TFrameBaiduWebMap.Sync Begin');
+
+
 
   DoShow;
 
-  uBaseLog.OutputDebugString('TFrameBaiduWebMap.Sync Begin');
 
   HtmlSourceBegin:=''
       +#13#10+'<html>  '
@@ -641,8 +653,12 @@ begin
         +#13#10+'      map.addOverlay(Marker_SetPointAnnotation);           '
         //存在设置点标记
         +#13#10+'      Has_Marker_SetPointAnnotation = true;                '
+
+
         //将点击的坐标通知给Delphi
         +#13#10+'      window.location.href = "delphi:SetPointFromJavaScript("+ e.point.lng +","+ e.point.lat +")"; '
+
+
 
         +#13#10+'  });                                                      '
         ;

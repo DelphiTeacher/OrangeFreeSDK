@@ -4,6 +4,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
   Size.PlatformDefault = False
   object pnlPicture: TSkinFMXPanel
     ParentMouseEvent = False
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -32,6 +33,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
     Properties.IsToolBar = False
     object lvPictures: TSkinFMXListView
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -191,6 +193,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
       Size.PlatformDefault = False
       TabOrder = 6
       VertScrollBar.ParentMouseEvent = False
+      VertScrollBar.DirectUIVisible = False
       VertScrollBar.ComponentTypeUseKind = ctukDefault
       VertScrollBar.MaterialUseKind = mukSelfOwn
       VertScrollBar.KeepSelfOwnMaterial = True
@@ -207,6 +210,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
       VertScrollBar.Properties.LargeChange = 10
       VertScrollBar.Properties.CanOverRangeTypes = [cortMin, cortMax]
       HorzScrollBar.ParentMouseEvent = False
+      HorzScrollBar.DirectUIVisible = False
       HorzScrollBar.ComponentTypeUseKind = ctukDefault
       HorzScrollBar.MaterialUseKind = mukSelfOwn
       HorzScrollBar.KeepSelfOwnMaterial = True
@@ -224,6 +228,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
       HorzScrollBar.Properties.LargeChange = 10
       HorzScrollBar.Properties.CanOverRangeTypes = []
       ScrollControlCorner.ParentMouseEvent = False
+      ScrollControlCorner.DirectUIVisible = False
       ScrollControlCorner.ComponentTypeUseKind = ctukDefault
       ScrollControlCorner.MaterialUseKind = mukSelfOwn
       ScrollControlCorner.KeepSelfOwnMaterial = True
@@ -30069,6 +30074,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
       OnPrepareDrawItem = lvPicturesPrepareDrawItem
       object pnlDeletePic: TSkinFMXItemDesignerPanel
         ParentMouseEvent = False
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukSelfOwn
         KeepSelfOwnMaterial = True
@@ -30100,6 +30106,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
         Properties.ItemStringsBindingControlCollection = <>
         object ImgPic: TSkinFMXImage
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukDefault
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True
@@ -30137,6 +30144,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
           Properties.IsToolBar = False
           object imgVideoCover: TSkinFMXImage
             ParentMouseEvent = False
+            DirectUIVisible = False
             ComponentTypeUseKind = ctukDefault
             MaterialUseKind = mukSelfOwn
             KeepSelfOwnMaterial = True
@@ -31029,6 +31037,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
           end
           object btnDelPic: TSkinFMXButton
             ParentMouseEvent = False
+            DirectUIVisible = False
             ComponentTypeUseKind = ctukDefault
             MaterialUseKind = mukSelfOwn
             KeepSelfOwnMaterial = True
@@ -31077,39 +31086,39 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
             Properties.Icon.PNG = {
               89504E470D0A1A0A0000000D4948445200000026000000260806000000A83DE9
               AE000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-              03F3494441545847ED58494F5351186DCB2BA5D4A94536102663225230056461
-              C2826018030B3740184215254623C19D61E3860D090B0801C3A0624858F00F18
-              1216E2923089CAAC0DAD065B2C42631151CFE9031706E9BB5463179CE484D7FB
-              7DF7BDF3BE7BEFB9F7A156A954F7C153E036180CD0819F29EC217806F482C180
-              30D04D610FC0D36030556C43235F071F8E8589E25898288E858942441873BF81
-              4ED003D203956017FC2E5F2A47089809D26D7983C3B0131D1D7DB2AEAE2E5BA7
-              D349CBCBCB76B4D10C0F8357AD5687E22F5F882FA6E46524705BA462EEDADADA
-              CB8D8D8D575B5A5AACF9F9F9E7D1F6490E1D884F797979E7E6E7E7EFF5F7F75F
-              C36F8A535C39918AFD902449959E9E6E319BCD21A900AA665B5C5C7C8758B89C
-              F20BCE828202737373734D6262A2212626C6D4D4D4F47C2FE6AF18BE8A8908D3
-              4188636565E55D4E4ECEA58484042D1E9E323D3DEDF84D9C0BEDC97D7D7DD6B8
-              B838ADCBE5DAAEACAC7C869C75C438ACFE202C8CD0E1013688B1171717279B4C
-              A6308A9B9999A1B855C4BDF89DD4DBDB7B3D323252E776BBBD6565654F070707
-              DF2076D27707FF38923042BFB4B4F4766A6ACA91999969898A8A0AB5582CA913
-              131373B1B1B1C6B6B6B6DBACA6C3E1D8A9AAAA7A323434F40A7D22E4AE8AE013
-              16C8B1C7959B9B6BEEECECAC898F8F9738646C8C8888D05194D56AED191E1E7E
-              CD26B60BC077EC09F43CE6CEC8C8881F1D1DAD31180C27D8B0B5B5B5999595F5
-              787C7C9CF38E075051FC9DF31856EAEFF7506B341AA5E6FB4704228CABEF6277
-              77F71D568B139D3C010C0C0CDCC5CABDC01C39551C4715F69196D0D1D171839E
-              C63905211D30DD47B3B3B3BB9C735D5D5D37F13B09B9DCC284719455B94E8B80
-              4F557345B24A1515154FC6C6C656EC76FB064D9771C68A8A8A92B15ADF6315DB
-              D04F2F77F78B23D9851B0F4B6A6F6FBFB12FAAA4A4E4E9DEEA33816134DBC9C9
-              49476161610A7D0EDBD22554D18EF6F78CF3267E202CCC035117EAEBEB6FA5A5
-              A5F986AFBCBCFCF1C8C808459D95537C08A7CFA15276E4A5D2D3E873D8336DA8
-              E607C4FDB9BF9030AFD1683CDDDADA5A979D9DAD595B5BFB5A5D5D4D9F9A47EC
-              209F0A8788550E2BF754CE439BCDE686ADBC644C4EF9238484ED6AB55AA9A1A1
-              210956F0BDB4B4B46F4F94510E1F083D86EFC3DCDCDCEAC2C2C27A4F4FCFC4E6
-              E6266D44D126AED46099F70DB610AAD7EB25A7D3C90DD9E08B1C0EF6DB02F995
-              CF677018FD1D7D840CF60728793C9E2F10B5816B25A208F6632E879B95507C1E
-              13F1313E846FAC6465058C409CFF9F22A88505BCE1FE0B50D80E1874E228CC01
-              D2F438B9830614F602A4B9F2A01734E2F6873003AC00B913F02BFB7F0AA41DF9
-              FED5B98F04F00A180D6A41E1CFFABF0438BFEAF34F3B11942F50C1445F000000
-              0049454E44AE426082}
+              03F4494441545847ED584B4F5341186DEB2DA5D4578B6C20BC8C0948C1149085
+              090B22E11958B801C2235451623490B8336CDCB0216101216078A8181216FC03
+              1E090B71497889CA5B1B5A0DB6581E8D45443DA7175C18A477A8C62E38C949EF
+              9D6FE6CEB9DFCC9C995BB54AA57A009E0577C060800EDCA4B047E079D00B0603
+              424137853D04CF81C194B10D8D7C1D7C3811268A1361A23811260A1161ACFB0D
+              74821E901EA8047BE077F952394E819920DD960F380ABB51515167EAEBEBAFEB
+              743A697979D98E329AE151F0AAD5EA10FCF285F8624A5E4602774432E6AEADAD
+              BDDAD8D898DDD2D262CDCFCFBF84B2CF72E8507CCECBCBBB383F3F5FD7DFDF7F
+              03F714A738732219FB2149922A3D3DDD62369B4FA502C89A6D7171F13D626172
+              955F70161414989B9B9B6B1213130DD1D1D1A6A6A6A617FB317FC9F0654C4498
+              0E421C2B2B2BEF737272AEC4C7C76BD179CAF4F4B4E337712E9427F7F5F55963
+              6363B52E976BA7B2B2F239EAAC23C661F5076161840E1DD820C65E5C5C9C6C32
+              9942296E666686E25611F7E23EA9B7B7F766444484CEED767BCBCACA9E0D0E0E
+              BE45EC8CEF09FE712C61847E6969E9DDD4D494233333D31219191962B1585227
+              2626E66262628C6D6D6D77994D87C3B15B5555F5746868E835DA84CB4D15C127
+              2C90638F2B3737D7DCD9D9591317172771C858181E1EAEA328ABD5DA333C3CFC
+              86452C1780EFD813E879CC9D919111373A3A5A6330184EB3607B7B7B2B2B2BEB
+              C9F8F838E71D0FA0A2F83BE731ACD4DF9FA1D668344ACDF78F08441857DFE5EE
+              EEEE7BCC16273A791A181818B88F959BC03A7255711C57D8275A424747C72D7A
+              1AE7148474C0741FCFCECEEE71CE757575DDC67D12EA720B13C67156E53A2D02
+              3E55CD15C92C5554543C1D1B1B5BB1DBED1B345DC6192B2A2A4AC66AFD80556C
+              433BBDDCDC2F8E65176E7496D4DEDE7EEB40544949C9B3FDD567024369B69393
+              938EC2C2C214FA1CB6A52BC8A21DE51F18E743FC40589807A212EAEAEAEE605B
+              F20D5F7979F9939191118ABA2057F1218C3E874CD9D3D2D252E969F439EC9936
+              64F323E2FEDC5F4898D768349E6B6D6DADCFCECED6ACADAD7DADAEAEA64FCD23
+              76984F8541C42A87957B2AE7A1CD6673C3565E312657F9238484ED69B55AA9A1
+              A1210956F0BDB4B4B46F5F94510E1F0A3D86EFE3DCDCDCEAC2C2C27A4F4FCFC4
+              D6D6166D44D126AED46059EF1B6C2144AFD74B4EA7931BB2C117391A6CB70DF2
+              2B9F7D7018FD1D7D840CF60728793C9E2F10B5816B25A208B6635D0E3733A1F8
+              3C26E263EC846FAC6465058C409CFF9F22A88505BCE1FE0B50D82E1874E228CC
+              01D2F438B9830614F612A4B9F2A01734E20E863003AC00B913F02BFB7F0AA41D
+              F9FEEA3C403C780D8C02B5A0F067FD5F029C5FB5F91320B6942CE9BFB8EE0000
+              000049454E44AE426082}
             Properties.PushedIcon.IsClipRound = False
             Properties.ButtonIndex = -1
             Properties.PushedGroupIndex = 0
@@ -31117,6 +31126,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
           object lblVideoInfo: TSkinFMXLabel
             ParentMouseEvent = False
             BindItemFieldName = 'ItemDetail'
+            DirectUIVisible = False
             ComponentTypeUseKind = ctukDefault
             MaterialUseKind = mukSelfOwn
             KeepSelfOwnMaterial = True
@@ -31134,8 +31144,6 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
             Size.Height = 22.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
-            Caption = '40M'
-            Text = '40M'
             Properties.AutoSize = False
           end
         end
@@ -31144,6 +31152,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
   end
   object pnlToolBar: TSkinFMXPanel
     ParentMouseEvent = True
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -31179,6 +31188,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
     Properties.IsToolBar = True
     object btnOK: TSkinFMXButton
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -31229,6 +31239,7 @@ object FrameAddPictureListSub: TFrameAddPictureListSub
     end
     object btnReturn: TSkinFMXButton
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True

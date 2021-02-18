@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">እሺ</string>
+    <string name="scankit_light">ለተጨማሪ ብርሃን ይንኩ</string>
+    <string name="scankit_light_off">ብርሃን አጥፋ</string>
+    <string name="scankit_no_code_tip">ምንም ኮድ አልተገኘም።</string>
+    <string name="scankit_scan_tip">ኮዱን በፍሬሙ ውስጥ ያኑሩ</string>
+    <string name="scankit_title">ስካን አድርግ</string>
+</resources>

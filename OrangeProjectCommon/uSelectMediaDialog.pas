@@ -31,6 +31,8 @@ type
   end;
 
 
+
+
   TSelectMediaResultEvent=procedure(Sender:TObject;
                                     //预览图
                                     ASelectedPhotoThumbPaths:TStringList;
@@ -50,10 +52,18 @@ type
 //    destructor Destroy;override;
   public
     procedure DoStartSelect;virtual;abstract;
+    procedure DoStartCamera;virtual;abstract;
   end;
   TSelectMediaUIClass=class of TBaseSelectMediaUI;
 
-  TSelectMediaType=(smtImage,smtImageVideo,smtVideo);
+
+
+
+
+
+  TSelectMediaType=(smtImage,
+                    smtImageVideo,
+                    smtVideo);
   TSelectMediaDialog=class(TComponent)
   private
     FOnSelectMediaResult: TSelectMediaResultEvent;
@@ -62,11 +72,10 @@ type
     FSelectMediaType: TSelectMediaType;
     FMaxVideoDuration: Integer;
     FMaxVideoDurationCanEdit: Boolean;
+
+    procedure CreateBaseSelectMediaUI;
+
   public
-    FSelectedThumbFilePaths:TStringList;
-    FSelectedFilePaths:TStringList;
-    FSelectMediaList:TSelectMediaList;
-    procedure StartSelect;
     procedure AddSelectedMedia(
                               //缩略图
                               AThumbPath:String;
@@ -82,11 +91,22 @@ type
                               ATimeLong:Integer=0);
     procedure CallOnSelectMediaResult;
   public
+    FSelectedThumbFilePaths:TStringList;
+    FSelectedFilePaths:TStringList;
+    FSelectMediaList:TSelectMediaList;
+
+    //开始选择
+    procedure StartSelect;
+    //开始拍摄
+    procedure StartCamera;
+
+  public
     constructor Create(AOwner:TComponent);override;
     destructor Destroy;override;
   published
-    //最大视频时长
+    //最大视频时长,小于等于0则不限制
     property MaxVideoDuration:Integer read FMaxVideoDuration write FMaxVideoDuration;
+    //视频时长是否可编译
     property MaxVideoDurationCanEdit:Boolean read FMaxVideoDurationCanEdit write FMaxVideoDurationCanEdit;
 //    property MaxVideoFileSize:Integer read FMaxVideoFileSize write FMaxVideoFileSize;
 
@@ -100,16 +120,21 @@ type
   TSelectMediaDialogClass=class of TSelectMediaDialog;
 
 
+
+
+
+
+
 var
   GlobalSelectMediaUIClass:TSelectMediaUIClass;
 
 implementation
 
 {$IFDEF USE_NATIVE_SELECTMEDIA}
-  {$IFDEF ANDROID}
-  uses
-    uAndroidDmcBigSelectMedia;
-  {$ENDIF}
+//  {$IFDEF ANDROID}
+//  uses
+//    uAndroidDmcBigSelectMedia;
+//  {$ENDIF}
   {$IFDEF IOS}
   uses
     uIOSHXPhotoPickerSelectMediaUI;
@@ -144,22 +169,32 @@ begin
   FSelectMediaType:=smtImage;
 
 
-  {$IFDEF USE_NATIVE_SELECTMEDIA}
-    {$IFDEF ANDROID}
-    GlobalSelectMediaUIClass:=TAndroidDmcBigSelectMediaUI;
-    {$ENDIF}
-    {$IFDEF IOS}
-    GlobalSelectMediaUIClass:=TIOSHXPhotoPickerSelectMediaUI;
-    {$ENDIF}
-    {$IFDEF MSWINDOWS}
-    {$ENDIF}
-  {$ELSE}
-  {$ENDIF}
-  if GlobalSelectMediaUIClass=nil then
+
+end;
+
+procedure TSelectMediaDialog.CreateBaseSelectMediaUI;
+begin
+  if FBaseSelectMediaUI=nil then
   begin
-    raise Exception.Create('GlobalSelectMediaUIClass Can Not Be Nil,Please Use uCommonSelectMediaUI.pas');
+
+      {$IFDEF USE_NATIVE_SELECTMEDIA}
+    //    {$IFDEF ANDROID}
+    //    GlobalSelectMediaUIClass:=TAndroidDmcBigSelectMediaUI;
+    //    {$ENDIF}
+        {$IFDEF IOS}
+        GlobalSelectMediaUIClass:=TIOSHXPhotoPickerSelectMediaUI;
+        {$ENDIF}
+        {$IFDEF MSWINDOWS}
+        {$ENDIF}
+      {$ELSE}
+      {$ENDIF}
+      if GlobalSelectMediaUIClass=nil then
+      begin
+        raise Exception.Create('GlobalSelectMediaUIClass Can Not Be Nil,Please Use uCommonSelectMediaUI.pas');
+      end;
+      FBaseSelectMediaUI:=GlobalSelectMediaUIClass.Create(Self);
+
   end;
-  FBaseSelectMediaUI:=GlobalSelectMediaUIClass.Create(Self);
 
 end;
 
@@ -209,8 +244,26 @@ begin
   FSelectMediaList.Add(ASelectMediaItem);
 end;
 
+procedure TSelectMediaDialog.StartCamera;
+begin
+  CreateBaseSelectMediaUI;
+
+
+  FSelectedFilePaths.Clear;
+  FSelectedThumbFilePaths.Clear;
+  FSelectMediaList.Clear;
+
+  if FBaseSelectMediaUI<>nil then
+  begin
+    FBaseSelectMediaUI.DoStartCamera;
+  end;
+
+end;
+
 procedure TSelectMediaDialog.StartSelect;
 begin
+  CreateBaseSelectMediaUI;
+
   FSelectedFilePaths.Clear;
   FSelectedThumbFilePaths.Clear;
   FSelectMediaList.Clear;

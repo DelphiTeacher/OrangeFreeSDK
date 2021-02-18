@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Pro více světla klepněte</string>
+    <string name="scankit_light_off">Vypnout světlo</string>
+    <string name="scankit_no_code_tip">Nebyl zjištěn žádný kód.</string>
+    <string name="scankit_scan_tip">Umístěte kód do rámečku</string>
+    <string name="scankit_title">Skenovat</string>
+</resources>

@@ -10,7 +10,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Child: TFrameListItemStyle_Tree
     Top = 72
     Width = 745
     Height = 49
-    ParentMouseEvent = True
+    ParentMouseEvent = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True

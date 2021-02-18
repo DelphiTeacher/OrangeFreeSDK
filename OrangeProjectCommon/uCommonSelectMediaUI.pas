@@ -23,6 +23,7 @@ type
     //从多选图片返回
     procedure DoReturnFrameFromAllImageFrame(AFrame:TFrame);
     procedure DoStartSelect;override;
+    procedure DoStartCamera;override;
   end;
 
 implementation
@@ -156,13 +157,15 @@ begin
 
 end;
 
-procedure TCommonSelectMediaUI.DoStartSelect;
+procedure TCommonSelectMediaUI.DoStartCamera;
 begin
   HideFrame;
   //多选照片
   ShowFrame(TFrame(GAllImageFrame),TFrameAllImage,Application.MainForm,nil,nil,DoReturnFrameFromAllImageFrame,Application,True,False,ufsefNone);
 //  GAllImageFrame.FrameHistroy:=CurrentFrameHistroy;
   GAllImageFrame.OnGetPhotoFromCamera:=TakePhotoFromLibraryAction1DidFinishTaking;
+
+
 
   case FSelectMediaDialog.SelectMediaType of
     smtImage:
@@ -181,6 +184,48 @@ begin
       GetGlobalAlbumManager.IsCanSelectVideo:=True;
     end;
   end;
+
+
+  GAllImageFrame.Load(True,
+                      0,
+                      FSelectMediaDialog.MaxSelectCount,
+                      FSelectMediaDialog.SelectMediaType);
+
+
+
+  GAllImageFrame.TakePhotoFromCamera;
+
+end;
+
+procedure TCommonSelectMediaUI.DoStartSelect;
+begin
+  HideFrame;
+  //多选照片
+  ShowFrame(TFrame(GAllImageFrame),TFrameAllImage,Application.MainForm,nil,nil,DoReturnFrameFromAllImageFrame,Application,True,False,ufsefNone);
+//  GAllImageFrame.FrameHistroy:=CurrentFrameHistroy;
+  GAllImageFrame.OnGetPhotoFromCamera:=TakePhotoFromLibraryAction1DidFinishTaking;
+
+
+
+  case FSelectMediaDialog.SelectMediaType of
+    smtImage:
+    begin
+      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+      GetGlobalAlbumManager.IsCanSelectVideo:=False;
+    end;
+    smtImageVideo:
+    begin
+      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+      GetGlobalAlbumManager.IsCanSelectVideo:=True;
+    end;
+    smtVideo:
+    begin
+      GetGlobalAlbumManager.IsCanSelectPhoto:=False;
+      GetGlobalAlbumManager.IsCanSelectVideo:=True;
+    end;
+  end;
+
+
 
   GAllImageFrame.Load(True,
                       0,

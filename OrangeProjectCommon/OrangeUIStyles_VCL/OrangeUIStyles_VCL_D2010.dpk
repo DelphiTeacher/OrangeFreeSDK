@@ -1,0 +1,42 @@
+package OrangeUIStyles_VCL_D2010;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vclimg,
+  dbrtl,
+  OrangeUIDesign_VCL_D2010;
+
+contains
+  ListItemStyle_IconTop_CaptionBottom in 'ListItemStyle_IconTop_CaptionBottom.pas' {FrameListItemStyle_IconTop_CaptionBottom: TFrame},
+  ListItemStyle_TreeMainMenu in 'ListItemStyle_TreeMainMenu.pas',
+  ListItemStyle_TreeMainMenuItem in 'ListItemStyle_TreeMainMenuItem.pas',
+  ListItemStyle_TreeChildListBox in 'ListItemStyle_TreeChildListBox.pas',
+  ListItemStyle_TreeHistoryMadicalList_Child in 'ListItemStyle_TreeHistoryMadicalList_Child.pas',
+  ListItemStyle_IconLeft_CaptionRight in 'ListItemStyle_IconLeft_CaptionRight.pas';
+
+end.

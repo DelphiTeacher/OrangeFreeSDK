@@ -32,10 +32,10 @@ object FrameListItemStyle_IconTop_CaptionBottom: TFrameListItemStyle_IconTop_Cap
     TabOrder = 0
     Properties.IsPreview = False
     Properties.PreviewItem.Selected = False
+    Properties.PreviewItem.Checked = False
     Properties.PreviewItem.Height = -1
     Properties.PreviewItem.Visible = True
     Properties.PreviewItem.Color = clBlack
-    Properties.PreviewItem.Checked = False
     Properties.PreviewItem.Width = -1
     Properties.PreviewItem.Tag = 0
     Properties.PreviewItem.Tag1 = 0
@@ -96,7 +96,6 @@ object FrameListItemStyle_IconTop_CaptionBottom: TFrameListItemStyle_IconTop_Cap
       MouseDownFocus = False
       Align = alClient
       TabOrder = 0
-      Caption = ''
       Properties.AutoSize = False
       Properties.Picture.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000B50000

@@ -5,7 +5,7 @@ unit EasyServiceCommonMaterialDataMoudle_VCL;
 interface
 
 uses
-  System.SysUtils, System.Classes, uSkinPanelType, uSkinMaterial,
+  SysUtils, Classes, uSkinPanelType, uSkinMaterial,
   uSkinButtonType, uSkinEditType, uSkinScrollControlType, uSkinScrollBoxType,
   uSkinCheckBoxType, uDrawPicture, uSkinImageList, uSkinLabelType,
 

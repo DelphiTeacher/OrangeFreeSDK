@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Нажмите, чтобы усилить подсветку</string>
+    <string name="scankit_light_off">Выключить подсветку</string>
+    <string name="scankit_no_code_tip">Код не определен.</string>
+    <string name="scankit_scan_tip">Разместите код в рамке</string>
+    <string name="scankit_title">Сканер</string>
+</resources>

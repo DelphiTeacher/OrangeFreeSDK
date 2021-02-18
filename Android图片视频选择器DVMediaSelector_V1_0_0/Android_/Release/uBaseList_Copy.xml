@@ -1,0 +1,1220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uBaseList_Copy" platform="Android">
+  <devnotes>
+     <summary>
+       <para>
+         列表基类
+       </para>
+       <para>
+         Base class of list
+       </para>
+     </summary>
+  </devnotes>
+  <const name="ooReference" type="TObjectOwnership">
+    <devnotes>
+       <summary>
+         引用,列表清除的时候子对象不释放
+         <para>
+          Reference, not release subobject when clear list
+         </para>
+       </summary>
+    </devnotes>
+    <value>
+      ooReference
+    </value>
+  </const>
+  <const name="ooOwned" type="TObjectOwnership">
+    <devnotes>
+       <summary>
+         拥有,子对象都是列表的,列表清除的时候子对象释放
+         <para>
+           Own,subobject is own by list,release subobject when clear list
+         </para>
+       </summary>
+    </devnotes>
+    <value>
+      ooOwned
+    </value>
+  </const>
+  <const name="ictAdd" type="TItemChangeType">
+    <devnotes>
+       <summary>
+         添加项目
+         <para>
+           add item
+         </para>
+       </summary>
+    </devnotes>
+    <value>
+      ictAdd
+    </value>
+  </const>
+  <const name="ictDel" type="TItemChangeType">
+    <devnotes>
+       <summary>
+         删除项目
+         <para>
+           delete item
+         </para>
+       </summary>
+    </devnotes>
+    <value>
+      ictDel
+    </value>
+  </const>
+  <const name="ictMove" type="TItemChangeType">
+    <devnotes>
+       <summary>
+         移动项目
+         <para>
+           move item
+         </para>
+       </summary>
+    </devnotes>
+    <value>
+      ictMove
+    </value>
+  </const>
+  <const name="ictSetItem" type="TItemChangeType">
+    <devnotes>
+       <summary>
+         设置项目
+         <para>
+           set item
+         </para>
+       </summary>
+    </devnotes>
+    <value>
+      ictSetItem
+    </value>
+  </const>
+  <class name="TSkinObjectChangeLink">
+    <devnotes>
+       <summary>
+         <para>
+           通知更改的链接
+         </para>
+         <para>
+           Link of NotifyChange
+         </para>
+       </summary>
+    </devnotes>
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <field name="FSender" type="TSkinObjectChangeManager" visibility="private" size="4" offset="4" />
+      <field name="FOnChange" type="TNotifyEvent" visibility="private" size="8" offset="8" />
+      <field name="FOnDestroy" type="TNotifyEvent" visibility="private" size="8" offset="16" />
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="DoChange" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               执行OnChange
+             </para>
+             <para>
+               Execute OnChange
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="DoDestroy" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               执行OnDestroy
+             </para>
+             <para>
+               Execute OnDestroy
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <event name="OnChange" visibility="public" read="FOnChange" write="FOnChange" type="TNotifyEvent">
+        <devnotes>
+           <summary>
+             <para>
+               更改的事件
+             </para>
+             <para>
+               Changed event
+             </para>
+           </summary>
+        </devnotes>
+      </event>
+      <event name="OnDestroy" visibility="public" read="FOnDestroy" write="FOnDestroy" type="TNotifyEvent">
+        <devnotes>
+           <summary>
+             <para>
+               释放的事件
+             </para>
+             <para>
+              Released event
+             </para>
+           </summary>
+        </devnotes>
+      </event>
+    </members>
+  </class>
+  <class name="TSkinObjectChangeManager">
+    <devnotes>
+       <summary>
+         <para>
+           通知更改的管理者
+         </para>
+         <para>
+           Manager of NotifyChange
+         </para>
+       </summary>
+    </devnotes>
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <field name="FOwner" type="TObject" visibility="private" size="4" offset="4" />
+      <field name="FLinks" type="TBaseList" visibility="private" size="4" offset="8" />
+      <field name="FChanged" type="Boolean" visibility="private" size="1" offset="12" />
+      <field name="FUpdateCount" type="Integer" visibility="private" size="4" offset="16" />
+      <field name="FOnChange" type="TNotifyEvent" visibility="private" size="8" offset="20" />
+      <field name="FIsDestroy" type="Boolean" visibility="private" size="1" offset="28" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="AOwner" type="TObject" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <procedure name="BeginDestroy" visibility="public" procflags="virtual">
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="DoChange" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               通知各个Link调用更改的事件(OnChange)
+             </para>
+             <para>
+               Notify every Link call changed event(OnChange)
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <function name="LinkCount" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               有多少个Linnk
+             </para>
+             <para>
+               ??
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="DoDestroy" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               通知各个Link调用释放的事件(OnDestroy)
+             </para>
+             <para>
+               Notify every Link call released event(OnDestroy)
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Sender" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="BeginUpdate" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               开始更新
+             </para>
+             <para>
+               Begin Update
+             </para>
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="EndUpdate" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               结束更新
+             </para>
+             <para>
+               End Update
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AIsForce" type="Boolean">
+            <value>
+              False
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <property name="UpdateCount" visibility="public" read="FUpdateCount" type="Integer">
+        <devnotes>
+           <summary>
+             <para>
+               调用BeginUpdate方法的次数
+             </para>
+             <para>
+               Call count of BeginUpdate
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <procedure name="RegisterChanges" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               注册通知更改的链接
+             </para>
+             <para>
+               Regist link of NotifyChange
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Value" type="TSkinObjectChangeLink" />
+        </parameters>
+      </procedure>
+      <procedure name="UnRegisterChanges" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               反注册通知更改的链接
+             </para>
+             <para>
+              Unregist link of NotifyChange
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Value" type="TSkinObjectChangeLink" />
+        </parameters>
+      </procedure>
+      <property name="IsDestroy" visibility="public" read="FIsDestroy" type="Boolean">
+        <devnotes>
+           <summary>
+             <para>
+               是否开始释放了
+             </para>
+             <para>
+               Whether begin release
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <event name="OnChange" visibility="public" read="FOnChange" write="FOnChange" type="TNotifyEvent">
+        <devnotes>
+           <summary>
+             <para>
+               更改的事件
+             </para>
+             <para>
+               Changed event
+             </para>
+           </summary>
+        </devnotes>
+      </event>
+    </members>
+  </class>
+  <enum name="TObjectOwnership">
+    <devnotes>
+       <summary>
+         <para>
+           子对象拥有关系的类型
+         </para>
+         <para>
+           Type of relationship subobject owns
+         </para>
+       </summary>
+    </devnotes>
+    <element value="0" name="ooReference">
+      <devnotes>
+         <summary>
+           引用,列表清除的时候子对象不释放
+           <para>
+            Reference, not release subobject when clear list
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element value="1" name="ooOwned">
+      <devnotes>
+         <summary>
+           拥有,子对象都是列表的,列表清除的时候子对象释放
+           <para>
+             Own,subobject is own by list,release subobject when clear list
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+  </enum>
+  <enum name="TItemChangeType">
+    <devnotes>
+       <summary>
+         <para>
+           子对象更改的类型
+         </para>
+         <para>
+           ChangeType of subobject
+         </para>
+       </summary>
+    </devnotes>
+    <element value="0" name="ictAdd">
+      <devnotes>
+         <summary>
+           添加项目
+           <para>
+             add item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element value="1" name="ictDel">
+      <devnotes>
+         <summary>
+           删除项目
+           <para>
+             delete item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element value="2" name="ictMove">
+      <devnotes>
+         <summary>
+           移动项目
+           <para>
+             move item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element value="3" name="ictSetItem">
+      <devnotes>
+         <summary>
+           设置项目
+           <para>
+             set item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+  </enum>
+  <set name="TItemChangeTypes" type="TItemChangeType">
+    <devnotes>
+       <summary>
+         <para>
+           子对象更改类型集合
+         </para>
+         <para>
+           Set of subobject ChangeType
+         </para>
+       </summary>
+    </devnotes>
+    <element name="ictAdd">
+      <devnotes>
+         <summary>
+           添加项目
+           <para>
+             add item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element name="ictDel">
+      <devnotes>
+         <summary>
+           删除项目
+           <para>
+             delete item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element name="ictMove">
+      <devnotes>
+         <summary>
+           移动项目
+           <para>
+             move item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+    <element name="ictSetItem">
+      <devnotes>
+         <summary>
+           设置项目
+           <para>
+             set item
+           </para>
+         </summary>
+      </devnotes>
+    </element>
+  </set>
+  <class name="TBaseList">
+    <devnotes>
+       <summary>
+         <para>
+           子对象列表
+         </para>
+         <para>
+           Subobject list
+         </para>
+       </summary>
+    </devnotes>
+    <ancestor name="TInterfacedPersistent" namespace="System.Classes">
+      <interfaces>
+        <implements name="IInterface" />
+      </interfaces>
+      <methodref name="_AddRef" visibility="protected">
+      </methodref>
+      <methodref name="_Release" visibility="protected">
+      </methodref>
+      <methodref name="QueryInterface" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="override">
+      </methodref>
+      <ancestor name="TPersistent" namespace="System.Classes">
+        <methodref name="AssignError" visibility="private">
+        </methodref>
+        <methodref name="AssignTo" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="DefineProperties" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="GetOwner" visibility="protected" procflags="dynamic">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor override">
+        </methodref>
+        <methodref name="Assign" visibility="public" procflags="virtual">
+        </methodref>
+        <methodref name="GetNamePath" visibility="public" procflags="dynamic">
+        </methodref>
+        <ancestor name="TObject" namespace="System">
+          <methodref name="Create" visibility="public" procflags="constructor">
+          </methodref>
+          <methodref name="Free" visibility="public">
+          </methodref>
+          <methodref name="DisposeOf" visibility="public" procflags="inline">
+          </methodref>
+          <methodref name="InitInstance" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="CleanupInstance" visibility="public">
+          </methodref>
+          <methodref name="ClassType" visibility="public" procflags="inline">
+          </methodref>
+          <methodref name="ClassName" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="ClassNameIs" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="ClassParent" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="ClassInfo" visibility="public" procflags="class inline">
+          </methodref>
+          <methodref name="InstanceSize" visibility="public" procflags="class inline">
+          </methodref>
+          <methodref name="InheritsFrom" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="MethodAddress" visibility="public" procflags="class overload">
+          </methodref>
+          <methodref name="MethodAddress" visibility="public" procflags="class overload">
+          </methodref>
+          <methodref name="MethodName" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="QualifiedClassName" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="FieldAddress" visibility="public" procflags="overload">
+          </methodref>
+          <methodref name="FieldAddress" visibility="public" procflags="overload">
+          </methodref>
+          <methodref name="GetInterface" visibility="public">
+          </methodref>
+          <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+          </methodref>
+          <methodref name="UnitName" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="UnitScope" visibility="public" procflags="class">
+          </methodref>
+          <methodref name="Equals" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="GetHashCode" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="ToString" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="SafeCallException" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="Dispatch" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="NewInstance" visibility="public" procflags="class virtual">
+          </methodref>
+          <methodref name="FreeInstance" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+          </methodref>
+          <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="GetDisposed" visibility="protected" procflags="inline">
+          </methodref>
+          <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+          </methodref>
+          <propertyref name="Disposed" visibility="protected">
+          </propertyref>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <field name="FItems" type="TList" visibility="protected" size="4" offset="12">
+        <devnotes>
+           <summary>
+             <para>
+               列表
+             </para>
+             <para>
+               List
+             </para>
+           </summary>
+        </devnotes>
+      </field>
+      <field name="FSkinObjectChangeManager" type="TSkinObjectChangeManager" visibility="protected" size="4" offset="16" />
+      <field name="FObjectOwnership" type="TObjectOwnership" visibility="protected" size="1" offset="20" />
+      <field name="FLastItemChangeTypes" type="TItemChangeTypes" visibility="protected" size="1" offset="21" />
+      <field name="FHasItemDeleted" type="Boolean" visibility="protected" size="1" offset="22" />
+      <field name="FOnItemDelete" type="TItemDeleteEvent" visibility="protected" size="8" offset="24" />
+      <procedure name="DoChange" visibility="protected" procflags="virtual">
+      </procedure>
+      <function name="GetItem" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <retval type="TObject" />
+        </parameters>
+      </function>
+      <procedure name="SetItem" visibility="protected">
+        <parameters>
+          <parameter name="Index" type="Integer" />
+          <parameter name="Value" type="TObject" paramflags="const" />
+        </parameters>
+      </procedure>
+      <function name="GetOnChange" visibility="protected">
+        <parameters>
+          <retval type="TNotifyEvent" />
+        </parameters>
+      </function>
+      <procedure name="SetOnChange" visibility="protected">
+        <parameters>
+          <parameter name="Value" type="TNotifyEvent" paramflags="const" />
+        </parameters>
+      </procedure>
+      <constructor name="Create" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               构造方法
+             </para>
+             <para>
+               Construct methods
+             </para>
+           </summary>
+           <param name="AObjectOwnership">
+             子对象关系 <br />Subobject relationship
+           </param>
+           <param name="AIsCreateObjectChangeManager">
+             是否创建通知更改的管理者
+            <para>
+          Whether create NotifyChange manager
+            </para>
+           </param>
+        </devnotes>
+        <parameters>
+          <parameter name="AObjectOwnership" type="TObjectOwnership" paramflags="const">
+            <value>
+              ooOwned
+            </value>
+          </parameter>
+          <parameter name="AIsCreateObjectChangeManager" type="Boolean" paramflags="const">
+            <value>
+              True
+            </value>
+          </parameter>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <function name="GetCount" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               子对象的个数
+             </para>
+             <para>
+               Subobject count
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="Clear" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               清除
+             </para>
+             <para>
+               Clear
+             </para>
+           </summary>
+           <param name="AIsFree">
+             是否释放子对象
+            <para>
+            whether release subobject
+            </para>
+           </param>
+           <param name="AIsNeedDelete">
+             是否需要删除子对象
+            <para>
+            whether need to delete subobject
+            </para>
+           </param>
+        </devnotes>
+        <parameters>
+          <parameter name="AIsFree" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+          <parameter name="AIsNeedDelete" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="Move" visibility="public" procflags="overload">
+        <devnotes>
+           <summary>
+             <para>
+               移动(互换)
+             </para>
+             <para>
+               Move (Exchange)
+             </para>
+           </summary>
+           <param name="ASrcIndex">
+             源下标
+            <para>
+            original index
+            </para>
+           </param>
+           <param name="ADestIndex">
+             目的下标
+            <para>
+            target index
+            </para>
+           </param>
+        </devnotes>
+        <parameters>
+          <parameter name="ASrcIndex" type="Integer" />
+          <parameter name="ADestIndex" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="DoAdd" visibility="protected" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               子对象添加时调用此方法
+             </para>
+             <para>
+               Call this method when adding subobject
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AObject" type="TObject" />
+        </parameters>
+      </procedure>
+      <procedure name="DoDelete" visibility="protected" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               子对象删除时调用此方法
+             </para>
+             <para>
+               Call it when deleting subobject
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AObject" type="TObject" />
+          <parameter name="AIndex" type="Integer" />
+        </parameters>
+      </procedure>
+      <procedure name="DoInsert" visibility="protected" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               子对象插入时调用此方法
+             </para>
+             <para>
+               Call it when inserting subobject
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AObject" type="TObject" />
+          <parameter name="AIndex" type="Integer" />
+        </parameters>
+      </procedure>
+      <function name="Delete" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               删除指定下标的子对象
+             </para>
+             <para>
+               Delete subobject of assigned index
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AIndex" type="Integer" />
+          <parameter name="AIsFree" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+          <parameter name="AIsNeedDelete" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Remove" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               清除指定子对象
+             </para>
+             <para>
+               Clear assigned subobject
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AObject" type="TObject" />
+          <parameter name="AIsFree" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+          <parameter name="AIsNeedDelete" type="Boolean">
+            <value>
+              True
+            </value>
+          </parameter>
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Add" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               添加子对象
+             </para>
+             <para>
+               Add subobject
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AObject" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="Insert" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               插入子对象到指定下标
+             </para>
+             <para>
+               Insert subobject to assigned index
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AIndex" type="Integer" />
+          <parameter name="AObject" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <function name="IndexOf" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               获取子对象所在下标
+             </para>
+             <para>
+               Get index of subobject
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AObject" type="TObject" />
+          <retval type="Integer" />
+        </parameters>
+      </function>
+      <procedure name="Sort" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               排序
+             </para>
+             <para>
+               Sort
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="Compare" type="TListSortCompare" />
+        </parameters>
+      </procedure>
+      <procedure name="BeginUpdate" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               开始更新
+             </para>
+             <para>
+               Begin update
+             </para>
+           </summary>
+        </devnotes>
+      </procedure>
+      <procedure name="EndUpdate" visibility="public" procflags="virtual">
+        <devnotes>
+           <summary>
+             <para>
+               结束更新
+             </para>
+             <para>
+               End update
+             </para>
+           </summary>
+           <param name=>
+             是否强制更新
+            <para>
+            Whetehr forced to update
+            </para>
+           </param>
+        </devnotes>
+        <parameters>
+          <parameter name="AIsForce" type="Boolean">
+            <value>
+              False
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <property name="HasItemDeleted" visibility="public" read="FHasItemDeleted" write="FHasItemDeleted" type="Boolean">
+        <devnotes>
+           <summary>
+             <para>
+               是否有子对象被删除了
+             </para>
+             <para>
+               Whether there is a subobject deleted
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <property name="LastItemChangeTypes" visibility="public" read="FLastItemChangeTypes" type="TItemChangeTypes">
+        <devnotes>
+           <summary>
+             <para>
+               上次子对象更改类型
+             </para>
+             <para>
+               Last ChangeType of subobject
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <event name="OnItemDelete" visibility="public" read="FOnItemDelete" write="FOnItemDelete" type="TItemDeleteEvent">
+        <devnotes>
+           <summary>
+             <para>
+               子对象被删除的事件
+             </para>
+             <para>
+               Event of Subobject deleted
+             </para>
+           </summary>
+        </devnotes>
+      </event>
+      <event name="OnChange" visibility="public" read="GetOnChange" write="SetOnChange" type="TNotifyEvent">
+        <devnotes>
+           <summary>
+             <para>
+               更改的事件
+             </para>
+             <para>
+               Changed event
+             </para>
+           </summary>
+        </devnotes>
+      </event>
+      <property name="SkinObjectChangeManager" visibility="public" read="FSkinObjectChangeManager" type="TSkinObjectChangeManager">
+        <devnotes>
+           <summary>
+             <para>
+               通知更改的管理者
+             </para>
+             <para>
+               Manager of NotifyChange
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <property name="ObjectOwnership" visibility="public" read="FObjectOwnership" write="FObjectOwnership" type="TObjectOwnership">
+        <devnotes>
+           <summary>
+             <para>
+               子对象的拥有关系
+             </para>
+             <para>
+               Owner relationship of subobject
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <property name="Items[Index]" visibility="public" read="GetItem" write="SetItem" type="TObject">
+        <devnotes>
+           <summary>
+             <para>
+               子对象
+             </para>
+             <para>
+               Subobject
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <property name="Count" visibility="published" read="GetCount" type="Integer">
+        <devnotes>
+           <summary>
+             <para>
+               子对象的个数
+             </para>
+             <para>
+               Subobject count
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+    </members>
+  </class>
+</namespace>

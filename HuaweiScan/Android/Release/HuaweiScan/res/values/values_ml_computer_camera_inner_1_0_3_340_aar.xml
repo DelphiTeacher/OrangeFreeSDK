@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="mlkit_camera_auto_focus" type="id"/>
+    <item name="mlkit_camera_ha_quit" type="id"/>
+    <item name="mlkit_camera_picture_ha_begin" type="id"/>
+    <item name="mlkit_camera_picture_ha_end" type="id"/>
+    <item name="mlkit_camera_preview_ha_begin" type="id"/>
+    <item name="mlkit_camera_preview_ha_end" type="id"/>
+</resources>

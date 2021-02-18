@@ -86,10 +86,16 @@ type
 
     //是否有FastMsg的功能
     is_enable_fastmsg:Integer;
-    //FastMsg的WebService功能
+
+    //FastMsg的WebService功能,不再使用
 //    fastmsg_webservice_url:String;
+
+    //Fastmsg的rest接口
     fastmsg_webapi_url:String;
+
     fastmsg_key:String;
+    //客服
+    service_user_fid:String;
 
 
 
@@ -1488,6 +1494,7 @@ begin
   Self.sign_type:=ADataset.FieldByName('sign_type').AsString;
   Self.is_enable_sign:=ADataset.FieldByName('is_enable_sign').AsInteger;
 
+  Self.service_user_fid:=ADataset.FieldByName('service_user_fid').AsString;
 
 end;
 

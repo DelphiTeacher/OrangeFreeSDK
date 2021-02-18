@@ -21,16 +21,6 @@ public final class R {
         public static final int abc_slide_out_top=0x7f050009;
         public static final int abc_tooltip_enter=0x7f05000a;
         public static final int abc_tooltip_exit=0x7f05000b;
-        public static final int anim_hidden_alpha=0x7f05000c;
-        public static final int anim_show_alpha=0x7f05000d;
-        public static final int enter_from_bottom=0x7f05000e;
-        public static final int enter_from_left=0x7f05000f;
-        public static final int enter_from_right=0x7f050010;
-        public static final int enter_from_top=0x7f050011;
-        public static final int out_to_bottom=0x7f050012;
-        public static final int out_to_left=0x7f050013;
-        public static final int out_to_right=0x7f050014;
-        public static final int out_to_top=0x7f050015;
     }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
@@ -903,7 +893,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int duration_max=0x7f010000;
         /**  EditText background drawable. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -949,23 +938,18 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fastScrollEnabled=0x7f010131;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int fastScrollHorizontalThumbDrawable=0x7f010134;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int fastScrollHorizontalTrackDrawable=0x7f010135;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int fastScrollVerticalThumbDrawable=0x7f010132;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int fastScrollVerticalTrackDrawable=0x7f010133;
         /**  Distance from the top of the TextView to the first text baseline. If set, this
              overrides the value set for paddingTop. 
          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -1167,7 +1151,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int iconLeft=0x7f010001;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1177,11 +1160,9 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int iconMargin=0x7f010002;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int iconRight=0x7f010003;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -1191,11 +1172,9 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int iconSize=0x7f010004;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int iconSrc=0x7f010005;
         /**  Tint to apply to the icon. 
          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
@@ -1318,7 +1297,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int layoutManager=0x7f01012d;
         /**  The id of an anchor view that this view should position relative to. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1714,38 +1692,32 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_animTime=0x7f01011a;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
          */
-        public static final int qrcv_barCodeTipText=0x7f01011f;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_barcodeRectHeight=0x7f010111;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int qrcv_borderColor=0x7f010119;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_borderSize=0x7f010118;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int qrcv_cornerColor=0x7f01010e;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -1756,29 +1728,24 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <tr><td><code>inside</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int qrcv_cornerDisplayType=0x7f01010f;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_cornerLength=0x7f01010d;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_cornerSize=0x7f01010c;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int qrcv_customGridScanLineDrawable=0x7f010129;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int qrcv_customScanLineDrawable=0x7f010117;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1786,7 +1753,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isAutoZoom=0x7f01012c;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1794,7 +1760,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isBarcode=0x7f01011d;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1802,7 +1767,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isOnlyDecodeScanBoxArea=0x7f01012a;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1810,7 +1774,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isScanLineReverse=0x7f010127;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1818,7 +1781,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isShowDefaultGridScanLineDrawable=0x7f010128;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1826,7 +1788,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isShowDefaultScanLineDrawable=0x7f010116;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1834,7 +1795,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isShowLocationPoint=0x7f01012b;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1842,7 +1802,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isShowTipBackground=0x7f010125;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1850,7 +1809,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isShowTipTextAsSingleLine=0x7f010124;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1858,85 +1816,72 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_isTipTextBelowRect=0x7f010122;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int qrcv_maskColor=0x7f010112;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
          */
-        public static final int qrcv_qrCodeTipText=0x7f01011e;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_rectWidth=0x7f010110;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int qrcv_scanLineColor=0x7f010114;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_scanLineMargin=0x7f010115;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_scanLineSize=0x7f010113;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int qrcv_tipBackgroundColor=0x7f010126;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int qrcv_tipTextColor=0x7f010121;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_tipTextMargin=0x7f010123;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_tipTextSize=0x7f010120;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_toolbarHeight=0x7f01011c;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
          */
-        public static final int qrcv_topOffset=0x7f01010b;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1944,7 +1889,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int qrcv_verticalBias=0x7f01011b;
         /**  Background for the section containing the search query 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -1986,7 +1930,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int ratio=0x7f010006;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -1994,7 +1937,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int reverseLayout=0x7f01012f;
         /**  Search icon displayed as a text field hint 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
@@ -2093,7 +2035,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int spanCount=0x7f01012e;
         /**  Whether bars should rotate or not during transition 
          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
@@ -2135,7 +2076,6 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int stackFromEnd=0x7f010130;
         /**  State identifier indicating the popup will be above the anchor. 
          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
@@ -2788,9 +2728,6 @@ containing a value of this type.
         public static final int bright_foreground_material_light=0x7f070011;
         public static final int button_material_dark=0x7f070012;
         public static final int button_material_light=0x7f070013;
-        public static final int colorPrimary=0x7f070040;
-        public static final int colorPrimaryDark=0x7f070041;
-        public static final int colorPrimaryDarkTrans=0x7f070042;
         public static final int dim_foreground_disabled_material_dark=0x7f070014;
         public static final int dim_foreground_disabled_material_light=0x7f070015;
         public static final int dim_foreground_material_dark=0x7f070016;
@@ -2813,11 +2750,8 @@ containing a value of this type.
         public static final int material_grey_800=0x7f070027;
         public static final int material_grey_850=0x7f070028;
         public static final int material_grey_900=0x7f070029;
-        public static final int navigationBarColor=0x7f070043;
-        public static final int notification_accent_color=0x7f070000;
         public static final int notification_action_color_filter=0x7f070001;
         public static final int notification_icon_bg_color=0x7f07003e;
-        public static final int notification_material_background_media_default_color=0x7f07003f;
         public static final int primary_dark_material_dark=0x7f07002a;
         public static final int primary_dark_material_light=0x7f07002b;
         public static final int primary_material_dark=0x7f07002c;
@@ -2917,8 +2851,6 @@ containing a value of this type.
         public static final int abc_text_size_subtitle_material_toolbar=0x7f0a0002;
         public static final int abc_text_size_title_material=0x7f0a0051;
         public static final int abc_text_size_title_material_toolbar=0x7f0a0003;
-        public static final int activity_horizontal_margin=0x7f0a0014;
-        public static final int activity_vertical_margin=0x7f0a0015;
         public static final int compat_button_inset_horizontal_material=0x7f0a0069;
         public static final int compat_button_inset_vertical_material=0x7f0a006a;
         public static final int compat_button_padding_horizontal_material=0x7f0a006b;
@@ -2928,9 +2860,6 @@ containing a value of this type.
         public static final int compat_notification_large_icon_max_width=0x7f0a006f;
         public static final int disabled_alpha_material_dark=0x7f0a0052;
         public static final int disabled_alpha_material_light=0x7f0a0053;
-        public static final int fastscroll_default_thickness=0x7f0a0063;
-        public static final int fastscroll_margin=0x7f0a0064;
-        public static final int fastscroll_minimum_range=0x7f0a0065;
         public static final int highlight_alpha_material_colored=0x7f0a0054;
         public static final int highlight_alpha_material_dark=0x7f0a0055;
         public static final int highlight_alpha_material_light=0x7f0a0056;
@@ -2938,10 +2867,6 @@ containing a value of this type.
         public static final int hint_alpha_material_light=0x7f0a0058;
         public static final int hint_pressed_alpha_material_dark=0x7f0a0059;
         public static final int hint_pressed_alpha_material_light=0x7f0a005a;
-        public static final int item_touch_helper_max_drag_scroll_per_frame=0x7f0a0066;
-        public static final int item_touch_helper_swipe_escape_max_velocity=0x7f0a0067;
-        public static final int item_touch_helper_swipe_escape_velocity=0x7f0a0068;
-        public static final int main_navigate_bar_height=0x7f0a0016;
         public static final int notification_action_icon_size=0x7f0a0070;
         public static final int notification_action_text_size=0x7f0a0071;
         public static final int notification_big_circle_margin=0x7f0a0072;
@@ -2960,10 +2885,6 @@ containing a value of this type.
         /** color name="primary_text_default_material_dark">#ffffffff</color
 color name="secondary_text_default_material_dark">#b3ffffff</color
          */
-        public static final int subtitle_corner_radius=0x7f0a007b;
-        public static final int subtitle_outline_width=0x7f0a007c;
-        public static final int subtitle_shadow_offset=0x7f0a007d;
-        public static final int subtitle_shadow_radius=0x7f0a007e;
         public static final int tooltip_corner_radius=0x7f0a005b;
         public static final int tooltip_horizontal_padding=0x7f0a005c;
         public static final int tooltip_margin=0x7f0a005d;
@@ -3058,14 +2979,6 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020051;
         public static final int abc_textfield_search_material=0x7f020052;
         public static final int abc_vector_test=0x7f020053;
-        public static final int ic_camera=0x7f020054;
-        public static final int ic_flash_auto=0x7f020055;
-        public static final int ic_flash_off=0x7f020056;
-        public static final int ic_flash_on=0x7f020057;
-        public static final int ic_launcher=0x7f020058;
-        public static final int ic_notification=0x7f020059;
-        public static final int ic_photo=0x7f02005a;
-        public static final int ic_repeat_black_24dp=0x7f02005b;
         public static final int notification_action_background=0x7f02005c;
         public static final int notification_bg=0x7f02005d;
         public static final int notification_bg_low=0x7f02005e;
@@ -3078,21 +2991,10 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int notification_template_icon_low_bg=0x7f02006d;
         public static final int notification_tile_bg=0x7f020064;
         public static final int notify_panel_notification_icon_bg=0x7f020065;
-        public static final int selector_check_btn_select=0x7f020066;
-        public static final int shape_btn_default=0x7f020067;
-        public static final int splash_image=0x7f020068;
-        public static final int splash_image_def=0x7f020069;
         public static final int tooltip_frame_dark=0x7f02006a;
         public static final int tooltip_frame_light=0x7f02006b;
     }
     public static final class id {
-        public static final int ALT=0x7f0c002a;
-        public static final int CTRL=0x7f0c002b;
-        public static final int FUNCTION=0x7f0c002c;
-        public static final int META=0x7f0c002d;
-        public static final int SHIFT=0x7f0c002e;
-        public static final int SYM=0x7f0c002f;
-        public static final int action0=0x7f0c009c;
         public static final int action_bar=0x7f0c006c;
         public static final int action_bar_activity_content=0x7f0c0002;
         public static final int action_bar_container=0x7f0c006b;
@@ -3114,99 +3016,49 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int activity_chooser_view_content=0x7f0c004b;
         public static final int add=0x7f0c001f;
         public static final int alertTitle=0x7f0c005e;
-        public static final int all=0x7f0c0042;
-        public static final int always=0x7f0c0030;
         public static final int async=0x7f0c0044;
-        public static final int beginning=0x7f0c0027;
-        public static final int bgaqrcode_camera_preview=0x7f0c000b;
         public static final int blocking=0x7f0c0045;
         public static final int bottom=0x7f0c0035;
-        public static final int btnReturn=0x7f0c008a;
-        public static final int btn_selectFolder=0x7f0c0084;
-        public static final int btn_sure=0x7f0c0087;
         public static final int buttonPanel=0x7f0c0051;
-        public static final int cancel_action=0x7f0c009d;
-        public static final int capture_layout=0x7f0c00b1;
-        public static final int center=0x7f0c0037;
-        public static final int center_horizontal=0x7f0c0038;
-        public static final int center_vertical=0x7f0c0039;
         public static final int checkbox=0x7f0c0065;
         public static final int chronometer=0x7f0c00a5;
-        public static final int clip_horizontal=0x7f0c003a;
-        public static final int clip_vertical=0x7f0c003b;
-        public static final int collapseActionView=0x7f0c0031;
         public static final int content=0x7f0c0061;
         public static final int contentPanel=0x7f0c0054;
         public static final int custom=0x7f0c005b;
         public static final int customPanel=0x7f0c005a;
         public static final int decor_content_parent=0x7f0c006a;
         public static final int default_activity_button=0x7f0c004e;
-        public static final int disableHome=0x7f0c0018;
         public static final int edit_query=0x7f0c006e;
         public static final int end=0x7f0c0028;
-        public static final int end_padder=0x7f0c00ab;
         public static final int expand_activities_button=0x7f0c004c;
         public static final int expanded_menu=0x7f0c0064;
-        public static final int fill=0x7f0c003c;
-        public static final int fill_horizontal=0x7f0c003d;
-        public static final int fill_vertical=0x7f0c003e;
-        public static final int fl_mediaList=0x7f0c0085;
         public static final int forever=0x7f0c0046;
-        public static final int fouce_view=0x7f0c00b2;
         public static final int group_divider=0x7f0c0060;
         public static final int home=0x7f0c0006;
-        public static final int homeAsUp=0x7f0c0019;
         public static final int icon=0x7f0c0050;
         public static final int icon_group=0x7f0c00aa;
-        public static final int ifRoom=0x7f0c0032;
         public static final int image=0x7f0c004d;
-        public static final int image_flash=0x7f0c00af;
-        public static final int image_photo=0x7f0c00ad;
-        public static final int image_switch=0x7f0c00b0;
         public static final int info=0x7f0c00a6;
-        public static final int inside=0x7f0c0043;
         public static final int italic=0x7f0c0047;
-        public static final int item_touch_helper_previous_elevation=0x7f0c000c;
-        public static final int ivImage=0x7f0c0096;
-        public static final int ivPhotoCheaked=0x7f0c0097;
-        public static final int iv_back=0x7f0c0080;
-        public static final int iv_check=0x7f0c0091;
-        public static final int iv_folder=0x7f0c0092;
-        public static final int iv_photo=0x7f0c008b;
-        public static final int iv_takePhoto=0x7f0c0098;
-        public static final int iv_videoPlayIcon=0x7f0c008c;
         public static final int left=0x7f0c003f;
         public static final int line1=0x7f0c000d;
         public static final int line3=0x7f0c000e;
-        public static final int line_checkBox=0x7f0c0090;
-        public static final int line_rootContent=0x7f0c0081;
-        public static final int line_topIcon=0x7f0c00ae;
-        public static final int line_videoView=0x7f0c007d;
         public static final int listMode=0x7f0c0015;
         public static final int list_item=0x7f0c004f;
-        public static final int media_actions=0x7f0c009f;
         public static final int message=0x7f0c007b;
-        public static final int middle=0x7f0c0029;
         public static final int multiply=0x7f0c0020;
-        public static final int myCameraView=0x7f0c007c;
-        public static final int never=0x7f0c0033;
         public static final int none=0x7f0c001a;
         public static final int normal=0x7f0c0016;
         public static final int notification_background=0x7f0c00a8;
         public static final int notification_main_column=0x7f0c00a2;
         public static final int notification_main_column_container=0x7f0c00a1;
         public static final int parentPanel=0x7f0c0053;
-        public static final int pnlToolbar=0x7f0c0089;
         public static final int progress_circular=0x7f0c0007;
         public static final int progress_horizontal=0x7f0c0008;
         public static final int radio=0x7f0c0066;
         public static final int right=0x7f0c0040;
         public static final int right_icon=0x7f0c00a7;
         public static final int right_side=0x7f0c00a3;
-        public static final int rl_back=0x7f0c007f;
-        public static final int rl_bottom=0x7f0c0086;
-        public static final int rl_titleBar=0x7f0c0082;
-        public static final int rv_content=0x7f0c008d;
         public static final int screen=0x7f0c0021;
         public static final int scrollIndicatorDown=0x7f0c0059;
         public static final int scrollIndicatorUp=0x7f0c0055;
@@ -3223,18 +3075,12 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int search_voice_btn=0x7f0c0079;
         public static final int select_dialog_listview=0x7f0c007a;
         public static final int shortcut=0x7f0c0062;
-        public static final int showCustom=0x7f0c001b;
-        public static final int showHome=0x7f0c001c;
-        public static final int showTitle=0x7f0c001d;
         public static final int spacer=0x7f0c0052;
         public static final int split_action_bar=0x7f0c0009;
         public static final int src_atop=0x7f0c0022;
         public static final int src_in=0x7f0c0023;
         public static final int src_over=0x7f0c0024;
         public static final int start=0x7f0c0041;
-        public static final int status_bar_latest_event_content=0x7f0c009e;
-        public static final int statusbarutil_fake_status_bar_view=0x7f0c0000;
-        public static final int statusbarutil_translucent_view=0x7f0c0001;
         public static final int submenuarrow=0x7f0c0063;
         public static final int submit_area=0x7f0c0077;
         public static final int tabMode=0x7f0c0017;
@@ -3251,20 +3097,9 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int title_template=0x7f0c005d;
         public static final int top=0x7f0c0036;
         public static final int topPanel=0x7f0c005c;
-        public static final int tv_count=0x7f0c0094;
-        public static final int tv_folderName=0x7f0c0093;
-        public static final int tv_pageTip=0x7f0c008f;
-        public static final int tv_title=0x7f0c0083;
         public static final int uniform=0x7f0c0025;
         public static final int up=0x7f0c000a;
-        public static final int useLogo=0x7f0c001e;
-        public static final int videoView=0x7f0c007e;
-        public static final int video_preview=0x7f0c00ac;
-        public static final int viewLine=0x7f0c0095;
-        public static final int vp_content=0x7f0c008e;
-        public static final int withText=0x7f0c0034;
         public static final int wrap_content=0x7f0c0026;
-        public static final int zbarview=0x7f0c0088;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur=0x7f0d0000;
@@ -3302,54 +3137,18 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int abc_search_view=0x7f040019;
         public static final int abc_select_dialog_material=0x7f04001a;
         public static final int abc_tooltip=0x7f04001b;
-        public static final int activity_dv_camera=0x7f04001c;
-        public static final int activity_dv_esay_video_play=0x7f04001d;
-        public static final int activity_dv_media_select=0x7f04001e;
-        public static final int activity_z_bar=0x7f04001f;
-        public static final int fragment_dv_gv_item_watch_media=0x7f040020;
-        public static final int fragment_dv_media_list=0x7f040021;
-        public static final int fragment_dv_watch_media=0x7f040022;
-        public static final int item_dv_lv_folder=0x7f040023;
-        public static final int item_dv_pager_img_sel=0x7f040024;
-        public static final int item_dv_rv_first_take_photo=0x7f040025;
-        public static final int item_dv_rv_media_list=0x7f040026;
         public static final int notification_action=0x7f040027;
         public static final int notification_action_tombstone=0x7f040028;
-        public static final int notification_media_action=0x7f040029;
-        public static final int notification_media_cancel_action=0x7f04002a;
-        public static final int notification_template_big_media=0x7f04002b;
-        public static final int notification_template_big_media_custom=0x7f04002c;
-        public static final int notification_template_big_media_narrow=0x7f04002d;
-        public static final int notification_template_big_media_narrow_custom=0x7f04002e;
         public static final int notification_template_custom_big=0x7f04002f;
         public static final int notification_template_icon_group=0x7f040030;
-        public static final int notification_template_lines_media=0x7f040031;
-        public static final int notification_template_media=0x7f040032;
-        public static final int notification_template_media_custom=0x7f040033;
         public static final int notification_template_part_chronometer=0x7f040034;
         public static final int notification_template_part_time=0x7f040035;
         public static final int select_dialog_item_material=0x7f040036;
         public static final int select_dialog_multichoice_material=0x7f040037;
         public static final int select_dialog_singlechoice_material=0x7f040038;
         public static final int support_simple_spinner_dropdown_item=0x7f040039;
-        public static final int view_dv_jcamera=0x7f04003a;
     }
     public static final class mipmap {
-        public static final int custom_grid_scan_line=0x7f030000;
-        public static final int custom_scan_line=0x7f030001;
-        public static final int icon_dv_album=0x7f030002;
-        public static final int icon_dv_arrow_left_white_back=0x7f030003;
-        public static final int icon_dv_camera=0x7f030004;
-        public static final int icon_dv_checked=0x7f030005;
-        public static final int icon_dv_default_image=0x7f030006;
-        public static final int icon_dv_folder=0x7f030007;
-        public static final int icon_dv_folder_selected=0x7f030008;
-        public static final int icon_dv_switch_camera=0x7f030009;
-        public static final int icon_dv_take_photo=0x7f03000a;
-        public static final int icon_dv_unchecked=0x7f03000b;
-        public static final int icon_dv_video_play=0x7f03000c;
-        public static final int qrcode_default_grid_scan_line=0x7f03000d;
-        public static final int qrcode_default_scan_line=0x7f03000e;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f090000;
@@ -3391,9 +3190,6 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int abc_shareactionprovider_share_with=0x7f090018;
         public static final int abc_shareactionprovider_share_with_application=0x7f090019;
         public static final int abc_toolbar_collapse_description=0x7f09001a;
-        public static final int app_name=0x7f09001d;
-        public static final int open_camera_failure=0x7f09001e;
-        public static final int permission_denied_tip=0x7f09001f;
         public static final int search_menu_title=0x7f09001b;
         public static final int status_bar_notification_info_overflow=0x7f09001c;
     }
@@ -3403,13 +3199,6 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int Animation_AppCompat_Dialog=0x7f080098;
         public static final int Animation_AppCompat_DropDownUp=0x7f080099;
         public static final int Animation_AppCompat_Tooltip=0x7f08009a;
-        public static final int AppTheme=0x7f080000;
-        public static final int AutoMatch=0x7f080162;
-        public static final int AutoMatch_Horizontal=0x7f080163;
-        public static final int AutoMatch_Vertical=0x7f080164;
-        public static final int AutoWrap=0x7f080165;
-        public static final int AutoWrap_Horizontal=0x7f080166;
-        public static final int AutoWrap_Vertical=0x7f080167;
         public static final int Base_AlertDialog_AppCompat=0x7f08009b;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f08009c;
         public static final int Base_Animation_AppCompat_Dialog=0x7f08009d;
@@ -3565,18 +3354,6 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int Base_Widget_AppCompat_TextView_SpinnerItem=0x7f08006e;
         public static final int Base_Widget_AppCompat_Toolbar=0x7f080091;
         public static final int Base_Widget_AppCompat_Toolbar_Button_Navigation=0x7f08006f;
-        public static final int BaseAppTheme=0x7f080094;
-        public static final int MatchAuto=0x7f080168;
-        public static final int MatchAuto_Horizontal=0x7f080169;
-        public static final int MatchAuto_Vertical=0x7f08016a;
-        public static final int MatchMatch=0x7f08016b;
-        public static final int MatchMatch_Horizontal=0x7f08016c;
-        public static final int MatchMatch_Vertical=0x7f08016d;
-        public static final int MatchOne=0x7f08016e;
-        public static final int MatchWrap=0x7f08016f;
-        public static final int MatchWrap_Horizontal=0x7f080170;
-        public static final int MatchWrap_Vertical=0x7f080171;
-        public static final int OneMatch=0x7f080172;
         public static final int Platform_AppCompat=0x7f080070;
         public static final int Platform_AppCompat_Light=0x7f080071;
         public static final int Platform_ThemeOverlay_AppCompat=0x7f080072;
@@ -3604,7 +3381,6 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int RtlOverlay_Widget_AppCompat_SearchView_MagIcon=0x7f08001b;
         public static final int RtlUnderlay_Widget_AppCompat_ActionButton=0x7f08001c;
         public static final int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow=0x7f08001d;
-        public static final int SelTheme=0x7f080095;
         public static final int TextAppearance_AppCompat=0x7f0800d0;
         public static final int TextAppearance_AppCompat_Body1=0x7f0800d1;
         public static final int TextAppearance_AppCompat_Body2=0x7f0800d2;
@@ -3657,14 +3433,9 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int TextAppearance_Compat_Notification_Info=0x7f080078;
         /** integer name="cancel_button_image_alpha">127</integer
          */
-        public static final int TextAppearance_Compat_Notification_Info_Media=0x7f08007d;
         public static final int TextAppearance_Compat_Notification_Line2=0x7f080160;
-        public static final int TextAppearance_Compat_Notification_Line2_Media=0x7f080161;
-        public static final int TextAppearance_Compat_Notification_Media=0x7f08007e;
         public static final int TextAppearance_Compat_Notification_Time=0x7f080079;
-        public static final int TextAppearance_Compat_Notification_Time_Media=0x7f08007f;
         public static final int TextAppearance_Compat_Notification_Title=0x7f08007a;
-        public static final int TextAppearance_Compat_Notification_Title_Media=0x7f080080;
         public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item=0x7f0800ff;
         public static final int TextAppearance_Widget_AppCompat_Toolbar_Subtitle=0x7f080100;
         public static final int TextAppearance_Widget_AppCompat_Toolbar_Title=0x7f080101;
@@ -3771,18 +3542,8 @@ color name="secondary_text_default_material_dark">#b3ffffff</color
         public static final int Widget_Compat_NotificationActionContainer=0x7f08007b;
         public static final int Widget_Compat_NotificationActionText=0x7f08007c;
         public static final int Widget_Support_CoordinatorLayout=0x7f08015f;
-        public static final int WrapAuto=0x7f080173;
-        public static final int WrapAuto_Horizontal=0x7f080174;
-        public static final int WrapAuto_Vertical=0x7f080175;
-        public static final int WrapMatch=0x7f080176;
-        public static final int WrapMatch_Horizontal=0x7f080177;
-        public static final int WrapMatch_Vertical=0x7f080178;
-        public static final int WrapWrap=0x7f080179;
-        public static final int WrapWrap_Horizontal=0x7f08017a;
-        public static final int WrapWrap_Vertical=0x7f08017b;
     }
     public static final class xml {
-        public static final int provider_paths=0x7f060000;
     }
     public static final class styleable {
         /** Attributes that can be used with a ActionBar.
@@ -8270,10 +8031,6 @@ containing a value of this type.
            @see #JCameraView_iconSize
            @see #JCameraView_iconSrc
          */
-        public static final int[] JCameraView = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005
-        };
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#duration_max}
           attribute's value can be found in the {@link #JCameraView} array.
@@ -8287,7 +8044,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:duration_max
         */
-        public static final int JCameraView_duration_max = 0;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#iconLeft}
           attribute's value can be found in the {@link #JCameraView} array.
@@ -8297,7 +8053,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:iconLeft
         */
-        public static final int JCameraView_iconLeft = 1;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#iconMargin}
           attribute's value can be found in the {@link #JCameraView} array.
@@ -8313,7 +8068,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:iconMargin
         */
-        public static final int JCameraView_iconMargin = 2;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#iconRight}
           attribute's value can be found in the {@link #JCameraView} array.
@@ -8323,7 +8077,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:iconRight
         */
-        public static final int JCameraView_iconRight = 3;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#iconSize}
           attribute's value can be found in the {@link #JCameraView} array.
@@ -8339,7 +8092,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:iconSize
         */
-        public static final int JCameraView_iconSize = 4;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#iconSrc}
           attribute's value can be found in the {@link #JCameraView} array.
@@ -8349,7 +8101,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:iconSrc
         */
-        public static final int JCameraView_iconSrc = 5;
         /** Attributes that can be used with a LinearLayoutCompat.
            <p>Includes the following attributes:</p>
            <table>
@@ -9332,17 +9083,6 @@ containing a value of this type.
            @see #QRCodeView_qrcv_topOffset
            @see #QRCodeView_qrcv_verticalBias
          */
-        public static final int[] QRCodeView = {
-            0x7f01010b, 0x7f01010c, 0x7f01010d, 0x7f01010e,
-            0x7f01010f, 0x7f010110, 0x7f010111, 0x7f010112,
-            0x7f010113, 0x7f010114, 0x7f010115, 0x7f010116,
-            0x7f010117, 0x7f010118, 0x7f010119, 0x7f01011a,
-            0x7f01011b, 0x7f01011c, 0x7f01011d, 0x7f01011e,
-            0x7f01011f, 0x7f010120, 0x7f010121, 0x7f010122,
-            0x7f010123, 0x7f010124, 0x7f010125, 0x7f010126,
-            0x7f010127, 0x7f010128, 0x7f010129, 0x7f01012a,
-            0x7f01012b, 0x7f01012c
-        };
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_animTime}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9356,7 +9096,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_animTime
         */
-        public static final int QRCodeView_qrcv_animTime = 15;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_barCodeTipText}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9367,7 +9106,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
           @attr name android.support.v7.appcompat:qrcv_barCodeTipText
         */
-        public static final int QRCodeView_qrcv_barCodeTipText = 20;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_barcodeRectHeight}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9380,7 +9118,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_barcodeRectHeight
         */
-        public static final int QRCodeView_qrcv_barcodeRectHeight = 6;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_borderColor}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9392,7 +9129,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           @attr name android.support.v7.appcompat:qrcv_borderColor
         */
-        public static final int QRCodeView_qrcv_borderColor = 14;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_borderSize}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9405,7 +9141,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_borderSize
         */
-        public static final int QRCodeView_qrcv_borderSize = 13;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_cornerColor}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9417,7 +9152,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           @attr name android.support.v7.appcompat:qrcv_cornerColor
         */
-        public static final int QRCodeView_qrcv_cornerColor = 3;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_cornerDisplayType}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9434,7 +9168,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 </table>
           @attr name android.support.v7.appcompat:qrcv_cornerDisplayType
         */
-        public static final int QRCodeView_qrcv_cornerDisplayType = 4;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_cornerLength}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9447,7 +9180,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_cornerLength
         */
-        public static final int QRCodeView_qrcv_cornerLength = 2;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_cornerSize}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9460,7 +9192,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_cornerSize
         */
-        public static final int QRCodeView_qrcv_cornerSize = 1;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_customGridScanLineDrawable}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9470,7 +9201,6 @@ in (inches), mm (millimeters).
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:qrcv_customGridScanLineDrawable
         */
-        public static final int QRCodeView_qrcv_customGridScanLineDrawable = 30;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_customScanLineDrawable}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9480,7 +9210,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:qrcv_customScanLineDrawable
         */
-        public static final int QRCodeView_qrcv_customScanLineDrawable = 12;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isAutoZoom}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9494,7 +9223,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isAutoZoom
         */
-        public static final int QRCodeView_qrcv_isAutoZoom = 33;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isBarcode}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9508,7 +9236,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isBarcode
         */
-        public static final int QRCodeView_qrcv_isBarcode = 18;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isOnlyDecodeScanBoxArea}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9522,7 +9249,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isOnlyDecodeScanBoxArea
         */
-        public static final int QRCodeView_qrcv_isOnlyDecodeScanBoxArea = 31;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isScanLineReverse}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9536,7 +9262,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isScanLineReverse
         */
-        public static final int QRCodeView_qrcv_isScanLineReverse = 28;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isShowDefaultGridScanLineDrawable}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9550,7 +9275,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isShowDefaultGridScanLineDrawable
         */
-        public static final int QRCodeView_qrcv_isShowDefaultGridScanLineDrawable = 29;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isShowDefaultScanLineDrawable}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9564,7 +9288,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isShowDefaultScanLineDrawable
         */
-        public static final int QRCodeView_qrcv_isShowDefaultScanLineDrawable = 11;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isShowLocationPoint}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9578,7 +9301,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isShowLocationPoint
         */
-        public static final int QRCodeView_qrcv_isShowLocationPoint = 32;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isShowTipBackground}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9592,7 +9314,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isShowTipBackground
         */
-        public static final int QRCodeView_qrcv_isShowTipBackground = 26;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isShowTipTextAsSingleLine}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9606,7 +9327,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isShowTipTextAsSingleLine
         */
-        public static final int QRCodeView_qrcv_isShowTipTextAsSingleLine = 25;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_isTipTextBelowRect}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9620,7 +9340,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_isTipTextBelowRect
         */
-        public static final int QRCodeView_qrcv_isTipTextBelowRect = 23;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_maskColor}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9632,7 +9351,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           @attr name android.support.v7.appcompat:qrcv_maskColor
         */
-        public static final int QRCodeView_qrcv_maskColor = 7;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_qrCodeTipText}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9643,7 +9361,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
           @attr name android.support.v7.appcompat:qrcv_qrCodeTipText
         */
-        public static final int QRCodeView_qrcv_qrCodeTipText = 19;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_rectWidth}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9656,7 +9373,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_rectWidth
         */
-        public static final int QRCodeView_qrcv_rectWidth = 5;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_scanLineColor}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9668,7 +9384,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           @attr name android.support.v7.appcompat:qrcv_scanLineColor
         */
-        public static final int QRCodeView_qrcv_scanLineColor = 9;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_scanLineMargin}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9681,7 +9396,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_scanLineMargin
         */
-        public static final int QRCodeView_qrcv_scanLineMargin = 10;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_scanLineSize}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9694,7 +9408,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_scanLineSize
         */
-        public static final int QRCodeView_qrcv_scanLineSize = 8;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_tipBackgroundColor}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9706,7 +9419,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           @attr name android.support.v7.appcompat:qrcv_tipBackgroundColor
         */
-        public static final int QRCodeView_qrcv_tipBackgroundColor = 27;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_tipTextColor}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9718,7 +9430,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
           @attr name android.support.v7.appcompat:qrcv_tipTextColor
         */
-        public static final int QRCodeView_qrcv_tipTextColor = 22;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_tipTextMargin}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9731,7 +9442,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_tipTextMargin
         */
-        public static final int QRCodeView_qrcv_tipTextMargin = 24;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_tipTextSize}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9744,7 +9454,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_tipTextSize
         */
-        public static final int QRCodeView_qrcv_tipTextSize = 21;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_toolbarHeight}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9757,7 +9466,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_toolbarHeight
         */
-        public static final int QRCodeView_qrcv_toolbarHeight = 17;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_topOffset}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9770,7 +9478,6 @@ Available units are: px (pixels), dp (density-independent pixels), sp (scaled pi
 in (inches), mm (millimeters).
           @attr name android.support.v7.appcompat:qrcv_topOffset
         */
-        public static final int QRCodeView_qrcv_topOffset = 0;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#qrcv_verticalBias}
           attribute's value can be found in the {@link #QRCodeView} array.
@@ -9784,7 +9491,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:qrcv_verticalBias
         */
-        public static final int QRCodeView_qrcv_verticalBias = 16;
         /** Attributes that can be used with a RatioImageView.
            <p>Includes the following attributes:</p>
            <table>
@@ -9795,9 +9501,6 @@ containing a value of this type.
            </table>
            @see #RatioImageView_ratio
          */
-        public static final int[] RatioImageView = {
-            0x7f010006
-        };
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#ratio}
           attribute's value can be found in the {@link #RatioImageView} array.
@@ -9811,7 +9514,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:ratio
         */
-        public static final int RatioImageView_ratio = 0;
         /** Attributes that can be used with a RecycleListView.
            <p>Includes the following attributes:</p>
            <table>
@@ -9893,23 +9595,16 @@ containing a value of this type.
            @see #RecyclerView_spanCount
            @see #RecyclerView_stackFromEnd
          */
-        public static final int[] RecyclerView = {
-            0x010100c4, 0x010100f1, 0x7f01012d, 0x7f01012e,
-            0x7f01012f, 0x7f010130, 0x7f010131, 0x7f010132,
-            0x7f010133, 0x7f010134, 0x7f010135
-        };
         /**
           <p>This symbol is the offset where the {@link android.R.attr#descendantFocusability}
           attribute's value can be found in the {@link #RecyclerView} array.
           @attr name android:descendantFocusability
         */
-        public static final int RecyclerView_android_descendantFocusability = 1;
         /**
           <p>This symbol is the offset where the {@link android.R.attr#orientation}
           attribute's value can be found in the {@link #RecyclerView} array.
           @attr name android:orientation
         */
-        public static final int RecyclerView_android_orientation = 0;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#fastScrollEnabled}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -9923,7 +9618,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:fastScrollEnabled
         */
-        public static final int RecyclerView_fastScrollEnabled = 6;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#fastScrollHorizontalThumbDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -9933,7 +9627,6 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:fastScrollHorizontalThumbDrawable
         */
-        public static final int RecyclerView_fastScrollHorizontalThumbDrawable = 9;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#fastScrollHorizontalTrackDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -9943,7 +9636,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:fastScrollHorizontalTrackDrawable
         */
-        public static final int RecyclerView_fastScrollHorizontalTrackDrawable = 10;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#fastScrollVerticalThumbDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -9953,7 +9645,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:fastScrollVerticalThumbDrawable
         */
-        public static final int RecyclerView_fastScrollVerticalThumbDrawable = 7;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#fastScrollVerticalTrackDrawable}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -9963,7 +9654,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name android.support.v7.appcompat:fastScrollVerticalTrackDrawable
         */
-        public static final int RecyclerView_fastScrollVerticalTrackDrawable = 8;
         /**
           <p>
           @attr description
@@ -9987,7 +9677,6 @@ containing a value of this type.
           <p>This is a private symbol.
           @attr name android.support.v7.appcompat:layoutManager
         */
-        public static final int RecyclerView_layoutManager = 2;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#reverseLayout}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -10001,7 +9690,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:reverseLayout
         */
-        public static final int RecyclerView_reverseLayout = 4;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#spanCount}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -10015,7 +9703,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:spanCount
         */
-        public static final int RecyclerView_spanCount = 3;
         /**
           <p>This symbol is the offset where the {@link android.support.v7.appcompat.R.attr#stackFromEnd}
           attribute's value can be found in the {@link #RecyclerView} array.
@@ -10029,7 +9716,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name android.support.v7.appcompat:stackFromEnd
         */
-        public static final int RecyclerView_stackFromEnd = 5;
         /** Attributes that can be used with a SearchView.
            <p>Includes the following attributes:</p>
            <table>

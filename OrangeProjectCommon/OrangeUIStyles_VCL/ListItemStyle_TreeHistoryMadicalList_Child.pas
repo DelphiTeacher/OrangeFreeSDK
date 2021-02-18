@@ -3,13 +3,13 @@ unit ListItemStyle_TreeHistoryMadicalList_Child;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Windows, Messages, SysUtils, Variants, Classes,
 
   uSkinItems,
   uSkinVirtualListType,
   uSkinCustomListType,
 
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSkinWindowsControl,
+  Graphics, Controls, Forms, Dialogs, uSkinWindowsControl,
   uSkinPanelType, uSkinLabelType, uSkinItemDesignerPanelType;
 
 type

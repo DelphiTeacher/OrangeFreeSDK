@@ -30,7 +30,6 @@ object FrameWebBrowser: TFrameWebBrowser
     KeepSelfOwnMaterial = True
     SelfOwnMaterial.BackColor.BorderEadges = [beBottom]
     SelfOwnMaterial.BackColor.IsFill = True
-    SelfOwnMaterial.BackColor.FillColor.Color = xFF0199FF
     SelfOwnMaterial.BackColor.BorderColor.Color = xFFEDEDED
     SelfOwnMaterial.BackColor.DrawRectSetting.Left = -10.000000000000000000
     SelfOwnMaterial.BackColor.DrawRectSetting.Right = -10.000000000000000000
@@ -119,7 +118,7 @@ object FrameWebBrowser: TFrameWebBrowser
     object btnReturn: TSkinFMXButton
       ParentMouseEvent = False
       ComponentTypeUseKind = ctukName
-      MaterialUseKind = mukSelfOwn
+      MaterialUseKind = mukRef
       KeepSelfOwnMaterial = True
       ComponentTypeName = 'NormalPushed'
       SelfOwnMaterial.BackColor.IsFill = True
@@ -184,6 +183,7 @@ object FrameWebBrowser: TFrameWebBrowser
       SelfOwnMaterial.DrawPictureParam.DrawRectSetting.SizeType = dpstPixel
       SelfOwnMaterial.DrawPictureParam.DrawRectSetting.PositionVertType = dppvtCenter
       SelfOwnMaterial.DrawPictureParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+      RefMaterial = btnReturn_Material
       MouseDownFocus = False
       Align = Left
       ClipChildren = True
@@ -304,23 +304,9 @@ object FrameWebBrowser: TFrameWebBrowser
       Properties.AutoSize = False
       Properties.IsAutoPush = False
       Properties.IsPushed = False
+      Properties.Icon.ImageName = 'more_menu_black'
       Properties.Icon.IsClipRound = False
-      Properties.Icon.PNG = {
-        89504E470D0A1A0A0000000D494844520000004800000048080600000055EDB3
-        47000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
-        017A49444154785EEDD8414AC34014C6F190ECB4B750110F288A27F23216DD8A
-        78824002592824247E8FBEAEEACC64352D99FF0F4A43FA6691C7A42FF92A0000
-        000040799665D9CDF3FC324DD347DBB6BFF6D1F1BBCE3FEBFCB59795490DB81B
-        C7F15BCDF8977EFB52CDAD979745D7BF8B35E7C89B54DE4EB2DBCA7B90A4DA27
-        5F560EFBCFF1EB4F52EDDE976557FB77767DDFDFFB61D2300C0F7E98DDD91A84
-        041FE5ABA8F6CD976577B61DD434CDAB1F26D575BDBA76336C74DB08F74D12A4
-        9A4F7D5DF9B2B2D84360AC49D61CD5DC7879996C27D9738E8DF2AEEB7EEC63FF
-        393AF7A81E95B9730000D8068D7212C5103580443144D74FA21863B795F72049
-        B5248A31F61AE2CBB223514C2051BC543ECA57512D89620C8962846A48140FAD
-        3865CD510D89A23DE7D82827510400605334CA491443D40012C5105D3F89628C
-        DD56DE8324D59228C6D86B882FCB8E44318144F152F9285F45B5248A31248A11
-        AA21513CB4E294354735248AF69C63A39C441100000000505555F50724CA5A2D
-        0BC666820000000049454E44AE426082}
+      Properties.Icon.SkinImageList = dmEasyServiceCommonMaterial.imglistCommonButtonIcons
       Properties.PushedIcon.IsClipRound = False
       Properties.ButtonIndex = -1
       Properties.PushedGroupIndex = 0
@@ -1040,6 +1026,13 @@ object FrameWebBrowser: TFrameWebBrowser
     TabOrder = 17
     Properties.IsToolBar = False
   end
+  object tmrNewURL: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = tmrNewURLTimer
+    Left = 120
+    Top = 370
+  end
   object FrameContext1: TFrameContext
     OnCanReturn = FrameContext1CanReturn
     OnShowEx = FrameContext1ShowEx
@@ -1054,5 +1047,54 @@ object FrameWebBrowser: TFrameWebBrowser
       Category = 'Media Library'
       OnBeforeExecute = ShowShareSheetAction1BeforeExecute
     end
+  end
+  object btnReturn_Material: TSkinButtonDefaultMaterial
+    BackColor.IsFill = True
+    IsAutoCenterIconAndCaption = False
+    DrawDetailParam.FontTrimming = fttNone
+    DrawDetailParam.FontHorzAlign = fhaLeft
+    DrawDetailParam.FontVertAlign = fvaBottom
+    DrawDetail1Param.FontTrimming = fttNone
+    DrawDetail1Param.FontHorzAlign = fhaLeft
+    DrawDetail1Param.FontVertAlign = fvaTop
+    DrawHelpTextParam.FontColor = claGray
+    DrawHelpTextParam.DrawFont.Color = claGray
+    DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+    DrawHelpTextParam.FontTrimming = fttNone
+    DrawHelpTextParam.FontHorzAlign = fhaLeft
+    DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+    DrawCaptionParam.FontSize = 18.000000000000000000
+    DrawCaptionParam.FontColor = claWhite
+    DrawCaptionParam.DrawFont.Size = 18.000000000000000000
+    DrawCaptionParam.DrawFont.Color = claWhite
+    DrawCaptionParam.DrawFont.FontColor.Color = claWhite
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaLeft
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    DrawCaptionParam.DrawRectSetting.Left = 36.000000000000000000
+    DrawCaptionParam.DrawRectSetting.Enabled = True
+    DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
+    DrawCaptionParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+    DrawCaptionParam.DrawEffectSetting.MouseDownEffect.FontColor.Color = claGray
+    NormalPicture.ImageName = 'img_title_back_black'
+    NormalPicture.IsClipRound = False
+    NormalPicture.SkinImageList = dmEasyServiceCommonMaterial.imglistCommonButtonIcons
+    HoverPicture.IsClipRound = False
+    DownPicture.IsClipRound = False
+    DownPicture.ImageIndex = 1
+    DisabledPicture.IsClipRound = False
+    FocusedPicture.IsClipRound = False
+    PushedPicture.IsClipRound = False
+    DrawPictureParam.IsAutoFit = True
+    DrawPictureParam.PictureVertAlign = pvaCenter
+    DrawPictureParam.DrawRectSetting.Left = 16.000000000000000000
+    DrawPictureParam.DrawRectSetting.Height = 28.000000000000000000
+    DrawPictureParam.DrawRectSetting.Enabled = True
+    DrawPictureParam.DrawRectSetting.SizeType = dpstPixel
+    DrawPictureParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawPictureParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+    Left = 48
+    Top = 120
   end
 end

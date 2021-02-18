@@ -32,6 +32,7 @@ uses
 
   XSuperObject_Copy,
 
+  uCommandLineHelper,
   uOrangeUISmartSDKDeployment,
 
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,
@@ -304,6 +305,8 @@ type
     //把DataSet中的数据保存到变量列表
     procedure SaveDataSetToVariableList(AVariableList:TConfigVariableList;
                                           AClientDataSet:TClientDataSet);
+
+    procedure DoGetCommandLineOutput(ACommandLine:String;ATag:String;AOutput:String);
   public
     //从配置文件加载
     procedure LoadFromINI(AINIFilePath:String);
@@ -873,8 +876,8 @@ begin
           Self.edtJarName.Text,
           Self.memUsedAndroidJars.Lines,
           Self.memJavaSourceFiles.Lines,
-          ATempRootDir+'gen'+Self.edtJarName.Text+'.bat',
-          ''
+          ATempRootDir+'gen'+Self.edtJarName.Text+'.bat'//,
+//          ''
 
           );
 
@@ -1643,32 +1646,14 @@ end;
 
 procedure TfrmSmartDeploy.btnGenerateAndroidAARClick(Sender: TObject);
 var
-  I:Integer;
-  AProjectFilePath:String;
-  ATempRootDir:String;
-  AProjectName:String;
-  AAarName:String;
-  AProjectGenPath:String;
-  AAndroidManifestXmlFilePath:String;
-  AAndroidManifestXmlFilePaths:TStringList;
-  AGenJarFileNamesNoExt:TStringList;
-  AAndroidJarList:TStringList;
-  AAbsoluteFileList:TStringList;
-
-  var AJDKDir:String;
-  var AAndroidSDKDir:String;
-  var AAndroidSDKPlatform:String;
-  var AAndroidSDKBuildTools:String;
-
-  ABatStringList:TStringList;
-  AGenJarBatFilePath:String;
-
-//  AResDir:String;
-
   AAndroidPlatform:String;
 begin
+
+
   //因为需要计算出相对目录
   if not CheckProjectFileIsExist then Exit;
+
+
 
 
   AAndroidPlatform:='Android';
@@ -1678,208 +1663,13 @@ begin
   end;
 
 
-  if not FProjectConfig.GetAndroidSDKSetting(
-                                            //19.0,20.0
-                                            Self.cmbDelphiVersions.Text,//'20.0',
-                                            //后面都不带\
-                                            AJDKDir,
-                                            AAndroidSDKDir,
-                                            AAndroidSDKPlatform,
-                                            AAndroidSDKBuildTools
-                                            ) then
-  begin
-    ShowMessage('Delphi的AndroidSDK配置有问题!');
-    Exit;
-  end;
+  //
+  GenerateProject_R_Java_Jar(Self.edtProjectFilePath.Text,
+                      AAndroidPlatform,
+                      Self.cmbDelphiVersions.Text,
+                      Self.DoGetCommandLineOutput
+                      );
 
-
-  //生成编译R.java的批处理,不然调用aar的时候会出现资源文件找不到，而产生闪退
-  AProjectFilePath:=Self.edtProjectFilePath.Text;
-
-
-  AAndroidJarList:=TStringList.Create;
-  AAndroidManifestXmlFilePaths:=TStringList.Create;
-  AGenJarFileNamesNoExt:=TStringList.Create;
-  try
-
-      //从工程目录获取添加的jar列表,这些jar在aar的解压目录中
-      FProjectConfig.LoadAndroidJarListFromProject(AAndroidJarList,AProjectFilePath);
-      if AAndroidJarList.Count=0 then
-      begin
-        ShowMessage('该工程尚未添加任何jar,请先添加!');
-        Exit;
-      end;
-
-
-      //取到工程名称
-      //TestTwitter_Android.dproj  ->  TestTwitter_Android
-      AProjectName:=ReplaceStr(ExtractFileName(AProjectFilePath),'.dproj','');
-
-
-
-      //工程目录的JarGen目录,统一放在一个JarGen目录中,好管理
-      //比如C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\JarGen\Project1\
-      ATempRootDir:=ExtractFilePath(AProjectFilePath)+CONST_JAR_TEMP_DIR+'\'+AProjectName+'\';
-
-
-
-      //当前工程的临时文件生成目录,用于获取生成的AndroidManifest.xml和res目录
-      //比如C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\Android\Release\Project1\
-      AProjectGenPath:=ExtractFilePath(AProjectFilePath)
-                        +AAndroidPlatform+'\Release\'
-                        +AProjectName+'\';
-
-
-      if not FileExists(AProjectGenPath+'AndroidManifest.xml') then
-      begin
-        ShowMessage('AndroidManifest.xml不存在,请先在Android平台编译并运行一次!');
-        Exit;
-      end;
-      if not DirectoryExists(AProjectGenPath+'res') then
-      begin
-        ShowMessage('生成目录中不存在res目录,请先在Android平台编译并运行一次!');
-        Exit;
-      end;
-
-
-
-      //要生成工程文件包名的R.jar,不需要了
-//      AAndroidManifestXmlFilePaths.Add(AProjectGenPath+'AndroidManifest.xml');
-//      AGenJarFileNamesNoExt.Add(AProjectName);
-
-//      if ATempDexedJarFilePath<>'' then
-//      begin
-//        ABatStringList.Add('del '+'"'+ATempDexedJarFilePath+'"');
-//      end;
-//C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Android\Release\
-//R_JAVA_TestMediaPicker_D10_4-dexed.jar
-//R_JAVA_TestMediaPicker-dexed.jar
-      DeleteFile(ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'+'R_JAVA_'+AProjectName+'-dexed'+'.jar'
-                        );
-
-
-
-
-      //对应每个aar也要生成R.java
-      //取出每个aar目录中的AndroidManifest.xml文件路径
-      for I := 0 to AAndroidJarList.Count-1 do
-      begin
-          //判断jar目录下是否存在AndroidManifest.xml以及它的res目录,
-          //获取aar目录下面的AndroidManifest.xml
-          //比如C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\me_dm7_barcodescanner\core_1_9_8\AndroidManifest.xml
-          //比如C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\me_dm7_barcodescanner\core_1_9_8\res\
-          AAndroidManifestXmlFilePath:=
-            //\me_dm7_barcodescanner\core_1_9_8\me_dm7_barcodescanner_core.jar
-            //转换成绝对路径,获取jar所在的绝对目录
-            ConvertRelativePathToAbsolutePath(ExtractFilePath(AProjectFilePath),ExtractFilePath(AAndroidJarList[I]))
-                    +'AndroidManifest.xml';
-
-
-          //判断jar目录下是否存在AndroidManifest.xml以及它的res目录,
-          if not FileExists(AAndroidManifestXmlFilePath) then
-          begin
-            Continue;
-          end;
-          if not DirectoryExists(ExtractFilePath(AAndroidManifestXmlFilePath)+'res') then
-          begin
-            Continue;
-          end;
-
-
-          //判断res目录下是否存在需要布署的子文件
-          AAbsoluteFileList:=TStringList.Create;
-          try
-            DoGetFileList(ExtractFilePath(AAndroidManifestXmlFilePath)+'res',AAbsoluteFileList);
-            if AAbsoluteFileList.Count=0 then
-            begin
-              //该aar没有需要布署的资源,因此它没有R.java,不需要处理
-              Continue;
-            end;
-          finally
-            FreeAndNil(AAbsoluteFileList);
-          end;
-
-
-
-
-
-          AAndroidManifestXmlFilePaths.Add(AAndroidManifestXmlFilePath);
-          AAarName:=ExtractFilePath(AAndroidJarList[I]);
-          //去掉\
-          AAarName:=Copy(AAarName,1,Length(AAarName)-1);
-          //获取aar文件夹的名称
-          AGenJarFileNamesNoExt.Add(ExtractFileName(AAarName));
-
-
-      end;
-
-
-
-
-
-      ABatStringList:=TStringList.Create;
-      //所需要生成R.java的
-      for I := 0 to AAndroidManifestXmlFilePaths.Count-1 do
-      begin
-          //将相关的src
-
-//          AResDir:=ExtractFilePath(AAndroidManifestXmlFilePaths[I])+'res';
-//          if DirectoryExists(ExtractFilePath(AAndroidManifestXmlFilePaths[I])+'res_origin') then
-//          begin
-//            AResDir:=ExtractFilePath(AAndroidManifestXmlFilePaths[I])+'res_origin';
-//          end;
-          
-          //传入工程项目的res目录和AndroidManifest.xml路径列表
-          //生成R.java,Gen_R_Java_***.bat列表
-          if not Self.FProjectConfig.GenerateR_Java_And_Jar_BatStringList(
-                                        //C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\JarGen\目录
-                                        ATempRootDir,
-                                        //资源文件目录
-                                        //C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Android\Release\TestMediaPicker\res
-                                        AProjectGenPath+'res',
-//                                        AResDir,
-                                        //需要生成R.java的
-                                        //C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Android\Release\TestMediaPicker\AndroidManifest.xml
-                                        AAndroidManifestXmlFilePaths[I],
-                                        //Jar不带后缀的包名
-                                        AProjectName,//AGenJarFileNamesNoExt[I],
-
-                                        AJDKDir,
-                                        AAndroidSDKDir,
-                                        AAndroidSDKPlatform,
-                                        AAndroidSDKBuildTools,
-
-                                        ABatStringList
-                                        ) then
-          begin
-            //Self.memLog.Lines.Add();
-          end;
-
-
-
-      end;
-
-      AGenJarBatFilePath:=ATempRootDir+'Generate_R_JAVA.bat';
-      ABatStringList.Add('pause');
-      //保存到文件
-      ABatStringList.SaveToFile(AGenJarBatFilePath);
-
-      ABatStringList.Free;
-
-
-
-      ShellExecute(0, nil, PChar(AGenJarBatFilePath), nil, nil, SW_SHOWMAXIMIZED);
-
-
-      //将R_JAVA_***.jar添加到工程中去
-
-
-
-  finally
-    AAndroidManifestXmlFilePaths.Free;
-    AGenJarFileNamesNoExt.Free;
-    AAndroidJarList.Free;
-  end;
 
 end;
 
@@ -2578,6 +2368,20 @@ begin
   end;
 end;
 
+procedure TfrmSmartDeploy.DoGetCommandLineOutput(ACommandLine, ATag,
+  AOutput: String);
+begin
+//  Self.memLog.Lines.Add(ACommandLine+':');
+  if ATag<>'' then
+  begin
+    Self.memLog.Lines.Add(ATag+':'+AOutput);
+  end
+  else
+  begin
+    Self.memLog.Lines.Add(AOutput);
+  end;
+end;
+
 procedure TfrmSmartDeploy.DoRecordDeployConfigLog(Sender: TObject; const ALog: String);
 begin
   Self.memLog.Lines.Add(ALog);
@@ -2736,23 +2540,32 @@ var
   ADeployConfig:TDeployConfig;
   AConfigVariable:TConfigVariable;
 begin
-  Self.cmbConfigFilePath.Items.BeginUpdate;
-  try
 
-      I:=Self.cmbConfigFilePath.Items.IndexOf(AConfigFilePath);
-      if I<>0 then
-      begin
-          if I<>-1 then
+
+      Self.cmbConfigFilePath.Items.BeginUpdate;
+      Self.cmbConfigFilePath.OnChange:=nil;
+      try
+
+          I:=Self.cmbConfigFilePath.Items.IndexOf(AConfigFilePath);
+          if I<>0 then
           begin
-            //已经存在
-            Self.cmbConfigFilePath.Items.Delete(I);
+              if I<>-1 then
+              begin
+                //已经存在
+                Self.cmbConfigFilePath.Items.Delete(I);
+              end;
+              Self.cmbConfigFilePath.Items.Insert(0,AConfigFilePath);
+              Self.cmbConfigFilePath.Items.SaveToFile(ExtractFilePath(Application.ExeName)+'ConfigHistory.txt');
+
+              //置顶
+              Self.cmbConfigFilePath.ItemIndex:=0;
           end;
-          Self.cmbConfigFilePath.Items.Insert(0,AConfigFilePath);
-          Self.cmbConfigFilePath.Items.SaveToFile(ExtractFilePath(Application.ExeName)+'ConfigHistory.txt');
+      finally
+        Self.cmbConfigFilePath.Items.EndUpdate;
+        Self.cmbConfigFilePath.OnChange:=Self.cmbConfigFilePathChange;
       end;
-  finally
-    Self.cmbConfigFilePath.Items.EndUpdate;
-  end;
+
+
 
 
       FCurrentConfigFileName:=AConfigFilePath;

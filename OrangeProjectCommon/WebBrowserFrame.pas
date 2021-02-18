@@ -20,7 +20,7 @@ uses
   uUIFunction,
   uComponentType,
   uFrameContext,
-  uConst,
+//  uConst,
 //  uManager,
 //  uComponentType,
 //  uUIFunction,
@@ -51,6 +51,8 @@ type
     btnCookie: TSkinFMXButton;
     btnPrint: TSkinFMXButton;
     btnClear: TSkinFMXButton;
+    tmrNewURL: TTimer;
+    btnReturn_Material: TSkinButtonDefaultMaterial;
     procedure btnReturnClick(Sender: TObject);
     procedure btnSyncClick(Sender: TObject);
     procedure FrameContext1ShowEx(Sender: TObject; AIsReturnShow: Boolean);
@@ -64,11 +66,18 @@ type
     procedure btnPrintClick(Sender: TObject);
     procedure btnClearClick(Sender: TObject);
     procedure FrameContext1Hide(Sender: TObject);
+    procedure tmrNewURLTimer(Sender: TObject);
   private
     FWebBrowser: TWebBrowser;
     procedure DoWebBrowserDidFinishLoad(Sender:TObject);
+    procedure WebBrowserShouldStartLoadWithRequest(ASender: TObject; const URL: string);
+  private
+    FNewURL:String;
+
+    //创建WebBrowser
     procedure DoShow;
-    procedure DoHide;
+//    //停止并隐藏WebBrowser
+//    procedure DoHide;
 
   public
     //是否可以返回上一个Frame
@@ -97,6 +106,7 @@ type
 
 var
   GlobalWebBrowserFrame:TFrameWebBrowser;
+  GlobalWebBrowserFrame2:TFrameWebBrowser;
 
 implementation
 
@@ -113,7 +123,14 @@ end;
 
 procedure TFrameWebBrowser.btnCookieClick(Sender: TObject);
 begin
-  DoLoadUrl(Const_OpenWebRoot+'/setcookie.php?user_fid=551');
+//  DoLoadUrl(Const_OpenWebRoot+'/setcookie.php?user_fid=551');
+//  FWebBrowser.Navigate('http://www.orangeui.cn/open'+'/setcookie.php?user_fid=551');
+
+
+  HideFrame;
+  ShowFrame(TFrame(GlobalWebBrowserFrame2),TFrameWebBrowser);//,Application.MainForm,nil,nil,nil,Application,True,True,ufsefNone);
+  GlobalWebBrowserFrame2.LoadUrl('http://www.orangeui.cn/open'+'/setcookie.php?user_fid=551');
+
 end;
 
 procedure TFrameWebBrowser.btnEmptyClick(Sender: TObject);
@@ -148,7 +165,7 @@ end;
 
 procedure TFrameWebBrowser.btnPrintClick(Sender: TObject);
 begin
-  DoLoadUrl(Const_OpenWebRoot+'/printcookie.php');
+//  DoLoadUrl(Const_OpenWebRoot+'/printcookie.php');
 
 end;
 
@@ -191,7 +208,7 @@ begin
   inherited;
   FWebBrowser:=nil;
 
-  Self.pnlToolBar.Material.BackColor.FillColor.Color:=SkinThemeColor;
+//  Self.pnlToolBar.Material.BackColor.FillColor.Color:=SkinThemeColor;
 
 
 
@@ -212,12 +229,12 @@ begin
   inherited;
 end;
 
-procedure TFrameWebBrowser.DoHide;
-begin
-  FWebBrowser.Stop;
-  FWebBrowser.Visible:=False;
-
-end;
+//procedure TFrameWebBrowser.DoHide;
+//begin
+//  FWebBrowser.Stop;
+//  FWebBrowser.Visible:=False;
+//
+//end;
 
 procedure TFrameWebBrowser.DoShow;
 begin
@@ -230,6 +247,7 @@ begin
     FWebBrowser.EnableCaching:=False;
 
     FWebBrowser.OnDidFinishLoad:=DoWebBrowserDidFinishLoad;
+    FWebBrowser.OnShouldStartLoadWithRequest:=WebBrowserShouldStartLoadWithRequest;
 
 //    {$IFDEF ANDROID}
 //      //Android下用了透明任务栏的模式
@@ -324,6 +342,8 @@ end;
 
 procedure TFrameWebBrowser.LoadUrl(AUrl:String;ACaption:String;AIsFirstLoad:Boolean);
 begin
+  FMX.Types.Log.d('OrangeUI LoadUrl Begin');
+
 
   //隐藏键盘工具栏,WebBrowser弹出的键盘自带
   SetVirtualKeyboardToolBarEnabled(False);
@@ -332,14 +352,16 @@ begin
   FUrl:=AUrl;
   Self.pnlToolBar.Caption:=ACaption;
 
-  if AIsFirstLoad then
-  begin
-    //第一次加载是在FrameContext.Show事件中
-  end
-  else
-  begin
+//  if AIsFirstLoad then
+//  begin
+//    //第一次加载是在FrameContext.Show事件中
+//  end
+//  else
+//  begin
     DoLoadUrl(AUrl);
-  end;
+//  end;
+
+  FMX.Types.Log.d('OrangeUI LoadUrl End');
 
 end;
 
@@ -350,8 +372,56 @@ begin
 
 end;
 
+procedure TFrameWebBrowser.tmrNewURLTimer(Sender: TObject);
+var
+  ANewURL:String;
+//  GlobalWebBrowserFrame2:TFrameWebBrowser;
+begin
+  //tmrNewURL.Enabled:=False;
+
+  if FNewURL<>'' then
+  begin
+    ANewURL:=FNewURL;
+    FNewURL:='';
+
+
+    HideFrame;
+    ShowFrame(TFrame(GlobalWebBrowserFrame2),TFrameWebBrowser);//,Application.MainForm,nil,nil,nil,Application,True,True,ufsefNone);
+    GlobalWebBrowserFrame2.LoadUrl(ANewURL,'');
+
+  end;
+
+end;
+
+procedure TFrameWebBrowser.WebBrowserShouldStartLoadWithRequest(
+  ASender: TObject; const URL: string);
+begin
+  FMX.Types.Log.d('OrangeUI WebBrowserShouldStartLoadWithRequest Begin '+URL);
+
+  if URL<>FUrl then
+  begin
+    FNewURL:=URL;
+
+    TThread.Synchronize(nil,procedure
+    begin
+      Self.tmrNewURL.Enabled:=True;
+      Self.FWebBrowser.Stop;
+    end);
+
+//    TThread.ForceQueue(nil,
+//      procedure
+//      begin
+//        Self.tmrNewURL.Enabled:=True;
+//      end);
+
+  end;
+
+  FMX.Types.Log.d('OrangeUI WebBrowserShouldStartLoadWithRequest End ');
+end;
+
 procedure TFrameWebBrowser.DoLoadUrl(AUrl:String);
 begin
+  FMX.Types.Log.d('OrangeUI DoLoadUrl Begin');
 
   FUrl:=AUrl;
 
@@ -361,6 +431,9 @@ begin
   //浏览网页
   Self.FWebBrowser.Navigate(FUrl);
 
+
+
+
 //  DoWebBrowserRealign;
 
 
@@ -369,6 +442,9 @@ begin
 //    Self.FWebBrowser.Align:=TAlignLayout.None;
 //    Self.FWebBrowser.Position.Y:=-uComponentType.SystemStatusBarHeight;
 //  end;
+
+
+  FMX.Types.Log.d('OrangeUI DoLoadUrl End');
 end;
 
 procedure TFrameWebBrowser.DoWebBrowserDidFinishLoad(Sender: TObject);
@@ -406,14 +482,14 @@ end;
 procedure TFrameWebBrowser.FrameContext1ShowEx(Sender: TObject;
   AIsReturnShow: Boolean);
 begin
-  if not AIsReturnShow then
-  begin
-    //第一次加载显示
-    if FUrl<>'' then
-    begin
-      DoLoadUrl(FUrl);
-    end;
-  end;
+//  if not AIsReturnShow then
+//  begin
+//    //第一次加载显示
+//    if (FWebBrowser=nil) and (FUrl<>'') or (FWebBrowser<>nil) and (FWebBrowser.URL<>FUrl) then
+//    begin
+//      DoLoadUrl(FUrl);
+//    end;
+//  end;
 end;
 
 procedure TFrameWebBrowser.lbFunctionClickItem(AItem: TSkinItem);

@@ -3,15 +3,15 @@ unit ListItemStyle_TreeMainMenuItem;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Windows, Messages, SysUtils, Variants, Classes,
 
   uSkinItems,
   uSkinVirtualListType,
   uSkinCustomListType,
 
-  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSkinLabelType,
+  Graphics, Controls, Forms, Dialogs, uSkinLabelType,
   uSkinImageType, uSkinWindowsControl, uSkinItemDesignerPanelType,
-  System.ImageList, Vcl.ImgList;
+  ImgList;
 
 type
   TFrameListItemStyle_TreeMainMenuItem = class(TFrame,IFrameBaseListItemStyle)

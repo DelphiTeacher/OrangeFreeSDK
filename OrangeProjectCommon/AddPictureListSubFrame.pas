@@ -29,6 +29,8 @@ uses
   //使用原生的选择媒体窗体
   {$IFDEF USE_NATIVE_SELECTMEDIA}
   uCommonSelectMediaUI,
+  uAndroidDVSelectMedia,
+  uAndroidDmcBigSelectMedia,
   {$ENDIF}
 
 
@@ -108,8 +110,10 @@ type
 
     procedure DoReturnFrameFromAllImageFrame(AFrame:TFrame);
   private
+    //原生多选照片界面
     {$IFDEF USE_NATIVE_SELECTMEDIA}
     FSelectMediaDialog:TSelectMediaDialog;
+    FSelectCameraDialog:TSelectMediaDialog;
     {$ENDIF}
     procedure DoSelectMediaResultEvent(Sender:TObject;
                                         ASelectedFileThumbPaths:TStringList;
@@ -118,13 +122,6 @@ type
                                         ASelectMediaList:TSelectMediaList);
   private
     FNeedUploadCount:Integer;
-
-    //是否需要剪裁
-    FIsNeedClip:Boolean;
-    FClipWidth:Integer;
-    FClipHeight:Integer;
-    //允许添加的最大图片数据
-    FMaxCount:Integer;
     FIsReadOnly: Boolean;
     FOnCustomUploadFile: TCustomUploadFileEvent;
     procedure SetIsReadOnly(const Value: Boolean);
@@ -165,6 +162,16 @@ type
     constructor Create(AOwner:TComponent);override;
     destructor Destroy;override;
   public
+
+    //是否需要剪裁
+    FIsNeedClip:Boolean;
+    FClipWidth:Integer;
+    FClipHeight:Integer;
+    //允许添加的最大图片数据
+    FMaxCount:Integer;
+
+
+    //内容更改之后,内容高度会变化,要通知
     OnChange:TNotifyEvent;
     //是否允许多选图片
     IsUseMultiSelectPicture:Boolean;
@@ -180,7 +187,11 @@ type
 
     FSelectType:TSelectMediaType;
 
+
+    function HasVideo:Boolean;
+
     procedure AlignControls;
+
     procedure Clear;
     //初始
     procedure Init( ACaption:String;
@@ -218,7 +229,19 @@ type
                     AVideoUrlList:TStringList=nil;
                     //需要上传的类型
                     ASelectType:TSelectMediaType=smtImage);overload;
+
+
     function AddPicture(APicFilePath:String):Boolean;
+
+
+    //开始选择图片
+    procedure StartSelect;
+    //开始拍摄
+    procedure StartCamera(ASelectType:TSelectMediaType);
+
+
+  public
+
     //保存到本地
     function SaveToLocalTemp(
                     //图片保存的质量
@@ -399,6 +422,7 @@ procedure TFrameAddPictureListSub.btnDelPicClick(Sender: TObject);
 begin
   //删除图片
   Self.lvPictures.Prop.Items.Remove(Self.lvPictures.Prop.InteractiveItem);
+
   AlignControls;
 
 //  //判断是否添加了图片
@@ -417,6 +441,11 @@ begin
 //    GlobalAddContentFrame.imgUpLoad.Enabled:=True;
 //    GlobalAddContentFrame.imgVideoUpLoad.Enabled:=True;
 //  end;
+
+//  Self.imgVideoUpLoad.Enabled:=FAddPhotoFrame.HasVideo;
+//  Self.imgUpLoad.Enabled:=not FAddPhotoFrame.HasVideo;
+
+
 end;
 
 procedure TFrameAddPictureListSub.btnOKClick(Sender: TObject);
@@ -489,6 +518,11 @@ begin
   FreeAndNil(FServerVideoUrlList);
   FreeAndNil(FServerVideoFileIdList);
 
+
+  {$IFDEF USE_NATIVE_SELECTMEDIA}
+  FreeAndNil(FSelectMediaDialog);
+  FreeAndNil(FSelectCameraDialog);
+  {$ENDIF}
   inherited;
 end;
 
@@ -597,22 +631,51 @@ var
 begin
 
 
+  //存在视频,则要清除原Items
+  for I := 0 to ASelectMediaList.Count-1 do
+  begin
+      if ASelectMediaList[I].IsVideo then
+      begin
+          //视频
+          //标记现在是视频上传
+          //FNowClick:='video';
+          //初始化
+          Self.Init(
+                    '',
+                    [],//
+                    [],//
+                    False,//不裁剪
+                    0,
+                    0,
+                    1,//最多1个视频
+                    False,
+                    nil,
+                    smtVideo
+                    );
+          Break;
+      end;
+
+  end;
+
+
+
+
   for I := 0 to ASelectMediaList.Count-1 do
   begin
 
       //判断是否是图片还是视频
-//      if SameText(ExtractFileExt(ASelectMediaList[I].FilePath),'.mp4') then
+      //      if SameText(ExtractFileExt(ASelectMediaList[I].FilePath),'.mp4') then
       if ASelectMediaList[I].IsVideo then
       begin
-        //视频
-        //AListViewItem.ItemType:=sitItem2;
+          //视频
+          //AListViewItem.ItemType:=sitItem2;
 
-        //视频文件的尺寸不能大于50M
-        if GetSizeOfFile(ASelectMediaList[I].FilePath)>50*1024*1024 then
-        begin
-          ShowHintFrame(nil,'上传视频不能大于50M');
-          Exit;
-        end;
+          //视频文件的尺寸不能大于50M
+          if GetSizeOfFile(ASelectMediaList[I].FilePath)>50*1024*1024 then
+          begin
+            ShowHintFrame(nil,'上传视频不能大于50M');
+            Exit;
+          end;
       end;
 
 
@@ -629,10 +692,14 @@ begin
 
       if ASelectMediaList[I].IsVideo then
       begin
+        //文件大小
         AListViewItem.Detail:=GetFileSizeStr2(GetSizeOfFile(ASelectMediaList[I].FilePath));
       end;
 
 
+
+
+      //缩略图
       if ASelectMediaList[I].ThumbPath<>'' then
       begin
           ABitmap:=TBitmap.Create;
@@ -1072,6 +1139,21 @@ begin
   end;
 end;
 
+function TFrameAddPictureListSub.HasVideo: Boolean;
+var
+  I: Integer;
+begin
+  Result:=False;
+  for I := 0 to Self.lvPictures.Prop.Items.Count-1 do
+  begin
+    if IsVideoFile(Self.lvPictures.Prop.Items[I].Icon.Name) then
+    begin
+      Result:=True;
+      Break;
+    end;
+  end;
+end;
+
 function TFrameAddPictureListSub.GetServerVideoFileIdArray(AMaxCount:Integer):TStringDynArray;
 var
   I: Integer;
@@ -1112,9 +1194,13 @@ var
   AVideoUrls:TStringDynArray;
   I: Integer;
 begin
+
+
   SetLength(APictureValues,APictureValueList.Count);
   SetLength(APictureUrls,APictureUrlList.Count);
   SetLength(AVideoUrls,APictureValueList.Count);
+
+
   for I := 0 to APictureValueList.Count-1 do
   begin
     APictureValues[I]:=APictureValueList[I];
@@ -1125,7 +1211,11 @@ begin
     end;
   end;
 
+
+
   FSelectType:=ASelectType;
+
+
 
   Self.Init(ACaption,
             APictureValues,
@@ -1197,14 +1287,20 @@ var
   AListViewItem:TSkinListViewItem;
 begin
   Self.pnlPicture.Caption:=ACaption;
+
+
   FIsNeedClip:=AIsNeedClip;
   FClipWidth:=AClipWidth;
   FClipHeight:=AClipHeight;
 
+
   FMaxCount:=AMaxCount;
   IsReadOnly:=AIsReadOnly;
 
+
   FSelectType:=ASelectType;
+
+
 
   Self.lvPictures.Prop.Items.BeginUpdate;
   try
@@ -1249,92 +1345,33 @@ begin
     or (AItem.ItemType=sitDefault) and IsCanNotEditPicture
      then
   begin
-      //只读
+          //只读
 
-      //查看照片信息
-      HideFrame;//();
-      //查看照片信息
-      ShowFrame(TFrame(GlobalViewPictureListFrame),TFrameViewPictureList);
+          //查看照片信息
+          HideFrame;//();
+          //查看照片信息
+          ShowFrame(TFrame(GlobalViewPictureListFrame),TFrameViewPictureList);
 
-//      GlobalViewPictureListFrame.FrameHistroy:=CurrentFrameHistroy;
+    //      GlobalViewPictureListFrame.FrameHistroy:=CurrentFrameHistroy;
 
 
-      ADrawPictureList:=TDrawPictureList.Create(ooReference);
-      try
-        for I := 0 to Self.lvPictures.Prop.Items.Count-2 do
-        begin
-          ADrawPictureList.Add(Self.lvPictures.Prop.Items[I].Icon);
-        end;
-        GlobalViewPictureListFrame.Init(Self.pnlToolBar.Caption,
-                                        ADrawPictureList,
-                                        AItem.Index);
-      finally
-        FreeAndNil(ADrawPictureList);
-      end;
+          ADrawPictureList:=TDrawPictureList.Create(ooReference);
+          try
+            for I := 0 to Self.lvPictures.Prop.Items.Count-2 do
+            begin
+              ADrawPictureList.Add(Self.lvPictures.Prop.Items[I].Icon);
+            end;
+            GlobalViewPictureListFrame.Init(Self.pnlToolBar.Caption,
+                                            ADrawPictureList,
+                                            AItem.Index);
+          finally
+            FreeAndNil(ADrawPictureList);
+          end;
 
   end
   else
   begin
-
-      //
-      HideVirtualKeyboard;
-
-
-      if IsUseMultiSelectPicture then
-      begin
-
-          {$IFDEF USE_NATIVE_SELECTMEDIA}
-          if FSelectMediaDialog=nil then
-          begin
-            FSelectMediaDialog:=TSelectMediaDialog.Create(Self);
-            FSelectMediaDialog.OnSelectMediaResult:=DoSelectMediaResultEvent;
-          end;
-
-          //判断需要上传的类型
-          FSelectMediaDialog.SelectMediaType:=FSelectType;
-
-          //能选择的个数
-          FSelectMediaDialog.MaxSelectCount:=FMaxCount;
-
-          FSelectMediaDialog.StartSelect;
-          {$ELSE}
-          HideFrame;
-          //多选照片
-//          ShowFrame(TFrame(GAllImageFrame),TFrameAllImage,Application.MainForm,nil,nil,DoReturnFrameFromAllImageFrame,Application,True,False,ufsefNone);
-          ShowFrame(TFrame(GAllImageFrame),TFrameAllImage,DoReturnFrameFromAllImageFrame);
-//          GAllImageFrame.FrameHistroy:=CurrentFrameHistroy;
-          //相机结果回调事件
-          GAllImageFrame.OnGetPhotoFromCamera:=DoAddPictureFromMenu;
-          GAllImageFrame.Load(True,
-                              Self.lvPictures.Prop.Items.Count-1,
-                              Self.FMaxCount,
-                              FSelectType);
-          {$ENDIF}
-
-
-      end
-      else
-      begin
-
-          //拍照
-          ShowFrame(TFrame(GlobalTakePictureMenuFrame),TFrameTakePictureMenu,Application.MainForm,nil,nil,nil,Application,True,False,ufsefNone);
-//          GlobalTakePictureMenuFrame.FrameHistroy:=CurrentFrameHistroy;
-          //添加
-          if AItem.ItemType=sitItem1 then
-          begin
-            GlobalTakePictureMenuFrame.OnTakedPicture:=DoAddPictureFromMenu;
-          end
-          else
-          //修改
-          if AItem.ItemType=sitDefault then
-          begin
-            FEditPictureItem:=AItem;
-            GlobalTakePictureMenuFrame.OnTakedPicture:=DoEditPictureFromMenu;
-          end;
-          GlobalTakePictureMenuFrame.ShowMenu;
-
-      end;
-
+          StartSelect;
   end;
 
 end;
@@ -1535,6 +1572,107 @@ end;
 
 procedure TFrameAddPictureListSub.SetPropJsonStr(AJsonStr: String);
 begin
+
+end;
+
+procedure TFrameAddPictureListSub.StartCamera(ASelectType:TSelectMediaType);
+begin
+//  {$IFDEF USE_NATIVE_SELECTMEDIA}
+
+      {$IFDEF ANDROID}
+      GlobalSelectMediaUIClass:=TAndroidDVSelectMediaUI;
+      {$ENDIF}
+      //移动平台
+      if FSelectCameraDialog=nil then
+      begin
+        FSelectCameraDialog:=TSelectMediaDialog.Create(Self);
+        FSelectCameraDialog.OnSelectMediaResult:=DoSelectMediaResultEvent;
+      end;
+
+      //判断需要上传的类型
+      FSelectCameraDialog.SelectMediaType:=ASelectType;
+
+      //能选择的个数
+      //FSelectCameraDialog.MaxSelectCount:=FMaxCount;
+
+      FSelectCameraDialog.StartCamera;
+
+//  {$ELSE}
+//  {$ENDIF}
+
+end;
+
+procedure TFrameAddPictureListSub.StartSelect;
+begin
+
+      //
+      HideVirtualKeyboard;
+
+
+      if IsUseMultiSelectPicture then
+      begin
+
+          //多选
+
+          {$IFDEF USE_NATIVE_SELECTMEDIA}
+
+              {$IFDEF ANDROID}
+              GlobalSelectMediaUIClass:=TAndroidDmcBigSelectMediaUI;
+              {$ENDIF}
+              //移动平台
+              if FSelectMediaDialog=nil then
+              begin
+                FSelectMediaDialog:=TSelectMediaDialog.Create(Self);
+                FSelectMediaDialog.OnSelectMediaResult:=DoSelectMediaResultEvent;
+              end;
+
+              //判断需要上传的类型
+              FSelectMediaDialog.SelectMediaType:=FSelectType;
+
+              //能选择的个数
+              FSelectMediaDialog.MaxSelectCount:=FMaxCount;
+
+              FSelectMediaDialog.StartSelect;
+          {$ELSE}
+              //Windows平台模拟
+              HideFrame;
+              //多选照片
+    //          ShowFrame(TFrame(GAllImageFrame),TFrameAllImage,Application.MainForm,nil,nil,DoReturnFrameFromAllImageFrame,Application,True,False,ufsefNone);
+              ShowFrame(TFrame(GAllImageFrame),TFrameAllImage,DoReturnFrameFromAllImageFrame);
+    //          GAllImageFrame.FrameHistroy:=CurrentFrameHistroy;
+              //相机结果回调事件
+              GAllImageFrame.OnGetPhotoFromCamera:=DoAddPictureFromMenu;
+              GAllImageFrame.Load(True,
+                                  Self.lvPictures.Prop.Items.Count-1,
+                                  Self.FMaxCount,
+                                  FSelectType);
+          {$ENDIF}
+
+
+      end
+      else
+      begin
+
+          //单选
+
+          //拍照
+          ShowFrame(TFrame(GlobalTakePictureMenuFrame),TFrameTakePictureMenu,Application.MainForm,nil,nil,nil,Application,True,False,ufsefNone);
+//          GlobalTakePictureMenuFrame.FrameHistroy:=CurrentFrameHistroy;
+//          //添加
+//          if AItem.ItemType=sitItem1 then
+//          begin
+            GlobalTakePictureMenuFrame.OnTakedPicture:=DoAddPictureFromMenu;
+//          end
+//          else
+//          //修改
+//          if AItem.ItemType=sitDefault then
+//          begin
+//            FEditPictureItem:=AItem;
+//            GlobalTakePictureMenuFrame.OnTakedPicture:=DoEditPictureFromMenu;
+//          end;
+          GlobalTakePictureMenuFrame.ShowMenu;
+
+      end;
 
 end;
 

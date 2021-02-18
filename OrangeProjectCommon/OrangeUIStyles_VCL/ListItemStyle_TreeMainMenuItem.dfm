@@ -108,8 +108,6 @@ object FrameListItemStyle_TreeMainMenuItem: TFrameListItemStyle_TreeMainMenuItem
       Caption = #20114#21160#20132#27969
       Text = #20114#21160#20132#27969
       Properties.AutoSize = False
-      ExplicitLeft = 62
-      ExplicitWidth = 138
     end
     object imgRe: TSkinWinImage
       Left = 0
@@ -166,7 +164,6 @@ object FrameListItemStyle_TreeMainMenuItem: TFrameListItemStyle_TreeMainMenuItem
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 1
-      Caption = ''
       Properties.AutoSize = False
       Properties.Animated = False
       Properties.AnimateSpeed = 10.000000000000000000

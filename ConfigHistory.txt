@@ -1,3 +1,4 @@
+C:\MyFiles\OrangeUIProduct\D区\App_Client\DVMediaSelectorSDK_V1_0_0\DeployConfig.ini
 C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V1_0_0\DVMediaSelectorSDK_V1_0_0\DeployConfig.ini
 C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V1_1_3\DVMediaSelectorSDK_V1_1_3\DeployConfig.ini
 C:\OrangeFreeSDK\1D_PDA_RFID\1D_PDA_RFID_SDK\DeployConfig.ini

@@ -23,7 +23,7 @@ uses
   uSkinItemJsonHelper,
   uVirtualListDataController,
   uComponentType,
-  uBufferBitmap,
+  uSkinBufferBitmap,
   uSkinLabelType,
   uDrawTextParam,
   WaitingFrame,

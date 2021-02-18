@@ -44,7 +44,7 @@ uses
 
   uPhotoManager,
 
-  uSkinPicture,uBufferBitmap,
+  uSkinPicture,uSkinBufferBitmap,
   System.Generics.Collections, uSkinButtonType, uSkinPanelType,
   uSkinCheckBoxType, uSkinImageType, uSkinItemDesignerPanelType,
   uBaseSkinControl, uSkinScrollControlType, uSkinCustomListType,
@@ -335,6 +335,7 @@ begin
 
 
   Self.FSelectedOriginPhotoList.Clear;
+
   Self.lvAllImg.Prop.Items.BeginUpdate;
   try
     Self.lvAllImg.Prop.Items.Clear(True);
@@ -351,18 +352,27 @@ end;
 
 procedure TFrameAllImage.ClearAfterReturn;
 begin
-  FLoadThumbThread.Terminate;
-  //等待太耗时
-//  FLoadThumbThread.WaitFor;
-//  FreeAndNil(FLoadThumbThread);
-  FLoadThumbThread:=nil;
+  if FLoadThumbThread<>nil then
+  begin
+      FLoadThumbThread.Terminate;
+      //等待太耗时
+    //  FLoadThumbThread.WaitFor;
+    //  FreeAndNil(FLoadThumbThread);
+      FLoadThumbThread:=nil;
+  end;
 
 
   Self.Clear;
 
 
-  //清内存
-  GetGlobalAlbumManager.ClearLoadedBitmap;
+
+  if GetGlobalAlbumManager<>nil then
+  begin
+    //清内存
+    GetGlobalAlbumManager.ClearLoadedBitmap;
+  end;
+
+
 
 //  if FLoadThumbThread<>nil then
 //  begin
@@ -448,7 +458,7 @@ begin
     //        Self.pnlToolBar.Caption:=ADefaultAlbum.Name;
             Self.btnAlbum.Caption:=ADefaultAlbum.Name;
             //计算文本宽度
-            Self.btnAlbum.Width:=uBufferBitmap.GetStringWidth(Self.btnAlbum.Caption,15)+20;
+            Self.btnAlbum.Width:=uSkinBufferBitmap.GetStringWidth(Self.btnAlbum.Caption,15)+20;
 
 
 
@@ -567,7 +577,7 @@ begin
 
   Self.btnAlbum.Caption:=AAlbum.Name;
   //计算文本宽度
-  Self.btnAlbum.Width:=uBufferBitmap.GetStringWidth(Self.btnAlbum.Caption,15)+20;
+  Self.btnAlbum.Width:=uSkinBufferBitmap.GetStringWidth(Self.btnAlbum.Caption,15)+20;
 
 
 
@@ -1150,25 +1160,44 @@ begin
 //      begin
 //        Image:=TBitmap.CreateFromFile(OpenDialog.FileName);//Files[I]);
 
-          //选择的原图list
-          //FSelectedOriginPhotoList:TList<TPhoto>;
-          APhoto:=TWindowsPhoto.Create(nil);
-          APhoto.OriginFilePath:=OpenDialog.FileName;
 
-          OpenDialog.Filter := TBitmapCodecManager.GetFilterString;
-          if OpenDialog.Execute then
-          begin
+
+
+
+            //选择的原图list
+            //FSelectedOriginPhotoList:TList<TPhoto>;
+            APhoto:=TWindowsPhoto.Create(nil);
+            APhoto.OriginFilePath:=OpenDialog.FileName;
+            APhoto.IsVideo:=IsVideoFile(APhoto.OriginFilePath);
+
+  //          OpenDialog.Filter := TBitmapCodecManager.GetFilterString;
+  //          if OpenDialog.Execute then
+  //          begin
+
+
+
             APhoto.ThumbFilePath:=OpenDialog.FileName;
+            if APhoto.IsVideo then
+            begin
+              APhoto.ThumbFilePath:='C:\preview.png';
+            end;
+
 
             APhoto.LoadThumbBitmap;
             //APhoto.LoadOriginBitmap;
+
+
+
 
             FSelectedOriginPhotoList.Add(APhoto);
 
             HideFrame;
             ReturnFrame;
 
-          end;
+//          end;
+
+
+
 
 
 //        TakePhotoFromCameraActionDidFinishTaking(Image);

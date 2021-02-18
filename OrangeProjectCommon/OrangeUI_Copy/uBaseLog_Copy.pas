@@ -56,9 +56,9 @@ uses
 
 
 
-
-  uFuncCommon_Copy,
-  uFileCommon_Copy;
+  DateUtils,
+  uFuncCommon,
+  uFileCommon;
 
 
 
@@ -80,14 +80,22 @@ type
     //是否输出调试信息
     FIsOutputLog:Boolean;
 
+    LogDir:String;
+
     //日志文件的文件名
     FLogFileName:String;
+    FLogFilePath:String;
+
+
     //日志文件的句柄
     FFileHandle:THandle;
 
 
     //日志文件的最大文件大小
     FMaxFileSize: Integer;
+
+    //文件打开的时间,用于判断是否需要重新建一个日志文件
+    FFileOpenTime:TDateTime;
 
 
     procedure CloseFileHandle;
@@ -339,7 +347,7 @@ begin
     ALogString:='Exception:'+AException.Message+ALogString;
   end;
 
-  ALogString:=FormatDateTime('HH:MM:SS:ZZZ',Now)+' '+ALogString;
+  ALogString:=FormatDateTime('YYYY-MM-DD HH:MM:SS:ZZZ',Now)+' '+ALogString;
   Debug(ALogString);
 end;
 
@@ -353,18 +361,20 @@ begin
 end;
 
 constructor TBaseLog.Create(const ALogFileName: String);
-var
-  LogDir:String;
+//var
 begin
   LogKeyword:='OrangeUI';
 
 
+  FLogFileName:=ALogFileName;
+
   FIsWriteLog:=False;
   FIsOutputLog:=True;
+
   //最大日志文件是10M
   FMaxFileSize:=10*1024*1024;
   FFileHandle:= INVALID_HANDLE_VALUE;
-  LogDir:=GetApplicationPath;
+  LogDir:=GetApplicationPath+'log'+PathDelim;
 
 
 //  {$IFDEF MSWINDOWS}
@@ -384,12 +394,14 @@ begin
 
 
 
-  //生成日志目录
-  if Not DirectoryExists(LogDir) then
-  begin
-    SysUtils.ForceDirectories(LogDir);
-  end;
-  FLogFileName:=LogDir+ALogFileName;
+//  //生成日志目录
+//  if Not DirectoryExists(LogDir) then
+//  begin
+//    SysUtils.ForceDirectories(LogDir);
+//  end;
+
+
+  FLogFilePath:=LogDir+ALogFileName;
 
 end;
 
@@ -400,31 +412,75 @@ begin
 end;
 
 Function TBaseLog.GetFileHandle(InCreate:Boolean):Boolean;
+var
+  AOldFileHandle:THandle;
 begin
   Result:=False;
 
   if FIsWriteLog then
   begin
-    if InCreate or Not FileExists(FLogFileName) then
-    begin
-      //关闭句柄
-      CloseFileHandle;
-      //创建文件
-      FFileHandle:=FileCreate(FLogFileName, fmCreate or fmOpenWrite or fmShareDenyNone);
-    end
-    else
-    begin
-      //存在文件,则打开文件
-      if FFileHandle = INVALID_HANDLE_VALUE then
-      begin
-        FFileHandle:=FileOpen(FLogFileName,fmOpenWrite or fmShareDenyNone);
-      end;
-      //文件最后
-      if FFileHandle <> INVALID_HANDLE_VALUE then
-      begin
-        FileSeek(FFileHandle,0,2);
-      end;
-    end;
+
+
+
+        //如果超过了一p-0ol.天,那么重建一个日志文件
+
+        //测试一分钟
+        //    if Ceil(FFileOpenTime)<>Ceil(Now) then
+//        if DateUtils.MinutesBetween(Now,FFileOpenTime)>1 then
+        if FormatDateTime('YYYY-MM-DD',FFileOpenTime)<>FormatDateTime('YYYY-MM-DD',Now) then
+        begin
+          FLogFilePath:=LogDir
+                        +Copy(FLogFileName,1,Length(FLogFileName)-4)
+                        +' '+FormatDateTime('YYYY-MM-DD',Now)
+                        +Copy(FLogFileName,Length(FLogFileName)-4+1,MaxInt);
+        end;
+
+
+
+
+        if InCreate or Not FileExists(FLogFilePath) then
+        begin
+            //关闭句柄
+            CloseFileHandle;
+
+
+            //生成日志目录
+            if Not DirectoryExists(LogDir) then
+            begin
+              SysUtils.ForceDirectories(LogDir);
+            end;
+
+            //创建文件
+            FFileHandle:=FileCreate(FLogFilePath, fmCreate or fmOpenWrite or fmShareDenyNone);
+            FFileOpenTime:=Now;
+        end
+        else
+        begin
+
+            //存在文件,则打开文件
+            if FFileHandle = INVALID_HANDLE_VALUE then
+            begin
+
+              //生成日志目录
+              if Not DirectoryExists(LogDir) then
+              begin
+                SysUtils.ForceDirectories(LogDir);
+              end;
+
+              FFileHandle:=FileOpen(FLogFilePath,fmOpenWrite or fmShareDenyNone);
+              FFileOpenTime:=Now;
+            end;
+
+
+            //文件最后
+            if FFileHandle <> INVALID_HANDLE_VALUE then
+            begin
+              FileSeek(FFileHandle,0,2);
+            end;
+
+        end;
+
+
   end;
 
   if FFileHandle <> INVALID_HANDLE_VALUE then
@@ -512,7 +568,7 @@ Initialization
 
 
 Finalization
-  uFuncCommon_Copy.FreeAndNil(GlobalLog);
+  SysUtils.FreeAndNil(GlobalLog);
 
 
 

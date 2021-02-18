@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 
 
-//  uSelectMediaDialog,
+  uSelectMediaDialog,
 
   {$IFDEF ANDROID}
   Androidapi.JNI.Net,
@@ -24,12 +24,16 @@ uses
   Androidapi.JNI.Widget,
   {$ENDIF}
   System.Messaging,
-//  Androidapi.JNI.mediapicker_3_2,
-//  Androidapi.JNI.mediapicker_my_utils,
+
+
+
   Androidapi.JNI.mediaselector_1_0_0,
 //  Androidapi.JNI.glide_glide_4_7_1,
   Androidapi.JNI.glide_4_0_0,
-   Androidapi.JNI.R_JAVA_TestDVMediaSelector,
+//   Androidapi.JNI.R_JAVA_TestDVMediaSelector,
+
+  uAndroidDVSelectMedia,
+
 
   uFuncCommon,
   uFileCommon,
@@ -40,27 +44,25 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, System.Notification, FMX.Objects,
   FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
 
+
+
+
 type
-  TJMyRequestListener = class(TJavaLocal,JRequestListener)
-  public
-    { methods }
-    function onLoadFailed(P1: JGlideException; P2: JObject; P3: JTarget; P4: Boolean): Boolean; cdecl; //(Lcom/bumptech/glide/load/engine/GlideException;Ljava/lang/Object;Lcom/bumptech/glide/request/target/Target;Z)Z
-    function onResourceReady(P1: JObject; P2: JObject; P3: JTarget; P4: JDataSource; P5: Boolean): Boolean; cdecl; //(Ljava/lang/Object;Ljava/lang/Object;Lcom/bumptech/glide/request/target/Target;Lcom/bumptech/glide/load/DataSource;Z)Z
-  end;
-
-  TJMyImageLoader = class(TJavaLocal, JImageLoader)
-  public
-    FJRequestListener:JRequestListener;
-    { methods }
-    procedure displayImage(P1: JContext; P2: JString; P3: JImageView); cdecl; //(Landroid/content/Context;Ljava/lang/String;Landroid/widget/ImageView;)V
-  end;
-
-  TJMyOnSelectMediaListener = class(TJavaLocal,JOnSelectMediaListener)
-  public
-    procedure onSelectMedia(P1: JList); cdecl; //(Ljava/util/List;)V
-  end;
-
-//  TJOnSelectMediaListener = class(TJavaLocal,JOnSelectMediaListener)
+//  TJMyRequestListener = class(TJavaLocal,JRequestListener)
+//  public
+//    { methods }
+//    function onLoadFailed(P1: JGlideException; P2: JObject; P3: JTarget; P4: Boolean): Boolean; cdecl; //(Lcom/bumptech/glide/load/engine/GlideException;Ljava/lang/Object;Lcom/bumptech/glide/request/target/Target;Z)Z
+//    function onResourceReady(P1: JObject; P2: JObject; P3: JTarget; P4: JDataSource; P5: Boolean): Boolean; cdecl; //(Ljava/lang/Object;Ljava/lang/Object;Lcom/bumptech/glide/request/target/Target;Lcom/bumptech/glide/load/DataSource;Z)Z
+//  end;
+//
+//  TJMyImageLoader = class(TJavaLocal, JImageLoader)
+//  public
+//    FJRequestListener:JRequestListener;
+//    { methods }
+//    procedure displayImage(P1: JContext; P2: JString; P3: JImageView); cdecl; //(Landroid/content/Context;Ljava/lang/String;Landroid/widget/ImageView;)V
+//  end;
+//
+//  TJMyOnSelectMediaListener = class(TJavaLocal,JOnSelectMediaListener)
 //  public
 //    procedure onSelectMedia(P1: JList); cdecl; //(Ljava/util/List;)V
 //  end;
@@ -68,20 +70,24 @@ type
 
 
   TForm17 = class(TForm)
-    btnInit: TButton;
     Button2: TButton;
     Button3: TButton;
     NotificationCenter1: TNotificationCenter;
-    Image1: TImage;
     btnDefault: TButton;
     Memo1: TMemo;
-    procedure Button1Click(Sender: TObject);
+    btnSelectByDialog: TButton;
+    Image1: TImage;
+    btnCameraByDialog: TButton;
     procedure FormShow(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure btnInitClick(Sender: TObject);
+    procedure btnDefaultClick(Sender: TObject);
+    procedure btnSelectByDialogClick(Sender: TObject);
+    procedure btnCameraByDialogClick(Sender: TObject);
   private
+    {$IFDEF ANDROID}
 //    FPickerActivityRequestCode:Integer;
 //    FMessageSubscriptionID: integer;
 
@@ -91,17 +97,18 @@ type
 //    FJMySimpleBitmapTarget:JMySimpleBitmapTarget;
 //    FJMySimpleBitmapTargetEvent:JMySimpleBitmapTargetEvent;
 //    procedure HandleActivityMessage(const Sender: TObject; const M: TMessage);
+    {$ENDIF}
     { Private declarations }
   public
-//    FSelectMediaDialog:TSelectMediaDialog;
-//    procedure DoSelectMediaResultEvent(Sender:TObject;
-//                                    //预览图
-//                                    ASelectedPhotoThumbPaths:TStringList;
-//                                    //图片原文件
-//                                    ASelectedPhotoFilePaths:TStringList;
-//                                    //选择的媒体列表
-//                                    ASelectMediaList:TSelectMediaList
-//                                    );
+    FSelectMediaDialog:TSelectMediaDialog;
+    procedure DoSelectMediaResultEvent(Sender:TObject;
+                                    //预览图
+                                    ASelectedPhotoThumbPaths:TStringList;
+                                    //图片原文件
+                                    ASelectedPhotoFilePaths:TStringList;
+                                    //选择的媒体列表
+                                    ASelectMediaList:TSelectMediaList
+                                    );
     { Public declarations }
   end;
 
@@ -114,7 +121,6 @@ implementation
 
 procedure TForm17.btnInitClick(Sender: TObject);
 begin
-  //
 //        //设置加载器
 //        MediaSelectorManager.getInstance().initImageLoader(new ImageLoader() {
 //            @Override
@@ -134,16 +140,22 @@ begin
 //            }
 //        });
 
-  FJImageLoader:=TJMyImageLoader.Create;
-  TJMediaSelectorManager.JavaClass.getInstance.initImageLoader(FJImageLoader);
 
 end;
 
-procedure TForm17.Button1Click(Sender: TObject);
+procedure TForm17.btnCameraByDialogClick(Sender: TObject);
+begin
+  //使用组件拍照
+  Self.FSelectMediaDialog.StartCamera;
+end;
+
+procedure TForm17.btnDefaultClick(Sender: TObject);
+{$IFDEF ANDROID}
 var
   AJDVListConfig:JDVListConfig;
+{$ENDIF ANDROID}
 begin
-//    /**
+  //    /**
 //     * 默认配置的多选测试
 //     */
 //    public void defaultConfigMultiSelect(View view){
@@ -158,34 +170,42 @@ begin
 //            }
 //        });
 //    }
-  FMX.Types.Log.d('OrangeUI TForm17.Button1Click Begin');
+  FMX.Types.Log.d('OrangeUI TForm17.btnDefaultClick Begin');
 
-  FJOnSelectMediaListener:=TJMyOnSelectMediaListener.Create;
+
+  {$IFDEF ANDROID}
+  FJOnSelectMediaListener:=TJMyOnSelectMediaListener.Create(nil);
 
   AJDVListConfig:=TJMediaSelectorManager.JavaClass.getDefaultListConfigBuilder
         .needCamera(True)
-        .cameraIconResource(TJR_drawable_110.JavaClass.ic_camera)
+//        .cameraIconResource(TJR_drawable_110.JavaClass.ic_camera)
         .build;
-//  AJDVListConfig_Builder.needCamera:=True;
-//  //第一个菜单显示照相机的图标
-//  AJDVListConfig_Builder.cameraIconResource:=TJR_drawable_110.JavaClass.ic_camera;
-
 
 
   TJMediaSelectorManager.JavaClass.openSelectMediaWithConfig(SharedActivity,
       AJDVListConfig,
       FJOnSelectMediaListener
       );
-  FMX.Types.Log.d('OrangeUI TForm17.Button1Click End');
+
+  {$ENDIF ANDROID}
+
+  FMX.Types.Log.d('OrangeUI TForm17.btnDefaultClick End');
+
+end;
+
+procedure TForm17.btnSelectByDialogClick(Sender: TObject);
+begin
+  //使用组件选择照片
+  FSelectMediaDialog.StartSelect;
 
 end;
 
 procedure TForm17.Button2Click(Sender: TObject);
+{$IFDEF ANDROID}
 var
   config:JDVListConfig;
+{$ENDIF ANDROID}
 begin
-//  //
-//  FSelectMediaDialog.StartSelect;
 
   ////最简单的调用
   //MediaSelectorManager.openSelectMediaWithConfig(this, MediaSelectorManager.getDefaultListConfigBuilder().build(), new OnSelectMediaListener() {
@@ -259,7 +279,10 @@ begin
   //});
   FMX.Types.Log.d('OrangeUI TForm17.Button2Click Begin');
 
-  FJOnSelectMediaListener:=TJMyOnSelectMediaListener.Create;
+
+
+  {$IFDEF ANDROID}
+  FJOnSelectMediaListener:=TJMyOnSelectMediaListener.Create(nil);
 
   config:=TJMediaSelectorManager.JavaClass.getDefaultListConfigBuilder
     ////是否多选
@@ -267,12 +290,12 @@ begin
     ////最大选择数量
     .maxNum(9)
     ////最小选择数量
-    .minNum(2)
+    .minNum(1)
 
 //    ////是否多选
 //    .multiSelect(False)
     .needCamera(True)
-    .cameraIconResource(TJR_drawable_110.JavaClass.ic_camera)
+//    .cameraIconResource(TJR_drawable_110.JavaClass.ic_camera)
 
     ////设置选中图标
     //.checkIconResource(R.mipmap.icon_dv_checked)
@@ -324,6 +347,10 @@ begin
       config,
       FJOnSelectMediaListener
       );
+
+  {$ENDIF ANDROID}
+
+
   FMX.Types.Log.d('OrangeUI TForm17.Button2Click End');
 
 
@@ -333,8 +360,10 @@ end;
 procedure TForm17.Button3Click(Sender: TObject);
 var
   ANotification:TNotification;
+{$IFDEF ANDROID}
 var
   config:JDVCameraConfig;
+{$ENDIF ANDROID}
 begin
   ANotification:=Self.NotificationCenter1.CreateNotification;
   ANotification.Title:='1';
@@ -342,6 +371,7 @@ begin
   NotificationCenter1.PresentNotification(ANotification);
 
 
+  {$IFDEF ANDROID}
   config := TJMediaSelectorManager.JavaClass.getDefaultCameraConfigBuilder()
         //是否使用系统照相机（默认使用仿微信照相机）
         .isUseSystemCamera(false)
@@ -357,7 +387,7 @@ begin
         .flashLightEnable(true)
         .build();
 
-  FJOnSelectMediaListener:=TJMyOnSelectMediaListener.Create;
+  FJOnSelectMediaListener:=TJMyOnSelectMediaListener.Create(nil);
 
 
   TJMediaSelectorManager.JavaClass.openCameraWithConfig(SharedActivity,
@@ -373,26 +403,35 @@ begin
 //      }
       );
 
+  {$ENDIF ANDROID}
+
 end;
 
-//procedure TForm17.DoSelectMediaResultEvent(Sender: TObject;
-//  ASelectedPhotoThumbPaths, ASelectedPhotoFilePaths: TStringList;
-//  ASelectMediaList: TSelectMediaList);
-//begin
-//  //
-//  Self.Image1.Bitmap.LoadFromFile(ASelectedPhotoThumbPaths[0]);
-//end;
+procedure TForm17.DoSelectMediaResultEvent(Sender: TObject;
+  ASelectedPhotoThumbPaths, ASelectedPhotoFilePaths: TStringList;
+  ASelectMediaList: TSelectMediaList);
+begin
+  //
+  Self.Image1.Bitmap.LoadFromFile(ASelectedPhotoThumbPaths[0]);
+end;
 
 procedure TForm17.FormCreate(Sender: TObject);
 begin
+
+  {$IFDEF ANDROID}
 //  FPickerActivityRequestCode:=GetUniqueAndroidStartActivityForRequestCode('PickerActivity');
 //  {$IFDEF ANDROID}
 //  FMessageSubscriptionID := TMessageManager.DefaultManager.SubscribeToMessage(TMessageResultNotification, HandleActivityMessage);
 //  {$ENDIF ANDROID}
 
+  FJImageLoader:=TJMyImageLoader.Create;
+  TJMediaSelectorManager.JavaClass.getInstance.initImageLoader(FJImageLoader);
 
-//  FSelectMediaDialog:=TSelectMediaDialog.Create(Self);
-//  FSelectMediaDialog.OnSelectMediaResult:=DoSelectMediaResultEvent;
+
+  FSelectMediaDialog:=TSelectMediaDialog.Create(Self);
+  FSelectMediaDialog.OnSelectMediaResult:=DoSelectMediaResultEvent;
+
+  {$ENDIF ANDROID}
 end;
 
 procedure TForm17.FormShow(Sender: TObject);
@@ -531,62 +570,56 @@ end;
 //
 //end;
 
-{ TJMyImageLoader }
-
-procedure TJMyImageLoader.displayImage(P1: JContext; P2: JString;
-  P3: JImageView);
-begin
-  FMX.Types.Log.d('OrangeUI TJMyImageLoader.displayImage Begin');
-
-  FJRequestListener:=TJMyRequestListener.Create;
-  TJGlide.JavaClass.&with(P1)
-                    .load(P2)
-                    .listener(FJRequestListener)
-                    .into(P3);
-
-  FMX.Types.Log.d('OrangeUI TJMyImageLoader.displayImage End');
-
-end;
-
-{ TJMyRequestListener }
-
-function TJMyRequestListener.onLoadFailed(P1: JGlideException; P2: JObject;
-  P3: JTarget; P4: Boolean): Boolean;
-begin
-  FMX.Types.Log.d('OrangeUI TJMyRequestListener.onLoadFailed Begin');
-//                        Log.e(TAG,"加载失败--》"+e.getMessage() + "\t加载地址-->"+path);
-//                        return false;
-  Result:=False;
-end;
-
-function TJMyRequestListener.onResourceReady(P1, P2: JObject; P3: JTarget;
-  P4: JDataSource; P5: Boolean): Boolean;
-begin
-  FMX.Types.Log.d('OrangeUI TJMyRequestListener.onResourceReady Begin');
-  Result:=False;
-end;
-
-{ TJMyOnSelectMediaListener }
-
-procedure TJMyOnSelectMediaListener.onSelectMedia(P1: JList);
-var
-  I: Integer;
-begin
-  FMX.Types.Log.d('OrangeUI TJMyOnSelectMediaListener.onSelectMedia Begin');
-
-
-  for I := 0 to P1.size-1 do
-  begin
-    Form17.Memo1.Lines.Add(JStringToString(TJString.Wrap(P1.get(I))));
-  end;
-
-end;
-
-//{ TJOnSelectMediaListener }
+//{ TJMyImageLoader }
 //
-//procedure TJOnSelectMediaListener.onSelectMedia(P1: JList);
+//procedure TJMyImageLoader.displayImage(P1: JContext; P2: JString;
+//  P3: JImageView);
 //begin
+//  FMX.Types.Log.d('OrangeUI TJMyImageLoader.displayImage Begin');
 //
+//  FJRequestListener:=TJMyRequestListener.Create;
+//  TJGlide.JavaClass.&with(P1)
+//                    .load(P2)
+//                    .listener(FJRequestListener)
+//                    .into(P3);
+//
+//  FMX.Types.Log.d('OrangeUI TJMyImageLoader.displayImage End');
+//
+//end;
+//
+//{ TJMyRequestListener }
+//
+//function TJMyRequestListener.onLoadFailed(P1: JGlideException; P2: JObject;
+//  P3: JTarget; P4: Boolean): Boolean;
+//begin
+//  FMX.Types.Log.d('OrangeUI TJMyRequestListener.onLoadFailed Begin');
+////                        Log.e(TAG,"加载失败--》"+e.getMessage() + "\t加载地址-->"+path);
+////                        return false;
+//  Result:=False;
+//end;
+//
+//function TJMyRequestListener.onResourceReady(P1, P2: JObject; P3: JTarget;
+//  P4: JDataSource; P5: Boolean): Boolean;
+//begin
+//  FMX.Types.Log.d('OrangeUI TJMyRequestListener.onResourceReady Begin');
+//  Result:=False;
+//end;
+//
+//{ TJMyOnSelectMediaListener }
+//
+//procedure TJMyOnSelectMediaListener.onSelectMedia(P1: JList);
+//var
+//  I: Integer;
+//begin
+//  FMX.Types.Log.d('OrangeUI Unit17.TJMyOnSelectMediaListener.onSelectMedia Begin');
+//
+//
+//  for I := 0 to P1.size-1 do
+//  begin
+//    Form17.Memo1.Lines.Add(JStringToString(TJString.Wrap(P1.get(I))));
+//  end;
+//
+//  FMX.Types.Log.d('OrangeUI Unit17.TJMyOnSelectMediaListener.onSelectMedia End');
 //end;
 
 end.

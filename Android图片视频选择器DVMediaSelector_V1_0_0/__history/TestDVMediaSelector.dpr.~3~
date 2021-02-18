@@ -5,7 +5,9 @@ uses
   FMX.Forms,
   Unit17 in 'Unit17.pas' {Form17},
   Androidapi.JNI.mediaselector_1_0_0 in 'Androidapi.JNI.mediaselector_1_0_0.pas',
-  Androidapi.JNI.R_JAVA_TestDVMediaSelector in 'Androidapi.JNI.R_JAVA_TestDVMediaSelector.pas';
+  Androidapi.JNI.R_JAVA_TestDVMediaSelector in 'Androidapi.JNI.R_JAVA_TestDVMediaSelector.pas',
+  uSelectMediaDialog in 'C:\MyFiles\OrangeProjectCommon\uSelectMediaDialog.pas',
+  uAndroidDVSelectMedia in 'uAndroidDVSelectMedia.pas';
 
 {$R *.res}
 

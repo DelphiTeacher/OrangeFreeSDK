@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="uBaseLog_Copy" platform="Android">
+  <devnotes>
+     <summary>
+       <para>
+         日志的基类
+       </para>
+       <para>
+         Base class of log
+       </para>
+     </summary>
+  </devnotes>
+  <const name="CONST_BASELOG_FILENAME" type="string">
+    <value>
+      OrangeUI.log
+    </value>
+  </const>
+  <class name="TBaseLog">
+    <ancestor name="TObject" namespace="System">
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Free" visibility="public">
+      </methodref>
+      <methodref name="DisposeOf" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="InitInstance" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="CleanupInstance" visibility="public">
+      </methodref>
+      <methodref name="ClassType" visibility="public" procflags="inline">
+      </methodref>
+      <methodref name="ClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassNameIs" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassParent" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="ClassInfo" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InstanceSize" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="InheritsFrom" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodAddress" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="MethodName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="QualifiedClassName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="FieldAddress" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="GetInterface" visibility="public">
+      </methodref>
+      <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+      </methodref>
+      <methodref name="UnitName" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="UnitScope" visibility="public" procflags="class">
+      </methodref>
+      <methodref name="Equals" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetHashCode" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="ToString" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="SafeCallException" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Dispatch" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="NewInstance" visibility="public" procflags="class virtual">
+      </methodref>
+      <methodref name="FreeInstance" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+      </methodref>
+      <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="GetDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+      </methodref>
+      <propertyref name="Disposed" visibility="protected">
+      </propertyref>
+    </ancestor>
+    <members>
+      <field name="FIsWriteLog" type="Boolean" visibility="private" size="1" offset="4" />
+      <field name="FIsOutputLog" type="Boolean" visibility="private" size="1" offset="5" />
+      <field name="FLogFileName" type="string" visibility="private" size="4" offset="8" />
+      <field name="FFileHandle" type="NativeUInt" visibility="private" size="4" offset="12" />
+      <field name="FMaxFileSize" type="Integer" visibility="private" size="4" offset="16" />
+      <procedure name="CloseFileHandle" visibility="private">
+      </procedure>
+      <function name="GetFileHandle" visibility="private">
+        <parameters>
+          <parameter name="InCreate" type="Boolean" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="ALogFileName" type="string" paramflags="const" />
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <devnotes>
+          /  FIsWriteLog:=True;
+        </devnotes>
+        <parameters>
+        </parameters>
+      </destructor>
+      <field name="LogKeyword" type="string" visibility="public" size="4" offset="20">
+        <devnotes>
+           <summary>
+             <para>
+               在安卓下输出日志的关键字,方便过滤
+             </para>
+             <para>
+               Keyword of output log on android,to filtration
+             </para>
+           </summary>
+        </devnotes>
+      </field>
+      <property name="MaxFileSize" visibility="public" read="FMaxFileSize" write="FMaxFileSize" type="Integer">
+        <devnotes>
+           <summary>
+             <para>
+               日志文件的最大文件大小
+             </para>
+             <para>
+               Max file size of log file
+             </para>
+           </summary>
+        </devnotes>
+      </property>
+      <property name="IsWriteLog" visibility="public" read="FIsWriteLog" write="FIsWriteLog" type="Boolean" />
+      <property name="IsOutputLog" visibility="public" read="FIsOutputLog" write="FIsOutputLog" type="Boolean" />
+      <procedure name="OutputDebugString" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               输出调试信息
+             </para>
+             <para>
+               Output debug information
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="ADebugString" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="WriteLog" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               写日志到文件
+             </para>
+             <para>
+               Write log to file
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="ALogString" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="Debug" visibility="public">
+        <devnotes>
+           <summary>
+             <para>
+               既写日志文件,又输出调试信息
+             </para>
+             <para>
+               Write log file and output debug information
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="ADebugString" type="string" />
+        </parameters>
+      </procedure>
+      <procedure name="HandleException" visibility="public" procflags="overload">
+        <devnotes>
+           <summary>
+             <para>
+               记录异常的详细信息
+             </para>
+             <para>
+               Record detail information of exception
+             </para>
+           </summary>
+           <param name="AException">
+             异常
+            <para>
+            Exception
+            </para>
+           </param>
+           <param name=>
+             模块名称
+            <para>
+            Module name
+            </para>
+           </param>
+           <param name="AUnitName">
+             单元名称
+            Unit name
+           </param>
+           <param name="AMethodName">
+             方法名称
+            <para>
+            Method Name
+            </para>
+           </param>
+           <param name="APosition">
+             异常位置
+            <para>
+            Position of exception
+            </para>
+           </param>
+        </devnotes>
+        <parameters>
+          <parameter name="AException" type="Exception" />
+          <parameter name="AMethodName" type="string" paramflags="const" />
+          <parameter name="AUnitName" type="string" paramflags="const" />
+          <parameter name="APosition" type="string" paramflags="const">
+            <value>
+              
+            </value>
+          </parameter>
+        </parameters>
+      </procedure>
+      <procedure name="HandleException" visibility="public" procflags="overload">
+        <devnotes>
+           <summary>
+             <para>
+               记录异常的精简信息
+             </para>
+             <para>
+               Record detail information of exception
+             </para>
+           </summary>
+        </devnotes>
+        <parameters>
+          <parameter name="AException" type="Exception" />
+          <parameter name="AMethodName" type="string" paramflags="const" />
+        </parameters>
+      </procedure>
+    </members>
+  </class>
+  <function name="GetGlobalLog" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           获取全局的日志对象
+         </para>
+         <para>
+           Get global log
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <retval type="TBaseLog" />
+    </parameters>
+  </function>
+  <procedure name="HandleException" visibility="public" procflags="overload">
+    <devnotes>
+       <summary>
+         <para>
+           记录异常的详细信息
+         </para>
+         <para>
+           Record detail information of exception
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AException" type="Exception" />
+      <parameter name="AMethodName" type="string" paramflags="const" />
+      <parameter name="AUnitName" type="string" paramflags="const" />
+      <parameter name="APosition" type="string" paramflags="const">
+        <value>
+          
+        </value>
+      </parameter>
+    </parameters>
+  </procedure>
+  <procedure name="HandleException" visibility="public" procflags="overload">
+    <devnotes>
+       <summary>
+         <para>
+           记录异常的简单信息
+         </para>
+         <para>
+           Record detail information of exception
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="AException" type="Exception" />
+      <parameter name="AMethodName" type="string" paramflags="const" />
+    </parameters>
+  </procedure>
+  <procedure name="HandleException" visibility="public" procflags="overload">
+    <parameters>
+      <parameter name="AMethodName" type="string" paramflags="const" />
+      <parameter name="AException" type="Exception">
+        <value>
+          nil
+        </value>
+      </parameter>
+    </parameters>
+  </procedure>
+  <procedure name="ShowException" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           弹出异常对话框
+         </para>
+         <para>
+           Pop up dialog box of exception
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="ADebugString" type="string" />
+    </parameters>
+  </procedure>
+  <procedure name="OutputDebugString" visibility="public">
+    <devnotes>
+       <summary>
+         <para>
+           输出日志
+         </para>
+         <para>
+           Output log
+         </para>
+       </summary>
+    </devnotes>
+    <parameters>
+      <parameter name="ADebugString" type="string" />
+    </parameters>
+  </procedure>
+</namespace>

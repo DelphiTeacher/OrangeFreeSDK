@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="iOSApi.TwitterCore" platform="iOS">
+  <pointer name="id" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+</namespace>

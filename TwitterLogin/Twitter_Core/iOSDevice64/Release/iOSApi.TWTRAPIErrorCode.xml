@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="iOSApi.TWTRAPIErrorCode" platform="iOS">
+  <const name="TWTRAPIErrorCodeCouldNotAuthenticate" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeCouldNotAuthenticate
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodePageNotExist" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodePageNotExist
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeNotAuthorizedForEndpoint" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeNotAuthorizedForEndpoint
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeInvalidParameter" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeInvalidParameter
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeAccountSuspended" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeAccountSuspended
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeAPIVersionRetired" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeAPIVersionRetired
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeRateLimitExceeded" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeRateLimitExceeded
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeInvalidOrExpiredToken" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeInvalidOrExpiredToken
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeSSLInvalid" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeSSLInvalid
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeOverCapacity" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeOverCapacity
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeInternalError" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeInternalError
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeCouldNotAuthenticateTimestampOutOfRange" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeCouldNotAuthenticateTimestampOutOfRange
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeAlreadyFavorited" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeAlreadyFavorited
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeCannotFollowOverLimit" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeCannotFollowOverLimit
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeNotAuthorizedToSeeStatus" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeNotAuthorizedToSeeStatus
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeOverDailyStatusUpdateLimit" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeOverDailyStatusUpdateLimit
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeStatusIsDuplicate" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeStatusIsDuplicate
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeBadAuthenticationData" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeBadAuthenticationData
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeRequestIsAutomated" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeRequestIsAutomated
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeUserMustVerifyLogin" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeUserMustVerifyLogin
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeChallengeCodeInvalid" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeChallengeCodeInvalid
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeBadGuestToken" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeBadGuestToken
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeLoginRateExceeded" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeLoginRateExceeded
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeEndpointRetired" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeEndpointRetired
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeApplicationCannotPerformWriteAction" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeApplicationCannotPerformWriteAction
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeCannotMuteSelf" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeCannotMuteSelf
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeCannotMuteSpecifiedUser" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeCannotMuteSpecifiedUser
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeDeviceRegisterRateExceeded" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeDeviceRegisterRateExceeded
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeDeviceCarrierNotSupported" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeDeviceCarrierNotSupported
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeAlreadyRetweeted" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeAlreadyRetweeted
+    </value>
+  </const>
+  <const name="TWTRAPIErrorCodeTooManyRequests" type="TWTRAPIErrorCode_">
+    <value>
+      TWTRAPIErrorCodeTooManyRequests
+    </value>
+  </const>
+  <pointer name="id" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <enum name="TWTRAPIErrorCode_">
+    <element value="32" name="TWTRAPIErrorCodeCouldNotAuthenticate" />
+    <element value="34" name="TWTRAPIErrorCodePageNotExist" />
+    <element value="37" name="TWTRAPIErrorCodeNotAuthorizedForEndpoint" />
+    <element value="44" name="TWTRAPIErrorCodeInvalidParameter" />
+    <element value="64" name="TWTRAPIErrorCodeAccountSuspended" />
+    <element value="68" name="TWTRAPIErrorCodeAPIVersionRetired" />
+    <element value="88" name="TWTRAPIErrorCodeRateLimitExceeded" />
+    <element value="89" name="TWTRAPIErrorCodeInvalidOrExpiredToken" />
+    <element value="92" name="TWTRAPIErrorCodeSSLInvalid" />
+    <element value="130" name="TWTRAPIErrorCodeOverCapacity" />
+    <element value="131" name="TWTRAPIErrorCodeInternalError" />
+    <element value="135" name="TWTRAPIErrorCodeCouldNotAuthenticateTimestampOutOfRange" />
+    <element value="139" name="TWTRAPIErrorCodeAlreadyFavorited" />
+    <element value="161" name="TWTRAPIErrorCodeCannotFollowOverLimit" />
+    <element value="179" name="TWTRAPIErrorCodeNotAuthorizedToSeeStatus" />
+    <element value="185" name="TWTRAPIErrorCodeOverDailyStatusUpdateLimit" />
+    <element value="187" name="TWTRAPIErrorCodeStatusIsDuplicate" />
+    <element value="215" name="TWTRAPIErrorCodeBadAuthenticationData" />
+    <element value="226" name="TWTRAPIErrorCodeRequestIsAutomated" />
+    <element value="231" name="TWTRAPIErrorCodeUserMustVerifyLogin" />
+    <element value="236" name="TWTRAPIErrorCodeChallengeCodeInvalid" />
+    <element value="239" name="TWTRAPIErrorCodeBadGuestToken" />
+    <element value="245" name="TWTRAPIErrorCodeLoginRateExceeded" />
+    <element value="251" name="TWTRAPIErrorCodeEndpointRetired" />
+    <element value="261" name="TWTRAPIErrorCodeApplicationCannotPerformWriteAction" />
+    <element value="271" name="TWTRAPIErrorCodeCannotMuteSelf" />
+    <element value="272" name="TWTRAPIErrorCodeCannotMuteSpecifiedUser" />
+    <element value="299" name="TWTRAPIErrorCodeDeviceRegisterRateExceeded" />
+    <element value="286" name="TWTRAPIErrorCodeDeviceCarrierNotSupported" />
+    <element value="327" name="TWTRAPIErrorCodeAlreadyRetweeted" />
+    <element value="429" name="TWTRAPIErrorCodeTooManyRequests" />
+  </enum>
+  <type name="TWTRAPIErrorCode" type="integer" loBound="-2147483648" hiBound="2147483647" file="System.pas" line="12" />
+</namespace>

@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="iOSApi.TWTRConstants" platform="iOS">
+  <const name="TWTRErrorCodeUnknown" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeUnknown
+    </value>
+  </const>
+  <const name="TWTRErrorCodeNoAuthentication" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeNoAuthentication
+    </value>
+  </const>
+  <const name="TWTRErrorCodeNotInitialized" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeNotInitialized
+    </value>
+  </const>
+  <const name="TWTRErrorCodeUserDeclinedPermission" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeUserDeclinedPermission
+    </value>
+  </const>
+  <const name="TWTRErrorCodeUserHasNoEmailAddress" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeUserHasNoEmailAddress
+    </value>
+  </const>
+  <const name="TWTRErrorCodeInvalidResourceID" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeInvalidResourceID
+    </value>
+  </const>
+  <const name="TWTRErrorCodeInvalidURL" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeInvalidURL
+    </value>
+  </const>
+  <const name="TWTRErrorCodeMismatchedJSONType" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeMismatchedJSONType
+    </value>
+  </const>
+  <const name="TWTRErrorCodeKeychainSerializationFailure" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeKeychainSerializationFailure
+    </value>
+  </const>
+  <const name="TWTRErrorCodeDiskSerializationError" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeDiskSerializationError
+    </value>
+  </const>
+  <const name="TWTRErrorCodeWebViewError" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeWebViewError
+    </value>
+  </const>
+  <const name="TWTRErrorCodeMissingParameter" type="TWTRErrorCode_">
+    <value>
+      TWTRErrorCodeMissingParameter
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeUnknown" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeUnknown
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeDenied" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeDenied
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeCancelled" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeCancelled
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeNoAccounts" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeNoAccounts
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeReverseAuthFailed" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeReverseAuthFailed
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeCannotRefreshSession" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeCannotRefreshSession
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeSessionNotFound" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeSessionNotFound
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeFailed" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeFailed
+    </value>
+  </const>
+  <const name="TWTRLogInErrorCodeSystemAccountCredentialsInvalid" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLogInErrorCodeSystemAccountCredentialsInvalid
+    </value>
+  </const>
+  <const name="TWTRLoginErrorNoTwitterApp" type="TWTRLogInErrorCode_">
+    <value>
+      TWTRLoginErrorNoTwitterApp
+    </value>
+  </const>
+  <pointer name="id" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <enum name="TWTRErrorCode_">
+    <element value="-1" name="TWTRErrorCodeUnknown" />
+    <element value="0" name="TWTRErrorCodeNoAuthentication" />
+    <element value="1" name="TWTRErrorCodeNotInitialized" />
+    <element value="2" name="TWTRErrorCodeUserDeclinedPermission" />
+    <element value="3" name="TWTRErrorCodeUserHasNoEmailAddress" />
+    <element value="4" name="TWTRErrorCodeInvalidResourceID" />
+    <element value="5" name="TWTRErrorCodeInvalidURL" />
+    <element value="6" name="TWTRErrorCodeMismatchedJSONType" />
+    <element value="7" name="TWTRErrorCodeKeychainSerializationFailure" />
+    <element value="8" name="TWTRErrorCodeDiskSerializationError" />
+    <element value="9" name="TWTRErrorCodeWebViewError" />
+    <element value="10" name="TWTRErrorCodeMissingParameter" />
+  </enum>
+  <type name="TWTRErrorCode" type="integer" loBound="-2147483648" hiBound="2147483647" file="System.pas" line="12" />
+  <enum name="TWTRLogInErrorCode_">
+    <element value="-1" name="TWTRLogInErrorCodeUnknown" />
+    <element value="0" name="TWTRLogInErrorCodeDenied" />
+    <element value="1" name="TWTRLogInErrorCodeCancelled" />
+    <element value="2" name="TWTRLogInErrorCodeNoAccounts" />
+    <element value="3" name="TWTRLogInErrorCodeReverseAuthFailed" />
+    <element value="4" name="TWTRLogInErrorCodeCannotRefreshSession" />
+    <element value="5" name="TWTRLogInErrorCodeSessionNotFound" />
+    <element value="6" name="TWTRLogInErrorCodeFailed" />
+    <element value="7" name="TWTRLogInErrorCodeSystemAccountCredentialsInvalid" />
+    <element value="8" name="TWTRLoginErrorNoTwitterApp" />
+  </enum>
+  <type name="TWTRLogInErrorCode" type="integer" loBound="-2147483648" hiBound="2147483647" file="System.pas" line="12" />
+</namespace>

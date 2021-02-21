@@ -1,3 +1,4 @@
+C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterLogin.dproj
 C:\OrangeFreeSDK\HuaweiScan\HuaweiScan.dproj
 C:\MyFiles\ThirdPartySDK\TestSDK\Project2.dproj
 C:\MyFiles\ThirdPartySDK\IOSÍ¼Æ¬Ñ¡ÔñÆ÷HXPhotoPicker\Project15.dproj

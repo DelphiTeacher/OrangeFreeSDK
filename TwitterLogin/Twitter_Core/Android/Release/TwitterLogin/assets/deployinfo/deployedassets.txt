@@ -1,0 +1,2 @@
+.\library\lib\Android\Release\Project1\assets\internal\AndroidManifest.xml
+.\library\lib\Android\Release\Project1\assets\deployinfo\deployedassets.txt

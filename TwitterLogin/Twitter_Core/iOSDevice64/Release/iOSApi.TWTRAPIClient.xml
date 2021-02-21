@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="iOSApi.TWTRAPIClient" platform="iOS">
+  <pointer name="id" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRLoadTweetCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRLoadTweetsCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRNetworkCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRJSONRequestCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRTweetActionCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRMediaUploadResponseCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRSendTweetCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <pointer name="TWTRRequestEmailCompletion" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <interface name="TWTRAPIClient" GUID="{D2A301BB-643E-4204-A64E-3E6A721C2F1E}" ancestor="NSObject">
+    <function name="userID" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="NSString" />
+      </parameters>
+    </function>
+    <procedure name="setUserID" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="userID" type="NSString" />
+      </parameters>
+    </procedure>
+    <function name="initWithUserID" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="userID" type="NSString" />
+        <retval type="TWTRAPIClient" />
+      </parameters>
+    </function>
+    <function name="URLRequestWithMethodURLparameterserror" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="method" type="NSString" />
+        <parameter name="URLString" type="NSString" />
+        <parameter name="parameters" type="NSDictionary" />
+        <parameter name="error" type="NSError" />
+        <retval type="NSURLRequest" />
+      </parameters>
+    </function>
+    <procedure name="loadUserWithIDcompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="userID" type="NSString" />
+        <parameter name="completion" type="TWTRLoadUserCompletion" />
+      </parameters>
+    </procedure>
+    <procedure name="loadTweetWithIDcompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="tweetID" type="NSString" />
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+    <procedure name="loadTweetsWithIDscompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="tweetIDStrings" type="NSArray" />
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+    <procedure name="uploadMediacontentTypecompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="media" type="NSData" />
+        <parameter name="contentType" type="NSString" />
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+    <procedure name="sendTweetWithTextcompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="tweetText" type="NSString" />
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+    <procedure name="sendTweetWithTextimagecompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="tweetText" type="NSString" />
+        <parameter name="image" type="UIImage" />
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+    <procedure name="sendTweetWithTextvideoDatacompletion" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="tweetText" type="NSString" />
+        <parameter name="videoData" type="NSData" />
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+    <procedure name="requestEmailForCurrentUser" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="completion" type="Pointer" />
+      </parameters>
+    </procedure>
+  </interface>
+  <interface name="TWTRAPIClientClass" GUID="{A587F085-2B74-4ADE-ADB6-E119A87E8926}" ancestor="NSObjectClass">
+    <function name="clientWithCurrentUser" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="TWTRAPIClient" />
+      </parameters>
+    </function>
+  </interface>
+  <class name="TTWTRAPIClient">
+    <ancestor name="{Macapi.ObjectiveC}TOCGenericImport&lt;iOSApi.TWTRAPIClient.TWTRAPIClientClass,iOSApi.TWTRAPIClient.TWTRAPIClient&gt;" namespace="iOSApi.TWTRAPIClient">
+      <methodref name="GetOCClass" visibility="class private" procflags="static">
+      </methodref>
+      <methodref name="GetInstanceVTable" visibility="class private" procflags="class">
+      </methodref>
+      <methodref name="Destroy@" visibility="class private" procflags="class destructor noself">
+      </methodref>
+      <methodref name="Wrap" visibility="public" procflags="class">
+      </methodref>
+      <propertyref name="OCClass" visibility="public">
+      </propertyref>
+      <methodref name="Create" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="Alloc" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="Init" visibility="public" procflags="class">
+      </methodref>
+      <ancestor name="TOCImport" namespace="Macapi.ObjectiveC">
+        <interfaces>
+          <implements name="ILocalObject" />
+        </interfaces>
+        <methodref name="GetObjectID" visibility="protected" procflags="inline">
+        </methodref>
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor override">
+        </methodref>
+        <ancestor name="TRawVirtualClass" namespace="System.Rtti">
+          <interfaces>
+            <implements name="IInterface" />
+          </interfaces>
+          <methodref name="_AddRefFromIntf" visibility="private">
+          </methodref>
+          <methodref name="_ReleaseFromIntf" visibility="private">
+          </methodref>
+          <methodref name="_QIFromIntf" visibility="private">
+          </methodref>
+          <methodref name="QueryInterface" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="FindInterface" visibility="public">
+          </methodref>
+          <methodref name="Create" visibility="public" procflags="constructor overload">
+          </methodref>
+          <methodref name="Destroy" visibility="public" procflags="destructor override">
+          </methodref>
+          <methodref name="GetInstanceFromInterface" visibility="public" procflags="static">
+          </methodref>
+          <ancestor name="TInterfacedObject" namespace="System">
+            <interfaces>
+              <implements name="IInterface" />
+            </interfaces>
+            <methodref name="GetRefCount" visibility="private" procflags="inline">
+            </methodref>
+            <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+            </methodref>
+            <methodref name="QueryInterface" visibility="protected">
+            </methodref>
+            <methodref name="_AddRef" visibility="protected">
+            </methodref>
+            <methodref name="_Release" visibility="protected">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="override">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="override">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class override">
+            </methodref>
+            <propertyref name="RefCount" visibility="public">
+            </propertyref>
+            <ancestor name="TObject" namespace="System">
+              <methodref name="Create" visibility="public" procflags="constructor">
+              </methodref>
+              <methodref name="Free" visibility="public">
+              </methodref>
+              <methodref name="DisposeOf" visibility="public" procflags="inline">
+              </methodref>
+              <methodref name="InitInstance" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="CleanupInstance" visibility="public">
+              </methodref>
+              <methodref name="ClassType" visibility="public" procflags="inline">
+              </methodref>
+              <methodref name="ClassName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="ClassNameIs" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="ClassParent" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="ClassInfo" visibility="public" procflags="class inline">
+              </methodref>
+              <methodref name="InstanceSize" visibility="public" procflags="class inline">
+              </methodref>
+              <methodref name="InheritsFrom" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="MethodAddress" visibility="public" procflags="class overload">
+              </methodref>
+              <methodref name="MethodAddress" visibility="public" procflags="class overload">
+              </methodref>
+              <methodref name="MethodName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="QualifiedClassName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="FieldAddress" visibility="public" procflags="overload">
+              </methodref>
+              <methodref name="FieldAddress" visibility="public" procflags="overload">
+              </methodref>
+              <methodref name="GetInterface" visibility="public">
+              </methodref>
+              <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+              </methodref>
+              <methodref name="UnitName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="UnitScope" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="Equals" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="GetHashCode" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="ToString" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="SafeCallException" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="Dispatch" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="NewInstance" visibility="public" procflags="class virtual">
+              </methodref>
+              <methodref name="FreeInstance" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+              </methodref>
+              <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="GetDisposed" visibility="protected" procflags="inline">
+              </methodref>
+              <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+              </methodref>
+              <propertyref name="Disposed" visibility="protected">
+              </propertyref>
+            </ancestor>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+  </class>
+</namespace>

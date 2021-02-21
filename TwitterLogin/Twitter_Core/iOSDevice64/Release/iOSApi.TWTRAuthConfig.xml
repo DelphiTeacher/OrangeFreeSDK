@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="iOSApi.TWTRAuthConfig" platform="iOS">
+  <pointer name="id" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <interface name="TWTRAuthConfig" GUID="{B34CEA30-2C55-4959-A23D-1C009C552E76}" ancestor="NSObject">
+    <function name="consumerKey" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="NSString" />
+      </parameters>
+    </function>
+    <procedure name="setConsumerKey" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="consumerKey" type="NSString" />
+      </parameters>
+    </procedure>
+    <function name="consumerSecret" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="NSString" />
+      </parameters>
+    </function>
+    <procedure name="setConsumerSecret" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="consumerSecret" type="NSString" />
+      </parameters>
+    </procedure>
+    <function name="initWithConsumerKeyconsumerSecret" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <attributes>
+        <attribute name="MethodNameAttribute" />
+      </attributes>
+      <parameters>
+        <parameter name="consumerKey" type="NSString" />
+        <parameter name="consumerSecret" type="NSString" />
+        <retval type="TWTRAuthConfig" />
+      </parameters>
+    </function>
+  </interface>
+  <interface name="TWTRAuthConfigClass" GUID="{50CA450E-BCEA-4D56-82EF-26804998A8F7}" ancestor="NSObjectClass">
+  </interface>
+  <class name="TTWTRAuthConfig">
+    <ancestor name="{Macapi.ObjectiveC}TOCGenericImport&lt;iOSApi.TWTRAuthConfig.TWTRAuthConfigClass,iOSApi.TWTRAuthConfig.TWTRAuthConfig&gt;" namespace="iOSApi.TWTRAuthConfig">
+      <methodref name="GetOCClass" visibility="class private" procflags="static">
+      </methodref>
+      <methodref name="GetInstanceVTable" visibility="class private" procflags="class">
+      </methodref>
+      <methodref name="Destroy@" visibility="class private" procflags="class destructor noself">
+      </methodref>
+      <methodref name="Wrap" visibility="public" procflags="class">
+      </methodref>
+      <propertyref name="OCClass" visibility="public">
+      </propertyref>
+      <methodref name="Create" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="Alloc" visibility="public" procflags="class overload">
+      </methodref>
+      <methodref name="Init" visibility="public" procflags="class">
+      </methodref>
+      <ancestor name="TOCImport" namespace="Macapi.ObjectiveC">
+        <interfaces>
+          <implements name="ILocalObject" />
+        </interfaces>
+        <methodref name="GetObjectID" visibility="protected" procflags="inline">
+        </methodref>
+        <methodref name="Create" visibility="public" procflags="constructor">
+        </methodref>
+        <methodref name="Destroy" visibility="public" procflags="destructor override">
+        </methodref>
+        <ancestor name="TRawVirtualClass" namespace="System.Rtti">
+          <interfaces>
+            <implements name="IInterface" />
+          </interfaces>
+          <methodref name="_AddRefFromIntf" visibility="private">
+          </methodref>
+          <methodref name="_ReleaseFromIntf" visibility="private">
+          </methodref>
+          <methodref name="_QIFromIntf" visibility="private">
+          </methodref>
+          <methodref name="QueryInterface" visibility="public" procflags="virtual">
+          </methodref>
+          <methodref name="FindInterface" visibility="public">
+          </methodref>
+          <methodref name="Create" visibility="public" procflags="constructor overload">
+          </methodref>
+          <methodref name="Destroy" visibility="public" procflags="destructor override">
+          </methodref>
+          <methodref name="GetInstanceFromInterface" visibility="public" procflags="static">
+          </methodref>
+          <ancestor name="TInterfacedObject" namespace="System">
+            <interfaces>
+              <implements name="IInterface" />
+            </interfaces>
+            <methodref name="GetRefCount" visibility="private" procflags="inline">
+            </methodref>
+            <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+            </methodref>
+            <methodref name="QueryInterface" visibility="protected">
+            </methodref>
+            <methodref name="_AddRef" visibility="protected">
+            </methodref>
+            <methodref name="_Release" visibility="protected">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="override">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="override">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class override">
+            </methodref>
+            <propertyref name="RefCount" visibility="public">
+            </propertyref>
+            <ancestor name="TObject" namespace="System">
+              <methodref name="Create" visibility="public" procflags="constructor">
+              </methodref>
+              <methodref name="Free" visibility="public">
+              </methodref>
+              <methodref name="DisposeOf" visibility="public" procflags="inline">
+              </methodref>
+              <methodref name="InitInstance" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="CleanupInstance" visibility="public">
+              </methodref>
+              <methodref name="ClassType" visibility="public" procflags="inline">
+              </methodref>
+              <methodref name="ClassName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="ClassNameIs" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="ClassParent" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="ClassInfo" visibility="public" procflags="class inline">
+              </methodref>
+              <methodref name="InstanceSize" visibility="public" procflags="class inline">
+              </methodref>
+              <methodref name="InheritsFrom" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="MethodAddress" visibility="public" procflags="class overload">
+              </methodref>
+              <methodref name="MethodAddress" visibility="public" procflags="class overload">
+              </methodref>
+              <methodref name="MethodName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="QualifiedClassName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="FieldAddress" visibility="public" procflags="overload">
+              </methodref>
+              <methodref name="FieldAddress" visibility="public" procflags="overload">
+              </methodref>
+              <methodref name="GetInterface" visibility="public">
+              </methodref>
+              <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+              </methodref>
+              <methodref name="UnitName" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="UnitScope" visibility="public" procflags="class">
+              </methodref>
+              <methodref name="Equals" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="GetHashCode" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="ToString" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="SafeCallException" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="Dispatch" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="NewInstance" visibility="public" procflags="class virtual">
+              </methodref>
+              <methodref name="FreeInstance" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+              </methodref>
+              <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="GetDisposed" visibility="protected" procflags="inline">
+              </methodref>
+              <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+              </methodref>
+              <propertyref name="Disposed" visibility="protected">
+              </propertyref>
+            </ancestor>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+  </class>
+</namespace>

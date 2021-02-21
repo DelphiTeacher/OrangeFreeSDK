@@ -1,0 +1,1993 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="TwitterCore" platform="Android">
+  <class name="TJMyTwitterSessionCallback_MyCallBackTwitterSession">
+    <ancestor name="TJavaLocal" namespace="Androidapi.JNIBridge">
+      <interfaces>
+        <implements name="IJava" />
+        <implements name="ILocalObject" />
+      </interfaces>
+      <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+      </methodref>
+      <methodref name="GetProxyInterfaceNameFromContext" visibility="private" procflags="static">
+      </methodref>
+      <methodref name="GetObjectID" visibility="protected">
+      </methodref>
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <methodref name="hashCode" visibility="public">
+      </methodref>
+      <methodref name="equals" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="toString" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="getName" visibility="public">
+      </methodref>
+      <ancestor name="TJInterfacedObject" namespace="Androidapi.JNIBridge">
+        <methodref name="AfterConstruction" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="override">
+        </methodref>
+        <ancestor name="TInterfacedObject" namespace="System">
+          <interfaces>
+            <implements name="IInterface" />
+          </interfaces>
+          <methodref name="GetRefCount" visibility="private" procflags="inline">
+          </methodref>
+          <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+          </methodref>
+          <methodref name="QueryInterface" visibility="protected">
+          </methodref>
+          <methodref name="_AddRef" visibility="protected">
+          </methodref>
+          <methodref name="_Release" visibility="protected">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="NewInstance" visibility="public" procflags="class override">
+          </methodref>
+          <propertyref name="RefCount" visibility="public">
+          </propertyref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public" procflags="constructor">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="DisposeOf" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="InitInstance" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="ClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassParent" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="QualifiedClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="UnitName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="UnitScope" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="Equals" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetHashCode" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ToString" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Dispatch" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class virtual">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+            </methodref>
+            <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <propertyref name="Disposed" visibility="protected">
+            </propertyref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="JMyTwitterSessionCallback_MyCallBackTwitterSession" />
+    </interfaces>
+    <members>
+      <field name="FUserID" type="Integer" visibility="public" size="4" offset="24" />
+      <field name="FUserName" type="string" visibility="public" size="4" offset="28" />
+      <field name="FToken" type="JTwitterAuthToken" visibility="public" size="4" offset="32" />
+      <procedure name="success" visibility="public" callconv="cdecl">
+        <parameters>
+          <parameter name="P1" type="JResult" />
+          <parameter name="P2" type="Int64" />
+          <parameter name="P3" type="JString" />
+          <parameter name="P4" type="JTwitterAuthToken" />
+        </parameters>
+      </procedure>
+      <procedure name="failure" visibility="public" callconv="cdecl">
+      </procedure>
+      <field name="FTwitter" type="TWitter" visibility="public" size="4" offset="36" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="ATwitter" type="TWitter" />
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TJMyCallUser_GetMyInfo">
+    <ancestor name="TJavaLocal" namespace="Androidapi.JNIBridge">
+      <interfaces>
+        <implements name="IJava" />
+        <implements name="ILocalObject" />
+      </interfaces>
+      <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+      </methodref>
+      <methodref name="GetProxyInterfaceNameFromContext" visibility="private" procflags="static">
+      </methodref>
+      <methodref name="GetObjectID" visibility="protected">
+      </methodref>
+      <methodref name="Create" visibility="public" procflags="constructor">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <methodref name="hashCode" visibility="public">
+      </methodref>
+      <methodref name="equals" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="toString" visibility="public" procflags="overload">
+      </methodref>
+      <methodref name="getName" visibility="public">
+      </methodref>
+      <ancestor name="TJInterfacedObject" namespace="Androidapi.JNIBridge">
+        <methodref name="AfterConstruction" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="override">
+        </methodref>
+        <ancestor name="TInterfacedObject" namespace="System">
+          <interfaces>
+            <implements name="IInterface" />
+          </interfaces>
+          <methodref name="GetRefCount" visibility="private" procflags="inline">
+          </methodref>
+          <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+          </methodref>
+          <methodref name="QueryInterface" visibility="protected">
+          </methodref>
+          <methodref name="_AddRef" visibility="protected">
+          </methodref>
+          <methodref name="_Release" visibility="protected">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="NewInstance" visibility="public" procflags="class override">
+          </methodref>
+          <propertyref name="RefCount" visibility="public">
+          </propertyref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public" procflags="constructor">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="DisposeOf" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="InitInstance" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="ClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassParent" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="QualifiedClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="UnitName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="UnitScope" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="Equals" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetHashCode" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ToString" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Dispatch" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class virtual">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+            </methodref>
+            <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <propertyref name="Disposed" visibility="protected">
+            </propertyref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="JMyCallUser_GetMyInfo" />
+    </interfaces>
+    <members>
+      <procedure name="success" visibility="public" callconv="cdecl">
+        <parameters>
+          <parameter name="P1" type="JUser" />
+        </parameters>
+      </procedure>
+      <procedure name="failure" visibility="public" callconv="cdecl">
+      </procedure>
+      <field name="FTwitter" type="TWitter" visibility="public" size="4" offset="24" />
+      <constructor name="Create" visibility="public">
+        <parameters>
+          <parameter name="ATwitter" type="TWitter" />
+        </parameters>
+      </constructor>
+    </members>
+  </class>
+  <class name="TWitter">
+    <ancestor name="TSkinNativeView" namespace="uBaseNativeView">
+      <methodref name="GetZOrderManager" visibility="private">
+      </methodref>
+      <methodref name="CreateNativeView" visibility="protected" procflags="abstract virtual">
+      </methodref>
+      <methodref name="DoAbsoluteChanged" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="ParentChanged" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="ChangeOrder" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="AncestorVisibleChanged" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="Move" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="Show" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="Hide" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="Resize" visibility="protected" procflags="override">
+      </methodref>
+      <methodref name="doNativeShow" visibility="public" procflags="virtual">
+      </methodref>
+      <methodref name="doNativeHide" visibility="public">
+      </methodref>
+      <methodref name="UpdateContentFromControl" visibility="public">
+      </methodref>
+      <propertyref name="ZOrderManager" visibility="public">
+      </propertyref>
+      <methodref name="Create" visibility="public" procflags="constructor override">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <propertyref name="Action" visibility="published">
+      </propertyref>
+      <propertyref name="Align" visibility="published">
+      </propertyref>
+      <propertyref name="Anchors" visibility="published">
+      </propertyref>
+      <propertyref name="CanFocus" visibility="published">
+      </propertyref>
+      <propertyref name="CanParentFocus" visibility="published">
+      </propertyref>
+      <propertyref name="ClipChildren" visibility="published">
+      </propertyref>
+      <propertyref name="ClipParent" visibility="published">
+      </propertyref>
+      <propertyref name="Cursor" visibility="published">
+      </propertyref>
+      <propertyref name="DragMode" visibility="published">
+      </propertyref>
+      <propertyref name="Enabled" visibility="published">
+      </propertyref>
+      <propertyref name="Height" visibility="published">
+      </propertyref>
+      <propertyref name="Hint" visibility="published">
+      </propertyref>
+      <propertyref name="HitTest" visibility="published">
+      </propertyref>
+      <propertyref name="Locked" visibility="published">
+      </propertyref>
+      <propertyref name="Padding" visibility="published">
+      </propertyref>
+      <propertyref name="Opacity" visibility="published">
+      </propertyref>
+      <propertyref name="Margins" visibility="published">
+      </propertyref>
+      <propertyref name="PopupMenu" visibility="published">
+      </propertyref>
+      <propertyref name="Position" visibility="published">
+      </propertyref>
+      <propertyref name="Scale" visibility="published">
+      </propertyref>
+      <propertyref name="Size" visibility="published">
+      </propertyref>
+      <propertyref name="RotationAngle" visibility="published">
+      </propertyref>
+      <propertyref name="RotationCenter" visibility="published">
+      </propertyref>
+      <propertyref name="ShowHint" visibility="published">
+      </propertyref>
+      <propertyref name="TabOrder" visibility="published">
+      </propertyref>
+      <propertyref name="TouchTargetExpansion" visibility="published">
+      </propertyref>
+      <propertyref name="Visible" visibility="published">
+      </propertyref>
+      <propertyref name="Width" visibility="published">
+      </propertyref>
+      <propertyref name="OnDragEnter" visibility="published">
+      </propertyref>
+      <propertyref name="OnDragLeave" visibility="published">
+      </propertyref>
+      <propertyref name="OnDragOver" visibility="published">
+      </propertyref>
+      <propertyref name="OnDragDrop" visibility="published">
+      </propertyref>
+      <propertyref name="OnDragEnd" visibility="published">
+      </propertyref>
+      <propertyref name="OnKeyDown" visibility="published">
+      </propertyref>
+      <propertyref name="OnKeyUp" visibility="published">
+      </propertyref>
+      <propertyref name="OnCanFocus" visibility="published">
+      </propertyref>
+      <propertyref name="OnClick" visibility="published">
+      </propertyref>
+      <propertyref name="OnDblClick" visibility="published">
+      </propertyref>
+      <propertyref name="OnEnter" visibility="published">
+      </propertyref>
+      <propertyref name="OnExit" visibility="published">
+      </propertyref>
+      <propertyref name="OnMouseDown" visibility="published">
+      </propertyref>
+      <propertyref name="OnMouseMove" visibility="published">
+      </propertyref>
+      <propertyref name="OnMouseUp" visibility="published">
+      </propertyref>
+      <propertyref name="OnMouseWheel" visibility="published">
+      </propertyref>
+      <propertyref name="OnMouseEnter" visibility="published">
+      </propertyref>
+      <propertyref name="OnMouseLeave" visibility="published">
+      </propertyref>
+      <propertyref name="OnPainting" visibility="published">
+      </propertyref>
+      <propertyref name="OnPaint" visibility="published">
+      </propertyref>
+      <propertyref name="OnResize" visibility="published">
+      </propertyref>
+      <ancestor name="TRectangle" namespace="FMX.Objects">
+        <methodref name="IsCornersStored" visibility="private">
+        </methodref>
+        <methodref name="IsSidesStored" visibility="private">
+        </methodref>
+        <methodref name="SetXRadius" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="SetYRadius" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="SetCorners" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="SetCornerType" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="SetSides" visibility="protected" procflags="virtual">
+        </methodref>
+        <methodref name="Paint" visibility="protected" procflags="override">
+        </methodref>
+        <methodref name="Create" visibility="public" procflags="constructor override">
+        </methodref>
+        <propertyref name="Align" visibility="published">
+        </propertyref>
+        <propertyref name="Anchors" visibility="published">
+        </propertyref>
+        <propertyref name="ClipChildren" visibility="published">
+        </propertyref>
+        <propertyref name="ClipParent" visibility="published">
+        </propertyref>
+        <propertyref name="Corners" visibility="published">
+        </propertyref>
+        <propertyref name="CornerType" visibility="published">
+        </propertyref>
+        <propertyref name="Cursor" visibility="published">
+        </propertyref>
+        <propertyref name="DragMode" visibility="published">
+        </propertyref>
+        <propertyref name="EnableDragHighlight" visibility="published">
+        </propertyref>
+        <propertyref name="Enabled" visibility="published">
+        </propertyref>
+        <propertyref name="Fill" visibility="published">
+        </propertyref>
+        <propertyref name="Locked" visibility="published">
+        </propertyref>
+        <propertyref name="Height" visibility="published">
+        </propertyref>
+        <propertyref name="Hint" visibility="published">
+        </propertyref>
+        <propertyref name="HitTest" visibility="published">
+        </propertyref>
+        <propertyref name="Padding" visibility="published">
+        </propertyref>
+        <propertyref name="Opacity" visibility="published">
+        </propertyref>
+        <propertyref name="Margins" visibility="published">
+        </propertyref>
+        <propertyref name="PopupMenu" visibility="published">
+        </propertyref>
+        <propertyref name="Position" visibility="published">
+        </propertyref>
+        <propertyref name="RotationAngle" visibility="published">
+        </propertyref>
+        <propertyref name="RotationCenter" visibility="published">
+        </propertyref>
+        <propertyref name="Scale" visibility="published">
+        </propertyref>
+        <propertyref name="Sides" visibility="published">
+        </propertyref>
+        <propertyref name="Size" visibility="published">
+        </propertyref>
+        <propertyref name="Stroke" visibility="published">
+        </propertyref>
+        <propertyref name="Visible" visibility="published">
+        </propertyref>
+        <propertyref name="XRadius" visibility="published">
+        </propertyref>
+        <propertyref name="YRadius" visibility="published">
+        </propertyref>
+        <propertyref name="Width" visibility="published">
+        </propertyref>
+        <propertyref name="ParentShowHint" visibility="published">
+        </propertyref>
+        <propertyref name="ShowHint" visibility="published">
+        </propertyref>
+        <propertyref name="OnDragEnter" visibility="published">
+        </propertyref>
+        <propertyref name="OnDragLeave" visibility="published">
+        </propertyref>
+        <propertyref name="OnDragOver" visibility="published">
+        </propertyref>
+        <propertyref name="OnDragDrop" visibility="published">
+        </propertyref>
+        <propertyref name="OnDragEnd" visibility="published">
+        </propertyref>
+        <propertyref name="OnClick" visibility="published">
+        </propertyref>
+        <propertyref name="OnDblClick" visibility="published">
+        </propertyref>
+        <propertyref name="OnMouseDown" visibility="published">
+        </propertyref>
+        <propertyref name="OnMouseMove" visibility="published">
+        </propertyref>
+        <propertyref name="OnMouseUp" visibility="published">
+        </propertyref>
+        <propertyref name="OnMouseWheel" visibility="published">
+        </propertyref>
+        <propertyref name="OnMouseEnter" visibility="published">
+        </propertyref>
+        <propertyref name="OnMouseLeave" visibility="published">
+        </propertyref>
+        <propertyref name="OnPainting" visibility="published">
+        </propertyref>
+        <propertyref name="OnPaint" visibility="published">
+        </propertyref>
+        <propertyref name="OnResize" visibility="published">
+        </propertyref>
+        <propertyref name="OnResized" visibility="published">
+        </propertyref>
+        <ancestor name="TShape" namespace="FMX.Objects">
+          <methodref name="SetFill" visibility="private">
+          </methodref>
+          <methodref name="SetStroke" visibility="private">
+          </methodref>
+          <methodref name="Painting" visibility="protected" procflags="override">
+          </methodref>
+          <methodref name="FillChanged" visibility="protected" procflags="virtual">
+          </methodref>
+          <methodref name="StrokeChanged" visibility="protected" procflags="virtual">
+          </methodref>
+          <methodref name="GetShapeRect" visibility="protected">
+          </methodref>
+          <methodref name="DoGetUpdateRect" visibility="protected" procflags="override">
+          </methodref>
+          <methodref name="Create" visibility="public" procflags="constructor override">
+          </methodref>
+          <methodref name="Destroy" visibility="public" procflags="destructor override">
+          </methodref>
+          <propertyref name="Fill" visibility="public">
+          </propertyref>
+          <propertyref name="Stroke" visibility="public">
+          </propertyref>
+          <propertyref name="ShapeRect" visibility="public">
+          </propertyref>
+          <ancestor name="TControl" namespace="FMX.Controls">
+            <interfaces>
+              <implements name="ITriggerEffect" />
+              <implements name="ITriggerAnimation" />
+              <implements name="ITabStopController" />
+              <implements name="IGestureControl" />
+              <implements name="IEffectContainer" />
+              <implements name="IAlignableObject" />
+              <implements name="IRotatedControl" />
+              <implements name="IAlignRoot" />
+              <implements name="IContainerObject" />
+              <implements name="IControl" />
+            </interfaces>
+            <methodref name="AddToEffectsList" visibility="class private">
+            </methodref>
+            <methodref name="RemoveFromEffectsList" visibility="class private">
+            </methodref>
+            <methodref name="GetInvertAbsoluteMatrix" visibility="class private">
+            </methodref>
+            <methodref name="SetPosition" visibility="class private">
+            </methodref>
+            <methodref name="SetHitTest" visibility="class private">
+            </methodref>
+            <methodref name="SetClipChildren" visibility="class private">
+            </methodref>
+            <methodref name="GetCanvas" visibility="class private" procflags="inline">
+            </methodref>
+            <methodref name="SetLocked" visibility="class private">
+            </methodref>
+            <methodref name="SetTempCanvas" visibility="class private">
+            </methodref>
+            <methodref name="SetOpacity" visibility="class private">
+            </methodref>
+            <methodref name="IsOpacityStored" visibility="class private">
+            </methodref>
+            <methodref name="SetCursor" visibility="class private">
+            </methodref>
+            <methodref name="RefreshInheritedCursor" visibility="class private">
+            </methodref>
+            <methodref name="RefreshInheritedCursorForChildren" visibility="class private">
+            </methodref>
+            <methodref name="GetAbsoluteWidth" visibility="class private">
+            </methodref>
+            <methodref name="GetAbsoluteHeight" visibility="class private">
+            </methodref>
+            <methodref name="IsAnchorsStored" visibility="class private">
+            </methodref>
+            <methodref name="GetEnabled" visibility="class private">
+            </methodref>
+            <methodref name="GetCursor" visibility="class private">
+            </methodref>
+            <methodref name="GetInheritedCursor" visibility="class private">
+            </methodref>
+            <methodref name="GetAbsoluteHasEffect" visibility="class private">
+            </methodref>
+            <methodref name="GetAbsoluteHasDisablePaintEffect" visibility="class private">
+            </methodref>
+            <methodref name="GetAbsoluteHasAfterPaintEffect" visibility="class private">
+            </methodref>
+            <methodref name="PaddingChangedHandler" visibility="class private" procflags="overload">
+            </methodref>
+            <methodref name="MarginsChanged" visibility="class private">
+            </methodref>
+            <methodref name="MatrixChanged" visibility="class private">
+            </methodref>
+            <methodref name="SizeChanged" visibility="class private">
+            </methodref>
+            <methodref name="GetControlsCount" visibility="class private">
+            </methodref>
+            <methodref name="OnClickStored" visibility="class private">
+            </methodref>
+            <methodref name="IsPopupMenuStored" visibility="class private">
+            </methodref>
+            <methodref name="RequestAlign" visibility="class private">
+            </methodref>
+            <methodref name="SetMinClipHeight" visibility="class private">
+            </methodref>
+            <methodref name="SetMinClipWidth" visibility="class private">
+            </methodref>
+            <methodref name="UpdateSmallSizeControl" visibility="class private">
+            </methodref>
+            <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+            </methodref>
+            <methodref name="Destroy@" visibility="class private" procflags="class destructor noself">
+            </methodref>
+            <methodref name="SetOnClick" visibility="class private">
+            </methodref>
+            <methodref name="GetIsFocused" visibility="class private">
+            </methodref>
+            <methodref name="SetPadding" visibility="class private">
+            </methodref>
+            <methodref name="SetMargins" visibility="class private">
+            </methodref>
+            <methodref name="SetTouchTargetExpansion" visibility="class private">
+            </methodref>
+            <methodref name="InternalSizeChanged" visibility="class private">
+            </methodref>
+            <methodref name="ReadFixedWidth" visibility="class private">
+            </methodref>
+            <methodref name="WriteFixedWidth" visibility="class private">
+            </methodref>
+            <methodref name="ReadFixedHeight" visibility="class private">
+            </methodref>
+            <methodref name="WriteFixedHeight" visibility="class private">
+            </methodref>
+            <methodref name="ReadDesignVisible" visibility="class private">
+            </methodref>
+            <methodref name="ReadHint" visibility="class private">
+            </methodref>
+            <methodref name="ReadShowHint" visibility="class private">
+            </methodref>
+            <methodref name="DisabledOpacityStored" visibility="class private">
+            </methodref>
+            <methodref name="SetDisabledOpacity" visibility="class private">
+            </methodref>
+            <methodref name="GetAxisAlignedRect" visibility="class private">
+            </methodref>
+            <methodref name="GetRotationAngle" visibility="class private">
+            </methodref>
+            <methodref name="GetRotationCenter" visibility="class private">
+            </methodref>
+            <methodref name="GetScale" visibility="class private">
+            </methodref>
+            <methodref name="SetRotationAngle" visibility="class private">
+            </methodref>
+            <methodref name="SetRotationCenter" visibility="class private">
+            </methodref>
+            <methodref name="SetScale" visibility="class private">
+            </methodref>
+            <methodref name="GetTabOrder" visibility="class private">
+            </methodref>
+            <methodref name="SetTabOrder" visibility="class private">
+            </methodref>
+            <methodref name="GetTabStop" visibility="class private">
+            </methodref>
+            <methodref name="SetTabStop" visibility="class private">
+            </methodref>
+            <methodref name="SetDisableDisappear" visibility="class private">
+            </methodref>
+            <methodref name="GetDisableDisappear" visibility="class private">
+            </methodref>
+            <methodref name="UpdateParentProperties" visibility="class private">
+            </methodref>
+            <methodref name="GetTouchManager" visibility="private">
+            </methodref>
+            <methodref name="SetTouchManager" visibility="private">
+            </methodref>
+            <methodref name="IsShowHintStored" visibility="private">
+            </methodref>
+            <methodref name="SetParentShowHint" visibility="private">
+            </methodref>
+            <methodref name="SetShowHint" visibility="private">
+            </methodref>
+            <methodref name="GetAbsoluteClipRect" visibility="private">
+            </methodref>
+            <methodref name="HintStored" visibility="private">
+            </methodref>
+            <methodref name="RepaintJointArea" visibility="class protected">
+            </methodref>
+            <methodref name="DoAbsoluteChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="CheckHitTest" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetInPaintTo" visibility="protected">
+            </methodref>
+            <methodref name="EndUpdateNoChanges" visibility="protected">
+            </methodref>
+            <methodref name="SetHint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetEnabled" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Loaded" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="Updated" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="DefineProperties" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="Notification" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="ParentChanged" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="ChangeOrder" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="ChangeChildren" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="SetVisible" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoSetWidth" visibility="protected" procflags="virtual" symflags="deprecated">
+            </methodref>
+            <methodref name="DoSetHeight" visibility="protected" procflags="virtual" symflags="deprecated">
+            </methodref>
+            <methodref name="DoSetSize" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="HandleSizeChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoMatrixChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetHeight" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetWidth" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetSize" visibility="protected" procflags="overload virtual">
+            </methodref>
+            <methodref name="SetSize" visibility="protected" procflags="overload virtual">
+            </methodref>
+            <methodref name="GetAbsoluteRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetChildrenMatrix" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetAbsoluteScale" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetParentedRect" visibility="protected" procflags="virtual" symflags="deprecated">
+            </methodref>
+            <methodref name="GetClipRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetEffectsRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetAbsoluteEnabled" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetChildrenRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetLocalRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetBoundsRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetBoundsRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="IsHeightStored" visibility="protected" procflags="virtual" symflags="deprecated">
+            </methodref>
+            <methodref name="IsWidthStored" visibility="protected" procflags="virtual" symflags="deprecated">
+            </methodref>
+            <methodref name="IsPositionStored" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="IsSizeStored" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetPopupMenu" visibility="protected">
+            </methodref>
+            <methodref name="GetAbsoluteMatrix" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetHasClipParent" visibility="protected">
+            </methodref>
+            <methodref name="GetUpdateRect" visibility="protected">
+            </methodref>
+            <methodref name="DoGetUpdateRect" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetAbsoluteOpacity" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="BeginAutoDrag" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Capture" visibility="protected">
+            </methodref>
+            <methodref name="ReleaseCapture" visibility="protected">
+            </methodref>
+            <propertyref name="EnableExecuteAction" visibility="protected">
+            </propertyref>
+            <methodref name="Click" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DblClick" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="MouseDown" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="MouseMove" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="MouseUp" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="MouseWheel" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="MouseClick" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="KeyDown" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="KeyUp" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DialogKey" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="AfterDialogKey" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="ShowContextMenu" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DragEnter" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DragOver" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DragDrop" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DragLeave" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DragEnd" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetDefaultTouchTargetExpansion" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetCanFocus" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetCanParentFocus" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="EnterChildren" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="ExitChildren" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetParentedVisible" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="NeedUpdateEffects" visibility="protected">
+            </methodref>
+            <methodref name="BeforeEffectEnabledChanged" visibility="protected">
+            </methodref>
+            <methodref name="EffectEnabledChanged" visibility="protected">
+            </methodref>
+            <methodref name="Realign" visibility="protected">
+            </methodref>
+            <methodref name="ChildrenAlignChanged" visibility="protected">
+            </methodref>
+            <methodref name="GetAlign" visibility="protected">
+            </methodref>
+            <methodref name="SetAlign" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetAnchors" visibility="protected">
+            </methodref>
+            <methodref name="SetAnchors" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetMargins" visibility="protected">
+            </methodref>
+            <methodref name="GetPadding" visibility="protected">
+            </methodref>
+            <methodref name="GetWidth" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetHeight" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetLeft" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetTop" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetAllowAlign" visibility="protected">
+            </methodref>
+            <methodref name="GetAnchorRules" visibility="protected">
+            </methodref>
+            <methodref name="GetAnchorOrigin" visibility="protected">
+            </methodref>
+            <methodref name="GetOriginalParentSize" visibility="protected">
+            </methodref>
+            <methodref name="GetAnchorMove" visibility="protected">
+            </methodref>
+            <methodref name="SetAnchorMove" visibility="protected">
+            </methodref>
+            <methodref name="GetAdjustSizeValue" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetAdjustType" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetContainerWidth" visibility="protected">
+            </methodref>
+            <methodref name="GetContainerHeight" visibility="protected">
+            </methodref>
+            <methodref name="GetObject" visibility="protected">
+            </methodref>
+            <methodref name="GetParent" visibility="protected">
+            </methodref>
+            <methodref name="GetVisible" visibility="protected">
+            </methodref>
+            <methodref name="GetDesignInteractive" visibility="protected">
+            </methodref>
+            <methodref name="GetPopupMenu" visibility="protected">
+            </methodref>
+            <methodref name="DoEnter" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoExit" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoActivate" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoDeactivate" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoMouseEnter" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoMouseLeave" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="CheckForAllowFocus" visibility="protected">
+            </methodref>
+            <methodref name="ScreenToLocal" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="LocalToScreen" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetDragMode" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="SetDragMode" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetLocked" visibility="protected">
+            </methodref>
+            <methodref name="GetHitTest" visibility="protected">
+            </methodref>
+            <methodref name="GetAcceptsControls" visibility="protected">
+            </methodref>
+            <methodref name="SetAcceptsControls" visibility="protected">
+            </methodref>
+            <methodref name="FindTarget" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="ObjectAtPoint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="HasHint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetHintString" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetHintObject" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="CanShowHint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="BroadcastGesture" visibility="protected">
+            </methodref>
+            <methodref name="CMGesture" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="TouchManager" visibility="protected">
+            </methodref>
+            <methodref name="GetFirstControlWithGesture" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetFirstControlWithGestureEngine" visibility="protected">
+            </methodref>
+            <methodref name="GetListOfInteractiveGestures" visibility="protected">
+            </methodref>
+            <methodref name="Tap" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetFirstVisibleObjectIndex" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetLastVisibleObjectIndex" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetDefaultSize" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="FillTextFlags" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="ApplyEffect" visibility="protected">
+            </methodref>
+            <methodref name="PaintInternal" visibility="protected">
+            </methodref>
+            <methodref name="SupportsPaintStage" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="CanRepaint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="RepaintRect" visibility="protected">
+            </methodref>
+            <methodref name="PaintChildren" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Painting" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Paint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoPaint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="AfterPaint" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DrawDesignBorder" visibility="protected">
+            </methodref>
+            <methodref name="DoRealign" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoBeginUpdate" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoEndUpdate" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Move" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Resize" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="DoResized" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Disappear" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Show" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="Hide" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="AncestorVisibleChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="AncestorParentChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="ClipChildrenChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="HitTestChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="PaddingChanged" visibility="protected" procflags="overload virtual">
+            </methodref>
+            <propertyref name="MinClipWidth" visibility="protected">
+            </propertyref>
+            <propertyref name="MinClipHeight" visibility="protected">
+            </propertyref>
+            <propertyref name="SmallSizeControl" visibility="protected">
+            </propertyref>
+            <methodref name="DoAddObject" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="DoInsertObject" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="DoRemoveObject" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="DoDeleteChildren" visibility="protected" procflags="override">
+            </methodref>
+            <propertyref name="PaintStage" visibility="protected">
+            </propertyref>
+            <propertyref name="TempCanvas" visibility="protected">
+            </propertyref>
+            <methodref name="SetLeft" visibility="protected">
+            </methodref>
+            <methodref name="SetTop" visibility="protected">
+            </methodref>
+            <methodref name="UpdateExplicitBounds" visibility="protected">
+            </methodref>
+            <methodref name="UpdateAnchorRules" visibility="protected">
+            </methodref>
+            <propertyref name="Left" visibility="protected">
+            </propertyref>
+            <propertyref name="Top" visibility="protected">
+            </propertyref>
+            <propertyref name="ExplicitLeft" visibility="protected">
+            </propertyref>
+            <propertyref name="ExplicitTop" visibility="protected">
+            </propertyref>
+            <propertyref name="ExplicitWidth" visibility="protected">
+            </propertyref>
+            <propertyref name="ExplicitHeight" visibility="protected">
+            </propertyref>
+            <methodref name="GetActionLinkClass" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="ActionChange" visibility="protected" procflags="override">
+            </methodref>
+            <methodref name="EnabledStored" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="VisibleStored" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="EnabledChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="VisibleChanged" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="IsControlRectEmpty" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetControls" visibility="protected">
+            </methodref>
+            <methodref name="DoGesture" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetTabStopController" visibility="protected" procflags="virtual">
+            </methodref>
+            <methodref name="GetTabListClass" visibility="protected" procflags="virtual">
+            </methodref>
+            <propertyref name="DoubleClick" visibility="protected">
+            </propertyref>
+            <propertyref name="RotationAngle" visibility="protected">
+            </propertyref>
+            <propertyref name="RotationCenter" visibility="protected">
+            </propertyref>
+            <propertyref name="Scale" visibility="protected">
+            </propertyref>
+            <propertyref name="DisabledOpacity" visibility="protected">
+            </propertyref>
+            <propertyref name="ParentContent" visibility="protected">
+            </propertyref>
+            <propertyref name="ParentShowHint" visibility="protected">
+            </propertyref>
+            <methodref name="Create" visibility="public" procflags="constructor override">
+            </methodref>
+            <methodref name="Destroy" visibility="public" procflags="destructor override">
+            </methodref>
+            <methodref name="SetNewScene" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SetBounds" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="AbsoluteToLocal" visibility="public" procflags="overload virtual">
+            </methodref>
+            <methodref name="AbsoluteToLocal" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="LocalToAbsolute" visibility="public" procflags="overload virtual">
+            </methodref>
+            <methodref name="LocalToAbsolute" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="AbsoluteToLocalVector" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="LocalToAbsoluteVector" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="PointInObject" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="PointInObjectLocal" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="MakeScreenshot" visibility="public">
+            </methodref>
+            <methodref name="BeginUpdate" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="IsUpdating" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="EndUpdate" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcAbsoluteNow" visibility="public">
+            </methodref>
+            <methodref name="RecalcUpdateRect" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcOpacity" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcAbsolute" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcEnabled" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcHasEffect" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcHasClipParent" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="PrepareForPaint" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="RecalcSize" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="UpdateEffects" visibility="public">
+            </methodref>
+            <methodref name="ApplyTriggerEffect" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="StartTriggerAnimation" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="StartTriggerAnimationWait" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SetFocus" visibility="public">
+            </methodref>
+            <methodref name="ResetFocus" visibility="public">
+            </methodref>
+            <methodref name="PaintTo" visibility="public">
+            </methodref>
+            <methodref name="Repaint" visibility="public">
+            </methodref>
+            <methodref name="InvalidateRect" visibility="public">
+            </methodref>
+            <methodref name="Lock" visibility="public">
+            </methodref>
+            <propertyref name="AbsoluteMatrix" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteOpacity" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteWidth" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteHeight" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteScale" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteEnabled" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteRect" visibility="public">
+            </propertyref>
+            <propertyref name="AbsoluteClipRect" visibility="public">
+            </propertyref>
+            <propertyref name="AxisAlignedRect" visibility="public">
+            </propertyref>
+            <propertyref name="ApplyingEffect" visibility="public">
+            </propertyref>
+            <propertyref name="HasEffect" visibility="public">
+            </propertyref>
+            <propertyref name="HasDisablePaintEffect" visibility="public">
+            </propertyref>
+            <propertyref name="HasAfterPaintEffect" visibility="public">
+            </propertyref>
+            <propertyref name="HasClipParent" visibility="public">
+            </propertyref>
+            <propertyref name="ChildrenRect" visibility="public">
+            </propertyref>
+            <propertyref name="DefaultSize" visibility="public">
+            </propertyref>
+            <propertyref name="FixedSize" visibility="public">
+            </propertyref>
+            <propertyref name="InvertAbsoluteMatrix" visibility="public">
+            </propertyref>
+            <propertyref name="InPaintTo" visibility="public">
+            </propertyref>
+            <propertyref name="LocalRect" visibility="public">
+            </propertyref>
+            <propertyref name="Pressed" visibility="public">
+            </propertyref>
+            <propertyref name="PressedPosition" visibility="public">
+            </propertyref>
+            <propertyref name="UpdateRect" visibility="public">
+            </propertyref>
+            <propertyref name="BoundsRect" visibility="public">
+            </propertyref>
+            <propertyref name="ParentedRect" visibility="public">
+            </propertyref>
+            <propertyref name="ParentedVisible" visibility="public">
+            </propertyref>
+            <propertyref name="ClipRect" visibility="public">
+            </propertyref>
+            <propertyref name="Canvas" visibility="public">
+            </propertyref>
+            <propertyref name="Controls" visibility="public">
+            </propertyref>
+            <propertyref name="ControlsCount" visibility="public">
+            </propertyref>
+            <propertyref name="ParentControl" visibility="public">
+            </propertyref>
+            <propertyref name="Scene" visibility="public">
+            </propertyref>
+            <propertyref name="AutoCapture" visibility="public">
+            </propertyref>
+            <propertyref name="CanFocus" visibility="public">
+            </propertyref>
+            <propertyref name="CanParentFocus" visibility="public">
+            </propertyref>
+            <propertyref name="DisableFocusEffect" visibility="public">
+            </propertyref>
+            <propertyref name="IsInflated" visibility="public">
+            </propertyref>
+            <methodref name="EnumControls" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="EnumControls" visibility="public" procflags="overload" symflags="deprecated">
+            </methodref>
+            <methodref name="GetTabList" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ShowInDesigner" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ShouldTestMouseHits" visibility="public" procflags="virtual">
+            </methodref>
+            <propertyref name="IsMouseOver" visibility="public">
+            </propertyref>
+            <propertyref name="IsDragOver" visibility="public">
+            </propertyref>
+            <propertyref name="IsFocused" visibility="public">
+            </propertyref>
+            <propertyref name="IsVisible" visibility="public">
+            </propertyref>
+            <propertyref name="Align" visibility="public">
+            </propertyref>
+            <propertyref name="Anchors" visibility="public">
+            </propertyref>
+            <propertyref name="Cursor" visibility="public">
+            </propertyref>
+            <propertyref name="InheritedCursor" visibility="public">
+            </propertyref>
+            <propertyref name="DragMode" visibility="public">
+            </propertyref>
+            <propertyref name="EnableDragHighlight" visibility="public">
+            </propertyref>
+            <propertyref name="Enabled" visibility="public">
+            </propertyref>
+            <propertyref name="Position" visibility="public">
+            </propertyref>
+            <propertyref name="Locked" visibility="public">
+            </propertyref>
+            <propertyref name="Width" visibility="public">
+            </propertyref>
+            <propertyref name="Height" visibility="public">
+            </propertyref>
+            <propertyref name="Size" visibility="public">
+            </propertyref>
+            <propertyref name="Padding" visibility="public">
+            </propertyref>
+            <propertyref name="Margins" visibility="public">
+            </propertyref>
+            <propertyref name="Opacity" visibility="public">
+            </propertyref>
+            <propertyref name="ClipChildren" visibility="public">
+            </propertyref>
+            <propertyref name="ClipParent" visibility="public">
+            </propertyref>
+            <propertyref name="HitTest" visibility="public">
+            </propertyref>
+            <propertyref name="PopupMenu" visibility="public">
+            </propertyref>
+            <propertyref name="TabOrder" visibility="public">
+            </propertyref>
+            <propertyref name="Visible" visibility="public">
+            </propertyref>
+            <eventref name="CustomSceneAddRect" visibility="public">
+            </eventref>
+            <eventref name="OnDragEnter" visibility="public">
+            </eventref>
+            <eventref name="OnDragLeave" visibility="public">
+            </eventref>
+            <eventref name="OnDragOver" visibility="public">
+            </eventref>
+            <eventref name="OnDragDrop" visibility="public">
+            </eventref>
+            <eventref name="OnDragEnd" visibility="public">
+            </eventref>
+            <eventref name="OnKeyDown" visibility="public">
+            </eventref>
+            <eventref name="OnKeyUp" visibility="public">
+            </eventref>
+            <eventref name="OnClick" visibility="public">
+            </eventref>
+            <eventref name="OnDblClick" visibility="public">
+            </eventref>
+            <eventref name="OnCanFocus" visibility="public">
+            </eventref>
+            <eventref name="OnEnter" visibility="public">
+            </eventref>
+            <eventref name="OnExit" visibility="public">
+            </eventref>
+            <eventref name="OnMouseDown" visibility="public">
+            </eventref>
+            <eventref name="OnMouseMove" visibility="public">
+            </eventref>
+            <eventref name="OnMouseUp" visibility="public">
+            </eventref>
+            <eventref name="OnMouseWheel" visibility="public">
+            </eventref>
+            <eventref name="OnMouseEnter" visibility="public">
+            </eventref>
+            <eventref name="OnMouseLeave" visibility="public">
+            </eventref>
+            <eventref name="OnPainting" visibility="public">
+            </eventref>
+            <eventref name="OnPaint" visibility="public">
+            </eventref>
+            <eventref name="OnResize" visibility="public">
+            </eventref>
+            <eventref name="OnResized" visibility="public">
+            </eventref>
+            <eventref name="OnActivate" visibility="public">
+            </eventref>
+            <eventref name="OnDeactivate" visibility="public">
+            </eventref>
+            <eventref name="OnApplyStyleLookup" visibility="public">
+            </eventref>
+            <propertyref name="TouchTargetExpansion" visibility="public">
+            </propertyref>
+            <propertyref name="TabStop" visibility="public">
+            </propertyref>
+            <propertyref name="DisableDisappear" visibility="public">
+            </propertyref>
+            <propertyref name="ShowHint" visibility="public">
+            </propertyref>
+            <propertyref name="Hint" visibility="public">
+            </propertyref>
+            <propertyref name="Touch" visibility="published">
+            </propertyref>
+            <eventref name="OnGesture" visibility="published">
+            </eventref>
+            <eventref name="OnTap" visibility="published">
+            </eventref>
+            <ancestor name="TFmxObject" namespace="FMX.Types">
+              <interfaces>
+                <implements name="IActionClient" />
+                <implements name="IFreeNotification" />
+              </interfaces>
+              <methodref name="SetStyleName" visibility="private">
+              </methodref>
+              <methodref name="SetStored" visibility="private">
+              </methodref>
+              <methodref name="GetChildrenCount" visibility="private" procflags="inline">
+              </methodref>
+              <methodref name="GetIndexOfChild" visibility="private">
+              </methodref>
+              <methodref name="SetIndexOfChild" visibility="private">
+              </methodref>
+              <methodref name="SetIndex" visibility="private">
+              </methodref>
+              <methodref name="GetActionRoot" visibility="private">
+              </methodref>
+              <methodref name="GetActionClient" visibility="private" procflags="inline">
+              </methodref>
+              <methodref name="SetActionClient" visibility="private">
+              </methodref>
+              <methodref name="GetAction" visibility="private">
+              </methodref>
+              <methodref name="SetAction" visibility="private">
+              </methodref>
+              <methodref name="GetIndex" visibility="private">
+              </methodref>
+              <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+              </methodref>
+              <methodref name="Destroy@" visibility="class private" procflags="class destructor noself">
+              </methodref>
+              <methodref name="CreateChildrenList" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="ResetChildrenIndicesSpan" visibility="protected">
+              </methodref>
+              <methodref name="ResetChildrenIndices" visibility="protected">
+              </methodref>
+              <methodref name="GetBackIndex" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DefineProperties" visibility="protected" procflags="override">
+              </methodref>
+              <methodref name="IgnoreBindingName" visibility="protected">
+              </methodref>
+              <methodref name="GetChildren" visibility="protected" procflags="override">
+              </methodref>
+              <methodref name="SetParentComponent" visibility="protected" procflags="override">
+              </methodref>
+              <methodref name="Notification" visibility="protected" procflags="override">
+              </methodref>
+              <methodref name="GetActionLinkClass" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="InitiateAction" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoActionChange" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="ActionChange" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoActionClientChanged" visibility="protected" procflags="virtual">
+              </methodref>
+              <propertyref name="ActionLink" visibility="protected">
+              </propertyref>
+              <propertyref name="Action" visibility="protected">
+              </propertyref>
+              <propertyref name="StyleIndexer" visibility="protected">
+              </propertyref>
+              <methodref name="GetParentComponent" visibility="public" procflags="override">
+              </methodref>
+              <methodref name="HasParent" visibility="public" procflags="override">
+              </methodref>
+              <methodref name="AddToResourcePool" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="RemoveFromResourcePool" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="SetParent" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoRootChanging" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoRootChanged" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="ParentChanged" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="ChangeOrder" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="ChangeChildren" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoAddObject" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoInsertObject" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoRemoveObject" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="DoDeleteChildren" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="SearchInto" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="FreeNotification" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="SupportsPlatformService" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="GetData" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="SetData" visibility="protected" procflags="virtual">
+              </methodref>
+              <methodref name="IgnoreIntegerValue" visibility="protected">
+              </methodref>
+              <methodref name="IgnoreFloatValue" visibility="protected">
+              </methodref>
+              <methodref name="IgnoreBooleanValue" visibility="protected">
+              </methodref>
+              <methodref name="IgnoreIdentValue" visibility="protected">
+              </methodref>
+              <methodref name="Create" visibility="public" procflags="constructor override">
+              </methodref>
+              <methodref name="Destroy" visibility="public" procflags="destructor override">
+              </methodref>
+              <methodref name="BeforeDestruction" visibility="public" procflags="override">
+              </methodref>
+              <methodref name="Release" visibility="public" procflags="virtual" symflags="deprecated">
+              </methodref>
+              <methodref name="Released" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="ObjectState" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="SetRoot" visibility="public">
+              </methodref>
+              <methodref name="SetDesign" visibility="public">
+              </methodref>
+              <methodref name="Clone" visibility="public">
+              </methodref>
+              <methodref name="AddObject" visibility="public">
+              </methodref>
+              <methodref name="InsertObject" visibility="public">
+              </methodref>
+              <methodref name="RemoveObject" visibility="public" procflags="overload">
+              </methodref>
+              <methodref name="RemoveObject" visibility="public" procflags="overload">
+              </methodref>
+              <methodref name="ContainsObject" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="Exchange" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="DeleteChildren" visibility="public">
+              </methodref>
+              <methodref name="IsChild" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="BringChildToFront" visibility="public">
+              </methodref>
+              <methodref name="SendChildToBack" visibility="public">
+              </methodref>
+              <methodref name="BringToFront" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="SendToBack" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="AddObjectsToList" visibility="public">
+              </methodref>
+              <methodref name="Sort" visibility="public" procflags="virtual">
+              </methodref>
+              <methodref name="EnumObjects" visibility="public">
+              </methodref>
+              <methodref name="AnimateFloat" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="AnimateFloatDelay" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="AnimateFloatWait" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="AnimateInt" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="AnimateIntWait" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="AnimateColor" visibility="public" symflags="deprecated">
+              </methodref>
+              <methodref name="StopPropertyAnimation" visibility="public">
+              </methodref>
+              <methodref name="AddFreeNotify" visibility="public">
+              </methodref>
+              <methodref name="RemoveFreeNotify" visibility="public">
+              </methodref>
+              <methodref name="FindStyleResource" visibility="public" procflags="overload virtual">
+              </methodref>
+              <propertyref name="Root" visibility="public">
+              </propertyref>
+              <propertyref name="Stored" visibility="public">
+              </propertyref>
+              <propertyref name="TagObject" visibility="public">
+              </propertyref>
+              <propertyref name="TagFloat" visibility="public">
+              </propertyref>
+              <propertyref name="TagString" visibility="public">
+              </propertyref>
+              <propertyref name="ChildrenCount" visibility="public">
+              </propertyref>
+              <propertyref name="Children" visibility="public">
+              </propertyref>
+              <propertyref name="Data" visibility="public">
+              </propertyref>
+              <propertyref name="Parent" visibility="public">
+              </propertyref>
+              <propertyref name="Index" visibility="public">
+              </propertyref>
+              <propertyref name="ActionClient" visibility="public">
+              </propertyref>
+              <propertyref name="StyleName" visibility="published">
+              </propertyref>
+              <ancestor name="TComponent" namespace="System.Classes">
+                <interfaces>
+                  <implements name="IInterfaceComponentReference" />
+                  <implements name="IInterface" />
+                </interfaces>
+                <methodref name="GetComObject" visibility="private">
+                </methodref>
+                <methodref name="GetComponent" visibility="private">
+                </methodref>
+                <methodref name="GetComponentCount" visibility="private">
+                </methodref>
+                <methodref name="GetComponentIndex" visibility="private">
+                </methodref>
+                <methodref name="Insert" visibility="private">
+                </methodref>
+                <methodref name="ReadLeft" visibility="private">
+                </methodref>
+                <methodref name="ReadTop" visibility="private">
+                </methodref>
+                <methodref name="Remove" visibility="private">
+                </methodref>
+                <methodref name="RemoveNotification" visibility="private">
+                </methodref>
+                <methodref name="SetComponentIndex" visibility="private">
+                </methodref>
+                <methodref name="SetReference" visibility="private">
+                </methodref>
+                <methodref name="WriteLeft" visibility="private">
+                </methodref>
+                <methodref name="WriteTop" visibility="private">
+                </methodref>
+                <methodref name="IntfGetComponent" visibility="private">
+                </methodref>
+                <methodref name="DoGetDeltaStreams" visibility="private">
+                </methodref>
+                <methodref name="ReadDeltaStream" visibility="private">
+                </methodref>
+                <methodref name="ReadDeltaState" visibility="private">
+                </methodref>
+                <methodref name="FindSortedComponent" visibility="private">
+                </methodref>
+                <methodref name="AddSortedComponent" visibility="private">
+                </methodref>
+                <methodref name="RemoveSortedComponent" visibility="private" procflags="inline">
+                </methodref>
+                <methodref name="Create@" visibility="class private" procflags="class constructor noself">
+                </methodref>
+                <methodref name="AsyncSchedule" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="ChangeName" visibility="protected">
+                </methodref>
+                <methodref name="DefineProperties" visibility="protected" procflags="override">
+                </methodref>
+                <methodref name="GetChildren" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="GetChildOwner" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="GetChildParent" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="GetOwner" visibility="protected" procflags="override">
+                </methodref>
+                <methodref name="Loaded" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="Notification" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="GetDeltaStreams" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="PaletteCreated" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="ReadState" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="CanObserve" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="ObserverAdded" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="GetObservers" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="SetAncestor" visibility="protected">
+                </methodref>
+                <methodref name="SetDesigning" visibility="protected">
+                </methodref>
+                <methodref name="SetInline" visibility="protected">
+                </methodref>
+                <methodref name="SetDesignInstance" visibility="protected">
+                </methodref>
+                <methodref name="SetName" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="SetChildOrder" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="SetParentComponent" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="Updating" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="Updated" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="UpdateRegistry" visibility="protected" procflags="class virtual">
+                </methodref>
+                <methodref name="ValidateRename" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="ValidateContainer" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="ValidateInsert" visibility="protected" procflags="dynamic">
+                </methodref>
+                <methodref name="WriteState" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="RemoveFreeNotifications" visibility="protected">
+                </methodref>
+                <methodref name="QueryInterface" visibility="protected" procflags="virtual">
+                </methodref>
+                <methodref name="_AddRef" visibility="protected">
+                </methodref>
+                <methodref name="_Release" visibility="protected">
+                </methodref>
+                <methodref name="GetTypeInfoCount" visibility="protected">
+                </methodref>
+                <methodref name="GetTypeInfo" visibility="protected">
+                </methodref>
+                <methodref name="GetIDsOfNames" visibility="protected">
+                </methodref>
+                <methodref name="Invoke" visibility="protected">
+                </methodref>
+                <eventref name="OnGetDeltaStreams" visibility="protected">
+                </eventref>
+                <methodref name="Create" visibility="public" procflags="constructor virtual">
+                </methodref>
+                <methodref name="Destroy" visibility="public" procflags="destructor override">
+                </methodref>
+                <methodref name="BeforeDestruction" visibility="public" procflags="override">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="BeginInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="EndInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="EndInvoke" visibility="public" procflags="overload">
+                </methodref>
+                <methodref name="EndFunctionInvoke" visibility="public">
+                </methodref>
+                <methodref name="DestroyComponents" visibility="public">
+                </methodref>
+                <methodref name="Destroying" visibility="public">
+                </methodref>
+                <methodref name="ExecuteAction" visibility="public" procflags="dynamic">
+                </methodref>
+                <methodref name="FindComponent" visibility="public">
+                </methodref>
+                <methodref name="FreeNotification" visibility="public">
+                </methodref>
+                <methodref name="RemoveFreeNotification" visibility="public">
+                </methodref>
+                <methodref name="FreeOnRelease" visibility="public">
+                </methodref>
+                <methodref name="GetEnumerator" visibility="public" procflags="inline">
+                </methodref>
+                <methodref name="GetParentComponent" visibility="public" procflags="dynamic">
+                </methodref>
+                <methodref name="GetNamePath" visibility="public" procflags="override">
+                </methodref>
+                <methodref name="HasParent" visibility="public" procflags="dynamic">
+                </methodref>
+                <methodref name="InsertComponent" visibility="public">
+                </methodref>
+                <methodref name="RemoveComponent" visibility="public">
+                </methodref>
+                <methodref name="SetSubComponent" visibility="public">
+                </methodref>
+                <methodref name="SafeCallException" visibility="public" procflags="override">
+                </methodref>
+                <methodref name="UpdateAction" visibility="public" procflags="virtual">
+                </methodref>
+                <methodref name="IsImplementorOf" visibility="public">
+                </methodref>
+                <methodref name="ReferenceInterface" visibility="public">
+                </methodref>
+                <propertyref name="ComObject" visibility="public">
+                </propertyref>
+                <propertyref name="Components" visibility="public">
+                </propertyref>
+                <propertyref name="ComponentCount" visibility="public">
+                </propertyref>
+                <propertyref name="ComponentIndex" visibility="public">
+                </propertyref>
+                <propertyref name="ComponentState" visibility="public">
+                </propertyref>
+                <propertyref name="ComponentStyle" visibility="public">
+                </propertyref>
+                <propertyref name="DesignInfo" visibility="public">
+                </propertyref>
+                <propertyref name="Owner" visibility="public">
+                </propertyref>
+                <propertyref name="VCLComObject" visibility="public">
+                </propertyref>
+                <propertyref name="Observers" visibility="public">
+                </propertyref>
+                <propertyref name="Name" visibility="published">
+                </propertyref>
+                <propertyref name="Tag" visibility="published">
+                </propertyref>
+                <ancestor name="TPersistent" namespace="System.Classes">
+                  <methodref name="AssignError" visibility="private">
+                  </methodref>
+                  <methodref name="AssignTo" visibility="protected" procflags="virtual">
+                  </methodref>
+                  <methodref name="DefineProperties" visibility="protected" procflags="virtual">
+                  </methodref>
+                  <methodref name="GetOwner" visibility="protected" procflags="dynamic">
+                  </methodref>
+                  <methodref name="Destroy" visibility="public" procflags="destructor override">
+                  </methodref>
+                  <methodref name="Assign" visibility="public" procflags="virtual">
+                  </methodref>
+                  <methodref name="GetNamePath" visibility="public" procflags="dynamic">
+                  </methodref>
+                  <ancestor name="TObject" namespace="System">
+                    <methodref name="Create" visibility="public" procflags="constructor">
+                    </methodref>
+                    <methodref name="Free" visibility="public">
+                    </methodref>
+                    <methodref name="DisposeOf" visibility="public" procflags="inline">
+                    </methodref>
+                    <methodref name="InitInstance" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="CleanupInstance" visibility="public">
+                    </methodref>
+                    <methodref name="ClassType" visibility="public" procflags="inline">
+                    </methodref>
+                    <methodref name="ClassName" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="ClassNameIs" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="ClassParent" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="ClassInfo" visibility="public" procflags="class inline">
+                    </methodref>
+                    <methodref name="InstanceSize" visibility="public" procflags="class inline">
+                    </methodref>
+                    <methodref name="InheritsFrom" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="MethodAddress" visibility="public" procflags="class overload">
+                    </methodref>
+                    <methodref name="MethodAddress" visibility="public" procflags="class overload">
+                    </methodref>
+                    <methodref name="MethodName" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="QualifiedClassName" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="FieldAddress" visibility="public" procflags="overload">
+                    </methodref>
+                    <methodref name="FieldAddress" visibility="public" procflags="overload">
+                    </methodref>
+                    <methodref name="GetInterface" visibility="public">
+                    </methodref>
+                    <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+                    </methodref>
+                    <methodref name="UnitName" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="UnitScope" visibility="public" procflags="class">
+                    </methodref>
+                    <methodref name="Equals" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="GetHashCode" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="ToString" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="SafeCallException" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="Dispatch" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="NewInstance" visibility="public" procflags="class virtual">
+                    </methodref>
+                    <methodref name="FreeInstance" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+                    </methodref>
+                    <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+                    </methodref>
+                    <methodref name="GetDisposed" visibility="protected" procflags="inline">
+                    </methodref>
+                    <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+                    </methodref>
+                    <propertyref name="Disposed" visibility="protected">
+                    </propertyref>
+                  </ancestor>
+                </ancestor>
+              </ancestor>
+            </ancestor>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <members>
+      <function name="CreateNativeView" visibility="protected" procflags="override">
+        <parameters>
+          <retval type="JView">
+            <attributes>
+              <attribute name="JavaSignatureAttribute" />
+            </attributes>
+          </retval>
+        </parameters>
+      </function>
+      <field name="FTwitterConfigBuilder" type="JTwitterConfig_Builder" visibility="public" size="4" offset="920" />
+      <field name="FTwitterAuthConfig" type="JTwitterAuthConfig" visibility="public" size="4" offset="924" />
+      <field name="FTwitterConfig" type="JTwitterConfig" visibility="public" size="4" offset="928" />
+      <field name="FJTwitterSession" type="JTwitterSession" visibility="public" size="4" offset="932" />
+      <field name="FMyCallBackTwitterSession" type="TJMyTwitterSessionCallback_MyCallBackTwitterSession" visibility="public" size="4" offset="936" />
+      <field name="FMyCallBackUserInfo" type="TJMyCallUser_GetMyInfo" visibility="public" size="4" offset="940" />
+      <field name="FCallbackTwitterSession" type="JMyTwitterSessionCallback" visibility="public" size="4" offset="944" />
+      <field name="FLoginButton" type="JTwitterLoginButton" visibility="public" size="4" offset="948" />
+      <field name="FGetMyInfo" type="JMyCallUser" visibility="public" size="4" offset="952" />
+      <field name="FUser" type="JUser" visibility="public" size="4" offset="956" />
+      <field name="FUserName" type="string" visibility="public" size="4" offset="960" />
+      <field name="FUserID" type="Integer" visibility="public" size="4" offset="964" />
+      <field name="FUserProfileImageUrl" type="string" visibility="public" size="4" offset="968" />
+      <field name="FUserSereenName" type="string" visibility="public" size="4" offset="972" />
+      <field name="FUserProfileImageUrlHttps" type="string" visibility="public" size="4" offset="976" />
+      <field name="FToken" type="string" visibility="public" size="4" offset="980" />
+      <field name="FOnGetUserInfoComplete" type="TNotifyEvent" visibility="public" size="8" offset="984" />
+      <procedure name="initialize" visibility="public">
+      </procedure>
+      <procedure name="TwitterLogin" visibility="public">
+        <parameters>
+          <parameter name="AControl" type="TControl" />
+        </parameters>
+      </procedure>
+      <procedure name="GetTwitterUserInfo" visibility="public">
+      </procedure>
+      <field name="FMessageSubscriptionID" type="Integer" visibility="public" size="4" offset="992" />
+      <function name="OnActivityResult" visibility="public">
+        <parameters>
+          <parameter name="RequestCode" type="Integer" />
+          <parameter name="ResultCode" type="Integer" />
+          <parameter name="Data" type="JIntent" />
+          <retval type="Boolean" />
+        </parameters>
+      </function>
+      <procedure name="HandleActivityMessage" visibility="public">
+        <parameters>
+          <parameter name="Sender" type="TObject" paramflags="const" />
+          <parameter name="M" type="TMessageBase" paramflags="const" />
+        </parameters>
+      </procedure>
+      <field name="FKey" type="string" visibility="public" varflags="class" />
+      <field name="FSecret" type="string" visibility="public" varflags="class" />
+      <procedure name="Create@" visibility="class private" procflags="class constructor noself" generated="true">
+      </procedure>
+      <procedure name="Destroy@" visibility="class private" procflags="class destructor noself" generated="true">
+      </procedure>
+    </members>
+  </class>
+</namespace>

@@ -1,0 +1,366 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<namespace name="iOSApi.TWTRAuthSession" platform="iOS">
+  <pointer name="id" alias="System.Pointer" type="Pointer" indircnt="1" file="System.pas" line="12" />
+  <interface name="TWTRBaseSession" GUID="{CC76C6BB-A774-4EDC-A50B-9A46C50013C4}" ancestor="IObjectiveC">
+  </interface>
+  <class name="TTWTRBaseSession">
+    <ancestor name="TOCLocal" namespace="Macapi.ObjectiveC">
+      <interfaces>
+        <implements name="IObjectiveC" />
+        <implements name="ILocalObject" />
+      </interfaces>
+      <methodref name="GetSuper" visibility="private">
+      </methodref>
+      <methodref name="GetObjectID" visibility="protected">
+      </methodref>
+      <methodref name="UpdateObjectID" visibility="protected">
+      </methodref>
+      <methodref name="GetObjectiveCClass" visibility="protected" procflags="virtual">
+      </methodref>
+      <propertyref name="Super" visibility="protected">
+      </propertyref>
+      <methodref name="Create" visibility="protected" procflags="constructor">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <ancestor name="TOCInterfacedObject" namespace="Macapi.ObjectiveC">
+        <methodref name="AfterConstruction" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="override">
+        </methodref>
+        <ancestor name="TInterfacedObject" namespace="System">
+          <interfaces>
+            <implements name="IInterface" />
+          </interfaces>
+          <methodref name="GetRefCount" visibility="private" procflags="inline">
+          </methodref>
+          <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+          </methodref>
+          <methodref name="QueryInterface" visibility="protected">
+          </methodref>
+          <methodref name="_AddRef" visibility="protected">
+          </methodref>
+          <methodref name="_Release" visibility="protected">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="NewInstance" visibility="public" procflags="class override">
+          </methodref>
+          <propertyref name="RefCount" visibility="public">
+          </propertyref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public" procflags="constructor">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="DisposeOf" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="InitInstance" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="ClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassParent" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="QualifiedClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="UnitName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="UnitScope" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="Equals" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetHashCode" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ToString" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Dispatch" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class virtual">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+            </methodref>
+            <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <propertyref name="Disposed" visibility="protected">
+            </propertyref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="TWTRBaseSession" />
+    </interfaces>
+    <members>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+    </members>
+  </class>
+  <interface name="TWTRAuthSession" GUID="{82ACC754-6251-42FC-B659-3AE29F482418}" ancestor="IObjectiveC">
+    <function name="authToken" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="NSString" />
+      </parameters>
+    </function>
+    <procedure name="setAuthToken" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="authToken" type="NSString" />
+      </parameters>
+    </procedure>
+    <function name="authTokenSecret" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="NSString" />
+      </parameters>
+    </function>
+    <procedure name="setAuthTokenSecret" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="authTokenSecret" type="NSString" />
+      </parameters>
+    </procedure>
+    <function name="userID" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <retval type="NSString" />
+      </parameters>
+    </function>
+    <procedure name="setUserID" visibility="public" procflags="abstract virtual" callconv="cdecl">
+      <parameters>
+        <parameter name="userID" type="NSString" />
+      </parameters>
+    </procedure>
+  </interface>
+  <class name="TTWTRAuthSession">
+    <ancestor name="TOCLocal" namespace="Macapi.ObjectiveC">
+      <interfaces>
+        <implements name="IObjectiveC" />
+        <implements name="ILocalObject" />
+      </interfaces>
+      <methodref name="GetSuper" visibility="private">
+      </methodref>
+      <methodref name="GetObjectID" visibility="protected">
+      </methodref>
+      <methodref name="UpdateObjectID" visibility="protected">
+      </methodref>
+      <methodref name="GetObjectiveCClass" visibility="protected" procflags="virtual">
+      </methodref>
+      <propertyref name="Super" visibility="protected">
+      </propertyref>
+      <methodref name="Create" visibility="protected" procflags="constructor">
+      </methodref>
+      <methodref name="Destroy" visibility="public" procflags="destructor override">
+      </methodref>
+      <ancestor name="TOCInterfacedObject" namespace="Macapi.ObjectiveC">
+        <methodref name="AfterConstruction" visibility="public" procflags="override">
+        </methodref>
+        <methodref name="BeforeDestruction" visibility="public" procflags="override">
+        </methodref>
+        <ancestor name="TInterfacedObject" namespace="System">
+          <interfaces>
+            <implements name="IInterface" />
+          </interfaces>
+          <methodref name="GetRefCount" visibility="private" procflags="inline">
+          </methodref>
+          <methodref name="__MarkDestroying" visibility="protected" procflags="static inline">
+          </methodref>
+          <methodref name="QueryInterface" visibility="protected">
+          </methodref>
+          <methodref name="_AddRef" visibility="protected">
+          </methodref>
+          <methodref name="_Release" visibility="protected">
+          </methodref>
+          <methodref name="AfterConstruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="BeforeDestruction" visibility="public" procflags="override">
+          </methodref>
+          <methodref name="NewInstance" visibility="public" procflags="class override">
+          </methodref>
+          <propertyref name="RefCount" visibility="public">
+          </propertyref>
+          <ancestor name="TObject" namespace="System">
+            <methodref name="Create" visibility="public" procflags="constructor">
+            </methodref>
+            <methodref name="Free" visibility="public">
+            </methodref>
+            <methodref name="DisposeOf" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="InitInstance" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="CleanupInstance" visibility="public">
+            </methodref>
+            <methodref name="ClassType" visibility="public" procflags="inline">
+            </methodref>
+            <methodref name="ClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassNameIs" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassParent" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="ClassInfo" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InstanceSize" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="InheritsFrom" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodAddress" visibility="public" procflags="class overload">
+            </methodref>
+            <methodref name="MethodName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="QualifiedClassName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="FieldAddress" visibility="public" procflags="overload">
+            </methodref>
+            <methodref name="GetInterface" visibility="public">
+            </methodref>
+            <methodref name="GetInterfaceEntry" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="GetInterfaceTable" visibility="public" procflags="class inline">
+            </methodref>
+            <methodref name="UnitName" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="UnitScope" visibility="public" procflags="class">
+            </methodref>
+            <methodref name="Equals" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetHashCode" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="ToString" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="SafeCallException" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="AfterConstruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="BeforeDestruction" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Dispatch" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="DefaultHandler" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="NewInstance" visibility="public" procflags="class virtual">
+            </methodref>
+            <methodref name="FreeInstance" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="Destroy" visibility="public" procflags="destructor virtual">
+            </methodref>
+            <methodref name="CPP_ABI_1" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_2" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="CPP_ABI_3" visibility="public" procflags="virtual">
+            </methodref>
+            <methodref name="GetDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <methodref name="CheckDisposed" visibility="protected" procflags="inline">
+            </methodref>
+            <propertyref name="Disposed" visibility="protected">
+            </propertyref>
+          </ancestor>
+        </ancestor>
+      </ancestor>
+    </ancestor>
+    <interfaces>
+      <implements name="TWTRAuthSession" />
+    </interfaces>
+    <members>
+      <constructor name="Create" visibility="public">
+        <parameters>
+        </parameters>
+      </constructor>
+      <destructor name="Destroy" visibility="public">
+        <parameters>
+        </parameters>
+      </destructor>
+      <field name="OnauthToken" type="TOnauthToken" visibility="public" size="16" offset="48" />
+      <field name="OnsetauthToken" type="TOnsetauthToken" visibility="public" size="16" offset="64" />
+      <field name="OnauthTokenSecret" type="TOnauthTokenSecret" visibility="public" size="16" offset="80" />
+      <field name="OnsetauthTokenSecret" type="TOnsetauthTokenSecret" visibility="public" size="16" offset="96" />
+      <field name="OnuserID" type="TOnuserID" visibility="public" size="16" offset="112" />
+      <field name="OnsetuserID" type="TOnsetuserID" visibility="public" size="16" offset="128" />
+      <function name="authToken" visibility="public" callconv="cdecl">
+        <parameters>
+          <retval type="NSString" />
+        </parameters>
+      </function>
+      <procedure name="setAuthToken" visibility="public" callconv="cdecl">
+        <parameters>
+          <parameter name="authToken" type="NSString" />
+        </parameters>
+      </procedure>
+      <function name="authTokenSecret" visibility="public" callconv="cdecl">
+        <parameters>
+          <retval type="NSString" />
+        </parameters>
+      </function>
+      <procedure name="setAuthTokenSecret" visibility="public" callconv="cdecl">
+        <parameters>
+          <parameter name="authTokenSecret" type="NSString" />
+        </parameters>
+      </procedure>
+      <function name="userID" visibility="public" callconv="cdecl">
+        <parameters>
+          <retval type="NSString" />
+        </parameters>
+      </function>
+      <procedure name="setUserID" visibility="public" callconv="cdecl">
+        <parameters>
+          <parameter name="userID" type="NSString" />
+        </parameters>
+      </procedure>
+    </members>
+  </class>
+</namespace>

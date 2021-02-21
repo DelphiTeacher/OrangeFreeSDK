@@ -1,0 +1,1 @@
+'TwitterSDK\IOS_3_0\TwitterCore.framework\TwitterCore'

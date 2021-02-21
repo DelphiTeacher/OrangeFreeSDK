@@ -669,10 +669,36 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\values-ml\values-ml_appcompat_v7_28_0_0_aar.xml" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values-ml\</RemoteDir>
+                        <RemoteName>values-ml_appcompat_v7_28_0_0_aar.xml</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="BGAQRCodeSDK\zbar\res\mipmap-xxhdpi-v4\custom_grid_scan_line.png" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\mipmap-xxhdpi-v4\</RemoteDir>
                         <RemoteName>custom_grid_scan_line.png</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxhdpi-v4\ic_flash_auto.png" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
+                        <RemoteName>ic_flash_auto.png</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
+                        <RemoteName>ic_flash_auto.png</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-mdpi-v4\abc_ic_star_black_16dp.png" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi-v4\</RemoteDir>
+                        <RemoteName>abc_ic_star_black_16dp.png</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -760,36 +786,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-mdpi-v4\abc_ic_star_black_16dp.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-mdpi-v4\</RemoteDir>
-                        <RemoteName>abc_ic_star_black_16dp.png</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\values-ml\values-ml_appcompat_v7_28_0_0_aar.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values-ml\</RemoteDir>
-                        <RemoteName>values-ml_appcompat_v7_28_0_0_aar.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\values-v16\values-v16_appcompat_v7_28_0_0_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-v16\</RemoteDir>
                         <RemoteName>values-v16_appcompat_v7_28_0_0_aar.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxhdpi-v4\ic_flash_auto.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
-                        <RemoteName>ic_flash_auto.png</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
-                        <RemoteName>ic_flash_auto.png</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1821,13 +1821,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xxhdpi-v4\abc_list_focused_holo.9.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
-                        <RemoteName>abc_list_focused_holo.9.png</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\values-hr\values-hr_appcompat_v7_28_0_0_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-hr\</RemoteDir>
@@ -1835,10 +1828,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_search_view.xml" Class="File">
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xxhdpi-v4\abc_list_focused_holo.9.png" Class="File">
                     <Platform Name="Android">
-                        <RemoteDir>res\layout\</RemoteDir>
-                        <RemoteName>abc_search_view.xml</RemoteName>
+                        <RemoteDir>res\drawable-xxhdpi-v4\</RemoteDir>
+                        <RemoteName>abc_list_focused_holo.9.png</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1846,6 +1839,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Android">
                         <RemoteDir>res\values-en-rAU\</RemoteDir>
                         <RemoteName>values-en-rAU_support_compat_28_0_0_aar.xml</RemoteName>
+                        <Overwrite>false</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_search_view.xml" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>res\layout\</RemoteDir>
+                        <RemoteName>abc_search_view.xml</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -2634,18 +2634,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Android64">
                         <RemoteDir>res\anim\</RemoteDir>
                         <RemoteName>enter_from_bottom.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\values-w820dp-v13\values-w820dp-v13_mediaselector_1_0_0_mediaselector_release_aar.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values-w820dp-v13\</RemoteDir>
-                        <RemoteName>values-w820dp-v13_mediaselector_1_0_0.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\values-w820dp-v13\</RemoteDir>
-                        <RemoteName>values-w820dp-v13_mediaselector_1_0_0.xml</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -5695,18 +5683,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-hdpi-v4\</RemoteDir>
                         <RemoteName>abc_ic_star_half_black_16dp.png</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\values\values_mediaselector_1_0_0_mediaselector_release_aar.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>values_mediaselector_1_0_0.xml</RemoteName>
-                        <Overwrite>false</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>values_mediaselector_1_0_0.xml</RemoteName>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>

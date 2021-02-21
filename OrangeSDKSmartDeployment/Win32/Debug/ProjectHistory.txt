@@ -1,3 +1,4 @@
+C:\OrangeFreeSDK\HuaweiScan\HuaweiScan.dproj
 C:\MyFiles\ThirdPartySDK\TestSDK\Project2.dproj
 C:\MyFiles\ThirdPartySDK\IOSÍ¼Æ¬Ñ¡ÔñÆ÷HXPhotoPicker\Project15.dproj
 C:\MyFiles\ThirdPartySDK\AndroidÍ¼Æ¬ÊÓÆµÑ¡ÔñÆ÷dmcBig_mediapicker\TestMediaPicker.dproj

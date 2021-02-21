@@ -296,9 +296,36 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\values-ml\values-ml_appcompat_v7_28_0_0_aar.xml">
+            <RemoteDir>TestDVMediaSelector\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_appcompat_v7_28_0_0_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
+        </DeployFile>
         <DeployFile Include="BGAQRCodeSDK\zbar\res\mipmap-xxhdpi-v4\custom_grid_scan_line.png">
             <RemoteDir>TestDVMediaSelector\res\mipmap-xxhdpi-v4\</RemoteDir>
             <RemoteName>custom_grid_scan_line.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
+        </DeployFile>
+        <DeployFile Include="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxhdpi-v4\ic_flash_auto.png">
+            <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>ic_flash_auto.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-mdpi-v4\abc_ic_star_black_16dp.png">
+            <RemoteDir>TestDVMediaSelector\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>abc_ic_star_black_16dp.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -396,36 +423,9 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-mdpi-v4\abc_ic_star_black_16dp.png">
-            <RemoteDir>TestDVMediaSelector\res\drawable-mdpi-v4\</RemoteDir>
-            <RemoteName>abc_ic_star_black_16dp.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\values-ml\values-ml_appcompat_v7_28_0_0_aar.xml">
-            <RemoteDir>TestDVMediaSelector\res\values-ml\</RemoteDir>
-            <RemoteName>values-ml_appcompat_v7_28_0_0_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
         <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\values-v16\values-v16_appcompat_v7_28_0_0_aar.xml">
             <RemoteDir>TestDVMediaSelector\res\values-v16\</RemoteDir>
             <RemoteName>values-v16_appcompat_v7_28_0_0_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
-        <DeployFile Include="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxhdpi-v4\ic_flash_auto.png">
-            <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
-            <RemoteName>ic_flash_auto.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1692,15 +1692,6 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xxhdpi-v4\abc_list_focused_holo.9.png">
-            <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
-            <RemoteName>abc_list_focused_holo.9.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
         <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\values-hr\values-hr_appcompat_v7_28_0_0_aar.xml">
             <RemoteDir>TestDVMediaSelector\res\values-hr\</RemoteDir>
             <RemoteName>values-hr_appcompat_v7_28_0_0_aar.xml</RemoteName>
@@ -1710,9 +1701,9 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
-        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_search_view.xml">
-            <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
-            <RemoteName>abc_search_view.xml</RemoteName>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\drawable-xxhdpi-v4\abc_list_focused_holo.9.png">
+            <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>abc_list_focused_holo.9.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1722,6 +1713,15 @@
         <DeployFile Include="Support_V4\support-compat-28.0.0_aar\res\values-en-rAU\values-en-rAU_support_compat_28_0_0_aar.xml">
             <RemoteDir>TestDVMediaSelector\res\values-en-rAU\</RemoteDir>
             <RemoteName>values-en-rAU_support_compat_28_0_0_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Compat_V7\appcompat-v7-28.0.0_aar\res\layout\abc_search_view.xml">
+            <RemoteDir>TestDVMediaSelector\res\layout\</RemoteDir>
+            <RemoteName>abc_search_view.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -6466,6 +6466,15 @@
             <RemoteCommand/>
             <Overwrite>False</Overwrite>
         </DeployFile>
+        <DeployFile Include="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxhdpi-v4\ic_flash_auto.png">
+            <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>ic_flash_auto.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>False</Overwrite>
+        </DeployFile>
         <DeployFile Include="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxxhdpi-v4\ic_flash_off.png">
             <RemoteDir>TestDVMediaSelector\res\drawable-xxxhdpi-v4\</RemoteDir>
             <RemoteName>ic_flash_off.png</RemoteName>
@@ -6478,15 +6487,6 @@
         <DeployFile Include="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\anim\out_to_left.xml">
             <RemoteDir>TestDVMediaSelector\res\anim\</RemoteDir>
             <RemoteName>out_to_left.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>False</Overwrite>
-        </DeployFile>
-        <DeployFile Include="DVMediaSelectorSDK_V1_0_0\mediaselector-release_aar\res\drawable-xxhdpi-v4\ic_flash_auto.png">
-            <RemoteDir>TestDVMediaSelector\res\drawable-xxhdpi-v4\</RemoteDir>
-            <RemoteName>ic_flash_auto.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>

@@ -211,6 +211,8 @@ type
     Button7: TButton;
     btnGenerateAndroidAAR: TButton;
     chkGenerateAndroid64AAR: TCheckBox;
+    tsThanks: TTabSheet;
+    Memo1: TMemo;
     procedure btnProcessDeployConfigClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -1560,16 +1562,16 @@ begin
   if Self.odSelectProject.Execute(Handle) then
   begin
 
-//    I:=Self.edtProjectFilePath.Items.IndexOf(Self.odSelectProject.FileName);
-//    if I<>-1 then
-//    begin
-//      Self.edtProjectFilePath.Items.Delete(I);
-//    end;
-    if I=-1 then
+    I:=Self.edtProjectFilePath.Items.IndexOf(Self.odSelectProject.FileName);
+    if I<>-1 then
     begin
+      Self.edtProjectFilePath.Items.Delete(I);
+    end;
+//    if I=-1 then
+//    begin
       Self.edtProjectFilePath.Items.Insert(0,Self.odSelectProject.FileName);
       Self.edtProjectFilePath.Items.SaveToFile(ExtractFilePath(Application.ExeName)+'ProjectHistory.txt');
-    end;
+//    end;
 
     Self.edtProjectFilePath.Text:=Self.odSelectProject.FileName;
     //加载布署

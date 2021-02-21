@@ -11,6 +11,7 @@ object frmSmartDeploy: TfrmSmartDeploy
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -40,16 +41,12 @@ object frmSmartDeploy: TfrmSmartDeploy
       Top = 90
       Width = 1083
       Height = 461
-      ActivePage = tsAndroidJar
+      ActivePage = tsThanks
       Align = alClient
       TabOrder = 0
       object tsCurrent: TTabSheet
         Caption = #24403#21069#24067#32626
         TabVisible = False
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Panel2: TPanel
           Left = 0
           Top = 0
@@ -119,10 +116,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsDeployConfig: TTabSheet
         Caption = #24067#32626#37197#32622
         ImageIndex = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Panel3: TPanel
           Left = 0
           Top = 0
@@ -338,10 +331,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsVariable: TTabSheet
         Caption = 'SDK'#21464#37327#37197#32622
         ImageIndex = 7
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Panel10: TPanel
           Left = 0
           Top = 0
@@ -383,10 +372,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsAndroidManifestConfig: TTabSheet
         Caption = 'Android'#26435#38480#37197#32622
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Splitter1: TSplitter
           Left = 0
           Top = 427
@@ -471,13 +456,565 @@ object frmSmartDeploy: TfrmSmartDeploy
           end
         end
       end
+      object tsAndroidJar: TTabSheet
+        Caption = 'AndroidJar'#37197#32622
+        ImageIndex = 4
+        object Panel5: TPanel
+          Left = 0
+          Top = 0
+          Width = 1075
+          Height = 47
+          Align = alTop
+          TabOrder = 0
+          object Label29: TLabel
+            Left = 385
+            Top = 49
+            Width = 4
+            Height = 16
+          end
+          object btnAddAndroidJar: TButton
+            Left = 1
+            Top = 11
+            Width = 192
+            Height = 25
+            Caption = #28155#21152'Jar'
+            TabOrder = 0
+            OnClick = btnAddAndroidJarClick
+          end
+          object btnProcessAndroidJar: TButton
+            Left = 199
+            Top = 11
+            Width = 192
+            Height = 25
+            Caption = #22788#29702'Jar'
+            TabOrder = 1
+            OnClick = btnProcessAndroidJarClick
+          end
+        end
+        object Panel8: TPanel
+          Left = 0
+          Top = 47
+          Width = 1075
+          Height = 383
+          Align = alClient
+          TabOrder = 1
+          object pnlAndroidAarToolBar: TPanel
+            Left = 1
+            Top = 120
+            Width = 1073
+            Height = 47
+            Align = alBottom
+            TabOrder = 0
+            object btnAddAndroidAar: TButton
+              Left = 0
+              Top = 16
+              Width = 192
+              Height = 25
+              Caption = #28155#21152'aar'
+              TabOrder = 0
+              OnClick = btnAddAndroidAarClick
+            end
+            object btnProcessAndroidAAR: TButton
+              Left = 198
+              Top = 16
+              Width = 192
+              Height = 25
+              Caption = #22788#29702'Aar'
+              TabOrder = 1
+              OnClick = btnProcessAndroidAARClick
+            end
+            object btnGenerateAndroidAAR: TButton
+              Left = 396
+              Top = 16
+              Width = 240
+              Height = 25
+              Caption = #29983#25104'R.Java'
+              TabOrder = 2
+              OnClick = btnGenerateAndroidAARClick
+            end
+            object chkGenerateAndroid64AAR: TCheckBox
+              Left = 656
+              Top = 19
+              Width = 185
+              Height = 17
+              Caption = '64'#20301'Android'
+              TabOrder = 3
+            end
+          end
+          object memAndroidAars: TMemo
+            Left = 1
+            Top = 167
+            Width = 1073
+            Height = 215
+            Align = alBottom
+            ScrollBars = ssBoth
+            TabOrder = 1
+            WordWrap = False
+          end
+          object memAndroidJars: TMemo
+            Left = 1
+            Top = 1
+            Width = 1073
+            Height = 119
+            Align = alClient
+            ScrollBars = ssBoth
+            TabOrder = 2
+            WordWrap = False
+          end
+        end
+      end
+      object tsIOSConfig: TTabSheet
+        Caption = 'iOS'#24211#37197#32622
+        ImageIndex = 6
+        object Panel4: TPanel
+          Left = 0
+          Top = 0
+          Width = 1075
+          Height = 65
+          Align = alTop
+          TabOrder = 0
+          DesignSize = (
+            1075
+            65)
+          object lblIOSLinkerOptionsHint: TLabel
+            Left = 2
+            Top = 4
+            Width = 887
+            Height = 16
+            AutoSize = False
+            Caption = 
+              #38142#25509#21442#25968'(Project Options->Building->Delphi Compiler->Linking->option' +
+              's passed to LD linker):'
+          end
+          object edtIOSLinkerOptions: TEdit
+            Left = 2
+            Top = 26
+            Width = 842
+            Height = 24
+            Anchors = [akLeft, akTop, akRight]
+            TabOrder = 0
+            Text = '-framework SystemConfiguration'
+          end
+          object btnProcessIOSLinkerOptions: TButton
+            Left = 850
+            Top = 24
+            Width = 197
+            Height = 25
+            Anchors = [akTop, akRight]
+            Caption = #22788#29702#38142#25509#21442#25968
+            TabOrder = 1
+            OnClick = btnProcessIOSLinkerOptionsClick
+          end
+        end
+        object Panel13: TPanel
+          Left = 0
+          Top = 65
+          Width = 1075
+          Height = 365
+          Align = alClient
+          TabOrder = 1
+          object Panel11: TPanel
+            Left = 1
+            Top = 1
+            Width = 304
+            Height = 363
+            Align = alLeft
+            TabOrder = 0
+            object lblAddIOSFrameworkHint: TLabel
+              Left = 1
+              Top = 1
+              Width = 302
+              Height = 46
+              Align = alTop
+              AutoSize = False
+              Caption = #27880#24847':'#28155#21152#23436#20043#21518#36824#38656#35201#22312'SDK Manager'#20013#32473#27599#20010'SDK'#28857#20987'"Upate Local File Cache"'
+              WordWrap = True
+              ExplicitLeft = -3
+              ExplicitTop = -5
+            end
+            object memIOS_SDK_Frameworks: TMemo
+              Left = 1
+              Top = 72
+              Width = 302
+              Height = 137
+              Align = alClient
+              ScrollBars = ssBoth
+              TabOrder = 0
+              WordWrap = False
+            end
+            object btnAddFrameworksToAllIOSSDK: TButton
+              Left = 1
+              Top = 47
+              Width = 302
+              Height = 25
+              Align = alTop
+              Caption = #28155#21152#19979#38754#30340#26694#26550#21040#25152#26377#30340'iPhone SDK'
+              TabOrder = 1
+              OnClick = btnAddFrameworksToAllIOSSDKClick
+            end
+            object memIOS_SDK_Dylibs: TMemo
+              Left = 1
+              Top = 234
+              Width = 302
+              Height = 128
+              Align = alBottom
+              Lines.Strings = (
+                'libicucore.tbd')
+              ScrollBars = ssBoth
+              TabOrder = 2
+              WordWrap = False
+            end
+            object btnAddDylibsToAllIOSSDK: TButton
+              Left = 1
+              Top = 209
+              Width = 302
+              Height = 25
+              Align = alBottom
+              Caption = #28155#21152#19979#38754#30340#24211#21040#25152#26377#30340'iPhone SDK'
+              TabOrder = 3
+              OnClick = btnAddDylibsToAllIOSSDKClick
+            end
+          end
+          object Panel14: TPanel
+            Left = 305
+            Top = 1
+            Width = 769
+            Height = 363
+            Align = alClient
+            TabOrder = 1
+            object btnProcessIOSPlistRootNodes: TButton
+              Left = 1
+              Top = 1
+              Width = 767
+              Height = 25
+              Align = alTop
+              Caption = #28155#21152#19979#38754#30340#37197#32622#21040'info.plist.TemplateiOS.xml'
+              TabOrder = 0
+              OnClick = btnProcessIOSPlistRootNodesClick
+            end
+            object memIOSPlistRootNodes: TMemo
+              Left = 1
+              Top = 26
+              Width = 767
+              Height = 336
+              Align = alClient
+              Lines.Strings = (
+                '    <key>CFBundleURLTypes</key>'
+                '    <array>'
+                '        <dict>'
+                '            <key>CFBundleURLSchemes</key>'
+                '            <array>'
+                '                <string>fb1218646208237299</string>'
+                '            </array>'
+                '        </dict>'
+                '    </array>'
+                '    <key>FacebookAppID</key>'
+                '    <string>1218646208237299</string>'
+                '    <key>FacebookDisplayName</key>'
+                '    <string>OrangeUI</string>'
+                '    '
+                '    <key>LSApplicationQueriesSchemes</key>'
+                '    <array>'
+                '        <string>fbapi</string>'
+                '        <string>fb-messenger-api</string>'
+                '        <string>fbauth2</string>'
+                '        <string>fbshareextension</string>'
+                '    </array>')
+              ScrollBars = ssBoth
+              TabOrder = 1
+              WordWrap = False
+            end
+          end
+        end
+      end
+      object tsIconConfig: TTabSheet
+        Caption = #24037#31243#22270#26631#21644#21551#21160#22270#29255#35774#32622
+        ImageIndex = 3
+        object pnlAppIcon: TPanel
+          Left = 0
+          Top = 0
+          Width = 1075
+          Height = 186
+          Align = alTop
+          TabOrder = 0
+          object lblAppIconHint: TLabel
+            Left = 13
+            Top = 9
+            Width = 161
+            Height = 16
+            AutoSize = False
+            Caption = 'App'#22270#26631':'
+          end
+          object lblIconCornerSize: TLabel
+            Left = 196
+            Top = 80
+            Width = 170
+            Height = 16
+            Caption = #22278#35282#35282#24230#23610#23544#30334#20998#27604'(0.15)'
+          end
+          object btnSelectProjectIcon: TButton
+            Left = 194
+            Top = 37
+            Width = 266
+            Height = 25
+            Caption = #36873#21462#22270#26631#25991#20214
+            TabOrder = 0
+            OnClick = btnSelectProjectIconClick
+          end
+          object btnProcessProjectIcon: TButton
+            Left = 196
+            Top = 147
+            Width = 264
+            Height = 25
+            Caption = #35774#32622#20026#24037#31243#22270#26631
+            TabOrder = 1
+            OnClick = btnProcessProjectIconClick
+          end
+          object Panel9: TPanel
+            Left = 30
+            Top = 33
+            Width = 144
+            Height = 144
+            BorderWidth = 1
+            BorderStyle = bsSingle
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 2
+            object imgProjectIcon: TImage
+              Left = 2
+              Top = 2
+              Width = 136
+              Height = 136
+              Align = alClient
+              Stretch = True
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 144
+              ExplicitHeight = 144
+            end
+          end
+          object btnGenerateProjectIconEverySize: TButton
+            Left = 196
+            Top = 108
+            Width = 266
+            Height = 25
+            Caption = #29983#25104#21508#31181#23610#23544#21040#24037#31243#30446#24405
+            TabOrder = 3
+            OnClick = btnGenerateProjectIconEverySizeClick
+          end
+          object edtIconCornerSizePercent: TEdit
+            Left = 392
+            Top = 74
+            Width = 70
+            Height = 24
+            TabOrder = 4
+            Text = '0'
+          end
+          object Button5: TButton
+            Left = 490
+            Top = 72
+            Width = 75
+            Height = 25
+            Caption = 'Button5'
+            TabOrder = 5
+            OnClick = Button5Click
+          end
+        end
+        object pnlAppLaunch: TPanel
+          Left = 0
+          Top = 186
+          Width = 1075
+          Height = 244
+          Align = alClient
+          TabOrder = 1
+          object lblAppLaunchImageHint: TLabel
+            Left = 13
+            Top = 16
+            Width = 204
+            Height = 16
+            AutoSize = False
+            Caption = 'App'#21551#21160#22270#29255':'
+          end
+          object lblLaunchImageBackColorHint: TLabel
+            Left = 490
+            Top = 100
+            Width = 140
+            Height = 16
+            Caption = #36873#25321#21512#25104#30340#32972#26223#39068#33394':'
+          end
+          object lblLaunchImageScaleBaseHeightHint: TLabel
+            Left = 490
+            Top = 70
+            Width = 140
+            Height = 16
+            Caption = #22270#29255#25918#22823#30340#22522#20934#39640#24230':'
+          end
+          object lblBackColorHexCodeHint: TLabel
+            Left = 631
+            Top = 165
+            Width = 154
+            Height = 16
+            Caption = #25110#32972#26223#39068#33394'16'#36827#21046#20195#30721':'
+          end
+          object cmbProjectLaunchBackColor: TColorListBox
+            Left = 490
+            Top = 120
+            Width = 135
+            Height = 91
+            NoneColorColor = clWhite
+            Selected = clWhite
+            TabOrder = 0
+            OnClick = cmbProjectLaunchBackColorClick
+          end
+          object edtProjectLaunchBackColor: TEdit
+            Left = 631
+            Top = 187
+            Width = 115
+            Height = 24
+            TabOrder = 1
+          end
+          object Panel12: TPanel
+            Left = 30
+            Top = 38
+            Width = 160
+            Height = 240
+            BorderWidth = 1
+            BorderStyle = bsSingle
+            Color = clWhite
+            ParentBackground = False
+            TabOrder = 2
+            object imgProjectLaunchImage: TImage
+              Left = 2
+              Top = 2
+              Width = 152
+              Height = 232
+              Align = alClient
+              Stretch = True
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 144
+              ExplicitHeight = 144
+            end
+          end
+          object btnSelectProjectLaunchImage: TButton
+            Left = 196
+            Top = 42
+            Width = 264
+            Height = 25
+            Caption = #36873#25321#21551#21160#22270#29255#25110#22270#26631
+            TabOrder = 3
+            OnClick = btnSelectProjectLaunchImageClick
+          end
+          object btnGenerateProjectLaunchImageEverySize: TButton
+            Left = 196
+            Top = 217
+            Width = 264
+            Height = 25
+            Caption = #30452#25509#29983#25104#21508#31181#23610#23544#21040#24037#31243#30446#24405
+            TabOrder = 4
+            OnClick = btnGenerateProjectLaunchImageEverySizeClick
+          end
+          object btnProcessProjectLaunchImage: TButton
+            Left = 192
+            Top = 248
+            Width = 554
+            Height = 25
+            Caption = #35774#32622#20026#24037#31243#21551#21160#22270#29255
+            TabOrder = 5
+            OnClick = btnProcessProjectLaunchImageClick
+          end
+          object Button2: TButton
+            Left = 743
+            Top = 310
+            Width = 172
+            Height = 25
+            Caption = #28165#38500'10.3.1'#30340'IOS'#21551#21160#22270#29255
+            TabOrder = 6
+            Visible = False
+            OnClick = Button2Click
+          end
+          object btnCombineLaunchImageByBackColor: TButton
+            Left = 490
+            Top = 217
+            Width = 256
+            Height = 25
+            Caption = #25110#26681#25454#32972#26223#39068#33394#21512#25104#21551#21160#22270#29255
+            TabOrder = 7
+            OnClick = btnCombineLaunchImageByBackColorClick
+          end
+          object edtScaleBaseHeight: TEdit
+            Left = 648
+            Top = 67
+            Width = 98
+            Height = 24
+            TabOrder = 8
+            Text = '960'
+          end
+          object Button4: TButton
+            Left = 896
+            Top = 48
+            Width = 75
+            Height = 25
+            Caption = 'Button4'
+            TabOrder = 9
+            OnClick = Button4Click
+          end
+        end
+      end
+      object TabSheet1: TTabSheet
+        Caption = #25209#37327#37197#32622#24037#31243#25152#38656#35201#30340'SDK'
+        ImageIndex = 8
+        object lvNeedUseSDKs: TListView
+          Left = 0
+          Top = 0
+          Width = 353
+          Height = 430
+          Align = alLeft
+          Checkboxes = True
+          Columns = <
+            item
+              Caption = 'SDK'
+              Width = 100
+            end>
+          Items.ItemData = {
+            05580000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000
+            000941006C006900700061007900530044004B0000000000FFFFFFFFFFFFFFFF
+            00000000FFFFFFFF0000000009570065006900780069006E00530044004B00}
+          MultiSelect = True
+          TabOrder = 0
+          ViewStyle = vsReport
+        end
+        object btnBatchProcessSDKs: TButton
+          Left = 359
+          Top = 123
+          Width = 193
+          Height = 25
+          Caption = #25209#37327#22788#29702#25152#36873#20013#30340'SDK'
+          TabOrder = 1
+          OnClick = btnBatchProcessSDKsClick
+        end
+        object Button1: TButton
+          Left = 359
+          Top = 20
+          Width = 193
+          Height = 25
+          Caption = #21152#36733#36873#20013#30340'SDK'
+          TabOrder = 2
+          OnClick = Button1Click
+        end
+        object Button7: TButton
+          Left = 359
+          Top = 68
+          Width = 193
+          Height = 25
+          Caption = #20445#23384#36873#20013#30340'SDK'
+          TabOrder = 3
+          OnClick = Button7Click
+        end
+      end
       object tsWeiXinJar: TTabSheet
         Caption = #29983#25104'Jar'
         ImageIndex = 5
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         DesignSize = (
           1075
           430)
@@ -592,10 +1129,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           Visible = False
           object TabSheet2: TTabSheet
             Caption = 'WXEntryActivity.java'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object memWXEntryActivity: TMemo
               Left = 0
               Top = 0
@@ -687,10 +1220,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           object TabSheet3: TTabSheet
             Caption = 'WXPayEntryActivity.java'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object memWXPayEntryActivity: TMemo
               Left = 0
               Top = 0
@@ -781,10 +1310,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           object TabSheet4: TTabSheet
             Caption = 'OnWeixinListener.java'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object memOnWeixinListener: TMemo
               Left = 0
               Top = 0
@@ -810,10 +1335,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           object TabSheet5: TTabSheet
             Caption = 'wxapi.pas'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object memWxApiPas: TMemo
               Left = 0
               Top = 0
@@ -1108,572 +1629,22 @@ object frmSmartDeploy: TfrmSmartDeploy
           OnClick = Button3Click
         end
       end
-      object tsAndroidJar: TTabSheet
-        Caption = 'AndroidJar'#37197#32622
-        ImageIndex = 4
-        object Panel5: TPanel
+      object tsThanks: TTabSheet
+        Caption = #40483#35874
+        ImageIndex = 9
+        object Memo1: TMemo
           Left = 0
           Top = 0
           Width = 1075
-          Height = 47
-          Align = alTop
-          TabOrder = 0
-          object Label29: TLabel
-            Left = 385
-            Top = 49
-            Width = 4
-            Height = 16
-          end
-          object btnAddAndroidJar: TButton
-            Left = 1
-            Top = 11
-            Width = 192
-            Height = 25
-            Caption = #28155#21152'Jar'
-            TabOrder = 0
-            OnClick = btnAddAndroidJarClick
-          end
-          object btnProcessAndroidJar: TButton
-            Left = 199
-            Top = 11
-            Width = 192
-            Height = 25
-            Caption = #22788#29702'Jar'
-            TabOrder = 1
-            OnClick = btnProcessAndroidJarClick
-          end
-        end
-        object Panel8: TPanel
-          Left = 0
-          Top = 47
-          Width = 1075
-          Height = 383
-          Align = alClient
-          TabOrder = 1
-          object pnlAndroidAarToolBar: TPanel
-            Left = 1
-            Top = 120
-            Width = 1073
-            Height = 47
-            Align = alBottom
-            TabOrder = 0
-            object btnAddAndroidAar: TButton
-              Left = 0
-              Top = 16
-              Width = 192
-              Height = 25
-              Caption = #28155#21152'aar'
-              TabOrder = 0
-              OnClick = btnAddAndroidAarClick
-            end
-            object btnProcessAndroidAAR: TButton
-              Left = 198
-              Top = 16
-              Width = 192
-              Height = 25
-              Caption = #22788#29702'Aar'
-              TabOrder = 1
-              OnClick = btnProcessAndroidAARClick
-            end
-            object btnGenerateAndroidAAR: TButton
-              Left = 396
-              Top = 16
-              Width = 240
-              Height = 25
-              Caption = #29983#25104'R.Java'
-              TabOrder = 2
-              OnClick = btnGenerateAndroidAARClick
-            end
-            object chkGenerateAndroid64AAR: TCheckBox
-              Left = 656
-              Top = 19
-              Width = 185
-              Height = 17
-              Caption = '64'#20301'Android'
-              TabOrder = 3
-            end
-          end
-          object memAndroidAars: TMemo
-            Left = 1
-            Top = 167
-            Width = 1073
-            Height = 215
-            Align = alBottom
-            ScrollBars = ssBoth
-            TabOrder = 1
-            WordWrap = False
-          end
-          object memAndroidJars: TMemo
-            Left = 1
-            Top = 1
-            Width = 1073
-            Height = 119
-            Align = alClient
-            ScrollBars = ssBoth
-            TabOrder = 2
-            WordWrap = False
-          end
-        end
-      end
-      object tsIOSConfig: TTabSheet
-        Caption = 'iOS'#24211#37197#32622
-        ImageIndex = 6
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
-        object Panel4: TPanel
-          Left = 0
-          Top = 0
-          Width = 1075
-          Height = 65
-          Align = alTop
-          TabOrder = 0
-          DesignSize = (
-            1075
-            65)
-          object lblIOSLinkerOptionsHint: TLabel
-            Left = 2
-            Top = 4
-            Width = 887
-            Height = 16
-            AutoSize = False
-            Caption = 
-              #38142#25509#21442#25968'(Project Options->Building->Delphi Compiler->Linking->option' +
-              's passed to LD linker):'
-          end
-          object edtIOSLinkerOptions: TEdit
-            Left = 2
-            Top = 26
-            Width = 842
-            Height = 24
-            Anchors = [akLeft, akTop, akRight]
-            TabOrder = 0
-            Text = '-framework SystemConfiguration'
-          end
-          object btnProcessIOSLinkerOptions: TButton
-            Left = 850
-            Top = 24
-            Width = 197
-            Height = 25
-            Anchors = [akTop, akRight]
-            Caption = #22788#29702#38142#25509#21442#25968
-            TabOrder = 1
-            OnClick = btnProcessIOSLinkerOptionsClick
-          end
-        end
-        object Panel13: TPanel
-          Left = 0
-          Top = 65
-          Width = 1075
-          Height = 365
-          Align = alClient
-          TabOrder = 1
-          object Panel11: TPanel
-            Left = 1
-            Top = 1
-            Width = 304
-            Height = 363
-            Align = alLeft
-            TabOrder = 0
-            object lblAddIOSFrameworkHint: TLabel
-              Left = 1
-              Top = 1
-              Width = 302
-              Height = 46
-              Align = alTop
-              AutoSize = False
-              Caption = #27880#24847':'#28155#21152#23436#20043#21518#36824#38656#35201#22312'SDK Manager'#20013#32473#27599#20010'SDK'#28857#20987'"Upate Local File Cache"'
-              WordWrap = True
-              ExplicitLeft = -3
-              ExplicitTop = -5
-            end
-            object memIOS_SDK_Frameworks: TMemo
-              Left = 1
-              Top = 72
-              Width = 302
-              Height = 137
-              Align = alClient
-              ScrollBars = ssBoth
-              TabOrder = 0
-              WordWrap = False
-            end
-            object btnAddFrameworksToAllIOSSDK: TButton
-              Left = 1
-              Top = 47
-              Width = 302
-              Height = 25
-              Align = alTop
-              Caption = #28155#21152#19979#38754#30340#26694#26550#21040#25152#26377#30340'iPhone SDK'
-              TabOrder = 1
-              OnClick = btnAddFrameworksToAllIOSSDKClick
-            end
-            object memIOS_SDK_Dylibs: TMemo
-              Left = 1
-              Top = 234
-              Width = 302
-              Height = 128
-              Align = alBottom
-              Lines.Strings = (
-                'libicucore.tbd')
-              ScrollBars = ssBoth
-              TabOrder = 2
-              WordWrap = False
-            end
-            object btnAddDylibsToAllIOSSDK: TButton
-              Left = 1
-              Top = 209
-              Width = 302
-              Height = 25
-              Align = alBottom
-              Caption = #28155#21152#19979#38754#30340#24211#21040#25152#26377#30340'iPhone SDK'
-              TabOrder = 3
-              OnClick = btnAddDylibsToAllIOSSDKClick
-            end
-          end
-          object Panel14: TPanel
-            Left = 305
-            Top = 1
-            Width = 769
-            Height = 363
-            Align = alClient
-            TabOrder = 1
-            object btnProcessIOSPlistRootNodes: TButton
-              Left = 1
-              Top = 1
-              Width = 767
-              Height = 25
-              Align = alTop
-              Caption = #28155#21152#19979#38754#30340#37197#32622#21040'info.plist.TemplateiOS.xml'
-              TabOrder = 0
-              OnClick = btnProcessIOSPlistRootNodesClick
-            end
-            object memIOSPlistRootNodes: TMemo
-              Left = 1
-              Top = 26
-              Width = 767
-              Height = 336
-              Align = alClient
-              Lines.Strings = (
-                '    <key>CFBundleURLTypes</key>'
-                '    <array>'
-                '        <dict>'
-                '            <key>CFBundleURLSchemes</key>'
-                '            <array>'
-                '                <string>fb1218646208237299</string>'
-                '            </array>'
-                '        </dict>'
-                '    </array>'
-                '    <key>FacebookAppID</key>'
-                '    <string>1218646208237299</string>'
-                '    <key>FacebookDisplayName</key>'
-                '    <string>OrangeUI</string>'
-                '    '
-                '    <key>LSApplicationQueriesSchemes</key>'
-                '    <array>'
-                '        <string>fbapi</string>'
-                '        <string>fb-messenger-api</string>'
-                '        <string>fbauth2</string>'
-                '        <string>fbshareextension</string>'
-                '    </array>')
-              ScrollBars = ssBoth
-              TabOrder = 1
-              WordWrap = False
-            end
-          end
-        end
-      end
-      object tsIconConfig: TTabSheet
-        Caption = #24037#31243#22270#26631#21644#21551#21160#22270#29255#35774#32622
-        ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
-        object pnlAppIcon: TPanel
-          Left = 0
-          Top = 0
-          Width = 1075
-          Height = 186
-          Align = alTop
-          TabOrder = 0
-          object lblAppIconHint: TLabel
-            Left = 13
-            Top = 9
-            Width = 161
-            Height = 16
-            AutoSize = False
-            Caption = 'App'#22270#26631':'
-          end
-          object lblIconCornerSize: TLabel
-            Left = 196
-            Top = 80
-            Width = 170
-            Height = 16
-            Caption = #22278#35282#35282#24230#23610#23544#30334#20998#27604'(0.15)'
-          end
-          object btnSelectProjectIcon: TButton
-            Left = 194
-            Top = 37
-            Width = 266
-            Height = 25
-            Caption = #36873#21462#22270#26631#25991#20214
-            TabOrder = 0
-            OnClick = btnSelectProjectIconClick
-          end
-          object btnProcessProjectIcon: TButton
-            Left = 196
-            Top = 147
-            Width = 264
-            Height = 25
-            Caption = #35774#32622#20026#24037#31243#22270#26631
-            TabOrder = 1
-            OnClick = btnProcessProjectIconClick
-          end
-          object Panel9: TPanel
-            Left = 30
-            Top = 33
-            Width = 144
-            Height = 144
-            BorderWidth = 1
-            BorderStyle = bsSingle
-            Color = clWhite
-            ParentBackground = False
-            TabOrder = 2
-            object imgProjectIcon: TImage
-              Left = 2
-              Top = 2
-              Width = 136
-              Height = 136
-              Align = alClient
-              Stretch = True
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 144
-              ExplicitHeight = 144
-            end
-          end
-          object btnGenerateProjectIconEverySize: TButton
-            Left = 196
-            Top = 108
-            Width = 266
-            Height = 25
-            Caption = #29983#25104#21508#31181#23610#23544#21040#24037#31243#30446#24405
-            TabOrder = 3
-            OnClick = btnGenerateProjectIconEverySizeClick
-          end
-          object edtIconCornerSizePercent: TEdit
-            Left = 392
-            Top = 74
-            Width = 70
-            Height = 24
-            TabOrder = 4
-            Text = '0'
-          end
-          object Button5: TButton
-            Left = 490
-            Top = 72
-            Width = 75
-            Height = 25
-            Caption = 'Button5'
-            TabOrder = 5
-            OnClick = Button5Click
-          end
-        end
-        object pnlAppLaunch: TPanel
-          Left = 0
-          Top = 186
-          Width = 1075
-          Height = 244
-          Align = alClient
-          TabOrder = 1
-          object lblAppLaunchImageHint: TLabel
-            Left = 13
-            Top = 16
-            Width = 204
-            Height = 16
-            AutoSize = False
-            Caption = 'App'#21551#21160#22270#29255':'
-          end
-          object lblLaunchImageBackColorHint: TLabel
-            Left = 490
-            Top = 100
-            Width = 140
-            Height = 16
-            Caption = #36873#25321#21512#25104#30340#32972#26223#39068#33394':'
-          end
-          object lblLaunchImageScaleBaseHeightHint: TLabel
-            Left = 490
-            Top = 70
-            Width = 140
-            Height = 16
-            Caption = #22270#29255#25918#22823#30340#22522#20934#39640#24230':'
-          end
-          object lblBackColorHexCodeHint: TLabel
-            Left = 631
-            Top = 165
-            Width = 154
-            Height = 16
-            Caption = #25110#32972#26223#39068#33394'16'#36827#21046#20195#30721':'
-          end
-          object cmbProjectLaunchBackColor: TColorListBox
-            Left = 490
-            Top = 120
-            Width = 135
-            Height = 91
-            NoneColorColor = clWhite
-            Selected = clWhite
-            TabOrder = 0
-            OnClick = cmbProjectLaunchBackColorClick
-          end
-          object edtProjectLaunchBackColor: TEdit
-            Left = 631
-            Top = 187
-            Width = 115
-            Height = 24
-            TabOrder = 1
-          end
-          object Panel12: TPanel
-            Left = 30
-            Top = 38
-            Width = 160
-            Height = 240
-            BorderWidth = 1
-            BorderStyle = bsSingle
-            Color = clWhite
-            ParentBackground = False
-            TabOrder = 2
-            object imgProjectLaunchImage: TImage
-              Left = 2
-              Top = 2
-              Width = 152
-              Height = 232
-              Align = alClient
-              Stretch = True
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 144
-              ExplicitHeight = 144
-            end
-          end
-          object btnSelectProjectLaunchImage: TButton
-            Left = 196
-            Top = 42
-            Width = 264
-            Height = 25
-            Caption = #36873#25321#21551#21160#22270#29255#25110#22270#26631
-            TabOrder = 3
-            OnClick = btnSelectProjectLaunchImageClick
-          end
-          object btnGenerateProjectLaunchImageEverySize: TButton
-            Left = 196
-            Top = 217
-            Width = 264
-            Height = 25
-            Caption = #30452#25509#29983#25104#21508#31181#23610#23544#21040#24037#31243#30446#24405
-            TabOrder = 4
-            OnClick = btnGenerateProjectLaunchImageEverySizeClick
-          end
-          object btnProcessProjectLaunchImage: TButton
-            Left = 192
-            Top = 248
-            Width = 554
-            Height = 25
-            Caption = #35774#32622#20026#24037#31243#21551#21160#22270#29255
-            TabOrder = 5
-            OnClick = btnProcessProjectLaunchImageClick
-          end
-          object Button2: TButton
-            Left = 743
-            Top = 310
-            Width = 172
-            Height = 25
-            Caption = #28165#38500'10.3.1'#30340'IOS'#21551#21160#22270#29255
-            TabOrder = 6
-            Visible = False
-            OnClick = Button2Click
-          end
-          object btnCombineLaunchImageByBackColor: TButton
-            Left = 490
-            Top = 217
-            Width = 256
-            Height = 25
-            Caption = #25110#26681#25454#32972#26223#39068#33394#21512#25104#21551#21160#22270#29255
-            TabOrder = 7
-            OnClick = btnCombineLaunchImageByBackColorClick
-          end
-          object edtScaleBaseHeight: TEdit
-            Left = 648
-            Top = 67
-            Width = 98
-            Height = 24
-            TabOrder = 8
-            Text = '960'
-          end
-          object Button4: TButton
-            Left = 896
-            Top = 48
-            Width = 75
-            Height = 25
-            Caption = 'Button4'
-            TabOrder = 9
-            OnClick = Button4Click
-          end
-        end
-      end
-      object TabSheet1: TTabSheet
-        Caption = #25209#37327#37197#32622#24037#31243#25152#38656#35201#30340'SDK'
-        ImageIndex = 8
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
-        object lvNeedUseSDKs: TListView
-          Left = 0
-          Top = 0
-          Width = 353
           Height = 430
-          Align = alLeft
-          Checkboxes = True
-          Columns = <
-            item
-              Caption = 'SDK'
-              Width = 100
-            end>
-          Items.ItemData = {
-            05580000000200000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000
-            000941006C006900700061007900530044004B0000000000FFFFFFFFFFFFFFFF
-            00000000FFFFFFFF0000000009570065006900780069006E00530044004B00}
-          MultiSelect = True
+          Align = alClient
+          Lines.Strings = (
+            'xm QQ:910885622')
           TabOrder = 0
-          ViewStyle = vsReport
-        end
-        object btnBatchProcessSDKs: TButton
-          Left = 359
-          Top = 123
-          Width = 193
-          Height = 25
-          Caption = #25209#37327#22788#29702#25152#36873#20013#30340'SDK'
-          TabOrder = 1
-          OnClick = btnBatchProcessSDKsClick
-        end
-        object Button1: TButton
-          Left = 359
-          Top = 20
-          Width = 193
-          Height = 25
-          Caption = #21152#36733#36873#20013#30340'SDK'
-          TabOrder = 2
-          OnClick = Button1Click
-        end
-        object Button7: TButton
-          Left = 359
-          Top = 68
-          Width = 193
-          Height = 25
-          Caption = #20445#23384#36873#20013#30340'SDK'
-          TabOrder = 3
-          OnClick = Button7Click
+          ExplicitLeft = 400
+          ExplicitTop = 240
+          ExplicitWidth = 185
+          ExplicitHeight = 89
         end
       end
     end

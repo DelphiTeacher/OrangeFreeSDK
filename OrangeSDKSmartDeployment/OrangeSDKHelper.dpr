@@ -15,6 +15,7 @@ uses
 var
   I:Integer;
   AParams:String;
+  AProjectFilePath:String;
 begin
   try
     { TODO -oUser -cConsole Main : Insert code here }
@@ -39,12 +40,16 @@ begin
 
 
     //"C:\OrangeFreeSDK\OrangeSDKSmartDeployment\Win32\Debug\OrangeSDKSmartDeployCommand.exe" $(PROJECTPATH) -C $(Config)
+    AProjectFilePath:=ParamStr(1);
+    if AProjectFilePath='' then
+    begin
+      AProjectFilePath:='C:\OrangeFreeSDK\AndroidÍ¼Æ¬ÊÓÆµÑ¡ÔñÆ÷DVMediaSelector_V1_0_0\TestDVMediaSelector.dproj';
+    end;
 
-    if FileExists(ParamStr(1)) then
+    if FileExists(AProjectFilePath) then
     begin
       GenerateProject_R_Java_Jar(
-                                ParamStr(1),
-      //                          'C:\OrangeFreeSDK\AndroidÍ¼Æ¬ÊÓÆµÑ¡ÔñÆ÷DVMediaSelector_V1_0_0\TestDVMediaSelector.dproj',
+                                AProjectFilePath,
                                 'Android',
                                 '21.0',
                                 GlobalCommandLineOutputHelper.DoGetCommandLineOutput

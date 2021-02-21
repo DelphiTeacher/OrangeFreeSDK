@@ -463,12 +463,12 @@ begin
   FMX.Types.Log.d('OrangeUI uAndroidDVSelectMedia.TJMyOnSelectMediaListener.onSelectMedia Begin');
 
 
-  FAndroidDVSelectMediaUI.FAddedCount:=0;
-  FAndroidDVSelectMediaUI.FSelectedCount:=P1.size;
-
-
   if FAndroidDVSelectMediaUI<>nil then
   begin
+
+      FAndroidDVSelectMediaUI.FAddedCount:=0;
+      FAndroidDVSelectMediaUI.FSelectedCount:=P1.size;
+
 
       for I := 0 to P1.size-1 do
       begin

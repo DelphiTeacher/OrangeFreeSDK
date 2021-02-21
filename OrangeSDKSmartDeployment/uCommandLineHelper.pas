@@ -142,11 +142,11 @@ procedure TCommandLineOutputHelper.DoGetCommandLineOutput(ACommandLine, ATag,AOu
 begin
   if ATag<>'' then
   begin
-    Writeln(ATag+':'+AOutput);
+    Writeln(Output,ATag+':'+AOutput);
   end
   else
   begin
-    Writeln(AOutput);
+    Writeln(Output,AOutput);
   end;
 end;
 

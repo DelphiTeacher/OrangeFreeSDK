@@ -1,3 +1,5 @@
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\HMSSdk\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\XiaoMiPushSDK\DeployConfig.ini
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterSDK\DeployConfig_TwitterSDK.ini
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterSDK\Android_3_0\DeployConfig_TwitterSDK.ini
 C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V1_0_0\DVMediaSelectorSDK_V1_0_0\DeployConfig.ini

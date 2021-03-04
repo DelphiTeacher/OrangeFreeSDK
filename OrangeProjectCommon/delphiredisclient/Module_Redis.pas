@@ -20,8 +20,8 @@ uses
         //有效期几秒
         FTimerInval_VerifyExpire:Integer;
 
-        FRedisClient: IRedisClient;
       public
+        FRedisClient: IRedisClient;
         //服务端提交或者更新验证码
         //Vericode是保存在Key这个位置
         //OpenId是保存在Value这个位置
@@ -88,6 +88,7 @@ begin
 //        Result:=True;
 //      end;
 
+      Result:=True;
     except
       FRedisClient.Connect;
     end;

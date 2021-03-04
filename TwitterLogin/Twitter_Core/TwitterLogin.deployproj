@@ -5,7 +5,7 @@
     </ProjectExtensions>
     <PropertyGroup>
         <DeviceId Condition="'$(Platform)'=='Android'">b559c25e02ef</DeviceId>
-        <DeviceId Condition="'$(Platform)'=='Android64'"/>
+        <DeviceId Condition="'$(Platform)'=='Android64'">b559c25e02ef</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimulator'">iPhone5</DeviceId>
     </PropertyGroup>
@@ -1078,36 +1078,9 @@
     <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
     <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
     <ItemGroup Condition="'$(Platform)'=='Android'">
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-pt\values-pt.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-pt\</RemoteDir>
-            <RemoteName>values-pt.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-xhdpi-v4\values-xhdpi-v4_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-xhdpi-v4\</RemoteDir>
             <RemoteName>values-xhdpi-v4.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\AndroidManifest.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hdpi-v4\values-hdpi-v4.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hdpi-v4\</RemoteDir>
-            <RemoteName>values-hdpi-v4.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1141,45 +1114,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-zh-rCN\values-zh-rCN.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-zh-rCN\</RemoteDir>
-            <RemoteName>values-zh-rCN.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-pt\values-pt_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-pt\</RemoteDir>
             <RemoteName>values-pt.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.dpr">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.dpr</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-normal\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-normal\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\assets\internal\AndroidManifest.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\assets\internal\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1213,15 +1150,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-kn\values-kn.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-kn\</RemoteDir>
-            <RemoteName>values-kn.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>TwitterLogin\res\drawable-mdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
@@ -1240,24 +1168,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values\styles.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_pressed.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn_pressed.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>TwitterLogin\res\drawable-hdpi\</RemoteDir>
             <RemoteName>ic_notification.png</RemoteName>
@@ -1267,65 +1177,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\bin\Project1.apk">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\bin\</RemoteDir>
-            <RemoteName>Project1.apk</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Unit1.fmx">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Unit1.fmx</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-de\values-de.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-de\</RemoteDir>
-            <RemoteName>values-de.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="Android\Release\colors.xml" Condition="'$(Config)'=='Release'">
             <RemoteDir>TwitterLogin\res\values\</RemoteDir>
             <RemoteName>colors.xml</RemoteName>
             <DeployClass>Android_Colors</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-large\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-large\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-xxhdpi-v4\values-xxhdpi-v4.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-xxhdpi-v4\</RemoteDir>
-            <RemoteName>values-xxhdpi-v4.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sk\values-sk.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-sk\</RemoteDir>
-            <RemoteName>values-sk.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -1342,33 +1198,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-tl\values-tl_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-tl\</RemoteDir>
             <RemoteName>values-tl.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-da\values-da.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-da\</RemoteDir>
-            <RemoteName>values-da.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-vi\values-vi.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-vi\</RemoteDir>
-            <RemoteName>values-vi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-mr\values-mr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-mr\</RemoteDir>
-            <RemoteName>values-mr.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1402,24 +1231,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Androidapi.JNI.classes.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-en-rSS\values-en-rSS.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-en-rSS\</RemoteDir>
-            <RemoteName>values-en-rSS.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>TwitterLogin\res\drawable-hdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
@@ -1432,15 +1243,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ur\values-ur_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ur\</RemoteDir>
             <RemoteName>values-ur.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-pl\values-pl.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-pl\</RemoteDir>
-            <RemoteName>values-pl.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1474,15 +1276,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.stat">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.stat</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-zh-rTW\values-zh-rTW_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-zh-rTW\</RemoteDir>
             <RemoteName>values-zh-rTW.xml</RemoteName>
@@ -1495,15 +1288,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-tr\values-tr_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-tr\</RemoteDir>
             <RemoteName>values-tr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-el\values-el.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-el\</RemoteDir>
-            <RemoteName>values-el.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1528,15 +1312,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-xhdpi-v4\values-xhdpi-v4.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-xhdpi-v4\</RemoteDir>
-            <RemoteName>values-xhdpi-v4.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ko\values-ko_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ko\</RemoteDir>
             <RemoteName>values-ko.xml</RemoteName>
@@ -1555,45 +1330,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sv\values-sv.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-sv\</RemoteDir>
-            <RemoteName>values-sv.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fa\values-fa.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-fa\</RemoteDir>
-            <RemoteName>values-fa.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-nb\values-nb.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-nb\</RemoteDir>
-            <RemoteName>values-nb.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-nb\values-nb_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-nb\</RemoteDir>
             <RemoteName>values-nb.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-th\values-th.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-th\</RemoteDir>
-            <RemoteName>values-th.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1609,54 +1348,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-tr\values-tr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-tr\</RemoteDir>
-            <RemoteName>values-tr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ar\values-ar_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ar\</RemoteDir>
             <RemoteName>values-ar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ca\values-ca.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ca\</RemoteDir>
-            <RemoteName>values-ca.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\AndroidManifest.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-in\values-in.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-in\</RemoteDir>
-            <RemoteName>values-in.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-hdpi-v4\tw__ic_logo_default.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-hdpi-v4\</RemoteDir>
-            <RemoteName>tw__ic_logo_default.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1708,54 +1402,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.deployproj">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.deployproj</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ur\values-ur.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ur\</RemoteDir>
-            <RemoteName>values-ur.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\twitter-core\res\drawable-hdpi-v4\tw__ic_logo_default.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>TwitterLogin\res\drawable-hdpi-v4\</RemoteDir>
             <RemoteName>tw__ic_logo_default.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xhdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-xhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-iw\values-iw.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-iw\</RemoteDir>
-            <RemoteName>values-iw.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ru\values-ru.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ru\</RemoteDir>
-            <RemoteName>values-ru.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1780,36 +1429,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ar\values-ar.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ar\</RemoteDir>
-            <RemoteName>values-ar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Androidapi.JNI.classes.pas">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Androidapi.JNI.classes.pas</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-fa\values-fa_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-fa\</RemoteDir>
             <RemoteName>values-fa.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ko\values-ko.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ko\</RemoteDir>
-            <RemoteName>values-ko.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1843,51 +1465,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\assets\deployinfo\deployedassets.txt">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\assets\deployinfo\</RemoteDir>
-            <RemoteName>deployedassets.txt</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\splash_image_def.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>splash_image_def.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.res">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.res</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-gu\values-gu.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-gu\</RemoteDir>
-            <RemoteName>values-gu.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-nl\values-nl.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-nl\</RemoteDir>
-            <RemoteName>values-nl.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-en-rGB\values-en-rGB_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-en-rGB\</RemoteDir>
             <RemoteName>values-en-rGB.xml</RemoteName>
@@ -1906,36 +1483,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\splash_image_def.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>splash_image_def.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sr\values-sr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-sr\</RemoteDir>
-            <RemoteName>values-sr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\layout\tw__activity_oauth.xml">
             <RemoteDir>TwitterLogin\res\layout\</RemoteDir>
             <RemoteName>tw__activity_oauth.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_disabled.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn_disabled.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1951,38 +1501,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-ldpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-ldpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xlarge\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-xlarge\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>TwitterLogin\res\drawable-small\</RemoteDir>
             <RemoteName>splash_image.png</RemoteName>
             <DeployClass>Android_SplashImage426</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1.vsr">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Project1.vsr</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -1999,15 +1522,6 @@
         <DeployFile Include="TwitterSDK\twitter-core\res\values-in\values-in.xml" Condition="'$(Config)'=='Debug'">
             <RemoteDir>TwitterLogin\res\values-in\ \</RemoteDir>
             <RemoteName>values-in.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values\values.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values\</RemoteDir>
-            <RemoteName>values.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2032,24 +1546,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-zh-rTW\values-zh-rTW.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-zh-rTW\</RemoteDir>
-            <RemoteName>values-zh-rTW.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\styles.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\twitter-core\res\drawable-xxhdpi-v4\tw__ic_logo_default.png" Condition="'$(Config)'=='Debug'">
             <RemoteDir>TwitterLogin\res\drawable-xxhdpi-v4\</RemoteDir>
             <RemoteName>tw__ic_logo_default.png</RemoteName>
@@ -2068,72 +1564,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Unit1.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Unit1.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\AndroidManifest.template.xml">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>AndroidManifest.template.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-uk\values-uk.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-uk\</RemoteDir>
-            <RemoteName>values-uk.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ms\values-ms_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ms\</RemoteDir>
             <RemoteName>values-ms.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Androidapi.JNI.my_callback_library.pas">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Androidapi.JNI.my_callback_library.pas</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fi\values-fi.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-fi\</RemoteDir>
-            <RemoteName>values-fi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\classes-dexed.jar">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>classes-dexed.jar</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.dproj">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.dproj</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2167,33 +1600,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-small\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-small\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-bn\values-bn.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-bn\</RemoteDir>
-            <RemoteName>values-bn.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-en-rGB\values-en-rGB.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-en-rGB\</RemoteDir>
-            <RemoteName>values-en-rGB.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-it\values-it_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-it\</RemoteDir>
             <RemoteName>values-it.xml</RemoteName>
@@ -2206,15 +1612,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hi\values-hi_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-hi\</RemoteDir>
             <RemoteName>values-hi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-it\values-it.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-it\</RemoteDir>
-            <RemoteName>values-it.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2248,36 +1645,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Unit1.pas">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Unit1.pas</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hi\values-hi.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hi\</RemoteDir>
-            <RemoteName>values-hi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-cs\values-cs_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-cs\</RemoteDir>
             <RemoteName>values-cs.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\AndroidManifest.template.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\</RemoteDir>
-            <RemoteName>AndroidManifest.template.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2293,27 +1663,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\tw__ic_logo_default.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\</RemoteDir>
-            <RemoteName>tw__ic_logo_default.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-el\values-el_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-el\</RemoteDir>
             <RemoteName>values-el.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\layout\tw__activity_oauth.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\layout\</RemoteDir>
-            <RemoteName>tw__activity_oauth.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2343,60 +1695,6 @@
             <RemoteName>splash_image.png</RemoteName>
             <DeployClass>Android_SplashImage470</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-mdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-mdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-cs\values-cs.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-cs\</RemoteDir>
-            <RemoteName>values-cs.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fr\values-fr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-fr\</RemoteDir>
-            <RemoteName>values-fr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ms\values-ms.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ms\</RemoteDir>
-            <RemoteName>values-ms.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ro\values-ro.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ro\</RemoteDir>
-            <RemoteName>values-ro.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Win32\Debug\Androidapi.JNI.classes.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Win32\Debug\</RemoteDir>
-            <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -2433,42 +1731,6 @@
             <RemoteName>ic_launcher.png</RemoteName>
             <DeployClass>Android_LauncherIcon36</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\my_callback_library-dexed.jar">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>my_callback_library-dexed.jar</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\classes\classes.dex">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\classes\</RemoteDir>
-            <RemoteName>classes.dex</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ja\values-ja.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ja\</RemoteDir>
-            <RemoteName>values-ja.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xxhdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-xxhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -2527,15 +1789,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_default.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn_default.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="Android\Release\libTwitterLogin.so" Condition="'$(Config)'=='Release'">
             <RemoteDir>TwitterLogin\library\lib\armeabi-v7a\</RemoteDir>
             <RemoteName>libTwitterLogin.so</RemoteName>
@@ -2564,36 +1817,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hr\values-hr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hr\</RemoteDir>
-            <RemoteName>values-hr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hu\values-hu_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-hu\</RemoteDir>
             <RemoteName>values-hu.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hu\values-hu.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hu\</RemoteDir>
-            <RemoteName>values-hu.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-hdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-hdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2612,15 +1838,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-sr\values-sr_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-sr\</RemoteDir>
             <RemoteName>values-sr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Androidapi.JNI.my_callback_library.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Androidapi.JNI.my_callback_library.dcu</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2654,33 +1871,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ta\values-ta.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ta\</RemoteDir>
-            <RemoteName>values-ta.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-tl\values-tl.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-tl\</RemoteDir>
-            <RemoteName>values-tl.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-bg\values-bg.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-bg\</RemoteDir>
-            <RemoteName>values-bg.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-da\values-da_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-da\</RemoteDir>
             <RemoteName>values-da.xml</RemoteName>
@@ -2690,36 +1880,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-es\values-es.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-es\</RemoteDir>
-            <RemoteName>values-es.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-fi\values-fi_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-fi\</RemoteDir>
             <RemoteName>values-fi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\classes.dex">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>classes.dex</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2748,36 +1911,9 @@
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Android64'">
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-pt\values-pt.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-pt\</RemoteDir>
-            <RemoteName>values-pt.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-xhdpi-v4\values-xhdpi-v4_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-xhdpi-v4\</RemoteDir>
             <RemoteName>values-xhdpi-v4.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\AndroidManifest.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hdpi-v4\values-hdpi-v4.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hdpi-v4\</RemoteDir>
-            <RemoteName>values-hdpi-v4.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2811,45 +1947,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-zh-rCN\values-zh-rCN.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-zh-rCN\</RemoteDir>
-            <RemoteName>values-zh-rCN.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-pt\values-pt_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-pt\</RemoteDir>
             <RemoteName>values-pt.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.dpr">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.dpr</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-normal\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-normal\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\assets\internal\AndroidManifest.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\assets\internal\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2865,90 +1965,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-kn\values-kn.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-kn\</RemoteDir>
-            <RemoteName>values-kn.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\drawable\tw__login_btn.xml">
             <RemoteDir>TwitterLogin\res\drawable\</RemoteDir>
             <RemoteName>tw__login_btn.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values\styles.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_pressed.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn_pressed.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\bin\Project1.apk">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\bin\</RemoteDir>
-            <RemoteName>Project1.apk</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Unit1.fmx">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Unit1.fmx</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-de\values-de.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-de\</RemoteDir>
-            <RemoteName>values-de.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-large\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-large\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-xxhdpi-v4\values-xxhdpi-v4.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-xxhdpi-v4\</RemoteDir>
-            <RemoteName>values-xxhdpi-v4.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sk\values-sk.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-sk\</RemoteDir>
-            <RemoteName>values-sk.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -2973,33 +1992,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-da\values-da.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-da\</RemoteDir>
-            <RemoteName>values-da.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-vi\values-vi.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-vi\</RemoteDir>
-            <RemoteName>values-vi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-mr\values-mr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-mr\</RemoteDir>
-            <RemoteName>values-mr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-gu\values-gu_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-gu\</RemoteDir>
             <RemoteName>values-gu.xml</RemoteName>
@@ -3018,36 +2010,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Androidapi.JNI.classes.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-en-rSS\values-en-rSS.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-en-rSS\</RemoteDir>
-            <RemoteName>values-en-rSS.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ur\values-ur_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ur\</RemoteDir>
             <RemoteName>values-ur.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-pl\values-pl.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-pl\</RemoteDir>
-            <RemoteName>values-pl.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3072,15 +2037,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.stat">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.stat</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-zh-rTW\values-zh-rTW_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-zh-rTW\</RemoteDir>
             <RemoteName>values-zh-rTW.xml</RemoteName>
@@ -3093,15 +2049,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-tr\values-tr_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-tr\</RemoteDir>
             <RemoteName>values-tr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-el\values-el.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-el\</RemoteDir>
-            <RemoteName>values-el.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3126,15 +2073,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-xhdpi-v4\values-xhdpi-v4.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-xhdpi-v4\</RemoteDir>
-            <RemoteName>values-xhdpi-v4.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ko\values-ko_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ko\</RemoteDir>
             <RemoteName>values-ko.xml</RemoteName>
@@ -3153,54 +2091,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sv\values-sv.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-sv\</RemoteDir>
-            <RemoteName>values-sv.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fa\values-fa.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-fa\</RemoteDir>
-            <RemoteName>values-fa.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-nb\values-nb.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-nb\</RemoteDir>
-            <RemoteName>values-nb.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-nb\values-nb_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-nb\</RemoteDir>
             <RemoteName>values-nb.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-th\values-th.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-th\</RemoteDir>
-            <RemoteName>values-th.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-tr\values-tr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-tr\</RemoteDir>
-            <RemoteName>values-tr.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3216,42 +2109,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ca\values-ca.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ca\</RemoteDir>
-            <RemoteName>values-ca.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\AndroidManifest.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-in\values-in.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-in\</RemoteDir>
-            <RemoteName>values-in.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-hdpi-v4\tw__ic_logo_default.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-hdpi-v4\</RemoteDir>
-            <RemoteName>tw__ic_logo_default.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-sv\values-sv_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-sv\</RemoteDir>
             <RemoteName>values-sv.xml</RemoteName>
@@ -3261,81 +2118,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.deployproj">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.deployproj</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ur\values-ur.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ur\</RemoteDir>
-            <RemoteName>values-ur.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xhdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-xhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-iw\values-iw.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-iw\</RemoteDir>
-            <RemoteName>values-iw.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ru\values-ru.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ru\</RemoteDir>
-            <RemoteName>values-ru.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ar\values-ar.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ar\</RemoteDir>
-            <RemoteName>values-ar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Androidapi.JNI.classes.pas">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Androidapi.JNI.classes.pas</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-fa\values-fa_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-fa\</RemoteDir>
             <RemoteName>values-fa.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ko\values-ko.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ko\</RemoteDir>
-            <RemoteName>values-ko.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3369,72 +2154,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\assets\deployinfo\deployedassets.txt">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\assets\deployinfo\</RemoteDir>
-            <RemoteName>deployedassets.txt</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\splash_image_def.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>splash_image_def.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.res">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.res</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-gu\values-gu.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-gu\</RemoteDir>
-            <RemoteName>values-gu.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-nl\values-nl.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-nl\</RemoteDir>
-            <RemoteName>values-nl.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-en-rGB\values-en-rGB_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-en-rGB\</RemoteDir>
             <RemoteName>values-en-rGB.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\splash_image_def.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>splash_image_def.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sr\values-sr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-sr\</RemoteDir>
-            <RemoteName>values-sr.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3450,45 +2172,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_disabled.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn_disabled.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-kn\values-kn_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-kn\</RemoteDir>
             <RemoteName>values-kn.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-ldpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-ldpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xlarge\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-xlarge\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1.vsr">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Project1.vsr</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3504,36 +2190,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values\values.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values\</RemoteDir>
-            <RemoteName>values.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-uk\values-uk_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-uk\</RemoteDir>
             <RemoteName>values-uk.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-zh-rTW\values-zh-rTW.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-zh-rTW\</RemoteDir>
-            <RemoteName>values-zh-rTW.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\styles.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>styles.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3549,72 +2208,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Unit1.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Unit1.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\AndroidManifest.template.xml">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>AndroidManifest.template.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-uk\values-uk.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-uk\</RemoteDir>
-            <RemoteName>values-uk.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ms\values-ms_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ms\</RemoteDir>
             <RemoteName>values-ms.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Androidapi.JNI.my_callback_library.pas">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Androidapi.JNI.my_callback_library.pas</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fi\values-fi.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-fi\</RemoteDir>
-            <RemoteName>values-fi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\classes-dexed.jar">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>classes-dexed.jar</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.dproj">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Project1.dproj</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3639,33 +2235,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-small\splash_image.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-small\</RemoteDir>
-            <RemoteName>splash_image.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-bn\values-bn.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-bn\</RemoteDir>
-            <RemoteName>values-bn.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-en-rGB\values-en-rGB.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-en-rGB\</RemoteDir>
-            <RemoteName>values-en-rGB.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-it\values-it_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-it\</RemoteDir>
             <RemoteName>values-it.xml</RemoteName>
@@ -3678,15 +2247,6 @@
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hi\values-hi_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-hi\</RemoteDir>
             <RemoteName>values-hi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-it\values-it.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-it\</RemoteDir>
-            <RemoteName>values-it.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3711,36 +2271,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Unit1.pas">
-            <RemoteDir>TwitterLogin\library\lib\</RemoteDir>
-            <RemoteName>Unit1.pas</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hi\values-hi.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hi\</RemoteDir>
-            <RemoteName>values-hi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-cs\values-cs_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-cs\</RemoteDir>
             <RemoteName>values-cs.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\AndroidManifest.template.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\</RemoteDir>
-            <RemoteName>AndroidManifest.template.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3756,27 +2289,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\tw__ic_logo_default.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\</RemoteDir>
-            <RemoteName>tw__ic_logo_default.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-el\values-el_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-el\</RemoteDir>
             <RemoteName>values-el.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\layout\tw__activity_oauth.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\layout\</RemoteDir>
-            <RemoteName>tw__activity_oauth.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3792,99 +2307,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-mdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-mdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-cs\values-cs.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-cs\</RemoteDir>
-            <RemoteName>values-cs.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fr\values-fr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-fr\</RemoteDir>
-            <RemoteName>values-fr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ms\values-ms.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ms\</RemoteDir>
-            <RemoteName>values-ms.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ro\values-ro.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ro\</RemoteDir>
-            <RemoteName>values-ro.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Win32\Debug\Androidapi.JNI.classes.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Win32\Debug\</RemoteDir>
-            <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-fr\values-fr_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-fr\</RemoteDir>
             <RemoteName>values-fr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\my_callback_library-dexed.jar">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>my_callback_library-dexed.jar</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\classes\classes.dex">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\classes\</RemoteDir>
-            <RemoteName>classes.dex</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ja\values-ja.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ja\</RemoteDir>
-            <RemoteName>values-ja.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xxhdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-xxhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3927,15 +2352,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_default.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn_default.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ta\values-ta_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-ta\</RemoteDir>
             <RemoteName>values-ta.xml</RemoteName>
@@ -3945,36 +2361,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hr\values-hr.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hr\</RemoteDir>
-            <RemoteName>values-hr.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hu\values-hu_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-hu\</RemoteDir>
             <RemoteName>values-hu.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hu\values-hu.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-hu\</RemoteDir>
-            <RemoteName>values-hu.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-hdpi\ic_launcher.png">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable-hdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -3999,15 +2388,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Androidapi.JNI.my_callback_library.dcu">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>Androidapi.JNI.my_callback_library.dcu</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-bn\values-bn_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-bn\</RemoteDir>
             <RemoteName>values-bn.xml</RemoteName>
@@ -4026,33 +2406,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ta\values-ta.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-ta\</RemoteDir>
-            <RemoteName>values-ta.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-tl\values-tl.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-tl\</RemoteDir>
-            <RemoteName>values-tl.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-bg\values-bg.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-bg\</RemoteDir>
-            <RemoteName>values-bg.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-da\values-da_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-da\</RemoteDir>
             <RemoteName>values-da.xml</RemoteName>
@@ -4062,36 +2415,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-es\values-es.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\values-es\</RemoteDir>
-            <RemoteName>values-es.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-fi\values-fi_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-fi\</RemoteDir>
             <RemoteName>values-fi.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\classes.dex">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\</RemoteDir>
-            <RemoteName>classes.dex</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn.xml">
-            <RemoteDir>TwitterLogin\library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-            <RemoteName>tw__login_btn.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>

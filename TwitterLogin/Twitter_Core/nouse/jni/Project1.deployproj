@@ -1,0 +1,772 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='Android'">e0f651d0</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice32'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSSimulator'">iPhone5</DeviceId>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice32'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="Win32\Debug\Project1.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>Project1\</RemoteDir>
+            <RemoteName>Project1.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSX32'">
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgsqlite3.dylib">
+            <RemoteDir>Project1.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgsqlite3.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib">
+            <RemoteDir>Project1.app\Contents\MacOS\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Android'">
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable-mdpi-v4\tw__ic_logo_default.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>tw__ic_logo_default.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable-xhdpi-v4\tw__ic_logo_default.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>tw__ic_logo_default.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-cs\values-cs.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-cs\</RemoteDir>
+            <RemoteName>values-cs.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-fr\values-fr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-fr\</RemoteDir>
+            <RemoteName>values-fr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ca\values-ca.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ca\</RemoteDir>
+            <RemoteName>values-ca.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-xhdpi-v4\values-xhdpi-v4.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-xhdpi-v4\</RemoteDir>
+            <RemoteName>values-xhdpi-v4.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-pl\values-pl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-pl\</RemoteDir>
+            <RemoteName>values-pl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ja\values-ja.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ja\</RemoteDir>
+            <RemoteName>values-ja.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-mr\values-mr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-mr\</RemoteDir>
+            <RemoteName>values-mr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-nb\values-nb.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-nb\</RemoteDir>
+            <RemoteName>values-nb.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-uk\values-uk.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-uk\</RemoteDir>
+            <RemoteName>values-uk.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable\tw__login_btn_default.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable\</RemoteDir>
+            <RemoteName>tw__login_btn_default.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-sv\values-sv.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-sv\</RemoteDir>
+            <RemoteName>values-sv.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable\tw__login_btn_disabled.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable\</RemoteDir>
+            <RemoteName>tw__login_btn_disabled.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-el\values-el.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-el\</RemoteDir>
+            <RemoteName>values-el.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-sr\values-sr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-sr\</RemoteDir>
+            <RemoteName>values-sr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable-hdpi-v4\tw__ic_logo_default.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>tw__ic_logo_default.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-th\values-th.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-th\</RemoteDir>
+            <RemoteName>values-th.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ru\values-ru.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ru\</RemoteDir>
+            <RemoteName>values-ru.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable-xxhdpi-v4\tw__ic_logo_default.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\</RemoteDir>
+            <RemoteName>tw__ic_logo_default.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\library\lib\mips\</RemoteDir>
+            <RemoteName>libProject1.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-en-rSS\values-en-rSS.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-en-rSS\</RemoteDir>
+            <RemoteName>values-en-rSS.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-gu\values-gu.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-gu\</RemoteDir>
+            <RemoteName>values-gu.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\assets\internal\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-it\values-it.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-it\</RemoteDir>
+            <RemoteName>values-it.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-tl\values-tl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-tl\</RemoteDir>
+            <RemoteName>values-tl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-tr\values-tr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-xxhdpi-v4\values-xxhdpi-v4.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-xxhdpi-v4\</RemoteDir>
+            <RemoteName>values-xxhdpi-v4.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-zh-rCN\values-zh-rCN.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-zh-rCN\</RemoteDir>
+            <RemoteName>values-zh-rCN.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-iw\values-iw.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-iw\</RemoteDir>
+            <RemoteName>values-iw.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ko\values-ko.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ko\</RemoteDir>
+            <RemoteName>values-ko.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\classes.dex" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\classes\</RemoteDir>
+            <RemoteName>classes.dex</RemoteName>
+            <DeployClass>AndroidClassesDexFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ar\values-ar.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ar\</RemoteDir>
+            <RemoteName>values-ar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-fi\values-fi.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-fi\</RemoteDir>
+            <RemoteName>values-fi.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-hu\values-hu.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-hu\</RemoteDir>
+            <RemoteName>values-hu.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-zh-rTW\values-zh-rTW.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-zh-rTW\</RemoteDir>
+            <RemoteName>values-zh-rTW.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libProject1.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="AndroidManifest.template.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\</RemoteDir>
+            <RemoteName>AndroidManifest.template.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-fa\values-fa.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-fa\</RemoteDir>
+            <RemoteName>values-fa.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-es\values-es.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-es\</RemoteDir>
+            <RemoteName>values-es.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-vi\values-vi.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-vi\</RemoteDir>
+            <RemoteName>values-vi.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ta\values-ta.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ta\</RemoteDir>
+            <RemoteName>values-ta.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-kn\values-kn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-kn\</RemoteDir>
+            <RemoteName>values-kn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\release\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\library\lib\mips\</RemoteDir>
+            <RemoteName>libProject1.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-nl\values-nl.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-nl\</RemoteDir>
+            <RemoteName>values-nl.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable\tw__login_btn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable\</RemoteDir>
+            <RemoteName>tw__login_btn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-bg\values-bg.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-bg\</RemoteDir>
+            <RemoteName>values-bg.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-bn\values-bn.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-bn\</RemoteDir>
+            <RemoteName>values-bn.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-de\values-de.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-de\</RemoteDir>
+            <RemoteName>values-de.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-pt\values-pt.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-pt\</RemoteDir>
+            <RemoteName>values-pt.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ur\values-ur.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ur\</RemoteDir>
+            <RemoteName>values-ur.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ro\values-ro.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ro\</RemoteDir>
+            <RemoteName>values-ro.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\drawable\tw__login_btn_pressed.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable\</RemoteDir>
+            <RemoteName>tw__login_btn_pressed.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="..\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\assets\internal\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectFile</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-hdpi-v4\values-hdpi-v4.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-hdpi-v4\</RemoteDir>
+            <RemoteName>values-hdpi-v4.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-hi\values-hi.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-hi\</RemoteDir>
+            <RemoteName>values-hi.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-ms\values-ms.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-ms\</RemoteDir>
+            <RemoteName>values-ms.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libProject1.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\libProject1.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libProject1.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-in\values-in.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-in\</RemoteDir>
+            <RemoteName>values-in.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-sk\values-sk.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-sk\</RemoteDir>
+            <RemoteName>values-sk.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\layout\tw__activity_oauth.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\layout\</RemoteDir>
+            <RemoteName>tw__activity_oauth.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-en-rGB\values-en-rGB.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-en-rGB\</RemoteDir>
+            <RemoteName>values-en-rGB.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-da\values-da.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-da\</RemoteDir>
+            <RemoteName>values-da.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values\values.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values\</RemoteDir>
+            <RemoteName>values.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="E:\MyFiles\ThirdPartySDK\Twitter接口\Android\twitter-core\res\values-hr\values-hr.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>Project1\res\values-hr\</RemoteDir>
+            <RemoteName>values-hr.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
+            <RemoteDir>Project1.app\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libPCRE.dylib">
+            <RemoteDir>Project1.app\</RemoteDir>
+            <RemoteName>libPCRE.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+</Project>

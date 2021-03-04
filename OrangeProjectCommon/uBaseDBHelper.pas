@@ -313,7 +313,8 @@ begin
 end;
 
 function TBaseDBHelper.SelfQuery_EasyInsert(ATableName: String;
-  AParamNames: TStringDynArray; AParamValues: TVariantDynArray;
+  AParamNames: TStringDynArray;
+  AParamValues: TVariantDynArray;
   AOtherQuery: String; AOperation: TSQLOperation;
                       ACustomQueryDataSet:TDataSet): Boolean;
 var

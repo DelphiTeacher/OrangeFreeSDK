@@ -41,7 +41,10 @@ end;
 procedure TsrvMyService.ServiceBeforeInstall(Sender: TService);
 begin
   uBaseLog.HandleException(nil,'TsrvMyHis.ServiceBeforeInstall');
+
+
   GlobalServiceProject.Load;
+
   if GlobalServiceProject.ServiceName<>'' then
   begin
     Self.Name:=GlobalServiceProject.ServiceName;

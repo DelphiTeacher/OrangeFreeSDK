@@ -84,6 +84,8 @@ type
 
 
 
+
+
   //加载数据时的参数
   TLoadDataSetting=Record
 
@@ -146,6 +148,11 @@ type
   public
     procedure Clear;
   end;
+
+
+
+
+
 
 
 

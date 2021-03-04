@@ -10,6 +10,6 @@
   </Transactions>
 	<ActiveMobileDevice>
 		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64="_iosdevice_bb71c0fa911c33225d7711495470c9c631f22cc8"/>
-		<NoProfile Android="b559c25e02ef" Android64="b559c25e02ef"/>
+		<NoProfile Android="" Android64="" iOSSimulator="iPhone5"/>
 	</ActiveMobileDevice>
 </BorlandProject>

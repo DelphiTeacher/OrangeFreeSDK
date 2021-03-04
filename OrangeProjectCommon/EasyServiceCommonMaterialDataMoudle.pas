@@ -95,6 +95,7 @@ type
     imglistArrow: TSkinImageList;
     lbFilterClassify_Material: TSkinListBoxDefaultMaterial;
     imglistCommonButtonIcons: TSkinImageList;
+    pcDefaultPageControl: TSkinPageControlDefaultMaterial;
   private
     { Private declarations }
   public

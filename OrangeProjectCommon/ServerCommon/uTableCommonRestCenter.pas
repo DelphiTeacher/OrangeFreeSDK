@@ -403,6 +403,7 @@ type
     procedure AssignTo(Dest: TPersistent); override;
 
   public
+    procedure DoCreate;
     constructor Create;overload;override;
     constructor Create(
                       //接口名称
@@ -2834,49 +2835,7 @@ constructor TBaseQueryItem.Create;
 begin
   Inherited Create;
 
-  FSelect:=TStringList.Create;
-
-
-  TableFieldNameList:=TStringList.Create;
-//  QueryFieldNameList:=TStringList.Create;
-  SubQueryList:=TBaseQueryList.Create(ooReference);
-
-
-//  QueryUserTypeConditions:=TUserTypeConditionList.Create;
-
-  //添加记录时的数据流转列表
-  BeforeAddRecordDataFlowActionList:=TDataFlowActionList.Create;
-  AddRecordDataFlowActionList:=TDataFlowActionList.Create;
-
-  //修改记录时的数据流转列表
-  BeforeUpdateRecordDataFlowActionList:=TDataFlowActionList.Create;
-  UpdateRecordDataFlowActionList:=TDataFlowActionList.Create;
-
-
-  //自定义搜索条件
-  WhereKeyTranslatorList:=TWhereKeyTranslatorList.Create;
-
-
-  SelectParamList:=TSelectParamList.Create;
-
-  DetailAddRecordFieldList:=TDataFlowFieldList.Create;
-
-
-  SummaryQueryFieldList:=TStringList.Create;
-
-  NoUpdateFieldList:=TStringList.Create;
-
-  UniqueFieldNameList:=TStringList.Create;
-  UniqueFieldCaptionList:=TStringList.Create;
-
-
-  LevelFieldRootNodeValue:='0';
-  LevelParentFieldName:='parent_fid';
-  LevelChildFieldName:='fid';
-
-
-  FieldValueCheckList:=TFieldValueCheckList.Create;
-
+  DoCreate;
 
 end;
 
@@ -2900,8 +2859,9 @@ constructor TBaseQueryItem.Create(
   AHasAppIDField:Boolean;
   ARelateToMasterFieldName:String);
 begin
+  Inherited Create;
 
-  Create;
+  DoCreate;
 
 
   //接口名称
@@ -3951,6 +3911,53 @@ begin
               ADataJson
               );
   end;
+end;
+
+procedure TBaseQueryItem.DoCreate;
+begin
+  FSelect:=TStringList.Create;
+
+
+  TableFieldNameList:=TStringList.Create;
+//  QueryFieldNameList:=TStringList.Create;
+  SubQueryList:=TBaseQueryList.Create(ooReference);
+
+
+//  QueryUserTypeConditions:=TUserTypeConditionList.Create;
+
+  //添加记录时的数据流转列表
+  BeforeAddRecordDataFlowActionList:=TDataFlowActionList.Create;
+  AddRecordDataFlowActionList:=TDataFlowActionList.Create;
+
+  //修改记录时的数据流转列表
+  BeforeUpdateRecordDataFlowActionList:=TDataFlowActionList.Create;
+  UpdateRecordDataFlowActionList:=TDataFlowActionList.Create;
+
+
+  //自定义搜索条件
+  WhereKeyTranslatorList:=TWhereKeyTranslatorList.Create;
+
+
+  SelectParamList:=TSelectParamList.Create;
+
+  DetailAddRecordFieldList:=TDataFlowFieldList.Create;
+
+
+  SummaryQueryFieldList:=TStringList.Create;
+
+  NoUpdateFieldList:=TStringList.Create;
+
+  UniqueFieldNameList:=TStringList.Create;
+  UniqueFieldCaptionList:=TStringList.Create;
+
+
+  LevelFieldRootNodeValue:='0';
+  LevelParentFieldName:='parent_fid';
+  LevelChildFieldName:='fid';
+
+
+  FieldValueCheckList:=TFieldValueCheckList.Create;
+
 end;
 
 function TBaseQueryItem.DoGetFieldList(ADBModule: TBaseDatabaseModule;

@@ -448,6 +448,10 @@ type
     function SaveProjectLaunchImageToProject(AProjectFilePath:String):Boolean;
 //    function ClearIOSLaunchImageToProject(AProjectFilePath:String):Boolean;
 
+
+
+
+
     //判断info.plist.TemplateiOS.xml是否存在,不存在则创建
     procedure CheckInfoPlistTemplateiOSXmlFile(AProjectFilePath:String);
     //判断Entitlement.TemplateiOS.xml是否存在,不存在则创建
@@ -2476,7 +2480,6 @@ begin
     AFileContentList.Add('	<%keychainAccessGroups%>');
     AFileContentList.Add('</dict>');
     AFileContentList.Add('</plist>');
-
 
 
     AFileContentList.SaveToFile(ExtractFilePath(AProjectFilePath)+'Entitlement.TemplateiOS.xml',TEncoding.UTF8);
@@ -6378,12 +6381,17 @@ begin
           AXMLChildNode:=AXMLNode.ChildNodes[I];
 
 
+
             //Android
             if (AXMLChildNode.NodeName='PropertyGroup')
               and (
                    (AXMLChildNode.Attributes['Condition']='''$(Base_Android)''!=''''')
                 or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android)''!=''''')
                 or (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android)''!=''''')
+
+                or (AXMLChildNode.Attributes['Condition']='''$(Base_Android64)''!=''''')
+                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android64)''!=''''')
+                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android64)''!=''''')
                 ) then
             begin
 
@@ -6392,6 +6400,7 @@ begin
               SaveProjectPictureToProjectXMLNode(72,72,'Android_LauncherIcon72',AXMLNode.ChildNodes[I]);
               SaveProjectPictureToProjectXMLNode(96,96,'Android_LauncherIcon96',AXMLNode.ChildNodes[I]);
               SaveProjectPictureToProjectXMLNode(144,144,'Android_LauncherIcon144',AXMLNode.ChildNodes[I]);
+              SaveProjectPictureToProjectXMLNode(192,192,'Android_LauncherIcon192',AXMLNode.ChildNodes[I]);
 
 
               SaveProjectPictureToProjectXMLNode(24,24,'Android_NotificationIcon24',AXMLNode.ChildNodes[I],'24_24.png');
@@ -6402,6 +6411,8 @@ begin
 
 
             end;
+
+
 
 
             //IOS
@@ -6479,7 +6490,8 @@ begin
               SaveProjectPictureToProjectXMLNode(167,167,'iPad_AppIcon167',AXMLNode.ChildNodes[I]);
               SaveProjectPictureToProjectXMLNode(120,120,'iPhone_Spotlight120',AXMLNode.ChildNodes[I]);
 
-
+              //<iOS_AppStore1024>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_1024x1024.png</iOS_AppStore1024>
+              SaveProjectPictureToProjectXMLNode(1024,1024,'iOS_AppStore1024',AXMLNode.ChildNodes[I]);
 
 
 
@@ -6716,6 +6728,10 @@ begin
                    (AXMLChildNode.Attributes['Condition']='''$(Base_Android)''!=''''')
                 or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android)''!=''''')
                 or (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android)''!=''''')
+
+                or (AXMLChildNode.Attributes['Condition']='''$(Base_Android64)''!=''''')
+                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android64)''!=''''')
+                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android64)''!=''''')
                 ) then
             begin
 
@@ -6811,7 +6827,20 @@ begin
                 SaveProjectPictureToProjectXMLNode(2732,2048,'iPad_Launch2732x2048',AXMLNode.ChildNodes[I]);
 
 
+          //        <iPhone_Launch2x>1242x2208 - light-2x.png</iPhone_Launch2x>
+              SaveProjectPictureToProjectXMLNode(1242,2208,'iPhone_Launch1242',AXMLNode.ChildNodes[I],'1242x2208 - light-2x.png');
+          //        <iPhone_LaunchDark2x>1242x2208 - dark-2x.png</iPhone_LaunchDark2x>
+              SaveProjectPictureToProjectXMLNode(1242,2208,'iPhone_Launch1242',AXMLNode.ChildNodes[I],'1242x2208 - dark-2x.png');
 
+          //        <iPhone_Launch3x>1242x2688 - light-3x.png</iPhone_Launch3x>
+                SaveProjectPictureToProjectXMLNode(1242,2688,'iPhone_Launch3x',AXMLNode.ChildNodes[I],'1242x2688 - light-3x.png');
+          //        <iPhone_LaunchDark3x>1242x2688 - dark-3x.png</iPhone_LaunchDark3x>
+                SaveProjectPictureToProjectXMLNode(1242,2688,'iPhone_LaunchDark3x',AXMLNode.ChildNodes[I],'1242x2688 - dark-3x.png');
+
+          //        <iPad_Launch2x>1242x2208 - light-2x.png</iPad_Launch2x>
+              SaveProjectPictureToProjectXMLNode(2208,1242,'iPad_Launch2x',AXMLNode.ChildNodes[I],'2208x1242 - light-2x.png');
+          //        <iPad_LaunchDark2x>1242x2208 - dark-2x.png</iPad_LaunchDark2x>
+              SaveProjectPictureToProjectXMLNode(2208,1242,'iPad_LaunchDark2x',AXMLNode.ChildNodes[I],'2208x1242 - dark-2x.png');
 
             end;
 
@@ -6848,7 +6877,7 @@ begin
   end
   else
   begin
-    APictureNode.Text:=IntToStr(AIconWidth)+'_'+IntToStr(AIconHeight)+'.png';
+    APictureNode.Text:=AText;//IntToStr(AIconWidth)+'_'+IntToStr(AIconHeight)+'.png';
   end;
 end;
 

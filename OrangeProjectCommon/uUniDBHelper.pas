@@ -35,6 +35,7 @@ uses
   uBaseLog,
   uFuncCommon,
 
+  StrUtils,
   uBaseDBHelper,
   uDataBaseConfig,
 
@@ -192,6 +193,7 @@ begin
 
               //在windows的service模式下设置直连会报错
               {$IFDEF IS_WINDOWS_SERVICE}
+              AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
               {$ELSE}
               AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
               {$ENDIF}
@@ -429,6 +431,15 @@ begin
     {$IFDEF MSWINDOWS}
     CoInitialize(nil);
     {$ENDIF}
+    if (Pos('IFNULL',AQueryString)>0)
+      or (Pos('ifnull',AQueryString)>0)
+      or (Pos('last_insert_id()',AQueryString)>0) then
+    begin
+      AQueryString:=ReplaceStr(AQueryString,'IFNULL','ISNULL');
+      AQueryString:=ReplaceStr(AQueryString,'ifnull','ifnull');
+      AQueryString:=ReplaceStr(AQueryString,'last_insert_id()','@@identity');
+    end;
+
   end;
   try
 

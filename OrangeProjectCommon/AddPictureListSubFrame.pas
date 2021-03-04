@@ -5,7 +5,7 @@ interface
 
 
 //使用原生的选择媒体窗体
-{$DEFINE USE_NATIVE_SELECTMEDIA}
+//{$DEFINE USE_NATIVE_SELECTMEDIA}
 
 
 uses
@@ -292,8 +292,9 @@ function DoUploadFile(ALocalFilePath:String;
 
 
 implementation
-uses
-  AddContentFrame;
+
+//uses
+//  AddContentFrame;
 
 {$R *.fmx}
 
@@ -1577,7 +1578,7 @@ end;
 
 procedure TFrameAddPictureListSub.StartCamera(ASelectType:TSelectMediaType);
 begin
-//  {$IFDEF USE_NATIVE_SELECTMEDIA}
+  {$IFDEF USE_NATIVE_SELECTMEDIA}
 
       {$IFDEF ANDROID}
       GlobalSelectMediaUIClass:=TAndroidDVSelectMediaUI;
@@ -1597,8 +1598,8 @@ begin
 
       FSelectCameraDialog.StartCamera;
 
-//  {$ELSE}
-//  {$ENDIF}
+  {$ELSE}
+  {$ENDIF}
 
 end;
 

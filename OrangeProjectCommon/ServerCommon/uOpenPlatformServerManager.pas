@@ -101,8 +101,8 @@ type
 
 //    appid:Integer;
 //    user_fid:String;
-//
-//    appsecret:String;
+
+    appsecret:String;
 //    name:String;
 //    icon_path:String;
 //    app_desc:String;
@@ -112,6 +112,11 @@ type
   private
     function GetItem(Index: Integer): TOpenPlatformApp;
   public
+    procedure Add(AAppID:Integer;
+                  AIsEnableSign:Boolean;
+                  ASignType:String;
+                  AAppSecret:String
+                  );overload;
     function Find(AAppID:Integer):TOpenPlatformApp;
     property Items[Index:Integer]:TOpenPlatformApp read GetItem;default;
   end;
@@ -130,6 +135,10 @@ type
   //服务模块基类
   TServiceModule = class
   public
+
+    //是否已连接数据库,避免重复启动
+    IsStarted:Boolean;
+
     //模块名称,比如验证码、用户中心、IM、朋友圈
     Name: String;
   public
@@ -170,11 +179,19 @@ type
   TServiceProject = class
   public
     Name: String;
+    ServiceName: String;
+    ServiceDisplayName: String;
     //服务端端口
     Port: Integer;
     SSLPort: Integer;
     //域名
     Domain:String;
+
+    //只需要一个数据库
+    IsNeedOneDatabase:Boolean;
+
+    //是否需要Redis
+    IsNeedRedis:Boolean;
 
 
     kbmMWServer1: TkbmMWServer;
@@ -185,7 +202,7 @@ type
 
 
     //使用的数据库连接
-    DBModule: TDatabaseModule;
+    FDBModule: TDatabaseModule;
 
 
   public
@@ -240,6 +257,8 @@ type
                         ADataJson:ISuperObject;
                         ADesc2:String='';
                         ADataJson2:ISuperObject=nil):ISuperObject;
+
+//    function GetRedisOptClass:
   public
     constructor Create; virtual;
     destructor Destroy;override;
@@ -873,13 +892,16 @@ begin
 //  FTimerInval_VerifyExpire:=;
 
 
+  //是否需要Redis
+  IsNeedRedis:=True;
+
 
   //服务包含的模块
   ServiceModuleList := TBaseList.Create(ooReference);
   AppList:=TOpenPlatformAppList.Create();
   //数据库模块
-  DBModule := TDatabaseModule.Create;
-  DBModule.DBConfigFileName:='ProgramFrameworkManageDBConfig.ini';
+  FDBModule := TDatabaseModule.Create;
+  FDBModule.DBConfigFileName:='ProgramFrameworkManageDBConfig.ini';
 
 
   NonceList:=TStringList.Create;
@@ -889,7 +911,19 @@ begin
 end;
 
 destructor TServiceProject.Destroy;
+//var
+//  I: Integer;
+//  AServiceModule:TServiceModule;
 begin
+
+//  for I := 0 to ServiceModuleList.Count-1 do
+//  begin
+//    AServiceModule:=TServiceModule(ServiceModuleList[I]);
+//    FreeAndNil(AServiceModule);
+//  end;
+
+  FreeAndNil(FDBModule);
+
   FreeAndNil(kbmMWHTTPSysServerTransport1);
   FreeAndNil(kbmMWServer1);
 
@@ -897,7 +931,6 @@ begin
   FreeAndNil(ServiceModuleList);
   FreeAndNil(AppList);
 
-  FreeAndNil(DBModule);
 
 
   FreeAndNil(NonceList);
@@ -1043,9 +1076,14 @@ var
   AIniFile:TIniFile;
 begin
 
-  if FileExists(GetApplicationPath+'Config.ini') then
+  if IsNeedLoadServiceProjectFromIni and FileExists(GetApplicationPath+'Config.ini') then
   begin
     AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini');
+
+
+    Self.Name:=AIniFile.ReadString('','Name',Name);
+    Self.ServiceName:=AIniFile.ReadString('','ServiceName',ServiceName);
+    Self.ServiceDisplayName:=AIniFile.ReadString('','ServiceDisplayName',ServiceDisplayName);
 
     Self.Port:=AIniFile.ReadInteger('','Port',Port);
     Self.SSLPort:=AIniFile.ReadInteger('','SSLPort',SSLPort);
@@ -1091,6 +1129,10 @@ var
 begin
   AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini');
 
+
+  AIniFile.WriteString('','Name',Self.Name);
+  AIniFile.WriteString('','ServiceName',Self.ServiceName);
+  AIniFile.WriteString('','ServiceDisplayName',Self.ServiceDisplayName);
   AIniFile.WriteInteger('','Port',Self.Port);
   AIniFile.WriteInteger('','SSLPort',Self.SSLPort);
   AIniFile.WriteString('','Domain',Self.Domain);
@@ -1134,6 +1176,9 @@ var
   AMessages:String;
 begin
   Result := False;
+
+
+
   CoInitializeEx(nil,COINIT_MULTITHREADED);
   try
 
@@ -1163,12 +1208,17 @@ begin
           //注册
           AServiceModule := TServiceModule(ServiceModuleList[I]);
 
+          AServiceModule.IsStarted:=False;
           //连接数据库等初始
           AError:='';
           if not AServiceModule.DoPrepareStart(AError) then
           begin
               AMessages:=AServiceModule.Name+' '+AMessages+AError+#13#10;
               //如果启动失败,不退出
+          end
+          else
+          begin
+              AServiceModule.IsStarted:=True;
           end;
       end;
 
@@ -1179,9 +1229,9 @@ begin
       begin
           //查询所有App列有
           AError:='';
-          if not DBModule.DoPrepareStart(AError) then
+          if not FDBModule.DoPrepareStart(AError) then
           begin
-              AMessages:='DBModule.DoPrepareStart '+AMessages+AError+#13#10;
+              AMessages:='FDBModule.DoPrepareStart '+AMessages+AError+#13#10;
           end
           else
           begin
@@ -1276,6 +1326,8 @@ var
 begin
   Result:=False;
 
+  if (kbmMWServer1=nil) or not kbmMWServer1.Active then Exit;
+
   CoInitializeEx(nil,COINIT_MULTITHREADED);
   try
 
@@ -1302,13 +1354,18 @@ begin
       begin
         AServiceModule := TServiceModule(ServiceModuleList[I]);
 
-        AStartTime:=Now;
-        uBaseLog.HandleException(nil,AServiceModule.ClassName+' DoPrepareStop Begin ');
-        //断开数据库连接等停止
-        AServiceModule.DoPrepareStop;
+        if AServiceModule.IsStarted then
+        begin
+          AServiceModule.IsStarted:=False;
 
-        uBaseLog.HandleException(nil,AServiceModule.ClassName+' DoPrepareStop End 耗时'+IntToStr(DateUtils.SecondsBetween(Now,AStartTime))+'秒');
+          AStartTime:=Now;
+          uBaseLog.HandleException(nil,AServiceModule.ClassName+' DoPrepareStop Begin ');
+          //断开数据库连接等停止
+          AServiceModule.DoPrepareStop;
 
+          uBaseLog.HandleException(nil,AServiceModule.ClassName+' DoPrepareStop End 耗时'+IntToStr(DateUtils.SecondsBetween(Now,AStartTime))+'秒');
+
+        end;
 
       end;
 
@@ -1331,7 +1388,7 @@ var
 begin
     Result:=False;
 
-    if not DBModule.GetDBHelperFromPool(ASQLDBHelper,ADesc) then
+    if not FDBModule.GetDBHelperFromPool(ASQLDBHelper,ADesc) then
     begin
       Exit;
     end;
@@ -1358,7 +1415,7 @@ begin
         end;
 
     finally
-      DBModule.FreeDBHelperToPool(ASQLDBHelper);
+      FDBModule.FreeDBHelperToPool(ASQLDBHelper);
     end;
 
     Result:=True;
@@ -1397,6 +1454,7 @@ end;
 destructor TKbmMWServiceModule.Destroy;
 begin
   FreeAndNil(DBModule);
+  Inherited;
 end;
 
 function TKbmMWServiceModule.DoPrepareStart(var AError:String): Boolean;
@@ -1451,6 +1509,26 @@ end;
 
 
 { TOpenPlatformAppList }
+
+procedure TOpenPlatformAppList.Add(AAppID: Integer; AIsEnableSign: Boolean;
+  ASignType, AAppSecret: String);
+var
+  AApp:TOpenPlatformApp;
+begin
+  AApp:=TOpenPlatformApp.Create;
+
+  AApp.fid:=AAppID;
+
+
+  AApp.appsecret:=AAppSecret;
+  AApp.sign_type:=ASignType;
+  AApp.is_enable_sign:=Ord(AIsEnableSign);
+
+  Inherited Add(AApp);
+
+
+
+end;
 
 function TOpenPlatformAppList.Find(AAppID: Integer): TOpenPlatformApp;
 var
@@ -1530,8 +1608,8 @@ initialization
     //缓存时间调短一点
 
     //REDIS默认的缓存时间
-    REDIS_COMMON_TIMEOUT:=10*60;
-//    REDIS_COMMON_TIMEOUT:=1;//10*60;
+//    REDIS_COMMON_TIMEOUT:=10*60;
+    REDIS_COMMON_TIMEOUT:=1;//10*60;
 
   end;
 

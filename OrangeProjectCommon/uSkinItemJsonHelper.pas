@@ -84,6 +84,8 @@ type
     /// </summary>
     function SaveToDocNode(ADocNode:TBTNode20_Class):Boolean;override;
   public
+    function GetAccessory: TSkinAccessoryType;override;
+
     //根据绑定的FieldName获取Item的值,然后赋给绑定的控件
     function GetValueByBindItemField(AFieldName:String):Variant;override;
     procedure SetValueByBindItemField(AFieldName:String;AValue:Variant;APageDataDir:String='';AImageServerUrl:String='');override;
@@ -105,19 +107,19 @@ type
 //    //表格列的总宽度
 //    function GetWidth: TControlSize;override;
 //  end;
-//
-//
-//  TSkinJsonTreeViewItem=class(TBaseSkinTreeViewItem)
-//  private
-//    FJson: ISuperObject;
-//  public
-//    //根据绑定的FieldName获取Item的值,然后赋给绑定的控件
-//    function GetValueByBindItemField(AFieldName:String):Variant;override;
-//  public
-//    property Json:ISuperObject read FJson write FJson;
-//  end;
-//
-//
+
+
+  TSkinJsonTreeViewItem=class(TBaseSkinTreeViewItem)
+  private
+    FJson: ISuperObject;
+  public
+    //根据绑定的FieldName获取Item的值,然后赋给绑定的控件
+    function GetValueByBindItemField(AFieldName:String):Variant;override;
+  public
+    property Json:ISuperObject read FJson write FJson;
+  end;
+
+
 //  TSkinJsonListBoxItem=TJsonSkinItem;
 //  TSkinJsonListViewItem=TJsonSkinItem;
 
@@ -285,10 +287,15 @@ end;
 ////  end;
 //end;
 
+function TJsonSkinItem.GetAccessory: TSkinAccessoryType;
+begin
+  Result:=TSkinAccessoryType.satNone;
+end;
+
 function TJsonSkinItem.GetValueByBindItemField(AFieldName: String): Variant;
-var
-  AIndex:Integer;
-  AParentFieldName:String;
+//var
+//  AIndex:Integer;
+//  AParentFieldName:String;
 begin
   if (FJson<>nil) and FJson.Contains(AFieldName) then
   begin
@@ -399,10 +406,15 @@ begin
 
 end;
 
-//{ TSkinJsonTreeViewItem }
-//
-//function TSkinJsonTreeViewItem.GetValueByBindItemField(AFieldName: String): Variant;
-//begin
+{ TSkinJsonTreeViewItem }
+
+function TSkinJsonTreeViewItem.GetValueByBindItemField(AFieldName: String): Variant;
+begin
+  if (FJson<>nil) and FJson.Contains(AFieldName) then
+  begin
+    //设计时不能直接返回值,要判断一下,不然IDE中要报错的,但速度应该会稍微变慢
+    Result:=FJson.V[AFieldName];
+  end
 //  if FJson<>nil then
 //  begin
 //    try
@@ -411,8 +423,12 @@ end;
 //
 //    end;
 //  end;
-//end;
-//
+  else
+  begin
+    Result:=inherited GetValueByBindItemField(AFieldName);
+  end;
+end;
+
 //{ TJsonSkinItemGridRow }
 //
 //function TJsonSkinItemGridRow.GetWidth: TControlSize;
@@ -433,3 +449,4 @@ initialization
 
 
 end.
+

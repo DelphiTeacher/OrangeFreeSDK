@@ -4,6 +4,7 @@ object FrameGetAddrList: TFrameGetAddrList
   Size.PlatformDefault = False
   object pnlToolBar: TSkinFMXPanel
     ParentMouseEvent = False
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -36,6 +37,7 @@ object FrameGetAddrList: TFrameGetAddrList
     Properties.IsToolBar = False
     object btnReturn: TSkinFMXButton
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukRef
       KeepSelfOwnMaterial = False
@@ -57,6 +59,7 @@ object FrameGetAddrList: TFrameGetAddrList
     end
     object btnSearch: TSkinFMXButton
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukRef
       KeepSelfOwnMaterial = False
@@ -93,6 +96,7 @@ object FrameGetAddrList: TFrameGetAddrList
       StyledSettings = [Family, Style, FontColor]
       OnChangeTracking = edtSearchChangeTracking
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -131,6 +135,7 @@ object FrameGetAddrList: TFrameGetAddrList
   end
   object pnlGetPosition: TSkinFMXPanel
     ParentMouseEvent = False
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -147,6 +152,7 @@ object FrameGetAddrList: TFrameGetAddrList
     Properties.IsToolBar = False
     object lvPosition: TSkinFMXListView
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = False
@@ -298,6 +304,7 @@ object FrameGetAddrList: TFrameGetAddrList
       Size.PlatformDefault = False
       TabOrder = 0
       VertScrollBar.ParentMouseEvent = False
+      VertScrollBar.DirectUIVisible = False
       VertScrollBar.ComponentTypeUseKind = ctukDefault
       VertScrollBar.MaterialUseKind = mukSelfOwn
       VertScrollBar.KeepSelfOwnMaterial = True
@@ -315,6 +322,7 @@ object FrameGetAddrList: TFrameGetAddrList
       VertScrollBar.Properties.LargeChange = 10
       VertScrollBar.Properties.CanOverRangeTypes = [cortMin, cortMax]
       HorzScrollBar.ParentMouseEvent = False
+      HorzScrollBar.DirectUIVisible = False
       HorzScrollBar.ComponentTypeUseKind = ctukDefault
       HorzScrollBar.MaterialUseKind = mukSelfOwn
       HorzScrollBar.KeepSelfOwnMaterial = True
@@ -332,6 +340,7 @@ object FrameGetAddrList: TFrameGetAddrList
       HorzScrollBar.Properties.LargeChange = 10
       HorzScrollBar.Properties.CanOverRangeTypes = []
       ScrollControlCorner.ParentMouseEvent = False
+      ScrollControlCorner.DirectUIVisible = False
       ScrollControlCorner.ComponentTypeUseKind = ctukDefault
       ScrollControlCorner.MaterialUseKind = mukSelfOwn
       ScrollControlCorner.KeepSelfOwnMaterial = True
@@ -481,6 +490,7 @@ object FrameGetAddrList: TFrameGetAddrList
       OnPrepareDrawItem = lvPositionPrepareDrawItem
       object pnlSitItem1: TSkinFMXItemDesignerPanel
         ParentMouseEvent = False
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukSelfOwn
         KeepSelfOwnMaterial = True
@@ -514,6 +524,7 @@ object FrameGetAddrList: TFrameGetAddrList
         Properties.ItemStringsBindingControlCollection = <>
         object lblName: TSkinFMXLabel
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukDefault
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True
@@ -538,6 +549,7 @@ object FrameGetAddrList: TFrameGetAddrList
         end
         object chkColor5: TSkinFMXRadioButton
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukName
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True
@@ -587,6 +599,7 @@ object FrameGetAddrList: TFrameGetAddrList
       end
       object pnlSitDefault: TSkinFMXItemDesignerPanel
         ParentMouseEvent = False
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukSelfOwn
         KeepSelfOwnMaterial = True
@@ -621,6 +634,7 @@ object FrameGetAddrList: TFrameGetAddrList
         Properties.ItemStringsBindingControlCollection = <>
         object lblPositionName: TSkinFMXLabel
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukDefault
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True
@@ -648,6 +662,7 @@ object FrameGetAddrList: TFrameGetAddrList
         end
         object lblPositionDetil: TSkinFMXLabel
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukDefault
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True
@@ -677,6 +692,7 @@ object FrameGetAddrList: TFrameGetAddrList
         end
         object chkColor6: TSkinFMXRadioButton
           ParentMouseEvent = False
+          DirectUIVisible = False
           ComponentTypeUseKind = ctukName
           MaterialUseKind = mukSelfOwn
           KeepSelfOwnMaterial = True
@@ -725,6 +741,7 @@ object FrameGetAddrList: TFrameGetAddrList
   end
   object pnlProvince: TSkinFMXPanel
     ParentMouseEvent = False
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukRef
     KeepSelfOwnMaterial = False
@@ -741,6 +758,7 @@ object FrameGetAddrList: TFrameGetAddrList
     Properties.IsToolBar = False
     object btnSelectProvince: TSkinFMXButton
       ParentMouseEvent = False
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True

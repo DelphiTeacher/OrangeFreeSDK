@@ -301,6 +301,8 @@ const
   Const_RegisterLoginType_UserName_PassWord = 'user_name_password';
   Const_RegisterLoginType_Only_UserName_PassWord = 'only_user_name_password';
 
+
+
   // 手机号码注册类型
   Const_RegisterLoginType_PhoneNum = 'phone_num';
   // 邮箱注册

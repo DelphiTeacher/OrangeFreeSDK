@@ -388,9 +388,17 @@ var
   //以320*480为基准的放大比例
   AMiddlePictureStretchScale:Double;
 
+  ATempFileName:String;
 begin
   //以320*480为基准的放大比例
   AMiddlePictureStretchScale:=AHeight/AMiddlePictureStretchScaleBaseHeight;
+
+
+  ATempFileName:=AFileName;
+  if ATempFileName='' then
+  begin
+    ATempFileName:=IntToStr(AWidth)+DevideChar+IntToStr(AHeight)+'.png';
+  end;
 
 
   ASrcBitmap:=TGPBitmap.Create(AMiddlePictureFilePath);
@@ -428,7 +436,7 @@ begin
       if ExtractFileName(ASaveDir)='' then
       begin
 
-          if ADestBitmap.Save(ASaveDir+IntToStr(AWidth)+DevideChar+IntToStr(AHeight)+'.png',
+          if ADestBitmap.Save(ASaveDir+ATempFileName,//IntToStr(AWidth)+DevideChar+IntToStr(AHeight)+'.png',
                               ImgGUID)<>Status.Ok then
           begin
             DoDeployConfigLog(nil,GetLangString(['图片生成失败',
@@ -941,6 +949,11 @@ begin
         //10.3 83.5
         SizePicture(FProjectIconFileName,83,83,ASaveDir,'x','',ACornerSizePercent);
         SizePicture(FProjectIconFileName,167,167,ASaveDir,'x','',ACornerSizePercent);
+        SizePicture(FProjectIconFileName,192,192,ASaveDir,'x','',ACornerSizePercent);
+
+
+
+        SizePicture(FProjectIconFileName,1024,1024,ASaveDir,'x','',ACornerSizePercent);
 
 
 
@@ -1038,6 +1051,16 @@ begin
       SizePicture(FProjectLaunchImageFileName,640,1136,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,750,1334,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,1242,2208,ASaveDir,'x');
+          //        <iPhone_Launch2x>1242x2208 - light-2x.png</iPhone_Launch2x>
+          SizePicture(FProjectLaunchImageFileName,1242,2208,ASaveDir,'x','1242x2208 - light-2x.png');
+          //        <iPhone_LaunchDark2x>1242x2208 - dark-2x.png</iPhone_LaunchDark2x>
+          SizePicture(FProjectLaunchImageFileName,1242,2208,ASaveDir,'1242x2208 - dark-2x.png');
+
+          //        <iPad_Launch2x>1242x2208 - light-2x.png</iPad_Launch2x>
+          //        <iPad_LaunchDark2x>1242x2208 - dark-2x.png</iPad_LaunchDark2x>
+
+
+
       SizePicture(FProjectLaunchImageFileName,2208,1242,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,2048,1536,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,2048,1496,ASaveDir,'x');
@@ -1060,6 +1083,12 @@ begin
       SizePicture(FProjectLaunchImageFileName,1125,2436,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,2436,1125,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,1242,2688,ASaveDir,'x');
+          //        <iPhone_Launch3x>1242x2688 - light-3x.png</iPhone_Launch3x>
+      SizePicture(FProjectLaunchImageFileName,1242,2688,ASaveDir,'x','1242x2688 - light-3x.png');
+          //        <iPhone_LaunchDark3x>1242x2688 - dark-3x.png</iPhone_LaunchDark3x>
+      SizePicture(FProjectLaunchImageFileName,1242,2688,ASaveDir,'x','1242x2688 - dark-3x.png');
+
+
       SizePicture(FProjectLaunchImageFileName,2688,1242,ASaveDir,'x');
 
       SizePicture(FProjectLaunchImageFileName,1668,2224,ASaveDir,'x');
@@ -1354,6 +1383,7 @@ end;
 
 procedure TfrmSmartDeploy.btnProcessProjectIconClick(Sender: TObject);
 begin
+  //设置图标到工程文件
   Self.FProjectConfig.SaveProjectIconToProject(Self.edtProjectFilePath.Text);
 end;
 
@@ -1977,7 +2007,21 @@ begin
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,640,1136,ASaveDir,'x');
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,750,1334,ASaveDir,'x');
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1242,2208,ASaveDir,'x');
+
+          //        <iPhone_Launch2x>1242x2208 - light-2x.png</iPhone_Launch2x>
+          CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1242,2208,ASaveDir,'x','1242x2208 - light-2x.png');
+          //        <iPhone_LaunchDark2x>1242x2208 - dark-2x.png</iPhone_LaunchDark2x>
+          CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1242,2208,ASaveDir,'x','1242x2208 - dark-2x.png');
+
+
+
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2208,1242,ASaveDir,'x');
+          //        <iPad_Launch2x>1242x2208 - light-2x.png</iPad_Launch2x>
+          CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2208,1242,ASaveDir,'x','2208x1242 - light-2x.png');
+          //        <iPad_LaunchDark2x>1242x2208 - dark-2x.png</iPad_LaunchDark2x>
+          CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2208,1242,ASaveDir,'x','2208x1242 - dark-2x.png');
+
+
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2048,1536,ASaveDir,'x');
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2048,1496,ASaveDir,'x');
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1536,2048,ASaveDir,'x');
@@ -1999,6 +2043,12 @@ begin
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1125,2436,ASaveDir,'x');
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2436,1125,ASaveDir,'x');
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1242,2688,ASaveDir,'x');
+          //        <iPhone_Launch3x>1242x2688 - light-3x.png</iPhone_Launch3x>
+      CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1242,2688,ASaveDir,'x','1242x2688 - light-3x.png');
+          //        <iPhone_LaunchDark3x>1242x2688 - dark-3x.png</iPhone_LaunchDark3x>
+      CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1242,2688,ASaveDir,'x','1242x2688 - dark-3x.png');
+
+
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,2688,1242,ASaveDir,'x');
 
     CombineSizePictureByBackColor(FProjectLaunchImageFileName,ABackColor,AScaleBaseHeight,1668,2224,ASaveDir,'x');

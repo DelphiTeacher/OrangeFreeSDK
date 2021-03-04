@@ -865,6 +865,7 @@ begin
   end
   else
   begin
+      //返回为空
       ADesc:=API+Trans('接口调用失败'+AHttpResponse);
   end;
 end;

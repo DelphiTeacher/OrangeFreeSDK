@@ -1,2 +1,0 @@
-.\assets\internal\AndroidManifest.xml
-.\assets\internal\AndroidManifest.xml

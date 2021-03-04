@@ -46,6 +46,7 @@ type
     { Private declarations }
   public
     constructor Create(AOwner:TComponent);override;
+    destructor Destroy;override;
     { Public declarations }
   end;
 
@@ -146,10 +147,10 @@ destructor TDatabaseModule.Destroy;
 begin
 //  FreeAndNil(tmrActiveMySQLPoolConnection);
 
-
-  FreeAndNil(dmServerDataBase);
 //  FreeAndNil(DBHelper);
   FreeAndNil(DBHelperPool);
+
+  FreeAndNil(dmServerDataBase);
 
   Inherited;
 end;
@@ -272,10 +273,12 @@ begin
 
 //  tmrActiveMySQLPoolConnection.Enabled:=False;
 
-
-  FActiveMySQLPoolConnectionThread.Terminate;
-  FActiveMySQLPoolConnectionThread.WaitFor;
-  FreeAndNil(FActiveMySQLPoolConnectionThread);
+  if FActiveMySQLPoolConnectionThread<>nil then
+  begin
+    FActiveMySQLPoolConnectionThread.Terminate;
+    FActiveMySQLPoolConnectionThread.WaitFor;
+    FreeAndNil(FActiveMySQLPoolConnectionThread);
+  end;
 
 
   Result := True;
@@ -485,6 +488,13 @@ begin
 end;
 
 
+
+destructor TdmServerDataBase.Destroy;
+begin
+  kbmMWUNIDACConnectionPool1.Active:=False;
+  FreeAndNil(kbmMWUNIDACConnectionPool1);
+  inherited;
+end;
 
 initialization
 //  GlobalDataBaseCharset:='utf8';

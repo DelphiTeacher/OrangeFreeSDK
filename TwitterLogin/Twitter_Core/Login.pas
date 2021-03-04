@@ -54,10 +54,10 @@ begin
   FMX.Types.Log.d('OrangeUI TFormLogin.btnInitClick Begin');
 
 
-//  //先初始
-//  TWitter.FKey:='xv9G5xhQU7nlmVqEadrkQ8bww';
-//  TWitter.FSecret:='pOIg3AcPpokm0FLu9gpuQgHoGphqSknjQp2CbVVFVQaSUuc9nN';
-//  TWitter.initialize;
+  //先初始,不然按钮是灰色的
+  TWitter.FKey:='xv9G5xhQU7nlmVqEadrkQ8bww';
+  TWitter.FSecret:='pOIg3AcPpokm0FLu9gpuQgHoGphqSknjQp2CbVVFVQaSUuc9nN';
+  TWitter.initialize;
 
 
 

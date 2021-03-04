@@ -35,6 +35,8 @@ uses
   Math,
   RTLConsts,
 
+  XMLDoc,
+  XMLIntf,
 
   {$IFDEF MSWINDOWS}
   Windows,
@@ -220,6 +222,7 @@ function AddValueToArray(AValues:Array of Variant;AValue:Variant):TVariantDynArr
 //procedure AddStrToArray(var AArray:TStringDynArray;AStr:String);//:TStringDynArray;
 //procedure AddValueToArray(var AValues:TVariantDynArray;AValue:Variant);//:TVariantDynArray;
 function ConvertToStringDynArray(AArray:Array of String):TStringDynArray;
+//function ConvertToStringDynArray(ACommaText:String):TStringDynArray;
 function ConvertToVariantDynArray(AVariants:Array of Variant):TVariantDynArray;
 //function ConvertToStringArray(AArray:Array of String):Array of String;
 //function ConvertToVariantArray(AVariants:Array of Variant):TVariantDynArray;
@@ -305,6 +308,30 @@ function GetUniqueAndroidStartActivityForRequestCode(ARequestName:String;ABaseIn
 
 function IsVideoFile(AFilePath:String):Boolean;
 
+function ExtractFileNameNoExt(AFilePath:String):String;
+
+
+
+//根据节点名找到最后一个节点下标,
+//用于布署文件时,添加子节点在此节点下面
+function FindLastChildXMLNodeIndex(ANodeName:String;
+                                    AXMLNode: IXMLNode):Integer;overload;
+function FindChildXMLNode(ANodeName:String;
+                               AXMLNode: IXMLNode):Integer;
+function FindChildXMLNodeIndex(ANodeName:String;
+                               ANodeText:String;
+                               AXMLNode: IXMLNode):Integer;
+function FindChildXMLNodeIndexByAttr(ANodeAttrName:String;
+                               ANodeAttrValue:String;
+                               AXMLNode: IXMLNode):Integer;
+function FindKeyValueNode(ADictNode: IXMLNode;AKey:String):IXMLNode;
+//根据节点的name来判断是否存在
+function FindSameAndroidResourceNode(AXMLNode: IXMLNode;ANeedFindXMLNode:IXMLNode): IXMLNode;
+//复制子节点
+procedure CopyXMLNode(ASrcNode:IXMLNode;ADestNode:IXMLNode);
+
+
+
 var
   GlobalStandardFmtSettings: TFormatSettings;
 
@@ -315,6 +342,178 @@ var
 implementation
 
 
+function FindLastChildXMLNodeIndex(ANodeName: String;AXMLNode: IXMLNode): Integer;
+var
+  I: Integer;
+begin
+  Result:=-1;
+
+  for I := 0 to AXMLNode.ChildNodes.Count-1 do
+  begin
+      if (AXMLNode.ChildNodes[I].NodeName=ANodeName) then
+      begin
+          Result:=I;
+      end;
+  end;
+
+end;
+
+function FindChildXMLNodeIndex(ANodeName:String;
+                               ANodeText:String;
+                               AXMLNode: IXMLNode):Integer;
+var
+  I: Integer;
+begin
+  Result:=-1;
+
+  for I := 0 to AXMLNode.ChildNodes.Count-1 do
+  begin
+      if (AXMLNode.ChildNodes[I].NodeName=ANodeName)
+        and (AXMLNode.ChildNodes[I].Text=ANodeText) then
+      begin
+          Result:=I;
+          Break;
+      end;
+  end;
+end;
+
+function FindChildXMLNode(ANodeName:String;
+                               AXMLNode: IXMLNode):Integer;
+var
+  I: Integer;
+begin
+  Result:=-1;
+
+  for I := 0 to AXMLNode.ChildNodes.Count-1 do
+  begin
+      if (AXMLNode.ChildNodes[I].NodeName=ANodeName) then
+      begin
+          Result:=I;
+          Break;
+      end;
+  end;
+end;
+
+function FindChildXMLNodeIndexByAttr(ANodeAttrName:String;
+                                     ANodeAttrValue:String;
+                                     AXMLNode: IXMLNode):Integer;
+var
+  I: Integer;
+begin
+  Result:=-1;
+
+  for I := 0 to AXMLNode.ChildNodes.Count-1 do
+  begin
+      if AXMLNode.ChildNodes[I].HasAttribute(ANodeAttrName)
+        and
+        (AXMLNode.ChildNodes[I].Attributes[ANodeAttrName]=ANodeAttrValue) then
+      begin
+          Result:=I;
+          Break;
+      end;
+  end;
+end;
+
+function FindKeyValueNode(ADictNode: IXMLNode;AKey:String):IXMLNode;
+var
+  AFindNodeIndex:Integer;
+begin
+  Result:=nil;
+
+  AFindNodeIndex:=FindChildXMLNodeIndex('key',AKey,ADictNode);
+  if (AFindNodeIndex<>-1) and (AFindNodeIndex+1<ADictNode.ChildNodes.Count) then
+  begin
+      Result:=ADictNode.ChildNodes[AFindNodeIndex+1];
+  end;
+end;
+
+procedure CopyXMLNode(ASrcNode:IXMLNode;ADestNode:IXMLNode);
+var
+  I: Integer;
+  AChildNode:IXMLNode;
+begin
+  if ASrcNode.IsTextElement then
+  begin
+    ADestNode.Text:=ASrcNode.Text;
+  end
+  else
+  begin
+      //只复制子节点
+      for I := 0 to ASrcNode.ChildNodes.Count-1 do
+      begin
+        AChildNode:=ADestNode.AddChild(ASrcNode.ChildNodes[I].NodeName);
+        if ASrcNode.ChildNodes[I].IsTextElement then
+        begin
+          AChildNode.Text:=ASrcNode.ChildNodes[I].Text;
+        end
+        else
+        begin
+          CopyXMLNode(ASrcNode.ChildNodes[I],AChildNode);
+        end;
+      end;
+  end;
+end;
+
+function FindSameAndroidResourceNode(AXMLNode: IXMLNode;ANeedFindXMLNode:IXMLNode): IXMLNode;
+var
+  I:Integer;
+begin
+  Result:=nil;
+
+  for I := 0 to AXMLNode.ChildNodes.Count-1 do
+  begin
+      if (AXMLNode.ChildNodes[I].NodeName=ANeedFindXMLNode.NodeName)
+
+        //values.xml
+        and (
+              ANeedFindXMLNode.HasAttribute('name')
+              and AXMLNode.ChildNodes[I].HasAttribute('name')
+              and (AXMLNode.ChildNodes[I].Attributes['name']=ANeedFindXMLNode.Attributes['name'])
+              )
+       then
+      begin
+          Result:=AXMLNode.ChildNodes[I];
+          Break;
+      end;
+  end;
+
+
+
+//  if AXMLNode=nil then
+//  begin
+//      //不存在此名称的
+//      //直接复制
+//      Exit;
+//  end
+//  else
+//  begin
+//      //存在重名的,但是Attribute可能不一样
+//      if ANeedFindXMLNode.HasAttribute('name')
+//        and (FindSameNameButDiffAttrNode(ANeedFindXMLNode.NodeName,
+//                                      'name',
+//                                      ANeedFindXMLNode.Attributes['name'],
+//                                      AXMLNode)=nil)
+//                                      then
+//      begin
+//        //不相同,复制
+//        ADestXMLNode.ChildNodes.Add(AXMLNode);
+//      end;
+//
+//
+//  end;
+
+end;
+
+
+
+function ExtractFileNameNoExt(AFilePath:String):String;
+var
+  AConfigFileExt:String;
+begin
+  Result:=ExtractFileName(AFilePath);
+  AConfigFileExt:=ExtractFileExt(Result);
+  Result:=Copy(Result,1,Length(Result)-Length(AConfigFileExt));
+end;
 
 function IsVideoFile(AFilePath:String):Boolean;
 var
@@ -1334,6 +1533,27 @@ begin
     end;
   end;
 end;
+
+//function ConvertToStringDynArray(ACommaText:String):TStringDynArray;
+//var
+//  I: Integer;
+//  AStringList:TStringList;
+//begin
+//  AStringList:=TStringList.Create;
+//  AStringList.CommaText:=ACommaText;
+//  try
+//
+//    SetLength(Result,Length(AArray));
+//    for I := 0 to Length(AArray)-1 do
+//    begin
+//      Result[I]:=AArray[I];
+//    end;
+//
+//  finally
+//    FreeAndNil(AStringList);
+//  end;
+//
+//end;
 
 function ConvertToStringDynArray(AArray:Array of String):TStringDynArray;
 var

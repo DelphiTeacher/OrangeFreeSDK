@@ -1,3 +1,5 @@
+C:\MyFiles\ThirdPartySDK\华为推送\HuaWeiPush.dproj
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\DoorManager_FMX_D10_4.dproj
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterLogin.dproj
 C:\OrangeFreeSDK\HuaweiScan\HuaweiScan.dproj
 C:\MyFiles\ThirdPartySDK\TestSDK\Project2.dproj

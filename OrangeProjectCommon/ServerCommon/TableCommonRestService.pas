@@ -1749,12 +1749,14 @@ function TCommonRestServiceModule.DoPrepareStop: Boolean;
 var
   I: Integer;
 begin
-  Result:=Inherited;
 
   for I := 0 to IntfList.Count-1 do
   begin
     Result:=Result and IntfList[I].DoPrepareStop;
   end;
+
+
+  Result:=Inherited;
 
 end;
 

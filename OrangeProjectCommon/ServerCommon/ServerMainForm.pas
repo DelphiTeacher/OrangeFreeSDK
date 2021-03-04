@@ -152,7 +152,11 @@ begin
                          ASettingKbmMWServiceModule.DBModule.DBConfig,
                          ASettingKbmMWServiceModule.DBModule.DBConfigFileName
                           );
-  frmDataBaseConfig.edtDBDataBaseName.Visible:=False;
+
+
+  frmDataBaseConfig.edtDBDataBaseName.Visible:=GlobalServiceProject.IsNeedOneDatabase;
+
+
   frmDataBaseConfig.Label5.Visible:=False;
 
 
@@ -177,6 +181,13 @@ begin
                     ASettingKbmMWServiceModule.DBModule.DBConfig.FDBUserName;
               AKbmMWServiceModule.DBModule.DBConfig.FDBPassword:=
                     ASettingKbmMWServiceModule.DBModule.DBConfig.FDBPassword;
+
+              if GlobalServiceProject.IsNeedOneDatabase then
+              begin
+              AKbmMWServiceModule.DBModule.DBConfig.FDBDataBaseName:=
+                    ASettingKbmMWServiceModule.DBModule.DBConfig.FDBDataBaseName;
+              end;
+
               //保存到配置文件中
               AKbmMWServiceModule.DBModule.DBConfig.Save(AKbmMWServiceModule.DBModule.DBConfigFileName);
           end;
@@ -211,11 +222,14 @@ end;
 
 procedure TfrmServerMain.btnStopServiceClick(Sender: TObject);
 begin
-  GlobalServiceProject.Stop;
+
+  tmrSyncUI.Enabled:=False;
 
   Self.Caption := Trans(GlobalServiceProject.Name + '服务端');
   Self.btnStartServer.Enabled := True;
 
+
+  GlobalServiceProject.Stop;
 end;
 
 procedure TfrmServerMain.FormClose(Sender: TObject; var Action: TCloseAction);

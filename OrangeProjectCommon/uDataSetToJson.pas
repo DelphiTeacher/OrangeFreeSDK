@@ -114,8 +114,8 @@ function JSonFromDataSetTo(DataSet: TDataSet;tableName: string;sj:ISuperObject):
 function JSonArrayFromDataSetTo(DataSet: TDataSet): ISuperArray;
 
 
-function JSonFromDataSet(DataSet: TDataSet;tableName: string): ISuperObject;
-function CompressedJSonFromDataSet(DataSet: TDataSet;tableName: string): ISuperObject;
+function JSonFromDataSet(DataSet: TDataSet;tableName: string='RecordList'): ISuperObject;
+function CompressedJSonFromDataSet(DataSet: TDataSet;tableName: string='RecordList'): ISuperObject;
 
 
 function GetJsonDoubleValue(AJson: ISuperObject;AName:String):Double;
@@ -131,17 +131,20 @@ function formatJson(inputStr : string;indent : string='      ') : string;
 function ConvertJsonToArray(AJson:ISuperObject;
                             var ANameArray:TStringDynArray;
                             var AValueArray:TVariantDynArray;
+                            //只添加在FieldList中的Key
                             AFieldList:TStringList=nil;
-                            ANoAddName:String=''):Integer;overload;
+                            //不添加的字段名
+                            ANoAddKeyName:String=''):Integer;overload;
 function ConvertJsonToArray(AJson:ISuperObject;
                             var ANameArray:TStringDynArray;
                             var AValueArray:TVariantDynArray;
                             var AValueTypeArray:TVarTypeDynArray;
+                            //只添加在FieldList中的Key
                             AFieldList:TStringList=nil;
-                            ANoAddName:String=''):Integer;overload;
+                            ANoAddKeyName:String=''):Integer;overload;
 function GetJsonCount(AJson:ISuperObject;
                             AFieldList:TStringList=nil;
-                            ANoAddName:String=''):Integer;
+                            ANoAddKeyName:String=''):Integer;
 function GetJsonNameArray(AJson:ISuperObject;AFieldList:TStringList=nil):TStringDynArray;
 //function GetJsonValueTypeArray(AJson:ISuperObject;AFieldList:TStringList=nil):Array of Integer;
 //function GetJsonValueArray(AJson:ISuperObject;AFieldList:String=''):TVariantDynArray;
@@ -692,7 +695,7 @@ function ConvertJsonToArray(AJson:ISuperObject;
                             var ANameArray:TStringDynArray;
                             var AValueArray:TVariantDynArray;
                             AFieldList:TStringList;
-                            ANoAddName:String):Integer;
+                            ANoAddKeyName:String):Integer;
 var
   I:Integer;
 {$IFDEF SKIN_SUPEROBJECT}
@@ -701,7 +704,7 @@ var
   ASuperEnumerator:TSuperEnumerator<IJSONPair>;
 {$ENDIF}
 begin
-  Result:=GetJsonCount(AJson,AFieldList,ANoAddName);
+  Result:=GetJsonCount(AJson,AFieldList,ANoAddKeyName);
   SetLength(ANameArray,Result);
   SetLength(AValueArray,Result);
 
@@ -720,7 +723,7 @@ begin
                 (AFieldList=nil)
               or (AFieldList<>nil) and (AFieldList.IndexOf(ASuperEnumerator.GetCurrent.JsonString.Value)<>-1)
               )
-          and ((ANoAddName='') or (ANoAddName<>ASuperEnumerator.GetCurrent.JsonString.Value)) then
+          and ((ANoAddKeyName='') or (ANoAddKeyName<>ASuperEnumerator.GetCurrent.JsonString.Value)) then
       begin
         ANameArray[I]:=ASuperEnumerator.GetCurrent.JsonString.Value;
         AValueArray[I]:=ASuperEnumerator.GetCurrent.JsonValue.Value;
@@ -743,7 +746,7 @@ begin
                 (AFieldList=nil)
               or (AFieldList<>nil) and (AFieldList.IndexOf(ASuperEnumerator.GetCurrent.Name)<>-1)
               )
-          and ((ANoAddName='') or (ANoAddName<>ASuperEnumerator.GetCurrent.Name)) then
+          and ((ANoAddKeyName='') or (ANoAddKeyName<>ASuperEnumerator.GetCurrent.Name)) then
       begin
         ANameArray[I]:=ASuperEnumerator.GetCurrent.Name;
         AValueArray[I]:=ASuperEnumerator.GetCurrent.AsVariant;
@@ -761,7 +764,7 @@ function ConvertJsonToArray(AJson:ISuperObject;
                             var AValueArray:TVariantDynArray;
                             var AValueTypeArray:TVarTypeDynArray;
                             AFieldList:TStringList;
-                            ANoAddName:String):Integer;
+                            ANoAddKeyName:String):Integer;
 var
   I:Integer;
 {$IFDEF SKIN_SUPEROBJECT}
@@ -770,7 +773,7 @@ var
   ASuperEnumerator:TSuperEnumerator<IJSONPair>;
 {$ENDIF}
 begin
-  Result:=GetJsonCount(AJson,AFieldList,ANoAddName);
+  Result:=GetJsonCount(AJson,AFieldList,ANoAddKeyName);
   SetLength(ANameArray,Result);
   SetLength(AValueArray,Result);
   SetLength(AValueTypeArray,Result);
@@ -790,7 +793,7 @@ begin
                 (AFieldList=nil)
               or (AFieldList<>nil) and (AFieldList.IndexOf(ASuperEnumerator.GetCurrent.JsonString.Value)<>-1)
               )
-          and ((ANoAddName='') or (ANoAddName<>ASuperEnumerator.GetCurrent.JsonString.Value)) then
+          and ((ANoAddKeyName='') or (ANoAddKeyName<>ASuperEnumerator.GetCurrent.JsonString.Value)) then
       begin
         ANameArray[I]:=ASuperEnumerator.GetCurrent.JsonString.Value;
         AValueArray[I]:=ASuperEnumerator.GetCurrent.JsonValue.Value;
@@ -814,7 +817,7 @@ begin
                 (AFieldList=nil)
               or (AFieldList<>nil) and (AFieldList.IndexOf(ASuperEnumerator.GetCurrent.Name)<>-1)
               )
-          and ((ANoAddName='') or (ANoAddName<>ASuperEnumerator.GetCurrent.Name)) then
+          and ((ANoAddKeyName='') or (ANoAddKeyName<>ASuperEnumerator.GetCurrent.Name)) then
       begin
         ANameArray[I]:=ASuperEnumerator.GetCurrent.Name;
         AValueArray[I]:=ASuperEnumerator.GetCurrent.AsVariant;
@@ -828,7 +831,7 @@ begin
 end;
 
 function GetJsonCount(AJson:ISuperObject;AFieldList:TStringList;
-                            ANoAddName:String):Integer;
+                            ANoAddKeyName:String):Integer;
 {$IFDEF SKIN_SUPEROBJECT}
 var
   ASuperEnumerator: TJSONObject.TEnumerator;
@@ -852,7 +855,7 @@ begin
                 or (AFieldList<>nil) and (AFieldList.IndexOf(ASuperEnumerator.GetCurrent.JsonString.Value)<>-1)
                 )
 
-           and ((ANoAddName='') or (ANoAddName<>ASuperEnumerator.GetCurrent.JsonString.Value)) then
+           and ((ANoAddKeyName='') or (ANoAddKeyName<>ASuperEnumerator.GetCurrent.JsonString.Value)) then
         begin
           Inc(Result);
         end;
@@ -871,7 +874,7 @@ begin
                 or (AFieldList<>nil) and (AFieldList.IndexOf(ASuperEnumerator.GetCurrent.Name)<>-1)
                 )
 
-           and ((ANoAddName='') or (ANoAddName<>ASuperEnumerator.GetCurrent.Name)) then
+           and ((ANoAddKeyName='') or (ANoAddKeyName<>ASuperEnumerator.GetCurrent.Name)) then
         begin
           Inc(Result);
         end;
@@ -1923,6 +1926,9 @@ end;
 
 
 end.
+
+
+
 
 
 

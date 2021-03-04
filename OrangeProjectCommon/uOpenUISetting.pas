@@ -23,8 +23,10 @@ uses
 
 var
   //主窗体MainForm
-  //APP是否需要定位功能,默认为True
-  GlobalIsNeedGPSLocation:Boolean;
+  //APP是否需要定位功能,默认为True,现在改用工程编译指令HAS_GPSLOCATION
+  //GlobalIsNeedGPSLocation:Boolean;
+
+
 
 
   //登陆页面LoginFrame
@@ -42,6 +44,12 @@ var
   GlobalIsEnabledFacebookLogin:Boolean;
   //是否启用Twitter登录
   GlobalIsEnabledTwitterLogin:Boolean;
+  //是否启用手机号密码登录
+  GlobalIsEnabledPhonePasswordLogin:Boolean;
+  //是否启用手机号验证码登录
+  GlobalIsEnabledPhoneCaptchaLogin:Boolean;
+
+
 
 
   //三方登录需要完善手机号
@@ -57,8 +65,19 @@ var
   GlobalIsNeedGetAppInfo:Boolean;
 
 
-  //是否需要客服电话
+  //设置页面是否需要客服电话
   GlobalIsNeedServiceTel:Boolean;
+  //登录页面是否需要注册按钮
+  GlobalIsNeedRegister:Boolean;
+  //登录页面是否需要服务器设置按钮
+  GlobalIsNeedServerSetting:Boolean;
+
+
+
+//  //通知分类列表的Json数组
+//  GlobalNoticeClassifyNameListStr:String;
+//  GlobalNoticeClassifyCaptionListStr:String;
+
 
 
 
@@ -115,7 +134,7 @@ initialization
 
   //默认值
   //启动定位
-  GlobalIsNeedGPSLocation:=True;
+  //GlobalIsNeedGPSLocation:=True;
 
 
 
@@ -132,6 +151,13 @@ initialization
   GlobalIsEnabledFacebookLogin:=False;//True;
   //是否启用Twitter登录
   GlobalIsEnabledTwitterLogin:=False;//True;
+  //是否启用手机号密码登录
+  GlobalIsEnabledPhonePasswordLogin:=False;
+  //是否启用手机号验证码登录
+  GlobalIsEnabledPhoneCaptchaLogin:=False;
+
+
+
 
 
   //是否需要调用get_app_info接口
@@ -139,6 +165,11 @@ initialization
 
   //是否需要客服电话
   GlobalIsNeedServiceTel:=True;
+
+
+  GlobalIsNeedRegister:=True;
+  //登录页面是否需要服务器设置按钮
+  GlobalIsNeedServerSetting:=False;
 
 
 

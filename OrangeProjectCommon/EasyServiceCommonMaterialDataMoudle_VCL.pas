@@ -96,6 +96,7 @@ type
     imglistArrow: TSkinImageList;
     btnButtonDefaultMaterial: TSkinButtonDefaultMaterial;
     btnDropDownButtonMaterial: TSkinButtonDefaultMaterial;
+    btnBegin_Material: TSkinButtonDefaultMaterial;
   private
     { Private declarations }
   public

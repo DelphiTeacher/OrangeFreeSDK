@@ -6,8 +6,13 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 
   Windows,
-  Forms,
+//  Forms,
+  {$IFDEF IN_ORANGESDK}
+  XSuperObject_Copy,
+  {$ELSE}
   XSuperObject,
+  XSuperJson,
+  {$ENDIF}
 
   XMLDoc,
   XMLIntf;

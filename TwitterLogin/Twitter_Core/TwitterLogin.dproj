@@ -295,23 +295,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="TwitterSDK\TwitterCore.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TwitterCore.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRAPIErrorCode.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRAuthConfig.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRAuthSession.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRConstants.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRCoreOAuthSigning.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRDefines.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRGuestSession.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRSession.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRSessionStore.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.Twitter.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRAPIClient.pas"/>
-        <DCCReference Include="TwitterSDK\IOS_3_0\iOSApi.TWTRUser.pas"/>
-        <DCCReference Include="TwitterSDK\Android_3_0\Androidapi.JNI.my_twitter_UserInformation.pas"/>
-        <DCCReference Include="TwitterSDK\Android_3_0\Androidapi.JNI.classes.pas"/>
-        <DCCReference Include="TwitterSDK\Android_3_0\Androidapi.JNI.my_twitter_user.pas"/>
         <DCCReference Include="..\..\OrangeProjectCommon\OrangeSDKPublic\uBaseNativeView.pas"/>
+        <DCCReference Include="Androidapi.JNI.classes.pas"/>
+        <DCCReference Include="Androidapi.JNI.my_twitter_user.pas"/>
+        <DCCReference Include="Androidapi.JNI.my_twitter_UserInformation.pas"/>
         <JavaReference Include="TwitterSDK\Android_3_0\javawriter-2.1.1.jar">
             <Disabled/>
         </JavaReference>
@@ -368,18 +355,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-pt\values-pt.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-pt\</RemoteDir>
-                        <RemoteName>values-pt.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-pt\</RemoteDir>
-                        <RemoteName>values-pt.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png" Configuration="Release" Class="iPad_Launch1024x768"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_29x29.png" Configuration="Debug" Class="iPhone_Spotlight29"/>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-iw\values-iw.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-iw\</RemoteDir>
@@ -388,8 +365,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png" Configuration="Release" Class="iPad_Launch1024x768"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_29x29.png" Configuration="Debug" Class="iPhone_Spotlight29"/>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-xhdpi-v4\values-xhdpi-v4_twitter_core_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-xhdpi-v4\</RemoteDir>
@@ -399,18 +374,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Android64">
                         <RemoteDir>res\values-xhdpi-v4\</RemoteDir>
                         <RemoteName>values-xhdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\AndroidManifest.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>AndroidManifest.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>AndroidManifest.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -426,18 +389,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>icn_vine_badge@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hdpi-v4\values-hdpi-v4.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hdpi-v4\</RemoteDir>
-                        <RemoteName>values-hdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hdpi-v4\</RemoteDir>
-                        <RemoteName>values-hdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-de\values-de_twitter_core_aar.xml" Class="File">
@@ -490,18 +441,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-normal\splash_image.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-normal\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-normal\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-media-scrubber@3x.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -521,18 +460,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.dpr" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.dpr</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.dpr</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\de.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\de.lproj\</RemoteDir>
@@ -540,35 +467,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-zh-rCN\values-zh-rCN.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-zh-rCN\</RemoteDir>
-                        <RemoteName>values-zh-rCN.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-zh-rCN\</RemoteDir>
-                        <RemoteName>values-zh-rCN.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\uk.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\uk.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\assets\internal\AndroidManifest.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\assets\internal\</RemoteDir>
-                        <RemoteName>AndroidManifest.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\assets\internal\</RemoteDir>
-                        <RemoteName>AndroidManifest.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Android\Release\styles-v21.xml" Configuration="Release" Class="AndroidSplashStylesV21">
@@ -657,18 +560,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-kn\values-kn.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-kn\</RemoteDir>
-                        <RemoteName>values-kn.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-kn\</RemoteDir>
-                        <RemoteName>values-kn.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\emailshare.png" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -737,35 +628,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values\styles.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-media-pause@3x.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-icn-media-pause@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_pressed.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn_pressed.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn_pressed.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\bn.lproj\Localizable.strings" Class="File">
@@ -804,44 +671,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\lib\android\release\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\bin\Project1.apk" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\bin\</RemoteDir>
-                        <RemoteName>Project1.apk</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\bin\</RemoteDir>
-                        <RemoteName>Project1.apk</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Unit1.fmx" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Unit1.fmx</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Unit1.fmx</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png" Configuration="Release" Class="iPhone_AppIcon120"/>
                 <DeployFile LocalName="iOSDevice64\Release\ResourceRules.plist" Configuration="Release" Class="ProjectiOSDeviceResourceRules"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-de\values-de.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-de\</RemoteDir>
-                        <RemoteName>values-de.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-de\</RemoteDir>
-                        <RemoteName>values-de.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="Android\Debug\styles.xml" Configuration="Debug" Class="AndroidSplashStyles"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\sv.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
@@ -870,30 +701,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="iOSDevice32\Release\TwitterLogin.dSYM" Configuration="Release" Class="ProjectiOSDeviceDebug"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-large\splash_image.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-large\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-large\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-xxhdpi-v4\values-xxhdpi-v4.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-xxhdpi-v4\</RemoteDir>
-                        <RemoteName>values-xxhdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-xxhdpi-v4\</RemoteDir>
-                        <RemoteName>values-xxhdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-heart-animation-sheet.png" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -947,18 +754,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </DeployFile>
                 <DeployFile LocalName="Android\Debug\splash_image_def.xml" Configuration="Debug" Class="AndroidSplashImageDef"/>
                 <DeployFile LocalName="iOSDevice32\Debug\ResourceRules.plist" Configuration="Debug" Class="ProjectiOSDeviceResourceRules"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sk\values-sk.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-sk\</RemoteDir>
-                        <RemoteName>values-sk.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-sk\</RemoteDir>
-                        <RemoteName>values-sk.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\drawable\tw__login_btn_disabled.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable\</RemoteDir>
@@ -1005,18 +800,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-da\values-da.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-da\</RemoteDir>
-                        <RemoteName>values-da.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-da\</RemoteDir>
-                        <RemoteName>values-da.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\bn.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\bn.lproj\</RemoteDir>
@@ -1025,18 +808,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_40x40.png" Configuration="Release" Class="iPad_SpotLight40"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-vi\values-vi.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-vi\</RemoteDir>
-                        <RemoteName>values-vi.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-vi\</RemoteDir>
-                        <RemoteName>values-vi.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_72x72.png" Configuration="Release" Class="iPad_AppIcon72"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\ro.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice64">
@@ -1050,18 +821,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\ru.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-mr\values-mr.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-mr\</RemoteDir>
-                        <RemoteName>values-mr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-mr\</RemoteDir>
-                        <RemoteName>values-mr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icon-heart-on-large@3x.png" Class="File">
@@ -1130,30 +889,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Androidapi.JNI.classes.dcu" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-en-rSS\values-en-rSS.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-en-rSS\</RemoteDir>
-                        <RemoteName>values-en-rSS.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-en-rSS\</RemoteDir>
-                        <RemoteName>values-en-rSS.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-heart-animation-sheet-large@3x.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -1216,18 +951,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-pl\values-pl.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-pl\</RemoteDir>
-                        <RemoteName>values-pl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-pl\</RemoteDir>
-                        <RemoteName>values-pl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\hr.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\hr.lproj\</RemoteDir>
@@ -1270,18 +993,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Platform Name="Android64">
                         <RemoteDir>res\values-nl\</RemoteDir>
                         <RemoteName>values-nl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.stat" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.stat</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.stat</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1384,18 +1095,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="iOSDevice64\Release\TwitterLogin" Configuration="Release" Class="ProjectOutput"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-el\values-el.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-el\</RemoteDir>
-                        <RemoteName>values-el.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-el\</RemoteDir>
-                        <RemoteName>values-el.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\drawable\tw__login_btn_pressed.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable\</RemoteDir>
@@ -1474,18 +1173,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-xhdpi-v4\values-xhdpi-v4.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-xhdpi-v4\</RemoteDir>
-                        <RemoteName>values-xhdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-xhdpi-v4\</RemoteDir>
-                        <RemoteName>values-xhdpi-v4.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-ko\values-ko_twitter_core_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-ko\</RemoteDir>
@@ -1524,18 +1211,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sv\values-sv.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-sv\</RemoteDir>
-                        <RemoteName>values-sv.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-sv\</RemoteDir>
-                        <RemoteName>values-sv.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\uk.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\uk.lproj\</RemoteDir>
@@ -1553,30 +1228,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_1536x2048.png" Configuration="Debug" Class="iPad_Launch1536x2048"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fa\values-fa.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-fa\</RemoteDir>
-                        <RemoteName>values-fa.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-fa\</RemoteDir>
-                        <RemoteName>values-fa.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-nb\values-nb.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-nb\</RemoteDir>
-                        <RemoteName>values-nb.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-nb\</RemoteDir>
-                        <RemoteName>values-nb.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-sr\values-sr.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-sr\</RemoteDir>
@@ -1611,18 +1262,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-th\values-th.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-th\</RemoteDir>
-                        <RemoteName>values-th.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-th\</RemoteDir>
-                        <RemoteName>values-th.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-kn\values-kn.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-kn\</RemoteDir>
@@ -1648,18 +1287,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile">
                     <Platform Name="Android">
                         <RemoteName>libTwitterLogin.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-tr\values-tr.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-tr\</RemoteDir>
-                        <RemoteName>values-tr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-tr\</RemoteDir>
-                        <RemoteName>values-tr.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1747,42 +1374,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ca\values-ca.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ca\</RemoteDir>
-                        <RemoteName>values-ca.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ca\</RemoteDir>
-                        <RemoteName>values-ca.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\AndroidManifest.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\</RemoteDir>
-                        <RemoteName>AndroidManifest.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\</RemoteDir>
-                        <RemoteName>AndroidManifest.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-in\values-in.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-in\</RemoteDir>
-                        <RemoteName>values-in.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-in\</RemoteDir>
-                        <RemoteName>values-in.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_50x50.png" Configuration="Release" Class="iPad_SpotLight50"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\TFSScribe.momd\TFSScribe.mom" Class="File">
                     <Platform Name="iOSDevice32">
@@ -1792,18 +1383,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png" Configuration="Debug" Class="iPad_Launch1024x768"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-hdpi-v4\tw__ic_logo_default.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-hdpi-v4\</RemoteDir>
-                        <RemoteName>tw__ic_logo_default.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-hdpi-v4\</RemoteDir>
-                        <RemoteName>tw__ic_logo_default.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-da\values-da.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-da\</RemoteDir>
@@ -1893,18 +1472,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.deployproj" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.deployproj</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.deployproj</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\drawable\tw__login_btn.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable\</RemoteDir>
@@ -1915,18 +1482,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_180x180.png" Configuration="Debug" Class="iPhone_AppIcon180"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ur\values-ur.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ur\</RemoteDir>
-                        <RemoteName>values-ur.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ur\</RemoteDir>
-                        <RemoteName>values-ur.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\drawable-hdpi-v4\tw__ic_logo_default.png" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-hdpi-v4\</RemoteDir>
@@ -1949,30 +1504,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xhdpi\ic_launcher.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-xhdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-xhdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-iw\values-iw.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-iw\</RemoteDir>
-                        <RemoteName>values-iw.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-iw\</RemoteDir>
-                        <RemoteName>values-iw.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png" Configuration="Release" Class="iPad_SpotLight80"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\fi.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
@@ -1986,18 +1517,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\nb.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ru\values-ru.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ru\</RemoteDir>
-                        <RemoteName>values-ru.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ru\</RemoteDir>
-                        <RemoteName>values-ru.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-media-replay.png" Class="File">
@@ -2046,30 +1565,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\mr.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ar\values-ar.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ar\</RemoteDir>
-                        <RemoteName>values-ar.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ar\</RemoteDir>
-                        <RemoteName>values-ar.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Androidapi.JNI.classes.pas" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.classes.pas</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.classes.pas</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-bg\values-bg.xml" Configuration="Debug" Class="File">
@@ -2129,18 +1624,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png" Configuration="Release" Class="iPad_AppIcon152"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ko\values-ko.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ko\</RemoteDir>
-                        <RemoteName>values-ko.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ko\</RemoteDir>
-                        <RemoteName>values-ko.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\hr.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\hr.lproj\</RemoteDir>
@@ -2270,30 +1753,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\assets\deployinfo\deployedassets.txt" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\assets\deployinfo\</RemoteDir>
-                        <RemoteName>deployedassets.txt</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\assets\deployinfo\</RemoteDir>
-                        <RemoteName>deployedassets.txt</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\splash_image_def.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>splash_image_def.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>splash_image_def.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-heart-on@2x.png" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -2306,18 +1765,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>res\values-th\</RemoteDir>
                         <Enabled>false</Enabled>
                         <RemoteName>values-th.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.res" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.res</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.res</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -2364,35 +1811,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-gu\values-gu.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-gu\</RemoteDir>
-                        <RemoteName>values-gu.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-gu\</RemoteDir>
-                        <RemoteName>values-gu.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twttr-icn-tweet-place-holder-photo-error@2x.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twttr-icn-tweet-place-holder-photo-error@2x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-nl\values-nl.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-nl\</RemoteDir>
-                        <RemoteName>values-nl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-nl\</RemoteDir>
-                        <RemoteName>values-nl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-heart-off.png" Class="File">
@@ -2454,30 +1877,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\splash_image_def.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>splash_image_def.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>splash_image_def.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-sr\values-sr.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-sr\</RemoteDir>
-                        <RemoteName>values-sr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-sr\</RemoteDir>
-                        <RemoteName>values-sr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Debug" Class="Android_SplashImage426"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\th.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
@@ -2529,18 +1928,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Debug" Class="AndroidLibnativeMipsFile"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_disabled.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn_disabled.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn_disabled.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-kn\values-kn_twitter_core_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-kn\</RemoteDir>
@@ -2589,30 +1976,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-ldpi\ic_launcher.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-ldpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-ldpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xlarge\splash_image.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-xlarge\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-xlarge\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="iOSDevice32\Debug\TwitterLogin.entitlements" Configuration="Debug" Class="ProjectiOSEntitlements"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Release" Class="Android_SplashImage426">
                     <Platform Name="Android">
@@ -2625,18 +1988,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>res\drawable\</RemoteDir>
                         <Enabled>false</Enabled>
                         <RemoteName>tw__login_btn_disabled.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1.vsr" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Project1.vsr</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Project1.vsr</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -2764,18 +2115,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values\values.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values\</RemoteDir>
-                        <RemoteName>values.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values\</RemoteDir>
-                        <RemoteName>values.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-media-replay.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -2807,18 +2146,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-zh-rTW\values-zh-rTW.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-zh-rTW\</RemoteDir>
-                        <RemoteName>values-zh-rTW.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-zh-rTW\</RemoteDir>
-                        <RemoteName>values-zh-rTW.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-share@3x.png" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -2845,18 +2172,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>res\values-pt\</RemoteDir>
                         <Enabled>false</Enabled>
                         <RemoteName>values-pt.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\styles.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>styles.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -2898,18 +2213,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Unit1.dcu" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Unit1.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Unit1.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\ms.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\ms.lproj\</RemoteDir>
@@ -2922,30 +2225,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-icn-logo@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\AndroidManifest.template.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>AndroidManifest.template.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>AndroidManifest.template.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-uk\values-uk.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-uk\</RemoteDir>
-                        <RemoteName>values-uk.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-uk\</RemoteDir>
-                        <RemoteName>values-uk.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\kn.lproj\Localizable.strings" Class="File">
@@ -2974,30 +2253,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Androidapi.JNI.my_callback_library.pas" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.my_callback_library.pas</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.my_callback_library.pas</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fi\values-fi.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-fi\</RemoteDir>
-                        <RemoteName>values-fi.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-fi\</RemoteDir>
-                        <RemoteName>values-fi.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-media-pause@3x.png" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -3020,18 +2275,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\sr.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\classes-dexed.jar" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>classes-dexed.jar</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>classes-dexed.jar</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\sr.lproj\Localizable.strings" Class="File">
@@ -3082,18 +2325,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-share-large@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Project1.dproj" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.dproj</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Project1.dproj</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\icn_vine_badge.png" Class="File">
@@ -3157,47 +2388,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-small\splash_image.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-small\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-small\</RemoteDir>
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-bn\values-bn.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-bn\</RemoteDir>
-                        <RemoteName>values-bn.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-bn\</RemoteDir>
-                        <RemoteName>values-bn.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\pl.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\pl.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-en-rGB\values-en-rGB.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-en-rGB\</RemoteDir>
-                        <RemoteName>values-en-rGB.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-en-rGB\</RemoteDir>
-                        <RemoteName>values-en-rGB.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-heart-animation-sheet-large.png" Class="File">
@@ -3293,18 +2488,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-it\values-it.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-it\</RemoteDir>
-                        <RemoteName>values-it.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-it\</RemoteDir>
-                        <RemoteName>values-it.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_768x1024.png" Configuration="Release" Class="iPad_Launch768x1024"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-logo-white@3x.png" Class="File">
                     <Platform Name="iOSDevice64">
@@ -3365,31 +2548,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Unit1.pas" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Unit1.pas</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\</RemoteDir>
-                        <RemoteName>Unit1.pas</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png" Configuration="Debug" Class="iPhone_Spotlight80"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hi\values-hi.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hi\</RemoteDir>
-                        <RemoteName>values-hi.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hi\</RemoteDir>
-                        <RemoteName>values-hi.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-cs\values-cs_twitter_core_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-cs\</RemoteDir>
@@ -3431,18 +2590,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-icn-heart-on@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\AndroidManifest.template.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\</RemoteDir>
-                        <RemoteName>AndroidManifest.template.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\</RemoteDir>
-                        <RemoteName>AndroidManifest.template.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twttr-icn-tweet-place-holder-photo-error@3x.png" Class="File">
@@ -3495,18 +2642,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\tw__ic_logo_default.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\</RemoteDir>
-                        <RemoteName>tw__ic_logo_default.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\</RemoteDir>
-                        <RemoteName>tw__ic_logo_default.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1496.png" Configuration="Debug" Class="iPad_Launch2048"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\hu.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
@@ -3532,18 +2667,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>res\values-ms\</RemoteDir>
                         <Enabled>false</Enabled>
                         <RemoteName>values-ms.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\layout\tw__activity_oauth.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\layout\</RemoteDir>
-                        <RemoteName>tw__activity_oauth.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\layout\</RemoteDir>
-                        <RemoteName>tw__activity_oauth.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -3631,42 +2754,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-mdpi\ic_launcher.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-mdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-mdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-cs\values-cs.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-cs\</RemoteDir>
-                        <RemoteName>values-cs.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-cs\</RemoteDir>
-                        <RemoteName>values-cs.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-fr\values-fr.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-fr\</RemoteDir>
-                        <RemoteName>values-fr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-fr\</RemoteDir>
-                        <RemoteName>values-fr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-en-rGB\values-en-rGB.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-en-rGB\</RemoteDir>
@@ -3675,47 +2762,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ms\values-ms.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ms\</RemoteDir>
-                        <RemoteName>values-ms.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ms\</RemoteDir>
-                        <RemoteName>values-ms.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ro\values-ro.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ro\</RemoteDir>
-                        <RemoteName>values-ro.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ro\</RemoteDir>
-                        <RemoteName>values-ro.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\es-MX.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\es-MX.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Win32\Debug\Androidapi.JNI.classes.dcu" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Win32\Debug\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Win32\Debug\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.classes.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\hi.lproj\Localizable.strings" Class="File">
@@ -3823,18 +2874,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\my_callback_library-dexed.jar" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>my_callback_library-dexed.jar</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>my_callback_library-dexed.jar</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\it.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\it.lproj\</RemoteDir>
@@ -3865,18 +2904,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\classes\classes.dex" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\classes\</RemoteDir>
-                        <RemoteName>classes.dex</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\classes\</RemoteDir>
-                        <RemoteName>classes.dex</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-share-large.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -3884,35 +2911,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ja\values-ja.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ja\</RemoteDir>
-                        <RemoteName>values-ja.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ja\</RemoteDir>
-                        <RemoteName>values-ja.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-tweet-verified@3x.png" Class="File">
                     <Platform Name="iOSDevice32">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-icn-tweet-verified@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-xxhdpi\ic_launcher.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-xxhdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-xxhdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hr\values-hr_twitter_core_aar.xml" Class="File">
@@ -4012,18 +3015,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn_default.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn_default.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn_default.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_640x960.png" Configuration="Debug" Class="iPhone_Launch640"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_60x60.png" Configuration="Debug" Class="iPhone_AppIcon60"/>
                 <DeployFile LocalName="Android\Debug\libTwitterLogin.so" Configuration="Debug" Class="ProjectOutput"/>
@@ -4083,18 +3074,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hr\values-hr.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hr\</RemoteDir>
-                        <RemoteName>values-hr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hr\</RemoteDir>
-                        <RemoteName>values-hr.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_29x29.png" Configuration="Debug" Class="iPad_Setting29"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_1242x2208.png" Configuration="Debug" Class="iPhone_Launch1242"/>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hu\values-hu_twitter_core_aar.xml" Class="File">
@@ -4105,18 +3084,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                     <Platform Name="Android64">
                         <RemoteDir>res\values-hu\</RemoteDir>
-                        <RemoteName>values-hu.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-hu\values-hu.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hu\</RemoteDir>
-                        <RemoteName>values-hu.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-hu\</RemoteDir>
                         <RemoteName>values-hu.xml</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -4135,18 +3102,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-icn-heart-off-large@3x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable-hdpi\ic_launcher.png" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-hdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable-hdpi\</RemoteDir>
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png" Configuration="Debug" Class="iPad_AppIcon152"/>
@@ -4285,18 +3240,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Androidapi.JNI.my_callback_library.dcu" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.my_callback_library.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>Androidapi.JNI.my_callback_library.dcu</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Release" Class="Android_NotificationIcon48">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
@@ -4352,18 +3295,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-ta\values-ta.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ta\</RemoteDir>
-                        <RemoteName>values-ta.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-ta\</RemoteDir>
-                        <RemoteName>values-ta.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x748.png" Configuration="Debug" Class="iPad_Launch1024"/>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icn-heart-off-large.png" Class="File">
                     <Platform Name="iOSDevice64">
@@ -4380,18 +3311,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-tl\values-tl.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-tl\</RemoteDir>
-                        <RemoteName>values-tl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-tl\</RemoteDir>
-                        <RemoteName>values-tl.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twtr-icon-heart-on-large.png" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
@@ -4404,18 +3323,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <RemoteDir>.\TwitterKitResources.bundle\</RemoteDir>
                         <RemoteName>twtr-icn-tweet-verified@2x.png</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-bg\values-bg.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-bg\</RemoteDir>
-                        <RemoteName>values-bg.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-bg\</RemoteDir>
-                        <RemoteName>values-bg.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\twttr-icn-tweet-place-holder-photo-error@2x.png" Class="File">
@@ -4461,18 +3368,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_114x114.png" Configuration="Debug" Class="iPhone_AppIcon114"/>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\values-es\values-es.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-es\</RemoteDir>
-                        <RemoteName>values-es.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\values-es\</RemoteDir>
-                        <RemoteName>values-es.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-fi\values-fi_twitter_core_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-fi\</RemoteDir>
@@ -4500,35 +3395,11 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>false</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\classes.dex" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>classes.dex</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\</RemoteDir>
-                        <RemoteName>classes.dex</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName=".\TwitterSDK\TwitterKit.framework\TwitterKitResources.bundle\el.lproj\Localizable.strings" Class="File">
                     <Platform Name="iOSDevice64">
                         <RemoteDir>.\TwitterKitResources.bundle\el.lproj\</RemoteDir>
                         <RemoteName>Localizable.strings</RemoteName>
                         <Overwrite>false</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\jni\Android\Release\Project1\res\drawable\tw__login_btn.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\Android\Release\Project1\res\drawable\</RemoteDir>
-                        <RemoteName>tw__login_btn.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">

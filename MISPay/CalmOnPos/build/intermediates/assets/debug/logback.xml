@@ -1,0 +1,39 @@
+<configuration>
+
+    <!-- 日志文件主目录 -->
+    <!--<property name="LOG_HOME" value="/storage/emulated/0/ServiceOnPos/log/"/>-->
+
+    <!--动态设置日志文件目录-->
+    <define name="LOG_HOME" class="com.allinpay.manager.util.LogFilePathDefiner"/>
+
+    <appender name="logcat" class="ch.qos.logback.classic.android.LogcatAppender">
+        <tagEncoder>
+            <pattern>%logger{12}</pattern>
+        </tagEncoder>
+        <encoder>
+            <pattern>[%thread] %-5level %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 文件输出 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_HOME}%d{yyyyMMdd}_%i.log</FileNamePattern>
+            <!-- keep 5 days' worth of history -->
+            <maxHistory>5</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>25MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符-->
+            <Pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="logcat" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>

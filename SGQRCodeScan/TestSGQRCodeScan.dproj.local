@@ -22,7 +22,9 @@
   </Transactions>
 	<ActiveMobileDevice>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice64="_iosdevice_ca9e94c68b79853a43785444de637c0032e97471" iOSDevice32=""/>
-		<NoProfile Android="CYSBBBE6B1928750" Android64="CYSBBBE6B1928750" iOSSimulator="iPhone5"/>
+		<NoProfile Android="b559c25e02ef" Android64="b559c25e02ef" iOSSimulator="iPhone5"/>
 		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64=""/>
+		<POldMac iOSSimulator="iPhone5" iOSDevice64=""/>
+		<Pnewmac iOSSimulator="iPhone5" iOSDevice64=""/>
 	</ActiveMobileDevice>
 </BorlandProject>

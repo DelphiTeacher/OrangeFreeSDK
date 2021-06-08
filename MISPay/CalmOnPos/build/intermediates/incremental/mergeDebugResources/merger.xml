@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config=":bankcard:$Generated" generated="true"><source path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\res"/></dataSet><dataSet config=":bankcard:" from-dependency="true" generated-set=":bankcard:$Generated"><source path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\res"><file path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\res\values\values.xml" qualifiers=""><string name="app_name">BankCard</string></file></source></dataSet><dataSet config=":manager:$Generated" generated="true"><source path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\res"/></dataSet><dataSet config=":manager:" from-dependency="true" generated-set=":manager:$Generated"><source path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\res"><file path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\res\values\values.xml" qualifiers=""><string name="app_name">Manager</string></file></source></dataSet><dataSet config=":aipmis:$Generated" generated="true"><source path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res"/></dataSet><dataSet config=":aipmis:" from-dependency="true" generated-set=":aipmis:$Generated"><source path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res"><file name="dialog_background_bottom_left" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-hdpi-v4\dialog_background_bottom_left.xml" qualifiers="hdpi-v4" type="drawable"/><file name="dialog_background_bottom_right" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-hdpi-v4\dialog_background_bottom_right.xml" qualifiers="hdpi-v4" type="drawable"/><file name="dialog_background_top" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-hdpi-v4\dialog_background_top.xml" qualifiers="hdpi-v4" type="drawable"/><file name="dialog_corner" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-hdpi-v4\dialog_corner.xml" qualifiers="hdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-hdpi-v4\ic_launcher.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-mdpi-v4\ic_launcher.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-xhdpi-v4\ic_launcher.png" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\drawable-xxhdpi-v4\ic_launcher.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="activity_main" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\layout\activity_main.xml" qualifiers="" type="layout"/><file name="main" path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\menu\main.xml" qualifiers="" type="menu"/><file path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\values\values.xml" qualifiers=""><color name="back_color">#B97A57</color><color name="background_color">#f0f0f0</color><color name="background_color_scancode">#5d5b5c</color><color name="background_tab_pressed">#6633B5E5</color><color name="bg_color">#EDEDED</color><color name="black">#000000</color><color name="black_line">#dfdfdf</color><color name="black_text">#333333</color><color name="black_text_main">#565555</color><color name="blue1">#0000C6</color><color name="blue2">#0071BE</color><color name="blue_tab_text_color">#046FBB</color><color name="button_blue">#297fb8</color><color name="button_blue_press">#1170b6</color><color name="button_green">#3bce37</color><color name="button_green_press">#2ead2a</color><color name="button_purple">#9222e0</color><color name="button_purple_press">#850bda</color><color name="button_red">#fe4a31</color><color name="button_red_press">#e3452f</color><color name="button_yellow">#cec637</color><color name="button_yellow_press">#b4ac24</color><color name="cc">#59a9ff</color><color name="colorPrimary">#3F51B5</color><color name="content_color_red">#f71717</color><color name="contents_text">#ff000000</color><color name="encode_view">#ffffffff</color><color name="gray">#9D9D9D</color><color name="gray_12">#5B5B5B</color><color name="gray_7">#BEBEBE</color><color name="gray_9">#EDEDED</color><color name="gray_menu">#858585</color><color name="gray_tab_text_color">#74797D</color><color name="gray_text_color">#818181</color><color name="green">#00BB00</color><color name="grgray">#686868</color><color name="header">#58567D</color><color name="help_button_view">#ffcccccc</color><color name="help_view">#ff404040</color><color name="main">#EA4821</color><color name="pink">#FF00FF</color><color name="possible_result_points">#c0ffff00</color><color name="primary">#FF03A9F4</color><color name="primary_dark">#FF0288D1</color><color name="red">#CE0000</color><color name="red_light">#ffff4444</color><color name="result_image_border">#ffffffff</color><color name="result_minor_text">#ffc0c0c0</color><color name="result_points">#c000ff00</color><color name="result_text">#ffffffff</color><color name="result_view">#b0000000</color><color name="sbc_header_text">#ff808080</color><color name="sbc_header_view">#ffffffff</color><color name="sbc_layout_view">#ffffffff</color><color name="sbc_list_item">#fffff0e0</color><color name="sbc_page_number_text">#ff000000</color><color name="sbc_snippet_text">#ff4b4b4b</color><color name="share_text">#ff000000</color><color name="share_view">#ffffffff</color><color name="silver">#c0c0c0</color><color name="slidingtab_indicatorcolor">#0084FF</color><color name="status_bar_color">@color/primary_dark</color><color name="status_text">#ffffffff</color><color name="status_view">#50000000</color><color name="textColor_darkGery">#333333</color><color name="text_blue">#16A7FB</color><color name="text_color">#000000</color><color name="text_color_white">#FFFFFFFF</color><color name="title_color_red">#e01f0d</color><color name="translucent">#90000000</color><color name="transparent">#00000000</color><color name="viewfinder_frame">#ff000000</color><color name="viewfinder_laser">#ffff0000</color><color name="viewfinder_mask">#60000000</color><color name="white">#ffffff</color><color name="white_text_selected">#ff959595</color><dimen name="activity_horizontal_margin">16dp</dimen><dimen name="activity_vertical_margin">16dp</dimen><string name="action_settings">Settings</string><string name="app_name">ServiceOnPos</string><string name="hello_world">Hello world!</string><style name="AppBaseTheme" parent="android:Theme.Light">
+        
+    </style><style name="AppTheme" parent="AppBaseTheme">
+        
+    </style><style name="ProjectDialogTheme" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        
+        <item name="android:windowBackground">@drawable/dialog_corner</item>
+        
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style></file><file path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\values-v11\values-v11.xml" qualifiers="v11"><style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        
+    </style></file><file path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\values-v14\values-v14.xml" qualifiers="v14"><style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        
+    </style></file><file path="C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\res\values-w820dp-v13\values-w820dp-v13.xml" qualifiers="w820dp-v13"><dimen name="activity_horizontal_margin">64dp</dimen></file></source></dataSet><dataSet config="main$Generated" generated="true"><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res"/><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\build\generated\res\rs\debug"/><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\build\generated\res\resValues\debug"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res"><file name="ic_launcher" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\drawable-hdpi\ic_launcher.png" qualifiers="hdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\drawable-mdpi\ic_launcher.png" qualifiers="mdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\drawable-xhdpi\ic_launcher.png" qualifiers="xhdpi-v4" type="drawable"/><file name="ic_launcher" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\drawable-xxhdpi\ic_launcher.png" qualifiers="xxhdpi-v4" type="drawable"/><file name="activity_calmonpos_main" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\layout\activity_calmonpos_main.xml" qualifiers="" type="layout"/><file name="activity_settings" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\layout\activity_settings.xml" qualifiers="" type="layout"/><file name="main" path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\menu\main.xml" qualifiers="" type="menu"/><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values\baudrates.xml" qualifiers=""><string-array name="baudrates_name">
+        <item>50</item>
+        <item>75</item>
+        <item>110</item>
+        <item>134</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+        <item>1800</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+        <item>460800</item>
+        <item>500000</item>
+        <item>576000</item>
+        <item>921600</item>
+        <item>1000000</item>
+        <item>1152000</item>
+        <item>1500000</item>
+        <item>2000000</item>
+        <item>2500000</item>
+        <item>3000000</item>
+        <item>3500000</item>
+        <item>4000000</item>
+    </string-array><string-array name="baudrates_value">
+        <item>50</item>
+        <item>75</item>
+        <item>110</item>
+        <item>134</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+        <item>1800</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+        <item>460800</item>
+        <item>500000</item>
+        <item>576000</item>
+        <item>921600</item>
+        <item>1000000</item>
+        <item>1152000</item>
+        <item>1500000</item>
+        <item>2000000</item>
+        <item>2500000</item>
+        <item>3000000</item>
+        <item>3500000</item>
+        <item>4000000</item>
+    </string-array></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values\dimens.xml" qualifiers=""><dimen name="activity_horizontal_margin">16dp</dimen><dimen name="activity_vertical_margin">16dp</dimen></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values\strings.xml" qualifiers=""><string name="app_name">CalmOnPos</string><string name="hello_world">Hello world!</string><string name="action_settings">Settings</string><string name="title_activity_settings">SettingsActivity</string></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values\styles.xml" qualifiers=""><style name="AppBaseTheme" parent="android:Theme.Light">
+        
+    </style><style name="Theme" parent="AppBaseTheme">
+        
+    </style></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values-v11\color.xml" qualifiers="v11"><color name="gray_menu">#858585</color><color name="text_blue">#16A7FB</color><color name="white">#ffffff</color><color name="blue2">#0071BE</color><color name="main">#EA4821</color><color name="translucent">#90000000</color><color name="pink">#FF00FF</color><color name="blue1">#0000C6</color><color name="green">#00BB00</color><color name="black">#000000</color><color name="black_text_main">#565555</color><color name="black_text">#333333</color><color name="text_color_white">#FFFFFFFF</color><color name="white_text_selected">#ff959595</color><color name="black_line">#dfdfdf</color><color name="red">#CE0000</color><color name="red_light">#ffff4444</color><color name="gray_12">#5B5B5B</color><color name="gray_7">#BEBEBE</color><color name="gray_9">#EDEDED</color><color name="gray">#9D9D9D</color><color name="colorPrimary">#3F51B5</color><color name="textColor_darkGery">#333333</color><color name="gray_text_color">#818181</color><color name="gray_tab_text_color">#74797D</color><color name="blue_tab_text_color">#046FBB</color><color name="back_color">#B97A57</color><color name="text_color">#000000</color><color name="background_color">#f0f0f0</color><color name="background_color_scancode">#5d5b5c</color><color name="button_red">#fe4a31</color><color name="button_red_press">#e3452f</color><color name="button_green">#3bce37</color><color name="button_green_press">#2ead2a</color><color name="button_yellow">#cec637</color><color name="button_yellow_press">#b4ac24</color><color name="button_blue">#297fb8</color><color name="button_blue_press">#1170b6</color><color name="button_purple">#9222e0</color><color name="button_purple_press">#850bda</color><color name="title_color_red">#e01f0d</color><color name="content_color_red">#f71717</color><color name="cc">#59a9ff</color><color name="bg_color">#EDEDED</color><color name="contents_text">#ff000000</color><color name="encode_view">#ffffffff</color><color name="help_button_view">#ffcccccc</color><color name="help_view">#ff404040</color><color name="possible_result_points">#c0ffff00</color><color name="result_image_border">#ffffffff</color><color name="result_minor_text">#ffc0c0c0</color><color name="result_points">#c000ff00</color><color name="result_text">#ffffffff</color><color name="result_view">#b0000000</color><color name="sbc_header_text">#ff808080</color><color name="sbc_header_view">#ffffffff</color><color name="sbc_list_item">#fffff0e0</color><color name="sbc_layout_view">#ffffffff</color><color name="sbc_page_number_text">#ff000000</color><color name="sbc_snippet_text">#ff4b4b4b</color><color name="share_text">#ff000000</color><color name="share_view">#ffffffff</color><color name="status_view">#50000000</color><color name="status_text">#ffffffff</color><color name="transparent">#00000000</color><color name="viewfinder_frame">#ff000000</color><color name="viewfinder_laser">#ffff0000</color><color name="viewfinder_mask">#60000000</color><color name="header">#58567D</color><color name="grgray">#686868</color><color name="silver">#c0c0c0</color><color name="background_tab_pressed">#6633B5E5</color><color name="slidingtab_indicatorcolor">#0084FF</color><color name="primary">#FF03A9F4</color><color name="primary_dark">#FF0288D1</color><color name="status_bar_color">@color/primary_dark</color></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values-v11\styles.xml" qualifiers="v11"><style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        
+    </style></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values-v14\styles.xml" qualifiers="v14"><style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        
+    </style></file><file path="C:\OrangeFreeSDK\MISPay\CalmOnPos\res\values-w820dp\dimens.xml" qualifiers="w820dp-v13"><dimen name="activity_horizontal_margin">64dp</dimen></file></source><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\build\generated\res\rs\debug"/><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug$Generated" generated="true"><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\build-types\debug\res"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="C:\OrangeFreeSDK\MISPay\CalmOnPos\build-types\debug\res"/></dataSet><mergedItems/></merger>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ScanTest</string>
+
+    <string name="power_switch">Power</string>
+    <string name="pause_switch">Pause</string>
+
+    <string name="button_scan">scan</string>
+    <string name="button_clear">clear</string>
+</resources>

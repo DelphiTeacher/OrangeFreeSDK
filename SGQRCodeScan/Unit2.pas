@@ -1,7 +1,7 @@
 unit Unit2;
 
 interface
-//{$DEFINE OrangeSDK_TEST}
+{$DEFINE OrangeSDK_TEST}
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
@@ -32,9 +32,11 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
+    tmrSetStatusBarLight: TTimer;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure tmrSetStatusBarLightTimer(Sender: TObject);
   private
     {$IFDEF IOS}
     WBVC:WBQRCodeVC;
@@ -113,6 +115,61 @@ procedure TForm2.SGQRCodeObtainScanResultBlockEvent(obtain: SGQRCodeObtain;
 begin
   ShowMessage(NSStrToStr(result));
 end;
+procedure TForm2.tmrSetStatusBarLightTimer(Sender: TObject);
+{$IFDEF IOS}
+var
+  AiOSWindowHandle:TiOSWindowHandle;
+{$ENDIF IOS}
+begin
+      //更新状态栏
+      AiOSWindowHandle:=WindowHandleToPlatform(Handle);
+      //在扫码打开的时候调用它会报错
+      if AiOSWindowHandle.View.Window<>nil then
+      begin
+        //有显示
+        FMX.Types.Log.d('OrangeUI TForm2.tmrSetStatusBarLightTimer AiOSWindowHandle.View.Window<>nil');
+        //AiOSWindowHandle.Wnd.rootViewController.setNeedsStatusBarAppearanceUpdate;
+      end
+      else
+      begin
+        //没有显示
+        FMX.Types.Log.d('OrangeUI TForm2.tmrSetStatusBarLightTimer AiOSWindowHandle.View.Window=nil');
+      end;
+
+
+
+      if AiOSWindowHandle.Wnd<>nil then
+      begin
+        //有显示
+        FMX.Types.Log.d('OrangeUI TForm2.tmrSetStatusBarLightTimer AiOSWindowHandle.Wnd<>nil');
+      end
+      else
+      begin
+        //没有显示
+        FMX.Types.Log.d('OrangeUI TForm2.tmrSetStatusBarLightTimer AiOSWindowHandle.Wnd=nil');
+      end;
+
+
+      if not AiOSWindowHandle.View.isHidden then
+      begin
+        //有显示
+        FMX.Types.Log.d('OrangeUI TForm2.tmrSetStatusBarLightTimer AiOSWindowHandle.View.isShown');
+      end
+      else
+      begin
+        //没有显示
+        FMX.Types.Log.d('OrangeUI TForm2.tmrSetStatusBarLightTimer AiOSWindowHandle.View.isHidden');
+      end;
+
+
+
+//      if not AiOSWindowHandle.View.isHidden then
+//      begin
+//        AiOSWindowHandle.View;//.setNeedsStatusBarAppearanceUpdate;
+//      end;
+
+end;
+
 {$ENDIF IOS}
 
 end.

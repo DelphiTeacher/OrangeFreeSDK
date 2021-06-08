@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="aipmis:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/aipmis.aar/eaa3be4c61a9ad27146d3a33689443de/jars/libs/android-support-v4.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/aipmis.aar/eaa3be4c61a9ad27146d3a33689443de/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/aipmis.aar/eaa3be4c61a9ad27146d3a33689443de/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

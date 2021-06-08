@@ -134,9 +134,9 @@ implementation
 
 {$IFDEF IOS}
 
-{$O-}
-function SGQRCodeScanView_FakeLoader : SGQRCodeScanView; cdecl; external {$I FrameworkDylibPath_SGQRCode.inc} name 'OBJC_CLASS_$_SGQRCodeScanView';
-{$O+}
+//{$O-}
+//function SGQRCodeScanView_FakeLoader : SGQRCodeScanView; cdecl; external {$I FrameworkDylibPath_SGQRCode.inc} name 'OBJC_CLASS_$_SGQRCodeScanView';
+//{$O+}
 
 
 

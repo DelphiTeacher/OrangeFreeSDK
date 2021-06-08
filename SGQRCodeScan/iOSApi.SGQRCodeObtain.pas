@@ -185,9 +185,9 @@ implementation
 
 {$IFDEF IOS}
 
-{$O-}
-function SGQRCodeObtain_FakeLoader : SGQRCodeObtain; cdecl; external {$I FrameworkDylibPath_SGQRCode.inc} name 'OBJC_CLASS_$_SGQRCodeObtain';
-{$O+}
+//{$O-}
+//function SGQRCodeObtain_FakeLoader : SGQRCodeObtain; cdecl; external {$I FrameworkDylibPath_SGQRCode.inc} name 'OBJC_CLASS_$_SGQRCodeObtain';
+//{$O+}
 
 
 

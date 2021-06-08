@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_dialog_corner.xml.flat",
+        "source": "C:\\Users\\ggggcexx\\.gradle\\caches\\transforms-1\\files-1.1\\aipmis.aar\\03e47b6edc1d0ee1081d4b9873e3cce5\\res\\drawable-hdpi-v4\\dialog_corner.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher.png.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_dialog_background_bottom_right.xml.flat",
+        "source": "C:\\Users\\ggggcexx\\.gradle\\caches\\transforms-1\\files-1.1\\aipmis.aar\\03e47b6edc1d0ee1081d4b9873e3cce5\\res\\drawable-hdpi-v4\\dialog_background_bottom_right.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_dialog_background_top.xml.flat",
+        "source": "C:\\Users\\ggggcexx\\.gradle\\caches\\transforms-1\\files-1.1\\aipmis.aar\\03e47b6edc1d0ee1081d4b9873e3cce5\\res\\drawable-hdpi-v4\\dialog_background_top.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\layout_activity_settings.xml.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\layout_activity_calmonpos_main.xml.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\layout\\activity_calmonpos_main.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\ggggcexx\\.gradle\\caches\\transforms-1\\files-1.1\\aipmis.aar\\03e47b6edc1d0ee1081d4b9873e3cce5\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_dialog_background_bottom_left.xml.flat",
+        "source": "C:\\Users\\ggggcexx\\.gradle\\caches\\transforms-1\\files-1.1\\aipmis.aar\\03e47b6edc1d0ee1081d4b9873e3cce5\\res\\drawable-hdpi-v4\\dialog_background_bottom_left.xml"
+    },
+    {
+        "merged": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher.png.flat",
+        "source": "C:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\res\\drawable-mdpi\\ic_launcher.png"
+    }
+]

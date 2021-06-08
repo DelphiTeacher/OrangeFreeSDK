@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="baudrates_name">
+        <item>50</item>
+        <item>75</item>
+        <item>110</item>
+        <item>134</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+        <item>1800</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+        <item>460800</item>
+        <item>500000</item>
+        <item>576000</item>
+        <item>921600</item>
+        <item>1000000</item>
+        <item>1152000</item>
+        <item>1500000</item>
+        <item>2000000</item>
+        <item>2500000</item>
+        <item>3000000</item>
+        <item>3500000</item>
+        <item>4000000</item>
+    </string-array>
+    <string-array name="baudrates_value">
+        <item>50</item>
+        <item>75</item>
+        <item>110</item>
+        <item>134</item>
+        <item>150</item>
+        <item>200</item>
+        <item>300</item>
+        <item>600</item>
+        <item>1200</item>
+        <item>1800</item>
+        <item>2400</item>
+        <item>4800</item>
+        <item>9600</item>
+        <item>19200</item>
+        <item>38400</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+        <item>460800</item>
+        <item>500000</item>
+        <item>576000</item>
+        <item>921600</item>
+        <item>1000000</item>
+        <item>1152000</item>
+        <item>1500000</item>
+        <item>2000000</item>
+        <item>2500000</item>
+        <item>3000000</item>
+        <item>3500000</item>
+        <item>4000000</item>
+    </string-array>
+    <color name="back_color">#B97A57</color>
+    <color name="background_color">#f0f0f0</color>
+    <color name="background_color_scancode">#5d5b5c</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="bg_color">#EDEDED</color>
+    <color name="black">#000000</color>
+    <color name="black_line">#dfdfdf</color>
+    <color name="black_text">#333333</color>
+    <color name="black_text_main">#565555</color>
+    <color name="blue1">#0000C6</color>
+    <color name="blue2">#0071BE</color>
+    <color name="blue_tab_text_color">#046FBB</color>
+    <color name="button_blue">#297fb8</color>
+    <color name="button_blue_press">#1170b6</color>
+    <color name="button_green">#3bce37</color>
+    <color name="button_green_press">#2ead2a</color>
+    <color name="button_purple">#9222e0</color>
+    <color name="button_purple_press">#850bda</color>
+    <color name="button_red">#fe4a31</color>
+    <color name="button_red_press">#e3452f</color>
+    <color name="button_yellow">#cec637</color>
+    <color name="button_yellow_press">#b4ac24</color>
+    <color name="cc">#59a9ff</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="content_color_red">#f71717</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="gray">#9D9D9D</color>
+    <color name="gray_12">#5B5B5B</color>
+    <color name="gray_7">#BEBEBE</color>
+    <color name="gray_9">#EDEDED</color>
+    <color name="gray_menu">#858585</color>
+    <color name="gray_tab_text_color">#74797D</color>
+    <color name="gray_text_color">#818181</color>
+    <color name="green">#00BB00</color>
+    <color name="grgray">#686868</color>
+    <color name="header">#58567D</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="main">#EA4821</color>
+    <color name="pink">#FF00FF</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="primary">#FF03A9F4</color>
+    <color name="primary_dark">#FF0288D1</color>
+    <color name="red">#CE0000</color>
+    <color name="red_light">#ffff4444</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="silver">#c0c0c0</color>
+    <color name="slidingtab_indicatorcolor">#0084FF</color>
+    <color name="status_bar_color">@color/primary_dark</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="textColor_darkGery">#333333</color>
+    <color name="text_blue">#16A7FB</color>
+    <color name="text_color">#000000</color>
+    <color name="text_color_white">#FFFFFFFF</color>
+    <color name="title_color_red">#e01f0d</color>
+    <color name="translucent">#90000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="white">#ffffff</color>
+    <color name="white_text_selected">#ff959595</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">CalmOnPos</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="ProjectDialogTheme" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:windowBackground">@drawable/dialog_corner</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+    <style name="Theme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>

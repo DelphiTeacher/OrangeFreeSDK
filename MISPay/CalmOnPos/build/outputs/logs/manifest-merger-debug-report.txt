@@ -1,0 +1,141 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:2:1-49:12
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:2:1-23:12
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:2:1-15:12
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:2:1-15:12
+MERGED from [com.github.tony19:logback-android:2.0.0] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\logback-android-2.0.0.aar\3afed84f31707ff4b7c05b9515d7327c\AndroidManifest.xml:2:1-11:12
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:2:1-49:12
+	package
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:3:5-37
+	android:versionName
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:5:5-30
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:4:5-28
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:8:5-67
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:11:5-67
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:8:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.DISABLE_KEYGUARD
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:12:5-75
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:12:22-72
+uses-permission#android.permission.WAKE_LOCK
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:14:5-68
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:14:22-65
+uses-permission#android.permission.VIBRATE
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:16:5-66
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:16:22-63
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:18:5-75
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:14:5-75
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:14:5-75
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:18:22-72
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:20:5-81
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:20:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:22:5-80
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:13:5-80
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:13:5-80
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:13:5-80
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:13:5-80
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:22:22-77
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:23:5-81
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:13:5-81
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:13:5-81
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:11:5-81
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:11:5-81
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:11:5-81
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:23:22-78
+uses-permission#android.permission.MOUNT_UNMOUNT_FILESYSTEMS
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:24:5-84
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:24:22-81
+application
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:30:5-47:19
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:16:5-21:19
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:16:5-21:19
+	android:label
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:33:9-41
+	android:icon
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:32:9-45
+	android:allowBackup
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:31:9-35
+activity#com.allinpay.calmonpos.MainActivity
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:34:9-42:20
+	android:label
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:36:13-45
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:35:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:37:13-41:29
+action#android.intent.action.MAIN
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:38:17-69
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:38:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:40:17-77
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:40:27-74
+activity#com.allinpay.calmonpos.SettingsActivity
+ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:43:9-46:20
+	android:label
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:45:13-60
+	android:name
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml:44:13-45
+uses-sdk
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:7:5-9:41
+MERGED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:7:5-9:41
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:7:5-9:41
+MERGED from [:manager:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\manager.aar\4b74b516563f09902675a3e3669fd521\AndroidManifest.xml:7:5-9:41
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:7:5-9:41
+MERGED from [:bankcard:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\bankcard.aar\f49dd667d68b40aee30e355aa47a8be4\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.tony19:logback-android:2.0.0] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\logback-android-2.0.0.aar\3afed84f31707ff4b7c05b9515d7327c\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.tony19:logback-android:2.0.0] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\logback-android-2.0.0.aar\3afed84f31707ff4b7c05b9515d7327c\AndroidManifest.xml:7:5-9:41
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+		ADDED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+		INJECTED from C:\OrangeFreeSDK\MISPay\CalmOnPos\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:12:5-76
+	android:name
+		ADDED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:12:22-73
+activity#com.allinpay.activity.MainActivity
+ADDED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:17:9-20:20
+	android:label
+		ADDED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:19:13-45
+	android:name
+		ADDED from [:aipmis:] C:\Users\ggggcexx\.gradle\caches\transforms-1\files-1.1\aipmis.aar\03e47b6edc1d0ee1081d4b9873e3cce5\AndroidManifest.xml:18:13-62

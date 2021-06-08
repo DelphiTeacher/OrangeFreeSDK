@@ -1,0 +1,761 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.allinpay.activity.MainActivity" >
+	<ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="vertical" >
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="————————测试程序，禁止做生产交易，否则后果自负————————"
+                android:gravity="center"
+                android:textSize="20.0sp"
+                android:textColor="#FF0000"
+                android:textStyle="bold"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="交易金额:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="12"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:text="原始流水号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/oldTraceNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:text="系统参考号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/hostSerialNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:text="交易日期:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/transDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:hint="MMDD"
+                android:maxLength="8"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="——————————————————返回结果——————————————————"
+                android:textColor="#ff0000"
+                android:textSize="20.0sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:gravity="right"
+                android:text="小费:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="5"
+                android:gravity="right"
+                android:text="总计:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="4"
+                android:gravity="right"
+                android:text="余额:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/balanceAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="3"
+                android:gravity="right"
+                android:text="流水号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/posTraceNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:gravity="right"
+                android:text="有效期:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/expireDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="5"
+                android:gravity="right"
+                android:text="批次号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/batchNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="4"
+                android:gravity="right"
+                android:text="商户号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/merchantNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="3"
+                android:gravity="right"
+                android:text="商户名:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/merchantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:gravity="right"
+                android:text="终端号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/terminalNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="5"
+                android:gravity="right"
+                android:text="授权码:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/authNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="4"
+                android:gravity="right"
+                android:text="交易时间:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/transTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="3"
+                android:gravity="right"
+                android:text="返回码:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/rejCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="2"
+                android:gravity="right"
+                android:text="卡号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/cardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="6"
+                android:gravity="right"
+                android:text="发卡行名称:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/issName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="4"
+                android:gravity="right"
+                android:text="发卡行号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/issNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="3"
+                android:gravity="right"
+                android:text="备注:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/memo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="2"
+                android:gravity="right"
+                android:text="交易单号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/transId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="20"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="6"
+                android:gravity="right"
+                android:text="订单编号:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/orderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:ems="4"
+                android:gravity="right"
+                android:text="返回说明:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/rejCodeExplain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip" >
+
+            <Button
+                android:id="@+id/register"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="签到"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/consume"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="消费"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="撤销"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/reject"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="退货"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip" >
+
+            <Button
+                android:id="@+id/bankOrder"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="订单支付-银行卡"
+                android:textSize="20.0sp" />
+            <Button
+                android:id="@+id/bankAuth"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="预授权"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/bankAuthVoid"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="预授权撤销"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/bankAuthCm"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="预授权完成"
+                android:textSize="20.0sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/settle"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:onClick="onClick"
+                android:text="结算"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/rePrint"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:onClick="onClick"
+                android:text="重打印"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip" >
+
+            <Button
+                android:id="@+id/scanOrder"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="订单支付-扫码"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/scan_pay"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="扫码支付"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/scan_void"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="扫码撤销"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/scan_refund"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="扫码退货"
+                android:textSize="20.0sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip" >
+
+            <Button
+                android:id="@+id/orderQuery"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="银行卡订单支付结果查询"
+                android:textSize="20.0sp" />
+            <Button
+                android:id="@+id/scanorderQuery"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="扫码订单支付结果查询"
+                android:textSize="20.0sp" />
+
+
+            <Button
+                android:id="@+id/onlineInit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="联机初始化"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/scan_inquiry"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="末笔查询"
+                android:textSize="20.0sp" />
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:text="清除（测试界面）"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/setup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="设置参数"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+	</ScrollView>
+</RelativeLayout>

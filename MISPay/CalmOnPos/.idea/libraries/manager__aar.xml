@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="manager:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/manager.aar/7c9db7dc411b8004e8e7df029618bfb6/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/manager.aar/7c9db7dc411b8004e8e7df029618bfb6/jars/libs/ImgLib.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/manager.aar/7c9db7dc411b8004e8e7df029618bfb6/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

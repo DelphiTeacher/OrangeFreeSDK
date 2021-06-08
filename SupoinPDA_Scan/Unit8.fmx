@@ -1,0 +1,38 @@
+object Form8: TForm8
+  Left = 0
+  Top = 0
+  Caption = 'Form8'
+  ClientHeight = 480
+  ClientWidth = 359
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object btnScan: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 64.000000000000000000
+    TabOrder = 0
+    Text = #25195#25551
+    OnClick = btnScanClick
+  end
+  object btnInit: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 24.000000000000000000
+    TabOrder = 1
+    Text = #21021#22987
+    OnClick = btnInitClick
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 16.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 297.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Viewport.Width = 285.000000000000000000
+    Viewport.Height = 293.000000000000000000
+  end
+end

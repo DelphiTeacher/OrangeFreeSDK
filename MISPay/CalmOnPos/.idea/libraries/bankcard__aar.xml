@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="bankcard:@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/bankcard.aar/d8a32660cac3dc050b63598ed9db9db7/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/bankcard.aar/d8a32660cac3dc050b63598ed9db9db7/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

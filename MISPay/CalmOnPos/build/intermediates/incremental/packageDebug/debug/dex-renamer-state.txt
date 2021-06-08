@@ -1,0 +1,4 @@
+#Sun May 30 12:47:12 CST 2021
+base.0=C\:\\OrangeFreeSDK\\MISPay\\CalmOnPos\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

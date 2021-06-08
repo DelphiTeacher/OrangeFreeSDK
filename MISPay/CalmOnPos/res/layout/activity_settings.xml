@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutTooL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50.0dip"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="应用名称:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/appname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="12"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:text="打印联数:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/papers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:text="延时（秒）:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/timeout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="9"
+                android:maxLength="18"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:text="打印路径:"
+                android:textSize="20.0sp" />
+
+            <EditText
+                android:id="@+id/printPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/edit_text"
+                android:ems="15"
+                android:textColor="@color/black"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12.0dip"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:gravity="right"
+                android:text="串口:"
+                android:textSize="20.0sp" />
+
+            <Spinner
+                android:id="@+id/SpinnerCOM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dialog" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30.0dip"
+            android:orientation="horizontal"
+            android:paddingLeft="30.0dip"
+            android:paddingRight="30.0dip" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="串口速率:"
+                android:textSize="20.0sp" />
+
+            <Spinner
+                android:id="@+id/SpinnerBaudRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:spinnerMode="dialog" />
+
+            <ToggleButton
+                android:id="@+id/ButtonCOM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-8dip"
+                android:text="ToggleButton"
+                android:textOff="关闭"
+                android:textOn="打开" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50.0dip" >
+
+            <Button
+                android:id="@+id/setup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:onClick="onClick"
+                android:text="设置"
+                android:textSize="20.0sp" />
+
+            <Button
+                android:id="@+id/exit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="20.0dip"
+                android:layout_weight="1.0"
+                android:onClick="onClick"
+                android:text="关闭"
+                android:textSize="20.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

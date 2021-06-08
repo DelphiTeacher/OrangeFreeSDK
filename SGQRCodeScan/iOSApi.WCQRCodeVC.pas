@@ -56,9 +56,9 @@ implementation
 
 {$IFDEF IOS}
 
-{$O-}
-function WCQRCodeVC_FakeLoader : WCQRCodeVC; cdecl; external {$I FrameworkDylibPath_SGQRCode.inc} name 'OBJC_CLASS_$_WCQRCodeVC';
-{$O+}
+//{$O-}
+//function WCQRCodeVC_FakeLoader : WCQRCodeVC; cdecl; external {$I FrameworkDylibPath_SGQRCode.inc} name 'OBJC_CLASS_$_WCQRCodeVC';
+//{$O+}
 
 
 

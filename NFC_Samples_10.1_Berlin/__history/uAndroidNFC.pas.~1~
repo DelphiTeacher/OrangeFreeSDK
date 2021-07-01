@@ -1,0 +1,14 @@
+unit uAndroidNFC;
+
+interface
+
+
+
+type
+  TOrangeAndroidNFC=class(TComponent)
+
+  end;
+
+implementation
+
+end.

@@ -168,7 +168,8 @@ begin
       //			Log.i(“sunmi”, hashMap.get(“VALUE”));//扫码结果
       //		}
       //	}
-      //}      AJbundle:=TMessageResultNotification(M).Value.getExtras();
+      //}
+      AJbundle:=TMessageResultNotification(M).Value.getExtras();
       AJresult := TJArrayList.Wrap((AJbundle.getSerializable(StringToJString('data')) as ILocalObject).GetObjectID);
 
       for I := 0 to AJresult.size-1 do

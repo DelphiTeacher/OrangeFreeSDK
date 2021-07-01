@@ -1,0 +1,19 @@
+{
+  "face_lib_path":"libface.so",
+  "face_graph_path":"face.json",
+  "face_param_path":"face.params",
+  "detect_lib_path":"libdetect.so",
+  "detect_graph_path":"detect.json",
+  "detect_param_path":"detect.params",
+  "rgb_liveness_lib_path":"librgb_liveness.so",
+  "rgb_liveness_graph_path":"rgb_liveness.json",
+  "rgb_liveness_param_path":"rgb_liveness.params",
+  "nir_liveness_lib_path":"libnir_liveness.so",
+  "nir_liveness_graph_path":"nir_liveness.json",
+  "nir_liveness_param_path":"nir_liveness.params",
+  "attr_lib_path":"libattribute.so",
+  "attr_graph_path":"attribute.json",
+  "attr_param_path":"attribute.params",
+  "depth_detector":"depth_detector.yml",
+  "face_db_file":"sunmi_face.db"
+}

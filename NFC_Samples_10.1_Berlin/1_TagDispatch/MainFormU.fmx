@@ -1,0 +1,57 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 567
+  ClientWidth = 384
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  DesignerMasterStyle = 3
+  object NFCTagIdLabel: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'NFCTagIdLabel'
+  end
+  object InfoList: TListBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 16.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 353.000000000000000000
+    Size.Height = 401.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Visible = False
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = 'listboxitemlabel'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 353.000000000000000000
+    Viewport.Height = 401.000000000000000000
+  end
+  object TagWriteButton: TButton
+    Anchors = [akRight, akBottom]
+    Position.X = 232.000000000000000000
+    Position.Y = 512.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 42.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Write Tag'
+    OnClick = TagWriteButtonClick
+  end
+  object TagWriteEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akRight, akBottom]
+    TabOrder = 3
+    Position.X = 16.000000000000000000
+    Position.Y = 520.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

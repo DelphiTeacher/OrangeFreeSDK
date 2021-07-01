@@ -1,3 +1,5 @@
+C:\OrangeFreeSDK\商米人脸识别SunmiFace\TestSunmiFace.dproj
+C:\OrangeFreeSDK\商米人脸识别SunmiFace\Project10.dproj
 C:\MyFiles\ThirdPartySDK\华为推送\HuaWeiPush.dproj
 C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\DoorManager_FMX_D10_4.dproj
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterLogin.dproj

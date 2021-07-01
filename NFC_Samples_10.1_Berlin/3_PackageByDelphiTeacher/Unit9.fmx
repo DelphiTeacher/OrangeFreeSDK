@@ -1,0 +1,68 @@
+object Form9: TForm9
+  Left = 0
+  Top = 0
+  Caption = 'Form9'
+  ClientHeight = 480
+  ClientWidth = 757
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object lblInfo: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 585.000000000000000000
+    Size.Height = 369.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+  object TagWriteButton: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 604.000000000000000000
+    Position.Y = 2.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 42.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #20889#21345
+    OnClick = TagWriteButtonClick
+  end
+  object edtBlockData: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 7
+    Position.X = 344.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = '16'#23383#33410#25968#25454
+  end
+  object Button1: TButton
+    Position.X = 192.000000000000000000
+    Position.Y = 6.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 39.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #35835#21345
+    OnClick = Button1Click
+  end
+  object edtBlockIndex: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    Text = '12'
+    Position.X = 80.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 100.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 18.000000000000000000
+    Text = #22359#19979#26631
+    TabOrder = 9
+  end
+end

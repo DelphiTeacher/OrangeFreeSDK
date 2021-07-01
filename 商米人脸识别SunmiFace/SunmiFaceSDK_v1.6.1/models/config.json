@@ -1,0 +1,36 @@
+{  
+	// 人脸识别库文件，此文件在SDK Jnilibs里，一般不需要修改
+	"face_lib_path":"libface.so", 
+	// 人脸识别库网络描述文件，需要绝对路径 
+	"face_graph_path":"/storage/emulated/0/faceTest/face.json",  
+	// 人脸识别库网络参数文件，需要绝对路径 
+	"face_param_path":"/storage/emulated/0/faceTest/face.params",  
+	// 人脸检测库文件，此文件在SDK Jnilibs里，一般不需要修改  
+	"detect_lib_path":"libdetect.so", 
+	// 人脸检测库网络描述文件，需要绝对路径 
+	"detect_graph_path":"/storage/emulated/0/faceTest/detect.json",  
+	// 人脸检测库网络参数文件，需要绝对路径 
+	"detect_param_path":"/storage/emulated/0/faceTest/detect.params",  
+	// rgb活体检测库文件，此文件在SDK Jnilibs里，一般不需要修改 
+	"rgb_liveness_lib_path":"librgb_liveness.so",  
+	// rgb活体检测库网络描述文件，需要绝对路径
+	"rgb_liveness_graph_path":"/storage/emulated/0/faceTest/rgb_liveness.json",
+	// rgb活体检测库网络参数文件，需要绝对路径
+	"rgb_liveness_param_path":"/storage/emulated/0/faceTest/rgb_liveness.params",
+	// nir活体检测库文件，此文件在SDK Jnilibs里，一般不需要修改
+	"nir_liveness_lib_path":"libnir_liveness.so"
+	// nir活体检测库网络描述文件，需要绝对路径 
+	"nir_liveness_graph_path":"/storage/emulated/0/faceTest/nir_liveness.json",
+	// nir活体检测库网络参数文件，需要绝对路径
+	"nir_liveness_param_path":"/storage/emulated/0/faceTest/nir_liveness.params",
+	// 人脸库存放路径，需要绝对路径  
+	"face_db_file":"/storage/emulated/0/faceTest/sunmi_face.db", 
+	// 3D活体检测模型，需要绝对路径
+	"depth_detector":"/storage/emulated/0/faceTest/depth_detector.yml"
+	// 人脸属性预测库文件，此文件在SDK Jnilibs里，一般不需要修改
+	"attr_lib_path":"libattribute.so",
+	// 人脸属性预测网络描述文件，需要绝对路径
+	"attr_graph_path":"/storage/emulated/0/faceTest/attribute.json",
+	//  人脸属性预测库网络参数文件，需要绝对路径
+	"attr_param_path":"/storage/emulated/0/faceTest/attribute.params",
+}

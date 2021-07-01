@@ -82,9 +82,7 @@ begin
 //						printer.lineWrap(3);
 //*/
 						//printer.printColumnsText(new String[]{"名稱單價金額"}, new int[]{24}, new int[]{0});
-
 //    FSunmiPrinterHelper.FJSunmiPrinterService.beginTransaction;
-
     //printer.printText("支付宝\n");
     FSunmiPrinterHelper.FJSunmiPrinterService.printText(StringToJString('支付宝'+#13#10),nil);
     //printer.printText("Alipay\n");
@@ -134,21 +132,15 @@ begin
     //printer.lineWrap(6);
     FSunmiPrinterHelper.FJSunmiPrinterService.lineWrap(6,nil);
 
-
-
 //    //打印二维码
 //    FSunmiPrinterHelper.FJSunmiPrinterService.sendRAWData(TJBytesUtil.JavaClass.getZXingQRCode(StringToJString('www.orangeui.cn'),300));
 //    FSunmiPrinterHelper.FJSunmiPrinterService.printQRCode(StringToJString('www.orangeui.cn'),30,30,nil);
-
     //切纸
 //    FSunmiPrinterHelper.FJSunmiPrinterService.sendRAWData(TJBytesUtil.JavaClass.CutPaper);
     FSunmiPrinterHelper.FJSunmiPrinterService.cutPaper(nil);
-
 //    //自检
 //    FSunmiPrinterHelper.FJSunmiPrinterService.sendRAWData(TJBytesUtil.JavaClass.selfCheck);
-
 //    FSunmiPrinterHelper.FJSunmiPrinterService.commitTransaction;
-
 end;
 
 end.

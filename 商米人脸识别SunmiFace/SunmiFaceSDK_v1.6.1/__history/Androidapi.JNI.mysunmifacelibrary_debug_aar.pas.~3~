@@ -1,0 +1,109 @@
+﻿//====================================================
+//
+//  转换来自JarOrClass2Pas(原JavaClassToDelphiUnit)
+//  原始作者：ying32
+//  QQ: 1444386932、396506155
+//  Email：yuanfen3287@vip.qq.com
+//
+//  修改 By：Flying Wang & 爱吃猪头肉
+//  请不要移除以上的任何信息。
+//  请不要将本版本发到城通网盘，否则死全家。
+//
+//  Email：1765535979@qq.com
+//  QQ Group：165232328
+//
+//  生成时间：2021-06-27 16:58:59
+//  工具版本：1.0.2018.2.26
+//
+//====================================================
+unit Androidapi.JNI.mysunmifacelibrary-debug.aar;
+
+interface
+
+uses
+  Androidapi.JNIBridge, 
+  Androidapi.JNI.JavaTypes, 
+  Androidapi.JNI.android.graphics.Bitmap;
+
+
+type
+
+// ===== Forward declarations =====
+
+  JBuildConfig = interface; //com.ggggcexx.mysunmifacelibrary.BuildConfig
+  Jmysunmifacehelper = interface; //com.ggggcexx.mysunmifacelibrary.mysunmifacehelper
+
+// ===== Forward SuperClasses declarations =====
+
+
+// ===== Interface declarations =====
+
+  JBuildConfigClass = interface(JObjectClass)
+  ['{AAF49ED7-AB3C-45E8-AD3F-44BF506B5311}']
+    { static Property Methods }
+    {class} function _GetDEBUG: Boolean;{$IF CompilerVersion >= 29.0} cdecl; {>=XE8}{$IFEND}
+    {class} function _GetLIBRARY_PACKAGE_NAME: JString;{$IF CompilerVersion >= 29.0} cdecl; {>=XE8}{$IFEND}
+    {class} function _GetBUILD_TYPE: JString;{$IF CompilerVersion >= 29.0} cdecl; {>=XE8}{$IFEND}
+
+    { static Methods }
+    {class} function init: JBuildConfig; cdecl;
+
+    { static Property }
+    {class} property DEBUG: Boolean read _GetDEBUG;
+    {class} property LIBRARY_PACKAGE_NAME: JString read _GetLIBRARY_PACKAGE_NAME;
+    {class} property BUILD_TYPE: JString read _GetBUILD_TYPE;
+  end;
+
+  [JavaSignature('com/ggggcexx/mysunmifacelibrary/BuildConfig')]
+  JBuildConfig = interface(JObject)
+  ['{0068DFB7-837D-4FD8-A344-5CDCF3F46DB1}']
+    { Property Methods }
+
+    { methods }
+
+    { Property }
+  end;
+
+  TJBuildConfig = class(TJavaGenericImport<JBuildConfigClass, JBuildConfig>) end;
+
+  JmysunmifacehelperClass = interface(JObjectClass)
+  ['{B2290F75-8519-4FC1-AFC2-F2232C55C70B}']
+    { static Property Methods }
+
+    { static Methods }
+    {class} function init: Jmysunmifacehelper; cdecl;
+    {class} function init_by_config_path(AConfigFilePath: JString): Integer; cdecl;
+    {class} function getPixelsBGR(image: JBitmap): TJavaArray<Byte>; cdecl;
+    {class} function addFeature(id: JString; name: JString; bitmap: JBitmap): Boolean; cdecl;
+    {class} function RecFeature(bitmap: JBitmap): Boolean; cdecl;
+
+    { static Property }
+  end;
+
+  [JavaSignature('com/ggggcexx/mysunmifacelibrary/mysunmifacehelper')]
+  Jmysunmifacehelper = interface(JObject)
+  ['{7441FD8B-FA7A-4BD0-A994-006F6AB0FDB7}']
+    { Property Methods }
+
+    { methods }
+
+    { Property }
+  end;
+
+  TJmysunmifacehelper = class(TJavaGenericImport<JmysunmifacehelperClass, Jmysunmifacehelper>) end;
+
+implementation
+
+procedure RegisterTypes;
+begin
+  TRegTypes.RegisterType('Androidapi.JNI.mysunmifacelibrary-debug.aar.JBuildConfig', 
+    TypeInfo(Androidapi.JNI.mysunmifacelibrary-debug.aar.JBuildConfig));
+  TRegTypes.RegisterType('Androidapi.JNI.mysunmifacelibrary-debug.aar.Jmysunmifacehelper', 
+    TypeInfo(Androidapi.JNI.mysunmifacelibrary-debug.aar.Jmysunmifacehelper));
+end;
+
+
+initialization
+  RegisterTypes;
+
+end.

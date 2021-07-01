@@ -1,0 +1,146 @@
+object CameraComponentForm: TCameraComponentForm
+  Left = 0
+  Top = 0
+  ClientHeight = 665
+  ClientWidth = 1043
+  FormFactor.Width = 1920
+  FormFactor.Height = 1022
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object imgCameraView: TImage
+    MultiResBitmap = <
+      item
+      end
+      item
+        Scale = 2.000000000000000000
+      end>
+    Align = Client
+    Size.Width = 1043.000000000000000000
+    Size.Height = 557.000000000000000000
+    Size.PlatformDefault = False
+    OnPaint = imgCameraViewPaint
+  end
+  object btnStartStopCamera: TButton
+    Align = Bottom
+    ModalResult = 1
+    Margins.Left = 16.000000000000000000
+    Margins.Top = 8.000000000000000000
+    Margins.Right = 16.000000000000000000
+    Margins.Bottom = 8.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 613.000000000000000000
+    Size.Width = 1011.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #24320#22987
+    OnClick = actStartExecute
+  end
+  object CameraComponent: TCameraComponent
+    OnSampleBufferReady = CameraComponentSampleBufferReady
+    Left = 48
+    Top = 168
+  end
+  object tbToolbar: TToolBar
+    Padding.Left = 8.000000000000000000
+    Padding.Right = 8.000000000000000000
+    Size.Width = 1043.000000000000000000
+    Size.Height = 48.000000000000000000
+    Size.PlatformDefault = False
+    object lToolbarTitle: TLabel
+      Align = Contents
+      Size.Width = 1043.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'toollabel'
+      TextSettings.HorzAlign = Center
+      Text = #20154#33080#35782#21035
+    end
+    object btnSettings: TButton
+      Action = actShowSettings
+      Align = Right
+      Enabled = True
+      ImageIndex = -1
+      Position.X = 329.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'detailstoolbutton'
+      Visible = False
+    end
+    object Button1: TButton
+      Align = Left
+      Position.X = 8.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'backtoolbutton'
+      TabOrder = 1
+      Text = 'Button1'
+    end
+  end
+  object RectAnimation1: TRectAnimation
+    Duration = 0.200000002980232200
+  end
+  object RectAnimation2: TRectAnimation
+    Duration = 0.200000002980232200
+  end
+  object imgFrame: TSkinFMXRoundImage
+    ParentMouseEvent = False
+    DirectUIVisible = False
+    ComponentTypeUseKind = ctukDefault
+    MaterialUseKind = mukSelfOwn
+    KeepSelfOwnMaterial = True
+    SelfOwnMaterial.BackColor.FillColor.Color = claBlack
+    SelfOwnMaterial.IsTransparent = False
+    SelfOwnMaterial.DrawCaptionParam.FontTrimming = fttNone
+    SelfOwnMaterial.DrawCaptionParam.FontHorzAlign = fhaLeft
+    SelfOwnMaterial.DrawCaptionParam.FontVertAlign = fvaTop
+    SelfOwnMaterial.IsDrawClipRound = True
+    SelfOwnMaterial.ClipRoundWidth = -1.000000000000000000
+    SelfOwnMaterial.ClipRoundHeight = -1.000000000000000000
+    SelfOwnMaterial.ClipRoundRectSetting.Width = 500.000000000000000000
+    SelfOwnMaterial.ClipRoundRectSetting.Height = 500.000000000000000000
+    SelfOwnMaterial.ClipRoundRectSetting.Enabled = True
+    SelfOwnMaterial.ClipRoundRectSetting.SizeType = dpstPixel
+    SelfOwnMaterial.ClipRoundRectSetting.PositionHorzType = dpphtCenter
+    SelfOwnMaterial.ClipRoundRectSetting.PositionVertType = dppvtCenter
+    SelfOwnMaterial.DrawRoundOutSideRectParam.IsFill = True
+    SelfOwnMaterial.DrawRoundOutSideRectParam.FillColor.Color = xC8000000
+    MouseDownFocus = False
+    Align = Client
+    Size.Width = 1043.000000000000000000
+    Size.Height = 557.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Properties.AutoSize = False
+    Properties.Picture.IsClipRound = False
+    Properties.Animated = False
+    Properties.AnimateSpeed = 10.000000000000000000
+    Properties.GIFDelayExp = 12
+    Properties.CurrentRotateAngle = 0
+    Properties.Rotated = False
+    Properties.RotateSpeed = 5.000000000000000000
+    Properties.RotateIncrement = 20
+    Properties.IsToolBar = False
+  end
+  object ActionList: TActionList
+    OnExecute = ActionListExecute
+    OnUpdate = ActionListUpdate
+    Left = 48
+    Top = 88
+    object actStart: TAction
+      Text = #24320#22987
+      OnExecute = actStartExecute
+    end
+    object actStop: TAction
+      Text = #32467#26463
+      OnExecute = actStopExecute
+    end
+    object actShowSettings: TAction
+      Text = 'Settings'
+      OnExecute = actShowSettingsExecute
+    end
+  end
+end

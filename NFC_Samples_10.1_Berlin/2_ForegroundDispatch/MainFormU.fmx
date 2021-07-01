@@ -1,0 +1,108 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 564
+  ClientWidth = 765
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object PromptLabel: TLabel
+    Align = Center
+    AutoSize = True
+    Size.Width = 140.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.WordWrap = False
+    Text = 'Scan an NFC tag!'
+  end
+  object InfoList: TListBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    Position.X = 16.000000000000000000
+    Position.Y = 107.000000000000000000
+    Size.Width = 734.000000000000000000
+    Size.Height = 398.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Visible = False
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = 'listboxitemlabel'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 734.000000000000000000
+    Viewport.Height = 398.000000000000000000
+  end
+  object NFCTagIdLabel: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 59.000000000000000000
+    Size.Width = 337.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object TagWriteButton: TButton
+    Anchors = [akTop, akRight]
+    Position.X = 621.000000000000000000
+    Position.Y = -6.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 42.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = #20889#21345
+    OnClick = TagWriteButtonClick
+  end
+  object TagWriteEdit: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akTop, akRight]
+    TabOrder = 4
+    Position.X = 549.000000000000000000
+    Position.Y = 67.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object NfcCheckBox: TCheckBox
+    Anchors = [akRight, akBottom]
+    Position.X = 621.000000000000000000
+    Position.Y = 507.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Active'
+    OnChange = NfcCheckBoxChange
+  end
+  object Button1: TButton
+    Position.X = 192.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 39.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #35835#21345
+    OnClick = Button1Click
+  end
+  object edtBlockData: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 8
+    Position.X = 344.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = '16'#23383#33410#25968#25454
+  end
+  object edtBlockIndex: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 9
+    Text = '12'
+    Position.X = 80.000000000000000000
+  end
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 2.000000000000000000
+    Text = #22359#19979#26631
+    TabOrder = 10
+  end
+end

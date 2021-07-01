@@ -3,13 +3,19 @@
         <ProjectGuid>{0E85B0B7-5766-473E-A6B5-2C1F595A5A04}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
+        <Projects Include="商米人脸识别SunmiFace\TestSunmiFace.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\MyFiles\OrangeUIControl\OrangeUIControl_FMX_D10_4.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\MyFiles\OrangeUIDesign\OrangeUIDesign_FMX_D10_4.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="1D_PDA_RFID\PDA_RFID.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="商米打印SunmiPrinter_V2\TestSunmiPrinter_V2.dproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj">
             <Dependencies/>
         </Projects>
         <Projects Include="HuaweiScan\HuaweiScan.dproj">
@@ -33,6 +39,18 @@
         <Projects Include="OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D10_4.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SupoinPDA_Scan\Project10.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NFC_Samples_10.1_Berlin\2_ForegroundDispatch\NFC_Sample.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NFC_Samples_10.1_Berlin\3_PackageByDelphiTeacher\Project11.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -41,6 +59,33 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
+    <Target Name="TestSunmiFace">
+        <MSBuild Projects="商米人脸识别SunmiFace\TestSunmiFace.dproj"/>
+    </Target>
+    <Target Name="TestSunmiFace:Clean">
+        <MSBuild Projects="商米人脸识别SunmiFace\TestSunmiFace.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestSunmiFace:Make">
+        <MSBuild Projects="商米人脸识别SunmiFace\TestSunmiFace.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeUIControl_FMX_D10_4">
+        <MSBuild Projects="C:\MyFiles\OrangeUIControl\OrangeUIControl_FMX_D10_4.dproj"/>
+    </Target>
+    <Target Name="OrangeUIControl_FMX_D10_4:Clean">
+        <MSBuild Projects="C:\MyFiles\OrangeUIControl\OrangeUIControl_FMX_D10_4.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeUIControl_FMX_D10_4:Make">
+        <MSBuild Projects="C:\MyFiles\OrangeUIControl\OrangeUIControl_FMX_D10_4.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeUIDesign_FMX_D10_4">
+        <MSBuild Projects="C:\MyFiles\OrangeUIDesign\OrangeUIDesign_FMX_D10_4.dproj"/>
+    </Target>
+    <Target Name="OrangeUIDesign_FMX_D10_4:Clean">
+        <MSBuild Projects="C:\MyFiles\OrangeUIDesign\OrangeUIDesign_FMX_D10_4.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeUIDesign_FMX_D10_4:Make">
+        <MSBuild Projects="C:\MyFiles\OrangeUIDesign\OrangeUIDesign_FMX_D10_4.dproj" Targets="Make"/>
+    </Target>
     <Target Name="PDA_RFID">
         <MSBuild Projects="1D_PDA_RFID\PDA_RFID.dproj"/>
     </Target>
@@ -58,15 +103,6 @@
     </Target>
     <Target Name="TestSunmiPrinter_V2:Make">
         <MSBuild Projects="商米打印SunmiPrinter_V2\TestSunmiPrinter_V2.dproj" Targets="Make"/>
-    </Target>
-    <Target Name="TestDVMediaSelector_V2">
-        <MSBuild Projects="Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj"/>
-    </Target>
-    <Target Name="TestDVMediaSelector_V2:Clean">
-        <MSBuild Projects="Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj" Targets="Clean"/>
-    </Target>
-    <Target Name="TestDVMediaSelector_V2:Make">
-        <MSBuild Projects="Android图片视频选择器DVMediaSelector_V2\TestDVMediaSelector_V2.dproj" Targets="Make"/>
     </Target>
     <Target Name="HuaweiScan">
         <MSBuild Projects="HuaweiScan\HuaweiScan.dproj"/>
@@ -131,14 +167,50 @@
     <Target Name="OCHeader2Pas:Make">
         <MSBuild Projects="OrangeUIObjectiveC2Pascal\OCHeader2Pas.dproj" Targets="Make"/>
     </Target>
+    <Target Name="OrangeUIDemo_FMX_D10_4">
+        <MSBuild Projects="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D10_4.dproj"/>
+    </Target>
+    <Target Name="OrangeUIDemo_FMX_D10_4:Clean">
+        <MSBuild Projects="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D10_4.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeUIDemo_FMX_D10_4:Make">
+        <MSBuild Projects="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D10_4.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project10">
+        <MSBuild Projects="SupoinPDA_Scan\Project10.dproj"/>
+    </Target>
+    <Target Name="Project10:Clean">
+        <MSBuild Projects="SupoinPDA_Scan\Project10.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project10:Make">
+        <MSBuild Projects="SupoinPDA_Scan\Project10.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="NFC_Sample">
+        <MSBuild Projects="NFC_Samples_10.1_Berlin\2_ForegroundDispatch\NFC_Sample.dproj"/>
+    </Target>
+    <Target Name="NFC_Sample:Clean">
+        <MSBuild Projects="NFC_Samples_10.1_Berlin\2_ForegroundDispatch\NFC_Sample.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NFC_Sample:Make">
+        <MSBuild Projects="NFC_Samples_10.1_Berlin\2_ForegroundDispatch\NFC_Sample.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project11">
+        <MSBuild Projects="NFC_Samples_10.1_Berlin\3_PackageByDelphiTeacher\Project11.dproj"/>
+    </Target>
+    <Target Name="Project11:Clean">
+        <MSBuild Projects="NFC_Samples_10.1_Berlin\3_PackageByDelphiTeacher\Project11.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project11:Make">
+        <MSBuild Projects="NFC_Samples_10.1_Berlin\3_PackageByDelphiTeacher\Project11.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="PDA_RFID;TestSunmiPrinter_V2;TestDVMediaSelector_V2;HuaweiScan;TestSGQRCodeScan;TestSunmiPrinter;TestSunmiRFID;sunmiscan_Test;OrangeSDK_SmartDeploy;OCHeader2Pas"/>
+        <CallTarget Targets="TestSunmiFace;OrangeUIControl_FMX_D10_4;OrangeUIDesign_FMX_D10_4;PDA_RFID;TestSunmiPrinter_V2;HuaweiScan;TestSGQRCodeScan;TestSunmiPrinter;TestSunmiRFID;sunmiscan_Test;OrangeSDK_SmartDeploy;OCHeader2Pas;OrangeUIDemo_FMX_D10_4;Project10;NFC_Sample;Project11"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="PDA_RFID:Clean;TestSunmiPrinter_V2:Clean;TestDVMediaSelector_V2:Clean;HuaweiScan:Clean;TestSGQRCodeScan:Clean;TestSunmiPrinter:Clean;TestSunmiRFID:Clean;sunmiscan_Test:Clean;OrangeSDK_SmartDeploy:Clean;OCHeader2Pas:Clean"/>
+        <CallTarget Targets="TestSunmiFace:Clean;OrangeUIControl_FMX_D10_4:Clean;OrangeUIDesign_FMX_D10_4:Clean;PDA_RFID:Clean;TestSunmiPrinter_V2:Clean;HuaweiScan:Clean;TestSGQRCodeScan:Clean;TestSunmiPrinter:Clean;TestSunmiRFID:Clean;sunmiscan_Test:Clean;OrangeSDK_SmartDeploy:Clean;OCHeader2Pas:Clean;OrangeUIDemo_FMX_D10_4:Clean;Project10:Clean;NFC_Sample:Clean;Project11:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="PDA_RFID:Make;TestSunmiPrinter_V2:Make;TestDVMediaSelector_V2:Make;HuaweiScan:Make;TestSGQRCodeScan:Make;TestSunmiPrinter:Make;TestSunmiRFID:Make;sunmiscan_Test:Make;OrangeSDK_SmartDeploy:Make;OCHeader2Pas:Make"/>
+        <CallTarget Targets="TestSunmiFace:Make;OrangeUIControl_FMX_D10_4:Make;OrangeUIDesign_FMX_D10_4:Make;PDA_RFID:Make;TestSunmiPrinter_V2:Make;HuaweiScan:Make;TestSGQRCodeScan:Make;TestSunmiPrinter:Make;TestSunmiRFID:Make;sunmiscan_Test:Make;OrangeSDK_SmartDeploy:Make;OCHeader2Pas:Make;OrangeUIDemo_FMX_D10_4:Make;Project10:Make;NFC_Sample:Make;Project11:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -1,0 +1,55 @@
+unit uAndroidNFC;
+
+interface
+
+uses
+  Androidapi.JNI.Nfc,
+  Androidapi.JNI.GraphicsContentViewText,
+  Androidapi.JNI.App,
+  FMX.Platform,
+  System.Messaging,
+  Math,
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls, FMX.Layouts, FMX.ListBox, NFCHelper,
+  FMX.Edit, FMX.Controls.Presentation;
+
+
+type
+  TOrangeAndroidNFC=class(TComponent)
+  private
+    { Private declarations }
+    NfcAdapter: JNfcAdapter;
+    NFCSettingsChecked: Boolean;
+    PendingIntent: JPendingIntent;
+    // Proxy for calling NfcAdapter.enableForegroundDispatch
+    procedure EnableForegroundDispatch;
+    var AppEvents: IFMXApplicationEventService;
+    function ApplicationEventHandler(AAppEvent: TApplicationEvent;
+      AContext: TObject): Boolean;
+  public
+    { Public declarations }
+    MessageSubscriptionID: Integer;
+    procedure HandleIntentMessage(const Sender: TObject; const M: TMessage);
+    procedure OnNewNfcIntent(Intent: JIntent);
+
+    function ReadTagBlock(ABlockIndex:Integer;var ABlockDataStr:String):Boolean;
+    function WriteTagBlock(ABlockIndex:Integer;ABlockDataStr:String):Boolean;
+
+    constructor Create(AOwner:TComponent);override;
+    destructor Destroy;override;
+  end;
+
+implementation
+uses
+  System.TypInfo,
+  FMX.Platform.Android,
+  Androidapi.Helpers,
+  Androidapi.JNIBridge,
+  Androidapi.Jni,
+  Androidapi.JNI.JavaTypes,
+  Androidapi.JNI.Os,
+  Androidapi.JNI.Nfc.Tech,
+  Androidapi.JNI.Toast;
+
+
+end.

@@ -43,6 +43,7 @@ uses
 type
   {$IFDEF ANDROID}
   TWitter=class;
+  //TWitter授权返回
   TJMyTwitterSessionCallback_MyCallBackTwitterSession=class(TJavaLocal,JMyTwitterSessionCallback_MyCallBackTwitterSession)
   public
     { Property Methods }
@@ -50,7 +51,9 @@ type
     FUserName:String;
     FToken:JTwitterAuthToken;
     { methods }
+    //授权成功
     procedure success(P1: JResult; P2: Int64; P3: JString; P4: JTwitterAuthToken); cdecl;
+    //授权失败
     procedure failure; cdecl;
   public
     FTwitter:TWitter;
@@ -389,7 +392,12 @@ procedure TJMyTwitterSessionCallback_MyCallBackTwitterSession.success(
   P1: JResult; P2: Int64; P3: JString; P4: JTwitterAuthToken);
 begin
   FMX.Types.Log.d('OrangeUI TJMyTwitterSessionCallback_MyCallBackTwitterSession UserName:'+JStringToString(P3));
+  FMX.Types.Log.d('OrangeUI TJMyTwitterSessionCallback_MyCallBackTwitterSession token:'+JStringToString(P4.token));
+  FMX.Types.Log.d('OrangeUI TJMyTwitterSessionCallback_MyCallBackTwitterSession secret:'+JStringToString(P4.secret));
 
+//    { Property }
+//    property token: JString read _Gettoken write _Settoken;
+//    property secret: JString read _Getsecret write _Setsecret;
 
   Self.FUserName:=JStringToString(P3);
   Self.FToken:=P4;

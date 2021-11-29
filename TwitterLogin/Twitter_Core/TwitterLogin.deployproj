@@ -1817,6 +1817,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TwitterLogin\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="TwitterSDK\Android_3_0\twitter-core_aar\res\values-hu\values-hu_twitter_core_aar.xml">
             <RemoteDir>TwitterLogin\res\values-hu\</RemoteDir>
             <RemoteName>values-hu.xml</RemoteName>

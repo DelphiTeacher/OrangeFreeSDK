@@ -7,13 +7,13 @@ setlocal
 
 set JarOutName=R_JAVA_TwitterLogin.jar
 
-set JDKDir=C:\PlatformSDKs_10_2_3\AdoptOpenJDK\jdk-8.0.242.08-hotspot
+set JDKDir=C:\Program Files (x86)\AdoptOpenJDK\jdk-8.0.252.09-hotspot
 
-set ANDROID=C:\PlatformSDKs_10_2_3\android_sdk_windows
+set ANDROID=C:\Users\Public\Documents\Embarcadero\Studio\21.0\PlatformSDKs\android-sdk-windows
 
-set ANDROID_PLATFORM=C:\PlatformSDKs_10_2_3\android_sdk_windows\platforms\android-29\
+set ANDROID_PLATFORM=C:\Users\Public\Documents\Embarcadero\Studio\21.0\PlatformSDKs\android-sdk-windows\platforms\android-29
 
-set ANDROID_BT=C:\PlatformSDKs_10_2_3\android_sdk_windows\build-tools\29.0.3\
+set ANDROID_BT=C:\Users\Public\Documents\Embarcadero\Studio\21.0\PlatformSDKs\android-sdk-windows\build-tools\29.0.3\
 
 set DX_LIB=%ANDROID_BT%\lib
 

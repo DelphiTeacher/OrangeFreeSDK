@@ -145,7 +145,7 @@ begin
 
         {$IFDEF ANDROID}
         //拍完照,将人脸识别出特征,保存到数据库
-        AJBitmap:=TJBitmap.Create;
+//        AJBitmap:=TJBitmap.Create;
         try
           FMX.Types.Log.d('OrangeUI TDetectFaceThread.Execute 1');
 
@@ -294,7 +294,7 @@ begin
 
   //拍完照,将人脸识别出特征,保存到数据库
   APhoto := TBitmapSurface.Create;
-  AJBitmap:=TJBitmap.Create;
+//  AJBitmap:=TJBitmap.Create;
   try
     FMX.Types.Log.d('OrangeUI TForm8.tmrRegTimer 1');
     APhoto.Assign(AFaceBitmap);

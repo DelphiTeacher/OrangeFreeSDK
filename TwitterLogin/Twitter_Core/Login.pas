@@ -55,8 +55,17 @@ begin
 
 
   //先初始,不然按钮是灰色的
-  TWitter.FKey:='xv9G5xhQU7nlmVqEadrkQ8bww';
-  TWitter.FSecret:='pOIg3AcPpokm0FLu9gpuQgHoGphqSknjQp2CbVVFVQaSUuc9nN';
+
+  //OrangeUI圈应用
+//  TWitter.FKey:='xv9G5xhQU7nlmVqEadrkQ8bww';
+//  TWitter.FSecret:='pOIg3AcPpokm0FLu9gpuQgHoGphqSknjQp2CbVVFVQaSUuc9nN';
+
+
+  //R4U
+  TWitter.FKey:='jgqwXV3Hw2DxyIP6pK6aRDzKk';
+  TWitter.FSecret:='tlc3tqQ2KXuqZ55XvThjK9aW0HhaxmUqu4obzFoCWugIVUfReZ';
+
+
   TWitter.initialize;
 
 

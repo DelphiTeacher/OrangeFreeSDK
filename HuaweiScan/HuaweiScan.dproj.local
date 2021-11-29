@@ -13,7 +13,7 @@
   </Transactions>
 	<ActiveMobileDevice>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice32="" iOSDevice64=""/>
-		<NoProfile Android="DM01206B40611" Android64="DM01206B40611" iOSSimulator="iPhone5"/>
+		<NoProfile Android="0123456789ABCDEF" Android64="0123456789ABCDEF" iOSSimulator="iPhone5"/>
 		<Pggggcexx-newmac iOSSimulator="iPhone5" iOSDevice64=""/>
 		<POldMac iOSSimulator="iPhone5" iOSDevice64=""/>
 		<Pnewmac iOSSimulator="iPhone5" iOSDevice64=""/>

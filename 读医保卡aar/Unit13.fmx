@@ -20,7 +20,7 @@ object Form13: TForm13
     Size.Width = 630.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 1
+    TabOrder = 2
     Text = #35835#31038#20445#21345
     OnClick = Button1Click
   end
@@ -39,9 +39,9 @@ object Form13: TForm13
     Size.Width = 630.000000000000000000
     Size.Height = 121.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
-    Viewport.Width = 626.000000000000000000
-    Viewport.Height = 117.000000000000000000
+    TabOrder = 3
+    Viewport.Width = 630.000000000000000000
+    Viewport.Height = 121.000000000000000000
   end
   object Button2: TButton
     Align = Top
@@ -54,7 +54,7 @@ object Form13: TForm13
     Size.Width = 630.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 5
     Text = #21021#22987
     OnClick = Button2Click
   end
@@ -69,17 +69,17 @@ object Form13: TForm13
     Size.Width = 630.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 6
+    TabOrder = 7
     Text = #26597#35810#29256#26412#20449#24687
     OnClick = Button3Click
   end
   object Button4: TButton
     Align = Top
-    Position.Y = 259.000000000000000000
+    Position.Y = 291.000000000000000000
     Size.Width = 640.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 7
+    TabOrder = 8
     Text = #20851#38381#25152#26377#35835#21345
     OnClick = Button4Click
   end
@@ -94,8 +94,23 @@ object Form13: TForm13
     Size.Width = 630.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 0
+    TabOrder = 1
     Text = #35835#36523#20221#35777
     OnClick = Button5Click
+  end
+  object Button6: TButton
+    Align = Top
+    Margins.Left = 5.000000000000000000
+    Margins.Top = 5.000000000000000000
+    Margins.Right = 5.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Position.X = 5.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 630.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #21047#30913#26465#21345
+    OnClick = Button6Click
   end
 end

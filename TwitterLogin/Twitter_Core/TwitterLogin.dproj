@@ -402,7 +402,6 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_29x29.png" Configuration="Debug" Class="iPhone_Spotlight29"/>
                 <DeployFile LocalName="TwitterSDK\twitter-core\res\values-iw\values-iw.xml" Configuration="Debug" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-iw\</RemoteDir>
@@ -412,6 +411,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png" Configuration="Release" Class="iPad_Launch1024x768"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_29x29.png" Configuration="Debug" Class="iPhone_Spotlight29"/>
                 <DeployFile LocalName="TwitterSDK\Android_3_0\twitter-core_aar\res\values-xhdpi-v4\values-xhdpi-v4_twitter_core_aar.xml" Class="File">
                     <Platform Name="Android">
                         <RemoteDir>res\values-xhdpi-v4\</RemoteDir>

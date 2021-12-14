@@ -20,6 +20,8 @@ unit Androidapi.JNI.myysflibrary;
 
 interface
 
+
+{$IFDEF ANDROID}
 uses
   Androidapi.JNIBridge,
   Androidapi.JNI.Os,
@@ -104,19 +106,20 @@ type
   end;
 
   TJHelper = class(TJavaGenericImport<JHelperClass, JHelper>) end;
+{$ENDIF ANDROID}
 
 implementation
 
-procedure RegisterTypes;
-begin
-  TRegTypes.RegisterType('Androidapi.JNI.myysflibrary.JBuildConfig', 
-    TypeInfo(Androidapi.JNI.myysflibrary.JBuildConfig));
-  TRegTypes.RegisterType('Androidapi.JNI.myysflibrary.JHelper', 
-    TypeInfo(Androidapi.JNI.myysflibrary.JHelper));
-end;
-
-
-initialization
-  RegisterTypes;
+//procedure RegisterTypes;
+//begin
+//  TRegTypes.RegisterType('Androidapi.JNI.myysflibrary.JBuildConfig',
+//    TypeInfo(Androidapi.JNI.myysflibrary.JBuildConfig));
+//  TRegTypes.RegisterType('Androidapi.JNI.myysflibrary.JHelper',
+//    TypeInfo(Androidapi.JNI.myysflibrary.JHelper));
+//end;
+//
+//
+//initialization
+//  RegisterTypes;
 
 end.

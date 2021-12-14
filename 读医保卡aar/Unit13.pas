@@ -39,13 +39,16 @@ type
     Button3: TButton;
     Button4: TButton;
     Button5: TButton;
+    Button6: TButton;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
+    procedure DoReadedCardData(Sender:Tobject);
     { Private declarations }
   public
     FReadHospitalCardSDK:TReadHospitalCardSDK;
@@ -86,6 +89,16 @@ begin
   //
 end;
 
+procedure TForm13.Button6Click(Sender: TObject);
+begin
+  FReadHospitalCardSDK.ReadCard('C');
+end;
+
+procedure TForm13.DoReadedCardData(Sender: Tobject);
+begin
+  Self.Memo1.Lines.Add(FReadHospitalCardSDK.FReadedCardData);
+end;
+
 procedure TForm13.FormCreate(Sender: TObject);
 begin
   //…Í«Î»®œﬁ
@@ -102,7 +115,7 @@ begin
 
 
   FReadHospitalCardSDK:=TReadHospitalCardSDK.Create;
-
+  FReadHospitalCardSDK.FOnReadedCardData:=DoReadedCardData;
 end;
 
 end.

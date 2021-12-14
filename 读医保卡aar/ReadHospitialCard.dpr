@@ -6,9 +6,9 @@ uses
   Unit13 in 'Unit13.pas' {Form13},
   Androidapi.JNI.YSF_release_aar in 'ReadHospitalCardSDK\Androidapi.JNI.YSF_release_aar.pas',
   uReadHospitalCardSDK in 'ReadHospitalCardSDK\uReadHospitalCardSDK.pas',
-  Androidapi.JNI.myysflibrary in 'ReadHospitalCardSDK\Androidapi.JNI.myysflibrary.pas',
   XSuperJSON in '..\OrangeProjectCommon\XSuperObject\XSuperJSON.pas',
-  XSuperObject in '..\OrangeProjectCommon\XSuperObject\XSuperObject.pas';
+  XSuperObject in '..\OrangeProjectCommon\XSuperObject\XSuperObject.pas',
+  Androidapi.JNI.myysflibrary in 'ReadHospitalCardSDK\Androidapi.JNI.myysflibrary.pas';
 
 {$R *.res}
 

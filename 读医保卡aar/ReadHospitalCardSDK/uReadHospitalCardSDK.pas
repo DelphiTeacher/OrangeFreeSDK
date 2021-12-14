@@ -27,10 +27,13 @@ uses
 
   FMX.Controls.Presentation, FMX.StdCtrls;
 type
+  TReadHospitalCardSDK=class;
   {$IFDEF ANDROID}
   //PDA扫码广播初始监听
   TReadCardBoardcastListener = class(TJavaLocal, JFMXBroadcastReceiverListener)
   public
+    FReadHospitalCardSDK:TReadHospitalCardSDK;
+    constructor Create(AReadHospitalCardSDK:TReadHospitalCardSDK);
     destructor Destroy;override;
   public
     procedure onReceive(context: JContext; intent: JIntent); cdecl;
@@ -39,11 +42,14 @@ type
 
   TCheckModuleBoardcastListener = class(TJavaLocal, JFMXBroadcastReceiverListener)
   public
+    FReadHospitalCardSDK:TReadHospitalCardSDK;
+    constructor Create(AReadHospitalCardSDK:TReadHospitalCardSDK);
     destructor Destroy;override;
   public
     procedure onReceive(context: JContext; intent: JIntent); cdecl;
   end;
   {$ENDIF ANDROID}
+
 
 
   TReadHospitalCardSDK=class
@@ -58,6 +64,10 @@ type
     FCheckModuleBroadcastReceiver:JFMXBroadcastReceiver;
     FCheckModuleBroadcastListener:TCheckModuleBoardcastListener;
     {$ENDIF ANDROID}
+
+    //读到的卡数据
+    FReadedCardData:String;
+    FOnReadedCardData:TNotifyEvent;
     constructor Create;
     //初始,打开设备
     procedure Init;
@@ -69,20 +79,31 @@ type
     procedure CloseModule;
   end;
 
+
+
 implementation
 
 
-uses
-  Unit13;
+
+
+//uses
+//  Unit13;
 
   {$IFDEF ANDROID}
 { TReadCardBoardcastListener }
+
+constructor TReadCardBoardcastListener.Create(AReadHospitalCardSDK:TReadHospitalCardSDK);
+begin
+  Inherited Create;
+  FReadHospitalCardSDK:=AReadHospitalCardSDK;
+
+end;
 
 procedure TReadCardBoardcastListener.onReceive(context: JContext; intent: JIntent);
 var
   action:JString;
   LStrAction: string;
-  AACardData:String;
+  ACardData:String;
   ASuperObject:ISuperObject;
 begin
   action:=intent.getAction;
@@ -94,8 +115,8 @@ begin
 
   TThread.Synchronize(nil,procedure
   begin
-    //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,AACardData);
-    Form13.Memo1.Lines.Add(LStrAction);
+    //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,ACardData);
+//    Form13.Memo1.Lines.Add(LStrAction);
   end);
 
 
@@ -139,10 +160,10 @@ begin
 
   if intent.hasExtra(StringToJString('cardData')) then
   begin
-    AACardData:=JStringToString(intent.getStringExtra(StringToJString('cardData')));
-    FMX.Types.Log.d('OrangeUI TReadCardBoardcastListener.onReceive ACardData:'+AACardData);
+    ACardData:=JStringToString(intent.getStringExtra(StringToJString('cardData')));
+    FMX.Types.Log.d('OrangeUI TReadCardBoardcastListener.onReceive ACardData:'+ACardData);
 
-    ASuperObject:=TSuperObject.Create(AACardData);
+    ASuperObject:=TSuperObject.Create(ACardData);
     FMX.Types.Log.d('OrangeUI TReadCardBoardcastListener.onReceive cardName:'+ASuperObject.S['cardName']);
     FMX.Types.Log.d('OrangeUI TReadCardBoardcastListener.onReceive cardNo:'+ASuperObject.S['cardNo']);
     FMX.Types.Log.d('OrangeUI TReadCardBoardcastListener.onReceive cardType:'+ASuperObject.S['cardType']);
@@ -156,8 +177,13 @@ begin
 
     TThread.Synchronize(nil,procedure
     begin
-      //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,AACardData);
-      Form13.Memo1.Lines.Add(AACardData);
+      //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,ACardData);
+      FReadHospitalCardSDK.FReadedCardData:=ACardData;
+      if Assigned(FReadHospitalCardSDK.FOnReadedCardData) then
+      begin
+        FReadHospitalCardSDK.FOnReadedCardData(FReadHospitalCardSDK);
+      end;
+//      Form13.Memo1.Lines.Add(ACardData);
     end);
 
   end
@@ -181,11 +207,18 @@ end;
 
 { TCheckModuleBoardcastListener }
 
+constructor TCheckModuleBoardcastListener.Create(AReadHospitalCardSDK:TReadHospitalCardSDK);
+begin
+  Inherited Create;
+  FReadHospitalCardSDK:=AReadHospitalCardSDK;
+
+end;
+
 procedure TCheckModuleBoardcastListener.onReceive(context: JContext; intent: JIntent);
 var
   action:JString;
   LStrAction: string;
-  AACardData:String;
+  ACardData:String;
 begin
   action:=intent.getAction;
   LStrAction := JStringToString(intent.getAction);
@@ -196,8 +229,8 @@ begin
 
   TThread.Synchronize(nil,procedure
   begin
-    //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,AACardData);
-    Form13.Memo1.Lines.Add(LStrAction);
+    //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,ACardData);
+//    Form13.Memo1.Lines.Add(LStrAction);
   end);
 
 
@@ -221,14 +254,19 @@ begin
 //  end;
   if intent.hasExtra(StringToJString('cardData')) then
   begin
-    AACardData:=JStringToString(intent.getStringExtra(StringToJString('cardData')));
+    ACardData:=JStringToString(intent.getStringExtra(StringToJString('cardData')));
 
-    FMX.Types.Log.d('OrangeUI TCheckModuleBoardcastListener.onReceive ACardData:'+AACardData);
+    FMX.Types.Log.d('OrangeUI TCheckModuleBoardcastListener.onReceive ACardData:'+ACardData);
 
     TThread.Synchronize(nil,procedure
     begin
-      //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,AACardData);
-      Form13.Memo1.Lines.Add(AACardData);
+      //GlobalScanInStoreFrame.DoScanCodeResultEvent(nil,ACardData);
+//      Form13.Memo1.Lines.Add(ACardData);
+      FReadHospitalCardSDK.FReadedCardData:=ACardData;
+      if Assigned(FReadHospitalCardSDK.FOnReadedCardData) then
+      begin
+        FReadHospitalCardSDK.FOnReadedCardData(FReadHospitalCardSDK);
+      end;
     end);
 
   end
@@ -258,15 +296,19 @@ end;
 procedure TReadHospitalCardSDK.CheckModule;
 begin
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.CheckModule begin');
+  {$IFDEF ANDROID}
   TJHifondCardInterface.JavaClass.checkModule;
+  {$ENDIF}
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.CheckModule end');
 end;
 
 procedure TReadHospitalCardSDK.CloseModule;
 begin
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.CloseModule begin');
+  {$IFDEF ANDROID}
   //关闭所有模块
   TJHifondCardInterface.JavaClass.closeModule();
+  {$ENDIF}
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.CloseModule end');
 end;
 
@@ -277,7 +319,7 @@ begin
 
   {$IFDEF ANDROID}
   //读卡
-  FReadCardBroadcastListener:=TReadCardBoardcastListener.Create;
+  FReadCardBroadcastListener:=TReadCardBoardcastListener.Create(Self);
   FReadCardBroadcastReceiver:=TJFMXBroadcastReceiver.JavaClass.init(FReadCardBroadcastListener);
 
   FReadCardIntentFilter:=TJIntentFilter.JavaClass.init;
@@ -287,7 +329,7 @@ begin
 
 
   //检测模块
-  FCheckModuleBroadcastListener:=TCheckModuleBoardcastListener.Create;
+  FCheckModuleBroadcastListener:=TCheckModuleBoardcastListener.Create(Self);
   FCheckModuleBroadcastReceiver:=TJFMXBroadcastReceiver.JavaClass.init(FCheckModuleBroadcastListener);
 
   FCheckModuleIntentFilter:=TJIntentFilter.JavaClass.init;
@@ -305,15 +347,36 @@ begin
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.Init begin');
 //        HifondCardInterface.init(MainActivity.this,115200,"/dev/ttyMT1");
 //  TJHifondCardInterface.JavaClass.init(TAndroidHelper.Activity,115200,StringToJString('dev/ttyMT1'));
+  {$IFDEF ANDROID}
   TJHelper.JavaClass.initsdk(TAndroidHelper.Activity,115200,StringToJString('/dev/ttyHSL1'));
+  {$ENDIF}
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.Init end');
 end;
 
 procedure TReadHospitalCardSDK.ReadCard(ACardType:String);
 begin
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.ReadCard begin');
+  {$IFDEF ANDROID}
   TJHifondCardInterface.JavaClass.openModule(StringToJString(ACardType));
-
+  {$ENDIF}
+//  {$IFDEF MSWINDOWS}
+//  if Assigned(Self.FOnReadedCardData) then
+//  begin
+//    Self.FReadedCardData:=
+//                        '{"cardName":"吴*玲",'
+//                        +'"cardNo":"123456",'
+//                        +'"cardType":"1",'
+//                        +'"cardTypeZH":"接触卡",'
+//                        +'"districtCode":"320400",'
+//                        +'"idCardNo":"3425************0029",'
+//                        +'"resultCode":"00000",'
+//                        +'"sex":"女",'
+//                        +'"backup01":"base64",'
+//                        +'"uid":"d6e52521"'
+//                        +'}';
+//    Self.FOnReadedCardData(Self);
+//  end;
+//  {$ENDIF}
   FMX.Types.Log.d('OrangeUI TReadHospitalCardSDK.ReadCard end');
 end;
 

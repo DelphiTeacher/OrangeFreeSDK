@@ -41,14 +41,56 @@
         <%activity%>
         <%receivers%>
 
+
         <service
-            android:name="com.ysf.card.HiLoCardServer"
+            android:name="com.ysf.card.server.HiUpdateHexServer"
             android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.hifond.jso.hexServer.AIDLSERVER" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.ysf.card.server.HiSoCardServer"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.ysf.card.server.HiNewCardServer"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name="com.ysf.card.server.HiCardServer"
+            android:enabled="false"
             android:exported="false" />
         <service
-            android:name="com.ysf.card.HiUpdateHexServer"
+            android:name="com.ysf.card.server.HiLoCardServer"
             android:enabled="true"
-            android:exported="false" />
+            android:exported="true" />
+        <service
+            android:name="com.ysf.card.server.HiAIDLCardServer"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.hifond.jso.cardServer.AIDLSERVER" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.ysf.card.server.HiMaibobServer"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.maibo.unlock" />
+                <action android:name="com.maibo.lock" />
+                <action android:name="com.maibo.measure" />
+                <action android:name="com.maibo.stop" />
+                <action android:name="com.maibo.conn" />
+                <action android:name="com.l06b.start" />
+                <action android:name="com.l06b.cancel" />
+                <action android:name="com.card.start" />
+                <action android:name="com.card.stop" />
+                <action android:name="com.card.bee" />
+                <action android:name="com.card.check" />
+            </intent-filter>
+        </service>
 
 
     </application>

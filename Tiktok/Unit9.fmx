@@ -1,0 +1,71 @@
+object Form9: TForm9
+  Left = 0
+  Top = 0
+  Caption = 'Form9'
+  ClientHeight = 480
+  ClientWidth = 357
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object AuthLogin: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 26.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Get Auth Url'
+    OnClick = AuthLoginClick
+  end
+  object edtAccessToken: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Position.X = 32.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 317.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object btnGetUserInfo: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 232.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Get User Info'
+    OnClick = btnGetUserInfoClick
+  end
+  object btnGetVideoList: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 272.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Get Video List'
+    OnClick = btnGetVideoListClick
+  end
+  object btnUploadVideo: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 318.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Upload Video'
+    OnClick = btnUploadVideoClick
+  end
+  object btnGetQRCode: TButton
+    Position.X = 56.000000000000000000
+    Position.Y = 384.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Get QR Code'
+    OnClick = btnGetQRCodeClick
+  end
+end

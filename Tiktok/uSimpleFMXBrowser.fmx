@@ -1,0 +1,99 @@
+object SimpleFMXBrowserFrm: TSimpleFMXBrowserFrm
+  Left = 0
+  Top = 0
+  Caption = 'Initializing browser. Please wait...'
+  ClientHeight = 600
+  ClientWidth = 1000
+  Position = ScreenCenter
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnCloseQuery = FormCloseQuery
+  OnResize = FormResize
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object AddressPnl: TPanel
+    Align = Top
+    Enabled = False
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 1000.000000000000000000
+    Size.Height = 35.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object AddressEdt: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      TabOrder = 0
+      Text = 'https://www.google.com'
+      Size.Width = 908.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Layout1: TLayout
+      Align = Right
+      Padding.Left = 5.000000000000000000
+      Position.X = 913.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 82.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object GoBtn: TButton
+        Align = Left
+        Position.X = 5.000000000000000000
+        Size.Width = 36.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Text = 'Go'
+        OnClick = GoBtnClick
+      end
+      object SnapShotBtn: TButton
+        Align = Right
+        StyledSettings = [Style, FontColor]
+        Position.X = 46.000000000000000000
+        Size.Width = 36.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 2
+        Text = #181
+        TextSettings.Font.Family = 'Webdings'
+        TextSettings.Font.Size = 24.000000000000000000
+        OnClick = SnapShotBtnClick
+      end
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 300
+    OnTimer = Timer1Timer
+    Left = 40
+    Top = 129
+  end
+  object SaveDialog1: TSaveDialog
+    Left = 40
+    Top = 192
+  end
+  object tmrLoadEnd: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = tmrLoadEndTimer
+    Left = 568
+    Top = 256
+  end
+  object FMXChromium1: TFMXChromium
+    OnLoadEnd = FMXChromium1LoadEnd
+    OnBeforeContextMenu = FMXChromium1BeforeContextMenu
+    OnContextMenuCommand = FMXChromium1ContextMenuCommand
+    OnBeforePopup = FMXChromium1BeforePopup
+    OnAfterCreated = FMXChromium1AfterCreated
+    OnBeforeClose = FMXChromium1BeforeClose
+    OnClose = FMXChromium1Close
+    Left = 40
+    Top = 65
+  end
+end

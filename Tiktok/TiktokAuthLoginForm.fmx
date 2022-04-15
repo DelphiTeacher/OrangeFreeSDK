@@ -1,0 +1,19 @@
+object frmTiktokAuthLogin: TfrmTiktokAuthLogin
+  Left = 0
+  Top = 0
+  Caption = 'Tiktok Auth Login'
+  ClientHeight = 480
+  ClientWidth = 447
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object WebBrowser1: TWebBrowser
+    Align = Client
+    Size.Width = 447.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    WindowsEngine = IEOnly
+  end
+end

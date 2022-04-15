@@ -69,6 +69,7 @@ type
 
 
 
+function GetUrlQueryParameterValue(URL:String;HasWWW:Boolean;AParamName:String):String;
 function ParseUrlQueryParameters(URL:String;HasWWW:Boolean=True):TInterfaceParameters;
 
 //function GetMimeType(AFileName:String):String;overload;
@@ -226,6 +227,18 @@ begin
 
 end;
 
+
+function GetUrlQueryParameterValue(URL:String;HasWWW:Boolean;AParamName:String):String;
+var
+  AInterfaceParameters:TInterfaceParameters;
+begin
+  AInterfaceParameters:=ParseUrlQueryParameters(URL,HasWWW);
+  if AInterfaceParameters.FindItemByName(AParamName)<>nil then
+  begin
+    Result:=AInterfaceParameters.FindItemByName(AParamName).FValue;
+  end;
+  FreeAndNil(AInterfaceParameters);
+end;
 
 { TInterfaceParameter }
 

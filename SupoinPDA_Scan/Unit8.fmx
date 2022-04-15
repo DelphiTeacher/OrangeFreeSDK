@@ -32,7 +32,7 @@ object Form8: TForm8
     Size.Height = 297.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 2
-    Viewport.Width = 285.000000000000000000
-    Viewport.Height = 293.000000000000000000
+    Viewport.Width = 289.000000000000000000
+    Viewport.Height = 297.000000000000000000
   end
 end

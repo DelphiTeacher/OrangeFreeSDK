@@ -282,22 +282,25 @@
         <DCCReference Include="..\OrangeProjectCommon\XSuperObject\XSuperJSON.pas"/>
         <DCCReference Include="..\OrangeProjectCommon\XSuperObject\XSuperObject.pas"/>
         <DCCReference Include="ReadHospitalCardSDK\Androidapi.JNI.myysflibrary.pas"/>
-        <JavaReference Include="ReadHospitalCardSDK\YSF-release_aar\YSF-release.aar.jar">
-            <Disabled/>
-        </JavaReference>
         <JavaReference Include="ReadHospitalCardSDK\myysflibrary.jar">
             <Disabled/>
         </JavaReference>
         <JavaReference Include="ReadHospitalCardSDK\xlog.1.4.0.jar">
             <Disabled/>
         </JavaReference>
-        <JavaReference Include="ReadHospitalCardSDK\fastjson-1.2.2.jar">
-            <Disabled/>
-        </JavaReference>
         <JavaReference Include="ReadHospitalCardSDK\eventbus-3.1.1.jar">
             <Disabled/>
         </JavaReference>
         <JavaReference Include="ReadHospitalCardSDK\SunmiOpenService-1.6.6.jar">
+            <Disabled/>
+        </JavaReference>
+        <JavaReference Include="ReadHospitalCardSDK\YSF-release_aar\YSF-release.aar.jar">
+            <Disabled/>
+        </JavaReference>
+        <JavaReference Include="ReadHospitalCardSDK\YSF-release_aar\libs\cardapdu.jar">
+            <Disabled/>
+        </JavaReference>
+        <JavaReference Include="ReadHospitalCardSDK\fastjson-1.2.28.jar">
             <Disabled/>
         </JavaReference>
         <BuildConfiguration Include="Release">
@@ -322,27 +325,8 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHifondCard.so" Class="File">
+                <DeployFile LocalName="Android\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest">
                     <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libHifondCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libHifondCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libnative-lib.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libnative-lib.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libnative-lib.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -368,15 +352,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libwlt2bmp.so" Class="File">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24">
                     <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libwlt2bmp.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libwlt2bmp.so</RemoteName>
+                        <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -386,9 +364,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24">
+                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libwlt2bmp.so" Class="File">
                     <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
+                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
+                        <RemoteName>libwlt2bmp.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
+                        <RemoteName>libwlt2bmp.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -404,87 +388,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHSRAW2BMP.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libHSRAW2BMP.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libHSRAW2BMP.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHdosIdentityCard.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libHdosIdentityCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libHdosIdentityCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libnative-lib.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libnative-lib.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libnative-lib.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHdosIdentityCard.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libHdosIdentityCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libHdosIdentityCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\Release\classes.dex" Configuration="Release" Class="AndroidClassesDexFile">
-                    <Platform Name="Android">
-                        <RemoteName>classes.dex</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libserial_tool.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libserial_tool.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libserial_tool.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libserial_tool.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libserial_tool.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libserial_tool.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -511,21 +417,21 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libIdentityCardUart.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libIdentityCardUart.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libIdentityCardUart.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libcardapdu.so" Class="File">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
+                        <RemoteName>libcardapdu.so</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
+                        <RemoteName>libcardapdu.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -540,8 +446,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72">
+                    <Platform Name="Android">
+                        <RemoteName>ic_notification.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -557,9 +464,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72">
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96">
                     <Platform Name="Android">
                         <RemoteName>ic_notification.png</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -568,38 +480,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96">
-                    <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\res\values\values_YSF_release_aar.xml" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>values.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\values\</RemoteDir>
-                        <RemoteName>values.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libIdentityCardUart.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libIdentityCardUart.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libIdentityCardUart.so</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -632,38 +514,15 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHifondCard.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libHifondCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi-v7a\</RemoteDir>
-                        <RemoteName>libHifondCard.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libwlt2bmp.so" Class="File">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libwlt2bmp.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi\</RemoteDir>
-                        <RemoteName>libwlt2bmp.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Release" Class="Android_LauncherIcon192">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest">
+                <DeployFile LocalName="Android\Release\classes.dex" Configuration="Release" Class="AndroidClassesDexFile">
                     <Platform Name="Android">
+                        <RemoteName>classes.dex</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

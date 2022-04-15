@@ -320,27 +320,40 @@ begin
 
   AJDVListConfig_Builder:=TJMediaSelectorManager.JavaClass.getDefaultListConfigBuilder;
 
-  //设置选择资源的类型
-  case FSelectMediaDialog.SelectMediaType of
-    smtImage:
-    begin
-        AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.PHOTO)
-    end;
-    smtImageVideo:
-    begin
+//  //设置选择资源的类型
+//  case FSelectMediaDialog.SelectMediaType of
+//    smtImage:
+//    begin
+//        AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.PHOTO)
+//    end;
+//    smtImageVideo:
+//    begin
+//        AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.ALL)
+//    end;
+//    smtVideo:
+//    begin
+//        AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.VIDEO)
+//    end;
+//  end;
+  if (smtImage in FSelectMediaDialog.SelectMediaType) and (smtVideo in FSelectMediaDialog.SelectMediaType) then
+  begin
         AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.ALL)
-    end;
-    smtVideo:
-    begin
+  end
+  else if (smtImage in FSelectMediaDialog.SelectMediaType) then
+  begin
+        AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.PHOTO)
+  end
+  else if (smtVideo in FSelectMediaDialog.SelectMediaType) then
+  begin
         AJDVListConfig_Builder.mediaType(TJDVMediaType.JavaClass.VIDEO)
-    end;
   end;
 
 
 
   config:=AJDVListConfig_Builder
     ////是否多选
-    .multiSelect(False)
+//    .multiSelect(False)
+    .multiSelect(FSelectMediaDialog.IsMultiSelect)
     ////最大选择数量
     .maxNum(FSelectMediaDialog.MaxSelectCount)
     ////最小选择数量
@@ -353,7 +366,7 @@ begin
 
     ////设置选中图标
     //.checkIconResource(R.mipmap.icon_dv_checked)
-    ////设置非选中图标
+    ////设置非选中图标         d
     //.unCheckIconResource(R.mipmap.icon_dv_unchecked)
 //    // 使用沉浸式状态栏
 //    .statusBarColor(TJColor.JavaClass.RED)

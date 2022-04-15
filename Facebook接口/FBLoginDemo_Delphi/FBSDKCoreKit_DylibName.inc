@@ -1,0 +1,1 @@
+'FacebookSDK\IOS_4_6\FBSDKCoreKit.framework\FBSDKCoreKit'

@@ -174,7 +174,7 @@ type
 //  Jd_2_128 = interface; //com.devil.library.media.utils.d$2
 //  Jd_a = interface; //com.devil.library.media.utils.d$a
 //  Jd_130 = interface; //com.devil.library.media.utils.d
-  JDVFileProvider = interface; //com.devil.library.media.utils.DVFileProvider
+//  JDVFileProvider = interface; //com.devil.library.media.utils.DVFileProvider
 //  Je_a = interface; //com.devil.library.media.utils.e$a
 //  Je_133 = interface; //com.devil.library.media.utils.e
 //  Jf_134 = interface; //com.devil.library.media.utils.f
@@ -3564,27 +3564,27 @@ type
 
 //  TJd_130 = class(TJavaGenericImport<Jd_130Class, Jd_130>) end;
 
-  JDVFileProviderClass = interface(JFileProviderClass) // or JObjectClass // SuperSignature: android/support/v4/content/FileProvider
-  ['{BEF789AF-FE40-4E44-967B-F9F204C52026}']
-    { static Property Methods }
-
-    { static Methods }
-    {class} function init: JDVFileProvider; cdecl; //()V
-
-    { static Property }
-  end;
-
-  [JavaSignature('com/devil/library/media/utils/DVFileProvider')]
-  JDVFileProvider = interface(JFileProvider) // or JObject // SuperSignature: android/support/v4/content/FileProvider
-  ['{1AF4411F-7997-4094-B315-D17FF2D82589}']
-    { Property Methods }
-
-    { methods }
-
-    { Property }
-  end;
-
-  TJDVFileProvider = class(TJavaGenericImport<JDVFileProviderClass, JDVFileProvider>) end;
+//  JDVFileProviderClass = interface(JFileProviderClass) // or JObjectClass // SuperSignature: android/support/v4/content/FileProvider
+//  ['{BEF789AF-FE40-4E44-967B-F9F204C52026}']
+//    { static Property Methods }
+//
+//    { static Methods }
+//    {class} function init: JDVFileProvider; cdecl; //()V
+//
+//    { static Property }
+//  end;
+//
+//  [JavaSignature('com/devil/library/media/utils/DVFileProvider')]
+//  JDVFileProvider = interface(JFileProvider) // or JObject // SuperSignature: android/support/v4/content/FileProvider
+//  ['{1AF4411F-7997-4094-B315-D17FF2D82589}']
+//    { Property Methods }
+//
+//    { methods }
+//
+//    { Property }
+//  end;
+//
+//  TJDVFileProvider = class(TJavaGenericImport<JDVFileProviderClass, JDVFileProvider>) end;
 
 //  Je_aClass = interface(JObjectClass)
 //  ['{9880B87F-6AE7-4DAF-BCBD-1228FE913C53}']

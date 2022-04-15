@@ -134,10 +134,11 @@ begin
 
 //    //´òÓ¡¶þÎ¬Âë
 //    FSunmiPrinterHelper.FJSunmiPrinterService.sendRAWData(TJBytesUtil.JavaClass.getZXingQRCode(StringToJString('www.orangeui.cn'),300));
-//    FSunmiPrinterHelper.FJSunmiPrinterService.printQRCode(StringToJString('www.orangeui.cn'),30,30,nil);
+    FSunmiPrinterHelper.FJSunmiPrinterService.printQRCode(StringToJString('www.orangeui.cn'),4,3,nil);
+//    FSunmiPrinterHelper.FJSunmiPrinterService.print2DCode(StringToJString('www.orangeui.cn'),1,4,3,nil);
     //ÇÐÖ½
 //    FSunmiPrinterHelper.FJSunmiPrinterService.sendRAWData(TJBytesUtil.JavaClass.CutPaper);
-    FSunmiPrinterHelper.FJSunmiPrinterService.cutPaper(nil);
+//    FSunmiPrinterHelper.FJSunmiPrinterService.cutPaper(nil);
 //    //×Ô¼ì
 //    FSunmiPrinterHelper.FJSunmiPrinterService.sendRAWData(TJBytesUtil.JavaClass.selfCheck);
 //    FSunmiPrinterHelper.FJSunmiPrinterService.commitTransaction;

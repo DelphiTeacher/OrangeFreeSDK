@@ -323,6 +323,7 @@ begin
   FReadCardBroadcastReceiver:=TJFMXBroadcastReceiver.JavaClass.init(FReadCardBroadcastListener);
 
   FReadCardIntentFilter:=TJIntentFilter.JavaClass.init;
+  //com.hifond.CARD_DATA                         //com.hifond.CARD_DATA
   FReadCardIntentFilter.addAction(StringToJString('com.hifond.CARD_DATA'));
 
   SharedActivity.registerReceiver(FReadCardBroadcastReceiver, FReadCardIntentFilter);

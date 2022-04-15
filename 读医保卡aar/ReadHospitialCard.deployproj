@@ -4,7 +4,7 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'">0123456789ABCDEF</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android'"/>
         <DeviceId Condition="'$(Platform)'=='Android64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimulator'">iPhone5</DeviceId>
@@ -26,20 +26,11 @@
     <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
     <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
     <ItemGroup Condition="'$(Platform)'=='Android'">
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHdosIdentityCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libHdosIdentityCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHifondCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libHifondCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ReadHospitialCard\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -80,11 +71,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libwlt2bmp.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libwlt2bmp.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ReadHospitialCard\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -98,11 +89,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
-            <RemoteDir>ReadHospitialCard\res\drawable-mdpi\</RemoteDir>
-            <RemoteName>ic_notification.png</RemoteName>
-            <DeployClass>Android_NotificationIcon24</DeployClass>
-            <Operation>1</Operation>
+        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libwlt2bmp.so">
+            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libwlt2bmp.so</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -116,74 +107,11 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHSRAW2BMP.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libHSRAW2BMP.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libnative-lib.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libnative-lib.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>ReadHospitialCard\res\drawable-hdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
             <DeployClass>Android_LauncherIcon72</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHdosIdentityCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libHdosIdentityCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libnative-lib.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libnative-lib.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
-            <RemoteDir>ReadHospitialCard\</RemoteDir>
-            <RemoteName>AndroidManifest.xml</RemoteName>
-            <DeployClass>ProjectAndroidManifest</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libserial_tool.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libserial_tool.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libserial_tool.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libserial_tool.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -225,15 +153,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libIdentityCardUart.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libIdentityCardUart.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>ReadHospitialCard\res\drawable-xhdpi\</RemoteDir>
             <RemoteName>ic_launcher.png</RemoteName>
@@ -243,10 +162,28 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libcardapdu.so">
+            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libcardapdu.so</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="Android\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
             <RemoteDir>ReadHospitialCard\res\values-v21\</RemoteDir>
             <RemoteName>styles.xml</RemoteName>
             <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ReadHospitialCard\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -270,10 +207,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
-            <RemoteDir>ReadHospitialCard\res\drawable-xxhdpi\</RemoteDir>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ReadHospitialCard\res\drawable-xxxhdpi\</RemoteDir>
             <RemoteName>ic_notification.png</RemoteName>
-            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -284,33 +221,6 @@
             <RemoteName>strings.xml</RemoteName>
             <DeployClass>Android_Strings</DeployClass>
             <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
-            <RemoteDir>ReadHospitialCard\res\drawable-xxxhdpi\</RemoteDir>
-            <RemoteName>ic_notification.png</RemoteName>
-            <DeployClass>Android_NotificationIcon96</DeployClass>
-            <Operation>1</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\res\values\values_YSF_release_aar.xml">
-            <RemoteDir>ReadHospitialCard\res\values\</RemoteDir>
-            <RemoteName>values.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libIdentityCardUart.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libIdentityCardUart.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -351,24 +261,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHifondCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libHifondCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libwlt2bmp.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libwlt2bmp.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="Android\Release\classes.dex" Condition="'$(Config)'=='Release'">
             <RemoteDir>ReadHospitialCard\classes\</RemoteDir>
             <RemoteName>classes.dex</RemoteName>
@@ -378,10 +270,10 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
-            <RemoteDir>ReadHospitialCard\res\drawable-xxxhdpi\</RemoteDir>
-            <RemoteName>ic_launcher.png</RemoteName>
-            <DeployClass>Android_LauncherIcon192</DeployClass>
+        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>ReadHospitialCard\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
             <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
@@ -418,24 +310,6 @@
         </DeployFile>
     </ItemGroup>
     <ItemGroup Condition="'$(Platform)'=='Android64'">
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHdosIdentityCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libHdosIdentityCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHifondCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libHifondCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libwlt2bmp.so">
             <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
             <RemoteName>libwlt2bmp.so</RemoteName>
@@ -445,81 +319,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libHSRAW2BMP.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libHSRAW2BMP.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libnative-lib.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libnative-lib.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHdosIdentityCard.so">
+        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libcardapdu.so">
             <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libHdosIdentityCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libnative-lib.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libnative-lib.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libserial_tool.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libserial_tool.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libserial_tool.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libserial_tool.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libIdentityCardUart.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libIdentityCardUart.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\res\values\values_YSF_release_aar.xml">
-            <RemoteDir>ReadHospitialCard\res\values\</RemoteDir>
-            <RemoteName>values.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libIdentityCardUart.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libIdentityCardUart.so</RemoteName>
+            <RemoteName>libcardapdu.so</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -529,24 +331,6 @@
         <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHSRAW2BMP.so">
             <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
             <RemoteName>libHSRAW2BMP.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi-v7a\libHifondCard.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>libHifondCard.so</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="ReadHospitalCardSDK\YSF-release_aar\jni\armeabi\libwlt2bmp.so">
-            <RemoteDir>ReadHospitialCard\library\lib\armeabi\</RemoteDir>
-            <RemoteName>libwlt2bmp.so</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>

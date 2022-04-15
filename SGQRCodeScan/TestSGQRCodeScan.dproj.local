@@ -17,8 +17,8 @@
     <Transaction>1899-12-30 00:00:00.000.262,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.SGQRCodeScanView.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.774,C:\OrangeFreeSDK\SGQRCodeScan\TestSGQRCodeScan.dproj=C:\OrangeFreeSDK\SGQRCodeScan\Test.dproj</Transaction>
     <Transaction>1899-12-30 00:00:00.000.051,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.WBQRCodeVC.pas</Transaction>
-    <Transaction>1899-12-30 00:00:00.000.021,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtain.pas</Transaction>
     <Transaction>1899-12-30 00:00:00.000.354,=C:\OrangeFreeSDK\SGQRCodeScan\SGQRCodeScanSDK\iOSApi.WBQRCodeVC.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.021,=C:\OrangeFreeSDK\SGQRCodeScan\iOSApi.SGQRCodeObtain.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<PMyMac iOSSimulator="iPhone5" iOSDevice64="_iosdevice_ca9e94c68b79853a43785444de637c0032e97471" iOSDevice32=""/>

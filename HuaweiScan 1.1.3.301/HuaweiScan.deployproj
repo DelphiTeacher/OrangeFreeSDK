@@ -1,0 +1,2284 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='Android'">b559c25e02ef</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android64'">b559c25e02ef</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSSimulator'">iPhone5</DeviceId>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'"/>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Android'">
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bn\values-bn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bn\</RemoteDir>
+            <RemoteName>values-bn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-en\values-en_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-en\</RemoteDir>
+            <RemoteName>values-en_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-fa\values-fa_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-fa\</RemoteDir>
+            <RemoteName>values-fa_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-gl-rES\values-gl-rES_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-gl-rES\</RemoteDir>
+            <RemoteName>values-gl-rES_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-it\values-it_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-it\</RemoteDir>
+            <RemoteName>values-it_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_flashlight_on.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mr\values-mr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mr\</RemoteDir>
+            <RemoteName>values-mr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_zxl_capture.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sl\values-sl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sl\</RemoteDir>
+            <RemoteName>values-sl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mi\values-mi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mi\</RemoteDir>
+            <RemoteName>values-mi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-te\values-te_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-te\</RemoteDir>
+            <RemoteName>values-te_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-or\values-or_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-or\</RemoteDir>
+            <RemoteName>values-or_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-camera-inner-1.0.3.340_aar\res\values\values_ml_computer_camera_inner_1_0_3_340_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_ml_computer_camera_inner_1_0_3_340_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-be\values-be_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-be\</RemoteDir>
+            <RemoteName>values-be_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-kn\values-kn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-kn\</RemoteDir>
+            <RemoteName>values-kn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ko\values-ko_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ko\</RemoteDir>
+            <RemoteName>values-ko_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-my-rZG\values-my-rZG_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-my-rZG\</RemoteDir>
+            <RemoteName>values-my-rZG_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>agconnect-services.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pt\values-pt_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pt\</RemoteDir>
+            <RemoteName>values-pt_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pt-rPT\values-pt-rPT_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pt-rPT\</RemoteDir>
+            <RemoteName>values-pt-rPT_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-tr\values-tr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_back.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-fi\values-fi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-fi\</RemoteDir>
+            <RemoteName>values-fi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-et\values-et_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-et\</RemoteDir>
+            <RemoteName>values-et_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-gu\values-gu_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-gu\</RemoteDir>
+            <RemoteName>values-gu_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ta\values-ta_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ta\</RemoteDir>
+            <RemoteName>values-ta_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-grs-4.0.2.300_aar\res\values\values_network_grs_4_0_2_300_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_network_grs_4_0_2_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lv\values-lv_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-lv\</RemoteDir>
+            <RemoteName>values-lv_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-si-rLK\values-si-rLK_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-si-rLK\</RemoteDir>
+            <RemoteName>values-si-rLK_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-da\values-da_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-da\</RemoteDir>
+            <RemoteName>values-da_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-hu\values-hu_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-hu\</RemoteDir>
+            <RemoteName>values-hu_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-my-rMM\values-my-rMM_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-my-rMM\</RemoteDir>
+            <RemoteName>values-my-rMM_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sk\values-sk_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sk\</RemoteDir>
+            <RemoteName>values-sk_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-fr\values-fr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-fr\</RemoteDir>
+            <RemoteName>values-fr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-ha-inner-1.0.3.340_aar\assets\hianalytics_njjn">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>hianalytics_njjn</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lo-rLA\values-lo-rLA_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-lo-rLA\</RemoteDir>
+            <RemoteName>values-lo-rLA_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-ha-inner-1.0.3.340_aar\assets\grs_sdk_global_route_config_mlkit.json">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>grs_sdk_global_route_config_mlkit.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_flash_selected_selector2.xml">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flash_selected_selector2.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ro\values-ro_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ro\</RemoteDir>
+            <RemoteName>values-ro_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-grs-4.0.2.300_aar\assets\grs_sp.bks">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>grs_sp.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-vi\values-vi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-vi\</RemoteDir>
+            <RemoteName>values-vi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-th\values-th_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-th\</RemoteDir>
+            <RemoteName>values-th_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-de\values-de_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-de\</RemoteDir>
+            <RemoteName>values-de_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-common-4.0.2.300_aar\res\values\values_network_common_4_0_2_300_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_network_common_4_0_2_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-tl\values-tl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-tl\</RemoteDir>
+            <RemoteName>values-tl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-as\values-as_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-as\</RemoteDir>
+            <RemoteName>values-as_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values\values_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_photo.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_photo.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mn\values-mn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mn\</RemoteDir>
+            <RemoteName>values-mn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-zh\values-zh_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-zh\</RemoteDir>
+            <RemoteName>values-zh_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-hi\values-hi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-hi\</RemoteDir>
+            <RemoteName>values-hi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-es-rUS\values-es-rUS_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-es-rUS\</RemoteDir>
+            <RemoteName>values-es-rUS_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-am\values-am_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-am\</RemoteDir>
+            <RemoteName>values-am_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_dialog_bg.xml">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_dialog_bg.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ja\values-ja_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ja\</RemoteDir>
+            <RemoteName>values-ja_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lt\values-lt_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-lt\</RemoteDir>
+            <RemoteName>values-lt_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\libHuaweiScan.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\mips\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_dialog_layout.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_dialog_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ar\values-ar_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ar\</RemoteDir>
+            <RemoteName>values-ar_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_flashlight_off.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ca\values-ca_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ca\</RemoteDir>
+            <RemoteName>values-ca_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-hr\values-hr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-hr\</RemoteDir>
+            <RemoteName>values-hr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-b+sr+Latn\values-b+sr+Latn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-b+sr+Latn\</RemoteDir>
+            <RemoteName>values-b+sr+Latn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-kk-rKZ\values-kk-rKZ_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-kk-rKZ\</RemoteDir>
+            <RemoteName>values-kk-rKZ_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mai\values-mai_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mai\</RemoteDir>
+            <RemoteName>values-mai_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ml\values-ml_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-nl\values-nl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-nl\</RemoteDir>
+            <RemoteName>values-nl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sw\values-sw_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sw\</RemoteDir>
+            <RemoteName>values-sw_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ru\values-ru_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ru\</RemoteDir>
+            <RemoteName>values-ru_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-zh-rHK\values-zh-rHK_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-zh-rHK\</RemoteDir>
+            <RemoteName>values-zh-rHK_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-in\values-in_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-in\</RemoteDir>
+            <RemoteName>values-in_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-km-rKH\values-km-rKH_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-km-rKH\</RemoteDir>
+            <RemoteName>values-km-rKH_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\classes.dex" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\classes\</RemoteDir>
+            <RemoteName>classes.dex</RemoteName>
+            <DeployClass>AndroidClassesDexFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ur\values-ur_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ur\</RemoteDir>
+            <RemoteName>values-ur_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_layout.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-nb\values-nb_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-nb\</RemoteDir>
+            <RemoteName>values-nb_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-iw\values-iw_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-iw\</RemoteDir>
+            <RemoteName>values-iw_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-ha-inner-1.0.3.340_aar\assets\updatesdkcas.bks">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>updatesdkcas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-eu-rES\values-eu-rES_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-eu-rES\</RemoteDir>
+            <RemoteName>values-eu-rES_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-grs-4.0.2.300_aar\assets\grs_sdk_server_config.json">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>grs_sdk_server_config.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ug\values-ug_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ug\</RemoteDir>
+            <RemoteName>values-ug_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bo-rCN\values-bo-rCN_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bo-rCN\</RemoteDir>
+            <RemoteName>values-bo-rCN_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-es\values-es_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-es\</RemoteDir>
+            <RemoteName>values-es_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-en-rGB\values-en-rGB_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-en-rGB\</RemoteDir>
+            <RemoteName>values-en-rGB_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-uz-rUZ\values-uz-rUZ_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-uz-rUZ\</RemoteDir>
+            <RemoteName>values-uz-rUZ_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-az-rAZ\values-az-rAZ_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-az-rAZ\</RemoteDir>
+            <RemoteName>values-az-rAZ_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pa\values-pa_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pa\</RemoteDir>
+            <RemoteName>values-pa_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mk\values-mk_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mk\</RemoteDir>
+            <RemoteName>values-mk_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-zh-rTW\values-zh-rTW_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-zh-rTW\</RemoteDir>
+            <RemoteName>values-zh-rTW_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bg\values-bg_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bg\</RemoteDir>
+            <RemoteName>values-bg_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-b+jv+Latn\values-b+jv+Latn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-b+jv+Latn\</RemoteDir>
+            <RemoteName>values-b+jv+Latn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-el\values-el_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-el\</RemoteDir>
+            <RemoteName>values-el_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ka-rGE\values-ka-rGE_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ka-rGE\</RemoteDir>
+            <RemoteName>values-ka-rGE_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sv\values-sv_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sv\</RemoteDir>
+            <RemoteName>values-sv_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-cs\values-cs_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-cs\</RemoteDir>
+            <RemoteName>values-cs_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bs\values-bs_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bs\</RemoteDir>
+            <RemoteName>values-bs_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pl\values-pl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pl\</RemoteDir>
+            <RemoteName>values-pl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ms\values-ms_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ms\</RemoteDir>
+            <RemoteName>values-ms_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-uk\values-uk_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-uk\</RemoteDir>
+            <RemoteName>values-uk_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_zxl_capture_customed.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture_customed.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ne\values-ne_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ne\</RemoteDir>
+            <RemoteName>values-ne_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimulator'">
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib">
+            <RemoteDir>HuaweiScan.app\</RemoteDir>
+            <RemoteName>libcgunwind.1.0.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\Redist\iossimulator\libpcre.dylib">
+            <RemoteDir>HuaweiScan.app\</RemoteDir>
+            <RemoteName>libpcre.dylib</RemoteName>
+            <DeployClass>DependencyModule</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Android64'">
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bn\values-bn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bn\</RemoteDir>
+            <RemoteName>values-bn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-en\values-en_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-en\</RemoteDir>
+            <RemoteName>values-en_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-fa\values-fa_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-fa\</RemoteDir>
+            <RemoteName>values-fa_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-gl-rES\values-gl-rES_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-gl-rES\</RemoteDir>
+            <RemoteName>values-gl-rES_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-it\values-it_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-it\</RemoteDir>
+            <RemoteName>values-it_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_flashlight_on.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mr\values-mr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mr\</RemoteDir>
+            <RemoteName>values-mr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_zxl_capture.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sl\values-sl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sl\</RemoteDir>
+            <RemoteName>values-sl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mi\values-mi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mi\</RemoteDir>
+            <RemoteName>values-mi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-te\values-te_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-te\</RemoteDir>
+            <RemoteName>values-te_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-or\values-or_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-or\</RemoteDir>
+            <RemoteName>values-or_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-camera-inner-1.0.3.340_aar\res\values\values_ml_computer_camera_inner_1_0_3_340_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_ml_computer_camera_inner_1_0_3_340_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-be\values-be_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-be\</RemoteDir>
+            <RemoteName>values-be_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-kn\values-kn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-kn\</RemoteDir>
+            <RemoteName>values-kn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ko\values-ko_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ko\</RemoteDir>
+            <RemoteName>values-ko_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-my-rZG\values-my-rZG_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-my-rZG\</RemoteDir>
+            <RemoteName>values-my-rZG_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pt\values-pt_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pt\</RemoteDir>
+            <RemoteName>values-pt_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pt-rPT\values-pt-rPT_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pt-rPT\</RemoteDir>
+            <RemoteName>values-pt-rPT_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-tr\values-tr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_back.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-fi\values-fi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-fi\</RemoteDir>
+            <RemoteName>values-fi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-et\values-et_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-et\</RemoteDir>
+            <RemoteName>values-et_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-gu\values-gu_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-gu\</RemoteDir>
+            <RemoteName>values-gu_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ta\values-ta_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ta\</RemoteDir>
+            <RemoteName>values-ta_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-grs-4.0.2.300_aar\res\values\values_network_grs_4_0_2_300_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_network_grs_4_0_2_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lv\values-lv_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-lv\</RemoteDir>
+            <RemoteName>values-lv_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-si-rLK\values-si-rLK_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-si-rLK\</RemoteDir>
+            <RemoteName>values-si-rLK_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-da\values-da_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-da\</RemoteDir>
+            <RemoteName>values-da_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\classes.dex" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\classes\</RemoteDir>
+            <RemoteName>classes.dex</RemoteName>
+            <DeployClass>AndroidClassesDexFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-hu\values-hu_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-hu\</RemoteDir>
+            <RemoteName>values-hu_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-my-rMM\values-my-rMM_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-my-rMM\</RemoteDir>
+            <RemoteName>values-my-rMM_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sk\values-sk_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sk\</RemoteDir>
+            <RemoteName>values-sk_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-fr\values-fr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-fr\</RemoteDir>
+            <RemoteName>values-fr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-ha-inner-1.0.3.340_aar\assets\hianalytics_njjn">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>hianalytics_njjn</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lo-rLA\values-lo-rLA_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-lo-rLA\</RemoteDir>
+            <RemoteName>values-lo-rLA_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-ha-inner-1.0.3.340_aar\assets\grs_sdk_global_route_config_mlkit.json">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>grs_sdk_global_route_config_mlkit.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_flash_selected_selector2.xml">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flash_selected_selector2.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ro\values-ro_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ro\</RemoteDir>
+            <RemoteName>values-ro_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-grs-4.0.2.300_aar\assets\grs_sp.bks">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>grs_sp.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-vi\values-vi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-vi\</RemoteDir>
+            <RemoteName>values-vi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-th\values-th_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-th\</RemoteDir>
+            <RemoteName>values-th_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-de\values-de_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-de\</RemoteDir>
+            <RemoteName>values-de_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-common-4.0.2.300_aar\res\values\values_network_common_4_0_2_300_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_network_common_4_0_2_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-tl\values-tl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-tl\</RemoteDir>
+            <RemoteName>values-tl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-as\values-as_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-as\</RemoteDir>
+            <RemoteName>values-as_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\jni\arm64-v8a\libscannative.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\arm64-v8a\</RemoteDir>
+            <RemoteName>libscannative.so</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values\values_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>values_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_photo.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_photo.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiv7aFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mn\values-mn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mn\</RemoteDir>
+            <RemoteName>values-mn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-zh\values-zh_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-zh\</RemoteDir>
+            <RemoteName>values-zh_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-hi\values-hi_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-hi\</RemoteDir>
+            <RemoteName>values-hi_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-es-rUS\values-es-rUS_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-es-rUS\</RemoteDir>
+            <RemoteName>values-es-rUS_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-am\values-am_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-am\</RemoteDir>
+            <RemoteName>values-am_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\libHuaweiScan.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\arm64-v8a\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_dialog_bg.xml">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_dialog_bg.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ja\values-ja_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ja\</RemoteDir>
+            <RemoteName>values-ja_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-lt\values-lt_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-lt\</RemoteDir>
+            <RemoteName>values-lt_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_dialog_layout.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_dialog_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ar\values-ar_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ar\</RemoteDir>
+            <RemoteName>values-ar_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\drawable\scankit_flashlight_off.png">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ca\values-ca_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ca\</RemoteDir>
+            <RemoteName>values-ca_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-hr\values-hr_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-hr\</RemoteDir>
+            <RemoteName>values-hr_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-b+sr+Latn\values-b+sr+Latn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-b+sr+Latn\</RemoteDir>
+            <RemoteName>values-b+sr+Latn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-kk-rKZ\values-kk-rKZ_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-kk-rKZ\</RemoteDir>
+            <RemoteName>values-kk-rKZ_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mai\values-mai_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mai\</RemoteDir>
+            <RemoteName>values-mai_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ml\values-ml_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-nl\values-nl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-nl\</RemoteDir>
+            <RemoteName>values-nl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sw\values-sw_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sw\</RemoteDir>
+            <RemoteName>values-sw_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ru\values-ru_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ru\</RemoteDir>
+            <RemoteName>values-ru_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-zh-rHK\values-zh-rHK_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-zh-rHK\</RemoteDir>
+            <RemoteName>values-zh-rHK_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-in\values-in_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-in\</RemoteDir>
+            <RemoteName>values-in_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-km-rKH\values-km-rKH_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-km-rKH\</RemoteDir>
+            <RemoteName>values-km-rKH_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ur\values-ur_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ur\</RemoteDir>
+            <RemoteName>values-ur_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_layout.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-nb\values-nb_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-nb\</RemoteDir>
+            <RemoteName>values-nb_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-iw\values-iw_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-iw\</RemoteDir>
+            <RemoteName>values-iw_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\ml-computer-ha-inner-1.0.3.340_aar\assets\updatesdkcas.bks">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>updatesdkcas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-eu-rES\values-eu-rES_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-eu-rES\</RemoteDir>
+            <RemoteName>values-eu-rES_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\network-grs-4.0.2.300_aar\assets\grs_sdk_server_config.json">
+            <RemoteDir>HuaweiScan\assets\</RemoteDir>
+            <RemoteName>grs_sdk_server_config.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ug\values-ug_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ug\</RemoteDir>
+            <RemoteName>values-ug_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bo-rCN\values-bo-rCN_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bo-rCN\</RemoteDir>
+            <RemoteName>values-bo-rCN_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-es\values-es_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-es\</RemoteDir>
+            <RemoteName>values-es_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-en-rGB\values-en-rGB_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-en-rGB\</RemoteDir>
+            <RemoteName>values-en-rGB_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-uz-rUZ\values-uz-rUZ_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-uz-rUZ\</RemoteDir>
+            <RemoteName>values-uz-rUZ_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-az-rAZ\values-az-rAZ_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-az-rAZ\</RemoteDir>
+            <RemoteName>values-az-rAZ_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pa\values-pa_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pa\</RemoteDir>
+            <RemoteName>values-pa_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-mk\values-mk_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-mk\</RemoteDir>
+            <RemoteName>values-mk_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-zh-rTW\values-zh-rTW_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-zh-rTW\</RemoteDir>
+            <RemoteName>values-zh-rTW_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bg\values-bg_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bg\</RemoteDir>
+            <RemoteName>values-bg_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-b+jv+Latn\values-b+jv+Latn_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-b+jv+Latn\</RemoteDir>
+            <RemoteName>values-b+jv+Latn_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-el\values-el_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-el\</RemoteDir>
+            <RemoteName>values-el_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ka-rGE\values-ka-rGE_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ka-rGE\</RemoteDir>
+            <RemoteName>values-ka-rGE_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-sv\values-sv_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-sv\</RemoteDir>
+            <RemoteName>values-sv_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-cs\values-cs_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-cs\</RemoteDir>
+            <RemoteName>values-cs_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-bs\values-bs_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-bs\</RemoteDir>
+            <RemoteName>values-bs_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-pl\values-pl_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-pl\</RemoteDir>
+            <RemoteName>values-pl_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ms\values-ms_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ms\</RemoteDir>
+            <RemoteName>values-ms_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-uk\values-uk_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-uk\</RemoteDir>
+            <RemoteName>values-uk_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\layout\scankit_zxl_capture_customed.xml">
+            <RemoteDir>HuaweiScan\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture_customed.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\library\lib\mips\</RemoteDir>
+            <RemoteName>libHuaweiScan.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK\Android\scan-1.1.3.301_aar\res\values-ne\values-ne_scan_1_1_3_301_aar.xml">
+            <RemoteDir>HuaweiScan\res\values-ne\</RemoteDir>
+            <RemoteName>values-ne_scan_1_1_3_301_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+</Project>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Peka för mer ljus</string>
-    <string name="scankit_light_off">Slå av ljuset</string>
-    <string name="scankit_no_code_tip">Ingen kod detekterades.</string>
-    <string name="scankit_scan_tip">Placera koden inuti ramen</string>
-    <string name="scankit_title">Skanna</string>
-</resources>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Αγγίξτε για περισσότερο φως</string>
-    <string name="scankit_light_off">Απενεργοποίηση φωτισμού</string>
-    <string name="scankit_no_code_tip">Δεν ανιχνεύτηκε κωδικός</string>
-    <string name="scankit_scan_tip">Τοποθετήστε τον κωδικό μέσα στο πλαίσιο</string>
-    <string name="scankit_title">Σάρωση</string>
-</resources>

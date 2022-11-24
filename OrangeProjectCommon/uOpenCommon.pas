@@ -36,15 +36,135 @@ uses
   SysUtils;
 
 
+const
+  //编辑页面输入Panel的默认素材
+  Const_ControlStyle_EditPageInputPanelDefault='EditPageInputPanelDefault';
+  //编辑页面输入Label的默认素材
+  Const_ControlStyle_EditPageHintLabelDefult='EditPageHintLabelDefault';
+
+
+  {$REGION '页面框架的页面类型'}
+const
+  //页面框架的页面类型
+  //列表页面
+  Const_PageType_ListPage='list_page';
+  Const_PageType_TableManagePage='table_manage_page';
+  //编辑页面
+  Const_PageType_EditPage='edit_page';
+  //查看页面
+  Const_PageType_ViewPage='view_page';
+  //自定义页面
+  Const_PageType_CustomPage='custom_page';
+  //树型列表页面
+  Const_PageType_TreeListPage='tree_list_page';
+  //主从编辑页面
+  Const_PageType_MasterDetailEditPage='master_detail_edit_page';
+  //主从查看页面
+  Const_PageType_MasterDetailViewPage='master_detail_view_page';
+  {$ENDREGION '页面框架的页面类型'}
+
+
+  {$REGION '页面框架的页面区域'}
+const
+  //页面框架的页面区域
+  //主区域
+  Const_PagePart_Main='';
+  Const_PagePart_Grid='grid';
+  //搜索栏
+  Const_PagePart_SearchBar='search_bar';
+  //顶部工具栏
+  Const_PagePart_TopToolbar='top_toolbar';
+  //表格中的行操作区
+  Const_PagePart_RowOperBar='row_oper_bar';
+  //底部工具栏
+  Const_PagePart_BottomToolbar='bottom_toolbar';
+//  //其他
+//  Const_PagePart_Other='other';
+//  //列表页面的默认设计面板
+//  Const_PagePart_DefaultItemDesignerPanel='default_item_designer_panel';
+  {$ENDREGION '页面框架的页面区域'}
+
+
+  {$REGION '页面框架的操作'}
+const
+  //页面框架的操作
+  //跳转到新增页面
+  Const_PageAction_JumpToNewRecordPage='jump_to_new_record_page';
+  //跳转到编辑页面
+  Const_PageAction_JumpToEditRecordPage='jump_to_edit_record_page';
+  //跳转到自定义页面
+  Const_PageAction_JumpToPage='jump_to_page';
+  //跳转到查看页面
+  Const_PageAction_JumpToViewRecordPage='jump_to_view_record_page';
+  //跳转到主从新增页面
+  Const_PageAction_JumpToNewMasterDetailRecordPage='jump_to_new_master_detail_record_page';
+  //跳转到主从编辑页面
+  Const_PageAction_JumpToEditMasterDetailRecordPage='jump_to_edit_master_detail_record_page';
+  //跳转到主从查看页面
+  Const_PageAction_JumpToViewMasterDetailRecordPage='jump_to_view_master_detail_record_page';
+
+
+  //批量删除
+  Const_PageAction_BatchDelRecord='batch_del_record';
+  //批量保存
+  Const_PageAction_BatchSaveRecord='batch_save_record';
+  //搜索
+  Const_PageAction_LoadData='load_data';
+  //批量删除
+  Const_PageAction_DeleteRecordList='delete_record_list';
+  //新建
+  Const_PageAction_AddRecord='add_record';
+  //编辑
+  Const_PageAction_EditRecord='edit_record';
+  //取消
+  Const_PageAction_CancelAddEditRecord='cancel_add_edit_record';
+  //删除
+  Const_PageAction_DelRecord='del_record';
+  //返回
+  Const_PageAction_ReturnPage='return_page';
+  //关闭页面
+  Const_PageAction_ClosePage='close_page';
+  //保存
+  Const_PageAction_SaveRecord='save_record';
+  //取消保存
+  Const_PageAction_CancelSaveRecord='cancel_save_record';
+  //保存并返回
+  Const_PageAction_SaveRecordAndReturn='save_record_and_return';
+  //保存新增并继续新增
+  Const_PageAction_SaveRecordAndContinueAdd='save_record_and_continue_add';
+  //点击单元格
+  Const_PageAction_ClickCell='click_cell';
+  Const_PageAction_AfterSaveRecord='after_save_record';
+  Const_PageAction_AfterCancelAddRecord='after_cancel_add_record';
+  Const_PageAction_AfterCancelEditRecord='after_cancel_edit_record';
+
+
+  Const_PageAction_SelectDateArea='select_date_area';
+  Const_PageAction_ValueChange='value_change';
+  {$ENDREGION '页面框架的页面区域'}
+
+
+  {$REGION '页面布局类型'}
+const
+  //页面布局-自动
+  Const_PageAlignType_Auto='auto';
+  //页面布局-手动
+  Const_PageAlignType_Manual='manual';
+  {$ENDREGION '页面布局类型'}
+
+
+const
+  //接口类型
+  //通用接口
+  Const_IntfType_TableCommonRest='table_common_rest';
+
+
+
+
 
 const
   //页面框架的功能类型
   Const_FunctionType_DataManage='data_manage';
-
-const
-  //Rest接口签名类型
-  CONST_REST_SIGNTYPE_XFAPP='1';
-  CONST_REST_SIGNTYPE_MD5='md5';
 
 
 const
@@ -68,106 +188,6 @@ const
   Const_CaptchaType_shengshionline_gift='shengshionline_gift';
 
 
-  {$REGION '页面框架的页面类型'}
-const
-  //页面框架的页面类型
-  //列表页面
-  Const_PageType_ListPage='list_page';
-  //编辑页面
-  Const_PageType_EditPage='edit_page';
-  //查看页面
-  Const_PageType_ViewPage='view_page';
-  //自定义页面
-  Const_PageType_CustomPage='custom_page';
-  //树型列表页面
-  Const_PageType_TreeListPage='tree_list_page';
-  //主从编辑页面
-  Const_PageType_MasterDetailEditPage='master_detail_edit_page';
-  //主从查看页面
-  Const_PageType_MasterDetailViewPage='master_detail_view_page';
-  {$ENDREGION '页面框架的页面类型'}
-
-
-  {$REGION '页面框架的页面区域'}
-const
-  //页面框架的页面区域
-  //主区域
-  Const_PagePart_Main='';
-  //搜索栏
-  Const_PagePart_SearchBar='search_bar';
-  //顶部工具栏
-  Const_PagePart_TopToolbar='top_toolbar';
-  //表格中的行操作区
-  Const_PagePart_RowOperBar='row_oper_bar';
-  //底部工具栏
-  Const_PagePart_BottomToolbar='bottom_toolbar';
-//  //列表页面的默认设计面板
-//  Const_PagePart_DefaultItemDesignerPanel='default_item_designer_panel';
-  {$ENDREGION '页面框架的页面区域'}
-
-
-  {$REGION '页面框架的操作'}
-const
-  //页面框架的操作
-  //跳转到新增页面
-  Const_PageAction_JumpToNewRecordPage='jump_to_new_record_page';
-  //跳转到编辑页面
-  Const_PageAction_JumpToEditRecordPage='jump_to_edit_record_page';
-  Const_PageAction_JumpToPage='jump_to_page';
-  //跳转到查看页面
-  Const_PageAction_JumpToViewRecordPage='jump_to_view_record_page';
-  //跳转到主从新增页面
-  Const_PageAction_JumpToNewMasterDetailRecordPage='jump_to_new_master_detail_record_page';
-  //跳转到主从编辑页面
-  Const_PageAction_JumpToEditMasterDetailRecordPage='jump_to_edit_master_detail_record_page';
-  //跳转到主从查看页面
-  Const_PageAction_JumpToViewMasterDetailRecordPage='jump_to_view_master_detail_record_page';
-  //批量删除
-  Const_PageAction_BatchDelRecord='batch_del_record';
-  //批量保存
-  Const_PageAction_BatchSaveRecord='batch_save_record';
-  //搜索
-  Const_PageAction_SearchRecordList='search_record_list';
-  //删除
-  Const_PageAction_DelRecord='del_record';
-  //返回
-  Const_PageAction_ReturnPage='return_page';
-  //关闭页面
-  Const_PageAction_ClosePage='close_page';
-  //保存
-  Const_PageAction_SaveRecord='save_record';
-  //取消保存
-  Const_PageAction_CancelSaveRecord='cancel_save_record';
-  //保存并返回
-  Const_PageAction_SaveRecordAndReturn='save_record_and_return';
-  //保存新增并继续新增
-  Const_PageAction_SaveRecordAndContinueAdd='save_record_and_continue_add';
-  {$ENDREGION '页面框架的页面区域'}
-
-
-  {$REGION '页面布局类型'}
-const
-  //页面布局-自动
-  Const_PageAlignType_Auto='auto';
-  //页面布局-手动
-  Const_PageAlignType_Manual='manual';
-  {$ENDREGION '页面布局类型'}
-
-
-
-
-const
-  //编辑页面输入Panel的默认素材
-  Const_ControlStyle_EditPageInputPanelDefault='EditPageInputPanelDefault';
-  //编辑页面输入Label的默认素材
-  Const_ControlStyle_EditPageHintLabelDefult='EditPageHintLabelDefault';
-
-
-
-const
-  //接口类型
-  //通用接口
-  Const_IntfType_TableCommonRest='table_common_rest';
 
 
 
@@ -175,7 +195,12 @@ const
 
 const
   //开放平台的APPID
-  Const_OpenPlatform_AppID=1000;
+  Const_OpenPlatform_AppID='1000';
+
+//  //授权中心的服务器,默认都是
+//  CenterServerHost='www.orangeui.cn';
+//  CenterServerPort=10020;
+
 
 
   {$REGION '积分规则类型'}
@@ -427,8 +452,10 @@ const
   Const_PaymentType_BankTranser='bank_transer';
   //微信支付
   Const_PaymentType_WeiXinPay='wxpay';
+  Const_PaymentType_WeiXinPayScanQRCode='wxpay_scan_qrcode';
   //支付宝支付
   Const_PaymentType_Alipay='alipay';
+  Const_PaymentType_AlipayScanQRCode='alipay_scan_qrcode';
   //Pxpay支付
   Const_PaymentType_Pxpay='pxpay';
   //用户余额
@@ -905,14 +932,8 @@ type
 
 var
   //当前客户端版本号
+  CurrentVersionID:Cardinal;
   CurrentVersion:String;
-
-  //全局的加签方式
-  GlobalRestAPISignType:String;
-  //旋风APP接口签名方式的私钥
-  GlobalRestAPIAppSecret:String;
-  //是否启用加签的接口调用
-  GlobalRestAPICheckSignIsEnable:Boolean;
 
 
 
@@ -957,7 +978,7 @@ function GetNoticeTitleAndContent(APart:String;      //获取内容还是标题
                                   ASelfData:String=''//部分动态变化的内容
                                   ):String;
 
-function GetUploadFilePath(AAppID:Integer;
+function GetUploadFilePath(AAppID:String;
                            AFileDir:String
                           ):String;
 
@@ -966,7 +987,14 @@ function GetScoreRuleTypeStr(ARuleType:String):String;
 
 function GetTelAPIMessage(ACode:Integer):String;
 
+
+
+
 implementation
+
+
+
+
 
 function GetTelAPIMessage(ACode:Integer):String;
 begin
@@ -1103,12 +1131,12 @@ begin
 end;
 
 
-function GetUploadFilePath(AAppID:Integer;
+function GetUploadFilePath(AAppID:String;
                            AFileDir:String
                           ):String;
 begin
   Result:='Upload'+'\'
-                  +IntToStr(AAppID)+'\'
+                  +(AAppID)+'\'
                   +AFileDir+'\'
                   +FormatDateTime('YYYY',Now)+'\'
                   +FormatDateTime('YYYY-MM-DD',Now)+'\';

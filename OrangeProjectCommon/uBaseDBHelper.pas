@@ -13,6 +13,7 @@ uses
   uBaseLog,
   StrUtils,
   uFuncCommon,
+  XSuperObject,
   uDataBaseConfig,
   Variants;
 
@@ -73,6 +74,7 @@ type
     function Query:TDataset;virtual;abstract;
     function NewTempQuery:TDataset;virtual;abstract;
 
+    function QueryRecordList:ISuperArray;virtual;abstract;
     //上次异常字符串
     property LastExceptMessage:String read FLastExceptMessage write FLastExceptMessage;
 
@@ -83,6 +85,7 @@ type
                       AOperation:TSQLOperation=asoOpen;
                       AParamsCompleted:Boolean=False;
                       ACustomQueryDataSet:TDataSet=nil):Boolean;virtual;abstract;
+
     //查询
     function SelfQuery_Exists(AQueryString:String;
                       AParamNames:TStringDynArray;
@@ -92,8 +95,8 @@ type
                       var ADesc:String):Boolean;
     //简单插入
     function SelfQuery_EasyInsert(ATableName:String;
-                                  AParamNames:TStringDynArray;
-                                  AParamValues:TVariantDynArray;
+                                  ASetParamNames:TStringDynArray;
+                                  ASetParamValues:TVariantDynArray;
                                   AOtherQuery:String='';
                                   AOperation:TSQLOperation=asoExec;
                                   ACustomQueryDataSet:TDataSet=nil):Boolean;
@@ -164,7 +167,7 @@ end;
 function TransSelectSQL(ASelect:String;ADBType:String):String;
 begin
   Result:=ASelect;
-  if SameText(ADBType,'MSSQL') then
+  if SameText(ADBType,'MSSQL') or SameText(ADBType,'MSSQL2000') then
   begin
     //������program_data_server.tbldata_server,ҪתΪ
     Result:=ReplaceStr(Result,'program_data_server.','program_data_server.dbo.');
@@ -284,16 +287,19 @@ begin
 end;
 
 function TBaseDBHelper.SelfQuery_Exists(AQueryString: String;
-  AParamNames: TStringDynArray; AParamValues: TVariantDynArray;
-  AOperation: TSQLOperation;
-  ARecordCaption: String;
-  var ADesc:String): Boolean;
+                                        AParamNames: TStringDynArray;
+                                        AParamValues: TVariantDynArray;
+                                        AOperation: TSQLOperation;
+                                        ARecordCaption: String;
+                                        var ADesc:String): Boolean;
 begin
+
   Result:=SelfQuery(AQueryString,
                     AParamNames,
                     AParamValues,
                     AOperation,
                     False);
+
   if Not Result then
   begin
     //数据库连接失败或异常
@@ -313,15 +319,19 @@ begin
 end;
 
 function TBaseDBHelper.SelfQuery_EasyInsert(ATableName: String;
-  AParamNames: TStringDynArray;
-  AParamValues: TVariantDynArray;
-  AOtherQuery: String; AOperation: TSQLOperation;
-                      ACustomQueryDataSet:TDataSet): Boolean;
+                                            ASetParamNames: TStringDynArray;
+                                            ASetParamValues: TVariantDynArray;
+                                            AOtherQuery: String; AOperation: TSQLOperation;
+                                            ACustomQueryDataSet:TDataSet): Boolean;
 var
   I: Integer;
   AInsertStr:String;
   AValuesStr:String;
   AQueryString:String;
+
+//  AParamName:String;
+  AParamValue:String;
+  AIsNoParam:Boolean;
 begin
   Result:=False;
 
@@ -330,19 +340,69 @@ begin
   AValuesStr:='';
   AQueryString:='';
 
-  for I:=0 to Length(AParamNames)-1 do
+
+//  for I:=0 to Length(AParamNames)-1 do
+//  begin
+//    if I=Length(AParamNames)-1 then
+//    begin
+//      AInsertStr:=AInsertStr+AParamNames[I];
+//      AValuesStr:=AValuesStr+':'+AParamNames[I];
+//    end
+//    else
+//    begin
+//      AInsertStr:=AInsertStr+AParamNames[I]+',';
+//      AValuesStr:=AValuesStr+':'+AParamNames[I]+',';
+//    end;
+//  end;
+
+
+
+  for I:=0 to Length(ASetParamNames)-1 do
   begin
-    if I=Length(AParamNames)-1 then
-    begin
-      AInsertStr:=AInsertStr+AParamNames[I];
-      AValuesStr:=AValuesStr+':'+AParamNames[I];
-    end
-    else
-    begin
-      AInsertStr:=AInsertStr+AParamNames[I]+',';
-      AValuesStr:=AValuesStr+':'+AParamNames[I]+',';
-    end;
+
+      AIsNoParam:=False;
+      if (Pos('=',ASetParamNames[I])=0) then
+      begin
+          AParamValue:=':'+ASetParamNames[I];
+      end
+      else
+      begin
+          //=zlrq，表示该参数不需要parambyname
+          ASetParamNames[I]:=Copy(ASetParamNames[I],2,MaxInt);
+          //sum_delay_gift_score=sum_delay_gift_score+5
+          //createtime=now()
+          //AParamValue:=ASetParamNames[I];
+          //不再做为参数了
+          AParamValue:=ASetParamValues[I];
+          AIsNoParam:=True;
+      end;
+
+
+      if I=Length(ASetParamNames)-1 then
+      begin
+        //fid,phone,name,appid
+        AInsertStr:=AInsertStr+ASetParamNames[I];
+        //:fid,:phone,:name,:appid
+        AValuesStr:=AValuesStr+AParamValue;
+      end
+      else
+      begin
+        //fid,phone,name,appid
+        AInsertStr:=AInsertStr+ASetParamNames[I]+',';
+        //:fid,:phone,:name,:appid
+        AValuesStr:=AValuesStr+AParamValue+',';
+      end;
+
+
+      if AIsNoParam then
+      begin
+          //不是参数
+          ASetParamNames[I]:='';
+      end;
+
   end;
+
+
 
   AQueryString:='INSERT INTO '+ATableName+' '
                 +' ('+AInsertStr+') '
@@ -350,7 +410,7 @@ begin
                 +' ('+AValuesStr+'); '
                 +AOtherQuery;
 
-  Result:=SelfQuery(AQueryString,AParamNames,AParamValues,AOperation,False,ACustomQueryDataSet);
+  Result:=SelfQuery(AQueryString,ASetParamNames,ASetParamValues,AOperation,False,ACustomQueryDataSet);
 
 end;
 
@@ -417,7 +477,7 @@ function TBaseDBHelper.SelfQuery_EasyUpdate(ATableName: String;
   AWhereParamValues: TVariantDynArray;
   AOtherQuery:String;
   AOperation: TSQLOperation;
-                      ACustomQueryDataSet:TDataSet): Boolean;
+  ACustomQueryDataSet:TDataSet): Boolean;
 var
   I: Integer;
   ASetStr:String;
@@ -431,6 +491,7 @@ begin
   if Trim(ATempWhere)='' then
   begin
     //必须要有条件
+    Self.FLastExceptMessage:='SelfQuery_EasyUpdate必须要有条件';
     Exit;
   end;
   
@@ -443,13 +504,14 @@ begin
   begin
 
     AParamName:=ASetParamNames[I];
-    if Pos('=',ASetParamNames[I])=0 then
+    if (Pos('=',ASetParamNames[I])=0) and (Pos('(',ASetParamNames[I])=0) then
     begin
       AParamName:=ASetParamNames[I]+'=:'+ASetParamNames[I];
     end
     else
     begin
       //sum_delay_gift_score=sum_delay_gift_score+5
+      //createtime=now()
       AParamName:=ASetParamNames[I];
       //不再做为参数了
       ASetParamNames[I]:='';

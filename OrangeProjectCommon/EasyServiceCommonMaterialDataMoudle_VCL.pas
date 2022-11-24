@@ -8,14 +8,17 @@ uses
   SysUtils, Classes, uSkinPanelType, uSkinMaterial,
   uSkinButtonType, uSkinEditType, uSkinScrollControlType, uSkinScrollBoxType,
   uSkinCheckBoxType, uDrawPicture, uSkinImageList, uSkinLabelType,
+  StdCtrls,
 
+  Controls,
   uGraphicCommon,
 
   uSkinImageType, uSkinFrameImageType, uSkinRadioButtonType,
   uSkinNotifyNumberIconType, uSkinCustomListType, uSkinVirtualListType,
   uSkinListBoxType, uSkinSwitchPageListPanelType, uSkinPageControlType,
   uSkinComboBoxType, uSkinComboEditType, uSkinMemoType, uSkinTimeEditType,
-  uSkinDateEditType, uSkinListViewType, uSkinPopupType;
+  uSkinDateEditType, uSkinListViewType, uSkinPopupType, pngimage,
+  uSkinFormType;
 
 type
   TdmEasyServiceCommonMaterial = class(TDataModule)
@@ -37,15 +40,12 @@ type
     rbRedRadioButtonMaterial: TSkinRadioButtonColorMaterial;
     btnSelectButtonMaterial: TSkinButtonDefaultMaterial;
     pnlInputMemoBlackCaptionPanelMaterial: TSkinPanelDefaultMaterial;
-    imglistBankIcon: TSkinImageList;
     edtSearchGoodsMaterial: TSkinEditDefaultMaterial;
     btnDeleteButtonMaterial: TSkinButtonDefaultMaterial;
-    ilPictureList: TSkinImageList;
     btnIconButtonMaterial: TSkinButtonDefaultMaterial;
     btnSearchButtonMaterial: TSkinButtonDefaultMaterial;
     btnNoticeNotifyNumberIconMaterial: TSkinNotifyNumberIconColorMaterial;
     nniRedNotifyNumberMaterial: TSkinNotifyNumberIconDefaultMaterial;
-    imgPayTypePicList: TSkinImageList;
     lbFilterHorzListBoxMaterial: TSkinListBoxDefaultMaterial;
     imgTakePicList: TSkinImageList;
     btnRedRectButtonMaterial: TSkinButtonDefaultMaterial;
@@ -57,15 +57,8 @@ type
     edtInputEditHasCenterHelpTextMaterial: TSkinEditDefaultMaterial;
     btnGrayBorderSmallTextButtonMaterial: TSkinButtonDefaultMaterial;
     btnSelectButtonRightAlignMaterial: TSkinButtonDefaultMaterial;
-    imglistSign: TSkinImageList;
     pcOrder_Material: TSkinPageControlDefaultMaterial;
     lbOrderList_Material: TSkinListBoxDefaultMaterial;
-    imgHomeStarList: TSkinImageList;
-    imglistMyCarBack: TSkinImageList;
-    imgHomeIcons: TSkinImageList;
-    imgShopListTakePicture: TSkinImageList;
-    imgShopHomeList: TSkinImageList;
-    Shopactivitylist: TSkinImageList;
     edtInputEditHasHelpTextAndIconMaterial: TSkinEditDefaultMaterial;
     cmbComboBox_Material: TSkinComboBoxDefaultMaterial;
     lblInputBlackCaptionPanelMaterial: TSkinLabelDefaultMaterial;
@@ -97,6 +90,21 @@ type
     btnButtonDefaultMaterial: TSkinButtonDefaultMaterial;
     btnDropDownButtonMaterial: TSkinButtonDefaultMaterial;
     btnBegin_Material: TSkinButtonDefaultMaterial;
+    btnThemeColorIconLeftCaptionRight: TSkinButtonDefaultMaterial;
+    btnThemeColor1IconLeftCaptionRight: TSkinButtonDefaultMaterial;
+    pcLeftAlign: TSkinPageControlDefaultMaterial;
+    btnThemeColor2IconLeftCaptionRight: TSkinButtonDefaultMaterial;
+    btnThemeColor3IconLeftCaptionRight: TSkinButtonDefaultMaterial;
+    btnWhiteColorBorderMaterial: TSkinButtonDefaultMaterial;
+    btnThemeColorCaptionLeftIconRight: TSkinButtonDefaultMaterial;
+    edtRoundGrayBorderMaterial: TSkinEditDefaultMaterial;
+    btnWhiteColorGrayBorderMaterial: TSkinButtonDefaultMaterial;
+    frmDefaultNormalMaterial: TSkinFormNormalMaterial;
+    fsdForm_Material: TSkinFormDefaultMaterial;
+    btnBlackTransHoverColorIconLeftCaptionRight: TSkinButtonDefaultMaterial;
+    pcLeftMargin2: TSkinPageControlDefaultMaterial;
+    btnThemeColorIconLeftCaptionRightGroupLeft: TSkinButtonDefaultMaterial;
+    btnThemeColorIconLeftCaptionRightGroupMiddle: TSkinButtonDefaultMaterial;
   private
     { Private declarations }
   public
@@ -109,6 +117,9 @@ var
 
 function GetBankIconIndex(ABankName:String):Integer;
 
+procedure SetAllLabelFontName(AParent:TWinControl);
+
+
 implementation
 
 //uses
@@ -117,6 +128,26 @@ implementation
 {%CLASSGROUP 'FMX.Controls.TControl'}
 
 {$R *.dfm}
+
+
+
+procedure SetAllLabelFontName(AParent:TWinControl);
+var
+  I: Integer;
+begin
+  for I := 0 to AParent.ControlCount-1 do
+  begin
+    if AParent.Controls[I] is TLabel then
+    begin
+      TLabel(AParent.Controls[I]).Font.Name:='微软雅黑';
+    end;
+
+    if AParent.Controls[I] is TWinControl then
+    begin
+      SetAllLabelFontName(TWinControl(AParent.Controls[I]));
+    end;
+  end;
+end;
 
 
 function GetBankIconIndex(ABankName:String):Integer;

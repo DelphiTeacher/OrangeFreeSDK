@@ -14,6 +14,7 @@ uses
   uLang,
   uSelectMediaDialog,
   uPhotoManager.Windows,
+  uViewPictureListFrame,
 
 
   {$IFDEF ANDROID}
@@ -172,7 +173,7 @@ type
     procedure Load(AIsShowCamera:Boolean;
                     ASelectedPictureNum:Integer;
                     AMaxSelectedNum:Integer;
-                    ASelectType:TSelectMediaType=smtImage);
+                    ASelectType:TSelectMediaType=[smtImage]);
     //加载相册列表到列表
     procedure LoadData(AAlbumList:TAlbumList);
 
@@ -823,7 +824,7 @@ end;
 procedure TFrameAllImage.Load(AIsShowCamera:Boolean;
                               ASelectedPictureNum,
                               AMaxSelectedNum:Integer;
-                              ASelectType:TSelectMediaType=smtImage);
+                              ASelectType:TSelectMediaType=[smtImage]);
 begin
   Clear;
 
@@ -928,7 +929,8 @@ begin
       {$IFDEF ANDROID}
       PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.CAMERA)],
             //不能为nil,不然会闪退,RequestPermissions调用两次会闪退
-            procedure(const APermissions: TArray<string>;const AGrantResults: TArray<TPermissionStatus>)
+          procedure(const APermissions: {$IF CompilerVersion >= 35.0}TClassicStringDynArray{$ELSE}TArray<string>{$IFEND};
+            const AGrantResults: {$IF CompilerVersion >= 35.0}TClassicPermissionStatusDynArray{$ELSE}TArray<TPermissionStatus>{$IFEND})
             var
               I:Integer;
             begin
@@ -1136,21 +1138,34 @@ begin
   OpenDialog := TOpenDialog.Create(nil);
   try
     //'All Files (*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tif;*.tiff;*.ico;*.hdp)|*.bmp;*.jpg;*.jpeg;*.png;*.gif;*.tif;*.tiff;*.ico;*.hdp|Bitmaps (*.bmp)|*.bmp|JPEG Images (*.jpg)|*.jpg|JPEG Images (*.jpeg)|*.jpeg|PNG Images (*.png)|*.png|GIF Images (*.gif)|*.gif|TIFF Images (*.tif)|*.tif|TIFF Images (*.tiff)|*.tiff|Icons (*.ico)|*.ico|WMP Images (*.hdp)|*.hdp'
-    case Self.FSelectType of
-      smtImage:
-      begin
-        OpenDialog.Filter := TBitmapCodecManager.GetFilterString;
-      end;
-      smtImageVideo:
-      begin
+    if (smtImage in FSelectType) and (smtVideo in FSelectType) then
+    begin
         OpenDialog.Filter := TBitmapCodecManager.GetFilterString
                               +'|Video (*.mp4)|*.mp4';
-      end;
-      smtVideo:
-      begin
+    end
+    else if (smtImage in FSelectType) then
+    begin
+        OpenDialog.Filter := TBitmapCodecManager.GetFilterString;
+    end
+    else if (smtVideo in FSelectType) then
+    begin
         OpenDialog.Filter := 'Video (*.mp4)|*.mp4';
-      end;
     end;
+//    case Self.FSelectType of
+//      smtImage:
+//      begin
+//        OpenDialog.Filter := TBitmapCodecManager.GetFilterString;
+//      end;
+//      smtImageVideo:
+//      begin
+//        OpenDialog.Filter := TBitmapCodecManager.GetFilterString
+//                              +'|Video (*.mp4)|*.mp4';
+//      end;
+//      smtVideo:
+//      begin
+//        OpenDialog.Filter := 'Video (*.mp4)|*.mp4';
+//      end;
+//    end;
 
 
     OpenDialog.Options:=OpenDialog.Options+[TOpenOption.ofAllowMultiSelect];

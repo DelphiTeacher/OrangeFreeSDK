@@ -3,18 +3,24 @@
 interface
 
 
+
+
 uses
   SysUtils,
   Classes,
   DateUtils,
 
-  Forms,
+//  Forms,
   XSuperObject,
   uPayAPIParam,
   uPayPublic,
 //  TiktokAuthLoginForm,
-  uSimpleFMXBrowser,
   uBaseThirdPartyAccountAuthLogin,
+
+  {$IFDEF VCL}
+  {$ELSE}
+  uSimpleFMXBrowser,
+  {$ENDIF}
 
 
   System.Hash ,
@@ -37,6 +43,9 @@ type
 //    FOpenID:String;
     FAuthLoginUserInfo:TAuthLoginUserInfo;
     FOnAuthLoginEnd:TAuthLoginEndEvent;
+    function GetPlatformType:String;
+    //加载设置
+    procedure LoadSetting(ASettingJson:ISuperObject);
     function GetAuthUrl:String;
     procedure DoAuthLogin(AAuthUrl:String);
     procedure SetOnAuthLoginEnd(AOnAuthLoginEnd:TAuthLoginEndEvent);
@@ -99,12 +108,14 @@ end;
 
 procedure TTiktokAPI.DoAuthLogin(AAuthUrl:String);
 begin
+  {$IFDEF VCL}
+  {$ELSE}
   //打开浏览器,进行授权验证,理论上可以用Python去实现，但是Android调用不了Python.
-  SimpleFMXBrowserFrm:=TSimpleFMXBrowserFrm.Create(Application);
+  SimpleFMXBrowserFrm:=TSimpleFMXBrowserFrm.Create(nil);
   SimpleFMXBrowserFrm.AddressEdt.Text:=AAuthUrl;
   SimpleFMXBrowserFrm.FOnWebBrowserLoadEnd:=DoWebBrowserLoadEndEvent;
   SimpleFMXBrowserFrm.Show;
-
+  {$ENDIF}
 end;
 
 procedure TTiktokAPI.DoWebBrowserLoadEndEvent(Sender: TObject; AUrl: String);
@@ -114,22 +125,43 @@ begin
   ACode:=Self.GetAuthCodeFromCallBackUrl(AUrl);
   if ACode<>'' then
   begin
+    {$IFDEF VCL}
+    {$ELSE}
     SimpleFMXBrowserFrm.Close;
+    {$ENDIF}
 
 
     //授权成功，获取到Code，再用Code换取AccessToken
 
     TThread.CreateAnonymousThread(procedure
+    var
+      AIsSucc:Boolean;
+      ADesc:String;
     begin
-      Self.GetAccessToken(ACode);
-
-      TThread.Synchronize(nil,procedure
-      begin
-        if Assigned(FOnAuthLoginEnd) then
+        AIsSucc:=False;
+        if Self.GetAccessToken(ACode) then
         begin
-          FOnAuthLoginEnd(Self,True,'',Self.FAuthLoginUserInfo);
+          if Self.GetUserInfo<>nil then
+          begin
+            AIsSucc:=True;
+          end
+          else
+          begin
+            ADesc:='获取用户信息失败';
+          end;
+        end
+        else
+        begin
+          ADesc:='获取AccessToken失败';
         end;
-      end);
+
+        TThread.Synchronize(nil,procedure
+        begin
+          if Assigned(FOnAuthLoginEnd) then
+          begin
+            FOnAuthLoginEnd(Self,AIsSucc,ADesc,Self.FAuthLoginUserInfo);
+          end;
+        end);
     end).Start;
 
 
@@ -295,6 +327,11 @@ begin
 
 end;
 
+function TTiktokAPI.GetPlatformType: String;
+begin
+  Result:='Tiktok';
+end;
+
 function TTiktokAPI.GetUserInfo: ISuperObject;
 var
   ANetHttpClient:TNetHttpClient;
@@ -361,6 +398,11 @@ begin
       end;
 
       Result:=ASuperObject.O['data'].O['user'];
+      Self.FAuthLoginUserInfo.FUserName:=Result.S['display_name'];
+      Self.FAuthLoginUserInfo.FUserHeadUrl:=Result.S['avatar_url'];
+      Self.FAuthLoginUserInfo.FOpenID:=Result.S['open_id'];
+      Self.FAuthLoginUserInfo.FUnionID:=Result.S['union_id'];
+
 
   finally
       FreeAndNil(ANetHttpClient);
@@ -476,6 +518,24 @@ begin
       FreeAndNil(AResponseStream);
       FreeAndNil(ARequestStream);
   end;
+
+
+end;
+
+procedure TTiktokAPI.LoadSetting(ASettingJson: ISuperObject);
+begin
+  Self.FClientKey:=ASettingJson.S['platform_appid'];//'aw6noplqmphvn7sp';
+  Self.FClientSecret:=ASettingJson.S['platform_appsecret'];//'78448dc7ca3eee1a2e1bc6dd38febaa5';
+  Self.FCallbackUrl:=ASettingJson.S['platform_callback_url'];//'orangeui.cn';
+//  Self.FClientKey:=ASettingJson.S['platform_appid'];//'aw6noplqmphvn7sp';
+//  Self.FClientSecret:=ASettingJson.S['platform_appsecret'];//'78448dc7ca3eee1a2e1bc6dd38febaa5';
+//  Self.FCallbackUrl:=ASettingJson.S['platform_callback_url'];//'orangeui.cn';
+
+//  FTiktokAPI.FAuthLoginUserInfo.FAccessToken:='act.69d080157109c46872f8438275a1d4b55ZH85DkNXIOe5OHBWEQeU1eZTMqN!6385';
+//  FTiktokAPI.FAuthLoginUserInfo.FOpenID:='ab4ef122-d7b0-45bc-9083-7f132e32c345';
+//
+//  FTiktokAPI.FOnAuthLoginEnd:=DoAuthLoginEnd;
+
 
 
 end;

@@ -42,7 +42,7 @@ uses
     IdSSLOpenSSLHeaders_static_D10_4,
     {$ELSE}
     IdSSLOpenSSLHeaders_static,
-    {$ENDIF}
+    {$IFEND}
   {$ENDIF IOS}
 
 

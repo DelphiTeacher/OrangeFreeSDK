@@ -11,21 +11,22 @@ unit uAPPCommon;
 
 interface
 
-//uses
-//  Classes,
-//  System.Types,
-//  StrUtils,
-//  Math,
-//  System.IOUtils,
-//
-//
+uses
+  Classes,
+  System.Types,
+  StrUtils,
+  Math,
+  XSuperObject,
+  System.IOUtils,
+
+
 //  FMX.Types,
 //  uSkinItems,
 //  IdURI,
 //  EncdDecd,
 //  uBaseLog,
 //  uTimerTask,
-//  uSkinCommonFrames,
+////  uSkinCommonFrames,
 //  uTimerTaskEvent,
 //  uComponentType,
 ////  uBasePageStructure,
@@ -36,22 +37,31 @@ interface
 //  System.Net.URLClient,
 //  System.Net.HttpClient,
 //  System.Net.HttpClientComponent,
-//
-//
-//  {$IFDEF MSWINDOWS}
-//  WinApi.Windows,
-//  {$ENDIF}
-//  {$IFDEF ANDROID}
-//  Androidapi.IOUtils,
-//  {$ENDIF}
-//  {$IFDEF _MACOS}
-//  Macapi.Mach,
-//  {$ENDIF}
-//
-//  SysUtils;
-//
-//
-//
+
+
+  {$IFDEF MSWINDOWS}
+  WinApi.Windows,
+  {$ENDIF}
+  {$IFDEF ANDROID}
+  Androidapi.IOUtils,
+  {$ENDIF}
+  {$IFDEF _MACOS}
+  Macapi.Mach,
+  {$ENDIF}
+
+  SysUtils;
+
+const
+  IID_IPageSavedValue:TGUID='{56154C25-7AB3-4D9A-903D-30CF7A43A86E}';
+
+type
+
+  IPageSavedValue=interface
+    ['{56154C25-7AB3-4D9A-903D-30CF7A43A86E}']
+    function GetSavedValue:ISuperObject;
+  end;
+
+
 //function GetApplicationPath:String;
 //
 //
@@ -91,12 +101,42 @@ interface
 //function GetWebUrl_From_OrangeUIServer(ANetHTTPClient:TNetHttpClient;AUrl:String;AResponseStream:TStream):Boolean;overload;
 //function GetWebUrl_From_OrangeUIServer(AHttpControl:THttpControl;AUrl:String;AResponseStream:TStream):Boolean;overload;
 
+function GetDeviceName: string;
 
 
 
 implementation
 
 
+
+function GetDeviceName: string;
+{$IF Defined(MSWINDOWS)}
+var
+  LSize: Cardinal;
+  LName: array[0..MAX_PATH - 1] of Char;
+begin
+  LSize := SizeOf(LName);
+  if GetComputerName(LName, LSize) then
+    Result := LName
+  else
+    Result := string.Empty;
+end;
+{$ELSEIF Defined(ANDROID)}
+begin
+  Result := '';//JStringToString(TJBuild.JavaClass.MODEL);
+end;
+{$ELSEIF Defined(IOS)}
+begin
+  Result := '';//NSStrToStr(TUIDevice.Wrap(TUIDevice.OCClass.currentDevice).name);
+end;
+{$ELSEIF Defined(MACOS)}
+var
+  LHost: NSHost;
+begin
+  LHost := TNSHost.Wrap(TNSHost.OCClass.currentHost);
+  Result := '';//NSStrToStr(LHost.localizedName);
+end;
+{$ENDIF}
 
 
 //function GetWebUrl_From_OrangeUIServer(AHttpControl:THttpControl;AUrl:String;AResponseStream:TStream):Boolean;

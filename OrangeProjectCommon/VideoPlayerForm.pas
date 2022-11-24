@@ -5,7 +5,13 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  uBaseNativeControl, uTencentSuperPlayer, FMX.Objects;
+
+  uBaseNativeControl,
+//  {$IFDEF HAS_TENCENTSUPERPLAYERR}
+  uTencentSuperPlayer,
+//  {$ENDIF HAS_TENCENTSUPERPLAYERR}
+
+  FMX.Objects, uTencentSuperPlayer;
 
 type
   TfrmVideoPlayer = class(TForm)

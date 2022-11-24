@@ -35,6 +35,7 @@ uses
   IdIOHandlerStack,
 
 
+  IdSSLOpenSSL,
   uBaseLog,
   uBaseHttpControl,
 //  uDownloadPictureManager
@@ -48,6 +49,7 @@ type
     procedure DoWork(ASender: TObject; AWorkMode: TWorkMode; AWorkCount: Int64);
   public
     FIdHttp:TIdHttp;
+    IdSSLIOHandlerSocketOpenSSL1:TIdSSLIOHandlerSocketOpenSSL;
     OnWork:TWorkEvent;
     constructor Create;override;
     destructor Destroy;override;
@@ -61,7 +63,9 @@ type
   TSystemHttpControl=TIdHttpControl;
   {$ENDIF}
 
-
+var
+  //是否需要SSL
+  IsIdHttpNeedSSL:Boolean;
 
 implementation
 
@@ -75,12 +79,25 @@ begin
 
   FIdHttp.OnWork:=DoWork;
 
+
+  if IsIdHttpNeedSSL then
+  begin
+    IdSSLIOHandlerSocketOpenSSL1 := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+    FIdHttp.IOHandler := IdSSLIOHandlerSocketOpenSSL1;
+  end;
+
 end;
 
 destructor TIdHttpControl.Destroy;
 begin
   try
     SysUtils.FreeAndNil(FIdHttp);
+
+    if IsIdHttpNeedSSL then
+    begin
+      FreeAndNil(IdSSLIOHandlerSocketOpenSSL1);
+    end;
+
   except
     on E:Exception do
     begin
@@ -179,6 +196,9 @@ end;
 
 initialization
   IsNetworkConnected:=True;
+  {$IFDEF VCL}
+  GlobalSystemHttpControlClass:=TSystemHttpControl;
+  {$ENDIF}
 
 
 

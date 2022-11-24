@@ -16,10 +16,12 @@ uses
   uAndroidPermission_D10_2,
   {$ENDIF ANDROID}
   uOpenCommon,
+  UITypes,
 
   SysUtils;
 
-
+//type
+//  TLoginButtonsStyle=(lbsButton,lbsListView);
 
 var
   //主窗体MainForm
@@ -27,7 +29,7 @@ var
   //GlobalIsNeedGPSLocation:Boolean;
 
 
-
+//  GlobalLoginButtonsStyle:TLoginButtonsStyle;
 
   //登陆页面LoginFrame
   //默认是外卖的
@@ -69,8 +71,24 @@ var
   GlobalIsNeedServiceTel:Boolean;
   //登录页面是否需要注册按钮
   GlobalIsNeedRegister:Boolean;
+  //登录页面是否需要忘记密码按钮
+  GlobalIsNeedForgetPassword:Boolean;
   //登录页面是否需要服务器设置按钮
   GlobalIsNeedServerSetting:Boolean;
+
+
+  //是否需要平台商城分页
+  GlobalIsNeedPlatformShopPage:Boolean;
+
+
+
+  //IOS任务栏字体的颜色,默认为白色
+//  GlobalIOSStatusBarFontColor:TAlphaColor;
+
+
+  //Android是否透明任务栏,默认为True,那么pnlToolbar需要拉高25个像素
+  GlobalIsAndroidTransparentToolbar:Boolean;
+
 
 
 
@@ -168,9 +186,16 @@ initialization
 
 
   GlobalIsNeedRegister:=True;
+  GlobalIsNeedForgetPassword:=True;
+
   //登录页面是否需要服务器设置按钮
   GlobalIsNeedServerSetting:=False;
 
+
+  //IOS下状态栏的字体颜色
+//  GlobalIOSStatusBarFontColor:=TAlphaColorRec.White;
+
+  GlobalIsAndroidTransparentToolbar:=True;
 
 
 

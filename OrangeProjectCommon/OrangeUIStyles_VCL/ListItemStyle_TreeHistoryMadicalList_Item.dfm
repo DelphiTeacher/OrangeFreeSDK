@@ -11,6 +11,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
     Width = 882
     Height = 49
     ParentMouseEvent = True
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -60,6 +61,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Height = 43
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail5'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -111,6 +113,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Height = 43
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail4'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -162,6 +165,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Height = 43
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail3'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -214,6 +218,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Margins.Left = 20
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail2'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -266,6 +271,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Margins.Left = 20
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail1'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -318,6 +324,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Margins.Left = 20
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -370,6 +377,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Margins.Left = 10
       ParentMouseEvent = True
       BindItemFieldName = 'ItemCaption'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -422,6 +430,7 @@ object FrameListItemStyle_TreeHistoryMadicalList_Item: TFrameListItemStyle_TreeH
       Height = 43
       Margins.Right = 10
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True

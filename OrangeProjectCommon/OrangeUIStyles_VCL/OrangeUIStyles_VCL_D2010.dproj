@@ -25,10 +25,14 @@
 			<Base>true</Base>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
+			<DCC_UnitSearchPath>..\..\..\..\src\comm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+			<DCC_DcpOutput>d:\docs\devs\lib14\OrangeUI</DCC_DcpOutput>
+			<DCC_BplOutput>d:\docs\devs\lib14\OrangeUI</DCC_BplOutput>
+			<DCC_OutputDRCFile>true</DCC_OutputDRCFile>
 			<DesignOnlyPackage>false</DesignOnlyPackage>
-			<DCC_DcuOutput>Win32\Debug</DCC_DcuOutput>
+			<DCC_DcuOutput>d:\docs\devs\lib14\OrangeUI</DCC_DcuOutput>
 			<DCC_ImageBase>00400000</DCC_ImageBase>
-			<DCC_DependencyCheckOutputName>C:\Users\Public\Documents\RAD Studio\7.0\Bpl\OrangeUIStyles_VCL_D2010.bpl</DCC_DependencyCheckOutputName>
+			<DCC_DependencyCheckOutputName>d:\docs\devs\lib14\OrangeUI\OrangeUIStyles_VCL_D2010.bpl</DCC_DependencyCheckOutputName>
 			<SanitizedProjectName>OrangeUIStyles_VCL_D10_1</SanitizedProjectName>
 			<DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
 			<GenPackage>true</GenPackage>
@@ -74,6 +78,16 @@
 			<DCCReference Include="ListItemStyle_TreeChildListBox.pas"/>
 			<DCCReference Include="ListItemStyle_TreeHistoryMadicalList_Child.pas"/>
 			<DCCReference Include="ListItemStyle_IconLeft_CaptionRight.pas"/>
+			<DCCReference Include="ListItemStyle_MailList2.pas">
+				<Form>FrameListItemStyle_MailList2</Form>
+				<DesignClass>TFrame</DesignClass>
+			</DCCReference>
+			<DCCReference Include="ListItemStyle_CustomerTag.pas"/>
+			<DCCReference Include="ListItemStyle_CompanyInfo.pas"/>
+			<DCCReference Include="ListItemStyle_ContactInfo.pas"/>
+			<DCCReference Include="ListItemStyle_CustomerInfo.pas"/>
+			<DCCReference Include="ListItemStyle_TreeMainMenu_LabelAndArrow.pas"/>
+			<DCCReference Include="ListItemStyle_CaptionDetailItem.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
@@ -525,3 +539,16 @@
 			<ProjectFileVersion>12</ProjectFileVersion>
 		</ProjectExtensions>
 	</Project>
+
+<!-- EurekaLog First Line
+[Exception Log]
+EurekaLog Version=7007
+Activate=0
+DeleteMapAfterCompile=0
+Encrypt Password=""
+idEurekaLog=1
+idEurekaLogDetailed=1
+idMSClassic=1
+idStepsToReproduce=1
+ProjectID="{5023E104-A6A7-4F83-998F-3400468098F6}"
+EurekaLog Last Line -->

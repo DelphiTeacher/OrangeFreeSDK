@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">Gerai</string>
-    <string name="scankit_light">Palieskite, kad būtų daugiau šviesos</string>
-    <string name="scankit_light_off">Išjungti šviesą</string>
-    <string name="scankit_no_code_tip">Kodo neaptikta.</string>
-    <string name="scankit_scan_tip">Sukomponuokite kodą rėmelyje</string>
-    <string name="scankit_title">Nuskaityti</string>
-</resources>

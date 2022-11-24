@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Dotknij, aby włączyć oświetlenie</string>
-    <string name="scankit_light_off">Wyłącz oświetlenie</string>
-    <string name="scankit_no_code_tip">Nie wykryto kodu.</string>
-    <string name="scankit_scan_tip">Umieść kod w ramce</string>
-    <string name="scankit_title">Szukaj</string>
-</resources>

@@ -12,6 +12,7 @@ interface
 
 uses
   Classes,
+  uBaseLog,
 //  Windows ,
   SyncObjs,
   SysUtils;
@@ -191,8 +192,7 @@ type
     // TPoolObject. It represents the position of the item in the
     // collection.
     //
-    property Items[aIndex: LongInt]
-      : TPoolObject read GetItem write SetItem; default;
+    property Items[aIndex: Integer]: TPoolObject read GetItem write SetItem; default;
 
     //
     // Summary:
@@ -342,6 +342,8 @@ type
   public
     FCS: TCriticalSection;
     FCustomObjects: TPoolObjects;
+    FRecvEvent:TEvent;
+    FWaitCount:Integer;
 
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
@@ -628,6 +630,7 @@ begin
   FCS := TCriticalSection.Create;
   FCustomObjects := TPoolObjects.Create(Self, GetPoolItemClass);
   FMaxCustomObjects := -1;
+  FRecvEvent:=TEvent.Create(nil, True, False, '');
 end;
 
 destructor TObjectPool.Destroy;
@@ -640,6 +643,7 @@ begin
     FCS.Leave;
   end;
   FreeAndNil(FCS);
+  FreeAndNil(FRecvEvent);
   inherited;
 end;
 
@@ -682,51 +686,83 @@ var
 begin
   Result := nil;
   //Assert(false);
-  FCS.Enter;
-  try
-    try
-      I := 0;
-      while I < FCustomObjects.Count do
-      begin
-        if not FCustomObjects[I].Busy then
-        begin
-          Result := FCustomObjects[I];
-//          if Result.FFirstUsed then
-//            Result.FFirstUsed := false;
-          try
-            FCustomObjects[I].Lock;
-            Break;
-          except
-            FCustomObjects.Delete(I);
-            Continue;
-          end;
-        end;
-        Inc(I);
-      end;
 
-      if Result = nil then
-        if ((FCustomObjects.Count < MaxCustomObjects) or (MaxCustomObjects = -1))
-{$IFDEF TRIAL}
-        and ((FindWindow('TAppBuilder', nil) <> 0) or (FCustomObjects.Count < 3))
-{$ENDIF}
-        then
-        begin
-          Result := FCustomObjects.Add;
-//          Result.FFirstUsed := true;
-          with Result do
-          begin
-            Lock;
-          end;
-        end
-        else
-          raise Exception.Create('CustomObject pool limit exceeded.');
-    except
-      On E: Exception do
-        DoLockFail(E);
+  while Result=nil do
+  begin
+
+
+    FCS.Enter;
+    try
+
+      try
+
+
+            I := 0;
+            while I < FCustomObjects.Count do
+            begin
+              if not FCustomObjects[I].Busy then
+              begin
+                Result := FCustomObjects[I];
+      //          if Result.FFirstUsed then
+      //            Result.FFirstUsed := false;
+                try
+                  FCustomObjects[I].Lock;
+                  Break;
+                except
+                  FCustomObjects.Delete(I);
+                  Continue;
+                end;
+              end;
+              Inc(I);
+            end;
+
+
+            if Result = nil then
+              if ((FCustomObjects.Count < MaxCustomObjects) or (MaxCustomObjects = -1))
+      {$IFDEF TRIAL}
+              and ((FindWindow('TAppBuilder', nil) <> 0) or (FCustomObjects.Count < 3))
+      {$ENDIF}
+              then
+              begin
+                Result := FCustomObjects.Add;
+      //          Result.FFirstUsed := true;
+                with Result do
+                begin
+                  Lock;
+                end;
+              end
+              else
+              begin
+                //raise Exception.Create('CustomObject pool limit exceeded.');
+                Inc(FWaitCount);
+                uBaseLog.HandleException(nil,'TObjectPool.GetPoolObject '+'CustomObject pool limit exceeded. Wait FWaitCount:'+IntToStr(FWaitCount));
+
+              end;
+
+
+
+
+      except
+        On E: Exception do
+          DoLockFail(E);
+      end;
+    finally
+      FCS.Leave;
     end;
-  finally
-    FCS.Leave;
+
+
+    if Result=nil then
+    begin
+      //不应该报错,应该在这里等
+      FRecvEvent.WaitFor(INFINITE);
+      Dec(FWaitCount);
+
+      uBaseLog.HandleException(nil,'TObjectPool.GetPoolObject '+'CustomObject pool limit exceeded. OK Try FWaitCount:'+IntToStr(FWaitCount));
+
+    end;
+
   end;
+
 end;
 
 procedure TObjectPool.FreeCustomObject(aCustomObject: TObject;
@@ -753,6 +789,14 @@ begin
             FCustomObjects[I].Unlock;
           Break;
         end;
+
+      if FWaitCount>0 then
+      begin
+        //有一个空了
+        FRecvEvent.SetEvent;
+      end;
+
+
     finally
       FCS.Leave;
     end;

@@ -56,9 +56,17 @@ uses
 
 
 
-  DateUtils,
-  uFuncCommon,
-  uFileCommon;
+//  {$IFDEF IN_ORANGESDK}
+  //在OrangeSDK包里面
+  uFileCommon_Copy,
+  uFuncCommon_Copy,
+//  {$ELSE}
+//  //在OrangeUI里面
+//  uFileCommon,
+//  uFuncCommon,
+//  {$ENDIF}
+
+  DateUtils;
 
 
 

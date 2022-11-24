@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Sentuh untuk menambah cahaya</string>
-    <string name="scankit_light_off">Matikan cahaya</string>
-    <string name="scankit_no_code_tip">Tidak ada kode yang terdeteksi.</string>
-    <string name="scankit_scan_tip">Tempatkan kode di dalam bingkai</string>
-    <string name="scankit_title">Pindai</string>
-</resources>

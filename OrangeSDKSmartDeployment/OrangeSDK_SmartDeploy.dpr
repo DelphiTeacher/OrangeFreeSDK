@@ -6,7 +6,9 @@ uses
   Vcl.Forms,
   SmartDeployForm in 'SmartDeployForm.pas' {frmSmartDeploy},
   uOrangeUISmartSDKDeployment in 'uOrangeUISmartSDKDeployment.pas',
-  uCommandLineHelper in 'uCommandLineHelper.pas';
+  uCommandLineHelper in '..\OrangeProjectCommon\uCommandLineHelper.pas',
+  XSuperJSON in '..\OrangeProjectCommon\XSuperObject\XSuperJSON.pas',
+  XSuperObject in '..\OrangeProjectCommon\XSuperObject\XSuperObject.pas';
 
 {$R *.res}
 

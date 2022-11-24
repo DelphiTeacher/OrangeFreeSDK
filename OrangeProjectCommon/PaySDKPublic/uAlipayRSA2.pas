@@ -71,7 +71,7 @@ uses
     IdSSLOpenSSLHeaders_static_D10_4,
     {$ELSE}
     IdSSLOpenSSLHeaders_static,
-    {$ENDIF}
+    {$IFEND}
   {$ENDIF IOS}
 
 
@@ -133,9 +133,9 @@ function RSASign2_Windows(ARSARSAPrivateKey:String;APayOrderInfo:String):String;
 {$ELSE}
   //ÓÃÓÚµÍ°æ±¾Delphi
   function LEO_RSASign_Windows_By_File:Boolean;
-    external 'PayHelp_D10_1.dll' name 'LEO_RSASign_Windows_By_File';
+    external 'PayHelp.dll' name 'LEO_RSASign_Windows_By_File';
   function LEO_RSASign2_Windows_By_File:Boolean;
-    external 'PayHelp_D10_1.dll' name 'LEO_RSASign2_Windows_By_File';
+    external 'PayHelp.dll' name 'LEO_RSASign2_Windows_By_File';
 
   function RSASign_Windows_By_DLL(ARSARSAPrivateKey:AnsiString;APayOrderInfo:AnsiString):AnsiString;
   function RSASign2_Windows_By_DLL(ARSARSAPrivateKey:AnsiString;APayOrderInfo:AnsiString):AnsiString;

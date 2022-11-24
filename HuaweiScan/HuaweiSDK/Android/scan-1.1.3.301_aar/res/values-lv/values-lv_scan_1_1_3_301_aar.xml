@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">Labi</string>
-    <string name="scankit_light">Pieskarieties, lai uzlabotu apgaismojumu</string>
-    <string name="scankit_light_off">Izslēgt apgaismojumu</string>
-    <string name="scankit_no_code_tip">Kods nav noteikts.</string>
-    <string name="scankit_scan_tip">Novietojiet kodu rāmītī</string>
-    <string name="scankit_title">Skenēt</string>
-</resources>

@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 //copyright delphiteacher QQ:452330643
 //2015-08-08
-//æœªç»æˆæƒ,ä¸¥ç¦å‡ºå”®èµ é€æˆ–è½¬ä¸Šä»–äººä½¿ç”¨
+//Î´¾­ÊÚÈ¨,ÑÏ½û³öÊÛÔùËÍ»ò×ªÉÏËûÈËÊ¹ÓÃ
 //
 unit uPayAPIParam;
 
@@ -13,10 +13,10 @@ uses
 
 
   {$IFDEF IN_ORANGESDK}
-  //åœ¨OrangeSDKåŒ…é‡Œé¢
+  //ÔÚOrangeSDK°üÀïÃæ
   uBaseList_Copy,
   {$ELSE}
-  //åœ¨OrangeUIé‡Œé¢
+  //ÔÚOrangeUIÀïÃæ
   uBaseList,
   {$ENDIF}
 
@@ -26,7 +26,7 @@ uses
 type
   TWorkThreadList=TBaseList;
 
-  //è¯·æ±‚çš„å‚æ•°é”®å€¼å¯¹
+  //ÇëÇóµÄ²ÎÊı¼üÖµ¶Ô
   TInterfaceParameter=class
   private
     FName:String;
@@ -42,23 +42,23 @@ type
 
 
 
-  //å‚æ•°åˆ—è¡¨
+  //²ÎÊıÁĞ±í
   TInterfaceParameters=class(TWorkThreadList)
   private
     function GetItem(Index: Integer): TInterfaceParameter;
   public
-    //éœ€è¦æŒ‰ç…§åå­—é¡ºåºæ’åº,å¦‚æœåå­—ç›¸åŒ,é‚£è¦æ ¹æ®å€¼æ¥æ’åº,ç”Ÿæˆçš„ç­¾åæ‰æ˜¯æœ‰ç”¨çš„
+    //ĞèÒª°´ÕÕÃû×ÖË³ĞòÅÅĞò,Èç¹ûÃû×ÖÏàÍ¬,ÄÇÒª¸ù¾İÖµÀ´ÅÅĞò,Éú³ÉµÄÇ©Ãû²ÅÊÇÓĞÓÃµÄ
     procedure Sort;
-    //ç”ŸæˆXML,å¾®ä¿¡éœ€è¦ä½¿ç”¨
+    //Éú³ÉXML,Î¢ĞÅĞèÒªÊ¹ÓÃ
     function GetXMLPackage:String;
-    //ç”Ÿæˆéœ€è¦ç­¾åçš„ä¸²
+    //Éú³ÉĞèÒªÇ©ÃûµÄ´®
     function GetQueryParamsStr(
-                              HasRefChar:Boolean=True;//æ˜¯å¦éœ€è¦å¼•å·
-                              NeedUrlEncode:Boolean=False;//æ˜¯å¦éœ€è¦UrlEncode
+                              HasRefChar:Boolean=True;//ÊÇ·ñĞèÒªÒıºÅ
+                              NeedUrlEncode:Boolean=False;//ÊÇ·ñĞèÒªUrlEncode
                               SpaceCharReplace:String='20%'
                               ):String;
 //    function GetSignQueryParamsStr:String;
-    //æ·»åŠ ä¸€å¯¹é”®å€¼
+    //Ìí¼ÓÒ»¶Ô¼üÖµ
     procedure AddQueryParameter(const AName:String;const AValue:String);
   public
     function FindItemByName(AName:String):TInterfaceParameter;
@@ -93,7 +93,7 @@ function GenerateUrl(
 var
   I:Integer;
   AParamValue:String;
-  //è®¢å•å‚æ•°åˆ—è¡¨
+  //¶©µ¥²ÎÊıÁĞ±í
   APayParamList:TInterfaceParameters;
 begin
 
@@ -110,9 +110,9 @@ begin
     end;
 
 
-    //æ’åº
+    //ÅÅĞò
     APayParamList.Sort;
-    //ç”Ÿæˆéœ€è¦ç­¾åçš„ä¸²
+    //Éú³ÉĞèÒªÇ©ÃûµÄ´®
     Result:=APayParamList.GetQueryParamsStr(False);
 
 
@@ -191,7 +191,7 @@ begin
   Result:=TInterfaceParameters.Create;
   if HasWWW then
   begin
-    //è§£æå‡ºå‚æ•°åˆ—è¡¨å­—ç¬¦ä¸²
+    //½âÎö³ö²ÎÊıÁĞ±í×Ö·û´®
     AParametersStringStartIndex:=Pos('?',URL);
     AParametersString:=Copy(URL,AParametersStringStartIndex+1,MaxInt);
   end
@@ -202,7 +202,7 @@ begin
 
   if AParametersString<>'' then
   begin
-    //æ‰¾åˆ°å‚æ•°åˆ—è¡¨å­—ç¬¦ä¸²
+    //ÕÒµ½²ÎÊıÁĞ±í×Ö·û´®
     AParamStrList:=TStringList.Create;
     Try
       AParamStrList.Delimiter:='&';
@@ -256,8 +256,8 @@ end;
 { TInterfaceParameters }
 
 function TInterfaceParameters.GetQueryParamsStr(
-                              HasRefChar:Boolean=True;//æ˜¯å¦éœ€è¦å¼•å·
-                              NeedUrlEncode:Boolean=False;//æ˜¯å¦éœ€è¦UrlEncode
+                              HasRefChar:Boolean=True;//ÊÇ·ñĞèÒªÒıºÅ
+                              NeedUrlEncode:Boolean=False;//ÊÇ·ñĞèÒªUrlEncode
                               SpaceCharReplace:String='20%'
                               ): String;
 var

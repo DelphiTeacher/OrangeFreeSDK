@@ -49,6 +49,11 @@ uses
   uBaseSkinControl;
 
 
+//const
+//  OK_CANCEL_CAPTIONS:array [0..1] of String=('取消','确定');
+//  OK_CANCEL_NAMES:array [0..1] of String=('cancel','ok');
+
+
 
 type
   TFrameUpdate = class(TFrame)
@@ -236,7 +241,7 @@ begin
 
 
   //    Sleep(1000);
-      HideFrame;//(Self,hfcttNone);
+      HideFrame(Self);//(Self,hfcttNone);
       //不需要返回
 //      ReturnFrame(FrameHistroy);
 
@@ -250,7 +255,8 @@ begin
 
 
   //    Sleep(1000);
-      HideFrame;//(Self,hfcttNone);
+      //必须要传Self
+      HideFrame(Self);//(Self,hfcttNone);
       //不需要返回
 //      ReturnFrame(FrameHistroy);
 
@@ -288,7 +294,7 @@ begin
   tmrSyncDownloadProgress.Enabled:=True;
 
 
-  ATimerTask:=TTimerTask.Create(0);
+  ATimerTask:=TTimerTask.Create();
   ATimerTask.OnExecute:=DoDownloadApp;
   ATimerTask.OnExecuteEnd:=DoDownloadAppExecuteEnd;
   ATimerTask.TaskOtherInfo.Add(FAppDownloadUrl);

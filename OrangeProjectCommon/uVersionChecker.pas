@@ -111,7 +111,8 @@ type
     //选择是否更新
     procedure DoSelectAppUpdateMethodUseSelectMessageBoxModalResult(Sender:TObject);
   public
-
+    //是否手动检查更新,如果是手动检测,那么不需要提示了，必定是需要升级的
+    FIsManualCheckUpdate:Boolean;
     FIsNeedHint:Boolean;
     //是否正在检测新版本
     FIsCheckingNewVersion:Boolean;
@@ -339,6 +340,14 @@ begin
                                          );
                           DoSureUpdate;
                       end
+                      else if (AMustUpdate=3) and not FIsManualCheckUpdate then
+                      begin
+                          //不更新,仅提示
+                          ShowHintFrame(Application.MainForm,
+                                        '有新版本:'+AIniFile.ReadString(ReadSection,'Version','')+')'//+#13#10
+                                        //+AIniFile.ReadString(ReadSection,'UpdateLog','')
+                                         );
+                      end
                       else
                       begin
                           //默认
@@ -364,11 +373,15 @@ begin
                       begin
                         ShowHintFrame(nil,'已是最新版本');
                       end;
+
                   end;
+
               finally
                 FreeAndNil(AIniFile);
               end;
 
+              //不需要更新
+              FIsCheckingNewVersion:=False;
 
           end
           else
@@ -378,10 +391,15 @@ begin
               HandleException(nil,'TVersionChecker.DoCheckNewVersionExecuteEnd Version.ini Not Existed');
           end;
 
+      end
+      else
+      begin
+          //检查新版本失败
+          HandleException(nil,'TVersionChecker.DoCheckNewVersionExecuteEnd Version.ini Not Existed');
       end;
   finally
       //不能在这里设置为True,检测完还要下载apk
-//    FIsCheckingNewVersion:=False;
+    FIsCheckingNewVersion:=False;
   end;
 
 end;
@@ -574,4 +592,5 @@ end.
               //    }
               //} catch (ActivityNotFoundException activityNotFoundException1) {
               //    Log.e(AppRater.class.getSimpleName(), "GoogleMarket Intent not found");
-              //}
+              //}
+

@@ -7,18 +7,31 @@ interface
 uses
   SysUtils,
   Classes,
-  FMX.Controls,
+
+  {$IFDEF VCL}
+  Graphics,
+  {$ENDIF}
+//  FMX.Controls,
   Types,
   uSkinItems,
   Variants,
   uBinaryTreeDoc,
   uGraphicCommon,
   uSkinListLayouts,
+  uSkinVirtualListType,
+//  uSkinListViewType,
 
-
-  XSuperObject,
-  XSuperJson,
-
+  {$IF CompilerVersion <= 21.0} // XE or older
+  SuperObject,
+  superobjecthelper,
+  {$ELSE}
+    {$IFDEF SKIN_SUPEROBJECT}
+    uSkinSuperObject,
+    {$ELSE}
+    XSuperObject,
+    XSuperJson,
+    {$ENDIF}
+  {$IFEND}
 
   uSkinScrollControlType;
 
@@ -59,7 +72,6 @@ type
 //    function GetJsonStr: String;
     procedure SetJsonStr(const Value: String);
     procedure SetJson(const Value: ISuperObject);
-
   protected
     procedure AssignTo(Dest: TPersistent); override;
 
@@ -98,8 +110,16 @@ type
   end;
 
 
+
+
+
+
   TSkinJsonItem=class(TJsonSkinItem)
   end;
+
+
+
+
 
 //  //表格行
 //  TJsonSkinItemGridRow=class(TJsonSkinItem)
@@ -138,7 +158,6 @@ procedure LoadJsonArrayStrToSkinItems(AJsonArray:ISuperArray;
                                       ASkinItems:TSkinItems;
                                       AStartIndex:Integer;
                                       const AIsNeedClear:Boolean=True);overload;
-
 
 
 implementation
@@ -249,6 +268,8 @@ begin
       end;
       JsonObject.Json:=Value;
   end;
+  //需要刷新界面
+  Self.IsBufferNeedChange:=True;
 end;
 
 { TJsonSkinItem }
@@ -332,7 +353,6 @@ begin
     begin
       JsonStr:=ABTNode.ConvertNode_WideString.Data;
     end
-
     ;
 
   end;
@@ -442,10 +462,15 @@ end;
 //end;
 
 
+{ TSuperArray }
+
+
+
 initialization
   RegisterSkinItemClass(TJsonSkinItem);
   //后面要去掉,统一用TJsonSkinItem,以便与TRealSkinItem对应上
   RegisterSkinItemClass(TSkinJsonItem);
+
 
 
 end.

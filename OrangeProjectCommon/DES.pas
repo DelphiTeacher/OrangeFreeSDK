@@ -2,8 +2,9 @@ unit DES;
 
 interface
 
+{$IFDEF MSWINDOWS}
 uses
-  SysUtils, Windows, System.Classes;
+  SysUtils, Windows, Classes;
 
 // CBC with PKCS
 function TripleDESEncrypt(Src, Key, IV: TBytes): TBytes;
@@ -18,6 +19,7 @@ function DESDecryptHEX(StrHEX, KeyHEX, IVHEX: AnsiString): AnsiString;
 
 function String2Hex(const Buffer: AnsiString): AnsiString;
 function Hex2String(const Buffer: AnsiString): AnsiString;
+{$ENDIF}
 
 const
   gKEY = '5914060120041025';
@@ -89,6 +91,9 @@ type
   TKeyByte = array [0 .. 5] of Byte;
   TDesMode = (dmEncry, dmDecry);
   TSubKey = array [0 .. 15] of TKeyByte;
+
+
+{$IFDEF MSWINDOWS}
 
 procedure InitPermutation(var inData: array of Byte);
 var
@@ -483,14 +488,14 @@ end;
 function StringHexToByte(Hex: AnsiString): Byte;
 var
   I, Res: Byte;
-  ch: Char;
+  ch: AnsiChar;
 begin
   if Length(Hex) <> 2 then
     raise Exception.Create('Error: not a Complete HEX String');
   Res := 0;
   for I := 0 to 1 do
   begin
-    ch := Char(Hex[I + 1]);
+    ch := AnsiChar(Hex[I + 1]);
     if (ch >= '0') and (ch <= '9') then
       Res := Res * 16 + Ord(ch) - Ord('0')
     else if (ch >= 'A') and (ch <= 'F') then
@@ -666,5 +671,6 @@ begin
   SetLength(Result, Length(Buffer) div 2);
   HexToBin(PAnsiChar(Buffer), PAnsiChar(Result), Length(Result));
 end;
+{$ENDIF}
 
 end.

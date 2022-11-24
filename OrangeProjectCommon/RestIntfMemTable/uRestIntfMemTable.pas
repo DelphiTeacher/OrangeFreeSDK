@@ -50,7 +50,8 @@ type
     PageSize:Integer;
     PageCount:Integer;
     SumRecordCount:Integer;
-
+    //是否需要重建表结构
+    IsNeedReCreateFieldDefs:Boolean;
 
     //在设计时获取表结构
     procedure GetFieldDefs;
@@ -67,6 +68,8 @@ type
     procedure GetNextPage;
 
     procedure Refresh;
+
+    procedure LoadDataIntfResult(ADataJson:ISuperObject;AIsNeedLoadRecordList:Boolean=True);
   public
     constructor Create(AOwner:TComponent);override;
     destructor Destroy;override;
@@ -137,50 +140,7 @@ begin
 
   if ACallAPIResult and (ACode=SUCC) then//and (ARecordListKey<>'') then
   begin
-
-    if (ADataJson<>nil) then
-    begin
-        SumRecordCount:=ADataJson.I['SumCount'];
-        PageCount:=Ceil(SumRecordCount/PageSize);
-
-        //放在线程中加载,不然会卡
-        LoadDataJsonTokbmMemTable(Self,ADataJson,RECORDLIST_KEY);
-
-    end
-    else
-    begin
-        SumRecordCount:=0;
-        PageCount:=Ceil(SumRecordCount/PageSize);
-
-
-        TThread.Synchronize(nil,procedure
-        begin
-          Self.DisableControls;
-        end);
-
-        try
-          Self.EmptyDataSet;
-        finally
-          TThread.Synchronize(nil,procedure
-          begin
-            Self.EnableControls;
-          end);
-        end;
-
-
-    end;
-
-    if PageIndex>PageCount then
-    begin
-      PageIndex:=PageCount;
-    end;
-
-
-    TThread.Synchronize(nil,procedure
-    begin
-      DoChange;
-    end);
-
+    LoadDataIntfResult(ADataJson);
   end;
 
 
@@ -251,6 +211,7 @@ begin
   FtteGetRestDatasetPage.OnExecute:=DoGetRestDatasetPageExecute;
   FtteGetRestDatasetPage.OnExecuteEnd:=DoGetRestDatasetPageExecuteEnd;
 
+  IsNeedReCreateFieldDefs:=True;
 
 end;
 
@@ -321,6 +282,76 @@ begin
     PageIndex:=PageIndex-1;
     Self.FtteGetRestDatasetPage.Run();
   end;
+end;
+
+procedure TRestMemTable.LoadDataIntfResult(ADataJson:ISuperObject;AIsNeedLoadRecordList:Boolean);
+begin
+
+    if (ADataJson<>nil) then
+    begin
+        SumRecordCount:=ADataJson.I['SumCount'];
+        PageCount:=Ceil(SumRecordCount/PageSize);
+
+
+        if AIsNeedLoadRecordList then
+        begin
+            //放在线程中加载,不然会卡
+            if IsNeedReCreateFieldDefs then
+            begin
+                LoadDataJsonTokbmMemTable(Self,ADataJson,RECORDLIST_KEY);
+            end
+            else
+            begin
+
+                TThread.Synchronize(nil,procedure
+                begin
+                    Self.DisableControls;
+                    try
+                      Self.EmptyDataSet;
+                      LoadDataFromJsonArray(Self,ADataJson.A[RECORDLIST_KEY]);
+                    finally
+                      Self.EnableControls;
+                    end;
+                end);
+
+            end;
+        end;
+
+    end
+    else
+    begin
+        SumRecordCount:=0;
+        PageCount:=Ceil(SumRecordCount/PageSize);
+
+
+//        TThread.Synchronize(nil,procedure
+//        begin
+//          Self.DisableControls;
+//        end);
+//
+//        try
+//          Self.EmptyDataSet;
+//        finally
+//          TThread.Synchronize(nil,procedure
+//          begin
+//            Self.EnableControls;
+//          end);
+//        end;
+
+
+    end;
+
+    if (PageCount>0) and (PageIndex>PageCount) then
+    begin
+      PageIndex:=PageCount;
+    end;
+
+
+    TThread.Synchronize(nil,procedure
+    begin
+      DoChange;
+    end);
+
 end;
 
 procedure TRestMemTable.Refresh;

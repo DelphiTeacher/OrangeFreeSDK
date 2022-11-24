@@ -59,9 +59,9 @@ type
     function CreateCustomObject: TObject; override;
   public
     FDBHelper:TUniDBHelper;
-    {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
     //FMX,APP,一般不需要KBMMW的线程池控件
     FUniConnection:TUniConnection;
+    {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
     {$ENDIF}
     destructor Destroy; override;
   end;
@@ -72,9 +72,10 @@ type
   protected
     function GetPoolItemClass: TPoolObjectClass; override;
   public
+    FIsUseUnidacConnectionPool:Boolean;
+    //FMX,APP,一般不需要KBMMW的线程池控件
+    FDBConfig:TDatabaseConfig;
     {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
-      //FMX,APP,一般不需要KBMMW的线程池控件
-      FDBConfig:TDatabaseConfig;
     {$ELSE}
       //VCL,一般用于服务端,需要KBMMW的线程池组件
       FUnidacConnectionPool:TkbmMWUNIDACConnectionPool;
@@ -87,7 +88,7 @@ type
 function GetGlobalSQLDBHelperPool
 //  (AUnidacConnectionPool:TkbmMWUNIDACConnectionPool)
   :TUniDBHelperPool;
-procedure FreeGlobalADODBHelperPool;
+procedure FreeGlobalUniDBHelperPool;
 
 
 
@@ -96,23 +97,23 @@ implementation
 
 
 var
-  GlobalADODBHelperPool: TUniDBHelperPool;
+  GlobalUniDBHelperPool: TUniDBHelperPool;
 
 function GetGlobalSQLDBHelperPool
 //  (AUnidacConnectionPool:TkbmMWUNIDACConnectionPool)
   :TUniDBHelperPool;
 begin
-  if GlobalADODBHelperPool=nil then
+  if GlobalUniDBHelperPool=nil then
   begin
-    GlobalADODBHelperPool:=TUniDBHelperPool.Create(nil);
-//    GlobalADODBHelperPool.FUnidacConnectionPool:=AUnidacConnectionPool;
+    GlobalUniDBHelperPool:=TUniDBHelperPool.Create(nil);
+//    GlobalUniDBHelperPool.FUnidacConnectionPool:=AUnidacConnectionPool;
   end;
-  Result:=GlobalADODBHelperPool;
+  Result:=GlobalUniDBHelperPool;
 end;
 
-procedure FreeGlobalADODBHelperPool;
+procedure FreeGlobalUniDBHelperPool;
 begin
-  FreeAndNil(GlobalADODBHelperPool);
+  FreeAndNil(GlobalUniDBHelperPool);
 end;
 
 
@@ -144,81 +145,102 @@ begin
   AUniDBHelperPool:=TUniDBHelperPool(Self.Collection.Owner);
 
 
-  {$IFDEF FMX}
-  if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL') then
+//  {$IFDEF FMX}
+  if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL') or SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL2000') then
   begin
     {$IFDEF MSWINDOWS}
     CoInitialize(nil);
     {$ENDIF}
   end;
-  {$ENDIF FMX}
+//  {$ENDIF FMX}
   try
 
 //    try
+      if not AUniDBHelperPool.FIsUseUnidacConnectionPool {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}or True{$ENDIF} then
+      begin
 
-      {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
-          //FMX,APP,一般不需要KBMMW的线程池控件
-          //FMX下,用Connection
-          FUniConnection:=TUniConnection.Create(nil);
-          FDBHelper:=TUniDBHelper.Create;//(AUniDBHelperPool.FUnidacConnectionPool);
-          FDBHelper.SetConnection(FUniConnection);
 
-    //        AUniConnection.Server:=ADataBaseConfig.FDBHostName;
-    //        AUniConnection.Port:=StrToInt(ADataBaseConfig.FDBHostPort);
-    //        AUniConnection.Username:=ADataBaseConfig.FDBUserName;
-    //        AUniConnection.Password:=ADataBaseConfig.FDBPassword;
-    //        AUniConnection.Database:=ADataBaseConfig.FDBDataBaseName;
+              //FMX,APP,一般不需要KBMMW的线程池控件
+              //FMX下,用Connection
+              FUniConnection:=TUniConnection.Create(nil);
+              FDBHelper:=TUniDBHelper.Create;//(AUniDBHelperPool.FUnidacConnectionPool);
+              FDBHelper.SetConnection(FUniConnection);
 
-    //      //数据库服务器
-    //      FUniConnection.Server:=AUniDBHelperPool.FDBConfig.FDBHostName;
-    //      //数据库端口
-    //      FUniConnection.Port:=StrToInt(AUniDBHelperPool.FDBConfig.FDBHostPort);
-    //      //数据库用户名
-    //      FUniConnection.Username:=AUniDBHelperPool.FDBConfig.FDBUserName;
-    //      //数据库密码
-    //      FUniConnection.Password:=AUniDBHelperPool.FDBConfig.FDBPassword;
+        //        AUniConnection.Server:=ADataBaseConfig.FDBHostName;
+        //        AUniConnection.Port:=StrToInt(ADataBaseConfig.FDBHostPort);
+        //        AUniConnection.Username:=ADataBaseConfig.FDBUserName;
+        //        AUniConnection.Password:=ADataBaseConfig.FDBPassword;
+        //        AUniConnection.Database:=ADataBaseConfig.FDBDataBaseName;
+
+        //      //数据库服务器
+        //      FUniConnection.Server:=AUniDBHelperPool.FDBConfig.FDBHostName;
+        //      //数据库端口
+        //      FUniConnection.Port:=StrToInt(AUniDBHelperPool.FDBConfig.FDBHostPort);
+        //      //数据库用户名
+        //      FUniConnection.Username:=AUniDBHelperPool.FDBConfig.FDBUserName;
+        //      //数据库密码
+        //      FUniConnection.Password:=AUniDBHelperPool.FDBConfig.FDBPassword;
+        //
+        //      //数据库
+        //      FUniConnection.Database:=AUniDBHelperPool.FDBConfig.FDBDataBaseName;
+
+
+
+
+
+
+    //          AProviderName:=AUniDBHelperPool.FDBConfig.FDBType;
+    //          if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL') then
+    //          begin
+    //            //微软的SQL SERVER
+    //            AProviderName:='SQL Server';
+    //          end;
     //
-    //      //数据库
-    //      FUniConnection.Database:=AUniDBHelperPool.FDBConfig.FDBDataBaseName;
+    //          FUniConnection.ConnectString:='Provider Name='+AProviderName+';'//MySQL
+    //                                        +'User ID='+AUniDBHelperPool.FDBConfig.FDBUserName+';'//root
+    //                                        +'Password='+AUniDBHelperPool.FDBConfig.FDBPassword+';'//138575wangneng
+    //                                        +'Data Source='+AUniDBHelperPool.FDBConfig.FDBHostName+';'//www.orangeui.cn
+    //                                        +'Database='+AUniDBHelperPool.FDBConfig.FDBDataBaseName+';'//alipay
+    //                                        +'Port='+AUniDBHelperPool.FDBConfig.FDBHostPort+';'//3306
+    //                                        +'Login Prompt=False;';
+    //
+    //          if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MYSQL') then
+    //          begin
+    //            FUniConnection.ConnectString:=FUniConnection.ConnectString
+    //                                        +';'
+    //                                        +'Use Unicode=True;'
+    //                                        +'Character Set='+AUniDBHelperPool.FDBConfig.FDBCharset+';'//utf8mb4
+    //          end;
+    //
+    //          FUniConnection.Connected:=True;
 
-          AProviderName:=AUniDBHelperPool.FDBConfig.FDBType;
-          if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL') then
-          begin
-            //微软的SQL SERVER
-            AProviderName:='SQL Server';
-          end;
+                FDBHelper.Connect(AUniDBHelperPool.FDBConfig);
 
-          FUniConnection.ConnectString:='Provider Name='+AProviderName+';'//MySQL
-                                        +'User ID='+AUniDBHelperPool.FDBConfig.FDBUserName+';'//root
-                                        +'Password='+AUniDBHelperPool.FDBConfig.FDBPassword+';'//138575wangneng
-                                        +'Data Source='+AUniDBHelperPool.FDBConfig.FDBHostName+';'//www.orangeui.cn
-                                        +'Database='+AUniDBHelperPool.FDBConfig.FDBDataBaseName+';'//alipay
-                                        +'Port='+AUniDBHelperPool.FDBConfig.FDBHostPort+';'//3306
-                                        +'Login Prompt=False;';
 
-          if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MYSQL') then
-          begin
-            FUniConnection.ConnectString:=FUniConnection.ConnectString
-                                        +';'
-                                        +'Use Unicode=True;'
-                                        +'Character Set='+AUniDBHelperPool.FDBConfig.FDBCharset+';'//utf8mb4
-          end;
 
-          FUniConnection.Connected:=True;
 
-    //      AOptions:=TStringList.Create;
-    //      AOptions.StrictDelimiter:=True;
-    //      AOptions.Delimiter:=';';
-    //      AOptions.DelimitedText:=FUniConnection.ConnectString;
-    //      AOptions.Values['Character Set']:=AUniDBHelperPool.FDBConfig.FDBCharset;
-    //      FUniConnection.ConnectString:=AOptions.DelimitedText;
-    //      FreeAndNil(AOptions);
-      {$ELSE}
-          //VCL,一般用于服务端,需要KBMMW的线程池组件
-          //VCL下,用POOL
-          FDBHelper:=TUniDBHelper.Create(AUniDBHelperPool.FUnidacConnectionPool);
-      {$ENDIF}
 
+        //      AOptions:=TStringList.Create;
+        //      AOptions.StrictDelimiter:=True;
+        //      AOptions.Delimiter:=';';
+        //      AOptions.DelimitedText:=FUniConnection.ConnectString;
+        //      AOptions.Values['Character Set']:=AUniDBHelperPool.FDBConfig.FDBCharset;
+        //      FUniConnection.ConnectString:=AOptions.DelimitedText;
+        //      FreeAndNil(AOptions);
+//          {$ELSE}
+      end
+      else
+      begin
+
+            {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
+            {$ELSE}
+            //VCL,一般用于服务端,需要KBMMW的线程池组件
+            //VCL下,用POOL
+            FDBHelper:=TUniDBHelper.Create(AUniDBHelperPool.FUnidacConnectionPool);
+            {$ENDIF}
+
+//          {$ENDIF}
+      end;
       Result:=FDBHelper;
 
 
@@ -229,22 +251,24 @@ begin
 //      end;
 //    end;
   finally
-    {$IFDEF FMX}
-    if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL') then
+//    {$IFDEF FMX}
+    if SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL') or SameText(AUniDBHelperPool.FDBConfig.FDBType,'MSSQL2000') then
     begin
       {$IFDEF MSWINDOWS}
       CoUninitialize();
       {$ENDIF}
     end;
-    {$ENDIF FMX}
+    {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
+    {$ENDIF}
+//    {$ENDIF FMX}
   end;
 end;
 
 
 destructor TUniDBHelperPoolObject.Destroy;
 begin
-  {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
   FreeAndNil(FUniConnection);
+  {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
   {$ENDIF}
 
   inherited;

@@ -39,7 +39,9 @@ type
     { Private declarations }
   public
     WWWRootDir:String;
+    WWWRootDirs:TStringList;
     constructor Create(AOwner:TComponent);override;
+    destructor Destroy;override;
     { Public declarations }
   end;
 
@@ -87,10 +89,18 @@ begin
   inherited;
 
   WWWRootDir:=ExtractFilePath(Application.ExeName);
+  WWWRootDirs:=TStringList.Create;
 
 end;
 
 
+
+destructor TdmImageIndyHttpServer.Destroy;
+begin
+  FreeAndNil(WWWRootDirs);
+
+  inherited;
+end;
 
 procedure TdmImageIndyHttpServer.IdImageHTTPServerCommandGet(AContext: TIdContext;
   ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
@@ -115,6 +125,10 @@ begin
   LFilename := ARequestInfo.Document;
 //  TFriendStrings(ARequestInfo.Params).SetEncoding(TEncoding.UTF8);
 
+  //允许跨域访问
+//  AResponseInfo.CustomHeaders.Add('Access-Control-Allow-Origin:*');
+//  AResponseInfo.CustomHeaders.Add('Access-Control-Allow-Headers:*');
+//  AResponseInfo.CustomHeaders.Add('Access-Control-Allow-Method:*');
 
 
   //浏览器请求http://127.0.0.1:8008/Upload?FileName=aaa.jpg&FileDir=Temp

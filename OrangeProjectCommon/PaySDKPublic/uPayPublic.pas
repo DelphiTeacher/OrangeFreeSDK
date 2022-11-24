@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 //copyright delphiteacher QQ:452330643
 //2015-08-08
-//æœªç»æˆæƒ,ä¸¥ç¦å‡ºå”®èµ é€æˆ–è½¬ä¸Šä»–äººä½¿ç”¨
+//Î´¾­ÊÚÈ¨,ÑÏ½û³öÊÛÔùËÍ»ò×ªÉÏËûÈËÊ¹ÓÃ
 //
 unit uPayPublic;
 
@@ -13,8 +13,8 @@ interface
 
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -27,11 +27,11 @@ uses
   StrUtils,
 
   {$IFDEF IN_ORANGESDK}
-  //åœ¨OrangeSDKåŒ…é‡Œé¢
+  //ÔÚOrangeSDK°üÀïÃæ
   uFileCommon_Copy,
   uFuncCommon_Copy,
   {$ELSE}
-  //åœ¨OrangeUIé‡Œé¢
+  //ÔÚOrangeUIÀïÃæ
   uFileCommon,
   uFuncCommon,
   {$ENDIF}
@@ -45,7 +45,7 @@ function StandardDateTimeToStr(Const ADateTime:TDateTime):String;
 function FuncUrlEncodeUTF8(const Str : String) : String;
 function FuncUrlEncode(const S : String;SpaceCharReplace:String='20%') : String;overload;
 //function FuncUrlEncode(const ABytes:Array of Byte;SpaceCharReplace:String='20%') : String;overload;
-//åˆ›å»ºæ–°çš„è®¢å•å·(ä»…ç”¨äºæµ‹è¯•)
+//´´½¨ĞÂµÄ¶©µ¥ºÅ(½öÓÃÓÚ²âÊÔ)
 function NewOrderNo:String;
 
 function LowStr(AStr:String):Integer;
@@ -91,7 +91,7 @@ begin
     AResponseContent.Position:=0;
     AResponseContent.Read(AResponseContentDataString_UTF8[1],AResponseContent.Size);
 
-    //è½¬æ¢æˆUTF8æ ¼å¼
+    //×ª»»³ÉUTF8¸ñÊ½
     AResponseContentDataString_UTF8:=UTF8Decode(AResponseContentDataString_UTF8);
     Result:=AResponseContentDataString_UTF8;
 end;

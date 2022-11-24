@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 /// <summary>
 ///   <para>
-///     å…¬å…±å‡½æ•°
+///     ¹«¹²º¯Êı
 ///   </para>
 ///   <para>
 ///     Public function
@@ -17,8 +17,8 @@ interface
 
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -26,8 +26,8 @@ interface
 {$ENDIF}
 
 
-//ä¸èƒ½å¼•ç”¨FMX.ç­‰å•å…ƒ,ä¸ç„¶åœ¨AndroidæœåŠ¡ä¸­ä¸èƒ½ä½¿ç”¨ä¼šå¡æ­»
-//å¯ä»¥åœ¨AndroidæœåŠ¡ä¸­ä½¿ç”¨
+//²»ÄÜÒıÓÃFMX.µÈµ¥Ôª,²»È»ÔÚAndroid·şÎñÖĞ²»ÄÜÊ¹ÓÃ»á¿¨ËÀ
+//¿ÉÒÔÔÚAndroid·şÎñÖĞÊ¹ÓÃ
 uses
   Classes,
   Types,
@@ -62,19 +62,19 @@ uses
 
 
 const
-  //ç¼©ç•¥å›¾çš„å‰ç¼€
+  //ËõÂÔÍ¼µÄÇ°×º
   Const_ThumbPrefix='thumb_';
 
 
 const
 //<<<<<<< .mine
-  //åŒç²¾åº¦æ¯”è¾ƒè¯¯å·®,å¿…é¡»æ˜¯0.001å•Š,å› ä¸ºé‡‘é¢ä¸­é€šå¸¸æ˜¯ä¿ç•™ä¸¤ä½å°ä½çš„,å¦‚æœä¼šå¯¼è‡´0.02,0.03æ˜¯ç›¸ç­‰çš„
+  //Ë«¾«¶È±È½ÏÎó²î,±ØĞëÊÇ0.001°¡,ÒòÎª½ğ¶îÖĞÍ¨³£ÊÇ±£ÁôÁ½Î»Ğ¡Î»µÄ,Èç¹û»áµ¼ÖÂ0.02,0.03ÊÇÏàµÈµÄ
   Precision:Double=0.001;
 //||||||| .r11335
-//  //åŒç²¾åº¦æ¯”è¾ƒè¯¯å·®
+//  //Ë«¾«¶È±È½ÏÎó²î
 //  Precision:Double=0.01;
 //=======
-//  //2019-03-06æ”¹æˆ300*300
+//  //2019-03-06¸Ä³É300*300
 ////  MaxWidth = 500 ;
 ////  MaxHigth = 500 ;
 //  MaxWidth = 300 ;
@@ -82,7 +82,7 @@ const
 //
 //
 //const
-//  //åŒç²¾åº¦æ¯”è¾ƒè¯¯å·®
+//  //Ë«¾«¶È±È½ÏÎó²î
 //  Precision:Double=0.01;
 //>>>>>>> .r11835
 
@@ -91,12 +91,16 @@ type
   TStringDynArray=array of String;
 
 
+type
+  TProtectedInterfacedObject=class(TInterfacedObject)
+  end;
+
 
 
 
 /// <summary>
 ///   <para>
-///     å¢åŠ å¼•ç”¨
+///     Ôö¼ÓÒıÓÃ
 ///   </para>
 ///   <para>
 ///     Add refrence
@@ -106,7 +110,7 @@ procedure ObjAddRef(Obj:TObject);
 
 /// <summary>
 ///   <para>
-///     å‡å°‘å¼•ç”¨
+///     ¼õÉÙÒıÓÃ
 ///   </para>
 ///   <para>
 ///     Reduce refrence
@@ -114,8 +118,8 @@ procedure ObjAddRef(Obj:TObject);
 /// </summary>
 procedure ObjRelease(Obj:TObject);
 
-//é‡Šæ”¾
-//é‡Šæ”¾
+//ÊÍ·Å
+//ÊÍ·Å
 {$IF CompilerVersion<=33.0}
 procedure FreeAndNil(var Obj);
 {$ELSE}
@@ -126,7 +130,7 @@ procedure FreeAndNil(const [ref] Obj:TObject);
 
 
 /// <summary>
-///   æ ‡å‡†æ—¥æœŸæ ¼å¼è½¬æ¢
+///   ±ê×¼ÈÕÆÚ¸ñÊ½×ª»»
 ///   <para>
 ///     Standard date convert
 ///   </para>
@@ -134,7 +138,7 @@ procedure FreeAndNil(const [ref] Obj:TObject);
 function StandardDateToStr(Const ADateTime:TDateTime):String;
 function StdDateToStr(Const ADateTime:TDateTime):String;
 /// <summary>
-///   æ ‡å‡†æ—¥æœŸæ ¼å¼è½¬æ¢
+///   ±ê×¼ÈÕÆÚ¸ñÊ½×ª»»
 ///    <para>
 ///     Standard date convert
 ///   </para>
@@ -145,10 +149,10 @@ function StdStrToDateTime(Const Str:String):TDateTime;
 function StandardStrToDate(Const Str:String):TDateTime;
 function StdStrToDate(Const Str:String):TDateTime;
 
-//'2018-08-30 14:26:44'è½¬æ¢æˆ'2018-08-30'
+//'2018-08-30 14:26:44'×ª»»³É'2018-08-30'
 function StdStrToDateStr(Const Str:String):String;
 /// <summary>
-///   æ ‡å‡†æ—¥æœŸæ ¼å¼è½¬æ¢
+///   ±ê×¼ÈÕÆÚ¸ñÊ½×ª»»
 ///     <para>
 ///     Standard date convert
 ///   </para>
@@ -160,7 +164,7 @@ function StdDateTimeToStr(Const ADateTime:TDateTime):String;
 
 /// <summary>
 ///   <para>
-///     è·å–CPUæ—¶é—´
+///     »ñÈ¡CPUÊ±¼ä
 ///   </para>
 ///   <para>
 ///     Get tick time of CPU
@@ -172,7 +176,7 @@ function UIGetTickCount: LongWord;
 
 /// <summary>
 ///   <para>
-///     åˆ›å»ºGUIDå­—ç¬¦ä¸²
+///     ´´½¨GUID×Ö·û´®
 ///   </para>
 ///   <para>
 ///     Create GUID string
@@ -181,7 +185,7 @@ function UIGetTickCount: LongWord;
 function CreateGUIDString:String;
 /// <summary>
 ///   <para>
-///     åˆ›å»ºGUIDå­—ç¬¦ä¸²(å¸¦åˆ†éš”ç¬¦-)
+///     ´´½¨GUID×Ö·û´®(´ø·Ö¸ô·û-)
 ///   </para>
 ///   <para>
 ///     Create GUID string
@@ -191,7 +195,7 @@ function CreateGUIDStringHasDevide:String;
 
 
 
-//Doubleç±»å‹æ¯”è¾ƒ
+//DoubleÀàĞÍ±È½Ï
 function BiggerDouble(A,B:Double):Boolean;
 function SmallerDouble(A,B:Double):Boolean;
 function BiggerEqualDouble(A,B:Double):Boolean;
@@ -203,14 +207,14 @@ function NotEqualDouble(A,B:Double):Boolean;
 function LowStr(AStr:String):Integer;
 function HighStr(AStr:String):Integer;
 
-//å°†ç‚¹åˆ†å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ•°ç»„
+//½«µã·Ö×Ö·û´®×ª»»ÎªÊı×é
 function GetStringArray(ACommaText:String):TStringDynArray;
 function GetStringListArray(AStringList:TStringList):TStringDynArray;
-//è·å–å­—ç¬¦ä¸²åˆ—è¡¨Nameçš„æ•°ç»„
+//»ñÈ¡×Ö·û´®ÁĞ±íNameµÄÊı×é
 function GetStringListNameArray(AStringList:TStringList):TStringDynArray;
-//è·å–å­—ç¬¦ä¸²åˆ—è¡¨Valueçš„æ•°ç»„
+//»ñÈ¡×Ö·û´®ÁĞ±íValueµÄÊı×é
 function GetStringListValueArray(AStringList:TStringList):TStringDynArray;
-//é‡Šæ”¾ç»‘åœ¨StringListä¸­çš„å¯¹è±¡
+//ÊÍ·Å°óÔÚStringListÖĞµÄ¶ÔÏó
 procedure FreeStringListObjects(AStringList:TStringList);
 
 
@@ -222,6 +226,7 @@ function AddValueToArray(AValues:Array of Variant;AValue:Variant):TVariantDynArr
 //procedure AddStrToArray(var AArray:TStringDynArray;AStr:String);//:TStringDynArray;
 //procedure AddValueToArray(var AValues:TVariantDynArray;AValue:Variant);//:TVariantDynArray;
 function ConvertToStringDynArray(AArray:Array of String):TStringDynArray;
+//function ConvertToStringDynArray(ACommaText:String):TStringDynArray;
 function ConvertToVariantDynArray(AVariants:Array of Variant):TVariantDynArray;
 //function ConvertToStringArray(AArray:Array of String):Array of String;
 //function ConvertToVariantArray(AVariants:Array of Variant):TVariantDynArray;
@@ -229,14 +234,15 @@ function ConvertToVariantDynArray(AVariants:Array of Variant):TVariantDynArray;
 
 function SaveStringToFile(AString:String;AFilePath:String{$IF CompilerVersion >= 21.0};AEncoding:TEncoding{$IFEND}):Boolean;
 function GetStringFromFile(AFilePath:String{$IF CompilerVersion >= 21.0};AEncoding:TEncoding{$IFEND}):String;
-{$IF CompilerVersion >= 30.0}
-//æ¯”2007é«˜çš„ç‰ˆæœ¬
+{$IF CompilerVersion >= 21.0}
+function GetTextFileEncoding(const AFileName: string): TEncoding;
+//±È2007¸ßµÄ°æ±¾
 function GetStringFromTextFile(AFilePath:String):String;
 {$IFEND}
 
 
 
-//ç”ŸæˆéªŒè¯ç ,å››ä½
+//Éú³ÉÑéÖ¤Âë,ËÄÎ»
 function GenerateCaptcha:String;
 function GenerateCaptcha_5:String;
 function GenerateCaptcha_6:String;
@@ -245,15 +251,15 @@ function GetRandStr(len : Integer;
                     lowercase : Boolean = True;
                     num : Boolean = True;
                     uppercase : Boolean = False) : string;
-//è·å–ç³»ç»Ÿ
+//»ñÈ¡ÏµÍ³
 function GetOS:String;
 
 
-//ç§’
-//å°†åŒ—äº¬æ—¶é—´è½¬æ¢æˆUTCçš„æ—¶é—´æˆ³
+//Ãë
+//½«±±¾©Ê±¼ä×ª»»³ÉUTCµÄÊ±¼ä´Á
 function timeIntervalSince1970(Const ADateTime:TDateTime):Int64;
 function timeMillionSecondsIntervalSince1970(Const ADateTime:TDateTime):Int64;
-//å°†UTCæ—¶é—´æˆ³è½¬æ¢æˆåŒ—äº¬æ—¶é—´
+//½«UTCÊ±¼ä´Á×ª»»³É±±¾©Ê±¼ä
 function timeSince1970Interval(Const AInterval:Int64):TDateTime;
 function timeSince1970MillionSecondsInterval(Const AMillionSecondsInterval:Int64):TDateTime;
 function GetTimeHowLong(ADateTime:TDateTime):String;
@@ -266,42 +272,43 @@ function GetTimeHowLong(ADateTime:TDateTime):String;
 function GetThumbFilePrefix(const AIsThumb:Boolean): String;
 
 
-//å­—ç¬¦ä¸²ä¸‹æ ‡ä»0å¼€å§‹
+//×Ö·û´®ÏÂ±ê´Ó0¿ªÊ¼
 function NewDelphiSubString(AStr:String;AIndex_StartWith0:Integer;ALength:Integer):String;
 function NewDelphiStringIndexOfName(ASubStr,AStr:String):Integer;overload;
 function NewDelphiStringIndexOf(ASubStr,AStr:String):Boolean;overload;
 
 
-//éšè—æ‰‹æœºå·ç (ä¸­å›½çš„æ‰‹æœºå·ç ,å›½å¤–çš„ä¸ä¸€æ ·)
+//Òş²ØÊÖ»úºÅÂë(ÖĞ¹úµÄÊÖ»úºÅÂë,¹úÍâµÄ²»Ò»Ñù)
 function HideMobPhone( num:string ):String;
-//éšè—é“¶è¡Œå¡å·
+//Òş²ØÒøĞĞ¿¨ºÅ
 function HideBankCardNumber( num:string ):String;
-//æ£€æµ‹é“¶è¡Œå¡å·æ˜¯å¦åˆæ³•
+//¼ì²âÒøĞĞ¿¨ºÅÊÇ·ñºÏ·¨
 function checkBankCardNo(cardNo:String):Boolean;
 
 
 {$IF CompilerVersion >= 30.0}
-//æ¯”D2007é«˜çš„ç‰ˆæœ¬
-//æ˜¯å¦æ˜¯åˆæ³•çš„æ‰‹æœºå·ç (ä¸­å›½çš„æ‰‹æœºå·ç ,æ–°è¥¿å…°çš„æ‰‹æœºå·ç ,02+6åˆ°8ä½æ•°å­—))
+//±ÈD2007¸ßµÄ°æ±¾
+//ÊÇ·ñÊÇºÏ·¨µÄÊÖ»úºÅÂë(ÖĞ¹úµÄÊÖ»úºÅÂë,ĞÂÎ÷À¼µÄÊÖ»úºÅÂë,02+6µ½8Î»Êı×Ö))
 function IsMobPhone( num:string ):boolean;
-//æ˜¯å¦æ˜¯è™šæ‹Ÿæ‰‹æœºå·
+//ÊÇ·ñÊÇĞéÄâÊÖ»úºÅ
 function IsVirtualMobPhone( num:string ):boolean;
 
-//æ˜¯å¦æ˜¯åˆæ³•çš„èº«ä»½è¯å·ç (ä¸­å›½çš„èº«ä»½è¯å·ç ,å›½å¤–çš„ä¸ä¸€æ ·)
+//ÊÇ·ñÊÇºÏ·¨µÄÉí·İÖ¤ºÅÂë(ÖĞ¹úµÄÉí·İÖ¤ºÅÂë,¹úÍâµÄ²»Ò»Ñù)
+//310991196109114271
 function ValidatePID(const APID: string): string;
 {$IFEND}
 
 
 
-//é‚®ç®±æ˜¯å¦åˆæ³•
+//ÓÊÏäÊÇ·ñºÏ·¨
 function CheckEmail(email:String):Boolean;
 
-//'$000000' è½¬ 0
+//'$000000' ×ª 0
 Function HexToInt(AHex:String):Integer;
 
 function IsPadDevice:Boolean;
 
-//è®¾ç½®èŠå¤©æ—¶é—´æ˜¾ç¤º
+//ÉèÖÃÁÄÌìÊ±¼äÏÔÊ¾
 function SettingChatTime(ADateTime:TDateTime;AIsRecentChat:Boolean):String;
 function GetUniqueAndroidStartActivityForRequestCode(ARequestName:String;ABaseIndex:Integer=1000):Integer;
 
@@ -311,8 +318,8 @@ function ExtractFileNameNoExt(AFilePath:String):String;
 
 
 
-//æ ¹æ®èŠ‚ç‚¹åæ‰¾åˆ°æœ€åä¸€ä¸ªèŠ‚ç‚¹ä¸‹æ ‡,
-//ç”¨äºå¸ƒç½²æ–‡ä»¶æ—¶,æ·»åŠ å­èŠ‚ç‚¹åœ¨æ­¤èŠ‚ç‚¹ä¸‹é¢
+//¸ù¾İ½ÚµãÃûÕÒµ½×îºóÒ»¸ö½ÚµãÏÂ±ê,
+//ÓÃÓÚ²¼ÊğÎÄ¼şÊ±,Ìí¼Ó×Ó½ÚµãÔÚ´Ë½ÚµãÏÂÃæ
 function FindLastChildXMLNodeIndex(ANodeName:String;
                                     AXMLNode: IXMLNode):Integer;overload;
 function FindChildXMLNode(ANodeName:String;
@@ -324,11 +331,38 @@ function FindChildXMLNodeIndexByAttr(ANodeAttrName:String;
                                ANodeAttrValue:String;
                                AXMLNode: IXMLNode):Integer;
 function FindKeyValueNode(ADictNode: IXMLNode;AKey:String):IXMLNode;
-//æ ¹æ®èŠ‚ç‚¹çš„nameæ¥åˆ¤æ–­æ˜¯å¦å­˜åœ¨
+//¸ù¾İ½ÚµãµÄnameÀ´ÅĞ¶ÏÊÇ·ñ´æÔÚ
 function FindSameAndroidResourceNode(AXMLNode: IXMLNode;ANeedFindXMLNode:IXMLNode): IXMLNode;
-//å¤åˆ¶å­èŠ‚ç‚¹
+//¸´ÖÆ×Ó½Úµã
 procedure CopyXMLNode(ASrcNode:IXMLNode;ADestNode:IXMLNode);
 
+
+//{$IF CompilerVersion >= 30.0}
+function UTFStrToUnicode(UTFStr:String):String;
+//¸ñÊ½»¯Json×Ö·û´®
+function formatJson(inputStr : string;indent : string='      ') : string;
+//{$IFEND}
+
+//´ÓÁ´½ÓÖĞÈ¡³öÎÄ¼şÃû
+function GetFileNameFromUrl(AUrl:String):String;
+
+
+//¶¨Î»²¢ÇÒ¼ôÇĞ×Ö·û´®,·µ»ØÊÇ·ñ±»¼ôÇĞÁË
+function PosAndCutString(ASubStr:String;
+                          var AOriginStr:String;
+                          var ACuttedStr:String;
+                          var AIndex:Integer;
+                          //ÊÇ·ñĞèÒª¼ôÇĞµô×Ó´®
+                          AIsNeedCutSubStr:Boolean):Boolean;
+
+{$IFDEF MSWINDOWS}
+function PosAndCutAnsiString(ASubStr:AnsiString;
+                          var AOriginStr:AnsiString;
+                          var ACuttedStr:AnsiString;
+                          var AIndex:Integer;
+                          //ÊÇ·ñĞèÒª¼ôÇĞµô×Ó´®
+                          AIsNeedCutSubStr:Boolean):Boolean;
+{$ENDIF}
 
 
 var
@@ -339,6 +373,283 @@ var
 
 
 implementation
+
+
+
+//¶¨Î»²¢ÇÒ¼ôÇĞ×Ö·û´®
+function PosAndCutString(ASubStr:String;var AOriginStr:String;var ACuttedStr:String;var AIndex:Integer;AIsNeedCutSubStr:Boolean):Boolean;
+begin
+  Result:=False;
+  AIndex:=Pos(ASubStr,AOriginStr);
+  if AIndex>0 then
+  begin
+    ACuttedStr:=Copy(AOriginStr,1,AIndex-1);
+
+    if AIsNeedCutSubStr then
+    begin
+      AOriginStr:=Copy(AOriginStr,AIndex+Length(ASubStr),MaxInt);
+    end
+    else
+    begin
+      AOriginStr:=Copy(AOriginStr,AIndex,MaxInt);
+    end;
+
+    Result:=True;
+  end;
+end;
+
+{$IFDEF MSWINDOWS}
+function PosAndCutAnsiString(ASubStr:AnsiString;var AOriginStr:AnsiString;var ACuttedStr:AnsiString;var AIndex:Integer;AIsNeedCutSubStr:Boolean):Boolean;
+begin
+  Result:=False;
+  AIndex:=Pos(ASubStr,AOriginStr);
+  if AIndex>0 then
+  begin
+    ACuttedStr:=Copy(AOriginStr,1,AIndex-1);
+
+    if AIsNeedCutSubStr then
+    begin
+      AOriginStr:=Copy(AOriginStr,AIndex+Length(ASubStr),MaxInt);
+    end
+    else
+    begin
+      AOriginStr:=Copy(AOriginStr,AIndex,MaxInt);
+    end;
+
+    Result:=True;
+  end;
+end;
+{$ENDIF}
+
+
+//´ÓÁ´½ÓÖĞÈ¡³öÎÄ¼şÃû
+//'https://pbs.twimg.com/ext_tw_video_thumb/1461476505297379336/pu/img/-magZuqcgmSS1RoA.jpg'
+function GetFileNameFromUrl(AUrl:String):String;
+var
+  AStartIndex:Integer;
+  AStringList:TStringList;
+begin
+  AStartIndex:=Pos('?',AUrl);
+  if AStartIndex>0 then
+  begin
+    AUrl:=Copy(AUrl,1,AStartIndex-1);
+  end;
+
+  //È¡×îºóÒ»¸ö/
+  AStringList:=TStringList.Create;
+  try
+    AStringList.Delimiter:='/';
+    AStringList.DelimitedText:=AUrl;
+
+    Result:=AStringList[AStringList.Count-1];
+
+  finally
+    FreeAndNil(AStringList);
+  end;
+
+
+
+
+end;
+
+function XDigit(Ch : Char) : Integer;
+begin
+  if (Ch >= '0') and (Ch <= '9') then
+      Result := Ord(Ch) - Ord('0')
+  else
+      Result := (Ord(Ch) and 15) + 9;
+end;
+
+
+//{$IF CompilerVersion >= 30.0}
+function UTFStrToUnicode(UTFStr:String):String;
+var
+  I:Integer;
+  Index:Integer;
+  Len:Integer;
+  HexStr:String;
+  LowerCaseUTFStr:String;
+  WChar:WideChar;
+  WCharWord:Word;
+  AChar:Char;
+begin
+  //ÄúµÄÑéÖ¤Âë´íÎó
+  Result:='';
+  LowerCaseUTFStr:=LowerCase(UTFStr);
+  {$IFDEF FMX}
+  Index:=Low(LowerCaseUTFStr);
+  Len:=High(LowerCaseUTFStr);
+  {$ENDIF}
+  {$IFDEF VCL}
+  Index:=1;
+  Len:=Length(LowerCaseUTFStr);
+  {$ENDIF}
+  while Index<=Len do
+  begin
+      if (LowerCaseUTFStr[Index]='\')
+        and (LowerCaseUTFStr[Index+1]='u') then
+      begin
+          HexStr:=Copy(LowerCaseUTFStr,Index+2,4);
+          WCharWord:=0;
+          //HexStr=60a8
+          for I := 1 to Length(HexStr) do
+          begin
+            AChar:=Char(HexStr[I]);
+            WCharWord:=WCharWord+XDigit(AChar)*Ceil(Power(16,4-I));
+          end;
+          WChar:=WideChar(WCharWord);
+          //WChar=Äú
+          Result:=Result+WChar;
+          Inc(Index,5);
+      end
+      else
+      begin
+          Result:=Result+UTFStr[Index];
+      end;
+      Inc(Index);
+  end;
+
+  Result:=formatJson(Result);
+end;
+
+
+//json´®µÄ¼òÒ×¸ñÊ½»¯´¦Àí
+//ÊäÈë:
+// indent ÓÃÀ´±íÊ¾Ëõ½øµÄ×Ö·û´®
+// inputStr ´ı¸ñÊ½»¯µÄjson×Ö·û´®
+//Êä³ö:
+// ¸ñÊ½»¯ºóµÄjson×Ö·û´®
+//
+function formatJson(inputStr : string;indent : string ) : string;
+var
+   outStr,s : string;
+   p,i : integer;
+   c : char;
+   level : integer; //Ëõ½ø¼¶±ğ
+   quot : integer; //Ë«ÒıºÅ±ê¼Ç
+   slant : integer; //·´Ğ±¸Ü±ê¼Ç
+   colon : integer; //Ã°ºÅ
+   function getTab(level : integer):string;
+   var
+      tab : string;
+      j : integer;
+   begin
+      getTab := '';
+      if level > 0 then
+      begin
+      for j:=1 to level do
+      begin
+         tab := tab + indent;
+      end;
+      end;
+      result := tab;
+   end;
+begin
+   //È¥µô»»ĞĞ»Ø³µ·û
+   inputStr := stringReplace(inputStr,#13#10,'',[rfReplaceAll, rfIgnoreCase]);
+   //È¥µôtab·û
+   inputStr := stringReplace(inputStr,#9,'',[rfReplaceAll, rfIgnoreCase]);
+   //Ö§³Ö xxx={...} ¸ñÊ½µÄÊı¾İ£¬±£Áô xxx= ÄÚÈİ¡£
+   p := pos('{',inputStr);
+   if p>0 then
+   begin
+      outStr := copy(inputStr,1,p-1);
+      inputStr := copy(inputStr,p,length(inputStr));
+   end
+   else
+   begin
+      result := inputStr;
+      exit;
+   end;
+
+
+
+   //json¸ñÊ½»¯´¦Àí
+   //¼òÒ×´¦Àí¹æÔò£º
+   //Óöµ½·´Ğ±¸Ü "\"£¬Êä³ö£¬ºóÃæ½ô¸úµÄ×Ö·ûÖ±½ÓÊä³ö£¬²»×öÌØÊâ´¦Àí
+   //Óöµ½Ë«ÒıºÅ """£¬Êä³ö£¬µÈ´ıÆ¥ÅäÏÂÒ»¸öË«ÒıºÅ£¨³ıÁË·´Ğ±¸Ü"\"ºóµÄË«ÒıºÅÍâ),Æä¼äµÄ×Ö·ûÖ±½ÓÊä³ö
+   //Óöµ½×ó»¨À¨ºÅ "{" Ëõ½ø²»±äÊä³ö£¬»Ø³µ£¬ºóĞøËõ½øµÈ¼¶+1
+   //Óöµ½ÓÒ»¨À¨ºÅ "}" »Ø³µ£¬Ëõ½ø-1, Êä³ö£¬ºóĞøËõ½øµÈ¼¶-1
+   //Óöµ½×ó·½À¨ºÅ "[" Ëõ½ø²»±äÊä³ö£¬»Ø³µ£¬ºóĞøËõ½øµÈ¼¶+1
+   //Óöµ½ÓÒ·½À¨ºÅ "]" »Ø³µ£¬Ëõ½ø-1, Êä³ö£¬ºóĞøËõ½øµÈ¼¶-1
+   //Óöµ½Ë«ÒıºÅÍâµÄ¶ººÅ "," Êä³öºó»Ø³µ
+   //Óöµ½Ã°ºÅ ":", Êä³ö£¬¼ÓÒ»¸ö¿Õ¸ñ
+   //²»·ûºÏÒÔÉÏ¹æÔòµÄ×Ö·û£¬³ı¿Õ¸ñÍâ£¬Ö±½Ó Êä³ö
+
+   level := 0;
+   quot := 0; //ÊÇ·ñµÈ´ıÆ¥ÅäË«ÒıºÅ
+   colon := 0;
+   for i:=1 to length(inputStr) do
+   begin
+      c := inputStr[i];
+
+
+      if c<>' ' then s:=c else s:='';    //¹ıÂËÒ»°ãĞÔ¿Õ¸ñ
+      if (slant=1) then
+      begin
+         //·´Ğ±¸ÜÖ®ºóµÄ×Ö·ûÖ±½ÓÊä³ö
+         slant := 0;
+      end
+      else if (quot = 1)   and (c <> '"') and (c<>'\') then
+      begin
+         //Ë«ÒıºÅÖ®ºóµÄ×Ö·ûÖ±½ÓÊä³ö
+         s := c; //Ë«ÒıºÅÖ®¼äµÄ¿Õ¸ñÒ²±£ÁôÊä³ö
+      end
+      else
+
+
+      begin
+        case c of
+         '\': begin
+            slant := 1;
+            end;
+         '{': begin
+            if colon <> 1 then s:=getTab(level) + s ;
+            s := s + #13#10 ;
+            level:=level+1;
+            colon := 0;
+            end;
+         '}': begin
+            s := #13#10 + getTab(level-1) + s;
+            level:=level-1;
+            end;
+         '[': begin
+            if colon <> 1 then s:=getTab(level) + s ;
+            s := s + #13#10 ;
+            level:=level+1;
+            colon := 0;
+            end;
+         ']': begin
+            s := #13#10 + getTab(level-1) + s;
+            level:=level-1;
+            end;
+         '"': begin
+            quot := 1 - quot;
+            if   (quot=1) and (colon =0 ) then   s := getTab(level) + s;
+            colon := 0;
+            end;
+         ',': begin
+            s := s + #13#10 ;
+            colon := 0;
+            end;
+         ':': begin
+            s := s + ' ' ;
+            colon := 1;
+            end;
+        else
+         //
+        end ;
+
+
+      end;
+      outStr := outStr + s;
+   end;
+
+
+   result := outStr;
+end;
+//{$IFEND}
+
 
 
 function FindLastChildXMLNodeIndex(ANodeName: String;AXMLNode: IXMLNode): Integer;
@@ -437,7 +748,7 @@ begin
   end
   else
   begin
-      //åªå¤åˆ¶å­èŠ‚ç‚¹
+      //Ö»¸´ÖÆ×Ó½Úµã
       for I := 0 to ASrcNode.ChildNodes.Count-1 do
       begin
         AChildNode:=ADestNode.AddChild(ASrcNode.ChildNodes[I].NodeName);
@@ -480,13 +791,13 @@ begin
 
 //  if AXMLNode=nil then
 //  begin
-//      //ä¸å­˜åœ¨æ­¤åç§°çš„
-//      //ç›´æ¥å¤åˆ¶
+//      //²»´æÔÚ´ËÃû³ÆµÄ
+//      //Ö±½Ó¸´ÖÆ
 //      Exit;
 //  end
 //  else
 //  begin
-//      //å­˜åœ¨é‡åçš„,ä½†æ˜¯Attributeå¯èƒ½ä¸ä¸€æ ·
+//      //´æÔÚÖØÃûµÄ,µ«ÊÇAttribute¿ÉÄÜ²»Ò»Ñù
 //      if ANeedFindXMLNode.HasAttribute('name')
 //        and (FindSameNameButDiffAttrNode(ANeedFindXMLNode.NodeName,
 //                                      'name',
@@ -494,7 +805,7 @@ begin
 //                                      AXMLNode)=nil)
 //                                      then
 //      begin
-//        //ä¸ç›¸åŒ,å¤åˆ¶
+//        //²»ÏàÍ¬,¸´ÖÆ
 //        ADestXMLNode.ChildNodes.Add(AXMLNode);
 //      end;
 //
@@ -535,7 +846,7 @@ begin
   AIndex:=AndroidStartActivityForRequestCodes.IndexOf(ARequestName);
   if AIndex<>-1 then
   begin
-    //å­˜åœ¨
+    //´æÔÚ
     Result:=StrToInt(AndroidStartActivityForRequestCodes[AIndex+1]);
     Exit;
   end;
@@ -579,11 +890,11 @@ begin
   begin
     if AIsRecentChat=True then
     begin
-      Result:='æ˜¨å¤©';
+      Result:='×òÌì';
     end
     else
     begin
-      Result:='æ˜¨å¤©'+'  '+FormatDateTime('HH:MM',ADateTime);
+      Result:='×òÌì'+'  '+FormatDateTime('HH:MM',ADateTime);
     end;
   end
   else if (ADateTime<Trunc(ADay)-1) and (ADateTime>=Trunc(ADay)-2) then
@@ -592,25 +903,25 @@ begin
     if AIsRecentChat=True then
     begin
       case Week of
-        2:Result:='å‘¨ä¸€';
-        3:Result:='å‘¨äºŒ';
-        4:Result:='å‘¨ä¸‰';
-        5:Result:='å‘¨å››';
-        6:Result:='å‘¨äº”';
-        7:Result:='å‘¨å…­';
-        1:Result:='å‘¨æ—¥';
+        2:Result:='ÖÜÒ»';
+        3:Result:='ÖÜ¶ş';
+        4:Result:='ÖÜÈı';
+        5:Result:='ÖÜËÄ';
+        6:Result:='ÖÜÎå';
+        7:Result:='ÖÜÁù';
+        1:Result:='ÖÜÈÕ';
       end;
     end
     else
     begin
       case Week of
-        2:Result:='æ˜ŸæœŸä¸€'+' '+FormatDateTime('HH:MM',ADateTime);
-        3:Result:='æ˜ŸæœŸäºŒ'+' '+FormatDateTime('HH:MM',ADateTime);
-        4:Result:='æ˜ŸæœŸä¸‰'+' '+FormatDateTime('HH:MM',ADateTime);
-        5:Result:='æ˜ŸæœŸå››'+' '+FormatDateTime('HH:MM',ADateTime);
-        6:Result:='æ˜ŸæœŸäº”'+' '+FormatDateTime('HH:MM',ADateTime);
-        7:Result:='æ˜ŸæœŸå…­'+' '+FormatDateTime('HH:MM',ADateTime);
-        1:Result:='æ˜ŸæœŸå¤©'+' '+FormatDateTime('HH:MM',ADateTime);
+        2:Result:='ĞÇÆÚÒ»'+' '+FormatDateTime('HH:MM',ADateTime);
+        3:Result:='ĞÇÆÚ¶ş'+' '+FormatDateTime('HH:MM',ADateTime);
+        4:Result:='ĞÇÆÚÈı'+' '+FormatDateTime('HH:MM',ADateTime);
+        5:Result:='ĞÇÆÚËÄ'+' '+FormatDateTime('HH:MM',ADateTime);
+        6:Result:='ĞÇÆÚÎå'+' '+FormatDateTime('HH:MM',ADateTime);
+        7:Result:='ĞÇÆÚÁù'+' '+FormatDateTime('HH:MM',ADateTime);
+        1:Result:='ĞÇÆÚÌì'+' '+FormatDateTime('HH:MM',ADateTime);
       end;
     end;
 
@@ -667,8 +978,8 @@ end;
 
 
 //- (BOOL) checkCardNo:(NSString*) cardNo{
-//    int oddsum = 0;     //å¥‡æ•°æ±‚å’Œ
-//    int evensum = 0;    //å¶æ•°æ±‚å’Œ
+//    int oddsum = 0;     //ÆæÊıÇóºÍ
+//    int evensum = 0;    //Å¼ÊıÇóºÍ
 //    int allsum = 0;
 //    int cardNoLength = (int)[cardNo length];
 //    int lastNum = [[cardNo substringFromIndex:cardNoLength-1] intValue];
@@ -769,8 +1080,8 @@ begin
   {$ELSE}
   cardNo:=Trim(cardNo);
 
-  oddsum := 0;     //å¥‡æ•°æ±‚å’Œ
-  evensum := 0;    //å¶æ•°æ±‚å’Œ
+  oddsum := 0;     //ÆæÊıÇóºÍ
+  evensum := 0;    //Å¼ÊıÇóºÍ
   allsum := 0;
   cardNoLength := Length(cardNo);
 
@@ -847,18 +1158,18 @@ end;
 
 function IsMobPhone( num:string ):boolean;
 //const
-//  cChinaMobile: string // ç§»åŠ¨å·ç 
+//  cChinaMobile: string // ÒÆ¶¯ºÅÂë
 //    = '(134(?<=134)|135(?<=135)|136(?<=136)|137(?<=137)|138(?<=138)|139(?<=139)'
 //    + '|147(?<=147)|150(?<=150)|151(?<=151)|152(?<=152)|157(?<=157)|158(?<=158)'
 //    + '|159(?<=159)|182(?<=182)|183(?<=183)|184(?<=184)|187(?<=187)|188(?<=188)'
 //    + '|178(?<=178))\d{8}\b';
-//  cChinaUnicom: string // è”é€šå·ç 
+//  cChinaUnicom: string // ÁªÍ¨ºÅÂë
 //    = '(130(?<=130)|131(?<=131)|132(?<=132)|145(?<=145)|155(?<=155)|156(?<=156)'
 //    + '|185(?<=185)|186(?<=186)|176(?<=176))\d{8}\b';
-//  cChinaTelecom: string // ç”µä¿¡å·ç 
+//  cChinaTelecom: string // µçĞÅºÅÂë
 //    = '(133(?<=133)|153(?<=153)|180(?<=180)|181(?<=181)|189(?<=189)|177(?<=177)'
 //    + ')\d{8}\b';
-//  cChinaPhone: string // æœ‰æ•ˆå·ç 
+//  cChinaPhone: string // ÓĞĞ§ºÅÂë
 //    = '(13(?<=13)|14(?<=14)|15(?<=15)|17(?<=17)|18(?<=18))\d{9}\b';
 var
   I: Integer;
@@ -866,25 +1177,25 @@ begin
   Result:=False;
 
   {$IFDEF NZ}
-      //022ä¸åŒå…¬å¸çš„å·ç 
+      //022²»Í¬¹«Ë¾µÄºÅÂë
       //022 424594
       //022 4245948
       //022 42459483
-      //æ–°è¥¿å…°çš„æ‰‹æœºå·ï¼Œ
-      //é™¤äº†å…¬å¸å‰ç¼€(022,021,027ç­‰ä¸‰ä½æ•°ï¼‰ï¼Œ
-      //åé¢ä½æ•°æœ‰å…­ä½æ•°çš„ä¹Ÿæœ‰ä¸ƒä½æ•°çš„ã€‚
+      //ĞÂÎ÷À¼µÄÊÖ»úºÅ£¬
+      //³ıÁË¹«Ë¾Ç°×º(022,021,027µÈÈıÎ»Êı£©£¬
+      //ºóÃæÎ»ÊıÓĞÁùÎ»ÊıµÄÒ²ÓĞÆßÎ»ÊıµÄ¡£
 
-      //æ–°è¥¿å…°çš„ç”µè¯å·ç 
-      //åŒºå·+ç”µè¯å·ç ,09æ˜¯å¥¥å…‹å…°åŒº
+      //ĞÂÎ÷À¼µÄµç»°ºÅÂë
+      //ÇøºÅ+µç»°ºÅÂë,09ÊÇ°Â¿ËÀ¼Çø
       //09 4782428
       //06 4245948
       if (length(num)<8) or (length(num)>11) then Exit;
 
-      //é¦–ä½å¿…é¡»æ˜¯0
+      //Ê×Î»±ØĞëÊÇ0
       if (copy(num,1,1)<>'0') then Exit;
 
 
-    //  //æ‰‹æœºå·,ç¬¬ä¸€ä½å¿…é¡»æ˜¯2
+    //  //ÊÖ»úºÅ,µÚÒ»Î»±ØĞëÊÇ2
     //  if (copy(num,2,1)<>'2') then Exit;
 
 
@@ -903,12 +1214,12 @@ begin
 
   {$ELSE}
 
-      //åˆ¤æ–­åº§æœºå·ç   åŒºå·3-4ä½ å·ç 7-8ä½  010-1234567   æ¨ªæ å¯èƒ½æœ‰å¯èƒ½æ²¡æœ‰
-      //0å¼€å¤´ åŒºå·3ä½-å·ç 7ä½  10æˆ–11   åŒºå·4ä½-å·ç 8ä½  12æˆ–13
+      //ÅĞ¶Ï×ù»úºÅÂë  ÇøºÅ3-4Î» ºÅÂë7-8Î»  010-1234567   ºá¸Ü¿ÉÄÜÓĞ¿ÉÄÜÃ»ÓĞ
+      //0¿ªÍ· ÇøºÅ3Î»-ºÅÂë7Î»  10»ò11   ÇøºÅ4Î»-ºÅÂë8Î»  12»ò13
 
-      //åˆ¤æ–­æ˜¯å¦æ˜¯11ä½æ‰‹æœºå·
+      //ÅĞ¶ÏÊÇ·ñÊÇ11Î»ÊÖ»úºÅ
       if (length(num)<>11)
-      //åº§æœºå·  æ¨ªæ å ä¸€ä½
+      //×ù»úºÅ  ºá¸ÜÕ¼Ò»Î»
       and (length(num)<>10)
       and (length(num)<>12)
       and (length(num)<>13) then Exit;
@@ -917,12 +1228,12 @@ begin
 
       if (length(num)=11) and (Trim(num).IndexOf('-')<0) then
       begin
-          //æ‰‹æœºå·ç é¦–ä½å¿…é¡»æ˜¯1     åº§æœº 010-1234567  11ä½
+          //ÊÖ»úºÅÂëÊ×Î»±ØĞëÊÇ1     ×ù»ú 010-1234567  11Î»
           if (copy(num,1,1)<>'1') then Exit;
 
 
-          //ç¬¬äºŒä½å¿…é¡»æ˜¯3,4,5,6,7,8,9
-          //ä¹Ÿå°±æ˜¯æ”¯æŒ13******,14******,15*****,16*****,17******,18******,19*****
+          //µÚ¶şÎ»±ØĞëÊÇ3,4,5,6,7,8,9
+          //Ò²¾ÍÊÇÖ§³Ö13******,14******,15*****,16*****,17******,18******,19*****
           if (copy(num,2,1)='1')
             or (copy(num,2,1)='2')
             or (copy(num,2,1)='0') then
@@ -931,15 +1242,15 @@ begin
           end;
 
 
-          //* [è™šæ‹Ÿè¿è¥å•†]: 170[1700/1701/1702(ç”µä¿¡)ã€
-          //1703/1705/1706(ç§»åŠ¨)ã€
-          //1704/1707/1708/1709(è”é€š)]ã€
-          //171ï¼ˆè”é€šï¼‰
+          //* [ĞéÄâÔËÓªÉÌ]: 170[1700/1701/1702(µçĞÅ)¡¢
+          //1703/1705/1706(ÒÆ¶¯)¡¢
+          //1704/1707/1708/1709(ÁªÍ¨)]¡¢
+          //171£¨ÁªÍ¨£©
 //          if (num.Substring(0,3)='170')
 //             or (num.Substring(0,3)='171')
 //            then
 //          begin
-//            //ä¸æ”¯æŒè™šæ‹Ÿè¿è¥å•†
+//            //²»Ö§³ÖĞéÄâÔËÓªÉÌ
 //            Exit;
 //          end;
 
@@ -948,12 +1259,12 @@ begin
       end
       else
       begin
-          //åº§æœºå·ç é¦–ä½å¿…é¡»æ˜¯0
+          //×ù»úºÅÂëÊ×Î»±ØĞëÊÇ0
           if (copy(num,1,1)<>'0') then Exit;
-          //æœ‰æ¨ªæ 
+          //ÓĞºá¸Ü
           if Trim(num).IndexOf('-')>0 then
           begin
-            //åŒºå·3-4ä½   æ€»é•¿åº¦ 11 æˆ– 13ä½
+            //ÇøºÅ3-4Î»   ×Ü³¤¶È 11 »ò 13Î»
             if (length(copy(Trim(num),0,Trim(num).IndexOf('-')))<>3)
             and (length(copy(Trim(num),0,Trim(num).IndexOf('-')))<>4) then Exit;
 
@@ -961,7 +1272,7 @@ begin
           end
           else
           begin
-            //æ€»é•¿åº¦  10 æˆ– 12ä½
+            //×Ü³¤¶È  10 »ò 12Î»
             if (length(num)<>10) and (length(num)<>12) then Exit;
           end;
       end;
@@ -989,15 +1300,15 @@ begin
   Result:=False;
 
 
-  //* [è™šæ‹Ÿè¿è¥å•†]: 170[1700/1701/1702(ç”µä¿¡)ã€
-  //1703/1705/1706(ç§»åŠ¨)ã€
-  //1704/1707/1708/1709(è”é€š)]ã€
-  //171ï¼ˆè”é€šï¼‰
+  //* [ĞéÄâÔËÓªÉÌ]: 170[1700/1701/1702(µçĞÅ)¡¢
+  //1703/1705/1706(ÒÆ¶¯)¡¢
+  //1704/1707/1708/1709(ÁªÍ¨)]¡¢
+  //171£¨ÁªÍ¨£©
   if (num.Substring(0,3)='170')
      or (num.Substring(0,3)='171')
     then
   begin
-    //ä¸æ”¯æŒè™šæ‹Ÿè¿è¥å•†
+    //²»Ö§³ÖĞéÄâÔËÓªÉÌ
     Result:=True;
     Exit;
   end;
@@ -1005,7 +1316,7 @@ begin
 end;
 
 function ValidatePID(const APID: string): string;
-  {å†…éƒ¨å‡½æ•°,å–èº«ä»½è¯å·æ ¡éªŒä½,æœ€åä¸€ä½,å¯¹18ä½æœ‰æ•ˆ}
+  {ÄÚ²¿º¯Êı,È¡Éí·İÖ¤ºÅĞ£ÑéÎ»,×îºóÒ»Î»,¶Ô18Î»ÓĞĞ§}
   function GetVerifyBit(sIdentityNum: string): Char;
   var
     nNum: Integer;
@@ -1054,15 +1365,15 @@ var
   iCentury : Integer;
   iMonth : Integer;
   iDate : Integer;
-  CRCFact : string;//18ä½è¯å·çš„å®é™…å€¼
-  CRCTh : string; //18ä½è¯å·çš„ç†è®ºå€¼
-  FebDayAmt: Byte;//2æœˆå¤©æ•°
+  CRCFact : string;//18Î»Ö¤ºÅµÄÊµ¼ÊÖµ
+  CRCTh : string; //18Î»Ö¤ºÅµÄÀíÂÛÖµ
+  FebDayAmt: Byte;//2ÔÂÌìÊı
 begin
   L := Length(APID);
   if (L in [15, 18]) = False then
   begin
-//     Result := Format('èº«ä»½è¯å·ä¸æ˜¯15ä½æˆ–18ä½(%0:s, å®é™…ä½æ•°:%1:d)', [APID, L]);
-     Result := 'èº«ä»½è¯å·ä¸æ˜¯15ä½æˆ–18ä½!';
+//     Result := Format('Éí·İÖ¤ºÅ²»ÊÇ15Î»»ò18Î»(%0:s, Êµ¼ÊÎ»Êı:%1:d)', [APID, L]);
+     Result := 'Éí·İÖ¤ºÅ²»ÊÇ15Î»»ò18Î»!';
      Exit;
   end;
   CRCFact := '';
@@ -1072,8 +1383,8 @@ begin
      iCentury := StrToInt(sCentury);
      if (iCentury in [18..20]) = False then
      begin
-//        Result := Format('èº«ä»½è¯å·ç æ— æ•ˆ:18ä½è¯å·çš„å¹´ä»½å‰ä¸¤ä½å¿…é¡»åœ¨18-20ä¹‹é—´(%0:S)', [sCentury]);
-        Result := 'èº«ä»½è¯å·ç æ— æ•ˆ!';
+//        Result := Format('Éí·İÖ¤ºÅÂëÎŞĞ§:18Î»Ö¤ºÅµÄÄê·İÇ°Á½Î»±ØĞëÔÚ18-20Ö®¼ä(%0:S)', [sCentury]);
+        Result := 'Éí·İÖ¤ºÅÂëÎŞĞ§!';
         Exit;
      end;
      sYear2Bit := Copy(APID, 9, 2);
@@ -1091,16 +1402,16 @@ begin
   iDate := StrToInt(sDate);
   if (iMonth in [01..12]) = False then
   begin
-//     Result := Format('èº«ä»½è¯å·ç æ— æ•ˆ:æœˆä»½å¿…é¡»åœ¨01-12ä¹‹é—´(%0:s)', [sMonth]);
-     Result := 'èº«ä»½è¯å·ç æ— æ•ˆ!';
+//     Result := Format('Éí·İÖ¤ºÅÂëÎŞĞ§:ÔÂ·İ±ØĞëÔÚ01-12Ö®¼ä(%0:s)', [sMonth]);
+     Result := 'Éí·İÖ¤ºÅÂëÎŞĞ§!';
      Exit;
   end;
   if (iMonth in [1, 3, 5, 7, 8, 10, 12]) then
   begin
      if (iDate in [01..31]) = False then
      begin
-//        Result := Format('èº«ä»½è¯å·ç æ— æ•ˆ:æ—¥æœŸæ— æ•ˆ,ä¸èƒ½ä¸ºé›¶æˆ–è¶…å‡ºå½“æœˆæœ€å¤§å€¼(%0:s)', [sDate]);
-        Result := 'èº«ä»½è¯å·ç æ— æ•ˆ!';
+//        Result := Format('Éí·İÖ¤ºÅÂëÎŞĞ§:ÈÕÆÚÎŞĞ§,²»ÄÜÎªÁã»ò³¬³öµ±ÔÂ×î´óÖµ(%0:s)', [sDate]);
+        Result := 'Éí·İÖ¤ºÅÂëÎŞĞ§!';
         Exit;
      end;
   end;
@@ -1108,8 +1419,8 @@ begin
   begin
      if (iDate in [01..30]) = False then
      begin
-//        Result := Format('èº«ä»½è¯å·ç æ— æ•ˆ:æ—¥æœŸæ— æ•ˆ,ä¸èƒ½ä¸ºé›¶æˆ–è¶…å‡ºå½“æœˆæœ€å¤§å€¼(%0:s)', [sDate]);
-        Result := 'èº«ä»½è¯å·ç æ— æ•ˆ!';
+//        Result := Format('Éí·İÖ¤ºÅÂëÎŞĞ§:ÈÕÆÚÎŞĞ§,²»ÄÜÎªÁã»ò³¬³öµ±ÔÂ×î´óÖµ(%0:s)', [sDate]);
+        Result := 'Éí·İÖ¤ºÅÂëÎŞĞ§!';
         Exit;
      end;
   end;
@@ -1124,8 +1435,8 @@ begin
   begin
      if (iDate in [01..FebDayAmt]) = False then
      begin
-//        Result := Format('èº«ä»½è¯å·ç æ— æ•ˆ:æ—¥æœŸæ— æ•ˆ,ä¸èƒ½ä¸ºé›¶æˆ–è¶…å‡ºå½“æœˆæœ€å¤§å€¼(%0:s)', [sDate]);
-        Result := 'èº«ä»½è¯å·ç æ— æ•ˆ!';
+//        Result := Format('Éí·İÖ¤ºÅÂëÎŞĞ§:ÈÕÆÚÎŞĞ§,²»ÄÜÎªÁã»ò³¬³öµ±ÔÂ×î´óÖµ(%0:s)', [sDate]);
+        Result := 'Éí·İÖ¤ºÅÂëÎŞĞ§!';
         Exit;
      end;
   end;
@@ -1134,8 +1445,8 @@ begin
      CRCTh := GetVerifyBit(APID);
      if CRCFact <> CRCTh then
      begin
-//        Result := Format('èº«ä»½è¯å·ç æ— æ•ˆ:æ ¡éªŒä½(ç¬¬18ä½)é”™:(%0:s)', [APID]);
-        Result := 'èº«ä»½è¯å·ç æ— æ•ˆ!';
+//        Result := Format('Éí·İÖ¤ºÅÂëÎŞĞ§:Ğ£ÑéÎ»(µÚ18Î»)´í:(%0:s)', [APID]);
+        Result := 'Éí·İÖ¤ºÅÂëÎŞĞ§!';
         Exit;
      end;
   end;
@@ -1171,21 +1482,21 @@ begin
   ADay:=Now();
   if MinutesBetween(ADateTime,ADay)<1 then
   begin
-    Result:='åˆšåˆš';
+    Result:='¸Õ¸Õ';
   end
   else if MinutesBetween(ADateTime,ADay)<60 then
   begin
-    Result:=IntToStr(MinutesBetween(ADateTime,ADay))+'åˆ†é’Ÿå‰';
+    Result:=IntToStr(MinutesBetween(ADateTime,ADay))+'·ÖÖÓÇ°';
   end
   else
   begin
     if (1<=HoursBetween(ADateTime,ADay)) and (HoursBetween(ADateTime,ADay)<24)  then
     begin
-      Result:=IntToStr(HoursBetween(ADateTime,ADay))+'å°æ—¶å‰';
+      Result:=IntToStr(HoursBetween(ADateTime,ADay))+'Ğ¡Ê±Ç°';
     end
     else
     begin
-      Result:=IntToStr(DaysBetween(ADateTime,ADay))+'å¤©å‰';
+      Result:=IntToStr(DaysBetween(ADateTime,ADay))+'ÌìÇ°';
     end;
   end;
 end;
@@ -1220,10 +1531,10 @@ begin
   Result:=DateUtils.SecondsBetween(
                 StandardStrToDateTime('1970-01-01 00:00:00'),
                 ADateTime)
-                //+8æ—¶åŒº
+                //+8Ê±Çø
                 {$IF CompilerVersion >= 30.0}
 //                -8*60*60
-                //æ¯”D2007é«˜çš„ç‰ˆæœ¬
+                //±ÈD2007¸ßµÄ°æ±¾
                 -TTimeZone.Local.UtcOffset.Hours*60*60
                 {$IFEND}
                 ;
@@ -1237,9 +1548,9 @@ begin
   Result:=DateUtils.MilliSecondsBetween(
                 StandardStrToDateTime('1970-01-01 00:00:00'),
                 ADateTime)
-                //+8æ—¶åŒº
+                //+8Ê±Çø
                 {$IF CompilerVersion >= 30.0}
-                //æ¯”D2007é«˜çš„ç‰ˆæœ¬
+                //±ÈD2007¸ßµÄ°æ±¾
 //                -8*60*60
                 -TTimeZone.Local.UtcOffset.Hours*60*60*1000
                 {$IFEND}
@@ -1248,16 +1559,16 @@ end;
 
 function timeSince1970Interval(Const AInterval:Int64):TDateTime;
 begin
-  //+8æ—¶åŒº
-  Result:=(AInterval{$IF CompilerVersion >= 30.0}+TTimeZone.Local.UtcOffset.Hours*60*60{$IFEND})//ç§’
+  //+8Ê±Çø
+  Result:=(AInterval{$IF CompilerVersion >= 30.0}+TTimeZone.Local.UtcOffset.Hours*60*60{$IFEND})//Ãë
           /(24*60*60)
           +StandardStrToDateTime('1970-01-01 00:00:00');
 end;
 
 function timeSince1970MillionSecondsInterval(Const AMillionSecondsInterval:Int64):TDateTime;
 begin
-  //+8æ—¶åŒº
-  Result:=(AMillionSecondsInterval/1000{$IF CompilerVersion >= 30.0}+TTimeZone.Local.UtcOffset.Hours*60*60{$IFEND})//ç§’
+  //+8Ê±Çø
+  Result:=(AMillionSecondsInterval/1000{$IF CompilerVersion >= 30.0}+TTimeZone.Local.UtcOffset.Hours*60*60{$IFEND})//Ãë
           /(24*60*60)
           +StandardStrToDateTime('1970-01-01 00:00:00');
 end;
@@ -1267,7 +1578,7 @@ end;
 function GetOS:String;
 begin
   {$IF CompilerVersion >= 30.0}
-  //æ¯”2007é«˜çš„ç‰ˆæœ¬
+  //±È2007¸ßµÄ°æ±¾
   case TOSVersion.Platform of
     pfWindows:
     begin
@@ -1376,9 +1687,10 @@ type
 const
   TextFormatFlag:array[tfAnsi..tfUtf8] of word=($0000,$FFFE,$FEFF,$EFBB);
 
-{$IF CompilerVersion >= 30.0}
-//æ¯”2007é«˜çš„ç‰ˆæœ¬
-//è·å–æ–‡æœ¬æ–‡ä»¶çš„ç¼–ç 
+
+//±È2007¸ßµÄ°æ±¾
+//»ñÈ¡ÎÄ±¾ÎÄ¼şµÄ±àÂë
+{$IF CompilerVersion >= 21.0}
 function GetTextFileEncoding(const AFileName: string): TEncoding;
 var
   w: Word;
@@ -1387,7 +1699,7 @@ begin
   With TFileStream.Create(AFileName, fmOpenRead or fmShareDenyNone) do
   try
     Read(w,2);
-    //å› ä¸ºæ˜¯ä»¥Wordæ•°æ®ç±»å‹è¯»å–ï¼Œæ•…é«˜ä½å­—èŠ‚äº’æ¢
+    //ÒòÎªÊÇÒÔWordÊı¾İÀàĞÍ¶ÁÈ¡£¬¹Ê¸ßµÍ×Ö½Ú»¥»»
     w:=(w AND $FF00) SHR 8 OR (w AND $00FF) SHL 8;
     if w = TextFormatFlag[tfUnicode] then
       Result := TEncoding.Unicode
@@ -1396,7 +1708,7 @@ begin
     else if w = TextFormatFlag[tfUtf8] then
       Result := TEncoding.UTF8
     else
-      Result := TEncoding.ANSI;
+      Result := TEncoding.{$IF CompilerVersion >= 30.0}ANSI{$ELSE}ASCII{$IFEND};
   finally
     Free;
   end;
@@ -1457,6 +1769,28 @@ begin
         {$IFEND}
         AStringStream.Position:=0;
         Result:=AStringStream.DataString;
+        //#$FEFF
+        //  {$IF CompilerVersion >= 30.0}
+
+        if Length(Result)>=2 then
+        begin
+//            {$IFDEF FMX}
+//                {$IF CompilerVersion >= 31.0}
+                if (Ord(Result[1])=$FEFF) then
+                begin
+                  Result[1]:=#32;
+                end;
+//                {$ELSE}
+//                {$IFEND}
+//            {$ELSE}
+//                if (Result[1]=$FE) and (Result[2]=$FF) then
+//                begin
+//                  Result[1]:=#0;
+//                  Result[2]:=#0;
+//                end;
+//            {$IFEND}
+        end;
+
       finally
         FreeAndNil(AStringStream);
       end;
@@ -1532,6 +1866,27 @@ begin
     end;
   end;
 end;
+
+//function ConvertToStringDynArray(ACommaText:String):TStringDynArray;
+//var
+//  I: Integer;
+//  AStringList:TStringList;
+//begin
+//  AStringList:=TStringList.Create;
+//  AStringList.CommaText:=ACommaText;
+//  try
+//
+//    SetLength(Result,Length(AArray));
+//    for I := 0 to Length(AArray)-1 do
+//    begin
+//      Result[I]:=AArray[I];
+//    end;
+//
+//  finally
+//    FreeAndNil(AStringList);
+//  end;
+//
+//end;
 
 function ConvertToStringDynArray(AArray:Array of String):TStringDynArray;
 var
@@ -1643,49 +1998,49 @@ end;
 
 function SmallerDouble(A,B:Double):Boolean;
 begin
-  //æ¯”å®ƒå°
+  //±ÈËüĞ¡
   Result:=(A-B<-Precision);
 end;
 
 function BiggerDouble(A,B:Double):Boolean;
 begin
-  //æ¯”å®ƒå¤§
+  //±ÈËü´ó
   Result:=(A-B>Precision);
 end;
 
 function SmallerEqualDouble(A,B:Double):Boolean;
 begin
-  //æ¯”å®ƒå°
+  //±ÈËüĞ¡
   Result:=(A-B<=Precision) or (ABS(A-B)<=Precision);
 end;
 
 function BiggerEqualDouble(A,B:Double):Boolean;
 begin
-  //æ¯”å®ƒå¤§
+  //±ÈËü´ó
   Result:=(A-B>=Precision) or (ABS(A-B)<=Precision);
 end;
 
 function IsSameDouble(A,B:Double):Boolean;
 begin
-  //ç›¸åŒ
+  //ÏàÍ¬
   Result:=ABS(A-B)<Precision;
 end;
 
 function IsNotSameDouble(A,B:Double):Boolean;
 begin
-  //ä¸ç›¸åŒ
+  //²»ÏàÍ¬
   Result:=ABS(A-B)>Precision;
 end;
 
 function EqualDouble(A,B:Double):Boolean;
 begin
-  //ç›¸åŒ
+  //ÏàÍ¬
   Result:=ABS(A-B)<Precision;
 end;
 
 function NotEqualDouble(A,B:Double):Boolean;
 begin
-  //ä¸ç›¸åŒ
+  //²»ÏàÍ¬
   Result:=ABS(A-B)>Precision;
 end;
 
@@ -1807,6 +2162,9 @@ begin
     Obj.__ObjAddRef;
     {$ENDIF}
   {$IFEND}
+  if Obj is TInterfacedObject then TProtectedInterfacedObject(Obj)._AddRef;
+
+
 end;
 
 procedure ObjRelease(Obj:TObject);
@@ -1819,6 +2177,8 @@ begin
     Obj.__ObjRelease;
     {$ENDIF}
   {$IFEND}
+  if Obj is TInterfacedObject then TProtectedInterfacedObject(Obj)._Release;
+
 end;
 
 

@@ -213,6 +213,7 @@ type
     chkGenerateAndroid64AAR: TCheckBox;
     tsThanks: TTabSheet;
     Memo1: TMemo;
+    chkGenerateReleaseRJar: TCheckBox;
     procedure btnProcessDeployConfigClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -1054,7 +1055,7 @@ begin
           //        <iPhone_Launch2x>1242x2208 - light-2x.png</iPhone_Launch2x>
           SizePicture(FProjectLaunchImageFileName,1242,2208,ASaveDir,'x','1242x2208 - light-2x.png');
           //        <iPhone_LaunchDark2x>1242x2208 - dark-2x.png</iPhone_LaunchDark2x>
-          SizePicture(FProjectLaunchImageFileName,1242,2208,ASaveDir,'1242x2208 - dark-2x.png');
+          SizePicture(FProjectLaunchImageFileName,1242,2208,ASaveDir,'x','1242x2208 - dark-2x.png');
 
           //        <iPad_Launch2x>1242x2208 - light-2x.png</iPad_Launch2x>
           //        <iPad_LaunchDark2x>1242x2208 - dark-2x.png</iPad_LaunchDark2x>
@@ -1062,6 +1063,11 @@ begin
 
 
       SizePicture(FProjectLaunchImageFileName,2208,1242,ASaveDir,'x');
+          SizePicture(FProjectLaunchImageFileName,2208,1242,ASaveDir,'x','2208x1242 - light-2x.png');
+          SizePicture(FProjectLaunchImageFileName,2208,1242,ASaveDir,'x','2208x1242 - dark-2x.png');
+
+
+
       SizePicture(FProjectLaunchImageFileName,2048,1536,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,2048,1496,ASaveDir,'x');
       SizePicture(FProjectLaunchImageFileName,1536,2048,ASaveDir,'x');
@@ -1679,13 +1685,21 @@ end;
 procedure TfrmSmartDeploy.btnGenerateAndroidAARClick(Sender: TObject);
 var
   AAndroidPlatform:String;
+  ADebugOrRelease:String;
 begin
 
 
   //因为需要计算出相对目录
   if not CheckProjectFileIsExist then Exit;
 
-
+  if chkGenerateReleaseRJar.Checked then
+  begin
+    ADebugOrRelease:='Release';
+  end
+  else
+  begin
+    ADebugOrRelease:='Debug';
+  end;
 
 
   AAndroidPlatform:='Android';
@@ -1697,10 +1711,11 @@ begin
 
   //
   GenerateProject_R_Java_Jar(Self.edtProjectFilePath.Text,
-                      AAndroidPlatform,
-                      Self.cmbDelphiVersions.Text,
-                      Self.DoGetCommandLineOutput
-                      );
+                              AAndroidPlatform,
+                              ADebugOrRelease,
+                              Self.cmbDelphiVersions.Text,
+                              Self.DoGetCommandLineOutput
+                              );
 
 
 end;

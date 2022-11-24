@@ -93,7 +93,7 @@ type
 //    DBType:String;
 
     //DBHelper池
-    DBHelperPool:TObjectPool;
+    DBHelperPool:TUniDBHelperPool;
     FDBHelperPoolErrorMsg:String;
 
 
@@ -146,6 +146,8 @@ type
 
 var
   GlobalDatabaseModuleClass:TBaseDatabaseModuleClass;
+var
+  GlobalDBModule:TBaseDatabaseModule;
 
 
 
@@ -229,20 +231,28 @@ begin
           Inc(FStatus.CheckConnectTimes);
           if not ASQLDBHelper.SelfQuery('SELECT 1') then
           begin
-            //连接失败
-            Inc(FStatus.DisconnectedTimes);
 
-            if TUniDBHelper(ASQLDBHelper).FUnidacConnection.Database.Connected then
-            begin
-              //重连成功
-              Inc(FStatus.ReConnectedTimes);
-            end;
+
+              //连接失败
+              Inc(FStatus.DisconnectedTimes);
+
+
+              {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
+              {$ELSE}
+              if TUniDBHelper(ASQLDBHelper).FUnidacConnection.Database.Connected then
+              begin
+                //重连成功
+                Inc(FStatus.ReConnectedTimes);
+              end;
+              {$ENDIF}
+
+
 
           end
           else
           begin
-            //已连接
-            Inc(FStatus.ConnectedTimes);
+              //已连接
+              Inc(FStatus.ConnectedTimes);
           end;
 
           ASQLDBHelper.FLastUseTime:=Now;
@@ -260,7 +270,6 @@ begin
   end;
 
 end;
-
 
 procedure TBaseDatabaseModule.SetDBConfigFileName(const Value: String);
 begin

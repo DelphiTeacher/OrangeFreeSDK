@@ -37,9 +37,13 @@ type
     cmbDBType: TComboBox;
     btnSelect: TButton;
     OpenDialog1: TOpenDialog;
+    btnTest: TButton;
+    Button1: TButton;
     procedure btnOKClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnSelectClick(Sender: TObject);
+    procedure btnTestClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FIniFileName:String;
     //用来测试是否能连接成功
@@ -107,9 +111,31 @@ begin
   end;
 end;
 
+procedure TfrmDataBaseConfig.btnTestClick(Sender: TObject);
+begin
+  //测试连接
+  if FDBHelper.Connect(FDataBaseConfig) then
+  begin
+    ShowMessage('连接成功');
+    Exit;
+  end;
+
+end;
+
+procedure TfrmDataBaseConfig.Button1Click(Sender: TObject);
+begin
+  if Self.edtDBPassword.PasswordChar=#0 then
+  begin
+    Self.edtDBPassword.PasswordChar:='*';
+  end
+  else
+  begin
+    Self.edtDBPassword.PasswordChar:=#0;
+  end;
+end;
+
 procedure TfrmDataBaseConfig.btnCancelClick(Sender: TObject);
 begin
-
   Self.ModalResult:=mrClose;
 //  Close;
 
@@ -133,6 +159,7 @@ end;
 procedure TfrmDataBaseConfig.SyncUI;
 begin
   //数据库类型
+  Self.cmbDBType.Text:=FDataBaseConfig.FDBType;
   Self.cmbDBType.ItemIndex:=Self.cmbDBType.Items.IndexOf(FDataBaseConfig.FDBType);
 
   //数据库服务器

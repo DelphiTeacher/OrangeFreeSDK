@@ -81,11 +81,12 @@
 {$DEFINE WINDOWSNT_COMPATIBILITY}
 {.$DEFINE DEBUG} // track memory leack
 
-unit uSkinSuperObject;
+unit uskinsuperobject;
 
 interface
 uses
-  Classes
+  Classes,
+  Variants
 {$IFDEF VER210}
   ,Generics.Collections, RTTI, TypInfo
 {$ENDIF}
@@ -122,6 +123,7 @@ type
   TSuperObject = class;
   ISuperObject = interface;
   TSuperArray = class;
+
 
 (* AVL Tree
  *  This is a "special" autobalanced AVL tree
@@ -282,7 +284,6 @@ type
 {$IFDEF SUPER_METHOD}
     property M[const index: integer]: TSuperMethod read GetM write PutM;
 {$ENDIF}
-//    property A[const index: integer]: TSuperArray read GetA;
   end;
 
   TSuperWriter = class
@@ -490,6 +491,35 @@ type
     property Current: ISuperObject read GetCurrent;
   end;
 
+
+
+
+
+  //wn
+  ISuperArray=interface
+    //返回自已这个对象,
+    function GetSelf:ISuperObject;
+    //对象类型的元素
+    function GetArrayItemO(const AIndex: Integer): ISuperObject;
+    procedure PutArrayItemO(const AIndex: Integer; const Value: ISuperObject);
+    //整型类型的元素
+    function GetArrayItemI(const AIndex: Integer): Integer;
+    procedure PutArrayItemI(const AIndex: Integer; const Value: Integer);
+    //长度
+    function Length:Integer;
+    //
+    function AsJSon(indent: boolean = false; escape: boolean = true): SOString;
+    function AsArray:TSuperArray;
+
+
+    property O[const AIndex: Integer]: ISuperObject read GetArrayItemO write PutArrayItemO;
+    property I[const AIndex: Integer]: Integer read GetArrayItemI write PutArrayItemI;
+  end;
+
+
+
+
+
   ISuperObject = interface
   ['{4B86A9E3-E094-4E5A-954A-69048B7B6327}']
     function GetEnumerator: TSuperEnumerator;
@@ -503,6 +533,8 @@ type
     procedure PutO(const path: SOString; const Value: ISuperObject);
     function GetB(const path: SOString): Boolean;
     procedure PutB(const path: SOString; Value: Boolean);
+    function GetV(const path: SOString): Variant;
+    procedure PutV(const path: SOString; Value: Variant);
     function GetI(const path: SOString): SuperInt;
     procedure PutI(const path: SOString; Value: SuperInt);
     function GetD(const path: SOString): Double;
@@ -515,7 +547,15 @@ type
     function GetM(const path: SOString): TSuperMethod;
     procedure PutM(const path: SOString; Value: TSuperMethod);
 {$ENDIF}
-    function GetA(const path: SOString): TSuperArray;
+
+
+    //wn
+    function GetA(const path: SOString): ISuperArray;
+    function GetArray(const path: SOString): TSuperArray;
+    procedure PutA(const path: SOString; const Value: ISuperArray);
+
+
+
 
     // Null Object Design patern
     function GetN(const path: SOString): ISuperObject;
@@ -549,12 +589,23 @@ type
     property B[const path: SOString]: boolean read GetB write PutB;
     property I[const path: SOString]: SuperInt read GetI write PutI;
     property D[const path: SOString]: Double read GetD write PutD;
+
+
+
+    //wn
+    property F[const path: SOString]: Double read GetD write PutD;
+
+
+
+
     property C[const path: SOString]: Currency read GetC write PutC;
     property S[const path: SOString]: SOString read GetS write PutS;
 {$IFDEF SUPER_METHOD}
     property M[const path: SOString]: TSuperMethod read GetM write PutM;
 {$ENDIF}
-    property A[const path: SOString]: TSuperArray read GetA;
+    property A[const path: SOString]: ISuperArray read GetA write PutA;
+    property Arry[const path: SOString]: TSuperArray read GetArray;
+    property V[const path: SOString]: Variant read GetV write PutV;
 
 {$IFDEF SUPER_METHOD}
     function call(const path: SOString; const param: ISuperObject = nil): ISuperObject; overload;
@@ -583,9 +634,17 @@ type
     function GetDataPtr: Pointer;
     procedure SetDataPtr(const Value: Pointer);
     property DataPtr: Pointer read GetDataPtr write SetDataPtr;
+
+
+    //wn
+    function GetType(Key: String): TVarType;
+    function AsISuperArray: ISuperArray;
+    function Contains(AKey:String):Boolean;
+    function AsTSuperObject:TSuperObject;
   end;
 
-  TSuperObject = class(TObject, ISuperObject)
+
+  TSuperObject = class(TObject, ISuperObject, ISuperArray)
   private
     FRefCount: Integer;
     FProcessing: boolean;
@@ -630,8 +689,31 @@ type
     function GetM(const path: SOString): TSuperMethod;
     procedure PutM(const path: SOString; Value: TSuperMethod);
 {$ENDIF}
-    function GetA(const path: SOString): TSuperArray;
     function Write(writer: TSuperWriter; indent: boolean; escape: boolean; level: integer): Integer; virtual;
+
+
+  public
+    //wn
+    function GetArray(const path: SOString): TSuperArray;
+    function GetA(const path: SOString): ISuperArray;
+    procedure PutA(const path: SOString; const Value: ISuperArray);
+    //ISuperArray
+    function GetSelf:ISuperObject;
+    function Length:Integer;
+    function GetArrayItemO(const AIndex: Integer): ISuperObject;
+    procedure PutArrayItemO(const AIndex: Integer; const Value: ISuperObject);
+    function GetArrayItemI(const AIndex: Integer): Integer;
+    procedure PutArrayItemI(const AIndex: Integer; const Value: Integer);
+    //wn
+    function AsISuperArray: ISuperArray;
+    function Contains(AKey:String):Boolean;
+    function AsTSuperObject:TSuperObject;
+    function GetV(const path: SOString): Variant;
+    procedure PutV(const path: SOString; Value: Variant);
+    function GetType(Key: String): TVarType;
+
+
+
   public
     function GetEnumerator: TSuperEnumerator;
     procedure AfterConstruction; override;
@@ -699,7 +781,9 @@ type
 {$IFDEF SUPER_METHOD}
     property M[const path: SOString]: TSuperMethod read GetM write PutM;
 {$ENDIF}
-    property A[const path: SOString]: TSuperArray read GetA;
+
+    //wn
+    property A[const path: SOString]: ISuperArray read GetA write PutA;
 
 {$IFDEF SUPER_METHOD}
     function call(const path: SOString; const param: ISuperObject = nil): ISuperObject; overload; virtual;
@@ -727,6 +811,9 @@ type
     property DataPtr: Pointer read GetDataPtr write SetDataPtr;
     property Processing: boolean read GetProcessing;
   end;
+
+
+
 
 {$IFDEF VER210}
   TSuperRttiContext = class;
@@ -769,6 +856,9 @@ type
     constructor FromJson(const str: string; ctx: TSuperRttiContext = nil); overload;
   end;
 {$ENDIF}
+
+
+
 
   TSuperObjectIter = record
     key: SOString;
@@ -933,7 +1023,7 @@ var
   i, len: Integer;
 begin
   Result := IntToStr(Abs(PInt64(@c)^));
-  len := Length(Result);
+  len := System.Length(Result);
   SetLength(Result, len+1);
   if c <> 0 then
   begin
@@ -1283,7 +1373,7 @@ var
   intf: IInterface;
 begin
   Result := TSuperObject.Create(stArray);
-  for j := 0 to length(Args) - 1 do
+  for j := 0 to System.length(Args) - 1 do
     with Result.AsArray do
     case TVarRec(Args[j]).VType of
       vtInteger : Add(TSuperObject.Create(TVarRec(Args[j]).VInteger));
@@ -1599,13 +1689,13 @@ var
   begin
     case ObjectGetType(params) of
       stArray:
-        for i := 0 to Length(ps) - 1 do
+        for i := 0 to System.Length(ps) - 1 do
           if (pfOut in ps[i].Flags) then
             TValue.Make(nil, ps[i].ParamType.Handle, a[i]) else
             if not ctx.FromJson(ps[i].ParamType.Handle, params.AsArray[i], a[i]) then
               Exit(False);
       stObject:
-        for i := 0 to Length(ps) - 1 do
+        for i := 0 to System.Length(ps) - 1 do
           if (pfOut in ps[i].Flags) then
             TValue.Make(nil, ps[i].ParamType.Handle, a[i]) else
             if not ctx.FromJson(ps[i].ParamType.Handle, params.AsObject[ps[i].Name], a[i]) then
@@ -1623,11 +1713,11 @@ var
   begin
     case ObjectGetType(params) of
       stArray:
-        for i := 0 to Length(ps) - 1 do
+        for i := 0 to System.Length(ps) - 1 do
           if (ps[i].Flags * [pfVar, pfOut]) <> [] then
             params.AsArray[i] := ctx.ToJson(a[i], index);
       stObject:
-        for i := 0 to Length(ps) - 1 do
+        for i := 0 to System.Length(ps) - 1 do
           if (ps[i].Flags * [pfVar, pfOut]) <> [] then
             params.AsObject[ps[i].Name] := ctx.ToJson(a[i], index);
     end;
@@ -1643,7 +1733,7 @@ begin
         m := t.GetMethod(method);
         if m = nil then Exit(irMethothodError);
         ps := m.GetParameters;
-        SetLength(a, Length(ps));
+        SetLength(a, System.Length(ps));
         if not GetParams then Exit(irParamError);
         if m.IsClassMethod then
         begin
@@ -1663,7 +1753,7 @@ begin
         m := t.GetMethod(method);
         if m = nil then Exit(irMethothodError);
         ps := m.GetParameters;
-        SetLength(a, Length(ps));
+        SetLength(a, System.Length(ps));
 
         if not GetParams then Exit(irParamError);
         if m.IsClassMethod then
@@ -1977,8 +2067,8 @@ begin
                 if indent then _indent(0, true);
                 Append(TOK_DQT, 1);
                 if escape then
-                  doEscape(PSOChar(iter.key), Length(iter.key)) else
-                  DoMinimalEscape(PSOChar(iter.key), Length(iter.key));
+                  doEscape(PSOChar(iter.key), System.Length(iter.key)) else
+                  DoMinimalEscape(PSOChar(iter.key), System.Length(iter.key));
                 if indent then
                   Append(ENDSTR_A, 3) else
                   Append(ENDSTR_B, 2);
@@ -2008,7 +2098,14 @@ begin
           Result := Append(PSOChar(SOString(st)));
         end;
       stDouble:
-        Result := Append(PSOChar(SOString(gcvt(FO.c_double, 15, fbuffer))));
+        if FO.c_double=0 then
+        begin
+          Result := Append('0');
+        end
+        else
+        begin
+          Result := Append(PSOChar(SOString(gcvt(FO.c_double, 15, fbuffer))));
+        end;
       stCurrency:
         begin
           Result := Append(PSOChar(CurrToStr(FO.c_currency)));
@@ -2017,8 +2114,8 @@ begin
         begin
           Append(TOK_DQT, 1);
           if escape then
-            doEscape(PSOChar(FOString), Length(FOString)) else
-            DoMinimalEscape(PSOChar(FOString), Length(FOString));
+            doEscape(PSOChar(FOString), System.Length(FOString)) else
+            DoMinimalEscape(PSOChar(FOString), System.Length(FOString));
           Append(TOK_DQT, 1);
           Result := 0;
         end;
@@ -2077,7 +2174,7 @@ begin
     stInt: Result := (FO.c_int <> 0);
     stDouble: Result := (FO.c_double <> 0);
     stCurrency: Result := (FO.c_currency <> 0);
-    stString: Result := (Length(FOString) <> 0);
+    stString: Result := (System.Length(FOString) <> 0);
     stNull: Result := False;
   else
     Result := True;
@@ -2155,6 +2252,163 @@ begin
   if FDataType = stString then
     Result := FOString else
     Result := AsJSon(false, false);
+end;
+
+
+//wn
+function TSuperObject.GetSelf:ISuperObject;
+begin
+  Result:=Self;
+end;
+
+function TSuperObject.Length:Integer;
+begin
+  Result:=Self.AsArray.Length;
+end;
+
+function TSuperObject.GetArrayItemO(const AIndex: Integer): ISuperObject;
+begin
+  Result:=Self.AsArray.O[AIndex];
+end;
+
+procedure TSuperObject.PutArrayItemO(const AIndex: Integer; const Value: ISuperObject);
+begin
+  Self.AsArray.O[AIndex]:=Value;
+end;
+
+function TSuperObject.GetArrayItemI(const AIndex: Integer): Integer;
+begin
+  Result:=Self.AsArray.I[AIndex];
+end;
+
+procedure TSuperObject.PutArrayItemI(const AIndex: Integer; const Value: Integer);
+begin
+//  if AIndex>=Self.AsArray.Length then
+//  begin
+//    Self.AsArray.Add
+//  end;
+  
+  Self.AsArray.I[AIndex]:=Value;
+end;
+
+function TSuperObject.GetType(Key: String): TVarType;
+var
+  AChild:ISuperObject;
+begin
+  Result:=varUnknown;
+  AChild:=Self.O[Key];
+  case AChild.DataType of
+    stBoolean:Result:=varBoolean;
+    stDouble:Result:=varDouble;
+    stCurrency:Result:=varDouble;
+    stInt:Result:=varInteger;
+    stObject:Result:=varByRef;
+    stArray:Result:=varArray;
+    stString:Result:=varString;
+  end;
+end;
+
+
+function TSuperObject.AsTSuperObject:TSuperObject;
+begin
+  Result:=Self;
+end;
+
+function TSuperObject.GetV(const path: SOString): Variant;
+var
+  obj: ISuperObject;
+begin
+  obj := GetO(path);
+  if obj <> nil then
+  begin
+  //    Result := obj.AsBoolean else
+  //    Result := false;
+    case obj.DataType of
+      stBoolean: Result := obj.AsBoolean;
+      stInt: Result := obj.AsInteger;
+      stDouble: Result := obj.AsDouble;
+      stCurrency: Result := obj.AsCurrency;
+      stString: Result := obj.AsString;
+//    stNull,
+//    stBoolean,
+//    stDouble,
+//    stCurrency,
+//    stInt,
+//      stObject: Result := obj.AsString;
+//    stArray,
+//    stString
+//      stNull: Result := False;
+//    else
+//      Result := True;
+    end;
+  end;
+end;
+
+procedure TSuperObject.PutV(const path: SOString; Value: Variant);
+var
+  VTyp: TVarType;
+begin
+  VTyp := VarType(Value);
+  if VTyp = varUnknown then
+     VTyp := VarType(Value);
+
+//  varEmpty    = $0000; { vt_empty        0 }
+//  varNull     = $0001; { vt_null         1 }
+//  varSmallint = $0002; { vt_i2           2 }
+//  varInteger  = $0003; { vt_i4           3 }
+//  varSingle   = $0004; { vt_r4           4 }
+//  varDouble   = $0005; { vt_r8           5 }
+//  varCurrency = $0006; { vt_cy           6 }
+//  varDate     = $0007; { vt_date         7 }
+//  varOleStr   = $0008; { vt_bstr         8 }
+//  varDispatch = $0009; { vt_dispatch     9 }
+//  varError    = $000A; { vt_error       10 }
+//  varBoolean  = $000B; { vt_bool        11 }
+//  varVariant  = $000C; { vt_variant     12 }
+//  varUnknown  = $000D; { vt_unknown     13 }
+////varDecimal  = $000E; { vt_decimal     14 } {UNSUPPORTED as of v6.x code base}
+////varUndef0F  = $000F; { undefined      15 } {UNSUPPORTED per Microsoft}
+//  varShortInt = $0010; { vt_i1          16 }
+//  varByte     = $0011; { vt_ui1         17 }
+//  varWord     = $0012; { vt_ui2         18 }
+//  varLongWord = $0013; { vt_ui4         19 }
+//  varInt64    = $0014; { vt_i8          20 }
+//  varUInt64   = $0015; { vt_ui8         21 }
+//{  if adding new items, update Variants' varLast, BaseTypeMap and OpTypeMap }
+//
+//  varStrArg   = $0048; { vt_clsid        72 }
+//  varString   = $0100; { Pascal string  256 } {not OLE compatible }
+//  varAny      = $0101; { Corba any      257 } {not OLE compatible }
+//  varUString  = $0102; { Unicode string 258 } {not OLE compatible}
+//  // custom types range from $110 (272) to $7FF (2047)
+//
+//  varTypeMask = $0FFF;
+//  varArray    = $2000;
+//  varByRef    = $4000;
+
+
+  case VTyp of
+    varString, varUString:
+       S[path] := Value;
+    varInt64, varInteger, varByte,varShortInt,varSmallint,varWord,varLongWord,varUInt64:
+       I[path] := Value;
+    varDouble, varCurrency,varSingle,varDate:
+       D[path] := Value;
+    varBoolean:
+       B[path] := Value;
+  end;
+
+//  ParseString(PSOChar(path), true, False, self, [foCreatePath, foPutValue], TSuperObject.Create(Value));
+end;
+
+function TSuperObject.AsISuperArray: ISuperArray;
+begin
+  Result:=Self;
+end;
+
+function TSuperObject.Contains(AKey:String):Boolean;
+begin
+  Result := (ParseString(PSOChar(AKey), False, true, self)<>nil);
 end;
 
 function TSuperObject.GetEnumerator: TSuperEnumerator;
@@ -3270,6 +3524,11 @@ begin
   ParseString(PSOChar(path), true, False, self, [foCreatePath, foPutValue], Value);
 end;
 
+procedure TSuperObject.PutA(const path: SOString; const Value: ISuperArray);
+begin
+  ParseString(PSOChar(path), true, False, self, [foCreatePath, foPutValue], Value.GetSelf);
+end;
+
 procedure TSuperObject.PutB(const path: SOString; Value: Boolean);
 begin
   ParseString(PSOChar(path), true, False, self, [foCreatePath, foPutValue], TSuperObject.Create(Value));
@@ -3552,7 +3811,17 @@ begin
   Result := ParseString(PSOChar(path), False, True, Self);
 end;
 
-function TSuperObject.GetA(const path: SOString): TSuperArray;
+function TSuperObject.GetA(const path: SOString): ISuperArray;
+var
+  obj: ISuperObject;
+begin
+  obj := ParseString(PSOChar(path), False, True, Self);
+  if obj <> nil then
+    Result := obj.AsISuperArray else
+    Result := nil;
+end;
+
+function TSuperObject.GetArray(const path: SOString): TSuperArray;
 var
   obj: ISuperObject;
 begin
@@ -3978,7 +4247,7 @@ var
           case ObjectGetType(o) of
             stString:
               begin
-                Result := Result and CheckLength(Length(o.AsString), p, objpath);
+                Result := Result and CheckLength(System.Length(o.AsString), p, objpath);
                 Result := Result and CheckRange(o, p, objpath);
               end;
           else
@@ -4171,7 +4440,7 @@ var
             stCurrency,
             stString:
               begin
-                result := result and CheckLength(Length(o.AsString), p, objpath);
+                result := result and CheckLength(System.Length(o.AsString), p, objpath);
                 Result := Result and CheckRange(o, p, objpath);
               end;
           else
@@ -4187,7 +4456,7 @@ var
             stInt,
             stString:
               begin
-                result := result and CheckLength(Length(o.AsString), p, objpath);
+                result := result and CheckLength(System.Length(o.AsString), p, objpath);
                 Result := Result and CheckRange(o, p, objpath);
               end;
           else
@@ -5632,10 +5901,10 @@ var
   i: Integer;
 begin
   h := 0;
-//{$Q-}
-  for i := 1 to Length(k) do
+{$Q-}
+  for i := 1 to System.Length(k) do
     h := h*129 + ord(k[i]) + $9e370001;
-//{$Q+}
+{$Q+}
   Result := h;
 end;
 
@@ -5906,7 +6175,7 @@ function TSuperRttiContext.FromJson(TypeInfo: PTypeInfo; const obj: ISuperObject
 
   procedure FromChar;
   begin
-    if ObjectIsType(obj, stString) and (Length(obj.AsString) = 1) then
+    if ObjectIsType(obj, stString) and (System.Length(obj.AsString) = 1) then
       begin
         Value := string(AnsiString(obj.AsString)[1]);
         Result := True;
@@ -5916,7 +6185,7 @@ function TSuperRttiContext.FromJson(TypeInfo: PTypeInfo; const obj: ISuperObject
 
   procedure FromWideChar;
   begin
-    if ObjectIsType(obj, stString) and (Length(obj.AsString) = 1) then
+    if ObjectIsType(obj, stString) and (System.Length(obj.AsString) = 1) then
     begin
       Value := obj.AsString[1];
       Result := True;
@@ -6549,7 +6818,7 @@ end;
 initialization
 
 finalization
-  Assert(debugcount = 0, 'Memory leak');
+//  Assert(debugcount = 0, 'Memory leak');
 {$ENDIF}
 end.
 

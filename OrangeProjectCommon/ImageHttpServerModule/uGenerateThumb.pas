@@ -7,9 +7,14 @@ uses
   SysUtils,
   Classes,
   Math,
+  {$IFDEF LINUX}
+  {$ELSE}
   JPEG,
 //  uGraphicCommon,
   Graphics,
+  {$ENDIF}
+
+
   Types//,
 //  uThumbCommon
   ;
@@ -23,13 +28,21 @@ const
 
 
 
-
+{$IFDEF LINUX}
+{$ELSE}
 //生成缩略图
 procedure GenerateThumbJpegFile(AJpegStream:TStream;AThumbFilePath:String);
 function GetJpegFileSize(AJpegFilePath:String):TSize;
 
 
+function GenerateThumbBmpFile(AJpegStream:TStream;AThumbFilePath:String):Boolean;
+{$ENDIF}
+
+
 implementation
+
+{$IFDEF LINUX}
+{$ELSE}
 
 function GetJpegFileSize(AJpegFilePath:String):TSize;
 var
@@ -94,6 +107,56 @@ begin
    end;
 
 end;
+
+
+function GenerateThumbBmpFile(AJpegStream:TStream;AThumbFilePath:String):Boolean;
+var
+   jpg: TJPEGImage;
+   bmp: TBitmap;
+   SourceJpg: TJPEGImage;
+   Width, Height: Integer;
+   tmpInt:Double;
+begin
+    Result:=False;
+    try
+      try
+        bmp := TBitmap.Create;
+        SourceJpg := TJPEGImage.Create;
+        Jpg:= TJPEGImage.Create;
+        //读取源文件
+        SourceJpg.LoadFromStream(AJpegStream);
+        //计算缩小比例
+        if SourceJpg.Width >= SourceJpg.Height then
+            tmpInt := Round(SourceJpg.Width / MaxWidth)
+        else
+            tmpInt := Round(SourceJpg.Height / MaxHigth) ;
+
+        if tmpInt<1 then tmpInt:=1;
+
+        Width  := Ceil(SourceJpg.Width  / tmpInt) ;
+        Height := Ceil(SourceJpg.Height / tmpInt) ;
+        //缩小
+        bmp.Width := Width;
+        bmp.Height := Height;
+        bmp.PixelFormat := pf24bit;
+        bmp.Canvas.StretchDraw(Rect(0,0,Width,Height), SourceJpg);
+        //保存
+        //jpg.Assign(bmp);
+        //jpg.CompressionQuality:=60;
+        bmp.SaveToFile(AThumbFilePath);
+
+        Result:=True;
+      except
+
+      end;
+    finally
+        bmp.Free;
+        jpg.Free;
+        SourceJpg.Free;
+    end;
+
+end;
+{$ENDIF}
 
 
 end.

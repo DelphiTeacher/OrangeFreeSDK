@@ -17,6 +17,8 @@ uses
 
   System.SysUtils,
   System.Variants,
+  System.IOUtils,
+
 
   XMLDoc,
   XMLIntf,
@@ -35,7 +37,9 @@ uses
   FMX.Forms,
   FMX.Dialogs,
 
-  {$IFNDEF IN_ORANGESDK}
+  Zip,
+
+  {$IFDEF IN_ORANGESDKSMARTTOOL}
   ZLib,
   VCLUnZip,
   VCLZip,
@@ -44,7 +48,7 @@ uses
   XSuperObject_Copy,
 
 
-  uCommandLineHelper,
+  uCommandLineHelper_Copy,
 
 
 //  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls,
@@ -585,6 +589,7 @@ var
 //procedure CombineXMLNode(ASrcNode:IXMLNode;ADestNode:IXMLNode);
 //合并XML
 //procedure CombineXML(AXMLAFilePath:String;AXMLBFilePath:String;ADestXMLFilePath:String);
+procedure ReNameDumpXMLNode(AXMLAFilePath:String;ANameList:TStringList);
 
 
 
@@ -753,20 +758,150 @@ function GetJarDexedFileName(AJarFileName:String):String;
 
 //生成工程的R_Java.jar
 function GenerateProject_R_Java_Jar(AProjectFilePath:String;
-                            AAndroidPlatform:String;
-                            ADelphiVersion:String;
-                            AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
-                            ):Boolean;
+                                    //用于判断要生成R.java的素材路径在哪里
+                                    AAndroidPlatform:String;
+                                    ADebugOrRelease:String;
+                                    ADelphiVersion:String;
+                                    AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
+                                    ):Boolean;
+
+//从工程文件中获取生成目录
+function GetOutputPathFromProject(AProjectFilePath:String;
+                                    AAndroidPlatform:String;
+                                    ADebugOrRelease:String):String;
 
 
 implementation
 
 
+function GetOutputPathFromProject(AProjectFilePath:String;
+                                    AAndroidPlatform:String;
+                                    ADebugOrRelease:String):String;
+var
+  AXMLNode: IXMLNode;
+  AXMLChildNode: IXMLNode;
+  AXMLDocument: TXMLDocument;
+  I: Integer;
+begin
+  Result:='';
+
+
+
+
+  //创建XML文档
+  AXMLDocument:=TXMLDocument.Create(Application);
+  try
+      AXMLDocument.LoadFromFile(AProjectFilePath);
+      AXMLDocument.Active:=True;
+      AXMLNode:=AXMLDocument.DocumentElement;
+
+//    <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
+//      <DCC_DcuOutput>.\$(Platform)\D12\$(Config)</DCC_DcuOutput>
+
+//    <PropertyGroup Condition="'$(Base)'!=''">
+//        <DCC_DcuOutput>.\$(Platform)\D11\$(Config)</DCC_DcuOutput>
+//        <DCC_ExeOutput>.\$(Platform)\D11\$(Config)</DCC_ExeOutput>
+
+      AXMLNode:=AXMLDocument.DocumentElement;
+      if AXMLNode<>nil then
+      begin
+
+
+          //先找当前平台的,比如Android/Release
+  //        for I := 0 to AXMLNode.ChildNodes.Count-1 do
+  //        begin
+  //          AXMLChildNode:=AXMLNode.ChildNodes[I];
+  //            //Android
+  //            if (AXMLChildNode.NodeName='PropertyGroup')
+  //              and (
+  //                   (AXMLChildNode.Attributes['Condition']='''$(Base_Android)''!=''''')
+  //                   //Cfg_1可能是Debug
+  //                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android)''!=''''')
+  //                //Cfg_2可能是Release
+  //                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android)''!=''''')
+  //                ) then
+  //            begin
+  //
+  //
+  //            end;
+  //        end;
+          I:=-1;
+          if ADebugOrRelease='Release' then
+          begin
+            I:=FindChildXMLNodeIndexByAttr('Condition','''$(Cfg_2_'+AAndroidPlatform+')''!=''''',AXMLNode);
+          end;
+          if ADebugOrRelease='Debug' then
+          begin
+            I:=FindChildXMLNodeIndexByAttr('Condition','''$(Cfg_1_'+AAndroidPlatform+')''!=''''',AXMLNode);
+          end;
+          if I<>-1 then
+          begin
+            AXMLChildNode:=AXMLNode.ChildNodes[I];
+            //判断有没有DCC_ExeOutput
+  //        <DCC_ExeOutput>.\$(Platform)\D11\$(Config)</DCC_ExeOutput>
+            I:=FindChildXMLNode('DCC_ExeOutput',AXMLChildNode);
+            if I<>-1 then
+            begin
+              Result:=AXMLChildNode.ChildNodes[I].Text;
+              Exit;
+            end;
+          end;
+
+
+          //再找当前平台通用的设置
+          I:=FindChildXMLNodeIndexByAttr('Condition','''$(Base_'+AAndroidPlatform+')''!=''''',AXMLNode);
+          if I<>-1 then
+          begin
+            AXMLChildNode:=AXMLNode.ChildNodes[I];
+            //判断有没有DCC_ExeOutput
+  //        <DCC_ExeOutput>.\$(Platform)\D11\$(Config)</DCC_ExeOutput>
+            I:=FindChildXMLNode('DCC_ExeOutput',AXMLChildNode);
+            if I<>-1 then
+            begin
+              Result:=AXMLChildNode.ChildNodes[I].Text;
+              Exit;
+            end;
+          end;
+
+
+
+          //再找所有平台通用的设置
+          I:=FindChildXMLNodeIndexByAttr('Condition','''$(Base)''!=''''',AXMLNode);
+          if I<>-1 then
+          begin
+            AXMLChildNode:=AXMLNode.ChildNodes[I];
+            //判断有没有DCC_ExeOutput
+  //        <DCC_ExeOutput>.\$(Platform)\D11\$(Config)</DCC_ExeOutput>
+            I:=FindChildXMLNode('DCC_ExeOutput',AXMLChildNode);
+            if I<>-1 then
+            begin
+              Result:=AXMLChildNode.ChildNodes[I].Text;
+              Exit;
+            end;
+          end;
+
+
+      end;
+
+
+
+
+
+
+  finally
+    AXMLDocument.Free;
+  end;
+
+
+
+end;
+
 function GenerateProject_R_Java_Jar(AProjectFilePath:String;
-                            AAndroidPlatform:String;
-                            ADelphiVersion:String;
-                            AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
-                            ):Boolean;
+                                    AAndroidPlatform:String;
+                                    ADebugOrRelease:String;
+                                    ADelphiVersion:String;
+                                    AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
+                                    ):Boolean;
 var
   I:Integer;
 //  AProjectFilePath:String;
@@ -790,6 +925,8 @@ var
 
 //  AResDir:String;
 
+  AProjectOutputPath:String;
+
 
   AR_Java_FilePath:String;
 
@@ -801,6 +938,10 @@ var
   AResFileArray:ISuperArray;
   AIndex:Integer;
   AIsSame:Boolean;
+  {$IFDEF MSWINDOWS}
+
+  PI: TProcessInformation;
+  {$ENDIF}
 begin
   Result:=False;
 
@@ -894,10 +1035,22 @@ begin
 
       //当前工程的临时文件生成目录,用于获取生成的AndroidManifest.xml和res目录
       //比如C:\MyFiles\ThirdPartySDK\Android的ZBar二维码扫描me_dm7_barcodescanner\Android\Release\Project1\
-      AProjectGenPath:=ExtractFilePath(AProjectFilePath)
-                        +AAndroidPlatform+'\Release\'
-                        +AProjectName+'\';
+      //生成目录有时候不是默认的,要从工程文件中获取出来
+//    <PropertyGroup Condition="'$(Base)'!=''">
+//        <DCC_DcuOutput>.\$(Platform)\D11\$(Config)</DCC_DcuOutput>
+//        <DCC_ExeOutput>.\$(Platform)\D11\$(Config)</DCC_ExeOutput>
+      AProjectOutputPath:=GetOutputPathFromProject(AProjectFilePath,AAndroidPlatform,ADebugOrRelease);
+      AProjectOutputPath:=ReplaceStr(AProjectOutputPath,'.\',ExtractFilePath(AProjectFilePath));
+      AProjectOutputPath:=ReplaceStr(AProjectOutputPath,'$(Platform)',AAndroidPlatform);
+      AProjectOutputPath:=ReplaceStr(AProjectOutputPath,'$(Config)',ADebugOrRelease);
+      if AProjectOutputPath[Length(AProjectOutputPath)]<>'\' then
+      begin
+        AProjectOutputPath:=AProjectOutputPath+'\';
+      end;
 
+      AProjectGenPath:=//ExtractFilePath(AProjectFilePath)
+                        //+AAndroidPlatform+'\Release\'
+                        AProjectOutputPath+AProjectName+'\';
 
 
 
@@ -1030,11 +1183,17 @@ begin
       //C:\MyFiles\ThirdPartySDK\Android图片视频选择器dmcBig_mediapicker\Android\Release\
       //R_JAVA_TestMediaPicker_D10_4-dexed.jar
       //R_JAVA_TestMediaPicker-dexed.jar
-      if FileExists(ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'+'R_JAVA_'+AProjectName+'-dexed'+'.jar') then
+      if FileExists(//ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'
+                    AProjectOutputPath+'R_JAVA_'+AProjectName+'-dexed'+'.jar') then
       begin
-        DeleteFile(ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'+'R_JAVA_'+AProjectName+'-dexed'+'.jar');
-        HandleException(nil,'存在临时文件'+ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'+'R_JAVA_'+AProjectName+'-dexed'+'.jar'+',已删除');
-        AGetCommandLineOutputEvent('','','存在临时文件'+ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'+'R_JAVA_'+AProjectName+'-dexed'+'.jar'+',已删除');
+        DeleteFile(//ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'
+                  AProjectOutputPath+'R_JAVA_'+AProjectName+'-dexed'+'.jar');
+        HandleException(nil,'存在临时文件'
+                            //+ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'
+                            +AProjectOutputPath+'R_JAVA_'+AProjectName+'-dexed'+'.jar'+',已删除');
+        AGetCommandLineOutputEvent('','','存在临时文件'
+                                          //+ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'
+                                          +AProjectOutputPath+'R_JAVA_'+AProjectName+'-dexed'+'.jar'+',已删除');
       end;
 
 
@@ -1220,7 +1379,8 @@ begin
 
 
                               //需要删除的临时文件
-                              ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'
+                              //ExtractFilePath(AProjectFilePath)+AAndroidPlatform+'\Release\'
+                              AProjectOutputPath
                                   +'R_JAVA_'+AProjectName+'-dexed'+'.jar',
 
                               ABatStringList
@@ -1246,9 +1406,11 @@ begin
 
 
 
+      {$IFDEF MSWINDOWS}
       //生成最终的R.jar
       //ShellExecute(0, nil, PChar(AGenJarBatFilePath), nil, nil, SW_SHOWMAXIMIZED);
-      uCommandLineHelper.ExecuteCommand(AGenJarBatFilePath,'C:\','生成R.jar',AGetCommandLineOutputEvent);
+      uCommandLineHelper_Copy.ExecuteCommand(AGenJarBatFilePath,'C:\','生成R.jar',AGetCommandLineOutputEvent);//,PI);
+      {$ENDIF}
 
 
 
@@ -1745,6 +1907,84 @@ begin
 
 end;
 
+procedure ReNameDumpXMLNode(AXMLAFilePath:String;ANameList:TStringList);
+var
+  AXMLADocument: TXMLDocument;
+  AXMLANode: IXMLNode;
+  I: Integer;
+  AXMLNode:IXMLNode;
+  AName:String;
+  AFileName:String;
+  AIsChanged:Boolean;
+begin
+  AFileName:=ExtractFileName(AXMLAFilePath);
+  AFileName:=Copy(AFileName,1,Length(AFileName)-4);//去掉后缀.xml
+
+  //创建XML文档
+  AXMLADocument:=TXMLDocument.Create(Application);
+  try
+      AXMLADocument.LoadFromFile(AXMLAFilePath);
+      AXMLADocument.Active:=True;
+      AXMLANode:=AXMLADocument.DocumentElement;
+
+
+      AIsChanged:=False;
+//    <color name="face_liveness_verify_bg_custom">#F0F1F2</color>
+//    <dimen name="agreement_content_font">14sp</dimen>
+      for I := 0 to AXMLANode.ChildNodes.Count-1 do
+      begin
+        AXMLNode:=AXMLANode.ChildNodes[I];
+
+        if not AXMLNode.HasAttribute('name') then
+        begin
+          continue;
+        end;
+
+        AName:=AXMLNode.Attributes['name'];
+
+        if AName='' then
+        begin
+          continue;
+        end;
+
+        if ANameList.IndexOf(AXMLNode.NodeName+'_'+AName)=-1 then
+        begin
+          ANameList.Add(AXMLNode.NodeName+'_'+AName);
+          continue;
+        end;
+
+
+        AXMLNode.Attributes['name']:=AName+'_dump_'+AFileName;
+
+
+//          //判断是否存在重复的节点
+//          AXMLNode:=FindSameAndroidResourceNode(AXMLANode,AXMLBNode.ChildNodes[I]);
+//          if AXMLNode=nil then
+//          begin
+//              //不存在此名称的
+//              //直接复制
+//              AXMLANode.ChildNodes.Add(AXMLBNode.ChildNodes[I]);
+//          end
+//          else
+//          begin
+//              //已经存在此节点
+//              DoDeployConfigLog(nil,GetLangString(['此XML节点已存在',
+//                                                  'The xml node is not exist']));
+//          end;
+        AIsChanged:=True;
+      end;
+
+      if AIsChanged then
+      begin
+        AXMLADocument.SaveToFile(AXMLAFilePath);
+      end;
+
+  finally
+    AXMLADocument.Free;
+  end;
+
+end;
+
 //procedure CombineXML(AXMLAFilePath:String;AXMLBFilePath:String;ADestXMLFilePath:String);
 //var
 //  AXMLADocument: TXMLDocument;
@@ -1987,8 +2227,9 @@ begin
   //要编译哪些源码,输出到output目录
   for I := 0 to AJavaSourceFiles.Count-1 do
   begin
+    //-encoding UTF-8加这个是因为，aapt生成的R.java是utf8格式的，但是默认javac编译的时候使用的是gbk格式来加载java代码的 ，会报错
     ABatStringList.Add(
-            '"%JDKDir%\bin\javac" %VERBOSE_FLAG% -g -source 1.6 -target 1.6 -Xlint:deprecation -cp '
+            '"%JDKDir%\bin\javac" %VERBOSE_FLAG% -g -source 1.6 -target 1.6 -encoding UTF-8 -Xlint:deprecation -cp '
 //            +' "%ANDROID_PLATFORM%\android.jar;%EMBO_LIB%\fmx.jar;" '
           +' "'+ANeedJars+'" '
 
@@ -2979,10 +3220,11 @@ function GenerateResJavaBatString(
                             var AGenR_Java_Command:String;
                             AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
                             ):Boolean;
-//{$IFDEF MSWINDOWS}
-//var
+{$IFDEF MSWINDOWS}
+var
+  PI: TProcessInformation;
 //  AAnsiGenR_Java_Command:AnsiString;
-//{$ENDIF MSWINDOWS}
+{$ENDIF MSWINDOWS}
 begin
   Result:=False;
 
@@ -3055,7 +3297,7 @@ begin
 //  //WinExec立即生成
 //  AAnsiGenR_Java_Command:=AGenR_Java_Command;
   //WinExec(PAnsiChar(AAnsiGenR_Java_Command),SW_SHOWMAXIMIZED);
-  uCommandLineHelper.ExecuteCommand(AGenR_Java_Command,'C:\','生成R.java',AGetCommandLineOutputEvent);
+  uCommandLineHelper_Copy.ExecuteCommand(AGenR_Java_Command,'C:\','生成R.java',AGetCommandLineOutputEvent);//,PI);
 
 
 
@@ -3490,7 +3732,8 @@ var
   AFilePathList:TStringList;
   AIsExists:Boolean;
 begin
-  AEncoding:=TMBCSEncoding.Create(936);
+  AEncoding:=TMBCSEncoding.Create(936);//不是所有的R.java都是UTF8编码的，先看看能不能获取到编码
+//  AEncoding:=GetTextFileEncoding(RJavaFileName);//不是所有的R.java都是UTF8编码的，先看看能不能获取到编码
 
 
   if NewRJavaFileName = '' then
@@ -3732,7 +3975,9 @@ begin
 
     end;
 
-    lstNew.SaveToFile(NewRJavaFileName,AEncoding);
+//    lstNew.SaveToFile(NewRJavaFileName,AEncoding);
+//    lstNew.SaveToFile(NewRJavaFileName,TEncoding.UTF8);
+//    lstNew.SaveToFile(NewRJavaFileName,TEncoding.ANSI);
     //Form
 
   finally
@@ -4103,28 +4348,28 @@ begin
           not FileExists(AR_JAVA_FilePath) then
         begin
           HandleException(nil,AGenJarFileNameNoExt+':'+'R.java生成失败'+AAndroidManifestXmlFilePath);
-          AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'准备根据aar包中的R.txt去除R.java中的重复资源定义');
+//          AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'准备根据aar包中的R.txt去除R.java中的重复资源定义');
           ShowMessage(AGenJarFileNameNoExt+':'+'R.java生成失败'+AAndroidManifestXmlFilePath);
           Exit;
         end;
 
-        //去除多余的资源ID
-        if FileExists(AR_JAVA_FilePath) then
-        begin
-//          if Assigned(AGetCommandLineOutputEvent) then
-//          begin
-            HandleException(nil,AGenJarFileNameNoExt+':'+'准备根据aar包中的R.txt去除R.java中的重复资源定义');
-            AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'准备根据aar包中的R.txt去除R.java中的重复资源定义');
-//          end;
-
-          RemoveNoUseResource(AR_TXT_FilePath,AR_JAVA_FilePath,AR_JAVA_FilePath1);
-
-//          if Assigned(AGetCommandLineOutputEvent) then
-//          begin
-            HandleException(nil,AGenJarFileNameNoExt+':'+'根据aar包中的R.txt去除R.java中的重复资源定义完成');
-            AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'根据aar包中的R.txt去除R.java中的重复资源定义完成');
-//          end;
-        end;
+//        //去除多余的资源ID,D11已经支持分包，不再需要
+//        if FileExists(AR_JAVA_FilePath) then
+//        begin
+////          if Assigned(AGetCommandLineOutputEvent) then
+////          begin
+//            HandleException(nil,AGenJarFileNameNoExt+':'+'准备根据aar包中的R.txt去除R.java中的重复资源定义');
+//            AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'准备根据aar包中的R.txt去除R.java中的重复资源定义');
+////          end;
+//
+//          RemoveNoUseResource(AR_TXT_FilePath,AR_JAVA_FilePath,AR_JAVA_FilePath1);
+//
+////          if Assigned(AGetCommandLineOutputEvent) then
+////          begin
+//            HandleException(nil,AGenJarFileNameNoExt+':'+'根据aar包中的R.txt去除R.java中的重复资源定义完成');
+//            AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'根据aar包中的R.txt去除R.java中的重复资源定义完成');
+////          end;
+//        end;
 
       end;
 
@@ -5165,11 +5410,16 @@ var
   AAndroidAarFilePath:String;
   AAndroidAarRelativeDirPath:String;
   AAndroidAarDirPath:String;
-  {$IFNDEF IN_ORANGESDK}
+  {$IFDEF IN_ORANGESDKSMARTTOOL}
   ziper:TVCLZip;
   {$ENDIF}
   ADeployConfig:TDeployConfig;
   ADeployConfigList:TDeployConfigList;
+
+  ADeployFile:TDeployFile;
+  AValuesXMLNodeNameList:TStringList;
+  ADirs:TArray<String>;
+  J: Integer;
 begin
   Result:=False;
 
@@ -5205,8 +5455,8 @@ begin
           if not DirectoryExists(AAndroidAarDirPath) then
           begin
 
-            {$IFNDEF IN_ORANGESDK}
             //目录不存在,则解压
+            {$IFDEF IN_ORANGESDKSMARTTOOL}
             ziper:=TVCLZip.Create(application);
             ziper.ZipName:=AAndroidAarFilePath;//获取压缩文件名
             ziper.DestDir:=AAndroidAarDirPath;
@@ -5217,6 +5467,9 @@ begin
             ziper.RecreateDirs:=true;//创建目录
             ziper.UnZip;
             ziper.Free;
+            {$ELSE}
+            //icons.zip文件改过了,需要重新解压
+            TZipFile.ExtractZipFile(AAndroidAarFilePath,AAndroidAarDirPath);
             {$ENDIF}
 
             //将里面的classes.jar重命名
@@ -5225,6 +5478,16 @@ begin
 
           end;
 
+          //删除空目录,省的麻烦
+          ADirs:=TDirectory.GetDirectories(AAndroidAarDirPath);
+          for J := 0 to Length(ADirs)-1 do
+          begin
+            if TDirectory.IsEmpty(ADirs[J]) then
+            begin
+              RemoveDir(ADirs[J]);
+            end;
+
+          end;
 
 
 
@@ -5239,6 +5502,23 @@ begin
             ADeployConfig.RemoteDir:='res\';
 
             ADeployConfigList.Add(ADeployConfig);
+
+
+
+
+          end;
+
+          //判断assets目录是否存在需要布署的文件,如果有,则需要布署
+          if DirectoryExists(AAndroidAarDirPath+'assets') then
+          begin
+
+            ADeployConfig:=TDeployConfig.Create;
+            ADeployConfig.Platform_:='Android';
+            ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'assets\';
+            ADeployConfig.RemoteDir:='assets\';
+
+            ADeployConfigList.Add(ADeployConfig);
+
           end;
 
 
@@ -5249,12 +5529,27 @@ begin
           if DirectoryExists(AAndroidAarDirPath+'jni') then
           begin
 
+            //32位默认都勾选，需要布署  armeabi-v7a\    arm64-v8a
             ADeployConfig:=TDeployConfig.Create;
             ADeployConfig.Platform_:='Android';
-            ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\';
-            ADeployConfig.RemoteDir:='library\lib\';
+            ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\armeabi-v7a\';
+            ADeployConfig.RemoteDir:='library\lib\armeabi-v7a\';
 
             ADeployConfigList.Add(ADeployConfig);
+
+
+            //64位
+            if DirectoryExists(AAndroidAarDirPath+'jni\arm64-v8a') then
+            begin
+              ADeployConfig:=TDeployConfig.Create;
+              ADeployConfig.Platform_:='Android64';
+              ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\arm64-v8a\';
+              ADeployConfig.RemoteDir:='library\lib\arm64-v8a\';
+
+              ADeployConfigList.Add(ADeployConfig);
+            end;
+
+
 
           end;
 
@@ -5277,12 +5572,30 @@ begin
                 ) then Exit;
 
 
+//      //判断res\values\里面有没有values***.xml
+//      //然后重命名掉重复的资源
+//      AValuesXMLNodeNameList:=TStringList.Create;
+//      for I := 0 to ADeployConfigList.FPreviewDeployFileList.Count-1 do
+//      begin
+//          ADeployFile:=ADeployConfigList.FPreviewDeployFileList[I];
+//          if (Pos('\res\values\values',ADeployFile.LocalName)>0)
+//            and (ExtractFileExt(ADeployFile.LocalName)='.xml') then
+//          begin
+//            ReNameDumpXMLNode(ExtractFilePath(AProjectFilePath)+ADeployFile.LocalName,AValuesXMLNodeNameList);
+//          end;
+//      end;
+//      FreeAndNil(AValuesXMLNodeNameList);
+
 
       //把文件布署列表处理到工程文件
       if not Self.SaveDeployFileListToProject(
           ADeployConfigList.FPreviewDeployFileList,
           AProjectFilePath
           ) then Exit;
+
+
+
+
 
 
       Result:=True;
@@ -7051,6 +7364,8 @@ begin
           //LocalFiles:   .\TwitterKitSDK\tweet-composer-3.0.0\res\values\values.xml
           //RemoteFiles:  res\values\
           ADeployConfig.LoadFileList(ExtractFilePath(AProjectPath));
+          //去除__history和__recoverty文件夹下面的文件
+
 
 
           //如果是aar有重名的那种values.xml，那么需要重命名
@@ -7100,6 +7415,7 @@ begin
                         RenameFile(AAbsolutePath,
                                   ExtractFilePath(AAbsolutePath)+ARenamedFileName);
                         ADeployConfig.LocalFiles[J]:=ExtractFilePath(ADeployConfig.LocalFiles[J])+ARenamedFileName;
+                        ADeployConfig.RemoteFiles[J]:=ExtractFilePath(ADeployConfig.RemoteFiles[J])+ARenamedFileName;
 
                       end;
                   end;
@@ -7111,6 +7427,13 @@ begin
 
           for J := 0 to ADeployConfig.LocalFiles.Count-1 do
           begin
+
+                  if (Pos('__history',ADeployConfig.LocalFiles[J])>0)
+                    or (Pos('__recovery',ADeployConfig.LocalFiles[J])>0) then
+                  begin
+                    continue;
+                  end;
+                  
 
                   //需要添加
                   //直接添加
@@ -7139,7 +7462,7 @@ begin
 
                   if ADeployConfig.Platform_='Android' then
                   begin
-
+                    //布署到Android，则默认布署64位的
                     //布署到指定平台
                     ADeployFilePlatform:=TDeployFilePlatform.Create;
                     ADeployFilePlatform.Platform_:='Android64';
@@ -7150,7 +7473,9 @@ begin
                     ADeployFilePlatform.RemoteDir:=ExtractFilePath(ADeployConfig.RemoteFiles[J]);
                     //避免每次都布署
                     ADeployFilePlatform.Overwrite:='False';
-                    ADeployFilePlatform.Enabled:='true';
+
+                    //但SO默认不布暑
+                    ADeployFilePlatform.Enabled:='false';
 
                     ADeployFile.Platforms.Add(ADeployFilePlatform);
 
@@ -7354,3 +7679,4 @@ finalization
 
 
 end.
+

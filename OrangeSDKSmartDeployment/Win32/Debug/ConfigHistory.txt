@@ -1,5 +1,18 @@
+<<<<<<< .mine
 C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\HMSSdk\DeployConfig.ini
 C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\XiaoMiPushSDK\DeployConfig.ini
+||||||| .r15034
+=======
+C:\OrangeFreeSDK\Facebook接口\FBLoginDemo_Delphi\FacebookSDK\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\dmcBig_MediaPicker\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\GlideSDK_V4_0_0\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\DVMediaSelectorSDK_V1_0_0\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\Compat_V7\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\Lifecycle\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\HXPhotoPicker\DeployConfig.ini
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\Support_V4\DeployConfig.ini
+C:\MyFiles\ThirdPartySDK\Android的二维码扫描BGAQRCode\BGAQRCodeSDK\DeployConfig.ini
+>>>>>>> .r19165
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterSDK\DeployConfig_TwitterSDK.ini
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterSDK\Android_3_0\DeployConfig_TwitterSDK.ini
 C:\OrangeFreeSDK\Android图片视频选择器DVMediaSelector_V1_0_0\DVMediaSelectorSDK_V1_0_0\DeployConfig.ini
@@ -49,7 +62,6 @@ C:\MyFiles\ThirdPartySDK\IOS图片选择器HXPhotoPicker\HXPhotoPicker\DeployConfig.i
 C:\MyFiles\ThirdPartySDK\Android图片选择器Matisse\MatisseSDK_0_4_3\DeployConfig.ini
 C:\MyFiles\OrangeUIProduct\门业扫码入库\Client\BarcodeScanner_D10_3_3\二维码扫描BarcodeScanner布署_Android.ini
 C:\MyFiles\ThirdPartySDK\腾讯超级播放器\App2\SuperPlayer\DeployConfig.ini
-C:\MyFiles\ThirdPartySDK\Android的二维码扫描BGAQRCode\BGAQRCodeSDK\DeployConfig.ini
 C:\MyFiles\ThirdPartySDK\TBS腾讯浏览服务\TBSSDK_fileReader\TBSSDK\DeployConfig.ini
 C:\MyFiles\OrangeUIProduct\验证码查看APP\App_Client\WeiXinSDK\微信SDKDeployConfig_Android_5_5_8_IOS_1_8_6_1.ini
 C:\MyFiles\ThirdPartySDK\Android的二维码扫描me_dm7_barcodescanner\me_dm7_barcodescanner\DeployConfig.ini

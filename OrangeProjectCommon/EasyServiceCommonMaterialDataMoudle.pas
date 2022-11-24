@@ -1,4 +1,5 @@
-﻿//convert pas to utf8 by ¥
+﻿
+//convert pas to utf8 by ¥
 
 unit EasyServiceCommonMaterialDataMoudle;
 
@@ -96,6 +97,19 @@ type
     lbFilterClassify_Material: TSkinListBoxDefaultMaterial;
     imglistCommonButtonIcons: TSkinImageList;
     pcDefaultPageControl: TSkinPageControlDefaultMaterial;
+    lbFilterHorzListViewMaterial: TSkinListViewDefaultMaterial;
+    popDefaultMaterial: TSkinPopupDefaultMaterial;
+    edtFilter_Material: TSkinEditDefaultMaterial;
+    btnPushedButtonMaterial: TSkinButtonDefaultMaterial;
+    btnDropDownButtonMaterial: TSkinButtonDefaultMaterial;
+    btnThemeBorderFontButtonMaterial: TSkinButtonDefaultMaterial;
+    pnlGrayBackAndBorderMaterial: TSkinPanelDefaultMaterial;
+    lblWhiteBackCaptionVertCenterMaterial: TSkinLabelDefaultMaterial;
+    chkSwitchBarCheckBoxMaterial: TSkinCheckBoxDefaultMaterial;
+    popWhiteBackShadowMaterial: TSkinPopupDefaultMaterial;
+    edtQueryCondition_Material: TSkinEditDefaultMaterial;
+    lvButtonMaterial: TSkinListViewDefaultMaterial;
+    lblRedBackCaptionVertCenterMaterial: TSkinLabelDefaultMaterial;
   private
     { Private declarations }
   public

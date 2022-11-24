@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Stlačením zapnite svetlo</string>
-    <string name="scankit_light_off">Vypnúť svetlo</string>
-    <string name="scankit_no_code_tip">Nenašiel sa žiadny kód.</string>
-    <string name="scankit_scan_tip">Umiestnite kód do rámika</string>
-    <string name="scankit_title">Skenovať</string>
-</resources>

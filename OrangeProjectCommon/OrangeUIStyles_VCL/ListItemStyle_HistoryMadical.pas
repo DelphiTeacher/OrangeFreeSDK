@@ -41,6 +41,7 @@ type
     lblDiagnose: TSkinWinLabel;
     swlblName_Material: TSkinLabelDefaultMaterial;
     lblHintLabelMaterial: TSkinLabelDefaultMaterial;
+    lblDoctorName: TSkinWinLabel;
     procedure ItemDesignerPanelPrepareDrawItem(Sender: TObject;
       ACanvas: TDrawCanvas; AItemDesignerPanel: TSkinItemDesignerPanel;
       AItem: TSkinItem; AItemDrawRect: TRectF);

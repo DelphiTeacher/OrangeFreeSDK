@@ -37,6 +37,13 @@ contains
   ListItemStyle_TreeMainMenuItem in 'ListItemStyle_TreeMainMenuItem.pas',
   ListItemStyle_TreeChildListBox in 'ListItemStyle_TreeChildListBox.pas',
   ListItemStyle_TreeHistoryMadicalList_Child in 'ListItemStyle_TreeHistoryMadicalList_Child.pas',
-  ListItemStyle_IconLeft_CaptionRight in 'ListItemStyle_IconLeft_CaptionRight.pas';
+  ListItemStyle_IconLeft_CaptionRight in 'ListItemStyle_IconLeft_CaptionRight.pas',
+  ListItemStyle_MailList2 in 'ListItemStyle_MailList2.pas' {FrameListItemStyle_MailList2: TFrame},
+  ListItemStyle_CustomerTag in 'ListItemStyle_CustomerTag.pas',
+  ListItemStyle_CompanyInfo in 'ListItemStyle_CompanyInfo.pas',
+  ListItemStyle_ContactInfo in 'ListItemStyle_ContactInfo.pas',
+  ListItemStyle_CustomerInfo in 'ListItemStyle_CustomerInfo.pas',
+  ListItemStyle_TreeMainMenu_LabelAndArrow in 'ListItemStyle_TreeMainMenu_LabelAndArrow.pas',
+  ListItemStyle_CaptionDetailItem in 'ListItemStyle_CaptionDetailItem.pas';
 
 end.

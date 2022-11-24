@@ -45,7 +45,6 @@ uses
   kbmMWCustomDataset,
   kbmMWUniDAC,
   {$ENDIF}
-//  kbmMWUniDAC,
 
 
   uni,
@@ -75,7 +74,8 @@ type
     constructor Create;overload;override;
     destructor Destroy;override;
   public
-    {$IFNDEF NOT_USE_kbmMWUNIDACConnectionPool}
+    {$IFDEF NOT_USE_kbmMWUNIDACConnectionPool}
+    {$ELSE}
     //可以设置
     FUnidacConnectionPool:TkbmMWUNIDACConnectionPool;
     //要么使用连接池
@@ -138,12 +138,13 @@ function TUniDBHelper.Connect(ADataBaseConfig: TDataBaseConfig): Boolean;
 var
   AUniConnection:TUniConnection;
 begin
-  if SameText(ADataBaseConfig.FDBType,'MSSQL') then
-  begin
-    {$IFDEF MSWINDOWS}
-    CoInitialize(nil);
-    {$ENDIF}
-  end;
+    //直连SQLServer时不再需要CoUnInitialize
+//  if SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000') then
+//  begin
+//    {$IFDEF MSWINDOWS}
+//    CoInitialize(nil);
+//    {$ENDIF}
+//  end;
   try
       Result:=False;
 
@@ -166,13 +167,16 @@ begin
       {$ENDIF}
 
 
+
+
+
       if AUniConnection<>nil then
       begin
           AUniConnection.Connected:=False;
 
           Self.DBType:=ADataBaseConfig.FDBType;
 
-          if SameText(ADataBaseConfig.FDBType,'MSSQL') then
+          if SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000') then
           begin
             //微软的SQL SERVER
             AUniConnection.ProviderName:='SQL Server';
@@ -192,13 +196,31 @@ begin
 
 
               //在windows的service模式下设置直连会报错
-              {$IFDEF IS_WINDOWS_SERVICE}
-              AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
-              {$ELSE}
-              AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
-              {$ENDIF}
+//              {$IFDEF IS_WINDOWS_SERVICE}
+//              AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
+//              {$ELSE}
+              AUniConnection.SpecificOptions.Values['Provider']:=ADataBaseConfig.FSpecificOptions_Provider;//'prDirect';
+//              {$ENDIF}
+              AUniConnection.SpecificOptions.Values['NativeClientVersion']:=ADataBaseConfig.FSpecificOptions_NativeClientVersion;//'prDirect';
 
 
+          end
+          else if SameText(ADataBaseConfig.FDBType,'SQLite') then
+          begin
+
+            AUniConnection.ProviderName:='SQLite';
+            AUniConnection.SpecificOptions.Values['UseUnicode']:='True';
+            if not FileExists(ADataBaseConfig.FDBDataBaseName) then
+            begin
+              AUniConnection.SpecificOptions.Values['ForceCreateDatabase']:='True';
+            end;
+//            AUniConnection.SpecificOptions.Values['EnableSharedCache']:='True';
+
+            {$IFDEF MSWINDOWS}
+            {$IFDEF CPUX64}
+            AUniConnection.SpecificOptions.Values['Direct']:='True';//查询诊断的时候会卡
+            {$ENDIF}
+            {$ENDIF}
           end
           else if (ADataBaseConfig.FDBType='') or SameText(ADataBaseConfig.FDBType,'MYSQL') then
           begin
@@ -240,13 +262,18 @@ begin
             end;
           end;
       end;
+
+
+
+
   finally
-    if SameText(ADataBaseConfig.FDBType,'MSSQL') then
-    begin
-      {$IFDEF MSWINDOWS}
-      CoUnInitialize();
-      {$ENDIF}
-    end;
+      //直连SQLServer时不再需要CoUnInitialize
+//    if SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000') then
+//    begin
+//      {$IFDEF MSWINDOWS}
+//      CoUnInitialize();
+//      {$ENDIF}
+//    end;
   end;
 end;
 
@@ -337,8 +364,8 @@ begin
   begin
     Self.FUnidacConnection.UnlockConnection;
     FUnidacConnection:=nil;
+    Self.Connection:=nil;
   end;
-  Self.Connection:=nil;
   {$ENDIF}
 
 end;
@@ -346,13 +373,20 @@ end;
 function TUniDBHelper.GetConnectionFromPool: TObject;
 begin
   {$IFNDEF NOT_USE_kbmMWUNIDACConnectionPool}
-  //有连接池,要从连接池中区域链接
-  FUnidacConnection:=TkbmMWunidacConnection(FUnidacConnectionPool.GetBestConnection(True, 0, nil, 10000));
-  if FUnidacConnection <> nil then
+  if FUnidacConnectionPool<>nil then
   begin
-    Self.Connection:=FUnidacConnection.Database;
+    //有连接池,要从连接池中区域链接
+    FUnidacConnection:=TkbmMWunidacConnection(FUnidacConnectionPool.GetBestConnection(True, 0, nil, 10000));
+    if FUnidacConnection <> nil then
+    begin
+      Self.Connection:=FUnidacConnection.Database;
+    end;
+    Result:=FUnidacConnection;
+  end
+  else
+  begin
+    Result:=Self.Connection;
   end;
-  Result:=FUnidacConnection;
   {$ENDIF}
   //在FMX平台下,没有连接池,不需要获取
 
@@ -426,7 +460,7 @@ begin
 
 
 
-  if SameText(Self.DBType,'MSSQL') then
+  if SameText(Self.DBType,'MSSQL') or SameText(Self.DBType,'MSSQL2000') then
   begin
     {$IFDEF MSWINDOWS}
     CoInitialize(nil);
@@ -449,29 +483,7 @@ begin
             begin
               Self.FConnection.Connected:=True;
             end;
-
-//<<<<<<< .mine
-//          AQuery.Close;
-//          AQuery.SQL.Clear;
-//          AQuery.Connection:=Self.FConnection;
-//
-//          //��SQLת����ͨ�õ�,MYSQLת����SQLSERVER
-//          AQuery.SQL.Text:=TransSelectSQL(AQueryString,DBType);
-//
-//          if Not AParamsCompleted then
-//          begin
-//            for I:=Length(AParamNames)-1 downto 0 do
-//||||||| .r10989
-//          AQuery.Close;
-//          AQuery.SQL.Clear;
-//          AQuery.Connection:=Self.FConnection;
-//          AQuery.SQL.Text:=AQueryString;
-//          if Not AParamsCompleted then
-//          begin
-//            for I:=Length(AParamNames)-1 downto 0 do
-//=======
             if (FConnection<>nil) and Self.FConnection.Connected then
-//>>>>>>> .r11181
             begin
 //                HandleException(nil,'TUniDBHelper.SelfQuery '+AQueryString);
                 ATempQuerySQL:=AQueryString;
@@ -480,6 +492,7 @@ begin
                 AQuery.SQL.Clear;
                 AQuery.Connection:=Self.FConnection;
                 AQuery.SQL.Text:=TransSelectSQL(AQueryString,DBType);
+                //AQuery.Prepare;
                 if Not AParamsCompleted then
                 begin
                   for I:=Length(AParamNames)-1 downto 0 do
@@ -539,7 +552,11 @@ begin
 
                 case AOperation of
                   asoOpen: AQuery.Open;
-                  asoExec: AQuery.ExecSql;
+                  asoExec:
+                  begin
+                      //AQuery.Prepare;
+                      AQuery.ExecSql;
+                  end;
                 end;
                 Result:=True;
 
@@ -579,7 +596,7 @@ begin
         end;
 
   finally
-    if SameText(Self.DBType,'MSSQL') then
+    if SameText(Self.DBType,'MSSQL') or SameText(Self.DBType,'MSSQL2000') then
     begin
       {$IFDEF MSWINDOWS}
       CoUnInitialize();

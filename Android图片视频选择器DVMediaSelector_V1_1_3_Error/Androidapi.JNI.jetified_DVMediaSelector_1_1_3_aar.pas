@@ -208,7 +208,7 @@ type
 //  Jd_3 = interface; //com.devil.library.media.utils.d$3
 //  Jd_a = interface; //com.devil.library.media.utils.d$a
 //  Jd_133 = interface; //com.devil.library.media.utils.d
-  JDVFileProvider = interface; //com.devil.library.media.utils.DVFileProvider
+//  JDVFileProvider = interface; //com.devil.library.media.utils.DVFileProvider
 //  Je_a = interface; //com.devil.library.media.utils.e$a
 //  Je_136 = interface; //com.devil.library.media.utils.e
 //  Jf_137 = interface; //com.devil.library.media.utils.f
@@ -3666,27 +3666,27 @@ type
 //
 //  TJd_133 = class(TJavaGenericImport<Jd_133Class, Jd_133>) end;
 
-  JDVFileProviderClass = interface(JFileProviderClass) // or JObjectClass
-  ['{D55682D2-90DA-429A-893E-23F451B2545A}']
-    { static Property Methods }
-
-    { static Methods }
-    {class} function init: JDVFileProvider; cdecl;
-
-    { static Property }
-  end;
-
-  [JavaSignature('com/devil/library/media/utils/DVFileProvider')]
-  JDVFileProvider = interface(JFileProvider) // or JObject
-  ['{66A28825-9D4C-4B2A-B5DC-D22C2E99D7C6}']
-    { Property Methods }
-
-    { methods }
-
-    { Property }
-  end;
-
-  TJDVFileProvider = class(TJavaGenericImport<JDVFileProviderClass, JDVFileProvider>) end;
+//  JDVFileProviderClass = interface(JFileProviderClass) // or JObjectClass
+//  ['{D55682D2-90DA-429A-893E-23F451B2545A}']
+//    { static Property Methods }
+//
+//    { static Methods }
+//    {class} function init: JDVFileProvider; cdecl;
+//
+//    { static Property }
+//  end;
+//
+//  [JavaSignature('com/devil/library/media/utils/DVFileProvider')]
+//  JDVFileProvider = interface(JFileProvider) // or JObject
+//  ['{66A28825-9D4C-4B2A-B5DC-D22C2E99D7C6}']
+//    { Property Methods }
+//
+//    { methods }
+//
+//    { Property }
+//  end;
+//
+//  TJDVFileProvider = class(TJavaGenericImport<JDVFileProviderClass, JDVFileProvider>) end;
 
 //  Je_aClass = interface(JObjectClass)
 //  ['{911F045B-FA59-414E-9882-4844342C53A1}']

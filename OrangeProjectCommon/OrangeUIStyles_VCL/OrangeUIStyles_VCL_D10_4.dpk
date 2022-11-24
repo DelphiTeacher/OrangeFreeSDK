@@ -42,6 +42,20 @@ contains
   ListItemStyle_TreeHistoryMadicalList_Item in 'ListItemStyle_TreeHistoryMadicalList_Item.pas' {FrameListItemStyle_TreeHistoryMadicalList_Item: TFrame},
   ListItemStyle_TreeHistoryMadicalList_Diag in 'ListItemStyle_TreeHistoryMadicalList_Diag.pas' {FrameListItemStyle_TreeHistoryMadicalList_Diag: TFrame},
   ListItemStyle_TreeChildListBox in 'ListItemStyle_TreeChildListBox.pas' {FrameListItemStyle_TreeChildListBox: TFrame},
-  ListItemStyle_IconLeft_CaptionRight in 'ListItemStyle_IconLeft_CaptionRight.pas';
+  ListItemStyle_IconLeft_CaptionRight in 'ListItemStyle_IconLeft_CaptionRight.pas',
+  ListItemStyle_TwoButton in 'ListItemStyle_TwoButton.pas',
+  ListItemStyle_VertSelectedSignLeft_CaptionRight in 'ListItemStyle_VertSelectedSignLeft_CaptionRight.pas',
+  ListItemStyle_CaptionDetailItem in 'ListItemStyle_CaptionDetailItem.pas',
+  ListItemStyle_ClassifyHasSelectedEffect in 'ListItemStyle_ClassifyHasSelectedEffect.pas',
+  ListItemStyle_CustomerTag in 'ListItemStyle_CustomerTag.pas',
+  ListItemStyle_Edit in 'ListItemStyle_Edit.pas',
+  ListItemStyle_HistoryMadical in 'ListItemStyle_HistoryMadical.pas',
+  ListItemStyle_HospitalDoctorForRegisterNumber in 'ListItemStyle_HospitalDoctorForRegisterNumber.pas',
+  ListItemStyle_IconButton in 'ListItemStyle_IconButton.pas',
+  ListItemStyle_MailList in 'ListItemStyle_MailList.pas',
+  ListItemStyle_MailList2 in 'ListItemStyle_MailList2.pas',
+  ListItemStyle_MailListWithTag in 'ListItemStyle_MailListWithTag.pas',
+  ListItemStyle_TreeMainMenu_LabelAndArrow in 'ListItemStyle_TreeMainMenu_LabelAndArrow.pas',
+  EasyServiceCommonMaterialDataMoudle_VCL in '..\EasyServiceCommonMaterialDataMoudle_VCL.pas';
 
 end.

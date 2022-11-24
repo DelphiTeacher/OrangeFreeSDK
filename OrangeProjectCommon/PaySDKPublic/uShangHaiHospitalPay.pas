@@ -672,7 +672,7 @@ begin
   try
 
 
-    ANonceStr:=uCaptcha.GetRandStr(32);
+    ANonceStr:=GetRandStr(32);
 
     //准备订单参数//
     //公共参数
@@ -784,7 +784,14 @@ begin
 
 
   AServerResponseW:=AServerResponse;
+
+  {$IF CompilerVersion >= 30.0}//XE10
+  AServerResponseJson:=TSuperObject.Create(AServerResponseW);
+  {$ELSE}
   AServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseW),True);
+  {$ENDIF}
+
+
   if SameText(AServerResponseJson.S['msg'],'success') then
   begin
 
@@ -877,7 +884,11 @@ begin
 
 
   AServerResponseW:=AServerResponse;
+  {$IF CompilerVersion >= 30.0}//XE10
+  AServerResponseJson:=TSuperObject.Create(AServerResponseW);
+  {$ELSE}
   AServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseW),True);
+  {$ENDIF}
   if SameText(AServerResponseJson.S['msg'],'success') then
   begin
 
@@ -1079,7 +1090,11 @@ begin
 
 
   AServerResponseW:=AServerResponse;
+  {$IF CompilerVersion >= 30.0}//XE10
+  AServerResponseJson:=TSuperObject.Create(AServerResponseW);
+  {$ELSE}
   AServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseW),True);
+  {$ENDIF}
   if SameText(AServerResponseJson.S['msg'],'success') then
   begin
   end
@@ -1272,7 +1287,11 @@ begin
 
 
   AServerResponseW:=AServerResponse;
+  {$IF CompilerVersion >= 30.0}//XE10
+  AServerResponseJson:=TSuperObject.Create(AServerResponseW);
+  {$ELSE}
   AServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseW),True);
+  {$ENDIF}
   if SameText(AServerResponseJson.S['msg'],'success') then
   begin
       ATradeStatus:=AServerResponseJson.O['biz_content'].S['trade_status'];
@@ -1383,7 +1402,11 @@ begin
 
 
   AServerResponseW:=AServerResponse;
+  {$IF CompilerVersion >= 30.0}//XE10
+  AServerResponseJson:=TSuperObject.Create(AServerResponseW);
+  {$ELSE}
   AServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseW),True);
+  {$ENDIF}
   if SameText(AServerResponseJson.S['msg'],'success') then
   begin
       //退款成功
@@ -1504,7 +1527,11 @@ begin
 
 
   AServerResponseW:=AServerResponse;
+  {$IF CompilerVersion >= 30.0}//XE10
+  AServerResponseJson:=TSuperObject.Create(AServerResponseW);
+  {$ELSE}
   AServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseW),True);
+  {$ENDIF}
   if SameText(AServerResponseJson.S['msg'],'success') then
   begin
 
@@ -1693,7 +1720,11 @@ begin
                     if AServerResponse<>'' then
                     begin
                         AServerResponseWStr:=AServerResponse;
+                        {$IF CompilerVersion >= 30.0}//XE10
+                        FServerResponseJson:=TSuperObject.Create(AServerResponseWStr);
+                        {$ELSE}
                         FServerResponseJson:=TSuperObject.ParseString(PWideChar(AServerResponseWStr),True);
+                        {$ENDIF}
 
                         FDesc:='网关返回码code:'+FServerResponseJson.S['code']+#13#10
                                +'网关返回码描述msg:'+FServerResponseJson.S['msg']+#13#10
@@ -1710,7 +1741,11 @@ begin
                                     FTradeBizContent.out_trade_no:=FServerResponseJson.O['biz_content'].S['out_trade_no'];
                                     FTradeBizContent.trade_no:=FServerResponseJson.O['biz_content'].S['trade_no'];
                                     FTradeBizContent.trade_status:=FServerResponseJson.O['biz_content'].S['trade_status'];
+                                    {$IF CompilerVersion >= 30.0}//XE10
+                                    FTradeBizContent.total_amount:=FServerResponseJson.O['biz_content'].F['total_amount'];
+                                    {$ELSE}
                                     FTradeBizContent.total_amount:=FServerResponseJson.O['biz_content'].D['total_amount'];
+                                    {$ENDIF}
                                     FTradeBizContent.payment_type:=FServerResponseJson.O['biz_content'].S['payment_type'];
                                     //
                                     FTradeBizContent.pay_date:=FServerResponseJson.O['biz_content'].S['pay_date'];

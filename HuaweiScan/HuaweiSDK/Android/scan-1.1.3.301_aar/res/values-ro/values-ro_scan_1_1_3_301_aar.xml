@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Atingeți pentru lumină suplimentară</string>
-    <string name="scankit_light_off">Stingeți lumina</string>
-    <string name="scankit_no_code_tip">Niciun cod detectat.</string>
-    <string name="scankit_scan_tip">Așezați codul în cadru</string>
-    <string name="scankit_title">Scanare</string>
-</resources>

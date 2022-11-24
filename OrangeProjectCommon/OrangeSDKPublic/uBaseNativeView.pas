@@ -102,13 +102,6 @@ type
   private
     function GetZOrderManager: TZOrderManager;
   protected
-    {$IFDEF ANDROID}
-    FParentViewContainer: JViewGroup;
-    FChildrenContainer: JViewGroup;
-    {$ENDIF}
-    //创建原生控件
-    function CreateNativeView: TNativeView; virtual;abstract;
-  protected
     /// <summary>Update map view when control changes</summary>
     procedure DoAbsoluteChanged; override;
     /// <summary>Update map view when parent changes</summary>
@@ -127,6 +120,13 @@ type
     /// <summary>Called after the size of the control had been changed</summary>
     procedure Resize; override;
   public
+    {$IFDEF ANDROID}
+    FParentViewContainer: JViewGroup;
+    FChildrenContainer: JViewGroup;
+    {$ENDIF}
+    //创建原生控件
+    function CreateNativeView: TNativeView; virtual;abstract;
+  public
     procedure doNativeShow;virtual;
     procedure doNativeHide;
     procedure UpdateContentFromControl;
@@ -139,7 +139,7 @@ type
     destructor Destroy; override;
   published
     property Action;
-    property Align default TAlignLayout.alNone;
+    property Align default TAlignLayout.{$IF CompilerVersion >= 35.0}None{$ELSE}alNone{$IFEND};
     property Anchors;
 //    property AutoTranslate default True;
 //    property Cancel: Boolean read FCancel write FCancel default False;

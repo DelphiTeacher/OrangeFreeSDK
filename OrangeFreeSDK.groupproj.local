@@ -4,6 +4,6 @@
     <Transaction>1899-12-30 00:00:00.000.327,C:\OrangeFreeSDK\OrangeFreeSDK.groupproj=C:\OrangeFreeSDK\HuaweiScan\ProjectGroup1.groupproj</Transaction>
   </Transactions>
 	<Default.Personality>
-		<Projects ActiveProject="C:\OrangeFreeSDK\NFC_Samples_10.1_Berlin\3_PackageByDelphiTeacher\Project11.dproj"/>
+		<Projects ActiveProject="C:\OrangeFreeSDK\JCPrint\Client\JCPrint_FMX_D10_4.dproj"/>
 	</Default.Personality>
 </BorlandProject>

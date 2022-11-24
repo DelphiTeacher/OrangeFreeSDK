@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8
 /// <summary>
 ///   <para>
-///     Httpä¸‹è½½åŸºç±»
+///     HttpÏÂÔØ»ùÀà
 ///   </para>
 ///   <para>
 ///     Http download base class
@@ -17,9 +17,9 @@ interface
 
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
-//æ‰å¯ä»¥æ­£å¸¸ç¼–è¯‘æ­¤å•å…ƒ
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
+//²Å¿ÉÒÔÕı³£±àÒë´Ëµ¥Ôª
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -29,9 +29,9 @@ interface
 
 {$IF CompilerVersion >= 30.0}
 //{$IFDEF FMX}
-  //æ˜¯å¦éœ€è¦SystemHttpControl,
-  //FMXä¸‹éœ€è¦
-  //VCLä¸‹é¢æ²¡æœ‰NetHttpClient,å› æ­¤ä¸éœ€è¦
+  //ÊÇ·ñĞèÒªSystemHttpControl,
+  //FMXÏÂĞèÒª
+  //VCLÏÂÃæÃ»ÓĞNetHttpClient,Òò´Ë²»ĞèÒª
   {$DEFINE NEED_SystemHttpControl}
 //{$ENDIF}
 //{$IFDEF VCL}
@@ -43,7 +43,7 @@ interface
 uses
   Classes,
 
-  //FMX.Typesä¼šé€ æˆåœ¨AndroidæœåŠ¡ä¸­å¡æ­»
+  //FMX.Types»áÔì³ÉÔÚAndroid·şÎñÖĞ¿¨ËÀ
 //  FMX.Types,
 
   {$IFDEF NEED_SystemHttpControl}
@@ -58,15 +58,34 @@ uses
   IdURI,
   SysUtils;
 
-
-
+const
+    user_agent_list:array [0..17] of string = (
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/22.0.1207.1 Safari/537.1',
+        'Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11',
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1092.0 Safari/536.6',
+        'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6',
+        'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/19.77.34.5 Safari/537.1',
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.9 Safari/536.5',
+        'Mozilla/5.0 (Windows NT 6.0) AppleWebKit/536.5 (KHTML, like Gecko) Chrome/19.0.1084.36 Safari/536.5',
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3',
+        'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1063.0 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1062.0 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1062.0 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.1 Safari/536.3',
+        'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.3 (KHTML, like Gecko) Chrome/19.0.1061.0 Safari/536.3',
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24',
+        'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/535.24 (KHTML, like Gecko) Chrome/19.0.1055.1 Safari/535.24'
+    );
 
 type
   THttpControlClass=class of THttpControl;
 
 
 
-  //ç½‘ç»œæ•°æ®ä½¿ç”¨é‡é€šçŸ¥äº‹ä»¶(ç”¨äºç»Ÿè®¡ä½¿ç”¨çš„æ•°æ®æµé‡)
+  //ÍøÂçÊı¾İÊ¹ÓÃÁ¿Í¨ÖªÊÂ¼ş(ÓÃÓÚÍ³¼ÆÊ¹ÓÃµÄÊı¾İÁ÷Á¿)
   TNetworkDataUsageNotifyEvent=procedure(Sender:TObject;ADownloadDataSize:Int64;AUploadDataSize:Int64);
 
 
@@ -74,7 +93,7 @@ type
 
   /// <summary>
   ///   <para>
-  ///     Httpä¸‹è½½åŸºç±»
+  ///     HttpÏÂÔØ»ùÀà
   ///   </para>
   ///   <para>
   ///     Http download base class
@@ -87,23 +106,23 @@ type
   public
     /// <summary>
     ///   <para>
-    ///     ä»æŒ‡å®šURLä¸­è·å–æ•°æ®æµ
+    ///     ´ÓÖ¸¶¨URLÖĞ»ñÈ¡Êı¾İÁ÷
     ///   </para>
     ///   <para>
     ///     Get data stream from assigned URL
     ///   </para>
     /// </summary>
     /// <param name="AHttpUrl">
-    ///   é“¾æ¥ <br />
+    ///   Á´½Ó <br />
     /// </param>
     /// <param name="AResponseStream">
-    ///   è¿”å›çš„æ•°æ®æµ <br />
+    ///   ·µ»ØµÄÊı¾İÁ÷ <br />
     ///   <para>
     ///     Responsed data stream
     ///   </para>
     /// </param>
     /// <returns>
-    ///   æ˜¯å¦è·å–æˆåŠŸ
+    ///   ÊÇ·ñ»ñÈ¡³É¹¦
     ///   <para>
     ///    Whether get succeedly
     ///   </para>
@@ -111,32 +130,32 @@ type
     function Get(const AHttpUrl:String;AResponseStream:TStream):Boolean;overload;virtual;abstract;
     /// <summary>
     ///   <para>
-    ///     æäº¤æ•°æ®æµåˆ°æŒ‡å®šUrl,å¹¶è·å–è¿”å›çš„æ•°æ®æµ
+    ///     Ìá½»Êı¾İÁ÷µ½Ö¸¶¨Url,²¢»ñÈ¡·µ»ØµÄÊı¾İÁ÷
     ///   </para>
     ///   <para>
     ///     Post data stream to assigned Url and get responsed data stream
     ///   </para>
     /// </summary>
     /// <param name="AHttpUrl">
-    ///   é“¾æ¥
+    ///   Á´½Ó
     ///  <para>
     ///  link
     ///  </para>
     /// </param>
     /// <param name="ARequestStream">
-    ///   æäº¤çš„æ•°æ®æµ
+    ///   Ìá½»µÄÊı¾İÁ÷
     ///  <para>
     ///  Posted data stream
     ///  </para>
     /// </param>
     /// <param name="AResponseStream">
-    ///   è¿”å›çš„æ•°æ®æµ
+    ///   ·µ»ØµÄÊı¾İÁ÷
     ///  <para>
     ///  Responsed data stream
     ///  </para>
     /// </param>
     /// <returns>
-    ///   æ˜¯å¦æäº¤æˆåŠŸ
+    ///   ÊÇ·ñÌá½»³É¹¦
     ///  <para>
     ///  Whether post succeedly
     ///  </para>
@@ -173,10 +192,10 @@ type
 
 
 
-//
+
 //type
 //
-//  //è°ƒç”¨æ¥å£çš„äº‹ä»¶
+//  //µ÷ÓÃ½Ó¿ÚµÄÊÂ¼ş
 //  TCallAPIEvent=procedure(AHttpControl: THttpControl;AAPIUrl:String) of object;
 //
 
@@ -189,7 +208,7 @@ type
 //    UrlParamNames:Array of String;
 //    UrlParamValues:Array of Variant;
 //    OnExecuteEnd:TTimerTaskNotify;
-//    //åŒ¿åå‡½æ•°
+//    //ÄäÃûº¯Êı
 //    OnExecuteEndCallback:TTimerTaskNotifyCallback;
 //    procedure DoTaskExecute(ATimerTask:TObject);
 //    procedure DoTaskExecuteEnd(ATimerTask:TObject);
@@ -200,7 +219,7 @@ type
 //var
 //  OnCallAPIEvent:TCallAPIEvent;
 //  GlobalCallAPITaskList:TBaseList;
-//  //ç”¨æˆ·å†æ¬¡æäº¤æ—¶ä½¿ç”¨
+//  //ÓÃ»§ÔÙ´ÎÌá½»Ê±Ê¹ÓÃ
 //  GlobalLastParamJsonArray:ISuperArray;
 
 
@@ -209,17 +228,17 @@ type
 
 
 var
-  //(æ•´ä¸ªåº”ç”¨ç¨‹åºå†…)ç½‘ç»œæ˜¯å¦è¿æ¥çš„å˜é‡
+  //(Õû¸öÓ¦ÓÃ³ÌĞòÄÚ)ÍøÂçÊÇ·ñÁ¬½ÓµÄ±äÁ¿
   IsNetworkConnected:Boolean;
-  //ç½‘ç»œæ•°æ®ä½¿ç”¨æ›´æ”¹
+  //ÍøÂçÊı¾İÊ¹ÓÃ¸ü¸Ä
   OnNetworkDataUsageChange:TNetworkDataUsageNotifyEvent;
+  GlobalSystemHttpControlClass:THttpControlClass;
 
 
 
 
 
-
-////è°ƒç”¨restæ¥å£,è¿”å›æ•°æ®æµ
+////µ÷ÓÃrest½Ó¿Ú,·µ»ØÊı¾İÁ÷
 //function SimpleGet(API: String;
 //                  AHttpControl: THttpControl;
 //                  AInterfaceUrl:String;
@@ -230,7 +249,7 @@ var
 //
 //
 //
-////è°ƒç”¨restæ¥å£,è¿”å›å­—ç¬¦ä¸²
+////µ÷ÓÃrest½Ó¿Ú,·µ»Ø×Ö·û´®
 //function SimpleCallAPI(API: String;
 //          AHttpControl: THttpControl;
 //          AInterfaceUrl:String;
@@ -239,7 +258,7 @@ var
 //                    AIsPost:Boolean=False): String;overload;
 //
 //
-////è°ƒç”¨restæ¥å£,è¿”å›å­—ç¬¦ä¸²,åœ¨æœåŠ¡ç«¯ä¸­ä½¿ç”¨
+////µ÷ÓÃrest½Ó¿Ú,·µ»Ø×Ö·û´®,ÔÚ·şÎñ¶ËÖĞÊ¹ÓÃ
 //function SimpleCallAPI(API: String;
 //          AHttpControl: THttpControl;
 //          AInterfaceUrl:String;
@@ -252,7 +271,7 @@ var
 
 
 
-////é€šè¿‡ä»»åŠ¡æ¥è°ƒç”¨restæ¥å£,è¿”å›å­—ç¬¦ä¸²
+////Í¨¹ıÈÎÎñÀ´µ÷ÓÃrest½Ó¿Ú,·µ»Ø×Ö·û´®
 //function SimpleCallAPIByTimerTask(API: String;
 //          AInterfaceUrl:String;
 //          AUrlParamNames:Array of String;
@@ -264,7 +283,7 @@ var
 
 
 
-////è°ƒç”¨TableCommonRestçš„è·å–è®°å½•åˆ—è¡¨æ¥å£get_record_list,è¿”å›å­—ç¬¦ä¸²
+////µ÷ÓÃTableCommonRestµÄ»ñÈ¡¼ÇÂ¼ÁĞ±í½Ó¿Úget_record_list,·µ»Ø×Ö·û´®
 //function SimpleCallAPI_TableCommonGetRecordList(
 //          ARestName: String;
 //          AHttpControl: THttpControl;
@@ -274,7 +293,7 @@ var
 //          AKey:String;
 //          APageIndex:Integer=1;
 //          APageSize:Integer=MaxInt;
-//          //4ä¸ªStringä¸€ç»„
+//          //4¸öStringÒ»×é
 //          AWhereConditions:TVariantDynArray=[];
 //          AOrderBy:String='';
 //          AWhereSQL:String=''): String;
@@ -285,21 +304,21 @@ var
 
 
 
-////è°ƒç”¨æ¥å£,è¿”å›æ•°æ®æµ,ç”¨äºæ¨æ‹¿APP
+////µ÷ÓÃ½Ó¿Ú,·µ»ØÊı¾İÁ÷,ÓÃÓÚÍÆÄÃAPP
 //function JsonSimplePost(API: String;
-//                        //ä¸èƒ½ä¸ºnil
+//                        //²»ÄÜÎªnil
 //                        AHttpControl: THttpControl;
 //                        AInterfaceUrl:String;
 //                        AParamJsonArray:ISuperArray;
 //                        AResponseStream: TStream):Boolean;overload;
 //function JsonSimpleCall(API: String;
-//                        //å¯ä»¥ä¸ºnil
+//                        //¿ÉÒÔÎªnil
 //                        AHttpControl: THttpControl;
 //                        AInterfaceUrl:String;
 //                        AJsonParamNames:Array of String;
 //                        AJsonParamValues:Array of Variant):String;overload;
 //function JsonSimpleCall(API: String;
-//                        //å¯ä»¥ä¸ºnil
+//                        //¿ÉÒÔÎªnil
 //                        AHttpControl: THttpControl;
 //                        AInterfaceUrl:String;
 //                        AParamJsonArray:ISuperArray):String;overload;
@@ -314,7 +333,7 @@ var
 //function GetWhereKeyJson(AFieldNames:Array of String;
 //                            AFieldValues:Array of Variant):String;
 //function GetWhereConditionsPro(AFieldNames:Array of String;
-//                            //æ¯”è¾ƒè¿ç®—ç¬¦
+//                            //±È½ÏÔËËã·û
 //                            AFieldOpers:Array of String;
 //                            AFieldValues:Array of Variant):String;
 
@@ -322,13 +341,16 @@ var
 
 
 {$IFDEF FMX}
-//ä¿®å¤URLæ”¯æŒIPV6(å¦‚æœå½“å‰æ˜¯IPV6ç¯å¢ƒ,é‚£ä¹ˆè‡ªåŠ¨åœ¨åŸŸåä¸­åŠ ä¸Š[])
+//ĞŞ¸´URLÖ§³ÖIPV6(Èç¹ûµ±Ç°ÊÇIPV6»·¾³,ÄÇÃ´×Ô¶¯ÔÚÓòÃûÖĞ¼ÓÉÏ[])
 function FixSupportIPV6URL(const Url:String):String;
 
-//å½“å‰ç½‘ç»œçš„è·¯ç”±æ˜¯å¦æ”¯æŒIPV6
+//µ±Ç°ÍøÂçµÄÂ·ÓÉÊÇ·ñÖ§³ÖIPV6
 function IsSupportIPV6Host_IOS(const Host:String):Boolean;
 {$ENDIF}
 
+
+//ÏÂÔØÍ¼Æ¬
+function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
 
 
 
@@ -351,7 +373,7 @@ implementation
     {$ENDIF}
 
 
-    //æ˜¯å¦æ”¯æŒIPV6
+    //ÊÇ·ñÖ§³ÖIPV6
     function IsSupportIPV6Host_IOS(const Host:String):Boolean;
     {$IFDEF IOS}
       var
@@ -362,24 +384,24 @@ implementation
       {$IFDEF IOS}
 
 
-      //IOSç‰ˆæœ¬è¦å¤§äº9,å¿…é¡»ç”¨XE10ä»¥ä¸Šè¿›è¡Œç¼–è¯‘
+      //IOS°æ±¾Òª´óÓÚ9,±ØĞëÓÃXE10ÒÔÉÏ½øĞĞ±àÒë
       if TOSVersion.Check(9) then
       begin
         try
           FMX.Types.Log.d('OrangeUI IsSupportIPV6Host_IOS '+Host);
-          //å¦‚æœå½“å‰ç¯å¢ƒæ˜¯IPV4,APHostEntä¸ºnil
+          //Èç¹ûµ±Ç°»·¾³ÊÇIPV4,APHostEntÎªnil
           APHostEnt:=gethostbyname2(MarshaledAString(TEncoding.UTF8.GetBytes(Host)),Id_PF_INET6);
           Result:=(APHostEnt<>nil);
           FMX.Types.Log.d('OrangeUI IsSupportIPV6Host_IOS IsIPV6 '+BoolToStr(Result));
         except
-          //ä½†æ˜¯åœ¨IPV4åˆ‡æ¢åˆ°IPV6,ç¨‹åºæ²¡æœ‰é€€å‡ºçš„æ—¶å€™,ä¼šæŠ¥é”™
+          //µ«ÊÇÔÚIPV4ÇĞ»»µ½IPV6,³ÌĞòÃ»ÓĞÍË³öµÄÊ±ºò,»á±¨´í
         end;
       end;
 
       {$ENDIF}
     end;
 
-    //ä¿®å¤URLæ”¯æŒIPV6
+    //ĞŞ¸´URLÖ§³ÖIPV6
     function FixSupportIPV6URL(const Url:String):String;
     {$IFDEF IOS}
       var
@@ -396,7 +418,7 @@ implementation
         FMX.Types.Log.d('OrangeUI FixSupportIPV6URL '+Url);
 
 
-        //è·å–å‡ºæœåŠ¡å™¨
+        //»ñÈ¡³ö·şÎñÆ÷
         HostBeginIndex:=Pos('//',Url);
         if HostBeginIndex<=0 then
         begin
@@ -408,13 +430,13 @@ implementation
         end;
 
 
-        //å»æ‰ç«¯å£
+        //È¥µô¶Ë¿Ú
         HostEndIndex:=PosEx(':',Url,HostBeginIndex+2);
         if HostEndIndex<=0 then
         begin
           HostEndIndex:=Length(Url);
 
-          //å»æ‰åç¼€
+          //È¥µôºó×º
           HostEndIndex:=PosEx('/',Url,HostBeginIndex+2);
           if HostEndIndex<=0 then
           begin
@@ -427,7 +449,7 @@ implementation
 
 
 
-        //å»æ‰ç”¨æˆ·åå¯†ç 
+        //È¥µôÓÃ»§ÃûÃÜÂë
         //'apis:35337f1232b9b5c92996e059174ef735@jg.czfood360.cn'
         HostBeginIndex2:=PosEx('@',Url,HostBeginIndex);
         if (HostBeginIndex2>0) and (HostBeginIndex2<HostEndIndex) then
@@ -439,8 +461,8 @@ implementation
 
         Host:=Copy(Url,HostBeginIndex,HostEndIndex-HostBeginIndex);
 
-        FMX.Types.Log.d('OrangeUI FixSupportIPV6URL Hostï¼š'+Host);
-    //    //IPV4åœ°å€ä¸º::192.168.0.199
+        FMX.Types.Log.d('OrangeUI FixSupportIPV6URL Host£º'+Host);
+    //    //IPV4µØÖ·Îª::192.168.0.199
     //    if inet_addr(MarshaledAString(TEncoding.UTF8.GetBytes(Host)))<>-1 then
     //    begin
     //      Host:='::'+Host;
@@ -448,8 +470,8 @@ implementation
 
         if IsSupportIPV6Host_IOS(Host) then
         begin
-          //å¦‚æœå½“å‰ç½‘ç»œç¯å¢ƒæ˜¯IPV6,
-          //é‚£ä¹ˆç»™é“¾æ¥åŠ ä¸Š[]
+          //Èç¹ûµ±Ç°ÍøÂç»·¾³ÊÇIPV6,
+          //ÄÇÃ´¸øÁ´½Ó¼ÓÉÏ[]
           Result:=Copy(Url,0,HostBeginIndex-1)
                   +'['
                   +Host
@@ -457,7 +479,7 @@ implementation
                   +Copy(Url,HostEndIndex,MaxInt);
 
 
-          FMX.Types.Log.d('OrangeUI FixSupportIPV6URL Resultï¼š'+Result);
+          FMX.Types.Log.d('OrangeUI FixSupportIPV6URL Result£º'+Result);
         end;
 
       end;
@@ -468,6 +490,39 @@ implementation
 
 
 
+//ÏÂÔØÍ¼Æ¬
+function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
+var
+//  AHttpControl:THttpControl;
+  ANetHTTPClient:TNetHTTPClient;
+  AResponseStream:TMemoryStream;
+begin
+  Result:=False;
+  ANetHTTPClient:=TNetHTTPClient.Create(nil);
+  AResponseStream:=TMemoryStream.Create;
+  try
+    try
+      if AIsRandomUserAgent then
+      begin
+        //facebook·ÀÅÀ,µ«ÊÇtiktok²»ÄÜ¼ÓÕâÒ»¶Î
+        Randomize();
+        ANetHTTPClient.CustomHeaders['user-agent']:=user_agent_list[Random(Length(user_agent_list))];
+      end;
+
+      ANetHTTPClient.Get(APicUrl,AResponseStream);
+      AResponseStream.SaveToFile(APicFilePath);
+      Result:=True;
+    except
+      on E:Exception do
+      begin
+        uBaseLog.HandleException(E,'DownloadImage '+APicUrl);
+      end;
+    end;
+  finally
+    FreeAndNil(ANetHTTPClient);
+    FreeAndNil(AResponseStream);
+  end;
+end;
 
 
 {$IFDEF NEED_SystemHttpControl}
@@ -480,13 +535,16 @@ begin
 
   FNetHTTPClient:=TNetHTTPClient.Create(nil);
 
-  //ä¸èƒ½è¿™ä¹ˆè®¾ç½®
-//  FNetHTTPClient.ConnectionTimeout:=30*1000;  //è¿æ¥è¶…æ—¶-ä¸‰åç§’
-//  FNetHTTPClient.ResponseTimeout:=30*1000;    //å“åº”è¶…æ—¶ä¸‰åç§’
 
 
-  //Postä¸Šä¼ æ–‡ä»¶æµçš„æ—¶å€™è¦è®¾ç½®,ä¸ç„¶IDHttpServeræ¥æ”¶åˆ°è¯·æ±‚çš„æ—¶å€™ä¼šæŠ¥é”™
-  //ä¼šä»¥ä¸ºæµé‡Œé¢çš„æ˜¯UrlParams
+  //²»ÄÜÕâÃ´ÉèÖÃ
+//  FNetHTTPClient.ConnectionTimeout:=30*1000;  //Á¬½Ó³¬Ê±-ÈıÊ®Ãë
+//  FNetHTTPClient.ResponseTimeout:=30*1000;    //ÏìÓ¦³¬Ê±ÈıÊ®Ãë
+
+
+
+  //PostÉÏ´«ÎÄ¼şÁ÷µÄÊ±ºòÒªÉèÖÃ,²»È»IDHttpServer½ÓÊÕµ½ÇëÇóµÄÊ±ºò»á±¨´í
+  //»áÒÔÎªÁ÷ÀïÃæµÄÊÇUrlParams
   FNetHTTPClient.ContentType:='application/octet-stream; charset=utf-8';
   FNetHTTPClient.OnReceiveData:=Self.DoNetHTTPClientReceiveData;
   FNetHTTPClient.OnNeedClientCertificate:=DoNeedClientCertificate;
@@ -524,7 +582,7 @@ begin
 //    AResponseStream1:=TStringStream.Create('',TEncoding.UTF8);
 //    try
 //      FNetHTTPClient.Get(AUrl,AResponseStream1);
-//      //è¿™ä¸ªå°±æ˜¯è¿”å›çš„æ•°æ®
+//      //Õâ¸ö¾ÍÊÇ·µ»ØµÄÊı¾İ
 //      AResponseStream1.DataString;
 //    finally
 //      FreeAndNil(AResponseStream1);
@@ -537,7 +595,7 @@ begin
       Result:=True;
 
 
-      //ä¸‹è½½
+      //ÏÂÔØ
       if Assigned(OnNetworkDataUsageChange) then
       begin
         OnNetworkDataUsageChange(Self,AResponseStream.Size,0);
@@ -567,7 +625,7 @@ begin
       Result:=True;
 
 
-      //ä¸Šä¼ 
+      //ÉÏ´«
       if Assigned(OnNetworkDataUsageChange) then
       begin
         if ARequestStream=nil then
@@ -690,7 +748,7 @@ end;
 //  Result:='';
 //
 //
-//  //æ¡ä»¶
+//  //Ìõ¼ş
 //  AWhereKeyJsonArray:=TSuperArray.Create;
 //  for I := 0 to Length(AWhereConditions) div 4 -1 do
 //  begin
@@ -733,7 +791,7 @@ end;
 //
 //
 //function JsonSimpleCall(API: String;
-//                        //å¯ä»¥ä¸ºnil
+//                        //¿ÉÒÔÎªnil
 //                        AHttpControl: THttpControl;
 //                        AInterfaceUrl:String;
 //                        AParamJsonArray:ISuperArray):String;
@@ -759,17 +817,17 @@ end;
 //  try
 //
 //
-//    //2ã€ç™»å½•
-//    //APPåˆ°ç”µè„‘
+//    //2¡¢µÇÂ¼
+//    //APPµ½µçÄÔ
 //    //[
-//    //  {"HotelID":"åˆ†åº—å·","Action":"Login","AccountID":"å·¥å·","PassWord":"å¯†ç "}
+//    //  {"HotelID":"·ÖµêºÅ","Action":"Login","AccountID":"¹¤ºÅ","PassWord":"ÃÜÂë"}
 //    //]
 //    //
-//    //ç”µè„‘åˆ°APP
+//    //µçÄÔµ½APP
 //    //[
 //    //  {"Action":"Login","Flag":"4"},
 //    //  {
-//    //	 æƒé™å‚æ•°,éšè—åŠŸèƒ½æŒ‰é’®
+//    //	 È¨ÏŞ²ÎÊı,Òş²Ø¹¦ÄÜ°´Å¥
 //    //	 ...
 //    //  }
 //    //]
@@ -788,9 +846,9 @@ end;
 //
 //    if ACallResult then
 //    begin
-//        //è°ƒç”¨æˆåŠŸ
+//        //µ÷ÓÃ³É¹¦
 //
-//        //ä¿å­˜æˆä¸´æ—¶æ–‡ä»¶,ç”¨æ¥æŸ¥æ—¥å¿—
+//        //±£´æ³ÉÁÙÊ±ÎÄ¼ş,ÓÃÀ´²éÈÕÖ¾
 //        {$IFDEF MSWINDOWS}
 //        AResponseStream.Position:=0;
 //        AResponseStream.
@@ -804,16 +862,16 @@ end;
 //
 //        AResponseStream.Position:=0;
 //        try
-//          Result:=AResponseStream.DataString;//åˆ—å 'SvrHandID' æ— æ•ˆã€‚
+//          Result:=AResponseStream.DataString;//ÁĞÃû 'SvrHandID' ÎŞĞ§¡£
 //        except
 //          on E:Exception do
 //          begin
-//            //ç¼–ç ä¸èƒ½è¯†åˆ«,éœ€è¦ç‰¹æ®Šå¤„ç†ä¸€ä¸‹
+//            //±àÂë²»ÄÜÊ¶±ğ,ĞèÒªÌØÊâ´¦ÀíÒ»ÏÂ
 //            Result:='';
 //          end;
 //        end;
 //
-//        //æœåŠ¡ä¸å¯ç”¨
+//        //·şÎñ²»¿ÉÓÃ
 //        if Result='Service Unavailable' then
 //        begin
 //          Result:='';
@@ -828,7 +886,7 @@ end;
 //    end
 //    else
 //    begin
-//        //è°ƒç”¨å¤±è´¥
+//        //µ÷ÓÃÊ§°Ü
 //
 //    end;
 //
@@ -909,11 +967,11 @@ end;
 //
 //    if ACallResult then
 //    begin
-//        //è°ƒç”¨æˆåŠŸ
+//        //µ÷ÓÃ³É¹¦
 //
 //
 //
-////        //ä¿å­˜æˆä¸´æ—¶æ–‡ä»¶,ç”¨æ¥æŸ¥æ—¥å¿—
+////        //±£´æ³ÉÁÙÊ±ÎÄ¼ş,ÓÃÀ´²éÈÕÖ¾
 ////        {$IFDEF MSWINDOWS}
 ////        AResponseStream.Position:=0;
 ////        AResponseStream.
@@ -928,7 +986,7 @@ end;
 //        AResponseStream.Position:=0;
 //        Result:=AResponseStream.DataString;
 //
-//        //æœåŠ¡ä¸å¯ç”¨
+//        //·şÎñ²»¿ÉÓÃ
 //        if Result='Service Unavailable' then
 //        begin
 //          Result:='';
@@ -943,7 +1001,7 @@ end;
 //    end
 //    else
 //    begin
-//      //è°ƒç”¨å¤±è´¥
+//      //µ÷ÓÃÊ§°Ü
 //
 //    end;
 //
@@ -969,7 +1027,7 @@ end;
 //begin
 //  Result:=False;
 //
-//  //åœ¨å¤–é¢åˆå§‹å¥½äº†,ä¸ç”¨å†åœ¨é‡Œé¢åˆå§‹äº†
+//  //ÔÚÍâÃæ³õÊ¼ºÃÁË,²»ÓÃÔÙÔÚÀïÃæ³õÊ¼ÁË
 //  ACode:=FAIL;
 //  ADesc:='';
 //  ADataJson:=nil;
@@ -992,7 +1050,7 @@ end;
 //
 //        if ACode=SUCC then
 //        begin
-//          //æ¥å£è¿”å›æˆåŠŸ
+//          //½Ó¿Ú·µ»Ø³É¹¦
 //          Result:=True;
 //        end;
 //
@@ -1006,7 +1064,7 @@ end;
 //  end
 //  else
 //  begin
-//      ADesc:=API+Trans('æ¥å£è°ƒç”¨å¤±è´¥'+AHttpResponse);
+//      ADesc:=API+Trans('½Ó¿Úµ÷ÓÃÊ§°Ü'+AHttpResponse);
 //  end;
 //end;
 //
@@ -1076,7 +1134,7 @@ end;
 //    end;
 //  end;
 //
-////    uBaseLog.OutputDebugString('SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'è€—æ—¶'+IntToStr(DateUtils.SecondsBetween(ABefore,Now)));
+////    uBaseLog.OutputDebugString('SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'ºÄÊ±'+IntToStr(DateUtils.SecondsBetween(ABefore,Now)));
 //
 //end;
 //
@@ -1116,7 +1174,7 @@ end;
 //    end;
 //
 //
-////    uBaseLog.OutputDebugString('SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'è€—æ—¶'+IntToStr(DateUtils.SecondsBetween(ABefore,Now)));
+////    uBaseLog.OutputDebugString('SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'ºÄÊ±'+IntToStr(DateUtils.SecondsBetween(ABefore,Now)));
 //
 //end;
 
@@ -1140,14 +1198,14 @@ end;
 //  ACallAPITaskItem.OnExecuteEnd:=AOnExecuteEnd;
 //  ACallAPITaskItem.OnExecuteEndCallback:=AOnExecuteEndCallback;
 //
-//  //å¤åˆ¶å‚æ•°åæ•°ç»„
+//  //¸´ÖÆ²ÎÊıÃûÊı×é
 //  SetLength(ACallAPITaskItem.UrlParamNames,Length(AUrlParamNames));
 //  for I := 0 to Length(AUrlParamNames)-1 do
 //  begin
 //    ACallAPITaskItem.UrlParamNames[I]:=AUrlParamNames[I];
 //  end;
 //
-//  //å¤åˆ¶å‚æ•°å€¼æ•°ç»„
+//  //¸´ÖÆ²ÎÊıÖµÊı×é
 //  SetLength(ACallAPITaskItem.UrlParamValues,Length(AUrlParamValues));
 //  for I := 0 to Length(AUrlParamValues)-1 do
 //  begin
@@ -1169,7 +1227,7 @@ end;
 //
 //procedure TCallAPITaskItem.DoTaskExecute(ATimerTask: TObject);
 //begin
-//  //å‡ºé”™
+//  //³ö´í
 //  TTimerTask(ATimerTask).TaskTag:=0;
 //  try
 //
@@ -1188,7 +1246,7 @@ end;
 //  except
 //    on E:Exception do
 //    begin
-//      //å¼‚å¸¸
+//      //Òì³£
 //      TTimerTask(ATimerTask).TaskDesc:=E.Message;
 //    end;
 //  end;
@@ -1221,6 +1279,9 @@ end;
 
 initialization
   IsNetworkConnected:=True;
+  {$IFDEF NEED_SystemHttpControl}
+  GlobalSystemHttpControlClass:=TSystemHttpControl;
+  {$ENDIF}
 
 
 end.

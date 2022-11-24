@@ -31,7 +31,7 @@ uses
   {$IFDEF MSWINDOWS}
   Winapi.Windows,
   {$ENDIF}
-  SG.ScriptGate,
+//  SG.ScriptGate,
   StrUtils,
   uComponentType,
   uBaseHttpControl,

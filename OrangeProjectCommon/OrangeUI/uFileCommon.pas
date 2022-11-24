@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 /// <summary>
 ///   <para>
-///     æ–‡ä»¶ä»¥åŠç›®å½•çš„æ“ä½œ
+///     ÎÄ¼şÒÔ¼°Ä¿Â¼µÄ²Ù×÷
 ///   </para>
 ///   <para>
 ///     Operate of file and directory
@@ -15,8 +15,8 @@ interface
 {$IFEND}
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -31,10 +31,20 @@ uses
   Math,
   StrUtils,
 
-  {$IFDEF VCL}
-  Windows,
-  Forms,
-  {$ELSE}
+//  {$IFDEF VCL}
+//  Windows,
+//  Forms,
+//  {$ENDIF}
+  {$IFDEF MSWINDOWS}
+    {$IF CompilerVersion >= 30.0}
+    Winapi.Windows,
+    {$ELSE}
+    Windows,
+    Forms,
+    {$ENDIF}
+  {$ENDIF}
+
+  {$IFDEF FMX}
 //  WindowsApi.Windows,
   FMX.Forms,
   {$ENDIF}
@@ -52,7 +62,7 @@ uses
 
 /// <summary>
 ///   <para>
-///     è·å–ç¨‹åºçš„æ ¹ç›®å½•
+///     »ñÈ¡³ÌĞòµÄ¸ùÄ¿Â¼
 ///   </para>
 ///   <para>
 ///     Get program's root directory
@@ -62,7 +72,7 @@ function GetApplicationPath:String;
 
 /// <summary>
 ///   <para>
-///     è·å–æ–‡ä»¶å¤§å°çš„å­—ç¬¦ä¸²(æ¯”å¦‚1024=1k)
+///     »ñÈ¡ÎÄ¼ş´óĞ¡µÄ×Ö·û´®(±ÈÈç1024=1k)
 ///   </para>
 ///   <para>
 ///     Get string of file size (such as1024=1k)
@@ -73,7 +83,7 @@ function GetFileSizeStr2(AFileSize:Int64):String;
 
 /// <summary>
 ///   <para>
-///     è·å–åˆæ³•çš„æ–‡ä»¶å
+///     »ñÈ¡ºÏ·¨µÄÎÄ¼şÃû
 ///   </para>
 ///   <para>
 ///     Get valid file name
@@ -83,7 +93,7 @@ function GetValidFileName(const AInvalidFileName:String):String;
 
 /// <summary>
 ///   <para>
-///     è·å–æ–‡ä»¶å¤§å°
+///     »ñÈ¡ÎÄ¼ş´óĞ¡
 ///   </para>
 ///   <para>
 ///     Get file size
@@ -93,7 +103,7 @@ function GetSizeOfFile(const AFile : String) : Int64;
 
 /// <summary>
 ///   <para>
-///     åˆ›å»ºç›®å½•
+///     ´´½¨Ä¿Â¼
 ///   </para>
 ///   <para>
 ///     Create directory
@@ -105,7 +115,7 @@ procedure CreateFileDir(const AFileName:String);
 
 /// <summary>
 ///   <para>
-///     å»æ‰æ–‡ä»¶å¤¹æœ€åä¸€ä¸ªè·¯å¾„åˆ†éš”ç¬¦(C:\----C:)
+///     È¥µôÎÄ¼ş¼Ğ×îºóÒ»¸öÂ·¾¶·Ö¸ô·û(C:\----C:)
 ///   </para>
 ///   <para>
 ///     Delete last path delimiter of file(C:\-----C:)
@@ -115,10 +125,16 @@ procedure CreateFileDir(const AFileName:String);
 
 
 function GetFileNameWithoutExt(const AFilePath:String):String;
+function ExtractFileNameWithoutExt(const AFilePath:String):String;
 
 
 implementation
 
+
+function ExtractFileNameWithoutExt(const AFilePath:String):String;
+begin
+  Result:=GetFileNameWithoutExt(AFilePath);
+end;
 
 function GetFileNameWithoutExt(const AFilePath:String):String;
 var
@@ -144,7 +160,7 @@ var
   FStream : TFileStream;
 begin
   Try
-    FStream := TFileStream.Create(AFile, fmOpenRead);
+    FStream := TFileStream.Create(AFile, fmOpenRead or fmShareDenyNone);
     Try
       Result := FStream.Size;
     Finally
@@ -162,7 +178,7 @@ var
   I: Integer;
   Index:Integer;
 begin
-  //å¤„ç†ç‰¹æ®Šå­—ç¬¦
+  //´¦ÀíÌØÊâ×Ö·û
   //    /\:*?"<>|
   Result:=AInvalidFileName;
   for I := 1 to Length(CONST_SPEC_CHAR) do
@@ -252,12 +268,7 @@ function GetApplicationPath:String;
 begin
   {$IFDEF FMX}
     Result:=System.IOUtils.TPath.GetDocumentsPath+PathDelim;
-
-
-    {$IFDEF MSWINDOWS}
-//    Result:=System.IOUtils.TPath.GetLibraryPath;
-    Result:=ExtractFilePath(GetModuleName(HInstance));
-    {$ENDIF}
+  {$ENDIF}
 
     {$IFDEF _MACOS}
     Result:=System.IOUtils.TPath.GetHomePath+PathDelim;
@@ -270,10 +281,20 @@ begin
     {$IFDEF Android}
     Result:=System.IOUtils.TPath.GetHomePath+PathDelim;
     {$ENDIF}
-  {$ENDIF}
+
+
+    {$IFDEF MSWINDOWS}
+//    Result:=System.IOUtils.TPath.GetLibraryPath;
+    Result:=ExtractFilePath(GetModuleName(HInstance));
+    {$ENDIF}
 
 
   {$IFDEF VCL}
+//  Result:=ExtractFilePath(Application.ExeName);
+  Result:=ExtractFilePath(GetModuleName(HInstance));
+  {$ENDIF}
+
+  {$IFDEF LINUX}
 //  Result:=ExtractFilePath(Application.ExeName);
   Result:=ExtractFilePath(GetModuleName(HInstance));
   {$ENDIF}

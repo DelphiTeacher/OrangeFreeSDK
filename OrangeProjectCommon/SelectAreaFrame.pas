@@ -26,7 +26,7 @@ uses
 
   uUIFunction, uSkinButtonType,
   uSkinPanelType, uBaseSkinControl, FMX.Controls.Presentation, FMX.ScrollBox,
-  FMX.Memo, uTimerTaskEvent, uDrawCanvas;
+  FMX.Memo, uTimerTaskEvent, uDrawCanvas, FMX.Memo.Types;
 
 const
   MaxCount=40;

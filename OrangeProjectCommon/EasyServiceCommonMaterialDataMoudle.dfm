@@ -1,9 +1,15 @@
 object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
-  OldCreateOrder = False
+  OldCreateOrder = True
   Height = 901
-  Width = 1270
+  Width = 1389
   object bdmReturnButton: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -70,12 +76,19 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object pnlToolBarMaterial: TSkinPanelDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = xFF0199FF
     BackColor.IsFill = True
     BackColor.FillColor.UseThemeColor = ctNavigationBarColor
+    BackColor.FillColor.Color = xFF0199FF
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.DrawRectSetting.Left = -10.000000000000000000
     BackColor.DrawRectSetting.Right = -10.000000000000000000
     BackColor.DrawRectSetting.SizeType = dpstPixel
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontName = #24494#36719#38597#40657
     DrawCaptionParam.FontSize = 16.000000000000000000
@@ -95,6 +108,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 8
   end
   object edtHelpTextMaterial: TSkinEditDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     FocusedPicture.IsClipRound = False
@@ -113,8 +132,14 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object pnlBlackCaptionLeftMarginPanelMaterial: TSkinPanelDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontSize = 15.000000000000000000
     DrawCaptionParam.DrawFont.Size = 15.000000000000000000
@@ -131,14 +156,20 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     StyleName = 'Default'
     StyleNameAliases.Strings = (
       'save_record')
+    BackColor.Color = xFF438DF5
     BackColor.IsFill = True
     BackColor.FillColor.Color = xFF438DF5
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     BackColor.DrawEffectSetting.DisabledEffect.FillColor.Color = claGray
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
     BackColor.DrawEffectSetting.DisabledEffect.EffectTypes = [drpetFillColorChange]
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
@@ -171,6 +202,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 120
   end
   object lblNoticeTypeLabelMaterial: TSkinLabelDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawCaptionParam.FontColor = xFF007AFF
     DrawCaptionParam.DrawFont.Color = xFF007AFF
     DrawCaptionParam.DrawFont.FontColor.Color = xFF007AFF
@@ -181,9 +218,21 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 72
   end
   object sbDefaultColorBackgroundScrollBoxMaterial: TSkinScrollBoxDefaultMaterial
+    BackColor.Color = claWhitesmoke
     BackColor.IsFill = True
     BackColor.FillColor.Color = claWhitesmoke
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullDownRefreshPanelMaterial.IndicatorColor = claBlack
     PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
     PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -195,6 +244,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
     PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
     PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
     PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
     PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -213,14 +268,20 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     StyleName = 'Default2'
     StyleNameAliases.Strings = (
       'cancel_save_record')
+    BackColor.Color = xFF4DC060
     BackColor.IsFill = True
     BackColor.FillColor.Color = xFF4DC060
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -233,6 +294,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontSize = 15.000000000000000000
     DrawCaptionParam.FontColor = claWhite
     DrawCaptionParam.DrawFont.Size = 15.000000000000000000
@@ -253,9 +315,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   object pnlInputBlackCaptionPanelMaterial: TSkinPanelDefaultMaterial
     StyleName = 'EditPageInputPanelDefault'
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
@@ -270,20 +338,26 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object btnOrangeRedBorderWhiteBackButtonMaterial: TSkinButtonDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = xFF0199FF
     BackColor.IsFill = True
     BackColor.FillColor.UseThemeColor = ctThemeColor
-    BackColor.FillColor.Color = xFF66A5FF
+    BackColor.FillColor.Color = xFF0199FF
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.BorderColor.Color = xFFF23030
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     BackColor.DrawEffectSetting.PushedEffect.IsFill = True
     BackColor.DrawEffectSetting.PushedEffect.FillColor.Color = claGray
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     BackColor.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange]
     BackColor.DrawEffectSetting.DisabledEffect.FillColor.Color = claGray
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
     BackColor.DrawEffectSetting.DisabledEffect.EffectTypes = [drpetFillColorChange]
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -296,6 +370,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.FontColor = claWhite
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
@@ -317,7 +392,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object edtInputEditHasHelpTextMaterial: TSkinEditDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     FocusedPicture.IsClipRound = False
@@ -330,7 +411,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontVertAlign = fvaCenter
     DrawTextParam.FontTrimming = fttNone
     DrawTextParam.FontHorzAlign = fhaLeft
-    DrawTextParam.FontVertAlign = fvaTop
+    DrawTextParam.FontVertAlign = fvaCenter
     DrawTextParam.DrawRectSetting.Left = 5.000000000000000000
     DrawTextParam.DrawRectSetting.Enabled = True
     Left = 694
@@ -338,12 +419,19 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object chkDefaultCheckBoxMaterial: TSkinCheckBoxColorMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoPosition = True
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
     DrawCaptionParam.FontVertAlign = fvaCenter
+    CheckChar = #10004
     DrawCheckStateParam.PenColor.Color = claOrange
     DrawCheckStateParam.PathActions = <
       item
@@ -376,6 +464,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenWidth = 2.000000000000000000
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenColor.Color = claWhite
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.EffectTypes = [dppetPenWidthChange, dppetPenColorChange]
+    DrawCheckRectParam.Color = claWhite
     DrawCheckRectParam.IsRound = True
     DrawCheckRectParam.RoundWidth = -1.000000000000000000
     DrawCheckRectParam.RoundHeight = -1.000000000000000000
@@ -386,24 +475,39 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckRectParam.DrawRectSetting.Enabled = True
     DrawCheckRectParam.DrawRectSetting.SizeType = dpstPixel
     DrawCheckRectParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawCheckRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.IsFill = True
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF438DF5
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange, drpetBorderWidthChange]
+    DrawCheckRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawCheckState = True
+    IsSimpleDrawCheckChar = False
+    DrawCheckCharParam.FontTrimming = fttNone
+    DrawCheckCharParam.FontHorzAlign = fhaLeft
+    DrawCheckCharParam.FontVertAlign = fvaTop
     Left = 798
     Top = 176
   end
   object btnGrayBorderButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.BorderColor.Color = claGray
     BackColor.BorderWidth = 1.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -416,6 +520,11 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
+    DrawIconParam.DrawRectSetting.Top = 5.000000000000000000
+    DrawIconParam.DrawRectSetting.Bottom = 5.000000000000000000
+    DrawIconParam.DrawRectSetting.Enabled = True
+    DrawIconParam.DrawRectSetting.SizeType = dpstPixel
     DrawCaptionParam.FontSize = 15.000000000000000000
     DrawCaptionParam.FontColor = claGray
     DrawCaptionParam.DrawFont.Size = 15.000000000000000000
@@ -435,6 +544,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 800
   end
   object btnTransparentWhiteCaptionButtonMaterial: TSkinButtonDefaultMaterial
+    StyleName = 'TransparentWhiteCaption'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -466,14 +582,20 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 144
   end
   object btnRedBorderButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.BorderColor.Color = xFF438DF5
     BackColor.BorderWidth = 1.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -486,6 +608,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontSize = 15.000000000000000000
     DrawCaptionParam.FontColor = xFF438DF5
     DrawCaptionParam.DrawFont.Size = 15.000000000000000000
@@ -505,13 +628,18 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 288
   end
   object rbRedRadioButtonMaterial: TSkinRadioButtonColorMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
-    DrawCaptionParam.FontSize = 14.000000000000000000
-    DrawCaptionParam.DrawFont.Size = 14.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawCaptionParam.FontTrimming = fttCharacter
     DrawCaptionParam.FontHorzAlign = fhaLeft
     DrawCaptionParam.FontVertAlign = fvaCenter
     IsAutoPosition = True
+    DrawCheckStateParam.Color = claLightgray
     DrawCheckStateParam.FillColor.Color = claLightgray
     DrawCheckStateParam.IsRound = True
     DrawCheckStateParam.RoundWidth = -1.000000000000000000
@@ -521,25 +649,45 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckStateParam.DrawRectSetting.Enabled = True
     DrawCheckStateParam.DrawRectSetting.PositionHorzType = dpphtCenter
     DrawCheckStateParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawCheckStateParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCheckStateParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.IsFill = True
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF33A7FA
+    DrawCheckStateParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DrawCheckStateParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCheckStateParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.Color = claWhite
     DrawCheckRectParam.IsRound = True
     DrawCheckRectParam.RoundWidth = -1.000000000000000000
     DrawCheckRectParam.RoundHeight = -1.000000000000000000
     DrawCheckRectParam.BorderColor.Color = claLightgray
     DrawCheckRectParam.BorderWidth = 2.000000000000000000
+    DrawCheckRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF33A7FA
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetBorderColorChange]
+    DrawCheckRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Left = 608
     Top = 296
   end
   object btnSelectButtonMaterial: TSkinButtonDefaultMaterial
     StyleName = 'Select'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
-    DrawDetailParam.FontHorzAlign = fhaLeft
-    DrawDetailParam.FontVertAlign = fvaTop
+    DrawDetailParam.FontHorzAlign = fhaRight
+    DrawDetailParam.FontVertAlign = fvaCenter
+    DrawDetailParam.DrawRectSetting.Right = 30.000000000000000000
+    DrawDetailParam.DrawRectSetting.Enabled = True
+    DrawDetailParam.DrawRectSetting.SizeType = dpstPixel
     DrawDetail1Param.FontTrimming = fttNone
     DrawDetail1Param.FontHorzAlign = fhaLeft
     DrawDetail1Param.FontVertAlign = fvaTop
@@ -567,6 +715,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCaptionParam.FontVertAlign = fvaCenter
     DrawCaptionParam.DrawRectSetting.Right = 10.000000000000000000
     DrawCaptionParam.DrawRectSetting.Enabled = True
+    DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
     NormalPicture.IsClipRound = False
     NormalPicture.PNG = {
       89504E470D0A1A0A0000000D49484452000000120000001E0806000000210C4E
@@ -606,9 +755,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object pnlInputMemoBlackCaptionPanelMaterial: TSkinPanelDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
@@ -1914,7 +2069,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 279
   end
   object edtSearchGoodsMaterial: TSkinEditDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
@@ -1944,6 +2105,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 536
   end
   object btnNumberDecButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -2003,6 +2170,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 339
   end
   object edtNumberEditMaterial: TSkinEditDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     FocusedPicture.IsClipRound = False
@@ -2032,6 +2205,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 483
   end
   object btnNumberAddButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -2093,9 +2272,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 211
   end
   object btnDeleteButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -2108,6 +2293,11 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
+    DrawIconParam.DrawRectSetting.Top = 5.000000000000000000
+    DrawIconParam.DrawRectSetting.Bottom = 5.000000000000000000
+    DrawIconParam.DrawRectSetting.Enabled = True
+    DrawIconParam.DrawRectSetting.SizeType = dpstPixel
     DrawCaptionParam.FontSize = 16.000000000000000000
     DrawCaptionParam.FontColor = xFFF23030
     DrawCaptionParam.DrawFont.Size = 16.000000000000000000
@@ -2241,7 +2431,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 546
   end
   object btnIconButtonMaterial: TSkinButtonDefaultMaterial
-    IsAutoCenterIconAndCaption = False
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -2255,15 +2451,14 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
     DrawIconParam.IsAutoFit = True
-    DrawIconParam.PictureHorzAlign = phaCenter
     DrawIconParam.PictureVertAlign = pvaCenter
-    DrawIconParam.DrawRectSetting.Height = 55.000000000000000000
+    DrawIconParam.DrawRectSetting.Height = 80.000000000000000000
     DrawIconParam.DrawRectSetting.Enabled = True
     DrawIconParam.DrawRectSetting.PositionHorzType = dpphtCenter
     DrawIconParam.DrawRectSetting.PositionVertType = dppvtCenter
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
-    DrawCaptionParam.FontVertAlign = fvaTop
+    DrawCaptionParam.FontVertAlign = fvaCenter
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     DownPicture.IsClipRound = False
@@ -2277,8 +2472,14 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 704
   end
   object btnSearchButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = x1E000000
     BackColor.IsFill = True
     BackColor.FillColor.Color = x1E000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
@@ -2349,6 +2550,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 752
   end
   object btnNoticeNotifyNumberIconMaterial: TSkinNotifyNumberIconColorMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -2410,6 +2617,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawButtonIconParam.DrawRectSetting.Enabled = True
     DrawButtonIconParam.DrawRectSetting.PositionHorzType = dpphtCenter
     DrawButtonIconParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawNotifyRectParam.Color = claWhite
     DrawNotifyRectParam.IsFill = True
     DrawNotifyRectParam.IsRound = True
     DrawNotifyRectParam.RoundWidth = -1.000000000000000000
@@ -2421,11 +2629,22 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawNotifyRectParam.DrawRectSetting.Enabled = True
     DrawNotifyRectParam.DrawRectSetting.SizeType = dpstPixel
     DrawNotifyRectParam.DrawRectSetting.PositionHorzType = dpphtCenter
+    DrawNotifyRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawNotifyRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawNotifyRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawNotifyRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawNotifyRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Left = 984
     Top = 760
   end
   object nniRedNotifyNumberMaterial: TSkinNotifyNumberIconDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -10629,11 +10848,24 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 344
   end
   object lbFilterHorzListBoxMaterial: TSkinListBoxDefaultMaterial
+    StyleName = 'FilterHorzListBox'
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullDownRefreshPanelMaterial.IndicatorColor = claBlack
     PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
     PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -10645,6 +10877,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
     PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
     PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
     PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
     PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -10666,19 +10904,37 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     ItemBackHoverPicture.IsClipRound = False
     ItemBackDownPicture.IsClipRound = False
     ItemBackPushedPicture.IsClipRound = False
+    DrawItemBackColorParam.Color = claWhite
     DrawItemBackColorParam.DrawRectSetting.Left = 10.000000000000000000
     DrawItemBackColorParam.DrawRectSetting.Right = 10.000000000000000000
     DrawItemBackColorParam.DrawRectSetting.Height = 3.000000000000000000
     DrawItemBackColorParam.DrawRectSetting.Enabled = True
     DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
     DrawItemBackColorParam.DrawRectSetting.PositionVertType = dppvtBottom
+    DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
     DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     ItemAccessoryPicture.IsClipRound = False
     IsDrawCenterItemRect = False
+    DrawCenterItemRectParam.Color = xFFEDEDED
+    DrawCenterItemRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawItemDevide = True
+    DrawItemDevideParam.Color = xFFEDEDED
+    DrawItemDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawItemCaptionParam.FontSize = 14.000000000000000000
     DrawItemCaptionParam.DrawFont.Size = 14.000000000000000000
     DrawItemCaptionParam.FontTrimming = fttNone
@@ -10710,16 +10966,22 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DefaultTypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    DefaultTypeItemMaterial.DrawItemBackColorParam.Color = claWhite
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Left = 10.000000000000000000
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Right = 10.000000000000000000
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Height = 3.000000000000000000
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Enabled = True
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.PositionVertType = dppvtBottom
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontSize = 14.000000000000000000
     DefaultTypeItemMaterial.DrawItemCaptionParam.DrawFont.Size = 14.000000000000000000
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
@@ -10751,6 +11013,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    Item1TypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -10775,9 +11043,27 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    DrawSpaceParam.Color = claWhite
+    DrawSpaceParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawGroupRoundRect = False
     IsSimpleDrawGroupBeginDevide = True
     IsSimpleDrawGroupEndDevide = True
+    DrawGroupBeginDevideParam.Color = xFFEDEDED
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.Color = xFFEDEDED
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoAdjustItemDesignerPanelSize = True
     Left = 976
     Top = 184
@@ -10823,10 +11109,16 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 392
   end
   object btnRedRectButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = xFFF23030
     BackColor.IsFill = True
     BackColor.FillColor.Color = xFFF23030
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -10839,6 +11131,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontSize = 18.000000000000000000
     DrawCaptionParam.FontColor = claWhite
     DrawCaptionParam.DrawFont.Size = 18.000000000000000000
@@ -10857,10 +11150,22 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 64
   end
   object bgIndicator_Material: TSkinButtonGroupDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsUseFirstButtonMaterial = False
     IsUseLastButtonMaterial = False
+    FirstButtonMaterial.BackColor.Color = claWhite
     FirstButtonMaterial.BackColor.IsFill = True
+    FirstButtonMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    FirstButtonMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    FirstButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    FirstButtonMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    FirstButtonMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     FirstButtonMaterial.IsAutoCenterIconAndCaption = False
     FirstButtonMaterial.DrawDetailParam.FontTrimming = fttNone
     FirstButtonMaterial.DrawDetailParam.FontHorzAlign = fhaLeft
@@ -10883,7 +11188,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     FirstButtonMaterial.DisabledPicture.IsClipRound = False
     FirstButtonMaterial.FocusedPicture.IsClipRound = False
     FirstButtonMaterial.PushedPicture.IsClipRound = False
+    LastButtonMaterial.BackColor.Color = claWhite
     LastButtonMaterial.BackColor.IsFill = True
+    LastButtonMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    LastButtonMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    LastButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    LastButtonMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    LastButtonMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     LastButtonMaterial.IsAutoCenterIconAndCaption = False
     LastButtonMaterial.DrawDetailParam.FontTrimming = fttNone
     LastButtonMaterial.DrawDetailParam.FontHorzAlign = fhaLeft
@@ -10906,6 +11217,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     LastButtonMaterial.DisabledPicture.IsClipRound = False
     LastButtonMaterial.FocusedPicture.IsClipRound = False
     LastButtonMaterial.PushedPicture.IsClipRound = False
+    MiddleButtonMaterial.BackColor.Color = claWhite
     MiddleButtonMaterial.BackColor.IsFill = True
     MiddleButtonMaterial.BackColor.IsRound = True
     MiddleButtonMaterial.BackColor.RoundWidth = -1.000000000000000000
@@ -10914,9 +11226,14 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     MiddleButtonMaterial.BackColor.DrawRectSetting.Top = 2.000000000000000000
     MiddleButtonMaterial.BackColor.DrawRectSetting.Enabled = True
     MiddleButtonMaterial.BackColor.DrawRectSetting.SizeType = dpstPixel
+    MiddleButtonMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    MiddleButtonMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     MiddleButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    MiddleButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    MiddleButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    MiddleButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     MiddleButtonMaterial.BackColor.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange]
+    MiddleButtonMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    MiddleButtonMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     MiddleButtonMaterial.IsTransparent = False
     MiddleButtonMaterial.IsAutoCenterIconAndCaption = False
     MiddleButtonMaterial.DrawDetailParam.FontTrimming = fttNone
@@ -10947,6 +11264,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 423
   end
   object pcMain_Material: TSkinPageControlDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawTabIconParam.IsAutoFit = True
     DrawTabIconParam.PictureHorzAlign = phaCenter
@@ -10966,6 +11289,24 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     TabHoverPicture.IsClipRound = False
     TabDownPicture.IsClipRound = False
     TabPushedPicture.IsClipRound = False
+    TabBackColor.Color = claWhite
+    TabBackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.Color = claWhite
+    DrawTabBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.Color = claWhite
+    DrawTabBackColor2Param.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     BackGndPicture.IsClipRound = False
     TabHeaderPicture.IsClipRound = False
     DrawTabHeaderPictureParam.IsAutoFit = True
@@ -10975,18 +11316,30 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     TabHeaderPictureParam.DrawRectSetting.Height = 40.000000000000000000
     TabHeaderPictureParam.DrawRectSetting.Enabled = True
     DrawTabHeaderColorParam.BorderEadges = [beTop]
+    DrawTabHeaderColorParam.Color = claBlack
     DrawTabHeaderColorParam.IsFill = True
     DrawTabHeaderColorParam.FillColor.Color = claBlack
     DrawTabHeaderColorParam.BorderColor.Color = xFFEDEDED
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Left = 1160
     Top = 56
   end
   object edtInputPhone_Material: TSkinEditDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFF23030
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
     BackColor.DrawEffectSetting.DisabledEffect.BorderColor.Color = claLightgray
     BackColor.DrawEffectSetting.DisabledEffect.EffectTypes = [drpetBorderColorChange]
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
@@ -11930,143 +12283,144 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
       4F0062006A006500630074000000540044007200610077005000690063007400
       7500720065000000040000000014000000000049006D006100670065004E0061
       006D006500000004000000001800080000004700720061007000680069006300
-      5400790070006500000050006E0067000000170000000020006E060000470072
+      5400790070006500000050006E0067000000170000000020006B060000470072
       006100700068006900630044006100740061002E0050006E006700000089504E
       470D0A1A0A0000000D4948445200000040000000400806000000AA6971DE0000
-      00017352474200AECE1CE90000000467414D410000B18F0BFC61050000061849
-      444154785EE59B6B681C5514C7CF1DB10A85826D925688A40569A9A6D2A25015
-      DA46041FB18AC6FAC5F48BD95DCD171FB5EDB782087EF11925458ABB9B8A4D0A
-      6A1B8B2FDA825802B6D682D6473F34144AA9606DDA62AD2D9490B9FECFCCD964
-      76B28FD9B9B393DDEC0F2673CEDD6133FF33E7DEB977E6ACA22A63F7F6B6D0C4
-      F8D3447A29DC266CCDF8A74D9A541369DDEC1CA4D498227D41135D8037860D7B
-      354A37DCB8D7DAB1E3BC734C95A84A00EC9E9E36B2E821985D4AA947DCD67068
-      ADF763374C361DB40606CEB8ADD1116900EC5422499A9E548A1E93A648D19ABE
-      C119EFB3D2D98C3419134900EC44A28B2CFDA222D5214D5545933E44B6EAB7B2
-      D961690A8D51007422D1A115842BD5254DB182EE31ACB4EA57D9EC2169AA9850
-      01B093C956FC7D0DC293D234A32010E812D6EB5626F3A73405A6E200E8E713CF
-      E01FBE8174E751BD6640B718C505D9A63ECA7E2E4D81A8280076B2E73DFC934D
-      E2D624B8387D5666E05571CB12380018E10FE3E0FBC4AD69309F38823BC5FDE2
-      96245000742A81EFAC02F3E6112D584074ED1AD1A54B44E3E3F24134A874B6AC
-      BEB20720ED8790F6CF8A6BC6C285C8215C983BEEC47C1093C0B973E503E13C26
-      7D7F9F233AF613B663441313F24138D01D76A33B748B5B90920180F86E881F14
-      D78CEE8DAEF83973A4A10CE724105F7D290DE1401036220843E24EA36800ECD4
-      73AB15593F8A6BC60BBD4477DF238EC069FFDF15A22BD86EBAD9ED0EBCF9E100
-      980681EC7BADF4CEA3E2E651300098D9CDC727DF624ABB5A9AC2E317FFDBAF44
-      2323EEDE4F5B1BD19A75446BD74A836018044CA18F220A9D983962A0C9C7927D
-      3E4ABF1989F8C79FC817FFD9A744DBFB0B8B67CE60AD33F809D1BB6F138D9E94
-      46F06827D19225E2548EA3059AC4CD635A06F0F41661F95EDCF0B4AF207AE965
-      71C0D62D4497FF1127209B36132D5FEEDAC78F137DB8DDB5C362D303FE69F3B4
-      0CE0B9BD9866B4B78B01387D2B15CF0CED22BA7AD5B557AE246ABDCDB5435248
-      5B5E00785587513F9A850D67408E62295F0EBE2DFEF1BB3860D52A31C2C1DA9C
-      95AB87FC0CC092562C33162F266A6971EDD3A7DDBE1D169E0FE458B64C0C037C
-      1A2703C00F33225BCFAFB84B0CF0CBCF6284C49B3D4BCD03C01A9D0737822703
-      F40631A2E5E245316A8929AD4E00D02F6E47641E765AA2E6DFCB62D40EAC9535
-      B3ED6680524F39FB4642344B00F47A67DF488866CB4EA56EC56CC837F79CFDB0
-      66D66E61A23C230F346B02685776AAA70F83C22BD2140EBE3D7927D5ECF33A80
-      E179BD299BB78A010A7DDF49CFBAA10234E9F73900BB10002CD60DD882138CE0
-      1E1D0A0E48F8000CF220E8BE9F33A13A0FCCE2A0D942E6F20BCB8684B55BCE5B
-      DA0685B5F35DC0BC0B7807C07A02DA3D6B0103C28E01274E101DD84F74F807A2
-      EBD7A5315E2C4C09B920217EF8B9E0077D447BF7107DBC93E89DB7E483188176
-      0C829AAB32E2E708AEBA177E6660BA74AE10D68E41D0294B899FB367C5F0C0EF
-      026284B5F31830335D60D122313CDC325F8CD818E300CC4C06ACF1ADBF782669
-      F0E83B249C016A549C7859D731B55E60D8E67787B1A2462D2E4513AFF1E0323C
-      AEC3D36E295A43C19A597B6E2264566D559F334147B31B009B0E3AFBB0D4E36A
-      50343B01E00A4CA708312C2619C0839F77308C01D69AAB3ACD750116B14FACF8
-      C889E72D8AB73E41F1689D0C00979F3A1598B31CD6E82DB59DCA00C656FD62CD
-      5E7C1AF302C0B5B7B83D18D7DFD62AACCD5F5F9C9F01806B6FC59C7514D25670
-      FCB6933D6955491D70A927C271CC11023C15C6D5CF58998194B893140940B295
-      94FD9DAAB17AE0B0701D3169EBC142C5D4D3BA00C3072203B6895BF7B0966295
-      E40503C070D535D2A64FDCBA853594AA202FDB43EBA948DA0F66E8658BA6030D
-      51552B96AE32418AA58B76012FFC4548A5DDE2D63C7CAE41C433810ECA1169F1
-      749580F892C5D17E0265400EFE622E3C766A6F6B0C3E27A728BA02F14C450160
-      9CAA6B4D9D887464BFDD33C539172E862E52115E8A8ABA809F86FDD99C1FA7FC
-      B4117F38E9C7ADC0D41BB80E4F9A2205C20FE094F7D4DC4F67FD3845885C87A7
-      F47AFC03A30A344C404648ABAF91EF5FE08A9F92E6C8A84A00BC70291A4EBE0B
-      8B2BAECC0CFEF3796D9D42FBB0954EFFE51C531588FE07BE7E262E165C171E00
-      00000049454E44AE426082170000000020000000000047004900460046006900
-      6C00650044006100740061002E0050006E006700000004000000000A06000000
-      004E0061006D00650000000D54F0790000040000000010060000000043006100
-      7000740069006F006E00000007689898000004000000000C0600000000470072
-      006F007500700000000652C47E00000700000000200A04000000500069006300
-      7400750072006500440072006100770054007900700065000000D87E36527B7C
-      8B570000000000000700000000160A0400000049006D0061006700650049006E
-      006400650078000000FE5647720B4E07680000FFFFFFFF0400000000140A0000
-      000049006D006100670065004E0061006D0065000000FE5647720D54F0790000
-      0400000000120C00000000460069006C0065004E0061006D0065000000FE5647
-      728765F64E0D54000004000000001A0E000000005200650073006F0075007200
-      630065004E0061006D0065000000FE564772448D906E0D54F079000004000000
-      00080A00000000550072006C000000FE564772FE94A563000015000000001810
-      040000004900730043006C006900700052006F0075006E00640000002F662654
-      6A52C18810620657625F000000000000180E0000001A001A000000420069006E
-      006100720079004F0062006A0065006300740000005400440072006100770050
-      006900630074007500720065000000040000000014000000000049006D006100
-      670065004E0061006D0065000000040000000018000800000047007200610070
-      006800690063005400790070006500000050006E006700000017000000002000
-      13060000470072006100700068006900630044006100740061002E0050006E00
-      6700000089504E470D0A1A0A0000000D49484452000000400000004008060000
-      00AA6971DE000000017352474200AECE1CE90000000467414D410000B18F0BFC
-      6105000005BD49444154785EED9B7F88545514C7EFB9B35A5654FF18544B64B8
-      1598511888F68F426045C9FE938BECCCD6B2CE2E585406150995D22F31AAB550
-      9C995DCB762758EC0F23410B41FF2822D142658BCA56CB8DA09FB4159ACDDED3
-      B9D3D761A77DF3F6BD37F37E84FB8137F79C33B3EFBDFB7DE7DD7BEEDB19523E
-      C80E98CB35A96BC615B510ABAB11F6442143EB60260ACF026407CD0011A5E1FA
-      80FF1C67B5AC3FAD3F4420514C2980747CBE7C6A2F29BA0C215F30F33385B47E
-      0A6EE2D0681DE9EC37B3E5AA1F09DA79E9FD81337FD3F3F012896B06648B669F
-      747E095CDF10736B2EADDF81EB48D7002F49A5B8593135B351E723EC0DE2DFE4
-      028D3635F1A75BDAF431447D5153806C9137C89B8FC3F58DA4FE3149FD16B855
-      D8C1540EDD439A574A7B2DC275C2BB655F3BF3ED9447C0132EB700B7C2088A9C
-      D064B203BC8E481D24AD9E6E5CE72D7487BCE4BA8B7CB0A7683AFE8D4D8DA300
-      6B86CC2C49FDEBE00642B3DA0AB3820CA81BCB1D27BA02A13058C08AB65BA1E1
-      BBE228C0D829E598BA9E611ECE65F467F0CA94C713A247E1868E155AB2E11EB8
-      35711C03CA039356FBE05660C56FC9CB1EC37412A19AF467683F4C7BE55F92CE
-      3F02376A56C8B8B003F624FC08E0BAA35AD4123332241BCF63B5F8B58C1E43A4
-      0A4F0218E62D7D697D3F5C5F74178D4C83B41C6E0599F2D6C37485642E85E90E
-      D52EB5EDB16A95E25E33A0C7EFF4721611E05739CCA5702B8C1BB574E26D520F
-      536619F37BF9B4BE1D5E15AE95E059E464BF84E98B55837C9353E7A386492D82
-      39094F020445568EF5CD260D42A6F48B3B87CC6CB85578BA0582A6AB8CFE6B64
-      F47F196EACB0E105858CFE046E8550334072EF1258B163240B605611AE00FF03
-      6213C04E4D5E37FC4928843B0614CD6A198036C3ADC2CF3EA5A4F5560BB84086
-      E7FDB73CB7849B01468DC28A9D99CAF95CC215605C0DC38A191EADAB14AEA76A
-      93A9F0B84C85BE9E2087C00EA96457C0AE228A41F07DB471B217ED2442178029
-      D81AA2811C725BC7842E405F3B1D62E60D70E3E059B48E44710BA8425A3F21B9
-      B0116E648C2B5E28577F275C472211C0926FD7F609B3E340D46824E37E2A0FDC
-      EDFA004235894C008B7DA2A499EF96137C17A18623FBCE6BA36EF33A6B452A80
-      656B5AEF925B623913DF557EC6D800A4D3DFD992D928758BECBB27D7A10FE3AD
-      2909BD0E980AEF652E8FCA27DF364C95FF3469C563A599EAE4EB6DFA47847C93
-      7801244BFE9034ED6D2AA9DECDF7EA9F116E1891DF02BE60DE260A2CCEB5EB27
-      C3E8BC25A102F06E36BC2C9FD65D724F1F45B0265D6F9AB952723F67331721CF
-      244A0019CC0E1B569D3265DE59C8E8294B68DB6159721F4DA5E82B596FAC45D8
-      174910608774FC846C6B2F9AA116F5A5E90DC43D418A6E801988D805B0AB3449
-      F339B2BDF04A9B3E857064247B108C806901D09EB34C0B80F69C655A00B4E72C
-      D302A07525457C3DCC44D188F3F2240093BA0F66D278006D603C0920F5F6C2EE
-      A279116EEC74E7F802FBB53B45340FA1C0787A20328143B2641B66A6E3F02387
-      88E7B052F365F577334215823CB8F12B40A20922C0F42C80367464BD7F4A5E8A
-      B2ADB36DD94F009108209DFDC8CC50CDF9B44ECBB6DEB64AD295157F8B8FC446
-      24026856ABFADBF42F70CB143AF4C7D2C43EB3842E805CE52F9CBE9A62D19A76
-      C18C0D47019A14FF00B36E88D55F3027516AF03840CCDFC0F48CA300A74B3402
-      B36E64CE6E593D64E6C2AD420EBE1066DDD807AB7D1DDA777DE228C0F64E3A2D
-      7B6CC8F77BA46099552AA957E156C3EA31587523054DA0DF253A164216293537
-      4909FC20DC46601F7F7F60988E68E21BE5C82B64FFB7E2BDBA91B1265B68D77D
-      703D5353004B76D07C2E5730912BC18948E7F74BE797C2F585EB2CA053E55F62
-      259EF10BD5A41F6478C55580DC4A3A91D27C95A4EED708250A7B5EF6FCB6B5EA
-      DF11F28DEB2D3091EE41D32B23DA4370E387799354940FC30B8C67012C3D43E6
-      CAD2196AD19AE72A43CD08FBC2F36F801C903F1C91941D31AC460A19FD3DC275
-      A0D43F85CE4F7F7DD382970000000049454E44AE426082170000000020000000
-      0000470049004600460069006C00650044006100740061002E0050006E006700
-      000004000000000A06000000004E0061006D00650000000D54F0790000040000
-      0000100600000000430061007000740069006F006E0000000768989800000400
-      0000000C0600000000470072006F007500700000000652C47E00000700000000
-      200A040000005000690063007400750072006500440072006100770054007900
-      700065000000D87E36527B7C8B570000000000000700000000160A0400000049
-      006D0061006700650049006E006400650078000000FE5647720B4E07680000FF
-      FFFFFF0400000000140A1000000049006D006100670065004E0061006D006500
-      0000FE5647720D54F07900008C9AC18B01782000280031002900000004000000
-      00120C00000000460069006C0065004E0061006D0065000000FE5647728765F6
-      4E0D54000004000000001A0E000000005200650073006F007500720063006500
-      4E0061006D0065000000FE564772448D906E0D54F07900000400000000080A00
-      000000550072006C000000FE564772FE94A56300001500000000181004000000
-      4900730043006C006900700052006F0075006E00640000002F6626546A52C188
-      10620657625F000000000000}
+      00017352474200AECE1CE90000000467414D410000B18F0BFC61050000061549
+      444154785EE59B6D88546514C7CFF3CC6A9221E47B60A8108AB586526006EA46
+      D08BBD90665F5ABFB833537EE9C5D46F41047DE9758B959076668DDC0D2ADDA2
+      3754886421CD84B2173FB808220699AE92A94BB23BCFD3F9DF7B669DB93BBB73
+      E7DE3B7767777E709973CE5CD7FB3FF3DC3BCF73EF7F145519B379F36CCA0D3C
+      69C92EE274266FB334D99903A467FE77A57F16F69972D38DE72791E933A4FA38
+      3DCF5B9F22D54B89497BF5CE9DE7B04FB5A84A034C4BCB7CD2F4008B5EAF957E
+      48CA8130D6ECE3667493A103BAA3E3B4942323D206987432652D3DA1153D22A5
+      483196BE518ABED0EDD98C94421349034C32B9DE6AF39C26DD24A5AA62C81C54
+      46B7E96CB65B4A8109D5009B4C3619C5C2955E2FA558E1D3A35B5BDDA6B2D983
+      52AA98400D30A9D43C4BE615AD544A4A638AB136A348BFAA33993FA5E49B8A1B
+      609F493E3568CD6B0DA47155AF1906C9F43628FDB2FA20FB99947C51510372A9
+      9677F853DF22694DC2A3A13591E97849D2B2F86EC0602A7928A168A5A4354DCE
+      D2E1864CF65E4947C557036C3A69258C9669D38866CC20EAEF27BA7891686040
+      DE8806D59E2DABAFEC0EB9D4A62EBECA3F2D6938E6CC215AC91FCCED77F07C90
+      278153A7CA1BC2399EF4FD7D96E8E84FBC1DE5FF3C276F0483BF253E4E647635
+      4B5A92511B60522DCD4AA94E49C3D1BCD1153F79B214CA70561AF1D597520886
+      B576A3CE7474493A8C111B60D29B56F057CB8F9286E3D9CD4477DD2D8980617F
+      E532D165DE6E98E29E0ED8BCA001619B40E61EDDBEEB88A445946C00CFECA61B
+      A26F139A564829385EF1BFFD4AD4D3E3BE7A993F9F68D51AA2D5ABA520846C42
+      CED0114DB496678E7CA12986EBC3B1CABE1E89F8C71E2F16FFE927443BDA4A8B
+      07A779ADD3F911D1DB6F12F59E9022F3F05AA2850B25A91C688126498B183602
+      30BDE5B67C2F69701A97123DFF8224CCF66D4497FE91C4275BB6122D59E2C6C7
+      8E11BDBFC38D8362E83EEFB479D808C0DC5EC27034364AC060F8562A1E74ED26
+      BA7AD58D972D239A77AB1B07A494B6A206605517D9C2062320CF4843BE1CF85A
+      FCE3774998E5CB250806B441A3A40E450DC09256C2702C5840347BB61B9F3AE5
+      9EDB41C17C20CFE2C51204C7AB71A801B89911D97A7EE99D1230BFFC2C41400A
+      47CFA2F00D80466895F47A032CD90D1246CB850B12D40E855A9D06F079719B26
+      F5A053899A7F2F49503B402B34BB31506A9DF35A4F88667704907D14AFF5445E
+      B336E9F42DBCCEF7CC3D273ED00CED9A974B637243B32660ED2A976E69E58BC2
+      8B520A06BE9E0A27D5C8B10E0098D78765EB760998527FEF44C1BAA102F83478
+      170DD8CD0DE0C57A08B6F10146F01D1D08342478033A7111749ECF85A23A37CC
+      E26096C6834A49EA0E68D7784A2B79DD01ED3AFF883A14A3DE59AC5DA07D682D
+      108AA0D780E3C789F6EF233AF403D1B56B528C170D7382C4F182FB82EFB512ED
+      DD43F4E12EA2B7DE9037E203DA359C1992C7CB61FED40BC13D83B04BE70A8176
+      2DB694F83973468202F02C2046A01DD780B13905E6CE95A0809BA74B101BE7D1
+      80B11901AB3CEB2FCC2443DCFA0E489F76DC5863C19AA6EBEB058018CF0E6304
+      DA35AC6892D71FB0E1C187072B9A94EA066886766722E4F8F0C2300E678279CD
+      EE4CD0D001E73528E37135289A9D06C081091322E240841901B8F8155E0C6300
+      5AF3AE5377043070604A181F79F1D82278EAE39742AD430D80FD140E4C49272C
+      D05868B51D6A0080FD54C2098B57635103E0BD85FD54D2098763ADF5F88B8B1A
+      00E0BD9570C2514A5BC9EB772ED5D25E910F78B43BC271CC117CDC15869F3891
+      E9484B3A44C9C383193AA772DFD59A1F3828F011276CE2FE5266EA61A700C08E
+      301E4B3AEE8196919CE4251B00E0BA86F158D2710B348CE6202F7B868E2793B4
+      173FA6695F97A8AA99A5AB8C1FB3F488A74021F843301E4B5AF3E058FD8807BE
+      76CA13A979BA4A9433477BF13502F2E00FC3780CEFAD946A061C93638AAE403C
+      A8A80100AE6BFE476B31B190D2988363C1318DE4081F8D8A4E012F75FBB3392F
+      B09FD6E50F27BD383F9D25BBA15A9E434376BF22B5A7E67E3AEBC531212AB50E
+      56B4B00E349ECCF47043BFE6CBFBE7FC899F94726454A50185C08A0637965506
+      CE4CFF3F9FB7FA2437B15BB7B7FF857DAA03D1FF24D04132C1AAF4C700000000
+      49454E44AE4260821700000000200000000000470049004600460069006C0065
+      0044006100740061002E0050006E006700000004000000000A06000000004E00
+      61006D00650000000D54F0790000040000000010060000000043006100700074
+      0069006F006E00000007689898000004000000000C0600000000470072006F00
+      7500700000000652C47E00000700000000200A04000000500069006300740075
+      0072006500440072006100770054007900700065000000D87E36527B7C8B5700
+      00000000000700000000160A0400000049006D0061006700650049006E006400
+      650078000000FE5647720B4E07680000FFFFFFFF0400000000140A0000000049
+      006D006100670065004E0061006D0065000000FE5647720D54F0790000040000
+      0000120C00000000460069006C0065004E0061006D0065000000FE5647728765
+      F64E0D54000004000000001A0E000000005200650073006F0075007200630065
+      004E0061006D0065000000FE564772448D906E0D54F07900000400000000080A
+      00000000550072006C000000FE564772FE94A563000015000000001810040000
+      004900730043006C006900700052006F0075006E00640000002F6626546A52C1
+      8810620657625F000000000000180E0000001A001A000000420069006E006100
+      720079004F0062006A0065006300740000005400440072006100770050006900
+      630074007500720065000000040000000014001000000049006D006100670065
+      004E0061006D00650000008C9AC18B0178200028003100290000000400000000
+      1800080000004700720061007000680069006300540079007000650000005000
+      6E00670000001700000000200037060000470072006100700068006900630044
+      006100740061002E0050006E006700000089504E470D0A1A0A0000000D494844
+      5200000040000000400806000000AA6971DE000000017352474200AECE1CE900
+      00000467414D410000B18F0BFC6105000005E149444154785EED9B5D6C145514
+      C7EF3977B694128B2F98A88D1143D504311A4C08F80289096A94F0220DD9D96A
+      2DDB2668544CD448A242FC2218153410BADBA2D0AE49531F3092A086041E3446
+      021A2068542C2835267E860AB66567EEF1DEF550BB76763BB3BBB33B86FE92F6
+      9EFFD9EEECCC7FCFDC7B66BA0B2200C95E752582B8CE15D00C24AEE5B42FD209
+      D8C061A4F06D40B2CFED05409B6500CE9D7769D6F21E1B3FE144A498D280649F
+      5AE04276BF25EAAEE0542014A9E7BB6DF92CCBC8813C7AD2D6A3E600C0B1520F
+      9E5CF750368B2FB18C24452B2099710F80C0A52C0303442BBB6C7C8FA527EDBD
+      B4544A6A12044DA4443DA7FD017456BF414396455F6C6FC1939C0D4441039219
+      DAA41F7C8A6560889C93693BD6CC320F3399EA97EE0470560BB0AEE77499A87D
+      BAA0F7A4E290E2842F8A9C02CE4A0E4A04F50E4D26D94B1B40398701C573953B
+      7803DEA57F757564E8706746B5FE939B1A4F03D6F5AB9920AC1B58960412ECE0
+      701CBD926CCE1DB815BB8A5361B09004EC3246B32E8AA701C323C2B3747DA3DC
+      135D09FC92558EDC7C02F804CBD03146EB6AB88F65413CE780DCC484E200CB71
+      9450EF00C1078AE00CA70AD29380831C9A77FE557DF08FB3AC36ABF4BC30C0F1
+      24821850744385286466D5D0D53843E092371338CC993C7C19E092DADE63CB87
+      5806A223E3EA651057B01C472F791B392C0AE8B594C3E240E156DBBC56A156DC
+      6F0574065D5E2ED29119F94388FACB598EE32AB16CE269520E535699521FA612
+      F24E567914ED042FA277F61B0E03B1A68F6EF13AF86AA37074318793F06540A9
+      E82BC7F256930A81A2A1B1AD5FCD619987BF39A0C472D51752EB74ABFA1ACB9A
+      428A16A613F839CB7142AD00DDDFCFE6A8E628018D1CE611AE01FF036A668059
+      9AFCFEF0534221DC3920A3D682806D2CF308B24DDDD2FAEB058A008AE6FFB73D
+      37845B014A0C715473EA84F7BE846B802B4E705463B243E5B5C265746DEDBDD9
+      5312AD40779043604077B2AB38CE23F44910057EC4612DD9CFE324423780104B
+      BA86A820478A5DC7846E40771C8E28529B58D6821778F42474030CDDB67C5A2F
+      099B59560D57D022FDEEEF61E949550C30A4E2D2DC61F69C882ACDD885B15F73
+      13771C0F71AA205533C060EE2821D1BDA4D4FB9CAA387ADBA97A597787DF55AB
+      AA061876D8B8379D902B08E81E738F91D365E152F647D3322B216ED3DBEEEC6A
+      C5A3FCD09484DE074C85FF36373B4424DF55F4EF7F9A50D0B05327CEBCD582BF
+      702A30913760ECC2F973F57533B7580E6CD9763FFEC6E98A51F5532010A476D6
+      C51A9674C5E533611CBC21A206A87DA46879CA96ED691B8F73B220EDBBD5BC64
+      9FFBA2A95C4EF926520628728F2A126D7AC9BC3B9D98BA8536079CCC38C7A584
+      6F01703DA703110503065CE59C26A2F597C57071B70D6F73DE1720E44D1C9644
+      CD0D3057693D89D85C5DEA2FBFDE82239CAE1AD19E04ABC0B4013C5EB24C1BC0
+      E325CBB4013C5EB24C1BC0635124D08D1C468A4AEC972F035CA11EE0305A907A
+      98A392F15901725147C67D8565CDE9E8A206F3B13B81723EA74AC6D70D91091C
+      21522704E129D6D507D45C41B40050DECA99714AB97113D48048538A01D3AB00
+      8FA1E3FE7576442895D1E5BBC18C391D01AA628052EEA7A2B1B129959076CAC6
+      8D66C4198DCBB222FB03FF49CDA88A0152E09A9E16FC9D658E742B7E6609ABE6
+      2B4BE8069070BEF6FA688A0111F67258333C0DB004FDCC61D98082310E27E110
+      55741E00A2EF39F48DA701A30E0C725836EEE8B9E6B5FD6A1ECB3CF48B2FE2B0
+      6CCC8DD5EED6E0FD89A701BBDA60D47CCC9C6559C886D9331D87DE60990FA927
+      392A1B3DCF94F4BD44CF46C8B026E36E45818FB0AC040344F4B12238864037EB
+      73631508793B3F56362428998E63374BDF1434C0F0E0EEEC5796B42279253811
+      12EA603A2E97B10C44D1552016B3CC37B1228F3B0B267D21C32F450DE85A0DA7
+      25D2358E72BEE354A430FB65F66FE74AFC935381297A0A4CA4A3CFDD22001F65
+      597B486D4DD9F2315625E3DB004367BFBADAB900CD88344F2868E274207C7F07
+      C803FDC4415DB2838AC4603A813F71BA0C84F81BDFD15993A41627C100000000
+      49454E44AE4260821700000000200000000000470049004600460069006C0065
+      0044006100740061002E0050006E006700000004000000000A06000000004E00
+      61006D00650000000D54F0790000040000000010060000000043006100700074
+      0069006F006E00000007689898000004000000000C0600000000470072006F00
+      7500700000000652C47E00000700000000200A04000000500069006300740075
+      0072006500440072006100770054007900700065000000D87E36527B7C8B5700
+      00000000000700000000160A0400000049006D0061006700650049006E006400
+      650078000000FE5647720B4E07680000FFFFFFFF0400000000140A1000000049
+      006D006100670065004E0061006D0065000000FE5647720D54F07900008C9AC1
+      8B0178200028003100290000000400000000120C00000000460069006C006500
+      4E0061006D0065000000FE5647728765F64E0D54000004000000001A0E000000
+      005200650073006F0075007200630065004E0061006D0065000000FE56477244
+      8D906E0D54F07900000400000000080A00000000550072006C000000FE564772
+      FE94A563000015000000001810040000004900730043006C006900700052006F
+      0075006E00640000002F6626546A52C18810620657625F000000000000}
     Left = 848
     Top = 448
   end
@@ -12849,12 +13203,18 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object edtInputEditHasCenterHelpTextMaterial: TSkinEditDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.BorderColor.Color = claGray
     BackColor.BorderWidth = 1.000000000000000000
     BackColor.DrawRectSetting.Left = 5.000000000000000000
     BackColor.DrawRectSetting.Right = 5.000000000000000000
     BackColor.DrawRectSetting.Enabled = True
     BackColor.DrawRectSetting.SizeType = dpstPixel
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
@@ -12875,14 +13235,20 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 640
   end
   object btnGrayBorderSmallTextButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.BorderColor.Color = xFF79C1E2
     BackColor.BorderWidth = 1.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -12895,6 +13261,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontColor = xFF79C1E2
     DrawCaptionParam.DrawFont.Color = xFF79C1E2
     DrawCaptionParam.DrawFont.FontColor.Color = xFF79C1E2
@@ -12913,6 +13280,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object btnSelectButtonRightAlignMaterial: TSkinButtonDefaultMaterial
     StyleName = 'SelectRightAlign'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -13339,10 +13712,16 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object pcOrder_Material: TSkinPageControlDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhitesmoke
     BackColor.IsFill = True
     BackColor.FillColor.Color = claWhitesmoke
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawTabIconParam.IsAutoFit = True
     DrawTabIconParam.PictureHorzAlign = phaCenter
@@ -13350,40 +13729,76 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawTabIconParam.DrawRectSetting.Bottom = 14.000000000000000000
     DrawTabIconParam.DrawRectSetting.Enabled = True
     DrawTabIconParam.DrawRectSetting.SizeType = dpstPixel
-    DrawTabCaptionParam.FontSize = 14.000000000000000000
-    DrawTabCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawTabCaptionParam.FontSize = 16.000000000000000000
+    DrawTabCaptionParam.DrawFont.Size = 16.000000000000000000
     DrawTabCaptionParam.FontTrimming = fttNone
     DrawTabCaptionParam.FontHorzAlign = fhaCenter
     DrawTabCaptionParam.FontVertAlign = fvaCenter
     DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.UseThemeColor = ctThemeColor
-    DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF66A5FF
+    DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF0199FF
     DrawTabCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
     TabNormalPicture.IsClipRound = False
     TabHoverPicture.IsClipRound = False
     TabDownPicture.IsClipRound = False
     TabPushedPicture.IsClipRound = False
     TabBackColor.BorderEadges = [beBottom]
+    TabBackColor.Color = claWhite
+    TabBackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     TabBackColor.DrawEffectSetting.PushedEffect.BorderWidth = 3.000000000000000000
+    TabBackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     TabBackColor.DrawEffectSetting.PushedEffect.BorderColor.UseThemeColor = ctThemeColor
-    TabBackColor.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF66A5FF
+    TabBackColor.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF0199FF
     TabBackColor.DrawEffectSetting.PushedEffect.EffectTypes = [drpetBorderWidthChange, drpetBorderColorChange]
+    TabBackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawTabBackColorParam.BorderEadges = [beBottom]
+    DrawTabBackColorParam.Color = claWhite
+    DrawTabBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawTabBackColorParam.DrawEffectSetting.PushedEffect.BorderWidth = 3.000000000000000000
+    DrawTabBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawTabBackColorParam.DrawEffectSetting.PushedEffect.BorderColor.UseThemeColor = ctThemeColor
-    DrawTabBackColorParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF66A5FF
+    DrawTabBackColorParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF0199FF
     DrawTabBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetBorderWidthChange, drpetBorderColorChange]
+    DrawTabBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.Color = claWhite
+    DrawTabBackColor2Param.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     BackGndPicture.IsClipRound = False
     TabHeaderPicture.IsClipRound = False
     DrawTabHeaderColorParam.BorderEadges = [beBottom]
+    DrawTabHeaderColorParam.Color = claWhite
     DrawTabHeaderColorParam.IsFill = True
     DrawTabHeaderColorParam.BorderColor.Color = xFFEDEDED
     DrawTabHeaderColorParam.BorderWidth = 1.000000000000000000
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Left = 1160
   end
   object lbOrderList_Material: TSkinListBoxDefaultMaterial
+    BackColor.Color = claWhitesmoke
     BackColor.IsFill = True
     BackColor.FillColor.Color = claWhitesmoke
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullDownRefreshPanelMaterial.IndicatorColor = claBlack
     PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
     PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -13395,6 +13810,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
     PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
     PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
     PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
     PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -13439,9 +13860,27 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     ItemBackHoverPicture.IsClipRound = False
     ItemBackDownPicture.IsClipRound = False
     ItemBackPushedPicture.IsClipRound = False
+    DrawItemBackColorParam.Color = claWhite
+    DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     ItemAccessoryPicture.IsClipRound = False
     IsDrawCenterItemRect = False
+    DrawCenterItemRectParam.Color = xFFEDEDED
+    DrawCenterItemRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawItemDevide = True
+    DrawItemDevideParam.Color = xFFEDEDED
+    DrawItemDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawItemCaptionParam.FontTrimming = fttNone
     DrawItemCaptionParam.FontHorzAlign = fhaLeft
     DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -13471,6 +13910,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DefaultTypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    DefaultTypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -13500,6 +13945,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    Item1TypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -13524,9 +13975,27 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    DrawSpaceParam.Color = claWhite
+    DrawSpaceParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawGroupRoundRect = False
     IsSimpleDrawGroupBeginDevide = True
     IsSimpleDrawGroupEndDevide = True
+    DrawGroupBeginDevideParam.Color = xFFEDEDED
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.Color = xFFEDEDED
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoAdjustItemDesignerPanelSize = True
     Left = 976
     Top = 240
@@ -16096,6 +16565,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 496
   end
   object edtInputEditHasHelpTextAndIconMaterial: TSkinEditDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
@@ -16127,9 +16602,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   object cmbComboBox_Material: TSkinComboBoxDefaultMaterial
     StyleName = 'Default'
     BackColor.BorderEadges = []
+    BackColor.Color = claWhite
     BackColor.RoundWidth = 2.000000000000000000
     BackColor.RoundHeight = 2.000000000000000000
     BackColor.BorderColor.Color = claLightgray
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     ArrowPicture.IsClipRound = False
     ArrowPicture.PNG = {
@@ -16161,7 +16642,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawArrowPictureParam.IsAutoFit = True
     DrawArrowPictureParam.PictureHorzAlign = phaRight
     DrawArrowPictureParam.PictureVertAlign = pvaCenter
-    DrawArrowPictureParam.DrawRectSetting.Height = 36.000000000000000000
+    DrawArrowPictureParam.DrawRectSetting.Height = 28.000000000000000000
     DrawArrowPictureParam.DrawRectSetting.Enabled = True
     DrawArrowPictureParam.DrawRectSetting.SizeType = dpstPixel
     DrawArrowPictureParam.DrawRectSetting.PositionVertType = dppvtCenter
@@ -16175,20 +16656,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawPictureParam.DrawRectSetting.Enabled = True
     DrawPictureParam.DrawRectSetting.SizeType = dpstPixel
     DrawPictureParam.DrawRectSetting.PositionVertType = dppvtBottom
-    DrawHelpTextParam.FontSize = 18.000000000000000000
     DrawHelpTextParam.FontColor = xFF8D8D8D
-    DrawHelpTextParam.DrawFont.Size = 18.000000000000000000
     DrawHelpTextParam.DrawFont.Color = xFF8D8D8D
     DrawHelpTextParam.DrawFont.FontColor.Color = xFF8D8D8D
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaCenter
     DrawHelpTextParam.DrawRectSetting.Left = 10.000000000000000000
-    DrawHelpTextParam.DrawRectSetting.Enabled = True
     DrawHelpTextParam.DrawRectSetting.SizeType = dpstPixel
-    DrawTextParam.FontSize = 14.000000000000000000
     DrawTextParam.FontColor = xFF585A59
-    DrawTextParam.DrawFont.Size = 14.000000000000000000
     DrawTextParam.DrawFont.Color = xFF585A59
     DrawTextParam.DrawFont.FontColor.Color = xFF585A59
     DrawTextParam.FontTrimming = fttNone
@@ -16203,9 +16679,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   object lblInputBlackCaptionPanelMaterial: TSkinLabelDefaultMaterial
     StyleName = 'EditPageHintLabelDefault'
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
@@ -16220,7 +16702,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 10
   end
   object btnTransparentIconButonMaterial: TSkinButtonDefaultMaterial
-    IsAutoCenterIconAndCaption = False
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -16240,7 +16728,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawIconParam.DrawRectSetting.PositionVertType = dppvtCenter
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
-    DrawCaptionParam.FontVertAlign = fvaTop
+    DrawCaptionParam.FontVertAlign = fvaCenter
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     DownPicture.IsClipRound = False
@@ -16251,7 +16739,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 600
   end
   object btnSmallIconMaterial: TSkinButtonDefaultMaterial
-    IsAutoCenterIconAndCaption = False
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -16265,14 +16759,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
     DrawIconParam.IsAutoFit = True
-    DrawIconParam.PictureHorzAlign = phaCenter
     DrawIconParam.DrawRectSetting.Height = 30.000000000000000000
     DrawIconParam.DrawRectSetting.Enabled = True
     DrawIconParam.DrawRectSetting.SizeType = dpstPixel
     DrawIconParam.DrawRectSetting.PositionVertType = dppvtCenter
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
-    DrawCaptionParam.FontVertAlign = fvaTop
+    DrawCaptionParam.FontVertAlign = fvaCenter
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     DownPicture.IsClipRound = False
@@ -16289,12 +16782,19 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 8
   end
   object chkHookMaterial: TSkinCheckBoxColorMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoPosition = True
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
     DrawCaptionParam.FontVertAlign = fvaCenter
+    CheckChar = #10004
     DrawCheckStateParam.PenColor.UseThemeColor = ctThemeColor
-    DrawCheckStateParam.PenColor.Color = xFF66A5FF
+    DrawCheckStateParam.PenColor.Color = xFF0199FF
     DrawCheckStateParam.PathActions = <
       item
         X = 25.000000000000000000
@@ -16320,15 +16820,31 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
       end>
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenWidth = 2.000000000000000000
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.EffectTypes = [dppetPenWidthChange]
+    DrawCheckRectParam.Color = claWhite
     DrawCheckRectParam.BorderColor.Color = claLightgray
+    DrawCheckRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.UseThemeColor = ctThemeColor
-    DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF66A5FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF0199FF
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetBorderColorChange]
+    DrawCheckRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawCheckState = True
+    IsSimpleDrawCheckChar = False
+    DrawCheckCharParam.FontTrimming = fttNone
+    DrawCheckCharParam.FontHorzAlign = fhaLeft
+    DrawCheckCharParam.FontVertAlign = fvaTop
     Left = 800
     Top = 8
   end
   object btnSelectWithHelpText_Material: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -16387,6 +16903,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 656
   end
   object btnScanHandCode_Material: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -16542,6 +17064,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 464
   end
   object btnGraySearchIconButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -16814,6 +17342,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 232
   end
   object pcMainFramePageControlMaterial: TSkinPageControlDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawTabIconParam.IsAutoFit = True
     DrawTabIconParam.PictureHorzAlign = phaCenter
@@ -16828,12 +17362,30 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawTabCaptionParam.FontHorzAlign = fhaCenter
     DrawTabCaptionParam.FontVertAlign = fvaBottom
     DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.UseThemeColor = ctThemeColor
-    DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF66A5FF
+    DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF0199FF
     DrawTabCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
     TabNormalPicture.IsClipRound = False
     TabHoverPicture.IsClipRound = False
     TabDownPicture.IsClipRound = False
     TabPushedPicture.IsClipRound = False
+    TabBackColor.Color = claWhite
+    TabBackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.Color = claWhite
+    DrawTabBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.Color = claWhite
+    DrawTabBackColor2Param.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     BackGndPicture.IsClipRound = False
     TabHeaderPicture.IsClipRound = False
     DrawTabHeaderPictureParam.IsAutoFit = True
@@ -16843,16 +17395,28 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     TabHeaderPictureParam.DrawRectSetting.Height = 40.000000000000000000
     TabHeaderPictureParam.DrawRectSetting.Enabled = True
     DrawTabHeaderColorParam.BorderEadges = [beTop]
+    DrawTabHeaderColorParam.Color = claWhitesmoke
     DrawTabHeaderColorParam.IsFill = True
     DrawTabHeaderColorParam.FillColor.Color = claWhitesmoke
     DrawTabHeaderColorParam.BorderColor.Color = xFFEDEDED
     DrawTabHeaderColorParam.BorderWidth = 1.000000000000000000
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Left = 1160
     Top = 112
   end
   object rbUseScore_Material: TSkinRadioButtonDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.DrawRectSetting.Right = 16.000000000000000000
     BackColor.DrawRectSetting.Enabled = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
@@ -17132,13 +17696,20 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 352
   end
   object chkDefaultRectCheckBoxMaterial: TSkinCheckBoxColorMaterial
-    StyleName = 'Default'
+    StyleName = 'DefaultRect'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoPosition = True
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
     DrawCaptionParam.FontVertAlign = fvaCenter
+    CheckChar = #10004
     DrawCheckStateParam.PenColor.Color = claOrange
     DrawCheckStateParam.PathActions = <
       item
@@ -17171,6 +17742,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenWidth = 2.000000000000000000
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenColor.Color = claWhite
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.EffectTypes = [dppetPenWidthChange, dppetPenColorChange]
+    DrawCheckRectParam.Color = claWhite
     DrawCheckRectParam.BorderColor.Color = claLightgray
     DrawCheckRectParam.BorderWidth = 2.000000000000000000
     DrawCheckRectParam.DrawRectSetting.Width = 24.000000000000000000
@@ -17178,21 +17750,36 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckRectParam.DrawRectSetting.Enabled = True
     DrawCheckRectParam.DrawRectSetting.SizeType = dpstPixel
     DrawCheckRectParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawCheckRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.IsFill = True
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF438DF5
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange, drpetBorderWidthChange]
+    DrawCheckRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawCheckState = True
+    IsSimpleDrawCheckChar = False
+    DrawCheckCharParam.FontTrimming = fttNone
+    DrawCheckCharParam.FontHorzAlign = fhaLeft
+    DrawCheckCharParam.FontVertAlign = fvaTop
     Left = 798
     Top = 120
   end
   object cmbComboEdit_Material: TSkinComboEditDefaultMaterial
     StyleName = 'Default'
     BackColor.BorderEadges = []
+    BackColor.Color = claWhite
     BackColor.RoundWidth = 2.000000000000000000
     BackColor.RoundHeight = 2.000000000000000000
     BackColor.BorderColor.Color = claLightgray
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     ArrowPicture.IsClipRound = False
     ArrowPicture.PNG = {
@@ -17224,7 +17811,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawArrowPictureParam.IsAutoFit = True
     DrawArrowPictureParam.PictureHorzAlign = phaRight
     DrawArrowPictureParam.PictureVertAlign = pvaCenter
-    DrawArrowPictureParam.DrawRectSetting.Height = 36.000000000000000000
+    DrawArrowPictureParam.DrawRectSetting.Height = 28.000000000000000000
     DrawArrowPictureParam.DrawRectSetting.Enabled = True
     DrawArrowPictureParam.DrawRectSetting.SizeType = dpstPixel
     DrawArrowPictureParam.DrawRectSetting.PositionVertType = dppvtCenter
@@ -17254,15 +17841,21 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawTextParam.FontVertAlign = fvaCenter
     DrawTextParam.DrawRectSetting.Left = 10.000000000000000000
     DrawTextParam.DrawRectSetting.SizeType = dpstPixel
-    Left = 1128
+    Left = 1112
     Top = 232
   end
   object lblInputValueMaterial: TSkinLabelDefaultMaterial
-    StyleName = 'PageFrameworkDefault'
+    StyleName = 'Default'
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.DrawFont.Size = 14.000000000000000000
@@ -17278,13 +17871,19 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object pnlToolWindowBarMaterial: TSkinPanelDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = xFF0199FF
     BackColor.IsFill = True
     BackColor.FillColor.UseThemeColor = ctThemeColor
-    BackColor.FillColor.Color = xFF66A5FF
+    BackColor.FillColor.Color = xFF0199FF
     BackColor.BorderColor.Color = xFFEDEDED
     BackColor.DrawRectSetting.Left = -10.000000000000000000
     BackColor.DrawRectSetting.Right = -10.000000000000000000
     BackColor.DrawRectSetting.SizeType = dpstPixel
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawCaptionParam.FontName = #24494#36719#38597#40657
     DrawCaptionParam.FontSize = 16.000000000000000000
@@ -17304,6 +17903,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object memDefaultMaterial: TSkinMemoDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     FocusedPicture.IsClipRound = False
@@ -17328,6 +17933,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object detDefaultMaterial: TSkinDateEditDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     FocusedPicture.IsClipRound = False
@@ -17340,6 +17951,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object tetDefaultMaterial: TSkinTimeEditDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
     FocusedPicture.IsClipRound = False
@@ -17351,7 +17968,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 584
   end
   object chkDefaultFillRectCheckBoxMaterial: TSkinCheckBoxColorMaterial
-    StyleName = 'Default'
+    StyleName = 'DefaultFillRect'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoPosition = True
     DrawCaptionParam.FontSize = 14.000000000000000000
     DrawCaptionParam.FontColor = xFF505050
@@ -17361,6 +17984,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaLeft
     DrawCaptionParam.FontVertAlign = fvaCenter
+    CheckChar = #10004
     DrawCheckStateParam.PenColor.Color = claOrange
     DrawCheckStateParam.PathActions = <
       item
@@ -17393,6 +18017,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenWidth = 2.000000000000000000
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.PenColor.Color = claWhite
     DrawCheckStateParam.DrawEffectSetting.PushedEffect.EffectTypes = [dppetPenWidthChange, dppetPenColorChange]
+    DrawCheckRectParam.Color = claLightgray
     DrawCheckRectParam.IsFill = True
     DrawCheckRectParam.FillColor.Color = claLightgray
     DrawCheckRectParam.IsRound = True
@@ -17404,17 +18029,38 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawCheckRectParam.DrawRectSetting.Enabled = True
     DrawCheckRectParam.DrawRectSetting.SizeType = dpstPixel
     DrawCheckRectParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawCheckRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.IsFill = True
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DrawCheckRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.BorderColor.Color = xFF438DF5
     DrawCheckRectParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange, drpetBorderWidthChange]
+    DrawCheckRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCheckRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawCheckState = True
+    IsSimpleDrawCheckChar = False
+    DrawCheckCharParam.FontTrimming = fttNone
+    DrawCheckCharParam.FontHorzAlign = fhaLeft
+    DrawCheckCharParam.FontVertAlign = fvaTop
     Left = 798
     Top = 64
   end
   object lvDefaultMaterial: TSkinListViewDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullDownRefreshPanelMaterial.IndicatorColor = claBlack
     PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
     PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -17426,6 +18072,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
     PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
     PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
     PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
     PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -17447,10 +18099,28 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     ItemBackHoverPicture.IsClipRound = False
     ItemBackDownPicture.IsClipRound = False
     ItemBackPushedPicture.IsClipRound = False
+    DrawItemBackColorParam.Color = claWhite
+    DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     ItemAccessoryPicture.IsClipRound = False
     IsDrawCenterItemRect = False
+    DrawCenterItemRectParam.Color = xFFEDEDED
+    DrawCenterItemRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawItemDevide = True
+    DrawItemDevideParam.Color = xFFEDEDED
     DrawItemDevideParam.IsFill = True
+    DrawItemDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawItemCaptionParam.FontTrimming = fttNone
     DrawItemCaptionParam.FontHorzAlign = fhaLeft
     DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -17480,6 +18150,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DefaultTypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    DefaultTypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -17509,6 +18185,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    Item1TypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -17533,9 +18215,27 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    DrawSpaceParam.Color = claWhite
+    DrawSpaceParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawGroupRoundRect = False
     IsSimpleDrawGroupBeginDevide = True
     IsSimpleDrawGroupEndDevide = True
+    DrawGroupBeginDevideParam.Color = xFFEDEDED
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.Color = xFFEDEDED
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoAdjustItemDesignerPanelSize = True
     IsDrawRowLine = False
     IsDrawRowBeginLine = False
@@ -17552,6 +18252,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object imgDefaultMaterial: TSkinImageDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawPictureParam.IsAutoFit = True
     DrawPictureParam.IsStretch = True
     DrawPictureParam.PictureHorzAlign = phaCenter
@@ -17563,6 +18269,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 528
   end
   object btnIconTopCaptionBottomButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -17610,15 +18322,21 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     StyleName = 'Default'
     StyleNameAliases.Strings = (
       'save_record')
+    BackColor.Color = xFF0199FF
     BackColor.IsFill = True
     BackColor.FillColor.UseThemeColor = ctThemeColor
-    BackColor.FillColor.Color = xFF66A5FF
+    BackColor.FillColor.Color = xFF0199FF
     BackColor.IsRound = True
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -17631,6 +18349,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontSize = 15.000000000000000000
     DrawCaptionParam.FontColor = claWhite
     DrawCaptionParam.DrawFont.Size = 15.000000000000000000
@@ -17649,9 +18368,10 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 456
   end
   object btnSkinTheme1ColorMaterial: TSkinButtonDefaultMaterial
-    StyleName = 'Default'
+    StyleName = 'Default1'
     StyleNameAliases.Strings = (
       'save_record')
+    BackColor.Color = xFF4DC060
     BackColor.IsFill = True
     BackColor.FillColor.UseThemeColor = ctThemeColor1
     BackColor.FillColor.Color = xFF4DC060
@@ -17659,8 +18379,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     BackColor.RoundWidth = 3.000000000000000000
     BackColor.RoundHeight = 3.000000000000000000
     BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
-    IsAutoCenterIconAndCaption = False
+    IsAutoCenterIconAndCaption = True
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
     DrawDetailParam.FontVertAlign = fvaTop
@@ -17673,6 +18398,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontTrimming = fttNone
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
     DrawCaptionParam.FontSize = 15.000000000000000000
     DrawCaptionParam.FontColor = claWhite
     DrawCaptionParam.DrawFont.Size = 15.000000000000000000
@@ -17691,6 +18417,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 520
   end
   object btnTransparenThemeCaptionButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoCenterIconAndCaption = False
     DrawDetailParam.FontTrimming = fttNone
     DrawDetailParam.FontHorzAlign = fhaLeft
@@ -17705,11 +18437,11 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawHelpTextParam.FontHorzAlign = fhaLeft
     DrawHelpTextParam.FontVertAlign = fvaTop
     DrawCaptionParam.FontSize = 16.000000000000000000
-    DrawCaptionParam.FontColor = xFF66A5FF
+    DrawCaptionParam.FontColor = xFF0199FF
     DrawCaptionParam.DrawFont.Size = 16.000000000000000000
-    DrawCaptionParam.DrawFont.Color = xFF66A5FF
+    DrawCaptionParam.DrawFont.Color = xFF0199FF
     DrawCaptionParam.DrawFont.FontColor.UseThemeColor = ctThemeColor
-    DrawCaptionParam.DrawFont.FontColor.Color = xFF66A5FF
+    DrawCaptionParam.DrawFont.FontColor.Color = xFF0199FF
     DrawCaptionParam.FontTrimming = fttNone
     DrawCaptionParam.FontHorzAlign = fhaCenter
     DrawCaptionParam.FontVertAlign = fvaCenter
@@ -17723,7 +18455,13 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 592
   end
   object popGroup_Material: TSkinPopupDefaultMaterial
+    BackColor.Color = claWhite
     BackColor.IsFill = True
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     BackGndPicture.IsClipRound = False
     BackGndPicture.PNG = {
       89504E470D0A1A0A0000000D49484452000001400000007C0806000000185F69
@@ -17806,10 +18544,16 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object cmbDefaultComboEditMaterial: TSkinComboEditDefaultMaterial
     StyleName = 'Default'
+    BackColor.Color = claWhite
     BackColor.RoundWidth = 2.000000000000000000
     BackColor.RoundHeight = 2.000000000000000000
     BackColor.BorderColor.Color = claLightgray
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     ArrowPicture.IsClipRound = False
     ArrowPicture.PNG = {
@@ -17871,13 +18615,19 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawTextParam.FontVertAlign = fvaCenter
     DrawTextParam.DrawRectSetting.Left = 10.000000000000000000
     DrawTextParam.DrawRectSetting.SizeType = dpstPixel
-    Left = 1136
-    Top = 240
+    Left = 1200
+    Top = 248
   end
   object edtBottomWhiteDashEditMaterial: TSkinEditDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.BorderColor.Color = claWhite
     BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     NormalPicture.IsClipRound = False
     HoverPicture.IsClipRound = False
@@ -17941,9 +18691,21 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
   end
   object lbFilterClassify_Material: TSkinListBoxDefaultMaterial
     BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
     BackColor.IsFill = True
     BackColor.BorderColor.Color = xFFEDEDED
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullDownRefreshPanelMaterial.IndicatorColor = claBlack
     PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
     PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -17955,6 +18717,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
     PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
     PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
     PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
     PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
@@ -17976,6 +18744,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     ItemBackHoverPicture.IsClipRound = False
     ItemBackDownPicture.IsClipRound = False
     ItemBackPushedPicture.IsClipRound = False
+    DrawItemBackColorParam.Color = claWhite
     DrawItemBackColorParam.IsRound = True
     DrawItemBackColorParam.RoundWidth = 2.000000000000000000
     DrawItemBackColorParam.RoundHeight = 2.000000000000000000
@@ -17986,13 +18755,30 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
     DrawItemBackColorParam.DrawRectSetting.PositionHorzType = dpphtCenter
     DrawItemBackColorParam.DrawRectSetting.PositionVertType = dppvtBottom
+    DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
     DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     ItemAccessoryPicture.IsClipRound = False
     IsDrawCenterItemRect = False
+    DrawCenterItemRectParam.Color = xFFEDEDED
+    DrawCenterItemRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawItemDevide = True
+    DrawItemDevideParam.Color = xFFEDEDED
+    DrawItemDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DrawItemCaptionParam.FontSize = 15.000000000000000000
     DrawItemCaptionParam.DrawFont.Size = 15.000000000000000000
     DrawItemCaptionParam.FontTrimming = fttNone
@@ -18031,6 +18817,7 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DefaultTypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     DefaultTypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    DefaultTypeItemMaterial.DrawItemBackColorParam.Color = claWhite
     DefaultTypeItemMaterial.DrawItemBackColorParam.IsRound = True
     DefaultTypeItemMaterial.DrawItemBackColorParam.RoundWidth = 2.000000000000000000
     DefaultTypeItemMaterial.DrawItemBackColorParam.RoundHeight = 2.000000000000000000
@@ -18041,10 +18828,15 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.PositionHorzType = dpphtCenter
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.PositionVertType = dppvtBottom
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
-    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF66A5FF
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontSize = 15.000000000000000000
     DefaultTypeItemMaterial.DrawItemCaptionParam.DrawFont.Size = 15.000000000000000000
     DefaultTypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
@@ -18083,6 +18875,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackDownPicture.IsClipRound = False
     Item1TypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    Item1TypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
@@ -18107,9 +18905,27 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Item1TypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
     Item1TypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
     Item1TypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    DrawSpaceParam.Color = claWhite
+    DrawSpaceParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsSimpleDrawGroupRoundRect = False
     IsSimpleDrawGroupBeginDevide = True
     IsSimpleDrawGroupEndDevide = True
+    DrawGroupBeginDevideParam.Color = xFFEDEDED
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.Color = xFFEDEDED
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsAutoAdjustItemDesignerPanelSize = True
     Left = 480
     Top = 88
@@ -18278,6 +19094,12 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     Top = 424
   end
   object pcDefaultPageControl: TSkinPageControlDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     IsTransparent = False
     DrawTabIconParam.IsAutoFit = True
     DrawTabIconParam.PictureHorzAlign = phaCenter
@@ -18295,12 +19117,30 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     DrawTabCaptionParam.DrawRectSetting.Enabled = True
     DrawTabCaptionParam.DrawRectSetting.SizeType = dpstPixel
     DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.UseThemeColor = ctThemeColor
-    DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF66A5FF
+    DrawTabCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF0199FF
     DrawTabCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
     TabNormalPicture.IsClipRound = False
     TabHoverPicture.IsClipRound = False
     TabDownPicture.IsClipRound = False
     TabPushedPicture.IsClipRound = False
+    TabBackColor.Color = claWhite
+    TabBackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    TabBackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.Color = claWhite
+    DrawTabBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.Color = claWhite
+    DrawTabBackColor2Param.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabBackColor2Param.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     BackGndPicture.IsClipRound = False
     TabHeaderPicture.IsClipRound = False
     DrawTabHeaderPictureParam.DrawRectSetting.Height = 50.000000000000000000
@@ -18308,11 +19148,1298 @@ object dmEasyServiceCommonMaterial: TdmEasyServiceCommonMaterial
     TabHeaderPictureParam.DrawRectSetting.Height = 50.000000000000000000
     TabHeaderPictureParam.DrawRectSetting.SizeType = dpstPixel
     DrawTabHeaderColorParam.BorderEadges = [beTop]
+    DrawTabHeaderColorParam.Color = claWhitesmoke
     DrawTabHeaderColorParam.IsFill = True
     DrawTabHeaderColorParam.FillColor.Color = claWhitesmoke
     DrawTabHeaderColorParam.BorderColor.Color = xFFEDEDED
     DrawTabHeaderColorParam.BorderWidth = 1.000000000000000000
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawTabHeaderColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
     Left = 1168
     Top = 160
+  end
+  object lbFilterHorzListViewMaterial: TSkinListViewDefaultMaterial
+    StyleName = 'FilterHorzListView'
+    BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
+    BackColor.IsFill = True
+    BackColor.BorderColor.Color = xFFEDEDED
+    BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.IndicatorColor = claBlack
+    PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
+    PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
+    PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontHorzAlign = fhaLeft
+    PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontVertAlign = fvaTop
+    PullDownRefreshPanelMaterial.EnableAutoCenterPosition = False
+    PullDownRefreshPanelMaterial.EnableLoadingImageBiggerEffect = False
+    PullDownRefreshPanelMaterial.EnableLoadingImageRotateEffect = True
+    PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
+    PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
+    PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
+    PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
+    PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
+    PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontHorzAlign = fhaLeft
+    PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontVertAlign = fvaTop
+    PullUpLoadMorePanelMaterial.EnableAutoCenterPosition = False
+    PullUpLoadMorePanelMaterial.EnableLoadingImageBiggerEffect = False
+    PullUpLoadMorePanelMaterial.EnableLoadingImageRotateEffect = True
+    PullUpLoadMorePanelMaterial.LoadingCaption = #27491#22312#21152#36733'...'
+    PullUpLoadMorePanelMaterial.DecidedLoadCaption = #26494#24320#21152#36733#26356#22810
+    PullUpLoadMorePanelMaterial.UnDecidedLoadCaption = #19978#25289#21152#36733#26356#22810
+    DrawEmptyContentCaptionParam.FontTrimming = fttNone
+    DrawEmptyContentCaptionParam.FontHorzAlign = fhaLeft
+    DrawEmptyContentCaptionParam.FontVertAlign = fvaTop
+    DrawEmptyContentDescriptionParam.FontTrimming = fttNone
+    DrawEmptyContentDescriptionParam.FontHorzAlign = fhaLeft
+    DrawEmptyContentDescriptionParam.FontVertAlign = fvaTop
+    ItemBackNormalPicture.IsClipRound = False
+    ItemBackHoverPicture.IsClipRound = False
+    ItemBackDownPicture.IsClipRound = False
+    ItemBackPushedPicture.IsClipRound = False
+    DrawItemBackColorParam.Color = claWhite
+    DrawItemBackColorParam.DrawRectSetting.Left = 10.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Right = 10.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Height = 3.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Enabled = True
+    DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
+    DrawItemBackColorParam.DrawRectSetting.PositionVertType = dppvtBottom
+    DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    ItemAccessoryPicture.IsClipRound = False
+    IsDrawCenterItemRect = False
+    DrawCenterItemRectParam.Color = xFFEDEDED
+    DrawCenterItemRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsSimpleDrawItemDevide = True
+    DrawItemDevideParam.Color = xFFEDEDED
+    DrawItemDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawItemCaptionParam.FontSize = 14.000000000000000000
+    DrawItemCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawItemCaptionParam.FontTrimming = fttNone
+    DrawItemCaptionParam.FontHorzAlign = fhaCenter
+    DrawItemCaptionParam.FontVertAlign = fvaCenter
+    DrawItemDetailParam.FontTrimming = fttNone
+    DrawItemDetailParam.FontHorzAlign = fhaLeft
+    DrawItemDetailParam.FontVertAlign = fvaTop
+    DrawItemDetail1Param.FontTrimming = fttNone
+    DrawItemDetail1Param.FontHorzAlign = fhaLeft
+    DrawItemDetail1Param.FontVertAlign = fvaTop
+    DrawItemDetail2Param.FontTrimming = fttNone
+    DrawItemDetail2Param.FontHorzAlign = fhaLeft
+    DrawItemDetail2Param.FontVertAlign = fvaTop
+    DrawItemDetail3Param.FontTrimming = fttNone
+    DrawItemDetail3Param.FontHorzAlign = fhaLeft
+    DrawItemDetail3Param.FontVertAlign = fvaTop
+    DrawItemDetail4Param.FontTrimming = fttNone
+    DrawItemDetail4Param.FontHorzAlign = fhaLeft
+    DrawItemDetail4Param.FontVertAlign = fvaTop
+    DrawItemDetail5Param.FontTrimming = fttNone
+    DrawItemDetail5Param.FontHorzAlign = fhaLeft
+    DrawItemDetail5Param.FontVertAlign = fvaTop
+    DrawItemDetail6Param.FontTrimming = fttNone
+    DrawItemDetail6Param.FontHorzAlign = fhaLeft
+    DrawItemDetail6Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.ItemAccessoryPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackNormalPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackDownPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    DefaultTypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Left = 10.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Right = 10.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Height = 3.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Enabled = True
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.PositionVertType = dppvtBottom
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = xFF0199FF
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontSize = 14.000000000000000000
+    DefaultTypeItemMaterial.DrawItemCaptionParam.DrawFont.Size = 14.000000000000000000
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaCenter
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaCenter
+    DefaultTypeItemMaterial.DrawItemDetailParam.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetailParam.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetailParam.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail1Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail1Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail1Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail2Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail2Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail2Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail3Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail3Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail3Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail4Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail4Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail4Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail5Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail5Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail5Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.ItemAccessoryPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackNormalPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackDownPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    Item1TypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetailParam.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetailParam.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetailParam.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail1Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail1Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail1Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail2Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail2Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail2Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail3Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail3Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail3Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail4Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail4Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail4Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail5Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail5Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail5Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    DrawSpaceParam.Color = claWhite
+    DrawSpaceParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsSimpleDrawGroupRoundRect = False
+    IsSimpleDrawGroupBeginDevide = True
+    IsSimpleDrawGroupEndDevide = True
+    DrawGroupBeginDevideParam.Color = xFFEDEDED
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.Color = xFFEDEDED
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoAdjustItemDesignerPanelSize = True
+    IsDrawRowLine = False
+    IsDrawRowBeginLine = False
+    IsDrawRowEndLine = False
+    IsDrawColLine = False
+    IsDrawColBeginLine = False
+    IsDrawColEndLine = False
+    DrawRowLineParam.Color.Color = xFFD4D0C8
+    DrawRowLineParam.PenWidth = 1.000000000000000000
+    DrawColLineParam.Color.Color = xFFD4D0C8
+    DrawColLineParam.PenWidth = 1.000000000000000000
+    Left = 984
+    Top = 192
+  end
+  object popDefaultMaterial: TSkinPopupDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.RoundWidth = 5.000000000000000000
+    BackColor.RoundHeight = 5.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    BackGndPicture.IsClipRound = False
+    BackGndPicture.PNG = {
+      89504E470D0A1A0A0000000D49484452000000C8000000A908060000006EF072
+      61000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      03F449444154785EEDD9BF6BDC751CC771EF6782262D148A62855AA9821407B5
+      E091F4874328717173F01F7012DDDC5C9C04A7CE820171133B09BA6948934150
+      10B71210122552874A3D8AE1E29DEF6B8E825A5E2894BB218F077CF97EBEEF4B
+      86837BF2FD7CEF1A0FC18C2D2D2D3DDE6834BEACE573750CEA78677373F36A9D
+      4775CC546B728699E8F57A272A8E6B759C9F8C5AFD7EFFE5B367CFEE96EF27B3
+      99110833B3BABA3A37180C3EAC3856EBF2DE6EA6DBEDB6EB74E5F4E9D3DFECEC
+      ECFC78389D8DE6E40CD3D6B87DFBF65BB76EDD7AADD6F7FB1C3E3C1A8DD62E5E
+      BCF8E4E47A263C83300B8DFAE0BF3A1C0E3FAD75E770747F7577F9B64EAF5CBF
+      7EFDD7C3C974B9833075972E5D3A5F717C54CB18C758DD455EACE393959595E3
+      93D154790661AA2E5CB8F04CC571AD96A70E27FFC953F5AC72EADCB9735F6C6F
+      6FFF39994DC53FB7588D5EAF375F6FA073ECD831DB2F1EA87EBFBF505BA6CF9A
+      CDE64B93D1FF31AAFF7DBFCE1FCCCFCF0F0F470FCE9D3B77869D4E67B0BEBEBE
+      5F97F7BE5EBE17C1E5CB971F3B383878B3E258AD37F0748D16EB100947C1687F
+      7FFFB70AE4467DF63FAF2DDDD5ADADADDFC72FDC0DA06E7B2BE37D5E2D1F1D5F
+      C3515637891BED76FBF58D8D8DEFC6DF26BC5083AF6B3EBE6300A59AD8ED76BB
+      575A8B8B8B1FD79EEED9C91C28F5BC73FCE6CD9B4F34969797C70F3C9E35E0DF
+      46E3DF41C401F7D7F04321040281402010080402814020100804028140201008
+      0402814020100804028140201008040281402010080402814020100804028140
+      2010080402814020100804028140201008040281402010080402814020100804
+      0281402010080402814020100804028140201008040281402010080402814020
+      1008040281402010080402814020100804028140201008040281402010080402
+      8140201008040281402010080402814020100804028140201008040281402010
+      0804028140201008040281402010080402814020100804028140201008040281
+      4020100804028140201008040281402010080402814020100804028140201008
+      0402814020100804028140201008040281402010080402814020100804028140
+      2010080402814020100804028140201008040281402010080402814020100804
+      0281402010080402814020100804028140201008040281402010080402814020
+      1008040281402010080402814020100804028140201008040281402010080402
+      8140201008040281402010080402814020100804024173341AFD3259037FF753
+      B3D56ABD5B8BE1E13530D6EFF7FFA836DE6E9D3C79F2874EA773A266CFD7D1BA
+      FB2A1C61E338161616DEAB40D65A7B7B7BC33367CE7C555BAD9F078341AF868F
+      4CFE0E8E9CE170B83B3737F746BBDD5E5B5F5F3FF80BF1FCB230BC49BDC50000
+      000049454E44AE426082}
+    DrawBackGndPictureParam.IsStretch = True
+    DrawBackGndPictureParam.StretchStyle = issSquare
+    DrawBackGndPictureParam.StretchMargins.Left = 40
+    DrawBackGndPictureParam.StretchMargins.Top = 40
+    DrawBackGndPictureParam.StretchMargins.Right = 50
+    DrawBackGndPictureParam.StretchMargins.Bottom = 40
+    DrawBackGndPictureParam.PictureHorzAlign = phaCenter
+    DrawBackGndPictureParam.PictureVertAlign = pvaCenter
+    Left = 384
+    Top = 752
+  end
+  object edtFilter_Material: TSkinEditDefaultMaterial
+    BackColor.Color = xFFF6F6F6
+    BackColor.IsFill = True
+    BackColor.FillColor.Color = xFFF6F6F6
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    NormalPicture.IsClipRound = False
+    HoverPicture.IsClipRound = False
+    FocusedPicture.IsClipRound = False
+    DisabledPicture.IsClipRound = False
+    DrawHelpTextParam.FontColor = claGray
+    DrawHelpTextParam.DrawFont.Color = claGray
+    DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+    DrawHelpTextParam.FontTrimming = fttNone
+    DrawHelpTextParam.FontHorzAlign = fhaLeft
+    DrawHelpTextParam.FontVertAlign = fvaCenter
+    DrawHelpTextParam.DrawRectSetting.Left = 40.000000000000000000
+    DrawHelpTextParam.DrawRectSetting.Enabled = True
+    DrawHelpTextParam.DrawRectSetting.SizeType = dpstPixel
+    DrawTextParam.FontTrimming = fttNone
+    DrawTextParam.FontHorzAlign = fhaLeft
+    DrawTextParam.FontVertAlign = fvaTop
+    DrawHelpIconParam.IsAutoFit = True
+    DrawHelpIconParam.DrawRectSetting.Left = 10.000000000000000000
+    DrawHelpIconParam.DrawRectSetting.Top = 6.000000000000000000
+    DrawHelpIconParam.DrawRectSetting.Bottom = 6.000000000000000000
+    DrawHelpIconParam.DrawRectSetting.Enabled = True
+    DrawHelpIconParam.DrawRectSetting.SizeType = dpstPixel
+    Left = 696
+    Top = 800
+  end
+  object btnPushedButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.RectCorners = [rcTopLeft, rcBottomLeft]
+    BackColor.RoundWidth = 2.000000000000000000
+    BackColor.RoundHeight = 2.000000000000000000
+    BackColor.BorderColor.Color = claWhite
+    BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.IsFill = True
+    BackColor.DrawEffectSetting.PushedEffect.FillColor.Color = claWhite
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    IsAutoCenterIconAndCaption = True
+    DrawDetailParam.FontTrimming = fttNone
+    DrawDetailParam.FontHorzAlign = fhaLeft
+    DrawDetailParam.FontVertAlign = fvaBottom
+    DrawDetail1Param.FontTrimming = fttNone
+    DrawDetail1Param.FontHorzAlign = fhaLeft
+    DrawDetail1Param.FontVertAlign = fvaTop
+    DrawHelpTextParam.FontColor = claGray
+    DrawHelpTextParam.DrawFont.Color = claGray
+    DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+    DrawHelpTextParam.FontTrimming = fttNone
+    DrawHelpTextParam.FontHorzAlign = fhaLeft
+    DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
+    DrawCaptionParam.FontSize = 14.000000000000000000
+    DrawCaptionParam.FontColor = claWhite
+    DrawCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawCaptionParam.DrawFont.Color = claWhite
+    DrawCaptionParam.DrawFont.FontColor.Color = claWhite
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaCenter
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    DrawCaptionParam.DrawEffectSetting.PushedEffect.FontColor.UseThemeColor = ctThemeColor
+    DrawCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = xFF0199FF
+    DrawCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
+    NormalPicture.IsClipRound = False
+    HoverPicture.IsClipRound = False
+    DownPicture.IsClipRound = False
+    DisabledPicture.IsClipRound = False
+    FocusedPicture.IsClipRound = False
+    PushedPicture.IsClipRound = False
+    Left = 328
+    Top = 664
+  end
+  object btnDropDownButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoCenterIconAndCaption = True
+    DrawDetailParam.FontTrimming = fttNone
+    DrawDetailParam.FontHorzAlign = fhaLeft
+    DrawDetailParam.FontVertAlign = fvaTop
+    DrawDetail1Param.FontTrimming = fttNone
+    DrawDetail1Param.FontHorzAlign = fhaLeft
+    DrawDetail1Param.FontVertAlign = fvaTop
+    DrawHelpTextParam.FontColor = claGray
+    DrawHelpTextParam.DrawFont.Color = claGray
+    DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+    DrawHelpTextParam.FontTrimming = fttNone
+    DrawHelpTextParam.FontHorzAlign = fhaLeft
+    DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
+    DrawIconParam.PictureHorzAlign = phaRight
+    DrawIconParam.DrawRectSetting.Height = 32.000000000000000000
+    DrawIconParam.DrawRectSetting.Enabled = True
+    DrawIconParam.DrawRectSetting.PositionVertType = dppvtCenter
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaLeft
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    NormalPicture.IsClipRound = False
+    HoverPicture.IsClipRound = False
+    DownPicture.IsClipRound = False
+    DisabledPicture.IsClipRound = False
+    FocusedPicture.IsClipRound = False
+    PushedPicture.IsClipRound = False
+    DrawPictureParam.PictureHorzAlign = phaRight
+    Left = 120
+    Top = 160
+  end
+  object btnThemeBorderFontButtonMaterial: TSkinButtonDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.IsRound = True
+    BackColor.RoundWidth = 3.000000000000000000
+    BackColor.RoundHeight = 3.000000000000000000
+    BackColor.BorderColor.UseThemeColor = ctThemeColor
+    BackColor.BorderColor.Color = xFF0199FF
+    BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetAlphaChange]
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    IsAutoCenterIconAndCaption = True
+    DrawDetailParam.FontTrimming = fttNone
+    DrawDetailParam.FontHorzAlign = fhaLeft
+    DrawDetailParam.FontVertAlign = fvaTop
+    DrawDetail1Param.FontTrimming = fttNone
+    DrawDetail1Param.FontHorzAlign = fhaLeft
+    DrawDetail1Param.FontVertAlign = fvaTop
+    DrawHelpTextParam.FontColor = claGray
+    DrawHelpTextParam.DrawFont.Color = claGray
+    DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+    DrawHelpTextParam.FontTrimming = fttNone
+    DrawHelpTextParam.FontHorzAlign = fhaLeft
+    DrawHelpTextParam.FontVertAlign = fvaTop
+    DrawIconParam.IsAutoFit = True
+    DrawIconParam.DrawRectSetting.Top = 5.000000000000000000
+    DrawIconParam.DrawRectSetting.Bottom = 5.000000000000000000
+    DrawIconParam.DrawRectSetting.Enabled = True
+    DrawIconParam.DrawRectSetting.SizeType = dpstPixel
+    DrawCaptionParam.FontSize = 15.000000000000000000
+    DrawCaptionParam.FontColor = xFF0199FF
+    DrawCaptionParam.DrawFont.Size = 15.000000000000000000
+    DrawCaptionParam.DrawFont.Color = xFF0199FF
+    DrawCaptionParam.DrawFont.FontColor.UseThemeColor = ctThemeColor
+    DrawCaptionParam.DrawFont.FontColor.Color = xFF0199FF
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaCenter
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    DrawCaptionParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
+    NormalPicture.IsClipRound = False
+    HoverPicture.IsClipRound = False
+    DownPicture.IsClipRound = False
+    DisabledPicture.IsClipRound = False
+    FocusedPicture.IsClipRound = False
+    PushedPicture.IsClipRound = False
+    Left = 334
+    Top = 816
+  end
+  object pnlGrayBackAndBorderMaterial: TSkinPanelDefaultMaterial
+    StyleName = 'GrayBackAndBorderMaterial'
+    BackColor.Color = xFFF0F0F0
+    BackColor.IsFill = True
+    BackColor.FillColor.Color = xFFF0F0F0
+    BackColor.IsRound = True
+    BackColor.RoundWidth = 3.000000000000000000
+    BackColor.RoundHeight = 3.000000000000000000
+    BackColor.BorderColor.Color = xFFEDEDED
+    BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    DrawCaptionParam.FontSize = 14.000000000000000000
+    DrawCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaLeft
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    DrawCaptionParam.DrawRectSetting.Left = 5.000000000000000000
+    DrawCaptionParam.DrawRectSetting.Enabled = True
+    DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
+    Left = 512
+    Top = 544
+  end
+  object lblWhiteBackCaptionVertCenterMaterial: TSkinLabelDefaultMaterial
+    StyleName = 'WhiteBackCaptionVertCenter'
+    BackColor.Color = claWhite
+    BackColor.IsFill = True
+    BackColor.BorderColor.Color = xFFEDEDED
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    DrawCaptionParam.FontSize = 14.000000000000000000
+    DrawCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaLeft
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    DrawCaptionParam.DrawRectSetting.Left = 5.000000000000000000
+    DrawCaptionParam.DrawRectSetting.Enabled = True
+    DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
+    Left = 928
+    Top = 256
+  end
+  object chkSwitchBarCheckBoxMaterial: TSkinCheckBoxDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoPosition = False
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaLeft
+    DrawCaptionParam.FontVertAlign = fvaTop
+    NormalUnCheckedPicture.IsClipRound = False
+    NormalUnCheckedPicture.PNG = {
+      89504E470D0A1A0A0000000D49484452000000690000004B080600000073E6A9
+      07000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      134749444154785EED9DD96F555796C6EFEC89EB79C0183398C903262436431A
+      0C8452A2282221AA16E92A452DA55BE9D4535EF20F44BCE41FC85B3DB4D40F51
+      7787974E44A0D3A24BC4A4B1217652800DD81833C4339E67DFB17FDFE61E976D
+      6C638CF1BDD7E193B6F639E79E619FF5ED6FADB5CF746D2F11FBB047EA1782CF
+      3FFFDCD1D9D9E9DCB3674FC2471F7DB42E3939392B1008648542A134BBDDEEA5
+      4E713A9D09ACEA5261DE01024C0729BE70383C4E19A38CB05E7F3018ECABABAB
+      1BF8FAEBAFC7ABAAAA021F7CF081D65BF37861246158C78D1B37D2CE9E3D9BB5
+      75EBD6DC13274E6C4C4A4ADA0E49DBF8B980DFF320249BF9D4D1D1D1C4F1F171
+      C7D8D8983D232323E4F57AFD1E8F671C22FB59EF117517DBDC87A83B0D0D0DF7
+      BFFDF6DB8E0D1B36F41D3972A46FE7CE9D53E6806B182B4D921DF538DF7DF75D
+      CFEEDDBB0B2627272BFAFBFB2B317859666666BEDBED4E957AFC7E7FF2A3478F
+      120B0A0AA4A005515D5D1DAEA8A8984A4C4C9C84D031C882CFD1C1BEBEBE1608
+      FF2BFBBCDADBDBDB505B5B3BDAD8D818387DFA7428B2E99AC24A92643F77EE9C
+      17428A77ECD8B1372727A73C2121A10417B5636060603D06F5A08AC8AACB076A
+      B2F97CBE41087F00E1CD9076A3A3A3E35A7777F7B5E3C78FFF0A916B8EA81521
+      09F5784A4B4B0BF6EFDFFF6A7E7EFEEF30E4B1A9A9A94D43434309CDCDCDCEC3
+      870F3B56822001124CDDD4D4145CBF7E7D60DDBA75C32CABC75D5EB879F36635
+      AABAFBD9679F0DB06C650E1803782E9230BCFDE2C58B29B8ADDDA9A9A9EFA5A5
+      A51DC52D6DBF7CF972CEA1438756DA95CE0B91363131318EFBEB1C1919F999F2
+      5D7B7BFB85EFBFFFBE1BF7A72424EEE18CD4CF0C656E6D6D6D05E5E5E5BF2331
+      F803467A87F8509A929292BA69D3A65521C882CBE5724356261D64637676767E
+      7A7A3A7D2675E2D5575F1DC205FB22ABC52D964512C1DCFDDA6BAF6D7AFBEDB7
+      DFD9BC79F38724086FD5D4D4E49694942C9A08BC68405222B1A90092B6E7E6E6
+      26E17247A97B51765C13F5CC3DFE934F3E71EFDBB76FFB9B6FBE790237770A57
+      53868A92572AE6AC04945C90B074D079FEF7EAD5AB672E5CB870B9BEBE7E92F1
+      9AEDADB7DEB2E5E5E545D65C59309C08D329C277EFDE0D933885C86043C78E1D
+      0B3E6F7C7C269244D08103077670E09328E8F7838383E5B8150D46630E972E5D
+      0A93B0740F0F0FD7A3A49BADADADE328CCB67DFB769B6A32435356022281620D
+      C027294A66FA507627A58D84E6D1F30CBC974CD2A953A79CB8B8CDD4A7B66CD9
+      728AB14AF94AA5D52F0A228AF19A1F4305E8506132401B29BBF98DACD0D42B05
+      541B663C17600C38CAF0A017BB7440D45DCA4D8EDF8CCADA58D6B377EFDE2191
+      1AD96C495812494A128A8A8A3632C27F67E3C68DFF4C6ABD874C2E219609B220
+      D787516C647D3606D6A6C6159A652A2F021C279495953521C2486A86B1532F8B
+      AF73BC1F506F0DC955E7575F7DE55FEAE07B4989C3C71F7FECADAAAA3A5E5858
+      F88FC4A0D7E88549F1409005B555AE4DE4904CBC709288D1DAB1070549AE591C
+      A790B2893614B0AC90E32792648D101B477FF8E187A71AD211A9E7833903BC9B
+      A7ACAC6C3749C23B487A7FAC25094F83DAAA929090605C5C7272B2519745DC6A
+      A1BABA3A07828E30F931C7FE1344BD77F2E4C96D757575EEC76B2C8CC54812EC
+      644485B8B6934C1FB972E54A4A3C113417228A44C7106591B75A2054A8D38B90
+      744A15CAFA13A4FD0BF1ABBCA1A1C1A37516C2A24AFAE28B2F32C9E42A323232
+      8E904E6E881C282E2142308A5C9129C48AE9E55140322495A1E4BFE7F8FF84AA
+      0E30E85E304B5E9024250B64463BC9468ED3F3B691FFBBA374422B06C5209123
+      9208DE8634B9BC689C176D7192806DA1FE0715C249D942AE6F2E49528A290CC6
+      12C9E4F692561E696969C98C7782049D838812498A4F22CC3AAF689C1F431807
+      B12A9B639F60F68FB8BE22A69F10CEBCD9DDA79F7E9AF0FAEBAF6F63E0F71E41
+      F6707E7E7E62344EE245C14A1C94E991269B65224F65B5B179F3663B6DD15DEA
+      346607DADBDBBBB0F7C8CCAC6F5E77C7802F15962BB2B3B34B75736E35B3A0D5
+      80C8A0D71A45A91661D13C47DA43BF714A45EFA2EECA0F3FFC7096DB9B4992E5
+      EA94056512872AD9685B6B6BAB5327B196A0F3919A94E529E3D3FCCC1225A410
+      232B21ECEF50F846DA312DEB2762120983ABB2B232CFEBF5160F0F0F67C57346
+      B718943488202949883241061094461B2A51F5FEFAFAFA548BA899249916320A
+      F61E3C78B0302B2B6B437A7A7A4C5E3C7D5E880CCBE5A988B058004984BCD62E
+      CA518FC793DFD8D8687A90D53AC3D8A953A75CA4A6EBC1361AEFD5C9A8AC6528
+      C3B3D414EDD82BAF4587C961B29C4EB499F6A468F9AC2E848F76E0ABD7C3A256
+      488A2C5E93B03A9F48E27C8D9A62A4534A4D790C70770502816C2D1049529151
+      123EDA41A3F54381CFE74BD6B2B50EA94824091649D1268A0EE3A52AA3367727
+      672909E6C462066ACA7DF8F0615CDC8A781E282E29CB13519A8EB6BBB3405B52
+      28DBB1FF134AB28F8C8C409E631D8DCD282D2D5DF6432AF100AB038A24152156
+      3A25F6D7C5837C4AAAE68D928E1E3D6ADC1D0BD5DA145C9EE4B6E62152148B54
+      04294925DA64A12227259B769990635A373A3A6A489A9CD4D3BC0E0F416B4DA6
+      DE732117A73293A468136481B678695BA2A61DA4DDF689890943526262A2AE23
+      B959E171AB7F03104122CA42AC9044BB742FE56FE3A4B2B23255BAAD6CFF2D11
+      644124891C8BA058208A364C73E1E8E9E951C260BA12D99DEAE77E4E2C9E2042
+      E6BA394D479B28380851CC63D23355639792685C806C674D3C43FD3458648824
+      156B598C6082B69877AF669114A9F580DF44647ACD43E4D0392373B101BD9745
+      9B86E06152F3D32455545498697E1CA7E1C35A7166405D6BD0B9A98820DC7C2C
+      29C8B66FDF3E1FDEAC8BE46144F386182BBBE387300D1EA5F49794943CBE65B9
+      8621624490CFE79B7677B180A4A4A409DAF3003E06343FADA4A1A121871E95A5
+      670DD3F0DE949494B87F656431585E42B7CF45921415439E638CD24C9B1E69C6
+      900473611AABF152984CAF97C16DBBDBEDD68BC5FA794DC23A3711C4794F9314
+      ED73D6F3EB5403B8BAC68484846E2D9B56527676B64324F5F6F6F6FC0AA6A6A6
+      26E60EF4D6222C92E4EEAC738DE639138FC6684B2BA2698583212D73E87D1AAF
+      D76B94847A4277EEDCE9BF7DFBF6AFC3C3C3431156D72C448C4852B112876812
+      A507FD3D1E4F1BE2B80227BFBEF2CA2B26BB73DEBC79D38EBBD3E32A0E1AEB18
+      1C1C0C21B3B45DBB76959695956D80B8451F818D4788001134363666DEB4D0EB
+      30F21ABAAF841D9EB854B45A8087498EFB03C7FF7A7C7CFC4E4141C1DF06B3EB
+      D6AD33DDC8E57285917E88860FD2F05B6CD0859A6227ED5921880065757A0D46
+      AE4EF316312A518208B947A985A0A6CACACAE9EC7A3A2641544829386C3A68FC
+      006EEFFAA3478F5A77EEDC19D409AC155844C8C591D1DAF46299E6A5A02893A4
+      AFBFFC0585D7D026138B2C98BB5D0F1E3C503C7290E13870757A4639C0B47FFD
+      FAF51B8B8B8B77A1B024B98778870850EC5121E6DABABABA8C92F49C83EECEAA
+      D63AABEDEE18FA8CD2496AB0F1BF51EA0F1D3A34EB533C9644C2F8E3B0DC9DD4
+      84ABF3DFBB77AFBFADADED36AABACD09994C2FDE612945B1686060C03C66AC79
+      2B0E59EBAC26E824FA2CCF55DAF01F246F3FE3E6C6233F4D63DAF27A5B3A3939
+      39C48A41320BF5B4407373F36D128B5A1AAE977457FD04561A6ABF3C82DC9C12
+      06C525A947E716A54E380E413FD3AEFFA4C39CDFBF7F7F7F64F92C58CF318459
+      C1DEDADA6A4F4B4B93DB73B191839319478AB64D202525252F9E333D8B20C5A0
+      EEEE6E5B5F5F9F59AE8C4E44596A5A8DCEA8549BD83F427BAE70BC7FC5AEE7F7
+      ECD9A3AF91CD3BE499EE3E67CE9C094350085717622395203E7B8231536B5353
+      5335B26C613A2E9308195DED56B2D0D3D3635C9D08133133C959A5730BA6A7A7
+      2B8BFB2F8EFD67DAF6DFA5A5A55D0B1124CC6A9552F18C8C8C20271050D1ED74
+      32BCFEBABABA5A08AA292A2AEAF9F1C71FC3F144940852114122472A524C1239
+      9682F4BBB5EE8B02C98AEE8774525FA53E830DFF4C9BCE969797F7E867ADB310
+      663DB64596A737E074DBD64E5CB2B31327312A0C513ED8F767656525B1D3BCCB
+      972F27ADF6F783960B91A06C4E0475747498AC4E64E8617D1565752A5ACFC24A
+      90157169013C9032E5498E7183C56769CBBF73ACF308A0095B4E9E3E7DFAF106
+      8B601649C08EF4D4DB0C491064D272C8D2D700C7D9F9647676766A4949491644
+      25EA05A8C8763109295E044939529088123090793749B562921597448ED65F2E
+      740F2E3737D7C77E8649C23A38FE2D6C564BF91F7E3EC7312E305D0739DD5F7E
+      F9E592EF34CE35B2E61D911B806E4E2481409BC8CE134920DC9092F3FEFBEF1F
+      7CE38D37DE660CB58F934C936F578925C8D8228898EA472DFD376EDC18C44BF8
+      742B062399981B197268DAB0A2F589C972F7CB228BF565F429B61D655A1FD7E8
+      A06EA1BEC9315AF046E3C78E1DF3F3FB33DF069E8F24BB1EF3FAE5975F5C9C90
+      273535D543AD6FA4EA13359E1D3B76E49D387162FFF1E3C7DFA4D71CA8ADAD4D
+      ADAAAAD2B3118FF71065CC2488DE7CF7DAB56B3F7EF3CD37BFDCB973A78FF3D0
+      F31B3EC83185695D7A0992C99A71E2C183076D870F1F36EE0F2FF278874B04FB
+      A2AF86F4104F00CFE3A3036BBC334AC718997989673998CF5D19A2509393C6BA
+      682CEDF724E8B8141197884BCC434D7B39A1E3A8ABE2A79F7ECAD3D721718D8F
+      F710258820DAA771D024EDBE7DFDFAF54B172E5CB874F1E2450DC887206612E3
+      4D122FA65A5A5A64B8B8B88C3237264DA3B3B3D37C9842BD4A23734ED0CE09CA
+      0D3AF96D929EDA8F5106E5D75197971E934CD2E192A1561B528EC851E6891B1E
+      20CD6EC013E8EB919758769F983449DB24F510ED558F0F9304D9703F3606EB8F
+      7712C3589024013F6A938F9611200AFB9B3770ED912BC853EDEDEDC3838383FA
+      1CF4504E4E4E12447A712B2EDD4014592F9A30EB1810A1DB2B0132CE2E8EFF7F
+      04F073E7CF9FAF6B6868E824E199C013E80AB31FA5FB281A5A0438A7102A9392
+      62C34F2F82C548321656B64702612726E9211543186438A9EDBA108BEB18EA05
+      903688C14631949E324AB97AF5AA120DB38F95264BFB8BB4C3F6F0E1C3407171
+      711799DB5FAF5CB9520D61D53535358DCDCDCD7DB83CBFD2603699C2234CA126
+      3F2EDB8FB282BB76ED0AA1A2982748781A4976B2A230CA308A1251F458DD240C
+      E332B0955D71C87EFFFEFDB1D6D6D6767E574633CC6F81C2C2C2308611914E06
+      C922D518D6EC3842DA62E4E937AB58DBCAA5A9965B236919630CD2CBFEEF42C8
+      1588F9CB77DF7D779944E6812E08B3AE9F76E8611A43106AF2A12A9FC62D6565
+      65415D61797CA4D8C752BAB8214B89042ECD41CFD543E41E7AA53E1596C849EB
+      2D0C6CE27492C22663BCF43CC0FADBC86A8A0B0A0A8A217513EB25EB7A203DDE
+      811B553668D73BA20B6585168191E7FFC25BB66C31178031B6FE2BA107725A9A
+      9A9A6E41D86D928076F6DBC77E8751898FE3A907F9584F89D614EDF2CF439055
+      621E4B2149301210515205C65096E7C6B727D05B3D2AF4560FDE45D9A006872E
+      5C502683DE42482B84DC0DF9F9F9B904F5ECF4F4F44CB6D3CB51EB483692886B
+      6E0C374BD1FA1A08C94800E34EE1D2C6D8E728C61FC0ABF6757474F492B874E2
+      66DB51F043C51D92183DD9A42F372AC6E84B913EB69952AD7995782548582A49
+      464D9AB01485B194C9B9BD5EAF9B58E5A1E89D267DFA59CB5D28C44C439E8B4C
+      2A51A461F80288DAC036D910A9D73ED3A8F5EAA154A96D98B407D9970C8BF0A6
+      8631F620061E40395DB8DEB65BB76E75DDBB778F10381260FD00EBCBAD9969B6
+      D1D8488AD1B8614ACBD92FBBF0078A8A8A42F14890B054922C18B28E1E3D2A97
+      A597A0A526BD67EBC6E5793098BEE4E596C1318C6E77E88EAF5E7B776A504C49
+      C615A560C004B6B54895FBD4BE8C5A312CBB08CB5DB1CBA0C9C8204D844DA0A6
+      31C899C075E95BA78A8FBA8210647F86242987B8E8E7387E96FB515A80781A8C
+      67828467254930C6B488C2204EE2810B75B9309E51173FEB92924B835F4D6330
+      3D1DABBF4230B148DB63645516B44CC6B3DA336D48488E4C99F190197C8A18C8
+      0C42925FE448312CF3A9569172204BEE3214EF0409CB2169E636E63A1FAEC881
+      419C184D599C8BECCA4DEC92928CEBC3804ED4A0DF9C28C3A80663AA58FB9AAF
+      1DBA2562920691C3762A41B6551584BCA00852615DE3F2448E920B8E1FA4D384
+      886D33C741714990B0E8607629208687CBCBCB75BF468F8261AB9009E01A8BE8
+      092419111505319EE9FD02463746964B9BAFF0BB5C975246195F898014E3631B
+      935633ADB45ACA31452E8EFD9BDB02283BB875EBD6D0B973E7444A5C5CF6791A
+      96A3A4B9D03ECC7E2C17A8C402D7679E3C424D0E0CEA8428294D515C4AD2D548
+      F3FD306D87D1CDF65A0621463D9A877873D59A981364BB10FB3257B0591EC49D
+      AA6899EE749AAFD9D7D7D7CF54CE9A2048786E25CD846E1ACA588C69C296B2C8
+      E442F4F490D404497249528871554C2B31F0439AC9D230B8D4623232D6D7556A
+      8D75FC520A04EA6F78342035977518A7053896514E666666DC5CE2590E564249
+      7361EDD3DCF2686D6D358906AE489F0C350AD33CFCD831BA99265E3DD10E88D3
+      158B304989A955182799FB402828CCB6E67F21662405C24B929609430450EAAE
+      3BBCE698645DA626A59EFE44810591A01A15861B1B1BCDBC4899F1C94B8B9835
+      49CA5CAC0649338F313D2D95E9CDF7C8ECBC90525447D462C19AFE4D10F4122F
+      F1122FF19B81CDF6FFCA8051EDD419981C0000000049454E44AE426082}
+    NormalCheckedPicture.IsClipRound = False
+    NormalCheckedPicture.PNG = {
+      89504E470D0A1A0A0000000D494844520000008A0000005E0806000000FC288C
+      5D000000017352474200AECE1CE90000000467414D410000B18F0BFC61050000
+      202449444154785EED7D49931CC795A6BBC7969199B52F580A0BB11120015224
+      211A293549B0675A23F68CDA3487A6B5CD413FA00F7D1A9B735BDB9CC6DAFAD2
+      6DD6D739CC91329B319984E991346A81A4287244801008140A40A180AAC2566B
+      EE19198BBBCFF73C238A55600128ECB5E4473A3CD6ACF0179F7FEF3D8F8DB30E
+      D68C137FFBB77678E1821373EEBA3F3CD1EBBE7E7448B8B93D3A087633CE46B0
+      C9A0667C806BDDC7B4EE654CF992398E60DAE10977E937B4AD23C5786CB13866
+      4C048CF3B2E6BCC4995EC0EA79A6D94DEEFBD32A6A4D455F5D98733FF943256C
+      3442EFE8D1F8D4DFFD5D42BFF13C60A575070FC0F12FBF749894FDB60CB6F182
+      BFCB7961D73E3ED8BF9F6B768029B51F14D8ABB918E14AEDD04A6C4B62BE2D14
+      62C00D581FCFF16E66B33C152E78176FE8EEC0164516F382E0580B42615F1F04
+      CB3386792CD35AF9BC5A2B44A5926F0FF77BC9E197F9F7FEEB7F8A47FFF92399
+      1ED233454751D68013FFFADF7322BFE780AC078759B57284256A3F1FE8DBCDBB
+      F37D4CD84519ABBCA5131041E574CDF14005A31E6B85AEE98877C5214B444B72
+      BB6939A2C95452D7D566492D2EDEE0C29AE07DDD9798EB8E8537CA573FFFABBF
+      0AD25D9F193A44B9075EFEF043B7777878D03EBA6F1BDBB77BB7E8ED7B89D9DE
+      61E6D847E056F631ADB64349D2AD9F1284C0191277F0CF75ADA24B2C4AC6D442
+      F9229F9A9C8AAE5C99ADDE589C1BFDE8A328DDFAA9A2439455F0C1DFFC8D5779
+      69CF216770DB1BBCBFE7B8F29C172DDBDDC51CAF37CC89BE9C16059D205C904F
+      D90B5816E3B6CD5A5C35EC2029732DCB3A6C4D8B30BEAC4AE533FCCEFC99FCE5
+      EB97FFE59FFE294CF7786AE8106519DEFECBBFF4ED83BB76A8DD7B0EDA2F1D7A
+      4D0C0E7C175C78C39A9EDFC376763BE966CF17B7AAB1DC3D38050E7DA5E617BE
+      4C2E5EF94A4C4F8D27E3376E7FFED39F3E3597D4214A8A1FFCFD7F2E34865F7A
+      49F4E4DFB5F2F9B7745FEF1195CF6DB7668321DE031FA074BAE57386407E5481
+      CF1BF6E75923B8C3CA958BB2D9FC42559A9F14662F5EFCD57FF98746BAE513C5
+      96CF7A8E1F3FEEECFEC94F76F2D7DF78C33EB4EFDFF2E1FE1F30D7FE13C1C53E
+      112745EE719C9974E3F5001C0B1D134F920217621BCB7B3BC5B6C16E7BA0CF8B
+      91386DDF7B28DCDE6A05B76FDF7EA201D45624CA928A1249BC1FFFF97EF7ADEF
+      BCCB776EFFB176DC1F482E8F58CCEA3367643D116435405DB865FB8950FD9CDB
+      BB45B13068F77733D1D3D31CAE36AACBC8F2D89E63CB2ACAF11FFD286F7FFFCD
+      C3DE9BAFBFC7F7EEFE77CA71DEB7A2E88095E89CC966D63B4908748C38563A66
+      2EE5B0F27283564F8F2FFC1C57AE1B1CB49CC6E4E4E413C98AB624514E9C3891
+      63EFBC7DCC79F3F53F13BB77FC48DACE5B8E523B9E7ABAFB946109D19D58D6A0
+      5DF407444FAF9020CB7E26CACBC8F2C8CAF2C483D9F35A170B8C1563AD0B9CC5
+      392CF214E38EE6CCE19A4606B885A4F29904D139F4031AF39EBC3CCA3E3EF94B
+      76F5CC1956415AAB0EEFEB6FBDF19D57A2BDBBBEAF2CFDA613CA9EF61E9B0371
+      CEAAD8CA3AAD27A7FF6FF4FBD3BF16E7C72E7EF6B39FD5D2D58F842776C2B4D6
+      D675C686121DEF574CEC812AEE145A0F6255BF66BAC899C8639A8843A396CF84
+      28ED3FA359AB5E6773B76FF2DBB767F5CD569D4DE5ACDC945FE89F2DB8DB5D99
+      F45AC97319157F6AE00E32794B9459149D97D377FE777CE6DC6FF9575F7FBD8C
+      2C6DC33C041EEB844D29E587E642583C08726CC7CF8D801CFB418C3D88B47642
+      410621E7FD919314DD5BA53CDBB9ED398C4568E6301BCAA2D98C0CD9854A999D
+      AF2CB06BB52AAB4621B25ECD6C1A01DD84D08EAE326E7FA9AEDFF81594E564EE
+      B33F5C3E75EA542B5DFD5078E418E5B252DD8A2747E0D5DFE59A7F0092FC3917
+      EC0497EC352EF5915614EF752A95EDACBBD0872C22C7BA8ACF341E82C2212940
+      3F40BF49C0D8B24ED8F5B0C9461B3576BD5967B5186E1BDB504F41B2D9DE69B3
+      80B4024D12B6E77161F5E99CEF3BC5AE7ACBB52A07B95D47CC925D855E73C31F
+      DA42E7A1103916EF944CBC88E4EC15D8FA0DAEF42B373FFB74EFC87BEFAE9BAE
+      4944B14100890075316AB1B16A859DAB96D8E57A959592D890C4D9A44AB204D3
+      01A0EF9E37ABE3E4137D75F2E7EA0FFFEF37BFFB6FFF38D5DEC09CFF35B9A087
+      EAE56388392C26DF626D05F90B10E44F78228F7CFCF9EF76BEF2DE7BEBC2EA44
+      1010389B61CD386653CD063B5B596497A12625BA0D84A26A18D128CE1600FFF4
+      D3BCD8B3B75FFB1ED3BE3FB37FD7BEF9C92FBE20179419E081865893A5E0663C
+      54BB3853C7E1D34F28CDBF5729975FEE1FE8A5E5EB0A44148B116711C442396E
+      80245F5717D96910E5662B6012EBDDCDAE2477833A04DAADB87349848D8FE2F3
+      177FD1FAD9AFCE9DFEF9CF9BD91628F75596075A8CB219C5E2C3F833FF516AF6
+      13AED8BF6FD56A2FAD479210A8C582DA0C975342B07A05AEE612CA0205AE58BE
+      A69EB1D90092102C61EF6585C2FBA2ABF0AED8DEB7CB2C5C23EEEB7A6E6A9D9F
+      D1D1316CF667B0F18F442BFC1EF3EC6D6ECEB3D34DD627609726D4845CCED7D5
+      32BB86E0B5A924B3106D53CFD874C1EB1AC15D61275216442B4E58184CED29F6
+      DD79FBD557E5E8E8E803471AEF49947FD5DA7674FC0AD3E2C7C86AFEA21586AF
+      3A79AF3B5DBDEE60B29CF6045C4EC266E066C61B551397CCD1CD63584EC1ED56
+      254906C1785EBAAEB2BA0A0B38C3E5D2F844EDE6F878763FCB3D8DB3AAEBA198
+      64BB8E5E82AFFF3720C90FD9F4F4717F1D93248385760A10A291446C3AA8B349
+      284905D324BC5B2C2A591D12C201976C7715B6F1DDBBBE6BEDDDF59A3334D49B
+      AEBD2F56B51F92ECBD82593F8453FF0FAAD93CC65ED8BD6E5D0D290995748E29
+      18A31C46C6ED4C0501ABCBA41DB76C712569037682ADA0AA7D5AD8AFB19EAE37
+      92E1FE1DE94A0219292B2BB0822814B8424D860453AF2383FCD3200C5F135D79
+      1A7A5FD730AD820D1290A401B7B310B5D84CD86265A849ACB6562ABC2624D2B6
+      D4FC4E96F70FD9FB76ED7DE7AFFFBAEFC30F3FBC6FBCBA82289718EBD34CBEC9
+      91026BA98E6E04774300A98DAA0420C96C18B0DBAD262B8124214842FFADDA45
+      B63034DDEBAB7B1DABBB3862EDDFF7927A61E4C00463C56C755AAFC012516068
+      F023DA01A37F1F936FE9566B285DB5EE418DC0C19B4C8782D819280A65392422
+      08DEDA1B75F00DC855A324BED32F86FA8E88FEEE235C44240AAB9284B044940B
+      5AF721787D11FDEFBB22080EAF779793C526544CC311A43540943B5094993064
+      017A0D65381D97B30A529B3989DBA32DEF45E67A875DCB1DC09ACC585467C5C0
+      1085B29C1C4FF661DF5799D2FB59D12F98B51B01D40770E0744DA749F1491C19
+      B713619E1AB7D4133AF8363E3BE549AD46B8EBBEC07A7AFB8E1F3F6EE214C42B
+      DFEA5DE24BADE9D2FF90D4E20DCEF8F156146D6BAFDA0000414851882421D484
+      AE0897506AC87422ADDA5DA2A328F7847EE71D6E0B3EC0FABB77B1170F0E178F
+      1D3302313B3BFB6DA214B4CE31160FC1C7BF9A287DC42F97FD74DDC6008812C3
+      CDD4E39855A124149BC444A0747507F7013A18EC67F3AEEE3E67CFCEE1F0851D
+      831F7CF0C1AA9766844B3935133B109B1CAC562ABB9ECFCD458F06437B90A205
+      0529C5212B4794E94843928E92AC01B01D15EDB945D6DBB3CB4299EBB3BBEAF5
+      3A19CF98D16C0708A9E39D981FC1F6C3EBF542DF3D61E2136586EC2B703915B8
+      9FD8C4260862DB5B74703F1051088AE594EBEE609EBBD38A735DED852B017B8A
+      83703BFB94D61BE206E3E5D90EA5C49AE213280AB99D2A88626213F483A57B52
+      3A78202C6DE72D476C678EB743B8AC180481315E1AD49A421D8FEE71DD6D2BB5
+      EE476057807A83D270B3885140161A91A5F824C174D6BA0ED608BF96D3DC1E00
+      1B06A0D2FE5063C808F2F2A056C0E0BB518D0449B2815262102455150D0521A2
+      3411D0D2D8095D252635E9C4286B007536B2E1BCE7318BF732C1FBB1D40F7784
+      C67869AC62A605CC3ACC351B84DC6CACF8C44019B2908AB4D2B2B11FE17A3E10
+      433901C31599B08A4882DC388E0D39321744A09BC1CC2315E72F9C7BA8B7043D
+      2FD0912F8F53345C4F025509419210F3ED9CA7E37A1E0A50DF28B60B9CDEFB62
+      31170431AE278A229EC52902FF760571DCF5DE7BEF6D2CDB927AA090EBA13A26
+      17846ED1519447835728B9900D0F06B57BA534E418191959E204C528457F7676
+      C304B2262346F92646818AA485EE894565D46463B17E1DE093F336D8E07221EC
+      B0582445E16118F289890941AA22905EFAEBF9C6A4FB8206164DE6A38CCBA107
+      43DB8EA78387C67B2738CCE870AD2D3F8AC489132744B3D9342E8820B07643C4
+      261956C4277037C6F560DA280A58D221CA23C00C3C51A608A2306625703D94F1
+      2449C229A0A5347989311B0A20453A61C6520C69DA731DA23C26604B1EFBFEB7
+      7821B410CFE4F5934F0C441222C6B242F3C8F3E1623BB1C92321B5212425E19C
+      6B0945A9542AA2B7B79753E643EA2210BC04ECFAF4737B75F6E3227BA88B6EA4
+      A0B23125721DE0E353E4BB13C47BDA57EA5BFD4D8045F56078387BB4704300DC
+      373031097504CDCDA31A54684496D667DB74B00690B1DE3D466211C380C86F14
+      1F1C1C5CD1E748B16BBEE3D43EFEF8E30D6BDB4C512875EB28CAA3216CF4465A
+      CB18F6034FFCD51485CD3321168F1D7D75DDC72A59D0BA621AFF58F8C745435C
+      A84946940DCBFA670993EDB46DE95951932BDDD48853644E724A8D29EBA14137
+      CA7CE8F5B6B350EE79DFA797276D4C103928C7A7D2519487879E6F29C9E9430D
+      8ACAAAF12AC528D3509B9BBE6D3F95371E3F4950FC9169E2522C820516A67369
+      A138C52C375B75F060C0A6BD4E64455155474945296904A31886C2B66D7DF3E6
+      4D0D11D1D40127B0E97422C0A80D0A1B8DF541121FBCDF9843CCCF175AC71193
+      498527310A5B3504A1D8651C7EE99AE0BC922E5BF7C854C5A806661C90A4C005
+      0A0D2D668AD2D1940702B63225D12DD56CCEEB66B0C0E23840CCC2D3EB3D4B10
+      16776EC1AC37B1FDECE2427943C62914C476812845F09EB21FBA82DCB98ABC06
+      D09BA7603B1EC7A1AC54E765B93AC7A2C87CA1830259B34D0A819CA8C499BA8D
+      7E38DEDDD37383DD9A89D375EB13692F3077B0A5B50B9274718B155188341D3D
+      5923521BAA46ABC966E767F9CCDC0C521C13827429C5CBE5B2765D57178B452D
+      1A9CB720DE73703FE76CC1C782DEDE67FE19B287862103D5ED697A4FAC2F2C56
+      40ED6121C529E9161DDC0FB0D72C6352379B75756B6651CDCC9793466355AF22
+      BECB3929C89CC5D519F4C3D339D79D69AF5A9F30994F5A187D5D02B5404D2FF0
+      A338A50B14C9D3482D24A51DAB74F02D90EDA8C03AC3415293B5DA1C9B9D5B64
+      F3F34D49177A38BD1F024902B21ECA788687874DD6C35E14226C69FB1AF63D07
+      E34FB07AB0EE53E536401410848A40C9A1F4204EA10753E829366A6D2756B90F
+      68CC44C673A2D1BCA51ACDAA0A0209D7A32DCBD281EBAA7C3EBF64BEA5C8F628
+      E725C9D465C42A5F2ADFBFA46ACD75992E1B6F83426F29302431BDA34D961C6A
+      7AE6A01F5BE4503A8A720F648AD2ACD565BD3AA9CBD5EBBC155610C01A624049
+      1491C5F33CBD7FFF7EF5D1471FB515854072C3B97B1BAAFD1926BF60B9DC7CBA
+      6A7D8248622A34212D3ECA0002DA01F09FBECED021CA3D60213784BB96615851
+      5337AFAB9BB7AEB3565045E00ABF9DA79BAA55BD5E5734D896EEF18DA2100E33
+      860CC8FA0318734A58E27CD00CABE9AA75033A72521153882CA646B1401418A0
+      0F85C852048D1C6C6C9E264CF7EBA00D734BBDD2095BACCFE92B13D7D4C4B569
+      5D69D462218C92388EA3283EA18C87D404BB7CA32804185D225E99534C7C0565
+      F9ADEF7967D7AB0B22988327B2A090B2D82009653FDD204A2F1A504413B37195
+      0E5180D4E5A8F9502571BCC04AD51BFAD69D3B7266A1229BCD905C0EECA88320
+      58119F1056102503D2CB49C5E4BF60ED2F443E7F7EDDDDD884C69A18252B4414
+      90845B366A1B69B2C586419421B0C34F19D2210A005B51496C5E138BE571353F
+      7F1942300F5F13CB24A184075522119B288A4F28E3C15EC674AB1285B2A03BDC
+      BD88E0F6379AEBFFC376EF3EB3EEDC5046906545C3FD90FF25551986AA1059E8
+      39148A653AD90F60435F611FD6AA95F4E4F42539357D45D56A65F81944FFF429
+      459590DBA1F8646E6E4E51209BEEB93A51087FCA79D2CD9D51C1D5FF8283FAA9
+      97F7BE628D563D5DFDDCB0A4226921652192C0B71A35A1DA47DD2F6C9045B03E
+      C5A12A9A595B3956818D964AD2A8F1C585E964F4F295646CE23A2F952A8ED609
+      B91CC424328E63092541E2EB2FC52754EE4914C208E7CD83DCFD2363F2975CB3
+      5F303F774AC76AB251AED1273C9E3FD0700E322CA90A1445D836A577CC47EFE9
+      83B26C4333FBD12F685C859EFBD992CA02DB3052DB643E560BF5293D7D6B4C4F
+      DF98D6F3F355102382A2487430088A4AC8ED148B452A2BFAD47D894240AF952E
+      772FE114FC4F74CEFFC12C7E32D7D575713D5C40044DDA198F2109A9094842CA
+      029258204B17883282707627D8D18D66D383D62B5ABF55404441C36559CC2693
+      53E7E4C4E43959AADE414618C35E34121B6BA80AD26264CCA124B743A3B1D873
+      C95C0F240A611FE7AD43428CE374FC06E7E6E716D727FBFA7A7FCB127D9185C9
+      FC73BDDF7699A218F703827014C80AF3C8052156D901E11C929A1550285E31CA
+      42139B1D940613493EF984BEC059D6B3B397D995A90B72FAD675110475E6BA64
+      37BA999AEEBE5F5293A1A1A16F09EF439B8B3E1567B17884DE498BDD8F29CD8E
+      0BA58F3DEB4FC5D17D9EC477AA95468E162774699CC551C4A23064AD568B4914
+      AA17A3904DA9985D138ADD860437C880F8DF7E7EF47E36A0C0150840126FAE3A
+      2A2F5EFA5C7DF9C72FD514DC4E18D6B4E3506CD200495A204958AD5623D8303E
+      7AF4A8447C9291C558E991FBD555AD7B348B0F4A268ED33705D1570F429F8678
+      A2BB103E77D18B79FC7A3DC786079EF823ABE6C82940E5703598247652ABE8EA
+      6642EF98A597FE81203111250860A880CDC7119BD6099B80ED66D0EAA6964CD3
+      D72640B2F625B04D842C70752CA6A3A8A96717C74192DFC90B6367D4E56B5309
+      3DDDC558837B5E04B74317020D515255894F9D3A45E6CCACF2784421D0E76C63
+      CEA1EAD1C07D3E673B10C471FB8D094FF061783A7A381C738F6C362FF11F8233
+      0667CBE06B4194B6B224F4950DCCCFCB984D629B29A1D91C0E8E22728A5AE899
+      954D855449986A0449A975555F9E382B4F9FFD22B972FD2A473A8CA024248220
+      E8271304B0110DB645411024CBD46485551E8B28CB0117F0AD0F6423581AC21F
+      40D2A18B38A934A4416F75228579ACBF4BE4A038A35E2FB3F9DB777879B10C29
+      C112D050460A9E30E651980819C5224E5A42865244716C0561C867B5B2E6BA7D
+      6F61B0B73BB0BA7A59BF93C70ED400183653DB0D0A8A47484910CCEB286CEA85
+      C5697575EA74F2F5C5B36AECD21536B7B890404C9D7C1E1E3A6A3A8ED3C2790B
+      504728469097A9C9D3214A86BB3FB90FE6E6701E1C048F367AAE45390A4EE963
+      FD5DFA943EE1D2E551F6D9C95FB24BE7CE1151B993CB09A1949D80B45C4A077F
+      C741A4E631295DACF7E25664C75C7BE1F6E181F8D88B0792032F1CB1FA7BF673
+      61B7DF0F435F9DD8C8489544ABA4294B950976E5DA3979E6DC99E4EAE4042B95
+      162816B1856821170E8920AEEBB64018CA5E8924F1E9D3A7C90019419E2E51D6
+      09C4DB6FBFED414A3D64423E0234226C1EFEDA75382F58434383E2E8E143D6B1
+      23AFDAFBF67C2729F6EF717A723D4BAAB2D108430449D524AEB42A767D712AB9
+      36F547397AF1EBE4C2F8B8585C2C21AD094849B0751324314A02DB44CD6633EC
+      EBEB934887E365036C841544499DD9A683BE71E346B26BD72ED96834CC955078
+      65C3017AE50E8FA244375B21A748578B5014D0CF3CA7C02CDB37D2BDD15C5016
+      93B49A25363F3B26C7AE9E91E7CE7FAD2F5DA391D792424CA26D9B942342E04A
+      F108294A843A2E140A49BD5E97BFFEF5AF57753919361B51E8E574D426E7C081
+      032EA436875EE3C1FFE6DCBCEB719B7B16A6113B09D124B280287112E84445F0
+      5C9C59D2166ECEE5AE6B9B91CCF52AB844662287639B0BA14C262D599A9F5153
+      7397D4956B67D5C52B17E4D5EBD37AB15A510C6DB32CBA8643CFEB50101B92BB
+      411D23358E8947870F1F56A3A3A3AB1224C3A653143498BDFCF2CBD49168D69C
+      69BA2187C658401A4E851483DEF8460FD7AA4633E2B56A9537828A50BCC55DCB
+      D1B157E0BEE550EA6C705F133E07A4E34034D8A817A326ABCC5D9757A6BE52A3
+      63A7F5D8E53179E3F60CAFD72B4ACB880B11A2739082B44C8C82EC06CD266541
+      32182434B876F2E4C94C4DEE894D4714804F4E4E125998EFFBC8066B2C97CB19
+      C21059D09368F416F1AB6D6929B90A43852CB2C99A8D1A6B060D7A692DB7146D
+      A819B6E39F7FEEB20307A036A9C2985F32FF3C1B907A9811D6B682D08833FBF4
+      53AD77ECACB1727556CFDCBA0A15B9A02E5E3E8BA0755CCECCCEE966B3853D62
+      E179317A068D8FB4C8E5504C422A0282C4030303126E47A659CE03B1298942FF
+      1059060707190235CA880C41A8C0604BD3C642526AB330467E5DA935E4C24249
+      97AB0B5AE91AB784E4870E79B3C8DC0AA6FB3E076921A2981611389BC5B11686
+      B72FE899D9714959CDD9AFBF4A46C746F58DDB3774AD56B55A2D0A544D4C0252
+      1815C12EA4244B44E9EAEA3271C9EF7FFFFB072A49864D4B14AADF79E71D3633
+      3363AE03C160E476CC4B625010914024E08660290169267541DCD20C59A952D3
+      F566057EBFC1C230D08D20CC375A8863E244D896D40D6EF1A26371C769C709D9
+      D84556CC5F5E367D3F2CDF2FFB1DAA493528FE2005819AE8521221A4A8CA85D2
+      62FED6ECA49ABA31AEAE5DBF20AF4C5C5463E3E3ECD69D19D66A35D116C511A0
+      2278A54035539216DA4AE32411E6E906B4045C9274AF09B9E9B5623312650914
+      A01159161616D0C16C431814F33802B9212C83ED14225B814E887016210B1263
+      24463251CD468BDD992BA9DB33336AB17447285D565C042C4F2F50400429B8B7
+      D4178DD2A0ACE89B6BE8A8864BE69F36B249224C9AAAEB30AA2A59BFAD664A57
+      D9B5A90BC9B90B67E585B15175F5DA849C9B9BD5D57AC59001590C1A4643F246
+      3DD01CE36E689A48424A825F4EE2384ED23BEB3397B386035D71949B0E4B66A7
+      17EAD28B756130628603A3D930220DC239204D0ED334DEE2518D751E8219BA7D
+      C531E329B6EDC07F758917F66C1723DB47F860EF8828148774D11F405DE079DF
+      9316F76C4F7BCCEEB2672DCB19E6501D1370D221504D557A384400736AA8D6E6
+      3DB9B35ACB61296396D49224E421742B444616AA46BD81207B41D5EB737ABE7C
+      53DDBC73535D9FBAC34AA51A8E314ED3E218C718A35DE45A4222072908E6C905
+      C508E4CD351C22CA3292D0116404C9EAFB223DFA4D0DD3469045646421A2A464
+      71883050174AA1299DF660E49C218A9434C2CBE1A72CE1FA9EE8CA17793E5F64
+      F95C97F69115F5F7F658FD03BD7CC7503F054256C1EF6139AFC85D2F0FF9CAB3
+      9695E3DD96CB3EFDC462EF9FA0016973302693FAED29CDDE7957EAAA8C580E6A
+      90244D1A7267ADB02E917D8108257D7B6E512E2E94F562B9C283B0C19AAD9A79
+      F4B386120521645022D4D6200B4923DD4FD2429B42BA110935B91A5215431022
+      CAA32A49862D4314AA972B4BB55A4568E2D8F97CDE280B8C696A1836974E9B02
+      E2E07C709B88037FC5C94F61D6E2BD5D396BB0BF5B0F0F0E58FD3D7DA258EC65
+      9E5B548E5B407CE123ADF285A55D65D996E0DA82CF43C001E0A4214292422652
+      491E699598B11C11478889A23AD4A32C172B253E3BBF20E717ABBA5C83322448
+      CF105CD9B6210611800A290715220656532C42632311629008EB8D82747777D3
+      ED8D8FAC2419B6025132AC509662B16821F2A76E6E5C11D5302E298C51179A27
+      C2506DB681B2C0F45CD1601D8093662BDFF7782EE75BBEEB2BC7F11016BBF41E
+      91F6E300DAD61C739C2300829C6002BF83D343320587A3B54225117E264C2326
+      923A664A467010A10CA240B75A8108A01C903B1C87023B150268ADA024F81573
+      6D864841351091DB21A2D03C36376F78A49B9028BB791C25C9B0E5884275A62C
+      411070DFF76DCFF3E886510786B6892C44109AA61ADB2F118696A5356D6F8101
+      14055331BF9DCE2FB3A9954EDF7DED28CB21909AA7C06F82399484B5A7512021
+      9C9EB391F84D430ED486001941A8A66554637BB31ED331DDCE4883697483F4E3
+      2A4986AD44940CA6CDA42C5467EA82B0C0B822183A238371391949D2B2B40ECA
+      83DC49436894201E9027A08BD698E256FB8E4BE09BC7A1DAEB8804DF90A3FD73
+      A08B794C9AC82151C8BD50962CE099383DB94744310441C9EA259264EB701C26
+      0EA10B7C998A60397B5C25C9B065899221734574D3574F4F8F45EA4264418F34
+      354E84714D5467E4C16E0E3C02B9152216A90B2A93631BE210B00D88A34DA1BF
+      83136E6A10CC9C30EC4BAA41D334B6433B41402812694F038620F0704B6A4205
+      DB185264355443524D2A823648B4C13C8FB38C20193A44794C900D387D76646E
+      6E4E0C0D0D098A5D70626D189FDE8C685406F316E60D51681EC510C5288B65D1
+      652353E3A46115C2D8942454E88F60DDAA44A142A4C03E0AEBE84A372AB9A424
+      B48E8840D320B1799C8FE60998A77D128A45E8CE79BA6E73AF1B8F1E179B7AC0
+      6D8D30279086FCDF7FFF7D4D23B950139DCBE5286DD0F40C2E5C124D4B8A5FE9
+      44E1A49A428F37A4D324FF7412892D7472A9B7937B306E016430F338D9346DE2
+      09AAB1BDB9F48FEDCC853AEC6BB2186C67E6F1F7CCED00D837725D977E2322B2
+      603BBA434DD2035B8D46830865AE009F3C79F2891324434751BE41660B13ECD2
+      376A962B0CC82320F314C758200D29CD524DDC412DA8C6C94472424992B95440
+      CBCDEFE2649A1A4430271244A0F489E48748686A1080A482D4846A89DF59AA89
+      A83806F314DF7205A1E76F9E44B0FA207488F20DEEB6857147208979C5371106
+      AE87D3F80B4E144D8BAEAE2EFA9C1A0D790AF474531321306D863DA86404A169
+      AA8910541361689A0A7EC3B8202204A649C1E8217155ABD5E86536E659601A0F
+      C1B4268250368363D077DD2D9FA14394670CB28DB14FA630349DA90C9106C420
+      1251D6446A42A9B6797F3C6D47F3440EAA69FE6E40350C49A8A679288F79DD04
+      CD133148394018F3D6A34C3D68BB650A42A0FAA910E36EACDA880E0CEEB68D99
+      CF48B35C6968391127FBD000CDD34791A8CE902D2742980529E8159D54D3728A
+      87881834BF5C395621C772DC3DFF5470B7313A7830C8664B7623E250BD9C3C34
+      8F6073856DB34FC32E7FDD150101A9995F4E0A9A5F460C024DAFD8EF59634563
+      3A5813EEB699995F4E18AA89345467C8084484300B521039A85E85207713E3EE
+      F96708C6FE3F103BB3A657350F5C0000000049454E44AE426082}
+    HoverUnCheckedPicture.IsClipRound = False
+    HoverCheckedPicture.IsClipRound = False
+    DisabledCheckedPicture.IsClipRound = False
+    DisabledUnCheckedPicture.IsClipRound = False
+    DrawPictureParam.IsAutoFit = True
+    Left = 512
+    Top = 626
+  end
+  object popWhiteBackShadowMaterial: TSkinPopupDefaultMaterial
+    BackColor.Color = claWhite
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    BackGndPicture.IsClipRound = False
+    BackGndPicture.FileName = 'white_shadow_more_dark.png'
+    DrawBackGndPictureParam.IsStretch = True
+    DrawBackGndPictureParam.StretchStyle = issSquarePro
+    DrawBackGndPictureParam.StretchMargins.Left = 50
+    DrawBackGndPictureParam.StretchMargins.Top = 50
+    DrawBackGndPictureParam.StretchMargins.Right = 50
+    DrawBackGndPictureParam.StretchMargins.Bottom = 50
+    DrawBackGndPictureParam.DestDrawStretchMargins.Left = 20
+    DrawBackGndPictureParam.DestDrawStretchMargins.Top = 20
+    DrawBackGndPictureParam.DestDrawStretchMargins.Right = 20
+    DrawBackGndPictureParam.DestDrawStretchMargins.Bottom = 20
+    Left = 184
+    Top = 304
+  end
+  object edtQueryCondition_Material: TSkinEditDefaultMaterial
+    BackColor.Color = xFFF4F4F4
+    BackColor.IsFill = True
+    BackColor.FillColor.Color = xFFF4F4F4
+    BackColor.IsRound = True
+    BackColor.RoundWidth = 20.000000000000000000
+    BackColor.RoundHeight = 20.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    NormalPicture.IsClipRound = False
+    HoverPicture.IsClipRound = False
+    FocusedPicture.IsClipRound = False
+    DisabledPicture.IsClipRound = False
+    DrawHelpTextParam.FontSize = 14.000000000000000000
+    DrawHelpTextParam.FontColor = claGray
+    DrawHelpTextParam.DrawFont.Size = 14.000000000000000000
+    DrawHelpTextParam.DrawFont.Color = claGray
+    DrawHelpTextParam.DrawFont.FontColor.Color = claGray
+    DrawHelpTextParam.FontTrimming = fttNone
+    DrawHelpTextParam.FontHorzAlign = fhaLeft
+    DrawHelpTextParam.FontVertAlign = fvaCenter
+    DrawHelpTextParam.DrawRectSetting.Left = 15.000000000000000000
+    DrawHelpTextParam.DrawRectSetting.Enabled = True
+    DrawTextParam.FontTrimming = fttNone
+    DrawTextParam.FontHorzAlign = fhaLeft
+    DrawTextParam.FontVertAlign = fvaTop
+    DrawHelpIconParam.IsAutoFit = True
+    DrawHelpIconParam.PictureVertAlign = pvaCenter
+    DrawHelpIconParam.DrawRectSetting.Left = 10.000000000000000000
+    DrawHelpIconParam.DrawRectSetting.Top = 9.000000000000000000
+    DrawHelpIconParam.DrawRectSetting.Bottom = 9.000000000000000000
+    DrawHelpIconParam.DrawRectSetting.Enabled = True
+    DrawHelpIconParam.DrawRectSetting.SizeType = dpstPixel
+    Left = 520
+    Top = 816
+  end
+  object lvButtonMaterial: TSkinListViewDefaultMaterial
+    BackColor.BorderEadges = [beBottom]
+    BackColor.Color = claWhite
+    BackColor.IsFill = True
+    BackColor.BorderColor.Color = xFFEDEDED
+    BackColor.BorderWidth = 1.000000000000000000
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    PullDownRefreshPanelMaterial.BackColor.Color = claWhite
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    PullDownRefreshPanelMaterial.IndicatorColor = claBlack
+    PullDownRefreshPanelMaterial.LoadingPicture.IsClipRound = False
+    PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
+    PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontHorzAlign = fhaLeft
+    PullDownRefreshPanelMaterial.DrawLoadingCaptionParam.FontVertAlign = fvaTop
+    PullDownRefreshPanelMaterial.EnableAutoCenterPosition = False
+    PullDownRefreshPanelMaterial.EnableLoadingImageBiggerEffect = False
+    PullDownRefreshPanelMaterial.EnableLoadingImageRotateEffect = True
+    PullDownRefreshPanelMaterial.LoadingCaption = #27491#22312#21047#26032'...'
+    PullDownRefreshPanelMaterial.DecidedLoadCaption = #26494#24320#21047#26032
+    PullDownRefreshPanelMaterial.UnDecidedLoadCaption = #19979#25289#21047#26032
+    PullUpLoadMorePanelMaterial.BackColor.Color = claWhite
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    PullUpLoadMorePanelMaterial.IndicatorColor = claBlack
+    PullUpLoadMorePanelMaterial.LoadingPicture.IsClipRound = False
+    PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontTrimming = fttNone
+    PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontHorzAlign = fhaLeft
+    PullUpLoadMorePanelMaterial.DrawLoadingCaptionParam.FontVertAlign = fvaTop
+    PullUpLoadMorePanelMaterial.EnableAutoCenterPosition = False
+    PullUpLoadMorePanelMaterial.EnableLoadingImageBiggerEffect = False
+    PullUpLoadMorePanelMaterial.EnableLoadingImageRotateEffect = True
+    PullUpLoadMorePanelMaterial.LoadingCaption = #27491#22312#21152#36733'...'
+    PullUpLoadMorePanelMaterial.DecidedLoadCaption = #26494#24320#21152#36733#26356#22810
+    PullUpLoadMorePanelMaterial.UnDecidedLoadCaption = #19978#25289#21152#36733#26356#22810
+    DrawEmptyContentCaptionParam.FontTrimming = fttNone
+    DrawEmptyContentCaptionParam.FontHorzAlign = fhaLeft
+    DrawEmptyContentCaptionParam.FontVertAlign = fvaTop
+    DrawEmptyContentDescriptionParam.FontTrimming = fttNone
+    DrawEmptyContentDescriptionParam.FontHorzAlign = fhaLeft
+    DrawEmptyContentDescriptionParam.FontVertAlign = fvaTop
+    ItemBackNormalPicture.IsClipRound = False
+    ItemBackHoverPicture.IsClipRound = False
+    ItemBackDownPicture.IsClipRound = False
+    ItemBackPushedPicture.IsClipRound = False
+    DrawItemBackColorParam.Color = xFFEDEDED
+    DrawItemBackColorParam.IsFill = True
+    DrawItemBackColorParam.FillColor.Color = xFFEDEDED
+    DrawItemBackColorParam.IsRound = True
+    DrawItemBackColorParam.RoundWidth = -1.000000000000000000
+    DrawItemBackColorParam.RoundHeight = -1.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Left = 5.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Top = 8.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Right = 5.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Bottom = 8.000000000000000000
+    DrawItemBackColorParam.DrawRectSetting.Enabled = True
+    DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
+    DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = x3C66A5FF
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    ItemAccessoryPicture.IsClipRound = False
+    IsDrawCenterItemRect = False
+    DrawCenterItemRectParam.Color = xFFEDEDED
+    DrawCenterItemRectParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawCenterItemRectParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsSimpleDrawItemDevide = True
+    DrawItemDevideParam.Color = xFFEDEDED
+    DrawItemDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawItemDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawItemCaptionParam.FontSize = 14.000000000000000000
+    DrawItemCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawItemCaptionParam.FontTrimming = fttNone
+    DrawItemCaptionParam.FontHorzAlign = fhaCenter
+    DrawItemCaptionParam.FontVertAlign = fvaCenter
+    DrawItemCaptionParam.DrawEffectSetting.PushedEffect.FontColor.UseThemeColor = ctThemeColor
+    DrawItemCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
+    DrawItemDetailParam.FontTrimming = fttNone
+    DrawItemDetailParam.FontHorzAlign = fhaLeft
+    DrawItemDetailParam.FontVertAlign = fvaTop
+    DrawItemDetail1Param.FontTrimming = fttNone
+    DrawItemDetail1Param.FontHorzAlign = fhaLeft
+    DrawItemDetail1Param.FontVertAlign = fvaTop
+    DrawItemDetail2Param.FontTrimming = fttNone
+    DrawItemDetail2Param.FontHorzAlign = fhaLeft
+    DrawItemDetail2Param.FontVertAlign = fvaTop
+    DrawItemDetail3Param.FontTrimming = fttNone
+    DrawItemDetail3Param.FontHorzAlign = fhaLeft
+    DrawItemDetail3Param.FontVertAlign = fvaTop
+    DrawItemDetail4Param.FontTrimming = fttNone
+    DrawItemDetail4Param.FontHorzAlign = fhaLeft
+    DrawItemDetail4Param.FontVertAlign = fvaTop
+    DrawItemDetail5Param.FontTrimming = fttNone
+    DrawItemDetail5Param.FontHorzAlign = fhaLeft
+    DrawItemDetail5Param.FontVertAlign = fvaTop
+    DrawItemDetail6Param.FontTrimming = fttNone
+    DrawItemDetail6Param.FontHorzAlign = fhaLeft
+    DrawItemDetail6Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.ItemAccessoryPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackNormalPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackDownPicture.IsClipRound = False
+    DefaultTypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    DefaultTypeItemMaterial.DrawItemBackColorParam.Color = xFFEDEDED
+    DefaultTypeItemMaterial.DrawItemBackColorParam.IsFill = True
+    DefaultTypeItemMaterial.DrawItemBackColorParam.FillColor.Color = xFFEDEDED
+    DefaultTypeItemMaterial.DrawItemBackColorParam.IsRound = True
+    DefaultTypeItemMaterial.DrawItemBackColorParam.RoundWidth = -1.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.RoundHeight = -1.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Left = 5.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Top = 8.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Right = 5.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Bottom = 8.000000000000000000
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.Enabled = True
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawRectSetting.SizeType = dpstPixel
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.IsFill = True
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColor.Color = x3C66A5FF
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange, drpetIsFillChange]
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontSize = 14.000000000000000000
+    DefaultTypeItemMaterial.DrawItemCaptionParam.DrawFont.Size = 14.000000000000000000
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaCenter
+    DefaultTypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaCenter
+    DefaultTypeItemMaterial.DrawItemCaptionParam.DrawEffectSetting.PushedEffect.FontColor.UseThemeColor = ctThemeColor
+    DefaultTypeItemMaterial.DrawItemCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
+    DefaultTypeItemMaterial.DrawItemDetailParam.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetailParam.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetailParam.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail1Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail1Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail1Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail2Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail2Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail2Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail3Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail3Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail3Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail4Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail4Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail4Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail5Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail5Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail5Param.FontVertAlign = fvaTop
+    DefaultTypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
+    DefaultTypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
+    DefaultTypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.ItemAccessoryPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackNormalPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackHoverPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackDownPicture.IsClipRound = False
+    Item1TypeItemMaterial.ItemBackPushedPicture.IsClipRound = False
+    Item1TypeItemMaterial.DrawItemBackColorParam.Color = claWhite
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemBackColorParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    Item1TypeItemMaterial.DrawItemCaptionParam.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemCaptionParam.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemCaptionParam.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetailParam.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetailParam.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetailParam.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail1Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail1Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail1Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail2Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail2Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail2Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail3Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail3Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail3Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail4Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail4Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail4Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail5Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail5Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail5Param.FontVertAlign = fvaTop
+    Item1TypeItemMaterial.DrawItemDetail6Param.FontTrimming = fttNone
+    Item1TypeItemMaterial.DrawItemDetail6Param.FontHorzAlign = fhaLeft
+    Item1TypeItemMaterial.DrawItemDetail6Param.FontVertAlign = fvaTop
+    DrawSpaceParam.Color = claWhite
+    DrawSpaceParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawSpaceParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsSimpleDrawGroupRoundRect = False
+    IsSimpleDrawGroupBeginDevide = True
+    IsSimpleDrawGroupEndDevide = True
+    DrawGroupBeginDevideParam.Color = xFFEDEDED
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupBeginDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.Color = xFFEDEDED
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    DrawGroupEndDevideParam.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsAutoAdjustItemDesignerPanelSize = True
+    IsDrawRowLine = False
+    IsDrawRowBeginLine = False
+    IsDrawRowEndLine = False
+    IsDrawColLine = False
+    IsDrawColBeginLine = False
+    IsDrawColEndLine = False
+    DrawRowLineParam.Color.Color = xFFD4D0C8
+    DrawRowLineParam.PenWidth = 1.000000000000000000
+    DrawColLineParam.Color.Color = xFFD4D0C8
+    DrawColLineParam.PenWidth = 1.000000000000000000
+    Left = 1144
+    Top = 776
+  end
+  object lblRedBackCaptionVertCenterMaterial: TSkinLabelDefaultMaterial
+    StyleName = 'RedBackCaptionVertCenter'
+    BackColor.Color = claWhite
+    BackColor.IsFill = True
+    BackColor.BorderColor.Color = xFFEDEDED
+    BackColor.DrawEffectSetting.MouseDownEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.MouseOverEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
+    BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+    IsTransparent = False
+    DrawCaptionParam.FontSize = 14.000000000000000000
+    DrawCaptionParam.FontColor = claRed
+    DrawCaptionParam.DrawFont.Size = 14.000000000000000000
+    DrawCaptionParam.DrawFont.Color = claRed
+    DrawCaptionParam.DrawFont.FontColor.Color = claRed
+    DrawCaptionParam.FontTrimming = fttNone
+    DrawCaptionParam.FontHorzAlign = fhaLeft
+    DrawCaptionParam.FontVertAlign = fvaCenter
+    DrawCaptionParam.DrawRectSetting.Left = 5.000000000000000000
+    DrawCaptionParam.DrawRectSetting.Enabled = True
+    DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
+    Left = 960
+    Top = 288
   end
 end

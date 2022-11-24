@@ -4,7 +4,13 @@ interface
 
 uses
   Classes,
+
+//  {$IFDEF IN_ORANGESDK}
   uBaseList_Copy,
+//  {$ELSE}
+//  uBaseList,
+//  {$ENDIF}
+
   SysUtils;
 
 
@@ -20,7 +26,7 @@ type
     Width:Integer;
     //高度
     Height:Integer;
-    //视频时长
+    //视频时长,秒为单位
     TimeLong:Integer;
   end;
   TSelectMediaList=class(TBaseList)
@@ -60,10 +66,13 @@ type
 
 
 
+  TCanSelectMediaType=(smtImage,
+                    //smtImageVideo,
+                    smtVideo,
+                    //自定义，比如选择商品
+                    smtCustom);
+  TSelectMediaType=set of TCanSelectMediaType;
 
-  TSelectMediaType=(smtImage,
-                    smtImageVideo,
-                    smtVideo);
   TSelectMediaDialog=class(TComponent)
   private
     FOnSelectMediaResult: TSelectMediaResultEvent;
@@ -72,6 +81,7 @@ type
     FSelectMediaType: TSelectMediaType;
     FMaxVideoDuration: Integer;
     FMaxVideoDurationCanEdit: Boolean;
+    FIsMultiSelect: Boolean;
 
     procedure CreateBaseSelectMediaUI;
 
@@ -109,7 +119,7 @@ type
     //视频时长是否可编译
     property MaxVideoDurationCanEdit:Boolean read FMaxVideoDurationCanEdit write FMaxVideoDurationCanEdit;
 //    property MaxVideoFileSize:Integer read FMaxVideoFileSize write FMaxVideoFileSize;
-
+    property IsMultiSelect:Boolean read FIsMultiSelect write FIsMultiSelect;
     //最大选择个数
     property MaxSelectCount:Integer read FMaxSelectCount write FMaxSelectCount;
     //选择媒体类型
@@ -166,8 +176,8 @@ begin
   FSelectMediaList:=TSelectMediaList.Create();
 
   FMaxSelectCount:=9;
-  FSelectMediaType:=smtImage;
-
+  FSelectMediaType:=[smtImage];
+  FIsMultiSelect:=True;
 
 
 end;

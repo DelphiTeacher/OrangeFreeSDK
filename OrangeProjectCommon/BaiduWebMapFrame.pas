@@ -20,7 +20,7 @@ uses
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
 
 
-  SG.ScriptGate,
+//  SG.ScriptGate,
   StrUtils,
   uComponentType,
   uBaseHttpControl,
@@ -209,7 +209,7 @@ begin
     uBaseLog.OutputDebugString('TFrameBaiduWebMap.DoShow 2');
 
 
-    FWebBrowser.Align:=TAlignLayout.alClient;
+    FWebBrowser.Align:=TAlignLayout.Client;
     FWebBrowser.Visible:=True;
 
 

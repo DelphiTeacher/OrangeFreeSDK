@@ -10,7 +10,9 @@ uses
   DateUtils,
 
   uOpenPlatformServerManager,
+  {$IFDEF HAS_REDIS}
   uRedisClientPool,
+  {$ENDIF}
 
   IdGlobal,
   uBaseLog,
@@ -19,27 +21,28 @@ uses
   uUniDBHelper,
   uLang,
   uFileCommon,
+  IniFiles,
 
   uDataBaseConfig,
   DataBaseConfigForm,
 
   ServerDataBaseModule,
   uBaseDataBaseModule,
+  uRestInterfaceCall,
 
-  kbmMWUniDAC,
-  kbmMWCustomConnectionPool,
-  Generics.Collections,
-
-  kbmMWCustomTransport,
-  kbmMWServer,
-  kbmMWAJAXTransStream,
-  kbmMWTCPIPIndyServerTransport,
-  kbmMWCustomHTTPService,
-  kbmMWCustomLoadBalancingService,
-  kbmMWFilePool,
-  kbmMWSecurity,
-  kbmMWCrypt,
-  kbmMWHTTPSYSServerTransport,
+//  kbmMWUniDAC,
+//  kbmMWCustomConnectionPool,
+//  Generics.Collections,
+//
+//  kbmMWCustomTransport,
+//  kbmMWServer,
+//  kbmMWAJAXTransStream,
+//  kbmMWTCPIPIndyServerTransport,
+//  kbmMWCustomHTTPService,
+//  kbmMWCustomLoadBalancingService,
+//  kbmMWFilePool,
+//  kbmMWSecurity,
+//  kbmMWCrypt,
 
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Grids;
 
@@ -65,11 +68,20 @@ type
     lblInvalidCallCount: TLabel;
     tmrSyncUI: TTimer;
     tsLog: TTabSheet;
-    Memo1: TMemo;
+    memLog: TMemo;
     tsDatabasePool: TTabSheet;
     gridDatabasePool: TStringGrid;
     Label6: TLabel;
     lblRedisPoolCount: TLabel;
+    tsAuth: TTabSheet;
+    Label7: TLabel;
+    edtCompanyName: TEdit;
+    btnQueryAuth: TButton;
+    Label8: TLabel;
+    cmbApps: TComboBox;
+    btnSaveAuth: TButton;
+    Label9: TLabel;
+    edtAppID: TEdit;
     procedure btnStartServerClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnStopServiceClick(Sender: TObject);
@@ -78,13 +90,28 @@ type
     procedure btnDBConfigClick(Sender: TObject);
     procedure tmrStartServerTimer(Sender: TObject);
     procedure tmrSyncUITimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure memLogDblClick(Sender: TObject);
+    procedure btnQueryAuthClick(Sender: TObject);
+    procedure btnSaveAuthClick(Sender: TObject);
+    procedure cmbAppsChange(Sender: TObject);
   private
+    //测试数据库配置是否正常
     FDBHelper:TBaseDBHelper;
 
     //上次总调用数
     LastSumCallCount:Integer;
     //最高每秒并发
     MaxParallelCallCountPerSecond:Integer;
+
+    procedure DoServiceStartEnd(Sender:TObject;AIsStartSucc:Boolean;AError:String);
+
+  public
+
+    FIsAddLogToMemo:Boolean;
+    FHideLogList:TStringList;
+
+    procedure DoGetCommandLineOutput(ACommandLine:String;ATag:String;AOutput:String);
     { Private declarations }
   public
     { Public declarations }
@@ -198,6 +225,59 @@ begin
 
 end;
 
+procedure TfrmServerMain.btnQueryAuthClick(Sender: TObject);
+var
+  ACode:Integer;
+  ADesc:String;
+  ADataJson:ISuperObject;
+
+  AAppJson:ISuperObject;
+  I: Integer;
+begin
+  //从OrangeUI云服务器查询公司授权
+  if not SimpleCallAPI('get_app_list',
+                nil,
+                'http://www.orangeui.cn:10020/'+'program_framework/',
+//                'http://127.0.0.1:10020/'+'program_framework/',
+                ['company_name',
+                'pageindex','pagesize'],
+                [Self.edtCompanyName.Text,
+                1,
+                MaxInt
+                ],
+                ACode,
+                ADesc,
+                ADataJson,
+                GlobalRestAPISignType,
+                GlobalRestAPIAppSecret
+                ) then
+  begin
+    ShowMessage(ADesc);
+    Exit;
+  end;
+//  if ADataJson.A['RecordList'].Length>1 then
+//  begin
+//    ShowMessage('有多个授权');
+//    Exit;
+//  end;
+//  if ADataJson.A['RecordList'].Length=1 then
+//  begin
+//    AAppJson:=ADataJson.A['RecordList'].O[0];
+//    ShowMessage('授权应用名称'+AAppJson.S['name']+#13#10
+//                '授权应用ID'+IntToStr(AAppJson.I['appid']));
+//
+//  end;
+  Self.cmbApps.Items.Clear;
+  for I := 0 to ADataJson.A['RecordList'].Length-1 do
+  begin
+    AAppJson:=ADataJson.A['RecordList'].O[I];
+    Self.cmbApps.Items.Add(AAppJson.S['name']+'-'+IntToStr(AAppJson.I['fid']));
+  end;
+//  Self.cmbApps.ItemIndex:=-1;
+//  Self.edtAppID.Text:='';
+
+end;
+
 procedure TfrmServerMain.btnStartServerClick(Sender: TObject);
 begin
 
@@ -208,16 +288,12 @@ begin
       GlobalServiceProject.Save;
   end;
 
-  if not GlobalServiceProject.Start then Exit;
+//  if not GlobalServiceProject.Start then Exit;
+  GlobalServiceProject.Start;
 
-
-  Self.Caption := Trans(GlobalServiceProject.Name + '服务端' + ' ' + '启动成功');
+  Self.Caption := Trans(GlobalServiceProject.Name + '云服务' + ' ' + '正在启动...');
   Self.btnStartServer.Enabled := False;
 
-
-
-  copySqlTime:=0;
-  Self.timerCopySQL.Enabled:=True;
 end;
 
 procedure TfrmServerMain.btnStopServiceClick(Sender: TObject);
@@ -225,38 +301,183 @@ begin
 
   tmrSyncUI.Enabled:=False;
 
-  Self.Caption := Trans(GlobalServiceProject.Name + '服务端');
+  Self.Caption := Trans(GlobalServiceProject.Name + '云服务');
   Self.btnStartServer.Enabled := True;
 
 
   GlobalServiceProject.Stop;
 end;
 
+procedure TfrmServerMain.cmbAppsChange(Sender: TObject);
+begin
+  //更换AppID
+  if Pos('-',Self.cmbApps.Text)>0 then
+  begin
+    Self.edtAppID.Text:=Copy(Self.cmbApps.Text,Pos('-',Self.cmbApps.Text)+1,MaxInt);
+  end;
+
+end;
+
+procedure TfrmServerMain.btnSaveAuthClick(Sender: TObject);
+var
+  AIniFile:TIniFile;
+begin
+  //保存到配置文件
+  if (Self.cmbApps.Text<>'') and (Pos(Self.edtAppID.Text,Self.cmbApps.Text)=0) then
+  begin
+    ShowMessage('请选择核对应用名称和应用ID');
+    Exit;
+  end;
+
+
+
+  //从配置中获取应用ID,也就是AppID
+  if FileExists(GetApplicationPath+'Config.ini') then
+  begin
+    AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini');
+    try
+      AIniFile.WriteString('','AppID',Self.edtAppID.Text);
+      AIniFile.WriteString('','AppName',Self.cmbApps.Text);
+      AIniFile.WriteString('','CompanyName',Self.edtCompanyName.Text);
+    finally
+      FreeAndNil(AIniFile);
+    end;
+  end;
+
+
+  ShowMessage('重启服务后生效！');
+
+end;
+
+procedure TfrmServerMain.DoGetCommandLineOutput(ACommandLine, ATag,
+  AOutput: String);
+var
+  ALogList:TStrings;
+begin
+  uBaseLog.HandleException(nil,AOutput);
+
+  if Self.FIsAddLogToMemo then
+  begin
+      ALogList:=Self.memLog.Lines;
+
+      TThread.Synchronize(nil,procedure
+      begin
+      //    memLog.Text:=memLog.Text+AOutput;
+          if ATag<>'' then
+          begin
+            ALogList.Add(ATag+':'+AOutput);
+          end
+          else
+          begin
+            ALogList.Add(AOutput);
+          end;
+      end);
+  end
+  else
+  begin
+      ALogList:=Self.FHideLogList;
+      if ATag<>'' then
+      begin
+        ALogList.Add(ATag+':'+AOutput);
+      end
+      else
+      begin
+        ALogList.Add(AOutput);
+      end;
+  end;
+
+
+end;
+
+procedure TfrmServerMain.DoServiceStartEnd(Sender: TObject;
+  AIsStartSucc: Boolean; AError: String);
+begin
+
+  TThread.Synchronize(nil,procedure
+  begin
+      if AIsStartSucc then
+      begin
+          Self.Caption := GlobalServiceProject.Name + '云服务' + ' ' + '启动成功';
+          Self.btnStartServer.Enabled := False;
+          Self.memLog.Lines.Add('云服务' + ' ' + '启动成功');
+
+
+
+          copySqlTime:=0;
+          Self.timerCopySQL.Enabled:=True;
+      end
+      else
+      begin
+          Self.memLog.Lines.Add('云服务' + ' ' + '启动失败：'+AError);
+      end;
+  end);
+
+end;
+
 procedure TfrmServerMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   GlobalServiceProject.Stop;
   FreeAndNil(GlobalServiceProject);
+
+  FreeAndNil(FHideLogList);
+  FreeAndNil(FDBHelper);
 end;
 
-procedure TfrmServerMain.FormShow(Sender: TObject);
+procedure TfrmServerMain.FormCreate(Sender: TObject);
+var
+  AIniFile:TIniFile;
 begin
 
   FDBHelper:=TUniDBHelper.Create;
 
 
+  GlobalServiceProject.FOnGetCommandLineOutput:=Self.DoGetCommandLineOutput;
+  GlobalServiceProject.FOnStartEnd:=Self.DoServiceStartEnd;
+
   if IsNeedLoadServiceProjectFromIni then
   begin
     GlobalServiceProject.Load;
+
+    //读取授权
+    AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini');
+    try
+      Self.edtCompanyName.Text:=AIniFile.ReadString('','CompanyName','');
+      Self.cmbApps.Text:=AIniFile.ReadString('','AppName','');
+      Self.edtAppID.Text:=AIniFile.ReadString('','AppID','');
+    finally
+      FreeAndNil(AIniFile);
+    end;
+
   end;
 
 
-
-  Self.Caption:=GlobalServiceProject.Name;
+  Self.Caption:=Trans(GlobalServiceProject.Name + '云服务');
   Self.edtPort.Text:=IntToStr(GlobalServiceProject.Port);
   Self.edtSSLPort.Text:=IntToStr(GlobalServiceProject.SSLPort);
 
+
+  FIsAddLogToMemo:=True;
+  FHideLogList:=TStringList.Create;
+
+end;
+
+procedure TfrmServerMain.FormShow(Sender: TObject);
+begin
+
   //测试备份
   timerCopySQLTimer(nil);
+end;
+
+procedure TfrmServerMain.memLogDblClick(Sender: TObject);
+begin
+
+  FIsAddLogToMemo:=not FIsAddLogToMemo;
+  if FIsAddLogToMemo then
+  begin
+    Self.memLog.Lines.AddStrings(Self.FHideLogList);
+    FHideLogList.Clear;
+  end;
+
 end;
 
 procedure TfrmServerMain.timerCopySQLTimer(Sender: TObject);
@@ -308,6 +529,7 @@ var
   AServiceModule:TServiceModule;
   ADatabaseModuleStatus:TDatabaseModuleStatus;
 begin
+  Exit;
 //    //上次总调用数
 //    LastSumCallCount:Integer;
 //    //最高每秒并发
@@ -325,8 +547,10 @@ begin
   Self.lblMaxCallCountPerSecond.Caption:=IntToStr(MaxParallelCallCountPerSecond);
   LastSumCallCount:=GlobalServiceProject.SumCallCount;
   Self.lblInvalidCallCount.Caption:=IntToStr(GlobalServiceProject.InvalidCallCount);
+  {$IFDEF HAS_REDIS}
   //Redis缓存池
   Self.lblRedisPoolCount.Caption:=IntToStr(GetGlobalRedisClientPool.FCustomObjects.Count);
+  {$ENDIF}
 
 
 

@@ -599,6 +599,7 @@ uses System.RTLConsts, System.Math, System.DateUtils,
 {$ENDIF}
 {$IFDEF ANDROID}
 //  FMX.Helpers.Android,
+  FMX.Platform.UI.Android,
   FMX.Platform.Android,
   Androidapi.JNI.GraphicsContentViewText,
 {$ENDIF}
@@ -3106,7 +3107,9 @@ begin
   FRectangle.Width := FToastBoxWidth;
   FRectangle.Height := FToastBoxHeight;
   try
-    FRectangle.StrokeThickness := FToastBoxStrokeThickness;
+    //wn
+//    FRectangle.StrokeThickness := FToastBoxStrokeThickness;
+    FRectangle.Stroke.Thickness := FToastBoxStrokeThickness;
   except
   end;
 end;
@@ -3207,7 +3210,7 @@ begin
   FToastBoxStrokeDash := Value;
   if Assigned(FRectangle) then
   begin
-    FRectangle.StrokeDash := FToastBoxStrokeDash;
+    FRectangle.Stroke.Dash := FToastBoxStrokeDash;
   end;
 end;
 
@@ -3281,7 +3284,7 @@ begin
   FToastBoxStrokeThickness := Value;
   if Assigned(FRectangle) then
   begin
-    FRectangle.StrokeThickness := FToastBoxStrokeThickness;
+    FRectangle.Stroke.Thickness := FToastBoxStrokeThickness;
   end;
 end;
 

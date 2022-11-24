@@ -1,10 +1,10 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 //copyright delphiteacher QQ:452330643
 //2015-08-08
-//æœªç»æˆæƒ,ä¸¥ç¦å‡ºå”®èµ é€æˆ–è½¬ä¸Šä»–äººä½¿ç”¨
+//Î´¾­ÊÚÈ¨,ÑÏ½û³öÊÛÔùËÍ»ò×ªÉÏËûÈËÊ¹ÓÃ
 
 
-//åˆ—è¡¨åŸºç±»
+//ÁĞ±í»ùÀà
 unit uWorkThreadList;
 
 interface
@@ -17,48 +17,48 @@ uses
 
 
 type
-//  {$Region 'åˆ—è¡¨åŸºç±»'}
+//  {$Region 'ÁĞ±í»ùÀà'}
   TWorkThreadList=class;
 
 
 
-  //å­å¯¹è±¡æ‹¥æœ‰å…³ç³»ç±»å‹
-  TObjectOwnership=(ooReference,//å¼•ç”¨ï¼Œå­å¯¹è±¡è¦åˆ«äººé‡Šæ”¾
-                    ooOwned);   //æ‹¥æœ‰ï¼Œå­å¯¹è±¡éƒ½æ˜¯è‡ªå·±çš„ï¼Œè‡ªå·±é‡Šæ”¾
+  //×Ó¶ÔÏóÓµÓĞ¹ØÏµÀàĞÍ
+  TObjectOwnership=(ooReference,//ÒıÓÃ£¬×Ó¶ÔÏóÒª±ğÈËÊÍ·Å
+                    ooOwned);   //ÓµÓĞ£¬×Ó¶ÔÏó¶¼ÊÇ×Ô¼ºµÄ£¬×Ô¼ºÊÍ·Å
 
 
 
 
 
-  //å­å¯¹è±¡æ›´æ”¹ç±»å‹
-  TItemChangeType=(ictAdd,          //æ·»åŠ é¡¹ç›®
-                    ictDel,         //åˆ é™¤é¡¹ç›®
-                    ictMove,        //ç§»åŠ¨é¡¹ç›®
-                    ictSetItem      //è®¾ç½®é¡¹ç›®
+  //×Ó¶ÔÏó¸ü¸ÄÀàĞÍ
+  TItemChangeType=(ictAdd,          //Ìí¼ÓÏîÄ¿
+                    ictDel,         //É¾³ıÏîÄ¿
+                    ictMove,        //ÒÆ¶¯ÏîÄ¿
+                    ictSetItem      //ÉèÖÃÏîÄ¿
                     );
   TItemChangeTypes=set of TItemChangeType;
 
 
 
 
-  //å­å¯¹è±¡è¢«åˆ é™¤çš„äº‹ä»¶(ç”¨äºç«‹å³é€šçŸ¥ä¸€äº›æ§ä»¶æ¸…ç©ºå¯¹Itemçš„å¼•ç”¨)
+  //×Ó¶ÔÏó±»É¾³ıµÄÊÂ¼ş(ÓÃÓÚÁ¢¼´Í¨ÖªÒ»Ğ©¿Ø¼şÇå¿Õ¶ÔItemµÄÒıÓÃ)
   TItemDeleteEvent=procedure(Sender:TObject;AItem:TObject;AIndex:Integer) of object;
 
-  //å­å¯¹è±¡åˆ—è¡¨
+  //×Ó¶ÔÏóÁĞ±í
   TWorkThreadList=class(TInterfacedPersistent)
   protected
-    //åˆ—è¡¨
+    //ÁĞ±í
     FItems:TList;
-    //ä¸Šæ¬¡é¡¹ç›®æ›´æ”¹ç±»å‹
+    //ÉÏ´ÎÏîÄ¿¸ü¸ÄÀàĞÍ
     FLastItemChangeTypes:TItemChangeTypes;
-    //æ‹¥æœ‰å…³ç³»
+    //ÓµÓĞ¹ØÏµ
     FObjectOwnership:TObjectOwnership;
 
-    //æœ‰å­å¯¹è±¡è¢«åˆ é™¤
+    //ÓĞ×Ó¶ÔÏó±»É¾³ı
     FHasItemDeleted: Boolean;
-    //å­å¯¹è±¡è¢«åˆ é™¤çš„äº‹ä»¶
+    //×Ó¶ÔÏó±»É¾³ıµÄÊÂ¼ş
     FOnItemDelete: TItemDeleteEvent;
-    //è®¾ç½®é¡¹ç›®
+    //ÉèÖÃÏîÄ¿
     function GetItem(Index: Integer): TObject;
     procedure SetItem(Index: Integer; const Value: TObject);
 
@@ -66,62 +66,62 @@ type
     constructor Create(AObjectOwnership:TObjectOwnership=ooOwned);virtual;
     destructor Destroy;override;
   public
-    //ä¸ªæ•°
+    //¸öÊı
     function GetCount:Integer;virtual;
-    //æ¸…é™¤
+    //Çå³ı
     procedure Clear(AIsFree:Boolean;AIsNeedDelete:Boolean=True);virtual;
-    //ç§»åŠ¨äº’æ¢
+    //ÒÆ¶¯»¥»»
     procedure Move(ASrcIndex:Integer;ADestIndex:Integer);overload;
     procedure Move(ASrcObject:TObject;ADestObject:TObject);overload;
   public
-    //æ·»åŠ æ—¶
+    //Ìí¼ÓÊ±
     procedure DoAdd(AObject:TObject);virtual;
-    //åˆ é™¤æ—¶
+    //É¾³ıÊ±
     procedure DoDelete(AObject:TObject;AIndex:Integer);virtual;
-    //æ’å…¥æ—¶
+    //²åÈëÊ±
     procedure DoInsert(AObject:TObject;AIndex:Integer);virtual;
 
-    //åˆ é™¤
+    //É¾³ı
     function Delete(AIndex:Integer;AIsFree:Boolean=True;AIsNeedDelete:Boolean=True):Integer;virtual;
     function Remove(AObject:TObject;AIsFree:Boolean=True;AIsNeedDelete:Boolean=True):Integer;virtual;
-    //æ·»åŠ 
+    //Ìí¼Ó
     function Add(AObject:TObject):Integer;virtual;
-    //æ’å…¥
+    //²åÈë
     function Insert(AIndex: Integer;AObject:TObject):Integer;virtual;
   public
-    //å®šä½
+    //¶¨Î»
     function IndexOf(AObject:TObject):Integer;virtual;
-    //æ’åº
+    //ÅÅĞò
     procedure Sort(Compare: TListSortCompare);
   public
 
-    //æ˜¯å¦æœ‰åˆ—è¡¨è¢«åˆ é™¤äº†
+    //ÊÇ·ñÓĞÁĞ±í±»É¾³ıÁË
     property HasItemDeleted:Boolean read FHasItemDeleted write FHasItemDeleted;
-    //ä¸Šæ¬¡æ›´æ–°ç±»å‹
+    //ÉÏ´Î¸üĞÂÀàĞÍ
     property LastItemChangeTypes:TItemChangeTypes read FLastItemChangeTypes;
 
-    //æ›´ä»¶äº‹ä»¶
+    //¸ü¼şÊÂ¼ş
     property OnItemDelete:TItemDeleteEvent read FOnItemDelete write FOnItemDelete;
   public
-    //æ‹¥æœ‰å…³ç³»
+    //ÓµÓĞ¹ØÏµ
     property ObjectOwnership:TObjectOwnership read FObjectOwnership write FObjectOwnership;
     //
     property Items[Index:Integer]:TObject read GetItem write SetItem;default;
   published
-    //ä¸ªæ•°
+    //¸öÊı
     property Count:Integer read GetCount;
   end;
 
 
 
 
-//å¢åŠ å¼•ç”¨
+//Ôö¼ÓÒıÓÃ
 procedure ObjAddRef(Obj:TObject);
-//å‡å°‘å¼•ç”¨
+//¼õÉÙÒıÓÃ
 procedure ObjRelease(Obj:TObject);
-//é‡Šæ”¾
-//é‡Šæ”¾
-//é‡Šæ”¾
+//ÊÍ·Å
+//ÊÍ·Å
+//ÊÍ·Å
 {$IF CompilerVersion<=33.0}
 procedure FreeAndNil(var Obj);
 {$ELSE}
@@ -233,7 +233,7 @@ begin
   end;
 
 
-  //å¼€å§‹è°ƒç”¨åˆ é™¤é€šçŸ¥
+  //¿ªÊ¼µ÷ÓÃÉ¾³ıÍ¨Öª
   if Assigned(FOnItemDelete) then
   begin
     FOnItemDelete(Self,AObject,AIndex);
@@ -246,7 +246,7 @@ begin
   if AIsNeedDelete then Self.FItems.Delete(AIndex);
 
 
-  //é‡Šæ”¾
+  //ÊÍ·Å
   if AIsFree and (AObject<>nil) then
   begin
 //    try
@@ -268,7 +268,7 @@ end;
 
 destructor TWorkThreadList.Destroy;
 begin
-  //æ¸…é™¤åˆ—è¡¨
+  //Çå³ıÁĞ±í
   Self.Clear((FObjectOwnership=ooOwned),True);
   FreeAndNil(FItems);
   inherited;

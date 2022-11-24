@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">U redu</string>
-    <string name="scankit_light">Dodirni za više svjetlosti</string>
-    <string name="scankit_light_off">Isključi svjetlo</string>
-    <string name="scankit_no_code_tip">Nije otkriven kôd.</string>
-    <string name="scankit_scan_tip">Postavite kôd unutar kadra</string>
-    <string name="scankit_title">Skeniraj</string>
-</resources>

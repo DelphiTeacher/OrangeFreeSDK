@@ -162,6 +162,72 @@
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
         <DCCReference Include="ListItemStyle_IconLeft_CaptionRight.pas"/>
+        <DCCReference Include="ListItemStyle_ClassifyHasSelectedEffect.pas"/>
+        <DCCReference Include="ListItemStyle_HospitalDoctorForRegisterNumber.pas"/>
+        <DCCReference Include="ListItemStyle_VertSelectedSignLeft_CaptionRight.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_Edit.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_TwoButton.pas"/>
+        <DCCReference Include="..\EasyServiceCommonMaterialDataMoudle_VCL.pas">
+            <Form>dmEasyServiceCommonMaterial</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CustomerTag.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_IconButton.pas">
+            <Form>FrameListItemStyle_IconButton</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_TreeMainMenu_LabelAndArrow.pas"/>
+        <DCCReference Include="ListItemStyle_CaptionDetailItem.pas"/>
+        <DCCReference Include="ListItemStyle_VertSelectedGray_CaptionLeft.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_HorzSelectedSignBottom_CaptionCenter.pas">
+            <Form>FrameListItemStyle_HorzSelectedSignBottom_CaptionCenter</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_IconLeft_CaptionRight_CloseBtnRight.pas">
+            <Form>FrameListItemStyle_IconLeft_CaptionRight_CloseBtnRight</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CarLocation.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CheckBoxIconLeft_CaptionRight.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_IconCaptionLeft_DetailRight.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CaptionTopDetailBottom.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CaptionTopDetailBottom_Summary.pas"/>
+        <DCCReference Include="ListItemStyle_Default.pas">
+            <Form>FrameListItemStyle_Default</Form>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_IconCaptionLeft_NotifyNumberRight.pas">
+            <Form>FrameListItemStyle_IconCaptionLeft_NotifyNumberRight</Form>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_IconCaptionLeft_NotifyIconRight.pas">
+            <Form>FrameListItemStyle_IconCaptionLeft_NotifyIconRight</Form>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_IconCaptionLeft_ArrowRight.pas"/>
+        <DCCReference Include="ListItemStyle_DashBoardSummaryItem.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

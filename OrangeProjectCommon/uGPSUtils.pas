@@ -6,6 +6,7 @@ interface
 uses
   SysUtils,
   Classes,
+  uFuncCommon,
   Math;
 
 ///**
@@ -200,8 +201,10 @@ procedure bd09ll_Gcj02(bd_lat, bd_lon:double;var gg_lat, gg_lon:double);     //�
 //function GetFlatternDistance(lat1, lng1, lat2, lng2: Double): Double;   //获取两点距离 单位米
 
 
+{$IF CompilerVersion > 21.0} // XE or older
 //根据城市获取到车牌号的前缀,金华->浙G,杭州->浙A
 function GetCarPlatePrefixByCity(ACity:String):String;
+{$IFEND}
 
 
 
@@ -210,7 +213,7 @@ implementation
 var
   GlobalCarPlatePrefixList:TStringList;
 
-
+{$IF CompilerVersion > 21.0} // XE or older
 function GetCarPlatePrefixByCity(ACity:String):String;
 var
   I: Integer;
@@ -233,6 +236,7 @@ begin
     end;
   end;
 end;
+{$IFEND}
 
 
 
@@ -268,6 +272,13 @@ end;
     magic:Double;
     sqrtMagic:Double;
   begin
+      if IsSameDouble(lat,0) and IsSameDouble(lon,0) then
+      begin
+        Result.Latitude:=0;
+        Result.Longitude:=0;
+        Exit;
+      end;
+
       if (outOfChina(lat, lon)) then
       begin
         Result.Latitude:=0;
@@ -299,6 +310,13 @@ end;
   var
     gps:TGPS;
   begin
+    if IsSameDouble(lat,0) and IsSameDouble(lon,0) then
+    begin
+      Result.Latitude:=0;
+      Result.Longitude:=0;
+      Exit;
+    end;
+
     gps:=transform(lat, lon);
     Result.Longitude:=lon * 2 - gps.Longitude;
     Result.Latitude:=lat * 2 - gps.Latitude;
@@ -327,6 +345,13 @@ end;
     z:Double;
     theta:Double;
   begin
+      if IsSameDouble(gg_lat,0) and IsSameDouble(gg_lon,0) then
+      begin
+        Result.Latitude:=0;
+        Result.Longitude:=0;
+        Exit;
+      end;
+
       x := gg_lon;
       y := gg_lat;
       z := Math.Power(x * x + y * y,0.5) + 0.00002 * sin(y * pi);
@@ -357,6 +382,13 @@ end;
     z:Double;
     theta:Double;
   begin
+    if IsSameDouble(bd_lat,0) and IsSameDouble(bd_lon,0) then
+    begin
+      Result.Latitude:=0;
+      Result.Longitude:=0;
+      Exit;
+    end;
+
 
 		x := bd_lon - 0.0065;
      y := bd_lat - 0.006;
@@ -385,6 +417,14 @@ end;
   var
     gcj02:TGPS;
   begin
+    if IsSameDouble(bd_lat,0) and IsSameDouble(bd_lon,0) then
+    begin
+      Result.Latitude:=0;
+      Result.Longitude:=0;
+      Exit;
+    end;
+
+
     gcj02:=bd09_To_Gcj02(bd_lat, bd_lon);
     Result:=gcj_To_Gps84(gcj02.Latitude,gcj02.Longitude);
   end;

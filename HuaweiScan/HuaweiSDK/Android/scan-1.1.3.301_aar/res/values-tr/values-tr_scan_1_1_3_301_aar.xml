@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">Tamam</string>
-    <string name="scankit_light">Daha fazla ışık için dokunun</string>
-    <string name="scankit_light_off">Işığı kapat</string>
-    <string name="scankit_no_code_tip">Kod tespit edilemedi.</string>
-    <string name="scankit_scan_tip">Kodu çerçeveye yerleştirin</string>
-    <string name="scankit_title">Tara</string>
-</resources>

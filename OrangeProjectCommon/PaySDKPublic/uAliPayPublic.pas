@@ -22,7 +22,7 @@ uses
   SysUtils,
   StrUtils,
 
-  {$IFDEF SKIN_SUPEROBJECT}
+  {$IFDEF IN_ORANGESDK}
   uSkinSuperObject_Copy,
   {$ELSE}
   XSuperObject,

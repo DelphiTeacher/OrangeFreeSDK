@@ -166,24 +166,39 @@ begin
   GAllImageFrame.OnGetPhotoFromCamera:=TakePhotoFromLibraryAction1DidFinishTaking;
 
 
-
-  case FSelectMediaDialog.SelectMediaType of
-    smtImage:
-    begin
-      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
-      GetGlobalAlbumManager.IsCanSelectVideo:=False;
-    end;
-    smtImageVideo:
-    begin
-      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
-      GetGlobalAlbumManager.IsCanSelectVideo:=True;
-    end;
-    smtVideo:
-    begin
-      GetGlobalAlbumManager.IsCanSelectPhoto:=False;
-      GetGlobalAlbumManager.IsCanSelectVideo:=True;
-    end;
+  if (smtImage in FSelectMediaDialog.SelectMediaType) and (smtVideo in FSelectMediaDialog.SelectMediaType) then
+  begin
+    GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+    GetGlobalAlbumManager.IsCanSelectVideo:=True;
+  end
+  else if (smtImage in FSelectMediaDialog.SelectMediaType) then
+  begin
+    GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+    GetGlobalAlbumManager.IsCanSelectVideo:=False;
+  end
+  else if (smtVideo in FSelectMediaDialog.SelectMediaType) then
+  begin
+    GetGlobalAlbumManager.IsCanSelectPhoto:=False;
+    GetGlobalAlbumManager.IsCanSelectVideo:=True;
   end;
+
+//  case FSelectMediaDialog.SelectMediaType of
+//    smtImage:
+//    begin
+//      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+//      GetGlobalAlbumManager.IsCanSelectVideo:=False;
+//    end;
+//    smtImageVideo:
+//    begin
+//      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+//      GetGlobalAlbumManager.IsCanSelectVideo:=True;
+//    end;
+//    smtVideo:
+//    begin
+//      GetGlobalAlbumManager.IsCanSelectPhoto:=False;
+//      GetGlobalAlbumManager.IsCanSelectVideo:=True;
+//    end;
+//  end;
 
 
   GAllImageFrame.Load(True,
@@ -207,23 +222,40 @@ begin
 
 
 
-  case FSelectMediaDialog.SelectMediaType of
-    smtImage:
-    begin
-      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
-      GetGlobalAlbumManager.IsCanSelectVideo:=False;
-    end;
-    smtImageVideo:
-    begin
-      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
-      GetGlobalAlbumManager.IsCanSelectVideo:=True;
-    end;
-    smtVideo:
-    begin
-      GetGlobalAlbumManager.IsCanSelectPhoto:=False;
-      GetGlobalAlbumManager.IsCanSelectVideo:=True;
-    end;
+//  case FSelectMediaDialog.SelectMediaType of
+//    smtImage:
+//    begin
+//      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+//      GetGlobalAlbumManager.IsCanSelectVideo:=False;
+//    end;
+//    smtImageVideo:
+//    begin
+//      GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+//      GetGlobalAlbumManager.IsCanSelectVideo:=True;
+//    end;
+//    smtVideo:
+//    begin
+//      GetGlobalAlbumManager.IsCanSelectPhoto:=False;
+//      GetGlobalAlbumManager.IsCanSelectVideo:=True;
+//    end;
+//  end;
+
+  if (smtImage in FSelectMediaDialog.SelectMediaType) and (smtVideo in FSelectMediaDialog.SelectMediaType) then
+  begin
+    GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+    GetGlobalAlbumManager.IsCanSelectVideo:=True;
+  end
+  else if (smtImage in FSelectMediaDialog.SelectMediaType) then
+  begin
+    GetGlobalAlbumManager.IsCanSelectPhoto:=True;
+    GetGlobalAlbumManager.IsCanSelectVideo:=False;
+  end
+  else if (smtVideo in FSelectMediaDialog.SelectMediaType) then
+  begin
+    GetGlobalAlbumManager.IsCanSelectPhoto:=False;
+    GetGlobalAlbumManager.IsCanSelectVideo:=True;
   end;
+
 
 
 

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">ОК</string>
-    <string name="scankit_light">Гэрэл нэмэх бол дарна уу</string>
-    <string name="scankit_light_off">Гэрэл унтраах</string>
-    <string name="scankit_no_code_tip">Код илэрсэнгүй.</string>
-    <string name="scankit_scan_tip">Кодыг хүрээнд байрлуулна уу</string>
-    <string name="scankit_title">Скан</string>
-</resources>

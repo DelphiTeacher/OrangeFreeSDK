@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">ОК</string>
-    <string name="scankit_light">Націсніце, каб дадаць святла</string>
-    <string name="scankit_light_off">Выключыць святло</string>
-    <string name="scankit_no_code_tip">Код не знойдзены.</string>
-    <string name="scankit_scan_tip">Памясціце код унутры рамкі</string>
-    <string name="scankit_title">Сканіраваць</string>
-</resources>

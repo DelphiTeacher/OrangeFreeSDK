@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">ОК</string>
-    <string name="scankit_light">Допрете за повеќе светлина</string>
-    <string name="scankit_light_off">Исклучете светло</string>
-    <string name="scankit_no_code_tip">Не е откриен код.</string>
-    <string name="scankit_scan_tip">Поставете го кодот во рамката</string>
-    <string name="scankit_title">Скенирање</string>
-</resources>

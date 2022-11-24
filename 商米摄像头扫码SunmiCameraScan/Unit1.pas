@@ -21,8 +21,8 @@ uses
   Androidapi.JNI.JavaTypes,
   Androidapi.Helpers,
   Androidapi.JNI.App,
-  FMX.Helpers.Android,
   Androidapi.JNI.Os,
+  FMX.Helpers.Android,
     {$IF RTLVersion>=33}// 10.3+
     System.Permissions, // 动态权限单元
     {$ENDIF}

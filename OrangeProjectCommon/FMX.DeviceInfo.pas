@@ -1,20 +1,15 @@
 ﻿//convert pas to utf8 by ¥
 unit FMX.DeviceInfo;
-
 {
   Device Info
-
   author: ZuBy
   https://github.com/rzaripov1990/DeviceInfo
   rzaripov1990@gmail.com
-
   ANDROID permissions:
   ..access_network_state
   ..access_wifi_state
 }
-
 interface
-
 uses
   System.SysUtils, System.Types, System.Devices,
     FMX.Platform ,
@@ -52,17 +47,13 @@ uses
   {$ENDIF}
   {$ENDIF MACOS};
 
-
-
 type
   TmyConnectionType = (ctNone, ctUnknown, ctWIFI, ctMobile, ctEthernet);
   TmyNetworkType = (ntNone, ntUnknown, nt2G, nt3G, nt4G);
-
 const
   TmyConnectionTypeString: array [TmyConnectionType] of string = ('None', 'Unknown', 'Wi-Fi', 'Mobile Data',
     'Ethernet');
   TmyNetworkTypeString: array [TmyNetworkType] of string = ('None', 'Unknown', '2G', '3G', '4G');
-
 type
   TmyDeviceInfo = record
     diPlatform: string;
@@ -85,41 +76,29 @@ type
     diIsIntel: Boolean;
   end;
 
-
-
 var
   DeviceInfo: TmyDeviceInfo;
-
-
 
 /// <summary> 镱塍麇龛?桧纛痨圉梃 ?溴忄轳?</summary>
 procedure DeviceInfoByPlatform;
 /// <summary> 镳钼屦赅 羼螯 腓 桧蝈痦弪 [ANDROID, WINDOWS] </summary>
 function IsNetConnected: Boolean;
-
 /// <summary> 蜩?镱潢膻麇龛 ?桧蝈痦弪?[ANDROID, WINDOWS] </summary>
 function IsNetConnectionType: TmyConnectionType;
 /// <summary> 蜩?祛徼朦眍?皴蜩 [ANDROID] </summary>
 function IsNetworkType: TmyNetworkType;
-
 /// <summary> 怅膻麇?GPS? [ANDROID] </summary>
 function IsGPSActive(HIGH_ACCURACY: Boolean = False): Boolean;
-
 /// <summary> 诣?溴忄轳? [ALL PLATFORMS]</summary>
 function IsDeviceType: TDeviceInfo.TDeviceClass;
-
 /// <summary> 青矬眍 磬 镫囗蝈 桦?蝈脲纛礤? [ALL PLATFORMS]</summary>
 function IsTablet: Boolean;
-
 
 procedure SetPortraitOrientation;
 /// <summary> 项痱疱蝽? 铕桢眚圉?? [ALL PLATFORMS] </summary>
 function IsPortraitOrientation: Boolean;
-
 /// <summary> 蒡?脏犭弪? [ANDROID/IOS] </summary>
 function IsLargePhone: Boolean;
-
-
 
 //{$IFDEF MacOS}
 //const
@@ -127,21 +106,17 @@ function IsLargePhone: Boolean;
 //function sysctlbyname(Name: MarshaledAString; oldp: pointer; oldlen: Psize_t; newp: pointer; newlen: size_t): integer;
 //  cdecl; external libc name _PU + 'sysctlbyname';
 //{$ENDIF }
-
 {$IFDEF MSWINDOWS}
 function InternetGetConnectedState(lpdwFlags: LPDWORD; dwReserved: DWORD): BOOL; stdcall;
   external 'wininet.dll' name 'InternetGetConnectedState';
 {$ENDIF}
-
 
 //{$IF DEFINED(MACOS) OR DEFINED(IOS)}
 {$IF DEFINED(IOS)}
 function GetSysInfoByName(typeSpecifier: string): string;
 {$ENDIF}
 
-
 implementation
-
 uses
   System.DateUtils,
   System.Math//,
@@ -149,7 +124,6 @@ uses
 //  ,
 //  FMX.Styles, FMX.Controls, FMX.BehaviorManager, FMX.Forms, FMX.Types
 {$IFDEF MSWINDOWS}, System.Variants, Winapi.ActiveX, System.Win.ComObj{$ENDIF};
-
 //// *** FMX.MultiView ***
 //function IsMobilePreview(Sender: TControl): Boolean;
 //var
@@ -162,8 +136,6 @@ uses
 //    Result := False;
 //end;
 
-
-
 function DefineDeviceClassByFormSize: TDeviceInfo.TDeviceClass;
 //const
 //  MaxPhoneWidth = 640;
@@ -173,7 +145,6 @@ begin
 //  else
 //    Result := TDeviceInfo.TDeviceClass.Tablet;
 end;
-
 function IsDeviceType: TDeviceInfo.TDeviceClass;
 //var
 //  DeviceService: IDeviceBehavior;
@@ -185,7 +156,6 @@ begin
 //  else
     Result := DefineDeviceClassByFormSize;
 end;
-
 function IsTablet: Boolean;
 begin
   Result := IsDeviceType = TDeviceInfo.TDeviceClass.Tablet;
@@ -193,7 +163,6 @@ begin
   Result := IsPad;
 {$ENDIF}
 end;
-
 procedure SetPortraitOrientation;
 var
   ScreenService: IFMXScreenService;
@@ -201,11 +170,10 @@ var
 begin
   if TPlatformServices.Current.SupportsPlatformService(IFMXScreenService, IInterface(ScreenService)) then
   begin
-    OrientSet := [TScreenOrientation.soPortrait];
+    OrientSet := [TScreenOrientation.{$IF CompilerVersion >= 35.0}Portrait{$ELSE}soPortrait{$IFEND}];
 //    ScreenService.SetSupportedScreenOrientations(OrientSet);
   end;
 end;
-
 
 function IsPortraitOrientation: Boolean;
 var
@@ -216,7 +184,6 @@ begin
     Result := (FScreenService.GetScreenOrientation = TScreenOrientation.Portrait) or
       (FScreenService.GetScreenOrientation = TScreenOrientation.InvertedPortrait);
 end;
-
 function IsLargePhone: Boolean;
 {$IF defined(ANDROID) or defined(IOS)}
 const
@@ -235,9 +202,7 @@ begin
     Result := true;
 {$ENDIF}
 end;
-
 // *** FMX.MultiView ***
-
 //{$IF DEFINED(MACOS) OR DEFINED(IOS)}
 {$IF DEFINED(IOS)}
 function GetSysInfoByName(typeSpecifier: string): string;
@@ -255,14 +220,12 @@ begin
   end;
 end;
 {$ENDIF}
-
 {$IFDEF ANDROID}
 function HasPermission(const Permission: string): Boolean;
 begin
   Result := TAndroidHelper.Context.checkCallingOrSelfPermission(StringToJString(Permission))
     = TJPackageManager.JavaClass.PERMISSION_GRANTED
 end;
-
 function getMobileType(jType: integer): TmyConnectionType;
 begin
   Result := ctUnknown; // Unknown connection type
@@ -281,7 +244,6 @@ begin
       Result := ctMobile;
   end;
 end;
-
 function getMobileSubType(jType: integer): TmyNetworkType;
 begin
   Result := ntUnknown;
@@ -303,7 +265,6 @@ begin
   else if (jType = TJTelephonyManager.JavaClass.NETWORK_TYPE_LTE) then
     Result := nt4G;
 end;
-
 function GetWifiManager: JWifiManager;
 var
   WifiManagerObj: JObject;
@@ -319,7 +280,6 @@ begin
       raise Exception.Create('Could not access Wifi Manager');
   end;
 end;
-
 function GetTelephonyManager: JTelephonyManager;
 var
   TelephoneServiceNative: JObject;
@@ -332,7 +292,6 @@ begin
   if not Assigned(Result) then
     raise Exception.Create('Could not access Telephony Manager');
 end;
-
 function GetConnectivityManager: JConnectivityManager;
 var
   ConnectivityServiceNative: JObject;
@@ -348,7 +307,6 @@ begin
       raise Exception.Create('Could not access Connectivity Manager');
   end;
 end;
-
 procedure GetAddress(out aMac, aWifiIP: string);
 var
   WifiManager: JWifiManager;
@@ -364,7 +322,6 @@ begin
     aWifiIP := Format('%d.%d.%d.%d', [ip and $FF, ip shr 8 and $FF, ip shr 16 and $FF, ip shr 24 and $FF]);
   end;
 end;
-
 function GetCodename(VerString: string): string;
 begin
   if Pos('4.4', VerString) = 1 then
@@ -381,7 +338,6 @@ begin
     Result := 'Unknown';
 end;
 {$ENDIF}
-
 function IsGPSActive(HIGH_ACCURACY: Boolean = False): Boolean;
 var
   Provider: string;
@@ -409,7 +365,6 @@ begin
   end;
 {$ENDIF}
 end;
-
 function IsNetConnected: Boolean;
 {$IFDEF MSWINDOWS}
 const
@@ -429,7 +384,6 @@ begin
   Result := InternetGetConnectedState(@dwConnectionTypes, 0);
 {$ENDIF}
 end;
-
 function IsNetworkType: TmyNetworkType;
 {$IFDEF ANDROID}
 var
@@ -443,7 +397,6 @@ begin
     Result := getMobileSubType(TelephoneManager.getNetworkType);
 {$ENDIF}
 end;
-
 function IsNetConnectionType: TmyConnectionType;
 {$IFDEF ANDROID}
 var
@@ -465,7 +418,6 @@ begin
     Result := ctEthernet;
 {$ENDIF}
 end;
-
 {$IFDEF MSWINDOWS}
 procedure GetAddress(out aMac, aIP: string);
 const
@@ -483,7 +435,6 @@ begin
   FWbemObjectSet := FWMIService.ExecQuery
     ('SELECT Description,MACAddress,IPAddress FROM Win32_NetworkAdapterConfiguration WHERE IPEnabled=TRUE', 'WQL',
     wbemFlagForwardOnly);
-
   oEnum := IUnknown(FWbemObjectSet._NewEnum) as IEnumvariant;
   while oEnum.Next(1, FWbemObject, iValue) = 0 do
   begin
@@ -491,7 +442,6 @@ begin
       aMac := VarToStr(FWbemObject.MACAddress);
     if not VarIsNull(FWbemObject.IPAddress) then
       aIP := VarToStr(FWbemObject.IPAddress[0]);
-
     if not(aMac.IsEmpty and aIP.IsEmpty) then
     begin
       FWbemObject := Unassigned;
@@ -502,7 +452,6 @@ begin
   end;
 end;
 {$ENDIF}
-
 function FloatS(const aValue: Single): string;
 var
   Buf: TFormatSettings;
@@ -511,7 +460,6 @@ begin
   Buf.DecimalSeparator := '.';
   Result := FloatToStr(aValue, Buf);
 end;
-
 procedure DeviceInfoByPlatform;
 const
   sPlatform: array [TOSVersion.TPlatform] of string = ('Windows', 'MacOS', 'IOS', 'Android', 'WinRT', 'Linux');
@@ -535,7 +483,6 @@ begin
   DeviceInfo.diMobileOperator := 'unknown';
   DeviceInfo.diIsIntel := DeviceInfo.diArchitecture.Contains('IntelX');
 
-
   case TOSVersion.Platform of
     pfMacOS:
       begin
@@ -550,12 +497,9 @@ begin
         with TUIDevice.Wrap(TUIDevice.OCClass.currentDevice) do
         begin
           DeviceInfo.diPlatformVer := systemName.UTF8String + ' (' + systemVersion.UTF8String + ')';
-
           //后面会多出#0
           DeviceInfo.diDevice := model.UTF8String;
-
           //Trim(GetSysInfoByName('hw.machine'));
-
 //          //model.UTF8String;
 //          //@"iPhone1,1" on iPhone
 //          //@"iPhone1,2" on iPhone 3G
@@ -672,11 +616,9 @@ begin
 //            DeviceInfo.diDevice:='iPhone 7 Plus';
 //          end;
 
-
           ////iPhone
           //https://stackoverflow.com/questions/11197509/ios-how-to-get-device-make-and-model
           //https://community.embarcadero.com/blogs/entry/get-os-version-device-name-language-on-ios-android-by-delphi
-
 
           DeviceInfo.diMacAddress := identifierForVendor.UUIDString.UTF8String;
           DeviceInfo.diIPAddress := 'unknown';
@@ -708,28 +650,35 @@ begin
 //        DeviceInfo.diArchitecture2 := sAbis;
 //        DeviceInfo.diIsIntel := sAbis.Contains('x86') or JStringToString(TJBuild.JavaClass.FINGERPRINT)
 //          .Contains('intel');
-
         DeviceInfo.diPlatformVer := GetCodename(JStringToString(TJBuild_VERSION.JavaClass.release)) + ' ' +
           JStringToString(TJBuild_VERSION.JavaClass.release);
-
         //OPPO OPPO A59m
 //        DeviceInfo.diDevice := JStringToString(TJBuild.JavaClass.MANUFACTURER) + ' ' +
 //          JStringToString(TJBuild.JavaClass.model);
         if Pos(JStringToString(TJBuild.JavaClass.MANUFACTURER),
                 JStringToString(TJBuild.JavaClass.model))>0 then
-        begin
-          //model中已经存在了生产商
-          DeviceInfo.diDevice := JStringToString(TJBuild.JavaClass.model);
-        end
-        else
-        begin
-          DeviceInfo.diDevice := JStringToString(TJBuild.JavaClass.MANUFACTURER)
-                                  + ' '
-                                  + JStringToString(TJBuild.JavaClass.model);
-        end;
+
+        begin
+
+          //model中已经存在了生产商
+
+          DeviceInfo.diDevice := JStringToString(TJBuild.JavaClass.model);
+
+        end
+
+        else
+
+        begin
+
+          DeviceInfo.diDevice := JStringToString(TJBuild.JavaClass.MANUFACTURER)
+
+                                  + ' '
+
+                                  + JStringToString(TJBuild.JavaClass.model);
+
+        end;
 
         GetAddress(DeviceInfo.diMacAddress, DeviceInfo.diIPAddress);
-
 //        if TPlatformServices.Current.SupportsPlatformService(IFMXPhoneDialerService, IInterface(PhoneService)) then
 //        begin
 //          try
@@ -749,7 +698,6 @@ begin
 {$ENDIF}
       end;
   end;
-
 //  if TPlatformServices.Current.SupportsPlatformService(IFMXScreenService, IInterface(ScreenService)) then
 //  begin
 //    sScreenSize := ScreenService.GetScreenSize.Round;
@@ -763,25 +711,17 @@ begin
 //
 //  if TPlatformServices.Current.SupportsPlatformService(IFMXLocaleService, IInterface(LocaleService)) then
 //    DeviceInfo.diLang := LocaleService.GetCurrentLangID;
-
   with TTimeZone.Create do
   begin
     DeviceInfo.diTimeZone := (((Local.UtcOffset.Hours * 60) + Local.UtcOffset.Minutes) * 60) + Local.UtcOffset.Seconds;
     Free;
   end;
 end;
-
 {$IFDEF MSWINDOWS}
-
 initialization
-
 CoInitialize(nil);
-
 finalization
-
 CoUninitialize;
 {$ENDIF}
-
 end.
-
 

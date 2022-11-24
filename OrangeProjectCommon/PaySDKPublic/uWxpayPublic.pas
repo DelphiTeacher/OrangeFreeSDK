@@ -109,7 +109,7 @@ function GenerateWxpayAppPayXMLPackage(
 //从微信返回的XML中找到预付单号
 function FindWxpayAppPayPrepayId(AXML:String;var AError:String):String;
 //从微信返回的XML中找到预付单号,扫码支付的URL
-function FindWxpayAppPayPrepayIdEx(AXML:String;var APrepayId:String;var ACodeUrl:String;var AError:String):Boolean;
+function FindWxpayAppPayPrepayIdEx(AXML:String;var APrepayId:String;var AQRCodePayUrl:String;var AError:String):Boolean;
 //微信支付返回是否成功
 function IsWxpayAppPayResponseSucc(AXML:String;var AError:String):Boolean;
 function FindXMLTextByNodeName(AXML:String;ANodeName:String;var AError:String):String;
@@ -334,7 +334,7 @@ begin
   end;
 end;
 
-function FindWxpayAppPayPrepayIdEx(AXML:String;var APrepayId:String;var ACodeUrl:String;var AError:String):Boolean;
+function FindWxpayAppPayPrepayIdEx(AXML:String;var APrepayId:String;var AQRCodePayUrl:String;var AError:String):Boolean;
 var
   XMLDocument: TXMLDocument;
   XMLNode: IXMLNode;
@@ -345,7 +345,7 @@ begin
 
   Result:=False;
   APrepayId:='';
-  ACodeUrl:='';
+  AQRCodePayUrl:='';
   AError:='';
 
   XMLDocument := TXMLDocument.Create(Application);
@@ -421,11 +421,11 @@ begin
             if XMLNode.ChildNodes.FindNode('code_url')<>nil then
             begin
               //成功
-              ACodeUrl:=XMLNode.ChildNodes.FindNode('code_url').Text;
+              AQRCodePayUrl:=XMLNode.ChildNodes.FindNode('code_url').Text;
             end
             else
             begin
-              AError:='XML中不存在code_url结点';
+              //AError:='XML中不存在code_url结点';
             end;
 
 

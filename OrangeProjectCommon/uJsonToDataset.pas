@@ -50,10 +50,20 @@ uses
   Data.DB;
 
 
+type
+  TOnRecordCanBeAppendEvent=procedure(ARecordDataJson:ISuperObject;var AIsCanBeAppend:Boolean) of object;
+
+//将一个Json转到数据集
 function JsonToDataset(ADataJson:ISuperObject):TFDMemTable;
+//将一个Json数组转到数据集
 function JsonArrayToDataset(ADataJsonArray:ISuperArray):TFDMemTable;
+//自动根据Json创建一个数据集，并建好字段
 function JsonCreateDatasetStructure(ADataJson:ISuperObject):TFDMemTable;
+procedure DoJsonCreateDatasetStructure(ADataJson:ISuperObject;var AFDMemTable:TFDMemTable);
+
+
 procedure LoadJsonToDataset(ADataJson:ISuperObject;ADataset:TDataset);
+//ADataJson中得包含RecordList+'_'+'FieldDefs'
 function LoadDataJsonTokbmMemTable(AMemTable:TFDMemTable;
                                   ADataJson:ISuperObject;
                                   ARecordListKey:String=RECORDLIST_KEY
@@ -64,8 +74,20 @@ function LoadDataJsonTokbmMemTable(AMemTable:TFDMemTable;
 function LoadMemTableFeildDefsByFieldDefArray(AMemTable:TFDMemTable;AFieldDefArray:ISuperArray):Boolean;
 //function JsonToMemTable(AFieldDefArray:ISuperArray;var AMemTable:TFDMemTable):Boolean;overload;
 //加载数据
-function LoadDataFromJsonArray(ADataset:TDataset;ASuperArray:ISuperArray):Boolean;
+function LoadDataFromJsonArray(ADataset:TDataset;
+                              ASuperArray:ISuperArray;
+                              //加载完之后，是否需要first
+                              AIsNeedFirst:Boolean=True;
+                              //判断记录是否能被添加
+                              AOnRecordCanBeAppend:TOnRecordCanBeAppendEvent=nil;
+                              //主键,判断是否存在
+                              APrivateKeyFieldName:String=''
+                              ):Boolean;
+function LoadRecordFromJson(ADataset:TDataset;ASuperObject:ISuperObject;AIsMustExistsKey:Boolean=False):Boolean;
+function AppendRecordFromJson(ADataset:TDataset;ASuperObject:ISuperObject):Boolean;
 function LoadDataFromCompressedJsonArray(ADataset:TDataset;ASuperArray:ISuperArray):Boolean;
+//比较记录和Json是否相等
+function CompareRecordAndJsonIsSame(ADataset:TDataset;ASuperObject:ISuperObject):Boolean;
 
 
 //调用rest接口,返回字符串,在服务端中使用
@@ -87,14 +109,145 @@ implementation
 
 
 
+function CompareRecordAndJsonIsSame(ADataset:TDataset;ASuperObject:ISuperObject):Boolean;
+var
+  J: Integer;
+  AFieldDef:TFieldDef;
+  AFieldValue:String;
+//  ANewRecordJson:ISuperObject;
+begin
+  Result:=True;
+
+//  ANewRecordJson:=uDatasetToJson.JSonFromRecord(ADataset,nil,True);
+
+
+  for J := 0 to ADataset.FieldDefs.Count-1 do
+  begin
+      AFieldDef:=ADataset.FieldDefs[J];
+
+      if (AFieldDef.DataType=ftDateTime)
+        or (AFieldDef.DataType=ftDate)
+        or (AFieldDef.DataType=ftTime) then
+      begin
+          AFieldValue:='';
+          if not ADataset.FieldByName(AFieldDef.Name).IsNull then
+          begin
+            AFieldValue:=StdDateTimeToStr(ADataset.FieldByName(AFieldDef.Name).AsDateTime);
+          end;
+
+          if AFieldValue<>ASuperObject.V[AFieldDef.Name] then
+          begin
+            Result:=False;
+            Exit;
+          end;
+
+      end
+      else
+      if ADataset.FieldByName(AFieldDef.Name).AsVariant<>ASuperObject.V[AFieldDef.Name] then
+      begin
+        Result:=False;
+        Exit;
+      end;
+
+//      if ANewRecordJson.V[AFieldDef.Name]<>ASuperObject.V[AFieldDef.Name] then
+//      begin
+//        Result:=False;
+//        Exit;
+//      end;
+
+  end;
+end;
+
+function LoadRecordFromJson(ADataset:TDataset;ASuperObject:ISuperObject;AIsMustExistsKey:Boolean=False):Boolean;
+var
+  J: Integer;
+  AFieldDef:TFieldDef;
+begin
+  Result:=False;
+
+  for J := 0 to ADataset.FieldDefs.Count-1 do
+  begin
+      AFieldDef:=ADataset.FieldDefs[J];
+
+      if AIsMustExistsKey and not ASuperObject.Contains(AFieldDef.Name) then
+      begin
+        Continue;
+      end;
+      
+
+
+      try
+
+          case AFieldDef.DataType of
+            ftDate, ftTime, ftDateTime:
+            begin
+              if ASuperObject.S[AFieldDef.Name]<>'' then
+              begin
+                ADataset.FieldByName(AFieldDef.Name).AsDateTime:=StdStrToDateTime(ASuperObject.S[AFieldDef.Name]);
+              end
+              else
+              begin
+                //空字符串则为null
+              end;
+            end;
+            ftSmallint,ftInteger,ftWord,ftTimeStamp,ftLongWord,ftShortint,ftByte:
+            begin
+              ADataset.FieldByName(AFieldDef.Name).AsInteger:=ASuperObject.I[AFieldDef.Name];
+            end;
+            ftLargeint:
+            begin
+              ADataset.FieldByName(AFieldDef.Name).AsLargeInt:=ASuperObject.I[AFieldDef.Name];
+            end;
+            ftFloat,ftCurrency,ftBCD,ftFMTBcd,ftExtended,ftSingle:
+            begin
+              ADataset.FieldByName(AFieldDef.Name).AsFloat:=ASuperObject.F[AFieldDef.Name];
+            end;
+            ftBoolean:
+            begin
+              ADataset.FieldByName(AFieldDef.Name).AsBoolean:=ASuperObject.B[AFieldDef.Name];
+            end;
+            ftString,ftWideString,ftFixedChar,ftFixedWideChar,ftGuid:
+            begin
+              ADataset.FieldByName(AFieldDef.Name).AsString:=ASuperObject.S[AFieldDef.Name];
+            end;
+            else
+            begin
+              ADataset.FieldByName(AFieldDef.Name).AsString:=ASuperObject.S[AFieldDef.Name];
+            end;
+          end;
+
+      except
+          on E:Exception do
+          begin
+            uBaseLog.HandleException(E,'LoadRecordFromJson');
+          end;
+      end;
+  end;
+  Result:=True;
+end;
+
+
+function AppendRecordFromJson(ADataset:TDataset;ASuperObject:ISuperObject):Boolean;
+begin
+  ADataset.Append;
+  LoadRecordFromJson(ADataset,ASuperObject);
+  ADataset.Post;
+end;
+
 function JsonCreateDatasetStructure(ADataJson:ISuperObject):TFDMemTable;
+begin
+  Result:=TFDMemTable.Create(nil);
+
+  DoJsonCreateDatasetStructure(ADataJson,Result);
+end;
+
+procedure DoJsonCreateDatasetStructure(ADataJson:ISuperObject;var AFDMemTable:TFDMemTable);
 var
   ANameArray:TStringDynArray;
   AValueArray:TVariantDynArray;
   AValueTypeArray:TVarTypeDynArray;
   I: Integer;
 begin
-  Result:=TFDMemTable.Create(nil);
 
 //  ADataJson.GetType()
 //var
@@ -126,29 +279,32 @@ begin
       case AValueTypeArray[I] of
         varInt64,varInteger:
         begin
-          Result.FieldDefs.Add(ANameArray[I],TFieldType.ftInteger);
+          AFDMemTable.FieldDefs.Add(ANameArray[I],TFieldType.ftInteger);
         end;
         varString,varUString:
         begin
-          Result.FieldDefs.Add(ANameArray[I],TFieldType.ftString,Length(AValueArray[I])+1);
+          //长度要确定
+          AFDMemTable.FieldDefs.Add(ANameArray[I],TFieldType.ftWideString,Length(AValueArray[I])+1);
+
         end;
         varDouble:
         begin
-          Result.FieldDefs.Add(ANameArray[I],TFieldType.ftFloat);
+          AFDMemTable.FieldDefs.Add(ANameArray[I],TFieldType.ftFloat);
         end;
         varBoolean:
         begin
-          Result.FieldDefs.Add(ANameArray[I],TFieldType.ftBoolean);
+          AFDMemTable.FieldDefs.Add(ANameArray[I],TFieldType.ftBoolean);
         end
         else
         begin
           uBaseLog.HandleException(nil,'JsonToDataset 不能将'+ANameArray[I]+'转换为字段');
+          AFDMemTable.FieldDefs.Add(ANameArray[I],TFieldType.ftWideString,50);
         end;
       end;
   end;
 
 
-  Result.CreateDataSet;
+  AFDMemTable.CreateDataSet;
 end;
 
 function JsonArrayToDataset(ADataJsonArray:ISuperArray):TFDMemTable;
@@ -225,8 +381,11 @@ begin
   var
     I:Integer;
     AIsDiff:Boolean;
+//    AAfterInsertEvent:TDataSetNotifyEvent;
   begin
       AMemTable.DisableControls;
+//      AAfterInsertEvent:=AMemTable.AfterInsert;
+//      AMemTable.AfterInsert:=nil;
       try
 
         //  if AMemTable=nil then
@@ -291,6 +450,7 @@ begin
     //      end;
       finally
           AMemTable.EnableControls;
+//          AMemTable.AfterInsert:=AAfterInsertEvent;
       end;
   end);
   Result:=True;
@@ -328,7 +488,7 @@ begin
 //var
 //  ASuperEnumerator:TSuperEnumerator<IJSONPair>;
 //      AMemTable.FieldDefs.Add('Id', ftInteger, 0, False);
-//      AMemTable.FieldDefs.Add('Value', FtString, 20, False);
+//      AMemTable.FieldDefs.Add('Value', FtWideString, 20, False);
 //      AMemTable.FieldDefs.Add('Time', ftDateTime, 0, False);
 //      AMemTable.IndexDefs.Add('Index1','Id',[]);//定义索引
       {name:**,data_type:**,size:***}
@@ -367,7 +527,7 @@ begin
                 if ADataTypeName='unknown' then
                   AFieldType:=ftUnknown
                 else if ADataTypeName='string' then
-                  AFieldType:=ftString
+                  AFieldType:=ftWideString
                 else if ADataTypeName='smallint' then
                   AFieldType:=ftSmallint
                 else if ADataTypeName='integer' then
@@ -492,26 +652,32 @@ begin
 //          end
 //          else if AFieldDefArray.O[I].S['data_type']='string' then
 //          begin
-//            AMemTable.FieldDefs.Add(AFieldDefArray.O[I].S['name'], ftString, AFieldDefArray.O[I].I['size'],  False);
+//            AMemTable.FieldDefs.Add(AFieldDefArray.O[I].S['name'], ftWideString, AFieldDefArray.O[I].I['size'],  False);
 //          end
 //          else
 //          begin
-//            AMemTable.FieldDefs.Add(AFieldDefArray.O[I].S['name'], ftString, AFieldDefArray.O[I].I['size'],  False);
+//            AMemTable.FieldDefs.Add(AFieldDefArray.O[I].S['name'], ftWideString, AFieldDefArray.O[I].I['size'],  False);
 //          end;
       end;
 
       AMemTable.CreateDataSet;
+
+      AMemTable.ReadOnly:=False;
 //      AMemTable.Active := True;
 
       Result:=True;
 end;
 
-function LoadDataFromJsonArray(ADataset:TDataset;ASuperArray:ISuperArray):Boolean;
+function LoadDataFromJsonArray(ADataset:TDataset;
+                                ASuperArray:ISuperArray;
+                                AIsNeedFirst:Boolean;
+                                AOnRecordCanBeAppend:TOnRecordCanBeAppendEvent;
+                                APrivateKeyFieldName:String):Boolean;
 var
   I: Integer;
-  J: Integer;
+  AIsCanBeAppend:Boolean;
   ASuperObject:ISuperObject;
-  AFieldDef:TFieldDef;
+  AAfterInsertEvent:TDataSetNotifyEvent;
 begin
 //  ADataset.DisableControls;
 //  try
@@ -521,59 +687,49 @@ begin
       ADataset.Active:=True;
     end;
     
+    ADataset.DisableControls;
+    AAfterInsertEvent:=ADataset.AfterInsert;
+    ADataset.AfterInsert:=nil;
+    try
 
-    for I := 0 to ASuperArray.Length-1 do
-    begin
-        ASuperObject:=ASuperArray.O[I];
 
-        ADataset.Append;
-        for J := 0 to ADataset.FieldDefs.Count-1 do
-        begin
-            AFieldDef:=ADataset.FieldDefs[J];
+      for I := 0 to ASuperArray.Length-1 do
+      begin
+          ASuperObject:=ASuperArray.O[I];
 
-            try
+          AIsCanBeAppend:=True;
+          //判断记录是否能被添加
+          if Assigned(AOnRecordCanBeAppend) then
+          begin
+            AOnRecordCanBeAppend(ASuperObject,AIsCanBeAppend);
+          end;
 
-                case AFieldDef.DataType of
-                  ftDate, ftTime, ftDateTime:
-                  begin
-                    ADataset.FieldByName(AFieldDef.Name).AsDateTime:=StdStrToDateTime(ASuperObject.S[AFieldDef.Name]);
-                  end;
-                  ftSmallint,ftInteger,ftWord,ftLargeint,ftTimeStamp,ftLongWord,ftShortint,ftByte:
-                  begin
-                    ADataset.FieldByName(AFieldDef.Name).AsInteger:=ASuperObject.I[AFieldDef.Name];
-                  end;
-                  ftFloat,ftCurrency,ftBCD,ftFMTBcd,ftExtended,ftSingle:
-                  begin
-                    ADataset.FieldByName(AFieldDef.Name).AsFloat:=ASuperObject.F[AFieldDef.Name];
-                  end;
-                  ftBoolean:
-                  begin
-                    ADataset.FieldByName(AFieldDef.Name).AsBoolean:=ASuperObject.B[AFieldDef.Name];
-                  end;
-                  ftString,ftWideString,ftFixedChar,ftFixedWideChar,ftGuid:
-                  begin
-                    ADataset.FieldByName(AFieldDef.Name).AsString:=ASuperObject.S[AFieldDef.Name];
-                  end;
-                  else
-                  begin
-                    ADataset.FieldByName(AFieldDef.Name).AsString:=ASuperObject.S[AFieldDef.Name];
-                  end;
-                end;
-
-            except
-                on E:Exception do
-                begin
-                  uBaseLog.HandleException(E,'LoadDataFromJsonArray');
-                end;
+          if APrivateKeyFieldName<>'' then
+          begin
+            if ADataset.Locate(APrivateKeyFieldName,ASuperObject.V[APrivateKeyFieldName],[]) then
+            begin
+              ADataset.Edit;
+              LoadRecordFromJson(ADataset,ASuperObject);
+              ADataset.Post;
+              AIsCanBeAppend:=False;
             end;
+          end;
 
+          if AIsCanBeAppend then
+          begin
+            AppendRecordFromJson(ADataset,ASuperObject);
+          end;
 
-        end;
-        ADataset.Post;
+      end;
 
+      if AIsNeedFirst then
+      begin
+        ADataset.First;
+      end;
+    finally
+      ADataset.EnableControls;
+      ADataset.AfterInsert:=AAfterInsertEvent;
     end;
-
-    ADataset.First;
 //  finally
 //    ADataset.EnableControls;
 //  end;
@@ -603,7 +759,7 @@ begin
                   begin
                       ADataset.Fields[J].AsDateTime:=StdStrToDateTime(ASuperObject.S[J]);
                   end;
-                  ftSmallint,ftInteger,ftWord,ftLargeint,ftTimeStamp,ftLongWord,ftShortint,ftByte:
+                  ftSmallint,ftInteger,ftWord,ftTimeStamp,ftLongWord,ftShortint,ftByte:
                   begin
                       if VarIsNull(ASuperObject.V[J]) then
                       begin
@@ -612,6 +768,17 @@ begin
                       else
                       begin
                         ADataset.Fields[J].AsInteger:=ASuperObject.I[J];
+                      end;
+                  end;
+                  ftLargeint:
+                  begin
+                      if VarIsNull(ASuperObject.V[J]) then
+                      begin
+                        ADataset.Fields[J].AsLargeInt:=0;
+                      end
+                      else
+                      begin
+                        ADataset.Fields[J].AsLargeInt:=ASuperObject.I[J];
                       end;
                   end;
                   ftFloat,ftCurrency,ftBCD,ftFMTBcd,ftExtended,ftSingle:

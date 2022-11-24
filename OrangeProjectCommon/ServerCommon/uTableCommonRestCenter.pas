@@ -15,7 +15,7 @@ uses
 
 //  Forms,
   StrUtils,
-  uRestInterfaceCall,
+//  uRestInterfaceCall,
 //  uOpenPlatformServerManager,
   uBaseDatabaseModule,
 
@@ -30,11 +30,34 @@ uses
   uFileCommon,
 //  ServerDataBaseModule,
   uDataSetToJson,
-  XSuperObject,
-  XSuperJson,
+
+  {$IFDEF HAS_REDIS}
+  Redis.Client,
+  Redis.Commons,
+  uRedisClientPool,
+  {$ENDIF}
+
+
+  {$IF CompilerVersion <= 21.0} // XE or older
+  SuperObject,
+  superobjecthelper,
+  {$ELSE}
+    {$IFDEF SKIN_SUPEROBJECT}
+    uSkinSuperObject,
+    {$ELSE}
+    XSuperObject,
+    XSuperJson,
+    {$ENDIF}
+  {$IFEND}
+
+
   uBaseDBHelper;
 
 
+
+
+const
+  IID_IJsonORMObject:TGUID='{8CCF166D-7FC1-4880-92ED-813330F39F5B}';
 
 
 
@@ -55,6 +78,11 @@ type
 
 
 
+  IJsonORMObject=interface
+    ['{8CCF166D-7FC1-4880-92ED-813330F39F5B}']
+    //将对象保存成json,然后再用方法将json保存到数据库
+    function SaveToJson(ASuperObject:ISuperObject):Boolean;
+  end;
 
 
 
@@ -104,10 +132,10 @@ type
                 Sender:TObject;
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
-                AAddedDataJson:ISuperObject;
+                var AAddedDataJson:ISuperObject;
                 AMasterRecordDataJson:ISuperObject;
                 var ACode:Integer;
                 var ADesc:String;
@@ -126,10 +154,10 @@ type
     function Process(
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
-                AAddedDataJson:ISuperObject;
+                var AAddedDataJson:ISuperObject;
                 AMasterRecordDataJson:ISuperObject;
                 var ACode:Integer;
                 var ADesc:String;
@@ -177,7 +205,7 @@ type
     function GetFieldValue(
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
                 AAddedDataJson:ISuperObject;
@@ -236,10 +264,10 @@ type
     function Process(
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
-                AAddedDataJson:ISuperObject;
+                var AAddedDataJson:ISuperObject;
                 AMasterRecordDataJson:ISuperObject;
                 var ACode:Integer;
                 var ADesc:String;
@@ -266,10 +294,10 @@ type
     function Process(
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
-                AAddedDataJson:ISuperObject;
+                var AAddedDataJson:ISuperObject;
                 AMasterRecordDataJson:ISuperObject;
                 var ACode:Integer;
                 var ADesc:String;
@@ -309,6 +337,8 @@ type
   {$ENDREGION 'TWhereKeyTranslator 查询条件字段翻译'}
 
 
+
+//  TCheckRecordIsDumplicateEvent=procedure(Sender:TObject;ARecordDataJson:ISuperObject;var AIsIsDumplicate:Boolean) of object;
   {$REGION 'TBaseQueryItem 基础查询项'}
   //基础查询项
   TBaseQueryItem=class(TDataInterface)
@@ -360,12 +390,14 @@ type
 
 
 
-    //添加记录时的数据流转列表
-    AddRecordDataFlowActionList:TDataFlowActionList;
+    //添加记录前的数据流转列表,可以动态加入所需要插入的字段
     BeforeAddRecordDataFlowActionList:TDataFlowActionList;
+    //添加记录后的数据流转列表
+    AddRecordDataFlowActionList:TDataFlowActionList;
 
-    //修改记录时的数据流转列表
+    //修改记录前的数据流转列表,可以动态加入所需要插入的字段
     BeforeUpdateRecordDataFlowActionList:TDataFlowActionList;
+    //修改记录后的数据流转列表
     UpdateRecordDataFlowActionList:TDataFlowActionList;
 
 
@@ -391,6 +423,17 @@ type
 
     //数据提交时字段检测列表
     FieldValueCheckList:TFieldValueCheckList;
+
+
+    //数据是否不分页
+    FIsNoPage:Boolean;
+
+//    //判断记录是否重复
+//    FOnCheckRecordDumplicate:TCheckRecordIsDumplicateEvent;
+
+
+    //字段所属表别名,appid=A.
+    FFieldTableAliasList:TStringList;
 
     //是否是存储过程
     function IsStoreProcedure:Boolean;
@@ -444,7 +487,7 @@ type
     //遍历主表数组AMasterJsonArray,将从表数据插入每条从表记录
     function GetSubQueryRecordListOfMasterRecordArray(
                 ADBModule: TBaseDatabaseModule;
-                AAppID:Integer;
+                AAppID:String;
                 ASubQueryList:TBaseQueryList;
                 AMasterJsonArray:ISuperArray;
                 ARecordDataJsonStr:String;
@@ -455,7 +498,7 @@ type
     //获取一条主表记录的从表记录列表
     function GetSubQueryRecordListOfMasterRecord(
                 ADBModule: TBaseDatabaseModule;
-                AAppID:Integer;
+                AAppID:String;
                 ASubQueryList:TBaseQueryList;
                 //主记录Json
                 AMasterJson:ISuperObject;
@@ -485,7 +528,7 @@ type
     function ProcessSubQueryListRecord(
                         ADBModule: TBaseDatabaseModule;
                         ASQLDBHelper:TBaseDBHelper;
-                        AAppID:Integer;
+                        AAppID:String;
                         //主表的主键值,用于在子表中插入时使用
 //                        AMasterPKFieldValue:Variant;
                         //主表的记录
@@ -499,7 +542,7 @@ type
     function ProcessSubQueryItemRecord(
                         ADBModule: TBaseDatabaseModule;
                         ASQLDBHelper:TBaseDBHelper;
-                        AAppID:Integer;
+                        AAppID:String;
                         //主表的主键值,用于在子表中插入时使用
 //                        AMasterPKFieldValue:Variant;
                         //主表的记录
@@ -516,9 +559,9 @@ type
 
     //获取记录列表
     function GetRecordList(
-                          ADBModule: TBaseDatabaseModule;
-                          ASQLDBHelper:TBaseDBHelper;
-                           AAppID:Integer;
+                          ADBModule: TBaseDatabaseModule;//如果ASQLDBHelper为nil,则通过DBModule获取
+                          ASQLDBHelper:TBaseDBHelper;//如果不为nil,则直接使用ASQLDBHelper
+                           AAppID:String;
                            APageIndex:Integer;
                            APageSize:Integer;
                            //查询条件,Json数组
@@ -538,13 +581,14 @@ type
                            var ACode:Integer;
                            var ADesc:String;
                            var ADataJson:ISuperObject;
-                           AMasterRecordJson:ISuperObject=nil
+                           AMasterRecordJson:ISuperObject=nil;
+                           AIsNeedRecordList:Boolean=True
                            ):Boolean;overload;
     //获取记录
     function GetRecord(
                       ADBModule: TBaseDatabaseModule;
                       ASQLDBHelper:TBaseDBHelper;
-                       AAppID:Integer;
+                       AAppID:String;
                        //查询条件,Json数组
                        AWhereKeyJson:String;
                        //自带的Where条件
@@ -574,12 +618,12 @@ type
                            var ACode:Integer;
                            var ADesc:String;
                            var ADataJson:ISuperObject
-                           ):Boolean;
+                           ):Boolean;overload;
 
     //添加一条记录
     function AddRecord(ADBModule: TBaseDatabaseModule;
                         ASQLDBHelper:TBaseDBHelper;
-                        AAppID:Integer;
+                        AAppID:String;
                         ARecordDataJson:ISuperObject;
                         AMasterRecordDataJson:ISuperObject;
                         var ACode:Integer;
@@ -590,7 +634,7 @@ type
     function AddRecordList(
                         ADBModule: TBaseDatabaseModule;
                         ASQLDBHelper:TBaseDBHelper;
-                        AAppID:Integer;
+                        AAppID:String;
                         ARecordDataJsonArray:ISuperArray;
                         AMasterRecordDataJson:ISuperObject;
                         var ACode:Integer;
@@ -601,7 +645,7 @@ type
     function UpdateRecord(
                           ADBModule: TBaseDatabaseModule;
                           ASQLDBHelper:TBaseDBHelper;
-                          AAppID:Integer;
+                          AAppID:String;
                           ARecordDataJson:ISuperObject;
                           //更新条件数组,Json数组
                           AWhereKeyJson:String;
@@ -614,7 +658,7 @@ type
     function UpdateRecordList(
                           ADBModule: TBaseDatabaseModule;
                           ASQLDBHelper:TBaseDBHelper;
-                          AAppID:Integer;
+                          AAppID:String;
                           ARecordDataJsonArray:ISuperArray;
                           var ACode:Integer;
                           var ADesc:String;
@@ -624,7 +668,7 @@ type
     function RealDeleteRecord(
                           ADBModule: TBaseDatabaseModule;
                           ASQLDBHelper:TBaseDBHelper;
-                          AAppID:Integer;
+                          AAppID:String;
                           //删除条件数组,Json数组
                           AWhereKeyJson:String;
                           //自带的Where条件,如  AND (1=1),可以不使用AWhereKeyJson
@@ -637,7 +681,7 @@ type
     function RealDeleteRecordList(
                           ADBModule: TBaseDatabaseModule;
                           ASQLDBHelper:TBaseDBHelper;
-                          AAppID:Integer;
+                          AAppID:String;
                           AWhereJsonArray:ISuperArray;
                           var ACode:Integer;
                           var ADesc:String;
@@ -647,7 +691,7 @@ type
     function DeleteRecord(
                           ADBModule: TBaseDatabaseModule;
                           ASQLDBHelper:TBaseDBHelper;
-                          AAppID:Integer;
+                          AAppID:String;
                           //删除条件数组,Json数组
                           AWhereKeyJson:String;
                           //自带的Where条件,如  AND (1=1),可以不使用AWhereKeyJson
@@ -660,7 +704,7 @@ type
     function DeleteRecordList(
                         ADBModule: TBaseDatabaseModule;
                         ASQLDBHelper:TBaseDBHelper;
-                        AAppID:Integer;
+                        AAppID:String;
                         //删除条件数组,Json数组
                         AWhereJsonArray:ISuperArray;
                         var ACode:Integer;
@@ -672,7 +716,7 @@ type
   public
     FIsInTest:Boolean;
     //初始
-    function Init(ADBModule: TBaseDatabaseModule): Boolean;
+    function Init(ADBModule: TBaseDatabaseModule;var ADesc:String): Boolean;
     //准备启动
     function DoPrepareStart(var AError:String): Boolean; virtual;
 
@@ -771,14 +815,14 @@ type
                       //表名
                       ATableName:String;
                       //查询语句
-                      ASelect:String;
-                      ADefaultWhere:String;
+                      ASelect:String='';
+                      ADefaultWhere:String='';
                       //删除字段
-                      ADeleteFieldName:String;
+                      ADeleteFieldName:String='is_deleted';
                       //主键字段
-                      APKFieldName:String;
+                      APKFieldName:String='fid';
                       //默认的排序字段
-                      ADefaultOrderBy:String;
+                      ADefaultOrderBy:String='';
                       //是否拥有AppID字段
                       AHasAppIDField:Boolean=False;
                       //该表中与主表关联的字段
@@ -792,7 +836,7 @@ type
 
     //获取记录列表
     function GetRecordList(
-                           AAppID:Integer;
+                           AAppID:String;
                            APageIndex:Integer;
                            APageSize:Integer;
                            //查询条件,Json数组
@@ -812,11 +856,12 @@ type
                            var ACode:Integer;
                            var ADesc:String;
                            var ADataJson:ISuperObject;
-                           AMasterRecordJson:ISuperObject=nil
+                           AMasterRecordJson:ISuperObject=nil;
+                           AIsNeedRecordList:Boolean=True
                            ):Boolean;overload;//override;
     //获取记录
     function GetRecord(
-                       AAppID:Integer;
+                       AAppID:String;
                        //查询条件,Json数组
                        AWhereKeyJson:String;
                        //自带的Where条件
@@ -832,9 +877,15 @@ type
 
     procedure SetIsInited(const Value: Boolean);override;
 
+  public
+    //获取字段列表
+    function GetFieldList(AAppID:String;
+                          var ADesc:String;
+                          var ADataJson:ISuperObject
+                           ):Boolean;overload;override;
     //获取记录列表
     function GetDataList(
-//                           AAppID:Integer;
+//                           AAppID:String;
 //                           APageIndex:Integer;
 //                           APageSize:Integer;
 //                           //查询条件,Json数组
@@ -860,7 +911,7 @@ type
                            ):Boolean;override;
     //获取记录
     function GetDataDetail(
-//                       AAppID:Integer;
+//                       AAppID:String;
 //                       //查询条件,Json数组
 //                       AWhereKeyJson:String;
 //                       //自带的Where条件
@@ -899,73 +950,262 @@ type
 
 
 
-////获取表格的查询分页的条件
-//function GetTableQueryPageSQL(
-//            //表名
-//            ATableName:String;
-//            //数据库类型,MYSQL还是MSSQL
-//            ADBType:String;
-//            //页号,从1开始
-//            APageIndex:Integer;
-//            //每页记录数,如果为MaxInt则全部返回
-//            APageSize:Integer;
-//            //条件语句
-//            AWhere:String;
-//            //排序语句
-//            AOrderBy:String):String;
 
 
-//<<<<<<< .mine
-//
-//
-////��ȡ��ѯ���Ĳ�ѯ��ҳ����
-//||||||| .r10989
-////��ȡ��ѯ���Ĳ�ѯ��ҳ����
-//=======
+  //通用接口框架的Rest接口
+  TTableCommonLocalDataInterface=class(TDataInterface)
+  public
+//    FInterfaceUrl:String;
+//    //是否使用默认的uOpenClientCommon中的InterfaceUrl
+//    FIsUseDefaultInterfaceUrl:Boolean;
+//    function GetInterfaceUrl:String;
+    //获取字段列表
+    function GetFieldList(AAppID:String;
+                          var ADesc:String;
+                          var ADataJson:ISuperObject
+                           ):Boolean;override;
+    //获取记录列表
+    function GetDataList(
+                           ALoadDataSetting:TLoadDataSetting;
+                           ADataIntfResult:TDataIntfResult
+                           ):Boolean;override;
+    //获取记录
+    function GetDataDetail(
+                       ALoadDataSetting:TLoadDataSetting;
+                       ADataIntfResult:TDataIntfResult
+                       ):Boolean;override;
+    //保存记录
+    function SaveData(ASaveDataSetting:TSaveDataSetting;
+                      ADataIntfResult:TDataIntfResult):Boolean;override;
+
+    //保存记录列表
+    function AddDataList(ASaveDataSetting:TSaveDataSetting;
+                      ARecordList:ISuperArray;
+                      ADataIntfResult:TDataIntfResult):Boolean;override;
+
+
+    //删除记录,删除ALoadDataIntfResult这条获取的记录
+    function DelData(ALoadDataSetting: TLoadDataSetting;
+                      ALoadDataIntfResult:TDataIntfResult;
+                      ADataIntfResult:TDataIntfResult):Boolean;override;
+//  public
+//    constructor Create;virtual;
+  end;
 
 
 
 
-//获取查询语句的查询分页条件
-//>>>>>>> .r11181
+
+var
+  GlobalCommonRestIntfList:TCommonRestIntfList;
+
+
+//获取查询语句的查询分页条件,主要是为了兼容MySQL和SQLServer分页不兼容的问题
 function GetQueryQueryPageSQL(
-            ASQLDBHelper:TBaseDBHelper;
-            //查询语句,不要条件和排序
-            ASelect:String;
-            //数据库类型,MYSQL还是MSSQL
-            ADBType:String;
-            //页号,从1开始
-            APageIndex:Integer;
-            //每页记录数,如果为MaxInt则全部返回
-            APageSize:Integer;
-            //条件语句
-            AWhere:String;
-            //排序语句
-            AOrderBy:String;
-            AParamNames:TStringDynArray;
-            AParamValues:TVariantDynArray;
-            AIsProcedure:Boolean;
-            AExecProcParams:String
-            ):String;
+                              ASQLDBHelper:TBaseDBHelper;
+                              //查询语句,不要条件和排序
+                              ASelect:String;
+                              //数据库类型,MYSQL还是MSSQL
+                              ADBType:String;
+                              //页号,从1开始
+                              APageIndex:Integer;
+                              //每页记录数,如果为MaxInt则全部返回
+                              APageSize:Integer;
+                              //条件语句
+                              AWhere:String;
+                              //排序语句
+                              AOrderBy:String;
+                              AParamNames:TStringDynArray;
+                              AParamValues:TVariantDynArray;
+                              AIsProcedure:Boolean;
+                              AExecProcParams:String
+                              ):String;
 
 
 //获取默认的条件
 function GetDefaultWhereConditionItemSQL(
-                ALogicOperator,
-                AName,
-                AOperator:String;
-                AValue: Variant): String;
+                                        ALogicOperator,
+                                        AName,
+                                        AOperator:String;
+                                        AValue: Variant;
+                            AFieldValueIsField:Boolean=False): String;
 
 
 function GetIFNULLName(ADBType:String):String;
+
+
+//将对象保存到数据库
+function SaveObjectToDB(ADBModule:TBaseDataBaseModule;
+                        ADBHelper:TBaseDBHelper;
+                        AAppID:String;
+                        ABaseQueryItem:TBaseQueryItem;
+                        const AObject:TObject;
+                        var ACode:Integer;
+                        var ADesc:String;
+                        var ADataJson:ISuperObject;
+                        AIsDeleted:Boolean=False):Boolean;
 
 
 implementation
 
 
+type
+  TProtectedInterfacedObject=class(TInterfacedObject)
+  end;
+
+
+//将对象保存到数据库
+function SaveObjectToDB(ADBModule:TBaseDataBaseModule;
+                        ADBHelper:TBaseDBHelper;
+                        AAppID:String;
+                        ABaseQueryItem:TBaseQueryItem;
+                        const AObject:TObject;
+                        var ACode:Integer;
+                        var ADesc:String;
+                        var ADataJson:ISuperObject;
+                        AIsDeleted:Boolean
+                        ):Boolean;
+var
+  AJsonORMObjectIntf:IJsonORMObject;
+  ASuperObject:ISuperObject;
+  AIsAdd:Boolean;
+begin
+  Result:=False;
+  ACode:=FAIL;
+  ADesc:='';
+  ADataJson:=nil;
+
+  Result:=False;
+
+//  if (AObject is TIntefacedObject) and not TIntefacedObject(AObject).GetInterface(IID_IJsonORMObject,AJsonORMObjectIntf) then
+//  begin
+//    raise Exception.Create('object is not support IJsonORMObject');
+//    Exit;
+//  end;
+//  TProtectedInterfacedObject(AIntefacedObject)._AddRef;
+
+  if (AObject is TComponent) and not TComponent(AObject).GetInterface(IID_IJsonORMObject,AJsonORMObjectIntf) then
+  begin
+    raise Exception.Create('object is not support IJsonORMObject');
+    Exit;
+  end;
+
+  ASuperObject:=TSuperObject.Create;
+  if not AJsonORMObjectIntf.SaveToJson(ASuperObject) then
+  begin
+    Exit;
+  end;
+
+
+  if not AIsDeleted then
+  begin
+
+      AIsAdd:=False;
+      if ASuperObject.Contains(ABaseQueryItem.PKFieldName) then
+      begin
+
+
+          //var
+          //  Temp: IJSONAncestor;
+          //begin
+          //  Temp := GetData(Key);
+          //  if Temp = Nil then
+          //     Result := varUnknown
+          //  else if Temp is TJSONString then
+          //     Result := varString
+          //  else if Temp is TJSONFloat then
+          //     Result := varDouble
+          //  else if Temp is TJSONInteger then
+          //      Result := varInt64
+          //  else if Temp is TJSONNull then
+          //     Result := varNull
+          //  else if Temp is TJSONObject then
+          //     Result := varObject
+          //  else if Temp is TJSONArray then
+          //     Result := varArray
+          //  else if Temp is TJSONBoolean then
+          //     Result := varBoolean
+          //APKValue:=ASuperObject.V[ABaseQueryItem.PKFieldName];
+          //主键一般就只有这两种类型
+          if ASuperObject.GetType(ABaseQueryItem.PKFieldName)=varString then
+          begin
+            AIsAdd:=(ASuperObject.S[ABaseQueryItem.PKFieldName]='')
+          end;
+          if ASuperObject.GetType(ABaseQueryItem.PKFieldName)=varInt64 then
+          begin
+            AIsAdd:=(ASuperObject.I[ABaseQueryItem.PKFieldName]=0)
+          end;
+
+      end
+      else
+      begin
+          AIsAdd:=True;
+      end;
+
+  end;
+
+
+  if AIsDeleted then
+  begin
+      //删除记录
+      if not ABaseQueryItem.DeleteRecord(ADBModule,
+                                         ADBHelper,
+                                         AAppID,
+                                         GetWhereConditions([ABaseQueryItem.PKFieldName],[ASuperObject.V[ABaseQueryItem.PKFieldName]]),
+                                         '',
+                                         ACode,
+                                         ADesc,
+                                         ADataJson
+                                         ) then
+      begin
+        Exit;
+      end;
+
+
+  end
+  else if AIsAdd then
+  begin
+      //添加记录
+      if not ABaseQueryItem.AddRecord(ADBModule,
+                                       ADBHelper,
+                                       AAppID,
+                                       ASuperObject,
+                                       nil,
+                                       ACode,
+                                       ADesc,
+                                       ADataJson
+                                       ) then
+      begin
+        Exit;
+      end;
+  end
+  else
+  begin
+      //保存记录
+      if not ABaseQueryItem.UpdateRecord(ADBModule,
+                                         ADBHelper,
+                                         AAppID,
+                                         ASuperObject,
+                                         GetWhereConditions([ABaseQueryItem.PKFieldName],[ASuperObject.V[ABaseQueryItem.PKFieldName]]),
+                                         '',
+                                         ACode,
+                                         ADesc,
+                                         ADataJson
+                                         ) then
+      begin
+        Exit;
+      end;
+
+  end;
+
+
+  Result:=(ACode=SUCC);
+
+end;
+
 function GetIFNULLName(ADBType:String):String;
 begin
-  if ADBType='MSSQL' then
+  if (ADBType='MSSQL') or (ADBType='MSSQL2000') then
   begin
     Result:='ISNULL';
   end
@@ -977,18 +1217,41 @@ begin
 end;
 
 function GetQueryQueryPageSQL(
-            ASQLDBHelper:TBaseDBHelper;
-            ASelect:String;
-            ADBType:String;
-            APageIndex:Integer;
-            APageSize:Integer;
-            AWhere:String;
-            AOrderBy:String;
-            AParamNames:TStringDynArray;
-            AParamValues:TVariantDynArray;
-            AIsProcedure:Boolean;
-            AExecProcParams:String
-            ):String;
+                              ASQLDBHelper:TBaseDBHelper;
+                              ASelect:String;
+                              ADBType:String;
+                              APageIndex:Integer;
+                              APageSize:Integer;
+                              AWhere:String;
+                              AOrderBy:String;
+                              AParamNames:TStringDynArray;
+                              AParamValues:TVariantDynArray;
+                              AIsProcedure:Boolean;
+                              AExecProcParams:String
+                              ):String;
+  function RemoveOrderByTalbeAlias(AOrderBy:String):String;
+  begin
+
+    //把OrderBy中的表别名去除掉
+    AOrderBy:=ReplaceStr(AOrderBy,'A.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'B.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'C.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'D.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'E.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'F.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'G.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'H.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'I.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'J.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'K.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'L.','');
+
+    AOrderBy:=ReplaceStr(AOrderBy,'X.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'Y.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'Z.','');
+    Result:=AOrderBy;
+
+  end;
 var
   AOrderByFieldNames:TStringList;
   AOrderByFieldName:String;
@@ -999,64 +1262,79 @@ var
 begin
   Result:=ASelect+' '+AWhere+AOrderBy;
 
-
-//  if (APageSize<>MaxInt) then
-//  begin
+  if (APageSize=MaxInt) then
+  begin
+    Exit;
+  end;
 
 
       //返回分页数据
-      if (ADBType='') or SameText(ADBType,'MYSQL') then
+      if (ADBType='') or SameText(ADBType,'MYSQL') or SameText(ADBType,'SQLite') then
       begin
-          if (APageSize<>MaxInt) then
-          begin
               Result:=ASelect+' '
                       +AWhere
                       +AOrderBy
                       //从0开始
                       +' LIMIT '+IntToStr((APageIndex-1)*APageSize)+','+IntToStr(APageSize)+' ';
-          end;
       end
-      else if SameText(ADBType,'MSSQL') then
+      else if SameText(ADBType,'MSSQL') or SameText(ADBType,'MSSQL2000') then
       begin
+
+
+          //这样查询,OrderBy不会字段不明确
+          //Result:='SELECT * FROM ('+ASelect+' '+AWhere+') QueryPageSQLView '+AOrderBy;
+
 
           if not AIsProcedure then// Pos('exec ',LowerCase(ASelect))=0 then
           begin
-              if (APageSize<>MaxInt) then
-              begin
-                {$IFDEF SQLSERVER_2000}
-                  //低版本的SQLServer,不支持ROW_NUMBER
-                  if (AOrderBy<>'') and (APageIndex>1) then
+//                if (AOrderBy='') then
+//                begin
+//
+//                end;
+
+                //{$IFDEF SQLSERVER_2000}
+                  if SameText(ADBType,'MSSQL2000') {$IFDEF SQLSERVER_2000} or True{$ENDIF} then
                   begin
-                      //先找出主键
-                      AOrderByFieldName:=AOrderBy;
-                      AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
-                      AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
-                      AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
-                      AOrderByFieldName:=Trim(AOrderByFieldName);
-                      AOrderByFieldNames:=TStringList.Create;
-                      try
-                          AOrderByFieldNames.Delimiter:=' ';
-                          AOrderByFieldNames.StrictDelimiter:=True;
-                          AOrderByFieldNames.DelimitedText:=AOrderByFieldName;
-                          AOrderByFieldName:=AOrderByFieldNames[2];
-                          AOrderByType:=AOrderByFieldNames[3];
+                      //低版本的SQLServer,不支持ROW_NUMBER
+                      if (APageIndex>1) then
+                      begin
+                          //第二页要分页
+                          //先找出主键
+                          AOrderByFieldName:=AOrderBy;
+                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
+                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
+                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
+                          AOrderByFieldName:=Trim(AOrderByFieldName);
+                          AOrderByFieldNames:=TStringList.Create;
+                          try
+                              AOrderByFieldNames.Delimiter:=' ';
+                              AOrderByFieldNames.StrictDelimiter:=True;
+                              AOrderByFieldNames.DelimitedText:=AOrderByFieldName;
+                              AOrderByFieldName:=AOrderByFieldNames[2];
+                              AOrderByType:=AOrderByFieldNames[3];
+
+                          finally
+                            FreeAndNil(AOrderByFieldNames);
+                          end;
 
 
+                          //根据排序字段,找到之前分页结束的那个值,麻烦的是会有相同值的情况
                           //ASC,1,2,3,4,5,6
                           //DESC,6,5,4,3,2,1
                           AIndex:=Pos('FROM',UpperCase(ASelect));
                           if not ASQLDBHelper.SelfQuery(
-                              'SELECT TOP '+IntToStr((APageIndex-1)*APageSize)+' '+AOrderByFieldName+' '+Copy(ASelect,AIndex-1,MaxInt)
-                              +AWhere+AOrderBy,
-                              AParamNames,
-                              AParamValues,
-                              asoOpen) then
+                                                        'SELECT TOP '+IntToStr((APageIndex-1)*APageSize)+' '+AOrderByFieldName+' '
+                                                        +Copy(ASelect,AIndex-1,MaxInt)
+                                                        +AWhere+AOrderBy,
+                                                        AParamNames,
+                                                        AParamValues,
+                                                        asoOpen) then
                           begin
                             Exit;
                           end;
 
 
-
+                          //取到之前分页结束的那个值
                           AMaxValue:='';
                           ASQLDBHelper.Query.First;
                           while not ASQLDBHelper.Query.Eof do
@@ -1093,38 +1371,46 @@ begin
                                   +AOrderByWhere
                                   +AOrderBy;
 
+                      end
+                      else
+                      begin
+                          //第一页
 
-                      finally
-                        FreeAndNil(AOrderByFieldNames);
                       end;
+
+                      AIndex:=Pos('SELECT',UpperCase(Result));
+                      Result:='SELECT '+' TOP '+IntToStr(APageSize)+' '
+                              +Copy(Result,AIndex+6,MaxInt);
+
+
+        //            Result:=
+        //              ' SELECT TOP '+IntToStr(APageSize)+' * '
+        //                +' FROM ( '
+        //                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
+        //                    +' FROM '+'('+ASelect+AWhere+') Z'+' '
+        //                +' ) Y '
+        //                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
+        //                +AOrderBy;
+                  end
+                  else
+                  //{$ELSE}
+                  begin
+
+
+                      //高版本的SQLServer,支持ROW_NUMBER
+                      AOrderBy:=RemoveOrderByTalbeAlias(AOrderBy);
+                      Result:=
+                              ' SELECT TOP '+IntToStr(APageSize)+' * '
+                                +' FROM ( '
+                                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
+                                    +' FROM '+'('+ASelect+' '+AWhere+') Z'+' '
+                                +' ) Y '
+                                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
+                                +AOrderBy;
+
+
+                  //{$ENDIF}
                   end;
-
-                  AIndex:=Pos('SELECT',UpperCase(Result));
-                  Result:='SELECT '+' TOP '+IntToStr(APageSize)+' '
-                          +Copy(Result,AIndex+6,MaxInt);
-
-
-      //            Result:=
-      //              ' SELECT TOP '+IntToStr(APageSize)+' * '
-      //                +' FROM ( '
-      //                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
-      //                    +' FROM '+'('+ASelect+AWhere+') Z'+' '
-      //                +' ) Y '
-      //                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
-      //                +AOrderBy;
-                {$ELSE}
-                  //高版本的SQLServer,支持ROW_NUMBER
-                  Result:=
-                    ' SELECT TOP '+IntToStr(APageSize)+' * '
-                      +' FROM ( '
-                          +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
-                          +' FROM '+'('+ASelect+' '+AWhere+') Z'+' '
-                      +' ) Y '
-                      +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
-                      +AOrderBy;
-                {$ENDIF}
-
-              end;
 
 
           end
@@ -1140,21 +1426,14 @@ begin
       end;
 
 
-
-//  end
-//  else
-//  begin
-//      //不分页
-//      //返回所有数据
-//  end;
-
 end;
 
 
 function GetDefaultWhereConditionItemSQL(ALogicOperator,
               AName,
               AOperator:String;
-              AValue:Variant): String;
+              AValue:Variant;
+                            AFieldValueIsField:Boolean=False): String;
 var
   AValueStr:String;
 begin
@@ -1176,7 +1455,14 @@ begin
       if (VarType(AValue)=varString)
         or (VarType(AValue)=varUString) then
       begin
-        Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+QuotedStr(AValue)+') ';
+        if not AFieldValueIsField then
+        begin
+          Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+QuotedStr(AValue)+') ';
+        end
+        else
+        begin
+          Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+AValue+') ';
+        end;
       end
       else
       begin
@@ -1234,7 +1520,7 @@ end;
 //    //获取记录列表
 //    function GetTableRecordList(ADBModule: TBaseDatabaseModule;
 //                            ASQLDBHelper:TBaseDBHelper;
-//                           AAppID:Integer;
+//                           AAppID:String;
 //                           APageIndex:Integer;
 //                           APageSize:Integer;
 //                           //查询条件,Json数组
@@ -1251,7 +1537,7 @@ end;
 //                           ):Boolean;overload;
 //    function GetTableRecord(ADBModule: TBaseDatabaseModule;
 //                        ASQLDBHelper:TBaseDBHelper;
-//                       AAppID:Integer;
+//                       AAppID:String;
 //                       //查询条件,Json数组
 //                       AWhereKeyJson:String;
 //                       //自带的Where条件,如 AND (1=1),可以不使用AWhereKeyJson
@@ -1315,27 +1601,27 @@ begin
 end;
 
 constructor TCommonRestIntfItem.Create(
-                      //接口名称
-                      AName:String;
-                      //标题
-                      ACaption:String;
-                      //
-                      ADBModule:TBaseDatabaseModule;
-                      //表名
-                      ATableName:String;
-                      //查询语句
-                      ASelect:String;
-                      ADefaultWhere:String;
-                      //删除字段
-                      ADeleteFieldName:String;
-                      //主键字段
-                      APKFieldName:String;
-                      //默认的排序字段
-                      ADefaultOrderBy:String;
-                      //是否拥有AppID字段
-                      AHasAppIDField:Boolean;
-                      ARelateToMasterFieldName:String
-                      );
+                                      //接口名称
+                                      AName:String;
+                                      //标题
+                                      ACaption:String;
+                                      //
+                                      ADBModule:TBaseDatabaseModule;
+                                      //表名
+                                      ATableName:String;
+                                      //查询语句
+                                      ASelect:String;
+                                      ADefaultWhere:String;
+                                      //删除字段
+                                      ADeleteFieldName:String;
+                                      //主键字段
+                                      APKFieldName:String;
+                                      //默认的排序字段
+                                      ADefaultOrderBy:String;
+                                      //是否拥有AppID字段
+                                      AHasAppIDField:Boolean;
+                                      ARelateToMasterFieldName:String
+                                      );
 begin
   Inherited Create(
                     AName,
@@ -1367,7 +1653,6 @@ begin
 
   SetDBModule(ADBModule);
 
-
 end;
 
 constructor TCommonRestIntfItem.Create;
@@ -1375,6 +1660,7 @@ begin
   Inherited Create;
 
   SetDBModule(nil);
+
 end;
 
 function TCommonRestIntfItem.CustomLoadFromJson(ASuperObject: ISuperObject): Boolean;
@@ -1424,7 +1710,7 @@ end;
 
 //获取记录列表
 function TCommonRestIntfItem.GetDataList(
-//                           AAppID:Integer;
+//                           AAppID:String;
 //                           APageIndex:Integer;
 //                           APageSize:Integer;
 //                           //查询条件,Json数组
@@ -1481,7 +1767,7 @@ end;
 
 //获取记录
 function TCommonRestIntfItem.GetDataDetail(
-//                       AAppID:Integer;
+//                       AAppID:String;
 //                       //查询条件,Json数组
 //                       AWhereKeyJson:String;
 //                       //自带的Where条件
@@ -1523,7 +1809,7 @@ end;
 
 
 function TCommonRestIntfItem.GetRecordList(
-                       AAppID:Integer;
+                       AAppID:String;
                        APageIndex:Integer;
                        APageSize:Integer;
                        //查询条件,Json数组
@@ -1543,7 +1829,8 @@ function TCommonRestIntfItem.GetRecordList(
                        var ACode:Integer;
                        var ADesc:String;
                        var ADataJson:ISuperObject;
-                       AMasterRecordJson:ISuperObject=nil
+                       AMasterRecordJson:ISuperObject=nil;
+                           AIsNeedRecordList:Boolean=True
                        ):Boolean;
 begin
   Result:=GetRecordList(DBModule,
@@ -1561,12 +1848,13 @@ begin
                         ACode,
                         ADesc,
                         ADataJson,
-                        AMasterRecordJson
+                        AMasterRecordJson,
+                        AIsNeedRecordList
                         );
 end;
 
 function TCommonRestIntfItem.GetRecord(
-                   AAppID:Integer;
+                   AAppID:String;
                    //查询条件,Json数组
                    AWhereKeyJson:String;
                    //自带的Where条件
@@ -1647,7 +1935,7 @@ begin
 
   if Result then
   begin
-    Result:=Init(DBModule);
+    Result:=Init(DBModule,AError);
   end;
 
   Self.FIsStarted:=Result;
@@ -1739,6 +2027,24 @@ begin
     Result:=Self.DBModule.DBConfig.FDBUserName;//MYSQL
   end;
 
+end;
+
+function TCommonRestIntfItem.GetFieldList(AAppID:String;var ADesc: String;
+  var ADataJson: ISuperObject): Boolean;
+var
+  ACode:Integer;
+begin
+  Result:=False;
+  if not Self.GetFieldList(Self.DBModule,
+                            nil,
+                            ACode,
+                            ADesc,
+                            ADataJson
+                            ) or (ACode<>SUCC) then
+  begin
+    Exit;
+  end;
+  Result:=True;
 end;
 
 procedure TCommonRestIntfItem.SetDBCharset(const Value: String);
@@ -1863,6 +2169,7 @@ begin
     end;
   end;
 end;
+
 function TBaseQueryList.GetItem(Index: Integer): TBaseQueryItem;
 begin
   Result:=TBaseQueryItem(Inherited Items[Index]);
@@ -1872,7 +2179,7 @@ end;
 
 function TBaseQueryItem.GetSubQueryRecordListOfMasterRecord(
   ADBModule: TBaseDatabaseModule;
-  AAppID:Integer;
+  AAppID:String;
   ASubQueryList: TBaseQueryList;
   AMasterJson: ISuperObject;
   ARecordDataJsonStr:String;
@@ -1973,7 +2280,7 @@ end;
 
 function TBaseQueryItem.GetSubQueryRecordListOfMasterRecordArray(
   ADBModule: TBaseDatabaseModule;
-  AAppID:Integer;
+  AAppID:String;
   ASubQueryList: TBaseQueryList;
   AMasterJsonArray: ISuperArray;
   ARecordDataJsonStr:String;
@@ -2010,7 +2317,7 @@ end;
 function TBaseQueryItem.AddRecord(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   ARecordDataJson: ISuperObject;
   AMasterRecordDataJson:ISuperObject;
   var ACode:Integer;
@@ -2095,7 +2402,7 @@ begin
           //如果这个表有appid,那么自动填入此字段
           if Self.HasAppIDField then
           begin
-            ARecordDataJson.I['appid']:=AAppID;
+            ARecordDataJson.I['appid']:=StrToInt(AAppID);
           end;
 
 
@@ -2103,7 +2410,10 @@ begin
           //初始这两个字段
           if (ASQLDBHelper.DBType='') or SameText(ASQLDBHelper.DBType,'MYSQL') then
           begin
-            ARecordDataJson.S['createtime']:=StdDateTimeToStr(Now);
+            if not ARecordDataJson.Contains('createtime') then
+            begin
+              ARecordDataJson.S['createtime']:=StdDateTimeToStr(Now);
+            end;
             ARecordDataJson.I['is_deleted']:=0;
           end;
 
@@ -2112,17 +2422,17 @@ begin
           for I := 0 to Self.BeforeAddRecordDataFlowActionList.Count-1 do
           begin
             if not BeforeAddRecordDataFlowActionList[I].Process(
-//                      ADBModule,
-                      ASQLDBHelper,
-                      AAppID,
-                      ARecordDataJson,
-                      nil,
-                      ADataJson,
-                      AMasterRecordDataJson,
-                      ACode,
-                      ADesc,
-                      ADataJson2
-                      ) then
+                                          //                      ADBModule,
+                                                                ASQLDBHelper,
+                                                                AAppID,
+                                                                ARecordDataJson,
+                                                                nil,
+                                                                ADataJson,
+                                                                AMasterRecordDataJson,
+                                                                ACode,
+                                                                ADesc,
+                                                                ADataJson2
+                                                                ) then
             begin
               Exit;
             end;
@@ -2155,17 +2465,17 @@ begin
               for I := 0 to Self.DetailAddRecordFieldList.Count-1 do
               begin
                   AGetFieldValueResult:=DetailAddRecordFieldList[I].GetFieldValue(
-//                          ADBModule,
-                          ASQLDBHelper,
-                          AAppID,
-                          ARecordDataJson,
-                          nil,
-                          nil,
-                          AMasterRecordDataJson,
-                          ACode,
-                          ADesc,
-                          ANewParamValues[Length(AParamNames)+AIndex]
-                          );
+                                                        //                          ADBModule,
+                                                                                  ASQLDBHelper,
+                                                                                  AAppID,
+                                                                                  ARecordDataJson,
+                                                                                  nil,
+                                                                                  nil,
+                                                                                  AMasterRecordDataJson,
+                                                                                  ACode,
+                                                                                  ADesc,
+                                                                                  ANewParamValues[Length(AParamNames)+AIndex]
+                                                                                  );
                   case AGetFieldValueResult of
                     0:
                     begin
@@ -2229,9 +2539,11 @@ begin
                                                       +' WHERE '+UniqueFieldNameList[I]+'=:'+UniqueFieldNameList[I]
                                                       //要加上appid的条件,不然所有app都只能一个name同名
                                                       +' AND appid=:appid '
-                                                      +' AND '+GetIFNULLName(ASQLDBHelper.DBType)+'('+Self.DeleteFieldName+',0)=0 ',
-                                                      [UniqueFieldNameList[I],'appid'],
-                                                      [ARecordDataJson.V[UniqueFieldNameList[I]],AAppID],
+                                                      +' AND '+GetIFNULLName(ASQLDBHelper.DBType)+'('+FFieldTableAliasList.Values[DeleteFieldName]+Self.DeleteFieldName+',0)=0 ',
+
+                                                      ConvertToStringDynArray([UniqueFieldNameList[I],'appid']),
+                                                      ConvertToVariantDynArray([ARecordDataJson.V[UniqueFieldNameList[I]],AAppID]),
+
                                                       asoOpen) then
                     begin
                       //查询失败
@@ -2250,28 +2562,48 @@ begin
 
 
 
-//          if (ASQLDBHelper.DBType='') or SameText(ASQLDBHelper.DBType,'MYSQL') then
-//          begin
 
 
 
               //select @@IDENTITY
-              ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'=last_insert_id()';
-              if SameText(ASQLDBHelper.DBType,'MSSQL') then
+              //因为有些表插入记录的时候自带有fid，所以返回插入数据的时候，不能用last_insert_id
+              if not ARecordDataJson.Contains(PKFieldName) then
               begin
-                ASelectAfterInsert:='SELECT 1 ';
-
-                  {$IFNDEF SQLSERVER_2000}
-                  if PKFieldName<>'' then
+              
+                  ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'=last_insert_id()';
+                  if SameText(ASQLDBHelper.DBType,'SQLite') then
                   begin
-                    //将@@IDENTITY转换为字符串,不然会报错
-                    ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'=CAST(@@IDENTITY AS nvarchar(20))  ';
-                  end
-                  else
-                  begin
-                    ASelectAfterInsert:='SELECT 1 ';
+                    ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'=last_insert_rowid()';
                   end;
-                  {$ENDIF}
+                  if SameText(ASQLDBHelper.DBType,'MSSQL') or SameText(ASQLDBHelper.DBType,'MSSQL2000') then
+                  begin
+                      ASelectAfterInsert:='SELECT 1 ';
+                      if PKFieldName<>'' then
+                      begin
+
+                          //{$IFNDEF SQLSERVER_2000}
+                          if SameText(ASQLDBHelper.DBType,'MSSQL2000') {$IFDEF SQLSERVER_2000} or True{$ENDIF} then
+                          begin
+                            ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'=(SELECT MAX('+PKFieldName+') FROM '+TableName+' )  ';
+                          end
+                          else
+                          begin
+                            //将@@IDENTITY转换为字符串,不然会报错
+                            //PKFieldName,有时候是字符串类型的
+                            ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'=CAST(@@IDENTITY AS nvarchar(20))  ';
+                          end;
+                          //{$ENDIF}
+                      end
+                      else
+                      begin
+                          ASelectAfterInsert:='SELECT 1 ';
+                      end;
+                  end;
+              end
+              else
+              begin
+                  //自带主键了
+                  ASelectAfterInsert:='SELECT * FROM '+TableName+' WHERE '+PKFieldName+'='+QuotedStr(ARecordDataJson.V[PKFieldName]);
               end;
 
 
@@ -2279,22 +2611,46 @@ begin
               //MYSQL的方式
               //需要返回数据集
               if not ASQLDBHelper.SelfQuery_EasyInsert(
-                      TableName,
-                      AParamNames,
-                      AParamValues,
-                      //获取刚插入的这条数据
-                      ASelectAfterInsert,
-                      asoOpen
-                      ) then
+                                                        TableName,
+                                                        AParamNames,
+                                                        AParamValues,
+                                                        //获取刚插入的这条数据
+                                                        ASelectAfterInsert,
+                                                        {$IF CompilerVersion > 21.0} // XE or older
+                                                        asoOpen
+                                                        {$ELSE}
+                                                        //D2010版本的UniDAC执行Insert+Select不能返回数据集
+                                                        asoExec
+                                                        {$IFEND}
+                                                        ) then
               begin
                   //添加失败
                   ADesc:=ASQLDBHelper.LastExceptMessage;
                   Exit;
               end;
 
-              ADataJson:=JSonFromRecord(ASQLDBHelper.Query);
+              {$IF CompilerVersion > 21.0} // XE or older
+              {$ELSE}
+              //D2010版本的UniDAC执行Insert+Select不能返回数据集
+              if not ASQLDBHelper.SelfQuery(ASelectAfterInsert,
+                                            ConvertToStringDynArray([]),
+                                            ConvertToVariantDynArray([])
+                                            ) then
+              begin
+                  //添加失败
+                  ADesc:=ASQLDBHelper.LastExceptMessage;
+                  Exit;
+              end;
+              {$IFEND}
 
-
+              if not ARecordDataJson.Contains(PKFieldName) then
+              begin
+                ADataJson:=JSonFromRecord(ASQLDBHelper.Query);
+              end
+              else
+              begin
+                ADataJson:=ARecordDataJson;
+              end;
 
               
               //处理子表的数据插入
@@ -2315,9 +2671,9 @@ begin
                   end;
               end;
 
-              
 
-              //处理添加数据的数据流转
+
+              //处理添加数据后的数据流转
               for I := 0 to Self.AddRecordDataFlowActionList.Count-1 do
               begin
                 if not AddRecordDataFlowActionList[I].Process(
@@ -2338,11 +2694,6 @@ begin
               end;
 
 
-
-
-
-                  
-
                   
               //成功
               ADesc:=Trans(Caption+'添加成功');
@@ -2350,108 +2701,6 @@ begin
 
               Result:=True;
                   
-//<<<<<<< .mine
-////          end
-////          else
-////          begin
-////              //SQLSERVER�ķ�ʽ
-////              //��Ҫ�������ݼ
-////              if not ASQLDBHelper.SelfQuery_EasyInsert(
-////                      TableName,
-////                      AParamNames,
-////                      AParamValues,
-////                      //��ȡ�ղ������������,SQlSERVERȡ����
-////                      '',
-////                      asoExec
-////                      ) then
-////              begin
-////                  //����ʧ��
-////                  ADesc:=ASQLDBHelper.LastExceptMessage;
-////                  Exit;
-////              end;
-////
-////
-////              //û����ת������������
-////
-////
-////              //�ɹ
-////              ADesc:=Trans(Caption+'���ӳɹ�');
-////              ACode:=SUCC;
-////
-////
-////              Result:=True;
-////
-////          end;
-//||||||| .r10989
-//          end
-//          else
-//          begin
-//              //SQLSERVER�ķ�ʽ
-//              //��Ҫ�������ݼ
-//              if not ASQLDBHelper.SelfQuery_EasyInsert(
-//                      TableName,
-//                      AParamNames,
-//                      AParamValues,
-//                      //��ȡ�ղ������������,SQlSERVERȡ����
-//                      '',
-//                      asoExec
-//                      ) then
-//              begin
-//                  //����ʧ��
-//                  ADesc:=ASQLDBHelper.LastExceptMessage;
-//                  Exit;
-//              end;
-//=======
-//          end
-//          else
-//          begin
-//              //SQLSERVER的方式
-//              //需要返回数据集
-//              if not ASQLDBHelper.SelfQuery_EasyInsert(
-//                      TableName,
-//                      AParamNames,
-//                      AParamValues,
-//                      //获取刚插入的这条数据,SQlSERVER取不出
-//                      '',
-//                      asoExec
-//                      ) then
-//              begin
-//                  //添加失败
-//                  ADesc:=ASQLDBHelper.LastExceptMessage;
-//                  Exit;
-//              end;
-//>>>>>>> .r11181
-//
-//<<<<<<< .mine
-//||||||| .r10989
-//
-//              //û����ת������������
-//
-//
-//              //�ɹ
-//              ADesc:=Trans(Caption+'���ӳɹ�');
-//              ACode:=SUCC;
-//
-//
-//              Result:=True;
-//
-//          end;
-//
-//=======
-//
-//              //没有流转等其他功能了
-//
-//
-//              //成功
-//              ADesc:=Trans(Caption+'添加成功');
-//              ACode:=SUCC;
-//
-//
-//              Result:=True;
-//
-//          end;
-//
-//>>>>>>> .r11181
       except
         on E:Exception do
         begin
@@ -2471,7 +2720,7 @@ end;
 function TBaseQueryItem.RealDeleteRecord(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   AWhereKeyJson, ACustomWhereSQL: String;
   var ACode:Integer;
   var ADesc:String;
@@ -2529,9 +2778,9 @@ begin
                       +GetWhereConditionSQL(AWhereKeyJsonArray);
 
           //加上AppID的条件,避免查询到别的客户的数据
-          if Self.HasAppIDField then
+          if Self.HasAppIDField and (AAppID<>'')  then
           begin
-            ATempWhere:=ATempWhere+' AND appid='+IntToStr(AAppID)+' ';
+            ATempWhere:=ATempWhere+' AND appid='+(AAppID)+' ';
           end;
 
 
@@ -2545,8 +2794,8 @@ begin
           if ASQLDBHelper.SelfQuery(
                   ' DELETE FROM '+TableName+' '
                   +ATempWhere,
-                  [],
-                  [],
+                  ConvertToStringDynArray([]),
+                  ConvertToVariantDynArray([]),
                   asoExec
                   ) then
           begin
@@ -2579,7 +2828,7 @@ begin
 end;
 
 function TBaseQueryItem.RealDeleteRecordList(ADBModule: TBaseDatabaseModule;
-  ASQLDBHelper: TBaseDBHelper; AAppID: Integer; AWhereJsonArray: ISuperArray;
+  ASQLDBHelper: TBaseDBHelper; AAppID:String; AWhereJsonArray: ISuperArray;
   var ACode: Integer; var ADesc: String; var ADataJson: ISuperObject): Boolean;
 var
   I: Integer;
@@ -2612,7 +2861,7 @@ end;
 function TBaseQueryItem.AddRecordList(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   ARecordDataJsonArray: ISuperArray;
   AMasterRecordDataJson:ISuperObject;
   var ACode: Integer;
@@ -2807,11 +3056,14 @@ begin
       for I := 0 to AWhereKeyJsonArray.Length-1 do
       begin
         if    AWhereKeyJsonArray.O[I].Contains('logical_operator')
-          and AWhereKeyJsonArray.O[I].Contains('name')
-          and AWhereKeyJsonArray.O[I].Contains('operator')
-          and AWhereKeyJsonArray.O[I].Contains('value')
-          and (AWhereKeyJsonArray.O[I].S['name']<>'')
-          and (AWhereKeyJsonArray.O[I].S['operator']<>'') then
+              and AWhereKeyJsonArray.O[I].Contains('name')
+              and AWhereKeyJsonArray.O[I].Contains('operator')
+              and AWhereKeyJsonArray.O[I].Contains('value')
+              and (AWhereKeyJsonArray.O[I].S['name']<>'')
+              and (AWhereKeyJsonArray.O[I].S['operator']<>'')
+              //子条件
+          or AWhereKeyJsonArray.O[I].Contains('logical_operator')
+            and AWhereKeyJsonArray.O[I].Contains('conditions') then
         begin
           //格式正确
         end
@@ -3146,7 +3398,7 @@ end;
 function TBaseQueryItem.UpdateRecordList(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   ARecordDataJsonArray: ISuperArray;
   var ACode: Integer;
   var ADesc: String;
@@ -3175,7 +3427,7 @@ end;
 function TBaseQueryItem.DeleteRecord(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   AWhereKeyJson,
   ACustomWhereSQL: String;
   var ACode:Integer;
@@ -3243,9 +3495,9 @@ begin
 
 
           //加上AppID的条件,避免查询到别的客户的数据
-          if Self.HasAppIDField then
+          if Self.HasAppIDField and (AAppID<>'')  then
           begin
-            ATempWhere:=ATempWhere+' AND appid='+IntToStr(AAppID)+' ';
+            ATempWhere:=ATempWhere+' AND appid='+(AAppID)+' ';
           end;
 
 
@@ -3258,8 +3510,8 @@ begin
           if ASQLDBHelper.SelfQuery(
                   ' UPDATE '+TableName+' SET '+DeleteFieldName+'=1 '
                   +ATempWhere,
-                  [],
-                  [],
+                  ConvertToStringDynArray([]),
+                  ConvertToVariantDynArray([]),
                   asoExec
                   ) then
           begin
@@ -3291,7 +3543,7 @@ begin
 end;
 
 function TBaseQueryItem.DeleteRecordList(ADBModule: TBaseDatabaseModule;
-  ASQLDBHelper: TBaseDBHelper; AAppID: Integer;
+  ASQLDBHelper: TBaseDBHelper; AAppID:String;
   AWhereJsonArray: ISuperArray;
   var ACode: Integer; var ADesc: String; var ADataJson: ISuperObject): Boolean;
 var
@@ -3319,6 +3571,7 @@ end;
 destructor TBaseQueryItem.Destroy;
 begin
   FreeAndNil(FSelect);
+  FreeAndNil(FFieldTableAliasList);
 
   FreeAndNil(SubQueryList);
 
@@ -3363,55 +3616,57 @@ begin
 
   for I := 0 to AWhereKeyJsonArray.Length-1 do
   begin
-    if AWhereKeyJsonArray.O[I].Contains('conditions') then
-    begin
-        //子条件列表
-        ASubWhereConditionSQL:=GetWhereConditionSQL(AWhereKeyJsonArray.O[I].A['conditions']);
+      if AWhereKeyJsonArray.O[I].Contains('conditions') then
+      begin
+          //子条件列表
+          ASubWhereConditionSQL:=GetWhereConditionSQL(AWhereKeyJsonArray.O[I].A['conditions']);
 
-        Result:=Result
-              +' '+AWhereKeyJsonArray.O[I].S['logical_operator']
-              +' ('+ASubWhereConditionSQL+') ';
+          Result:=Result
+                +' '+AWhereKeyJsonArray.O[I].S['logical_operator']
+                +' ('+ASubWhereConditionSQL+') ';
 
-    end
-    else
-    begin
+      end
+      else
+      begin
 
-        //自定义获取条件表达式
-        AWhereKeyTranslator:=Self.WhereKeyTranslatorList.Find(AWhereKeyJsonArray.O[I].S['name']);
-        if AWhereKeyTranslator<>nil then
-        begin
-            AWhereConditionItemSQL:=AWhereKeyTranslator.DoGetWhereConditionItemSQL(
-                                        AWhereKeyJsonArray.O[I].S['logical_operator'],
-                                        AWhereKeyJsonArray.O[I].S['operator'],
-                                        AWhereKeyJsonArray.O[I].V['value']);
-        end
-        else
-        begin
+          //自定义获取条件表达式
+          AWhereKeyTranslator:=Self.WhereKeyTranslatorList.Find(AWhereKeyJsonArray.O[I].S['name']);
+          if AWhereKeyTranslator<>nil then
+          begin
+              AWhereConditionItemSQL:=AWhereKeyTranslator.DoGetWhereConditionItemSQL(
+                                          AWhereKeyJsonArray.O[I].S['logical_operator'],
+                                          AWhereKeyJsonArray.O[I].S['operator'],
+                                          AWhereKeyJsonArray.O[I].V['value']);
+          end
+          else
+          begin
 
-            if Assigned(Self.OnGetWhereConditionItemSQLEvent) then
-            begin
-              AWhereConditionItemSQL:=OnGetWhereConditionItemSQLEvent(Self,
-                                        AWhereKeyJsonArray.O[I].S['logical_operator'],
-                                        AWhereKeyJsonArray.O[I].S['name'],
-                                        AWhereKeyJsonArray.O[I].S['operator'],
-                                        AWhereKeyJsonArray.O[I].V['value']);
-            end
-            else
-            begin
-              //单个条件
-              AWhereConditionItemSQL:=GetDefaultWhereConditionItemSQL(
+              if Assigned(Self.OnGetWhereConditionItemSQLEvent) then
+              begin
+                AWhereConditionItemSQL:=OnGetWhereConditionItemSQLEvent(Self,
                                           AWhereKeyJsonArray.O[I].S['logical_operator'],
                                           AWhereKeyJsonArray.O[I].S['name'],
                                           AWhereKeyJsonArray.O[I].S['operator'],
                                           AWhereKeyJsonArray.O[I].V['value']);
+              end
+              else
+              begin
+                //单个条件
+                AWhereConditionItemSQL:=GetDefaultWhereConditionItemSQL(
+                                            AWhereKeyJsonArray.O[I].S['logical_operator'],
+                                            AWhereKeyJsonArray.O[I].S['name'],
+                                            AWhereKeyJsonArray.O[I].S['operator'],
+                                            AWhereKeyJsonArray.O[I].V['value'],
+                                            AWhereKeyJsonArray.O[I].B['value_is_field'],
+                                            );
 
-            end;
+              end;
 
-        end;
+          end;
 
 
-        Result:=Result+AWhereConditionItemSQL;
-    end;
+          Result:=Result+AWhereConditionItemSQL;
+      end;
   end;
 end;
 
@@ -3479,24 +3734,33 @@ begin
 //
 //        end;
 
-        AValueStr:=AWhereKeyJsonArray.O[I].V['value'];
-        case AWhereKeyJsonArray.O[I].GetType('value') of
-          varString,varUString:
-          begin
-            AValueStr:=QuotedStr(AWhereKeyJsonArray.O[I].V['value']);
+
+        //没有value的是子条件,要排除
+        if AWhereKeyJsonArray.O[I].Contains('value') then
+        begin
+          AValueStr:=AWhereKeyJsonArray.O[I].V['value'];
+          case AWhereKeyJsonArray.O[I].GetType('value') of
+            varString,varUString:
+            begin
+              AValueStr:=QuotedStr(AWhereKeyJsonArray.O[I].V['value']);
+            end;
           end;
+
+          Result:=Result+''''+AValueStr+'''';
         end;
 
-        Result:=Result+''''+AValueStr+'''';
+
 //    end;
+
+
   end;
 end;
 
 
-function TBaseQueryItem.Init(ADBModule: TBaseDatabaseModule): Boolean;
+function TBaseQueryItem.Init(ADBModule: TBaseDatabaseModule;var ADesc:String): Boolean;
 var
   ACode:Integer;
-  ADesc:String;
+//  ADesc:String;
   ADataJson:ISuperObject;
   I: Integer;
 begin
@@ -3532,6 +3796,10 @@ begin
                 end;
               end;
               Result:=True;
+          end
+          else
+          begin
+              Exit;
           end;
       end
       else
@@ -3586,9 +3854,14 @@ begin
       begin
         for I := 0 to Self.SubQueryList.Count-1 do
         begin
-          Self.SubQueryList[I].Init(ADBModule);
+          Self.SubQueryList[I].Init(ADBModule,ADesc);
         end;
       end;
+
+
+      //将数据保存到redis
+
+
 
 end;
 
@@ -3605,7 +3878,7 @@ end;
 function TBaseQueryItem.ProcessSubQueryListRecord(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
 //  AMasterPKFieldValue:Variant;
   AMasterRecordDataJson:ISuperObject;
   ASubQueryListJsonArray:ISuperArray;
@@ -3689,7 +3962,7 @@ end;
 function TBaseQueryItem.ProcessSubQueryItemRecord(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
 //  AMasterPKFieldValue:Variant;
   AMasterRecordDataJson:ISuperObject;
   ASubQueryItemJson:ISuperObject;
@@ -3865,8 +4138,8 @@ begin
   end;
 
   if ADBHelper.SelfQuery(ASQL,
-                        [Self.RelateToMasterFieldName],
-                        [AMasterFieldValue],
+                        ConvertToStringDynArray([Self.RelateToMasterFieldName]),
+                        ConvertToVariantDynArray([AMasterFieldValue]),
                         asoOpen) then
   begin
       JSonFromDataSetTo(ADBHelper.Query,Name+'List',AMasterDataJson);
@@ -3916,6 +4189,7 @@ end;
 procedure TBaseQueryItem.DoCreate;
 begin
   FSelect:=TStringList.Create;
+  FFieldTableAliasList:=TStringList.Create;
 
 
   TableFieldNameList:=TStringList.Create;
@@ -3995,12 +4269,21 @@ begin
 
 
       try
-
+//          if Pos('WHERE',UpperCase(ASelect))>0 then
+//          begin
+//            ASelect:=ASelect+' AND (1<>1) ';
+//          end
+//          else
+//          begin
+//            ASelect:=ASelect+' WHERE (1<>1) ';
+//          end;
+          ASelect:=ASelect+' WHERE (1<>1) ';
           //需要返回数据集
           if not ASQLDBHelper.SelfQuery(
-                  ASelect+' WHERE (1<>1) ',
-                  [],
-                  [],
+                  //要判断一下有没有WHERE了,有就加WHERE,没有就不加WHERE,加AND
+                  ASelect,
+                  ConvertToStringDynArray([]),
+                  ConvertToVariantDynArray([]),
                   asoOpen
                   ) then
           begin
@@ -4067,7 +4350,7 @@ end;
 function TBaseQueryItem.GetRecordList(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   APageIndex,
   APageSize: Integer;
   AWhereKeyJson: String;
@@ -4082,7 +4365,8 @@ function TBaseQueryItem.GetRecordList(
   var ACode:Integer;
   var ADesc:String;
   var ADataJson:ISuperObject;
-  AMasterRecordJson:ISuperObject
+  AMasterRecordJson:ISuperObject;
+  AIsNeedRecordList:Boolean
   ):Boolean;
 var
   I: Integer;
@@ -4111,6 +4395,9 @@ var
   ASelectParamValues:TVariantDynArray;
 
   ASummaryQueryFields:String;
+  AIndex:Integer;
+  AEndIndex:Integer;
+  ASummaryQuerySQL:String;
 begin
   ACode:=FAIL;
   ADesc:='';
@@ -4131,6 +4418,11 @@ begin
     FIsStarted:=True;
   end;
 
+  //数据是否不分页
+  if FIsNoPage then
+  begin
+    APageSize:=MaxInt;
+  end;
 
 
   ADataJson:=TSuperObject.Create();
@@ -4165,9 +4457,9 @@ begin
 
 
       try
-          if AWhereKeyJson='null' then
+          if (AWhereKeyJson='null') or (AWhereKeyJson='') or (AWhereKeyJson='{}') then
           begin
-            AWhereKeyJsonArray:=TSuperArray.Create('');
+            AWhereKeyJsonArray:=TSuperArray.Create('[]');
           end
           else
           begin
@@ -4180,7 +4472,11 @@ begin
           end;
 
 
-          ARecordDataJson:=TSuperObject.Create(ARecordDataJsonStr);
+          if ARecordDataJsonStr='' then
+          begin
+            ARecordDataJsonStr:='{}';
+          end;
+          ARecordDataJson:=SO(ARecordDataJsonStr);
 
 
           ATempExecProcParams:=GetExecProcParamSQL(AWhereKeyJsonArray);
@@ -4196,9 +4492,9 @@ begin
                       //自定义的条件JSON
                       +GetWhereConditionSQL(AWhereKeyJsonArray);
           //加上AppID的条件,避免查询到别的客户的数据
-          if Self.HasAppIDField then
+          if Self.HasAppIDField and (AAppID<>'')  then
           begin
-            ATempWhere:=ATempWhere+' AND appid='+IntToStr(AAppID)+' ';
+            ATempWhere:=ATempWhere+' AND '+FFieldTableAliasList.Values['appid']+'appid='+(AAppID)+' ';
           end;
 
           //如果有删除字段,那么加一个条件,只显示没有删除的
@@ -4206,13 +4502,20 @@ begin
           begin
 //            if SameText(ASQLDBHelper.DBType,'MYSQL') or (ASQLDBHelper.DBType='') then
 //            begin
-              ATempWhere:=ATempWhere+' AND ('+GetIFNULLName(ASQLDBHelper.DBType)+'('+DeleteFieldName+',0)=0) ';
+              ATempWhere:=ATempWhere+' AND ('+GetIFNULLName(ASQLDBHelper.DBType)+'('+FFieldTableAliasList.Values[DeleteFieldName]+DeleteFieldName+',0)=0) ';
 //            end;
           end;
 
           if (Trim(ATempWhere)<>'') then
           begin
-            ATempWhere:=' WHERE (1=1) '+ATempWhere;
+//            if Pos('WHERE',UpperCase(Select.Text))>0 then
+//            begin
+//              ATempWhere:=' AND (1=1) '+ATempWhere;
+//            end
+//            else
+//            begin
+              ATempWhere:=' WHERE (1=1) '+ATempWhere;
+//            end;
           end;
 
 
@@ -4231,8 +4534,8 @@ begin
 
 
           //处理自定义查询参数
-          ASelectParamNames:=[];
-          ASelectParamValues:=[];
+          ASelectParamNames:=ConvertToStringDynArray([]);
+          ASelectParamValues:=ConvertToVariantDynArray([]);
           if Self.SelectParamList.Count>0 then
           begin
 
@@ -4273,9 +4576,28 @@ begin
                 ASummaryQueryFields:=','+ASummaryQueryFields;
               end;
 
+
+              ASummaryQuerySQL:=Select.Text+ATempWhere;
+//              AIndex:=Pos('SELECT',UpperCase(ASummaryQuerySQL));
+//              if AIndex>0 then
+//              begin
+//                ASummaryQuerySQL:=Copy(ASummaryQuerySQL,AIndex+Length('SELECT'),MaxInt);
+                //FROM后面必须空格,不然连from_user_id也算from
+                AIndex:=Pos(' FROM ',UpperCase(ASummaryQuerySQL));
+                if AIndex>0 then
+                begin
+                  ASummaryQuerySQL:=Copy(ASummaryQuerySQL,AIndex,MaxInt);
+                  ASummaryQuerySQL:='SELECT COUNT(*) AS SumCount'+ASummaryQueryFields+' '+ASummaryQuerySQL;
+                end;
+//              end;
+
+
               if ASQLDBHelper.SelfQuery(
-                    'SELECT COUNT(*) AS SumCount'+ASummaryQueryFields+' FROM '
-                        +'('+Select.Text+ATempWhere+') Z ',
+//                    'SELECT COUNT(*) AS SumCount'+ASummaryQueryFields+' FROM '
+//                        +'('+Select.Text+ATempWhere+') Z ',
+                    //经测试发现，外面包一层，会慢个1秒多
+                    //所以直接去掉查询字段
+                    ASummaryQuerySQL,
                     ASelectParamNames,
                     ASelectParamValues,
                     asoOpen) then
@@ -4303,41 +4625,42 @@ begin
           end;
 
 
-
-          //需要返回数据集
-          if not ASQLDBHelper.SelfQuery(
-
-                  //生成分页查询条件
-                  GetQueryQueryPageSQL(
-                                        ASQLDBHelper,
-                                        ASelect,//Self.Select.Text,
-                                        ASQLDBHelper.DBType,
-                                        APageIndex,
-                                        APageSize,
-                                        ATempWhere,
-                                        ATempOrderBy,
-                                        ASelectParamNames,
-                                        ASelectParamValues,
-                                        IsStoreProcedure,
-                                        ATempExecProcParams
-                                        ),
-
-                  ASelectParamNames,
-                  ASelectParamValues,
-                  asoOpen
-                  ) then
+          if AIsNeedRecordList then
           begin
-              //查询失败
-              ADesc:=ASQLDBHelper.LastExceptMessage;
-              Exit;
+            //需要返回数据集
+            if not ASQLDBHelper.SelfQuery(
+
+                    //生成分页查询条件
+                    GetQueryQueryPageSQL(
+                                          ASQLDBHelper,
+                                          ASelect,//Self.Select.Text,
+                                          ASQLDBHelper.DBType,
+                                          APageIndex,
+                                          APageSize,
+                                          ATempWhere,
+                                          ATempOrderBy,
+                                          ASelectParamNames,
+                                          ASelectParamValues,
+                                          IsStoreProcedure,
+                                          ATempExecProcParams
+                                          ),
+
+                    ASelectParamNames,
+                    ASelectParamValues,
+                    asoOpen
+                    ) then
+            begin
+                //查询失败
+                ADesc:=ASQLDBHelper.LastExceptMessage;
+                Exit;
+            end;
+
+
+
+            //成功
+            //ADataJson:=JSonFromDataSet(ASQLDBHelper.Query,'RecordList');
+            JSonFromDataSetTo(ASQLDBHelper.Query,'RecordList',ADataJson);
           end;
-
-
-
-          //成功
-          //ADataJson:=JSonFromDataSet(ASQLDBHelper.Query,'RecordList');
-          JSonFromDataSetTo(ASQLDBHelper.Query,'RecordList',ADataJson);
-
 
 
 //          //需要返回总数
@@ -4366,6 +4689,11 @@ begin
 
           //返回从表的记录列表
           AMasterJsonArray:=ADataJson.A['RecordList'];
+
+          //给记录中的图片字段加上图片链接
+
+
+
           if (AIsNeedSubQueryList=1)  and (SubQueryList.Count>0) and (AMasterJsonArray.Length>0) then
           begin
               if GetSubQueryRecordListOfMasterRecordArray(
@@ -4421,7 +4749,7 @@ end;
 function TBaseQueryItem.GetRecord(
   ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID:Integer;
+  AAppID:String;
   AWhereKeyJson: String;
   //自带的Where条件
   ACustomWhereSQL:String;
@@ -4628,7 +4956,7 @@ end;
 //function TBaseQueryItem.GetTableRecordList(
 //  ADBModule: TBaseDatabaseModule;
 //  ASQLDBHelper:TBaseDBHelper;
-//  AAppID:Integer;
+//  AAppID:String;
 //  APageIndex,
 //  APageSize: Integer;
 //  AWhereKeyJson: String;
@@ -4706,9 +5034,9 @@ end;
 //                      +ATempWhere;
 //
 //          //加上AppID的条件,避免查询到别的客户的数据
-//          if Self.HasAppIDField then
+//          if Self.HasAppIDField and (AAppID>0)  then
 //          begin
-//            ATempWhere:=ATempWhere+' AND appid='+IntToStr(AAppID)+' ';
+//            ATempWhere:=ATempWhere+' AND '+FFieldTableAliasList.Values['appid']+'appid='+IntToStr(AAppID)+' ';
 //          end;
 //
 //
@@ -4830,7 +5158,7 @@ end;
 //function TBaseQueryItem.GetTableRecord(
 //  ADBModule: TBaseDatabaseModule;
 //  ASQLDBHelper:TBaseDBHelper;
-//  AAppID:Integer;
+//  AAppID:String;
 //  AWhereKeyJson: String;
 //  //自带的Where条件
 //  ACustomWhereSQL:String;
@@ -4879,7 +5207,7 @@ end;
 function TBaseQueryItem.UpdateRecord(
                           ADBModule: TBaseDatabaseModule;
                           ASQLDBHelper:TBaseDBHelper;
-                          AAppID:Integer;
+                          AAppID:String;
                           ARecordDataJson:ISuperObject;
                           //更新条件
                           AWhereKeyJson:String;
@@ -5035,9 +5363,9 @@ begin
 
 
           //加上AppID的条件,避免查询到别的客户的数据
-          if Self.HasAppIDField then
+          if Self.HasAppIDField and (AAppID<>'') then
           begin
-            ATempWhere:=ATempWhere+' AND appid='+IntToStr(AAppID)+' ';
+            ATempWhere:=ATempWhere+' AND '+FFieldTableAliasList.Values['appid']+'appid='+(AAppID)+' ';
           end;
 
 
@@ -5074,12 +5402,12 @@ begin
                                                       //要加上appid的条件,不然所有app都只能一个name同名
                                                       +' AND appid=:appid '
                                                       +' AND '+GetIFNULLName(ASQLDBHelper.DBType)+'('+Self.DeleteFieldName+',0)=0 ',
-                                                  [UniqueFieldNameList[I],
-                                                  'PKFieldValue',
-                                                  'appid'],
-                                                  [ARecordDataJson.V[UniqueFieldNameList[I]],
-                                                  APKFieldValue,
-                                                  AAppID],
+                                                  ConvertToStringDynArray([UniqueFieldNameList[I],
+                                                                          'PKFieldValue',
+                                                                          'appid']),
+                                                  ConvertToVariantDynArray([ARecordDataJson.V[UniqueFieldNameList[I]],
+                                                                          APKFieldValue,
+                                                                          AAppID]),
                                                   asoOpen) then
                     begin
                       //查询失败
@@ -5102,22 +5430,38 @@ begin
 
           //需要返回数据集
           if not ASQLDBHelper.SelfQuery_EasyUpdate(
-                  TableName,
-                  AParamNames,
-                  AParamValues,
-                  ATempWhere,
-                  [],
-                  [],
-                  'SELECT * FROM '+TableName+' '+ATempWhere,
-                  asoOpen
-                  ) then
+                                                  TableName,
+                                                  AParamNames,
+                                                  AParamValues,
+                                                  ATempWhere,
+                                                  ConvertToStringDynArray([]),
+                                                  ConvertToVariantDynArray([]),
+                                                  'SELECT * FROM '+TableName+' '+ATempWhere,
+                                                  {$IF CompilerVersion > 21.0} // XE or older
+                                                  asoOpen
+                                                  {$ELSE}
+                                                  //D2010版本的UniDAC执行Insert+Select不能返回数据集
+                                                  asoExec
+                                                  {$IFEND}
+                                                  ) then
           begin
               //修改失败
               ADesc:=ASQLDBHelper.LastExceptMessage;
               Exit;
           end;
-
-
+          {$IF CompilerVersion > 21.0} // XE or older
+          {$ELSE}
+          //D2010版本的UniDAC执行Insert+Select不能返回数据集
+          if not ASQLDBHelper.SelfQuery('SELECT * FROM '+TableName+' '+ATempWhere,
+                                        ConvertToStringDynArray([]),
+                                        ConvertToVariantDynArray([])
+                                        ) then
+          begin
+              //添加失败
+              ADesc:=ASQLDBHelper.LastExceptMessage;
+              Exit;
+          end;
+          {$IFEND}
           ADataJson:=JSonFromRecord(ASQLDBHelper.Query);
 
 
@@ -5267,10 +5611,10 @@ end;
 function TAddRecordDataFlowAction.Process(
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
-                AAddedDataJson:ISuperObject;
+                var AAddedDataJson:ISuperObject;
                 AMasterRecordDataJson:ISuperObject;
                 var ACode:Integer;
                 var ADesc:String;
@@ -5279,7 +5623,9 @@ var
   I:Integer;
   AAddRecordDataJson:ISuperObject;
   AFieldValue:Variant;
+  {$IF CompilerVersion > 21.0} // XE or older
   ASuperEnumerator:TSuperEnumerator<IJSONPair>;
+  {$IFEND}
   AGetFieldValueResult:Integer;
 begin
   Result:=False;
@@ -5298,6 +5644,7 @@ begin
 
   if (FieldList.Count=0) or IsNeedAllFieldInRecordDataJson then
   begin
+      {$IF CompilerVersion > 21.0} // XE or older
       //没有设置字段,那么提交RecordDataJson中的全部字段
       //需要去掉ARecordDataJson中的主键,createtime,is_deleted,orderno等
 
@@ -5311,6 +5658,9 @@ begin
           AAddRecordDataJson.V[ASuperEnumerator.GetCurrent.Name]:=ASuperEnumerator.GetCurrent.AsVariant;
         end;
       end;
+      {$ELSE}
+      raise Exception.Create('TSuperEnumerator is not support');
+      {$IFEND}
   end;
 
 
@@ -5426,10 +5776,10 @@ end;
 function TUpdateRecordDataFlowAction.Process(
 //                ADBModule: TBaseDatabaseModule;
                 ASQLDBHelper:TBaseDBHelper;
-                AAppID:Integer;
+                AAppID:String;
                 ARecordDataJson:ISuperObject;
                 AWhereKeyJsonArray:ISuperArray;
-                AAddedDataJson:ISuperObject;
+                var AAddedDataJson:ISuperObject;
                 AMasterRecordDataJson:ISuperObject;
                 var ACode:Integer;
                 var ADesc:String;
@@ -5441,7 +5791,9 @@ var
   AUpdateWhereKeyJson:ISuperObject;
   AOldWhereKeyJson:ISuperObject;
   AFieldValue:Variant;
+  {$IF CompilerVersion > 21.0} // XE or older
   ASuperEnumerator:TSuperEnumerator<IJSONPair>;
+  {$IFEND}
   AGetFieldValueResult:Integer;
 begin
   Result:=False;
@@ -5477,6 +5829,7 @@ begin
       //没有设置字段,那么提交RecordDataJson中的全部字段
       //需要去掉ARecordDataJson中的主键,createtime,is_deleted,orderno等
 
+      {$IF CompilerVersion > 21.0} // XE or older
       //遍历所有key
       ASuperEnumerator:=ARecordDataJson.GetEnumerator;
 
@@ -5487,6 +5840,9 @@ begin
           AUpdateRecordDataJson.V[ASuperEnumerator.GetCurrent.Name]:=ASuperEnumerator.GetCurrent.AsVariant;
         end;
       end;
+      {$ELSE}
+      raise Exception.Create('TSuperEnumerator is not support');
+      {$IFEND}
   end;
 
 
@@ -5679,7 +6035,7 @@ end;
 function TDataFlowField.GetFieldValue(
 //  ADBModule: TBaseDatabaseModule;
   ASQLDBHelper:TBaseDBHelper;
-  AAppID: Integer;
+  AAppID:String;
   ARecordDataJson: ISuperObject;
   AWhereKeyJsonArray: ISuperArray;
   AAddedDataJson: ISuperObject;
@@ -5829,10 +6185,10 @@ end;
 function TDataFlowAction.Process(
 //  ADBModule: TBaseDatabaseModule;
   ASQLDBHelper: TBaseDBHelper;
-  AAppID: Integer;
+  AAppID:String;
   ARecordDataJson: ISuperObject;
   AWhereKeyJsonArray: ISuperArray;
-  AAddedDataJson,
+  var AAddedDataJson: ISuperObject;
   AMasterRecordDataJson: ISuperObject;
   var ACode: Integer;
   var ADesc: String;
@@ -6050,10 +6406,592 @@ end;
 //end;
 
 
+{ TTableCommonLocalDataInterface }
+
+function TTableCommonLocalDataInterface.AddDataList(
+  ASaveDataSetting: TSaveDataSetting; ARecordList: ISuperArray;
+  ADataIntfResult: TDataIntfResult): Boolean;
+var
+  I:Integer;
+  ACode:Integer;
+  ADesc:String;
+  ADataJson:ISuperObject;
+  ACommonRestIntfItem:TCommonRestIntfItem;
+begin
+
+  Result:=False;
+
+  ACommonRestIntfItem:=GlobalCommonRestIntfList.Find(Self.Name);
+  if ACommonRestIntfItem=nil then
+  begin
+    ADesc:=Self.Name+'接口不存在';
+    Exit;
+  end;
+
+
+  ADataIntfResult.DataType:=TDataIntfResultType.ldtJson;
+
+
+  ADataIntfResult.DataJson:=TSuperObject.Create;
+  ADataIntfResult.DataJson.A['RecordList']:=ARecordList;
+  for I := 0 to ARecordList.Length-1 do
+  begin
+    ACode:=FAIL;
+    ADesc:='';
+    ADataJson:=nil;
+    ACommonRestIntfItem.AddRecord(ACommonRestIntfItem.DBModule,nil,ASaveDataSetting.AppID,ARecordList.O[I],nil,ACode,ADesc,ADataJson);
+    ARecordList.O[I].I['Code']:=ACode;
+    ARecordList.O[I].S['Desc']:=ADesc;
+    if ADataJson <> nil then
+    begin
+      ARecordList.O[I].O['Data']:=ADataJson;
+    end;
+  end;
+
+
+  ADataIntfResult.Succ:=True;//(ACode=SUCC);
+  Result:=True;
+
+end;
+
+function TTableCommonLocalDataInterface.DelData(
+  ALoadDataSetting: TLoadDataSetting; ALoadDataIntfResult,
+  ADataIntfResult: TDataIntfResult): Boolean;
+var
+  ACommonRestIntfItem:TCommonRestIntfItem;
+  ACode:Integer;
+  AWhereKeyJson:String;
+begin
+  Result:=False;
+  ACommonRestIntfItem:=GlobalCommonRestIntfList.Find(Name);
+  if ACommonRestIntfItem=nil then
+  begin
+    ADataIntfResult.Desc:=Name+'接口不存在';
+    Exit;
+  end;
+
+
+
+  //生成删除记录的条件
+  AWhereKeyJson:=GetWhereConditions(['appid','fid'],
+                                    [ALoadDataSetting.AppID,ALoadDataIntfResult.DataJson.I['fid']]);
+
+//  if not SimpleCallAPI('del_record',
+//                      nil,
+//                      GetInterfaceUrl+'tablecommonrest/',
+//                      ['appid',
+//                      'user_fid',
+//                      'key',
+//                      'rest_name',
+//                      'where_key_json'
+//                      ],
+//                      [S
+//                      '',
+//                      '',
+//                      Name,
+//                      AWhereKeyJson
+//      //                GetWhereConditions(['appid','user_fid','shield_user_fid'],
+//      //                                    [AppID,GlobalManager.User.fid,FUserFID])
+//                      ],
+//                      ACode,
+//                      ADataIntfResult.Desc,
+//                      ADataIntfResult.DataJson,
+//                      GlobalRestAPISignType,
+//                      GlobalRestAPIAppSecret) then
+//  begin
+//    Exit;
+//  end;
+
+
+  ACommonRestIntfItem.DeleteRecord(ACommonRestIntfItem.DBModule,nil,ALoadDataSetting.AppID,AWhereKeyJson,'',ACode,ADataIntfResult.Desc,ADataIntfResult.DataJson);
+
+
+  ADataIntfResult.DataType:=TDataIntfResultType.ldtJson;
+  ADataIntfResult.Succ:=(ACode=SUCC);
+  Result:=True;
+end;
+
+function TTableCommonLocalDataInterface.GetDataDetail(
+  ALoadDataSetting: TLoadDataSetting;
+  ADataIntfResult: TDataIntfResult): Boolean;
+var
+  ACommonRestIntfItem:TCommonRestIntfItem;
+  ACode:Integer;
+begin
+  Result:=False;
+
+
+  //加载程序模板的所有功能和页面
+//  if not SimpleCallAPI(
+//                      'get_record',
+//                      nil,
+//                      GetInterfaceUrl+'tablecommonrest/',
+//                      ConvertToStringDynArray(['appid',
+//                                              'user_fid',
+//                                              'key',
+//
+//                                              'rest_name',
+//                                              'where_key_json'
+//                                              ]),
+//                      ConvertToVariantDynArray([
+//                                                ALoadDataSetting.AppID,
+//                          //                      GlobalMainProgramSetting.AppID,
+//                                                '',
+//                                                '',
+//                                                Name,
+//                                                ALoadDataSetting.WhereKeyJson
+//                                                ]),
+//                      ACode,
+//                      ADataIntfResult.Desc,
+//                      ADataIntfResult.DataJson,
+//                                        GlobalRestAPISignType,
+//                                        GlobalRestAPIAppSecret) then
+//  begin
+//    Exit;
+//  end;
+
+  ACommonRestIntfItem:=GlobalCommonRestIntfList.Find(Name);
+  if ACommonRestIntfItem=nil then
+  begin
+    ADataIntfResult.Desc:=Name+'接口不存在';
+    Exit;
+  end;
+
+  ACommonRestIntfItem.GetRecord(ALoadDataSetting.AppID,ALoadDataSetting.WhereKeyJson,'','',ACode,ADataIntfResult.Desc,ADataIntfResult.DataJson);
+
+
+  ADataIntfResult.DataType:=TDataIntfResultType.ldtJson;
+  ADataIntfResult.Succ:=(ACode=SUCC);
+  Result:=True;
+
+
+end;
+
+function TTableCommonLocalDataInterface.GetDataList(
+  ALoadDataSetting: TLoadDataSetting;
+  ADataIntfResult: TDataIntfResult): Boolean;
+var
+  ACommonRestIntfItem:TCommonRestIntfItem;
+  ACode:Integer;
+begin
+  Result:=False;
+//  //加载程序模板的所有功能和页面
+//  if not SimpleCallAPI(
+//                      'get_record_list',
+//                      nil,
+//                      GetInterfaceUrl+'tablecommonrest/',
+//                      ConvertToStringDynArray(['appid',
+//                                            'user_fid',
+//                                            'key',
+//                                            'rest_name',
+//                                            'pageindex',
+//                                            'pagesize',
+//                                            'where_key_json',
+//                                            'order_by'
+//                                            ]),
+//                      ConvertToVariantDynArray([
+//                                              ALoadDataSetting.AppID,
+//                        //                      GlobalMainProgramSetting.AppID,
+//                                              '',
+//                                              '',
+//                                              Name,
+//                                              ALoadDataSetting.PageIndex,
+//                                              ALoadDataSetting.PageSize,
+//                                              ALoadDataSetting.WhereKeyJson,
+//                                              ''//ALoadDataSetting.OrderBy
+//                                              ]),
+//                      ACode,
+//                      ADataIntfResult.Desc,
+//                      ADataIntfResult.DataJson,
+//                                        GlobalRestAPISignType,
+//                                        GlobalRestAPIAppSecret) then
+//  begin
+//    Exit;
+//  end;
+
+  //保存到本地测试
+
+
+  ACommonRestIntfItem:=GlobalCommonRestIntfList.Find(Name);
+  if ACommonRestIntfItem=nil then
+  begin
+    ADataIntfResult.Desc:=Name+'接口不存在';
+    Exit;
+  end;
+
+  ACommonRestIntfItem.GetRecordList(ALoadDataSetting.AppID,
+                                      ALoadDataSetting.PageIndex,
+                                      ALoadDataSetting.PageSize,
+                                      ALoadDataSetting.WhereKeyJson,
+                                      //orderby
+                                      '',
+                                      //custom where sql
+                                      '',
+                                      //is_need_sum_count
+                                      GetParamValue(ALoadDataSetting.ParamNames,ALoadDataSetting.ParamValues,'is_need_sum_count',1),//1,
+                                      //is_need_return_level
+                                      0,
+                                      //record_data_json_str
+                                      '',
+                                      //is_need_sub_query_list
+                                      0,
+                                      ACode,
+                                      ADataIntfResult.Desc,
+                                      ADataIntfResult.DataJson);
+
+
+
+  ADataIntfResult.DataType:=TDataIntfResultType.ldtJson;
+  ADataIntfResult.Succ:=(ACode=SUCC);
+  Result:=True;
+
+
+end;
+
+function TTableCommonLocalDataInterface.GetFieldList(AAppID: String;
+  var ADesc: String; var ADataJson: ISuperObject): Boolean;
+var
+  ACode:Integer;
+  ACommonRestIntfItem:TCommonRestIntfItem;
+begin
+  Result:=False;
+//  //加载程序模板的所有功能和页面
+//  if not SimpleCallAPI(
+//                      'get_field_list',
+//                      nil,
+//                      GetInterfaceUrl+'tablecommonrest/',
+//                      ConvertToStringDynArray(['appid',
+//                                            'user_fid',
+//                                            'key',
+//                                            'rest_name'
+//                                            ]),
+//                      ConvertToVariantDynArray([
+//                                              AppID,
+//                        //                      GlobalMainProgramSetting.AppID,
+//                                              '',
+//                                              '',
+//                                              Name
+//                                              ]),
+//                      ACode,
+//                      ADesc,
+//                      ADataJson,
+//                      GlobalRestAPISignType,
+//                      GlobalRestAPIAppSecret) or (ACode<>SUCC) then
+//  begin
+//    Exit;
+//  end;
+
+  ACommonRestIntfItem:=GlobalCommonRestIntfList.Find(Name);
+  if ACommonRestIntfItem=nil then
+  begin
+    ADesc:=Name+'接口不存在';
+    Exit;
+  end;
+
+  ACommonRestIntfItem.GetFieldList(AAppID,ADesc,ADataJson);
+
+
+  Result:=True;
+
+
+end;
+
+
+function GetWhereKeyJson(AFieldNames:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+begin
+  Result:=GetWhereConditions(AFieldNames,AFieldValues);
+end;
+
+
+function GetWhereConditions(AFieldNames:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+var
+  I:Integer;
+
+  AWhereKeyJson:ISuperObject;
+  AWhereKeyJsonArray:ISuperArray;
+begin
+  AWhereKeyJsonArray:=TSuperArray.Create;
+
+  for I := 0 to Length(AFieldNames)-1 do
+  begin
+
+    AWhereKeyJson:=TSuperObject.Create;
+    AWhereKeyJson.S['logical_operator']:='AND';
+    AWhereKeyJson.S['name']:=AFieldNames[I];
+    AWhereKeyJson.S['operator']:='=';
+    AWhereKeyJson.V['value']:=AFieldValues[I];
+
+    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
+
+  end;
+
+  Result:=AWhereKeyJsonArray.AsJSON;
+end;
+
+
+
+function SaveRecordToLocal(AInterfaceUrl:String;
+                            AAppID:String;
+                            AUserFID:String;
+                            AKey:String;
+                            ATableCommonRestName:String;
+                            AFID:Variant;
+                            ARecordDataJson:ISuperObject;
+                            var AIsAdd:Boolean;
+                            var ADesc:String;
+                            var ADataJson:ISuperObject;
+                            ASignType:String;
+                            ASignSecret:String;
+                            AHasAppID:Boolean;
+                            AFIDFieldName:String;
+                            AUpdateRecordCustomWhereSQL:String
+                            ):Boolean;
+var
+  ACode: Integer;
+  AFIDIsEmpty:Boolean;
+  AWhereKeyJsonStr:String;
+  ACommonRestIntfItem:TCommonRestIntfItem;
+begin
+  uBaseLog.HandleException(nil,'SaveRecordToServer Begin');
+
+
+  Result:=False;
+  AIsAdd:=False;
+
+  AWhereKeyJsonStr:='';
+  if not VarIsNULL(AFID) then
+  begin
+    if AHasAppID and (AAppID<>'') then
+    begin
+      AWhereKeyJsonStr:=GetWhereKeyJson(ConvertToStringDynArray(['appid',AFIDFieldName]),ConvertToVariantDynArray([AAppID,AFID]));
+    end
+    else
+    begin
+      AWhereKeyJsonStr:=GetWhereKeyJson(ConvertToStringDynArray([AFIDFieldName]),ConvertToVariantDynArray([AFID]));
+    end;
+  end;
+
+
+  AFIDIsEmpty:=False;
+  if AUpdateRecordCustomWhereSQL='' then
+  begin
+    if VarIsNULL(AFID) then
+    begin
+      AFIDIsEmpty:=True;
+    end
+    else
+    begin
+
+      if (VarType(AFID)=varInteger)
+        or (VarType(AFID)=varInt64)
+        or (VarType(AFID)=varSmallint)
+        or (VarType(AFID)=varByte)
+        or (VarType(AFID)=varWord)
+        or (VarType(AFID)=varLongWord)
+        {$IF CompilerVersion > 21.0}
+        or (VarType(AFID)=varUInt32)
+        {$IFEND}
+        or (VarType(AFID)=varUInt64)
+        then
+      begin
+        AFIDIsEmpty:=(AFID=0);
+      end
+      else
+      if (VarType(AFID)=varString) or (VarType(AFID)=varUString) then
+      begin
+        AFIDIsEmpty:=(AFID='');
+      end
+      else
+      begin
+        ADesc:='AFID值类型不支持';
+        Exit;
+      end;
+
+    end;
+  end;
+
+
+  ACommonRestIntfItem:=GlobalCommonRestIntfList.Find(ATableCommonRestName);
+  if ACommonRestIntfItem=nil then
+  begin
+    ADesc:=ATableCommonRestName+'接口不存在';
+    Exit;
+  end;
+
+
+  if AFIDIsEmpty then
+  begin
+
+      AIsAdd:=True;
+
+//      ACommonRestIntfItem.AddRecord(ACommonRestIntfItem.DBModule,nil,AAppID,ARecordDataJson,nil,ACode,ADesc,ADataJson);
+      //不存在fid,表示要新增该记录
+      if not ACommonRestIntfItem.AddRecord(ACommonRestIntfItem.DBModule,nil,AAppID,ARecordDataJson,nil,ACode,ADesc,ADataJson)
+//        SimpleCallAPI('add_record_post_2',
+//                              nil,
+//                              AInterfaceUrl+'tablecommonrest/',
+//                              ConvertToStringDynArray(
+//                                                      ['appid',
+//                                                      'user_fid',
+//                                                      'key',
+//                                                      'rest_name'//,
+//                                                      //'record_data_json'
+//                                                      ]),
+//                              ConvertToVariantDynArray([AAppID,
+//                                                        AUserFID,
+//                                                        AKey,
+//                                                        ATableCommonRestName//,
+//                                                        //ARecordDataJson.AsJson
+//                                                        ]),
+//                              ACode,
+//                              ADesc,
+//                              ADataJson,
+//                              ASignType,
+//                              ASignSecret,
+//                              True,
+//                              nil,
+//                              ARecordDataJson.AsJson
+//                              )
+//
+                              or (ACode<>SUCC) then
+      begin
+        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        Exit;
+      end;
+
+      Result:=True;
+  end
+  else if ARecordDataJson.Contains('is_deleted') and (ARecordDataJson.I['is_deleted']=1) then
+  begin
+      //删除记录
+
+      if not ACommonRestIntfItem.DeleteRecord(ACommonRestIntfItem.DBModule,nil,AAppID,AWhereKeyJsonStr,AUpdateRecordCustomWhereSQL,ACode,ADesc,ADataJson)
+          //SimpleCallAPI('update_record',
+//                              nil,
+//                              AInterfaceUrl+'tablecommonrest/',
+//                              ConvertToStringDynArray(['appid',
+//                                                      'user_fid',
+//                                                      'key',
+//                                                      'rest_name',
+//                                                      'record_data_json',
+//                                                      'where_key_json']),
+//                              ConvertToVariantDynArray([AAppID,
+//                                                        AUserFID,
+//                                                        AKey,
+//                                                        ATableCommonRestName,
+//                                                        ARecordDataJson.AsJson,
+//                                                        AWhereKeyJsonStr//GetWhereKeyJson(['appid','fid'],[AAppID,AFID])
+//                                                        ]),
+//                              ACode,
+//                              ADesc,
+//                              ADataJson,
+//                              ASignType,
+//                              ASignSecret)
+                              or (ACode<>SUCC)  then
+      begin
+        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        Exit;
+      end;
+
+      Result:=True;
+  end
+  else
+  begin
+      //更新记录
+      if not ACommonRestIntfItem.UpdateRecord(ACommonRestIntfItem.DBModule,nil,AAppID,ARecordDataJson,AWhereKeyJsonStr,AUpdateRecordCustomWhereSQL,ACode,ADesc,ADataJson)
+//          SimpleCallAPI('update_record_post',
+//                              nil,
+//                              AInterfaceUrl+'tablecommonrest/',
+//                              ConvertToStringDynArray(['appid',
+//                                                      'user_fid',
+//                                                      'key',
+//                                                      'rest_name',
+////                                                      'record_data_json',
+//                                                      'where_key_json']),
+//                              ConvertToVariantDynArray([AAppID,
+//                                                        AUserFID,
+//                                                        AKey,
+//                                                        ATableCommonRestName,
+////                                                        ARecordDataJson.AsJson,
+//                                                        AWhereKeyJsonStr//GetWhereKeyJson(['appid','fid'],[AAppID,AFID])
+//                                                        ]),
+//                              ACode,
+//                              ADesc,
+//                              ADataJson,
+//                              ASignType,
+//                              ASignSecret,
+//                              True,
+//                              nil,
+//                              S.AsJson
+//                              )
+                              or (ACode<>SUCC)  then
+      begin
+        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        Exit;
+      end;
+
+      Result:=True;
+  end;
+
+end;
+
+
+function TTableCommonLocalDataInterface.SaveData(
+  ASaveDataSetting: TSaveDataSetting;
+  ADataIntfResult: TDataIntfResult): Boolean;
+begin
+  Result:=False;
+
+  ADataIntfResult.DataType:=TDataIntfResultType.ldtJson;
+
+          //将接口保存到数据库
+          if SaveRecordToLocal('',//GlobalMainProgramSetting.DataIntfServerUrl,//Self.InterfaceUrl,//
+                                ASaveDataSetting.AppID,
+                                '',
+                                '',
+                                Self.Name,
+                                ASaveDataSetting.EditingRecordKeyValue,//Self.FDataIntfResult.DataJson.I['fid'],
+                                ASaveDataSetting.RecordDataJson,
+                                ASaveDataSetting.IsAddedRecord,
+                                ADataIntfResult.Desc,
+                                ADataIntfResult.DataJson,
+                                '',
+                                '',
+                                True,
+                                //'fid',
+                                Self.FKeyFieldName,
+                                ASaveDataSetting.CustomWhereSQL) then
+          begin
+            ADataIntfResult.Succ:=True;//(ACode=SUCC);
+//              //保存成功,要取出新增记录的fid
+//              if AIsAdd then
+//              begin
+//                FPage.DataInterface.fid:=ADataJson.I['fid'];
+//              end;
+//              TTimerTask(ATimerTask).TaskTag:=TASK_SUCC;
+            Result:=True;
+          end
+          else
+          begin
+        //      ShowMessage(ADesc);
+            Exit;
+          end;
+
+
+end;
+
 initialization
   GlobalDataInterfaceClass:=TCommonRestIntfItem;
+  GlobalCommonRestIntfList:=TCommonRestIntfList.Create();
+
+  GlobalDataInterfaceClassRegList.Add('TableCommonLocal',TTableCommonLocalDataInterface);
 
 
+
+finalization
+  FreeAndNil(GlobalCommonRestIntfList);
 
 end.
 

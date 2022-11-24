@@ -180,6 +180,12 @@ begin
   inherited;
 end;
 
+
+initialization
+
+finalization
+  FreeGlobalRedisClientPool;
+
 end.
 
 

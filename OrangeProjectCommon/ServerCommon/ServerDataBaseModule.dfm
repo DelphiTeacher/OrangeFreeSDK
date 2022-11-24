@@ -1,5 +1,4 @@
 object dmServerDataBase: TdmServerDataBase
-  OldCreateOrder = False
   Height = 296
   Width = 367
   object UniConnection1: TUniConnection
@@ -23,6 +22,10 @@ object dmServerDataBase: TdmServerDataBase
     Top = 112
   end
   object MySQLUniProvider1: TMySQLUniProvider
+    Left = 72
+    Top = 120
+  end
+  object SQLiteUniProvider1: TSQLiteUniProvider
     Left = 72
     Top = 120
   end

@@ -388,7 +388,7 @@ end;
 constructor TListDataController.Create(AOwner: TComponent);
 begin
 
-  FieldControlSettingList:=TFieldControlSettingList.Create;
+  FieldControlSettingList:=TFieldControlSettingList.Create(TFieldControlSetting);
 
   tteGetData:=TTimerTaskEvent.Create(nil);
   tteGetData.OnBegin:=tteGetDataBegin;
@@ -695,7 +695,7 @@ end;
 constructor TSkinItemDataBinding.Create(AOwner: TComponent);
 begin
   inherited;
-  FieldControlSettingList:=TFieldControlSettingList.Create();
+  FieldControlSettingList:=TFieldControlSettingList.Create(TFieldControlSetting);
 
   FItemCaptionFieldControl:=TFieldControlSetting(FieldControlSettingList.Add);
   FItemCaptionFieldControl.bind_listitem_data_type:='ItemCaption';

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Puudutage valguse sisselülitamiseks</string>
-    <string name="scankit_light_off">Lülita valgus välja</string>
-    <string name="scankit_no_code_tip">Koodi ei tuvastatud.</string>
-    <string name="scankit_scan_tip">Paigutage kood raami</string>
-    <string name="scankit_title">Skanni</string>
-</resources>

@@ -7,14 +7,15 @@ uses
   System.SysUtils, System.Classes,
   kbmMWCustomConnectionPool,
 
-  Vcl.Controls,
-  Vcl.StdCtrls,
-  Vcl.ExtCtrls,
+//  Vcl.Controls,
+//  Vcl.StdCtrls,
+//  Vcl.ExtCtrls,
   uLang,
   System.StrUtils,
-  DES,
+  uFileCommon,
+//  DES,
 
-  Forms,
+//  Forms,
   uBaseLog,
   XSuperObject,
   uBaseDBHelper,
@@ -28,7 +29,7 @@ uses
   uBaseDatabaseModule,
 //  uTableCommonRestCenter,
 
-  UniProvider, Data.DB, DBAccess, Uni, SQLServerUniProvider,MySQLUniProvider,
+  UniProvider, Data.DB, DBAccess, Uni, SQLServerUniProvider,MySQLUniProvider,SQLiteUniProvider,
   kbmMWUniDAC,
   kbmMWCustomSQLMetaData, kbmMWMSSQLMetaData;
 
@@ -39,6 +40,7 @@ type
   TdmServerDataBase = class(TDataModule)
     UniConnection1: TUniConnection;
     MySQLUniProvider1: TMySQLUniProvider;
+    SQLiteUniProvider1: TSQLiteUniProvider;
     SQLServerUniProvider1: TSQLServerUniProvider;
     kbmMWPooledSession1: TkbmMWPooledSession;
     kbmMWUNIDACConnectionPool1: TkbmMWUNIDACConnectionPool;
@@ -130,7 +132,10 @@ begin
 //  DBHelper := TUniDBHelper.Create(dmServerDataBase.kbmMWUNIDACConnectionPool1);
   //数据库连接池
   DBHelperPool:=TUniDBHelperPool.Create(nil);
+  TUniDBHelperPool(DBHelperPool).FDBConfig:=DBConfig;
   TUniDBHelperPool(DBHelperPool).FUnidacConnectionPool:=dmServerDataBase.kbmMWUNIDACConnectionPool1;
+//  DBHelperPool.FIsUseUnidacConnectionPool:=False;
+  DBHelperPool.FIsUseUnidacConnectionPool:=True;
 
 
 
@@ -181,7 +186,8 @@ begin
   begin
       if DBConfigFileName<>'' then
       begin
-          if FileExists(ExtractFilePath(Application.ExeName)+DBConfigFileName) then
+//          if FileExists(ExtractFilePath(Application.ExeName)+DBConfigFileName) then
+          if FileExists(GetApplicationPath+DBConfigFileName) then
           begin
               //加载数据库配置文件
               DBConfig.Load(DBConfigFileName);
@@ -235,7 +241,8 @@ begin
               //连接池中的所有Connection也要切换数据库
               dmServerDataBase.kbmMWUNIDACConnectionPool1.Active:=False;
               dmServerDataBase.kbmMWUNIDACConnectionPool1.Active:=True;
-
+              //SQLITE不支持并发
+              dmServerDataBase.kbmMWUNIDACConnectionPool1.MaxConnections:=DBConfig.FMaxConnections;
 
 
 //              Self.tmrActiveMySQLPoolConnection.Enabled := True;

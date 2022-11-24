@@ -11,7 +11,7 @@ uses
 
   Graphics, Controls, Forms, Dialogs, uSkinLabelType,
   uSkinImageType, uSkinWindowsControl, uSkinItemDesignerPanelType,
-  ImgList, uDrawPicture, uSkinImageList;
+  ImgList, uDrawPicture, uSkinImageList, uSkinButtonType;
 
 type
   TFrameListItemStyle_IconLeft_CaptionRight = class(TFrame,IFrameBaseListItemStyle)
@@ -19,6 +19,9 @@ type
     imgItemIcon: TSkinWinImage;
     imgItemCaption: TSkinWinLabel;
     imgRefresh: TSkinWinImage;
+    imglistDelete: TSkinImageList;
+    btnDelete: TSkinWinButton;
+    procedure imgItemCaptionMouseEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +40,12 @@ begin
   Result:=ItemDesignerPanel;
 end;
 
+
+procedure TFrameListItemStyle_IconLeft_CaptionRight.imgItemCaptionMouseEnter(
+  Sender: TObject);
+begin
+  //
+end;
 
 initialization
   RegisterListItemStyle('IconLeft_CaptionRight',TFrameListItemStyle_IconLeft_CaptionRight);

@@ -399,27 +399,16 @@ end;
 
 procedure TForm17.FormShow(Sender: TObject);
 begin
-      //动态申请权限,Const_Android_RequestPermissions在uConst中定义
-      //10.2 WILL CRASH
-      {$IFDEF ANDROID}
-          {$IF RTLVersion>=32}// 10.2+
-            PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.READ_EXTERNAL_STORAGE),JStringToString(TJManifest_permission.JavaClass.WRITE_EXTERNAL_STORAGE)],
-                  //不能为nil,不然会闪退,RequestPermissions调用两次会闪退
-                  procedure(const APermissions: TArray<string>;const AGrantResults: TArray<TPermissionStatus>)
-//                  var
-//                    I:Integer;
-                  begin
-//                      //如果允许获取相册,那么先获取,打开相册管理的速度会快一点
-//                      for I := 0 to Length(APermissions)-1 do
-//                      begin
-//                        if APermissions[I]= then
-//
-//                      end;
-                  end);
-          {$ELSE}
-          {$ENDIF}
-      {$ELSE}
-      {$ENDIF}
+//  //动态申请权限,Const_Android_RequestPermissions在uConst中定义
+//  //10.2 WILL CRASH
+//  {$IFDEF ANDROID}
+//      {$IF RTLVersion>=32}// 10.2+
+//        PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.READ_EXTERNAL_STORAGE),JStringToString(TJManifest_permission.JavaClass.WRITE_EXTERNAL_STORAGE)],
+//              nil);
+//      {$ELSE}
+//      {$ENDIF}
+//  {$ELSE}
+//  {$ENDIF}
 
 
 end;
@@ -461,7 +450,8 @@ end;
 ////      //        Log.e("media","s:"+media.size);
 ////      //        imageView.setImageURI(Uri.parse(media.path));
 ////      //    }
-////      //}////      select := AMessageResultNotification.Value.getParcelableArrayListExtra(TJPickerConfig.JavaClass.EXTRA_RESULT);
+////      //}
+////      select := AMessageResultNotification.Value.getParcelableArrayListExtra(TJPickerConfig.JavaClass.EXTRA_RESULT);
 ////      //ArrayList<Media> select;
 ////      FMX.Types.Log.d('OrangeUI TForm17.HandleActivityMessage select count is '+IntToStr(select.size));
 ////      for I := 0 to select.size-1 do

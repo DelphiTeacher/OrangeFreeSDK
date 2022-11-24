@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 /// <summary>
 ///   <para>
-///     åˆ—è¡¨åŸºç±»
+///     ÁĞ±í»ùÀà
 ///   </para>
 ///   <para>
 ///     Base class of list
@@ -19,9 +19,9 @@ interface
 
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
-//æ‰å¯ä»¥æ­£å¸¸ç¼–è¯‘æ­¤å•å…ƒ
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
+//²Å¿ÉÒÔÕı³£±àÒë´Ëµ¥Ôª
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -35,6 +35,7 @@ uses
   Classes,
   SysUtils,
 
+
   uBaseLog,
   uFuncCommon;
 
@@ -46,11 +47,11 @@ type
 
 
 
-
+  TNotifyMessageEvent=procedure(Sender:TObject;AMessageID:String;AMessageDataStr:String;AMessageData:Pointer) of object;
 
   /// <summary>
   ///   <para>
-  ///     é€šçŸ¥æ›´æ”¹çš„é“¾æ¥
+  ///     Í¨Öª¸ü¸ÄµÄÁ´½Ó
   ///   </para>
   ///   <para>
   ///     Link of NotifyChange
@@ -60,22 +61,25 @@ type
   private
     FSender: TSkinObjectChangeManager;
     FOnChange: TNotifyEvent;
+    FOnMessage: TNotifyMessageEvent;
     FOnDestroy: TNotifyEvent;
+    FIsTemp:Boolean;
   public
     destructor Destroy; override;
   public
+    FName:String;
     /// <summary>
     ///   <para>
-    ///     æ‰§è¡ŒOnChange
+    ///     Ö´ĞĞOnChange
     ///   </para>
     ///   <para>
     ///     Execute OnChange
     ///   </para>
     /// </summary>
-    procedure DoChange(Sender:TObject);
+    procedure DoChange(Sender:TObject;AMessageID:String='';AMessageDataStr:String='';AMessageData:Pointer=nil);
     /// <summary>
     ///   <para>
-    ///     æ‰§è¡ŒOnDestroy
+    ///     Ö´ĞĞOnDestroy
     ///   </para>
     ///   <para>
     ///     Execute OnDestroy
@@ -84,16 +88,17 @@ type
     procedure DoDestroy(Sender:TObject);
     /// <summary>
     ///   <para>
-    ///     æ›´æ”¹çš„äº‹ä»¶
+    ///     ¸ü¸ÄµÄÊÂ¼ş
     ///   </para>
     ///   <para>
     ///     Changed event
     ///   </para>
     /// </summary>
     property OnChange: TNotifyEvent read FOnChange write FOnChange;
+    property OnMessage: TNotifyMessageEvent read FOnMessage write FOnMessage;
     /// <summary>
     ///   <para>
-    ///     é‡Šæ”¾çš„äº‹ä»¶
+    ///     ÊÍ·ÅµÄÊÂ¼ş
     ///   </para>
     ///   <para>
     ///    Released event
@@ -114,7 +119,7 @@ type
 
   /// <summary>
   ///   <para>
-  ///     é€šçŸ¥æ›´æ”¹çš„ç®¡ç†è€…
+  ///     Í¨Öª¸ü¸ÄµÄ¹ÜÀíÕß
   ///   </para>
   ///   <para>
   ///     Manager of NotifyChange
@@ -122,42 +127,42 @@ type
   /// </summary>
   TSkinObjectChangeManager=class(TObject)
   private
-    //æ‹¥æœ‰è€…
+    //ÓµÓĞÕß
     FOwner:TObject;
 
 
 
-    //å…³è”çš„TSkinObjectChangeLinkåˆ—è¡¨
+    //¹ØÁªµÄTSkinObjectChangeLinkÁĞ±í
     FLinks: TBaseList;
-    //æ˜¯å¦æ›´æ”¹è¿‡äº†
+    //ÊÇ·ñ¸ü¸Ä¹ıÁË
     FChanged: Boolean;
-    //åœæ­¢æ›´æ”¹è°ƒç”¨çš„æ¬¡æ•°
+    //Í£Ö¹¸ü¸Äµ÷ÓÃµÄ´ÎÊı
     FUpdateCount: Integer;
-    //æ›´æ”¹çš„äº‹ä»¶
+    //¸ü¸ÄµÄÊÂ¼ş
     FOnChange:TNotifyEvent;
-    //æ˜¯å¦é‡Šæ”¾äº†
+    //ÊÇ·ñÊÍ·ÅÁË
     FIsDestroy:Boolean;
   public
     constructor Create(AOwner:TObject);
     destructor Destroy;override;
   public
-    //å¼€å§‹é‡Šæ”¾,é€šçŸ¥Linkå»é™¤ä¸€äº›å¼•ç”¨(ä¸è°ƒç”¨OnChangeäº‹ä»¶)
+    //¿ªÊ¼ÊÍ·Å,Í¨ÖªLinkÈ¥³ıÒ»Ğ©ÒıÓÃ(²»µ÷ÓÃOnChangeÊÂ¼ş)
     procedure BeginDestroy(Sender:TObject);virtual;
   public
 
     /// <summary>
     ///   <para>
-    ///     é€šçŸ¥å„ä¸ªLinkè°ƒç”¨æ›´æ”¹çš„äº‹ä»¶(OnChange)
+    ///     Í¨Öª¸÷¸öLinkµ÷ÓÃ¸ü¸ÄµÄÊÂ¼ş(OnChange)
     ///   </para>
     ///   <para>
     ///     Notify every Link call changed event(OnChange)
     ///   </para>
     /// </summary>
-    procedure DoChange(Sender:TObject);virtual;
+    procedure DoChange(Sender:TObject;AName:String='';AMessageID:String='';AMessageDataStr:String='';AMessageData:Pointer=nil);virtual;
 
     /// <summary>
     ///   <para>
-    ///     æœ‰å¤šå°‘ä¸ªLinnk
+    ///     ÓĞ¶àÉÙ¸öLinnk
     ///   </para>
     ///   <para>
     ///     ??
@@ -168,7 +173,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     é€šçŸ¥å„ä¸ªLinkè°ƒç”¨é‡Šæ”¾çš„äº‹ä»¶(OnDestroy)
+    ///     Í¨Öª¸÷¸öLinkµ÷ÓÃÊÍ·ÅµÄÊÂ¼ş(OnDestroy)
     ///   </para>
     ///   <para>
     ///     Notify every Link call released event(OnDestroy)
@@ -180,7 +185,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å¼€å§‹æ›´æ–°
+    ///     ¿ªÊ¼¸üĞÂ
     ///   </para>
     ///   <para>
     ///     Begin Update
@@ -190,7 +195,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     ç»“æŸæ›´æ–°
+    ///     ½áÊø¸üĞÂ
     ///   </para>
     ///   <para>
     ///     End Update
@@ -202,7 +207,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     è°ƒç”¨BeginUpdateæ–¹æ³•çš„æ¬¡æ•°
+    ///     µ÷ÓÃBeginUpdate·½·¨µÄ´ÎÊı
     ///   </para>
     ///   <para>
     ///     Call count of BeginUpdate
@@ -213,28 +218,30 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ³¨å†Œé€šçŸ¥æ›´æ”¹çš„é“¾æ¥
+    ///     ×¢²áÍ¨Öª¸ü¸ÄµÄÁ´½Ó
     ///   </para>
     ///   <para>
     ///     Regist link of NotifyChange
     ///   </para>
     /// </summary>
-    procedure RegisterChanges(Value: TSkinObjectChangeLink);
+    procedure RegisterChanges(Value: TSkinObjectChangeLink);overload;
+    procedure RegisterChanges(AName:String;AOnChange: TNotifyEvent);overload;
 
     /// <summary>
     ///   <para>
-    ///     åæ³¨å†Œé€šçŸ¥æ›´æ”¹çš„é“¾æ¥
+    ///     ·´×¢²áÍ¨Öª¸ü¸ÄµÄÁ´½Ó
     ///   </para>
     ///   <para>
     ///    Unregist link of NotifyChange
     ///   </para>
     /// </summary>
-    procedure UnRegisterChanges(Value: TSkinObjectChangeLink);
+    procedure UnRegisterChanges(Value: TSkinObjectChangeLink);overload;
+    procedure UnRegisterChanges(AName:String;AOnChange: TNotifyEvent);overload;
   public
 
     /// <summary>
     ///   <para>
-    ///     æ˜¯å¦å¼€å§‹é‡Šæ”¾äº†
+    ///     ÊÇ·ñ¿ªÊ¼ÊÍ·ÅÁË
     ///   </para>
     ///   <para>
     ///     Whether begin release
@@ -244,7 +251,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ›´æ”¹çš„äº‹ä»¶
+    ///     ¸ü¸ÄµÄÊÂ¼ş
     ///   </para>
     ///   <para>
     ///     Changed event
@@ -269,7 +276,7 @@ type
 
   /// <summary>
   ///   <para>
-  ///     å­å¯¹è±¡æ‹¥æœ‰å…³ç³»çš„ç±»å‹
+  ///     ×Ó¶ÔÏóÓµÓĞ¹ØÏµµÄÀàĞÍ
   ///   </para>
   ///   <para>
   ///     Type of relationship subobject owns
@@ -277,14 +284,14 @@ type
   /// </summary>
   TObjectOwnership=(
                     /// <summary>
-                    ///   å¼•ç”¨,åˆ—è¡¨æ¸…é™¤çš„æ—¶å€™å­å¯¹è±¡ä¸é‡Šæ”¾
+                    ///   ÒıÓÃ,ÁĞ±íÇå³ıµÄÊ±ºò×Ó¶ÔÏó²»ÊÍ·Å
                     ///   <para>
                     ///    Reference, not release subobject when clear list
                     ///   </para>
                     /// </summary>
                     ooReference,
                     /// <summary>
-                    ///   æ‹¥æœ‰,å­å¯¹è±¡éƒ½æ˜¯åˆ—è¡¨çš„,åˆ—è¡¨æ¸…é™¤çš„æ—¶å€™å­å¯¹è±¡é‡Šæ”¾
+                    ///   ÓµÓĞ,×Ó¶ÔÏó¶¼ÊÇÁĞ±íµÄ,ÁĞ±íÇå³ıµÄÊ±ºò×Ó¶ÔÏóÊÍ·Å
                     ///   <para>
                     ///     Own,subobject is own by list,release subobject when clear list
                     ///   </para>
@@ -299,7 +306,7 @@ type
 
   /// <summary>
   ///   <para>
-  ///     å­å¯¹è±¡æ›´æ”¹çš„ç±»å‹
+  ///     ×Ó¶ÔÏó¸ü¸ÄµÄÀàĞÍ
   ///   </para>
   ///   <para>
   ///     ChangeType of subobject
@@ -307,28 +314,28 @@ type
   /// </summary>
   TItemChangeType=(
                     /// <summary>
-                    ///   æ·»åŠ é¡¹ç›®
+                    ///   Ìí¼ÓÏîÄ¿
                     ///   <para>
                     ///     add item
                     ///   </para>
                     /// </summary>
                     ictAdd,
                     /// <summary>
-                    ///   åˆ é™¤é¡¹ç›®
+                    ///   É¾³ıÏîÄ¿
                     ///   <para>
                     ///     delete item
                     ///   </para>
                     /// </summary>
                     ictDel,
                     /// <summary>
-                    ///   ç§»åŠ¨é¡¹ç›®
+                    ///   ÒÆ¶¯ÏîÄ¿
                     ///   <para>
                     ///     move item
                     ///   </para>
                     /// </summary>
                     ictMove,
                     /// <summary>
-                    ///   è®¾ç½®é¡¹ç›®
+                    ///   ÉèÖÃÏîÄ¿
                     ///   <para>
                     ///     set item
                     ///   </para>
@@ -338,7 +345,7 @@ type
                     );
   /// <summary>
   ///   <para>
-  ///     å­å¯¹è±¡æ›´æ”¹ç±»å‹é›†åˆ
+  ///     ×Ó¶ÔÏó¸ü¸ÄÀàĞÍ¼¯ºÏ
   ///   </para>
   ///   <para>
   ///     Set of subobject ChangeType
@@ -354,7 +361,7 @@ type
 
   /// <summary>
   ///   <para>
-  ///     å­å¯¹è±¡è¢«åˆ é™¤çš„äº‹ä»¶(ç”¨äºç«‹å³é€šçŸ¥ä¸€äº›æ§ä»¶æ¸…ç©ºå¯¹Itemçš„å¼•ç”¨)
+  ///     ×Ó¶ÔÏó±»É¾³ıµÄÊÂ¼ş(ÓÃÓÚÁ¢¼´Í¨ÖªÒ»Ğ©¿Ø¼şÇå¿Õ¶ÔItemµÄÒıÓÃ)
   ///   </para>
   ///   <para>
   ///     DeleteEvent of subobject(Used for informing some controls clear the
@@ -372,7 +379,7 @@ type
 
   /// <summary>
   ///   <para>
-  ///     å­å¯¹è±¡åˆ—è¡¨
+  ///     ×Ó¶ÔÏóÁĞ±í
   ///   </para>
   ///   <para>
   ///     Subobject list
@@ -381,14 +388,14 @@ type
   TBaseList=class(TInterfacedPersistent)
   protected
 
-    //å½“å‰æ˜¯å¦æ­£åœ¨åŠ è½½,
-    //å¦‚æœæ­£åœ¨åŠ è½½,
-    //é‚£ä¸ä¹ˆè°ƒç”¨DoAdd,OnChangeäº‹ä»¶ç­‰
+    //µ±Ç°ÊÇ·ñÕıÔÚ¼ÓÔØ,
+    //Èç¹ûÕıÔÚ¼ÓÔØ,
+    //ÄÇ²»Ã´µ÷ÓÃDoAdd,OnChangeÊÂ¼şµÈ
 //    IsLoading:Boolean;
 
     /// <summary>
     ///   <para>
-    ///     åˆ—è¡¨
+    ///     ÁĞ±í
     ///   </para>
     ///   <para>
     ///     List
@@ -397,44 +404,44 @@ type
     FItems:TList;
 
 
-    //é€šçŸ¥æ›´æ”¹çš„ç®¡ç†è€…
+    //Í¨Öª¸ü¸ÄµÄ¹ÜÀíÕß
     FSkinObjectChangeManager:TSkinObjectChangeManager;
-    //å­å¯¹è±¡çš„æ‹¥æœ‰å…³ç³»
+    //×Ó¶ÔÏóµÄÓµÓĞ¹ØÏµ
     FObjectOwnership:TObjectOwnership;
 
 
 
-    //ä¸Šæ¬¡å­å¯¹è±¡çš„æ›´æ”¹ç±»å‹
+    //ÉÏ´Î×Ó¶ÔÏóµÄ¸ü¸ÄÀàĞÍ
     FLastItemChangeTypes:TItemChangeTypes;
-    //æœ‰å­å¯¹è±¡è¢«åˆ é™¤
+    //ÓĞ×Ó¶ÔÏó±»É¾³ı
     FHasItemDeleted: Boolean;
-    //å­å¯¹è±¡è¢«åˆ é™¤çš„äº‹ä»¶
+    //×Ó¶ÔÏó±»É¾³ıµÄÊÂ¼ş
     FOnItemDelete: TItemDeleteEvent;
 
 
-    //è°ƒç”¨OnChangeäº‹ä»¶
+    //µ÷ÓÃOnChangeÊÂ¼ş
     procedure DoChange;virtual;
-    //è®¾ç½®é¡¹ç›®
+    //ÉèÖÃÏîÄ¿
     function GetItem(Index: Integer): TObject;
     procedure SetItem(Index: Integer; const Value: TObject);
-    //è®¾ç½®äº‹ä»¶
+    //ÉèÖÃÊÂ¼ş
     function GetOnChange: TNotifyEvent;
     procedure SetOnChange(const Value: TNotifyEvent);
 
   public
     /// <summary>
     ///   <para>
-    ///     æ„é€ æ–¹æ³•
+    ///     ¹¹Ôì·½·¨
     ///   </para>
     ///   <para>
     ///     Construct methods
     ///   </para>
     /// </summary>
     /// <param name="AObjectOwnership">
-    ///   å­å¯¹è±¡å…³ç³» <br />Subobject relationship
+    ///   ×Ó¶ÔÏó¹ØÏµ <br />Subobject relationship
     /// </param>
     /// <param name="AIsCreateObjectChangeManager">
-    ///   æ˜¯å¦åˆ›å»ºé€šçŸ¥æ›´æ”¹çš„ç®¡ç†è€…
+    ///   ÊÇ·ñ´´½¨Í¨Öª¸ü¸ÄµÄ¹ÜÀíÕß
     ///  <para>
     ///Whether create NotifyChange manager
     ///  </para>
@@ -449,7 +456,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡çš„ä¸ªæ•°
+    ///     ×Ó¶ÔÏóµÄ¸öÊı
     ///   </para>
     ///   <para>
     ///     Subobject count
@@ -459,20 +466,20 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ¸…é™¤
+    ///     Çå³ı
     ///   </para>
     ///   <para>
     ///     Clear
     ///   </para>
     /// </summary>
     /// <param name="AIsFree">
-    ///   æ˜¯å¦é‡Šæ”¾å­å¯¹è±¡
+    ///   ÊÇ·ñÊÍ·Å×Ó¶ÔÏó
     ///  <para>
     ///  whether release subobject
     ///  </para>
     /// </param>
     /// <param name="AIsNeedDelete">
-    ///   æ˜¯å¦éœ€è¦åˆ é™¤å­å¯¹è±¡
+    ///   ÊÇ·ñĞèÒªÉ¾³ı×Ó¶ÔÏó
     ///  <para>
     ///  whether need to delete subobject
     ///  </para>
@@ -481,20 +488,20 @@ type
 
     /// <summary>
     ///   <para>
-    ///     ç§»åŠ¨(äº’æ¢)
+    ///     ÒÆ¶¯(»¥»»)
     ///   </para>
     ///   <para>
     ///     Move (Exchange)
     ///   </para>
     /// </summary>
     /// <param name="ASrcIndex">
-    ///   æºä¸‹æ ‡
+    ///   Ô´ÏÂ±ê
     ///  <para>
     ///  original index
     ///  </para>
     /// </param>
     /// <param name="ADestIndex">
-    ///   ç›®çš„ä¸‹æ ‡
+    ///   Ä¿µÄÏÂ±ê
     ///  <para>
     ///  target index
     ///  </para>
@@ -504,7 +511,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡æ·»åŠ æ—¶è°ƒç”¨æ­¤æ–¹æ³•
+    ///     ×Ó¶ÔÏóÌí¼ÓÊ±µ÷ÓÃ´Ë·½·¨
     ///   </para>
     ///   <para>
     ///     Call this method when adding subobject
@@ -514,7 +521,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡åˆ é™¤æ—¶è°ƒç”¨æ­¤æ–¹æ³•
+    ///     ×Ó¶ÔÏóÉ¾³ıÊ±µ÷ÓÃ´Ë·½·¨
     ///   </para>
     ///   <para>
     ///     Call it when deleting subobject
@@ -524,7 +531,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡æ’å…¥æ—¶è°ƒç”¨æ­¤æ–¹æ³•
+    ///     ×Ó¶ÔÏó²åÈëÊ±µ÷ÓÃ´Ë·½·¨
     ///   </para>
     ///   <para>
     ///     Call it when inserting subobject
@@ -536,7 +543,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     åˆ é™¤æŒ‡å®šä¸‹æ ‡çš„å­å¯¹è±¡
+    ///     É¾³ıÖ¸¶¨ÏÂ±êµÄ×Ó¶ÔÏó
     ///   </para>
     ///   <para>
     ///     Delete subobject of assigned index
@@ -545,7 +552,7 @@ type
     function Delete(AIndex:Integer;AIsFree:Boolean=True;AIsNeedDelete:Boolean=True):Integer;virtual;
     /// <summary>
     ///   <para>
-    ///     æ¸…é™¤æŒ‡å®šå­å¯¹è±¡
+    ///     Çå³ıÖ¸¶¨×Ó¶ÔÏó
     ///   </para>
     ///   <para>
     ///     Clear assigned subobject
@@ -555,7 +562,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ·»åŠ å­å¯¹è±¡
+    ///     Ìí¼Ó×Ó¶ÔÏó
     ///   </para>
     ///   <para>
     ///     Add subobject
@@ -565,7 +572,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ’å…¥å­å¯¹è±¡åˆ°æŒ‡å®šä¸‹æ ‡
+    ///     ²åÈë×Ó¶ÔÏóµ½Ö¸¶¨ÏÂ±ê
     ///   </para>
     ///   <para>
     ///     Insert subobject to assigned index
@@ -576,7 +583,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     è·å–å­å¯¹è±¡æ‰€åœ¨ä¸‹æ ‡
+    ///     »ñÈ¡×Ó¶ÔÏóËùÔÚÏÂ±ê
     ///   </para>
     ///   <para>
     ///     Get index of subobject
@@ -586,7 +593,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ’åº
+    ///     ÅÅĞò
     ///   </para>
     ///   <para>
     ///     Sort
@@ -597,7 +604,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å¼€å§‹æ›´æ–°
+    ///     ¿ªÊ¼¸üĞÂ
     ///   </para>
     ///   <para>
     ///     Begin update
@@ -607,14 +614,14 @@ type
 
     /// <summary>
     ///   <para>
-    ///     ç»“æŸæ›´æ–°
+    ///     ½áÊø¸üĞÂ
     ///   </para>
     ///   <para>
     ///     End update
     ///   </para>
     /// </summary>
     /// <param name="Force">
-    ///   æ˜¯å¦å¼ºåˆ¶æ›´æ–°
+    ///   ÊÇ·ñÇ¿ÖÆ¸üĞÂ
     ///  <para>
     ///  Whetehr forced to update
     ///  </para>
@@ -624,7 +631,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ˜¯å¦æœ‰å­å¯¹è±¡è¢«åˆ é™¤äº†
+    ///     ÊÇ·ñÓĞ×Ó¶ÔÏó±»É¾³ıÁË
     ///   </para>
     ///   <para>
     ///     Whether there is a subobject deleted
@@ -634,7 +641,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     ä¸Šæ¬¡å­å¯¹è±¡æ›´æ”¹ç±»å‹
+    ///     ÉÏ´Î×Ó¶ÔÏó¸ü¸ÄÀàĞÍ
     ///   </para>
     ///   <para>
     ///     Last ChangeType of subobject
@@ -645,7 +652,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡è¢«åˆ é™¤çš„äº‹ä»¶
+    ///     ×Ó¶ÔÏó±»É¾³ıµÄÊÂ¼ş
     ///   </para>
     ///   <para>
     ///     Event of Subobject deleted
@@ -655,7 +662,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     æ›´æ”¹çš„äº‹ä»¶
+    ///     ¸ü¸ÄµÄÊÂ¼ş
     ///   </para>
     ///   <para>
     ///     Changed event
@@ -665,7 +672,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     é€šçŸ¥æ›´æ”¹çš„ç®¡ç†è€…
+    ///     Í¨Öª¸ü¸ÄµÄ¹ÜÀíÕß
     ///   </para>
     ///   <para>
     ///     Manager of NotifyChange
@@ -676,7 +683,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡çš„æ‹¥æœ‰å…³ç³»
+    ///     ×Ó¶ÔÏóµÄÓµÓĞ¹ØÏµ
     ///   </para>
     ///   <para>
     ///     Owner relationship of subobject
@@ -686,7 +693,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡
+    ///     ×Ó¶ÔÏó
     ///   </para>
     ///   <para>
     ///     Subobject
@@ -697,7 +704,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å­å¯¹è±¡çš„ä¸ªæ•°
+    ///     ×Ó¶ÔÏóµÄ¸öÊı
     ///   </para>
     ///   <para>
     ///     Subobject count
@@ -724,7 +731,7 @@ function TBaseList.Add(AObject:TObject):Integer;
 begin
   Result:=Self.FItems.Add(AObject);
 
-//  if Not IsLoading then//ä¸ºä»€ä¹ˆ?ä¸ºäº†å°‘å‘ç”ŸChangeå—?
+//  if Not IsLoading then//ÎªÊ²Ã´?ÎªÁËÉÙ·¢ÉúChangeÂğ?
 //  begin
     DoAdd(AObject);
 //  end;
@@ -764,7 +771,7 @@ end;
 
 procedure TBaseList.DoDelete(AObject: TObject;AIndex:Integer);
 begin
-  //å¼€å§‹è°ƒç”¨åˆ é™¤é€šçŸ¥
+  //¿ªÊ¼µ÷ÓÃÉ¾³ıÍ¨Öª
   if Assigned(FOnItemDelete) then
   begin
     FOnItemDelete(Self,AObject,AIndex);
@@ -779,10 +786,10 @@ procedure TBaseList.Clear(AIsFree:Boolean;AIsNeedDelete:Boolean);
 var
   I:Integer;
 begin
-  //ä¸èƒ½ç”¨While,å› ä¸ºæœ‰æ—¶ä¸éœ€è¦åˆ é™¤,ç”¨Whileå°±æ­»å¾ªç¯
+  //²»ÄÜÓÃWhile,ÒòÎªÓĞÊ±²»ĞèÒªÉ¾³ı,ÓÃWhile¾ÍËÀÑ­»·
   //while Self.Count>0 do
 
-  //åªèƒ½ç”¨For
+  //Ö»ÄÜÓÃFor
   for I := Self.Count-1 downto 0 do
   begin
     Delete(I,AIsFree,AIsNeedDelete);
@@ -835,7 +842,7 @@ begin
   end;
 
 
-  //é‡Šæ”¾
+  //ÊÍ·Å
   if AIsFree and (AObject<>nil) then
   begin
     try
@@ -860,7 +867,7 @@ end;
 
 destructor TBaseList.Destroy;
 begin
-  //å¼€å§‹é€šçŸ¥å„ä¸ªLinkæœ¬Listå¼€å§‹é‡Šæ”¾äº†
+  //¿ªÊ¼Í¨Öª¸÷¸öLink±¾List¿ªÊ¼ÊÍ·ÅÁË
   if FSkinObjectChangeManager<>nil then
   begin
     FSkinObjectChangeManager.BeginDestroy(Self);
@@ -868,7 +875,7 @@ begin
 
 
 
-  //æ¸…é™¤åˆ—è¡¨
+  //Çå³ıÁĞ±í
   Self.Clear((FObjectOwnership=ooOwned),True);
 
   SysUtils.FreeAndNil(FSkinObjectChangeManager);
@@ -944,13 +951,13 @@ begin
 
 //  if ASrcIndex<ADestIndex then
 //  begin
-//    //ASrcIndex 0 ç§»åˆ° ADestIndex 2
-//    //0 Deleteæ‰ä¹‹å,åŸæ¥çš„ADestIndexå˜æˆäº†1
+//    //ASrcIndex 0 ÒÆµ½ ADestIndex 2
+//    //0 DeleteµôÖ®ºó,Ô­À´µÄADestIndex±ä³ÉÁË1
 //    Self.Insert(ADestIndex,ASrcPointer);
 //  end
 //  else
 //  begin
-    //ASrcIndex 2 ç§»åˆ° ADestIndex 0
+    //ASrcIndex 2 ÒÆµ½ ADestIndex 0
     Self.Insert(ADestIndex,ASrcPointer);
 //  end;
 
@@ -1002,7 +1009,7 @@ end;
 
 { TSkinObjectChangeManager }
 
-procedure TSkinObjectChangeManager.DoChange(Sender:TObject);
+procedure TSkinObjectChangeManager.DoChange(Sender:TObject;AName:String='';AMessageID:String='';AMessageDataStr:String='';AMessageData:Pointer=nil);
 var
   I: Integer;
 begin
@@ -1011,10 +1018,13 @@ begin
 
   if FLinks <> nil then
   begin
-    //é€šçŸ¥å…³è”çš„æ§ä»¶
+    //Í¨Öª¹ØÁªµÄ¿Ø¼ş
     for I := FLinks.Count - 1 downto 0 do
     begin
-      TSkinObjectChangeLink(FLinks[I]).DoChange(Sender);
+      if TSkinObjectChangeLink(FLinks[I]).FName=AName then
+      begin
+        TSkinObjectChangeLink(FLinks[I]).DoChange(Sender,AMessageID,AMessageDataStr,AMessageData);
+      end;
     end;
   end;
 
@@ -1031,7 +1041,7 @@ var
 begin
   if FLinks <> nil then
   begin
-    //é€šçŸ¥å…³è”çš„æ§ä»¶
+    //Í¨Öª¹ØÁªµÄ¿Ø¼ş
     for I := FLinks.Count - 1 downto 0 do
     begin
       TSkinObjectChangeLink(FLinks[I]).DoDestroy(Sender);
@@ -1042,7 +1052,7 @@ end;
 constructor TSkinObjectChangeManager.Create(AOwner:TObject);
 begin
   FOwner:=AOwner;
-  //å…³è”çš„æ§ä»¶
+  //¹ØÁªµÄ¿Ø¼ş
   FLinks := TBaseList.Create(ooReference,False);
 end;
 
@@ -1058,7 +1068,14 @@ begin
       begin
         Value.FSender := nil;
         FLinks.Delete(I,False);
+
+        if Value.FIsTemp then
+        begin
+          FreeAndNil(Value);
+        end;
+
         Break;
+
       end;
     end;
   end;
@@ -1106,6 +1123,19 @@ begin
   Result:=Self.FLinks.Count;
 end;
 
+procedure TSkinObjectChangeManager.RegisterChanges(AName: String;
+  AOnChange: TNotifyEvent);
+var
+  AChangeLink:TSkinObjectChangeLink;
+begin
+  AChangeLink:=TSkinObjectChangeLink.Create;
+  AChangeLink.FName:=AName;
+  AChangeLink.OnChange:=AOnChange;
+  AChangeLink.FIsTemp:=True;
+//  AChangeLink.OnDestroy:=OnSkinImageListDestroy;
+  Self.RegisterChanges(AChangeLink);
+end;
+
 destructor TSkinObjectChangeManager.Destroy;
 var
   I: Integer;
@@ -1116,7 +1146,7 @@ begin
   FUpdateCount:=0;
   FOnChange:=nil;
 
-  //å–æ¶ˆæ³¨å†Œæ‰€æœ‰çš„å…³è”Link
+  //È¡Ïû×¢²áËùÓĞµÄ¹ØÁªLink
   for I := FLinks.Count-1 downto 0 do
   begin
     UnRegisterChanges(TSkinObjectChangeLink(FLinks[I]));
@@ -1128,11 +1158,39 @@ begin
   inherited;
 end;
 
+procedure TSkinObjectChangeManager.UnRegisterChanges(AName: String;
+  AOnChange: TNotifyEvent);
+var
+  I: Integer;
+  AChangeLink:TSkinObjectChangeLink;
+begin
+  if FLinks <> nil then
+  begin
+    //Í¨Öª¹ØÁªµÄ¿Ø¼ş
+    for I := FLinks.Count - 1 downto 0 do
+    begin
+      if (TSkinObjectChangeLink(FLinks[I]).FName=AName)
+        {}
+//        and (TMethod(TSkinObjectChangeLink(FLinks[I]).FOnChange)=TMethod(AOnChange))
+        and (TMethod(TSkinObjectChangeLink(FLinks[I]).FOnChange).Code=TMethod(AOnChange).Code)
+        and (TMethod(TSkinObjectChangeLink(FLinks[I]).FOnChange).Data=TMethod(AOnChange).Data)
+        then
+      begin
+        AChangeLink:=TSkinObjectChangeLink(FLinks[I]);
 
+        FLinks.Delete(I,False);
 
+        if AChangeLink.FIsTemp then
+        begin
+          FreeAndNil(AChangeLink);
+        end;
 
+        Break;
+      end;
+    end;
+  end;
 
-
+end;
 
 { TSkinObjectChangeLink }
 
@@ -1147,11 +1205,15 @@ begin
   inherited Destroy;
 end;
 
-procedure TSkinObjectChangeLink.DoChange(Sender:TObject);
+procedure TSkinObjectChangeLink.DoChange(Sender:TObject;AMessageID:String='';AMessageDataStr:String='';AMessageData:Pointer=nil);
 begin
   if Assigned(FOnChange) then
   begin
     FOnChange(Sender);
+  end;
+  if Assigned(FOnMessage) then
+  begin
+    FOnMessage(Sender,AMessageID,AMessageDataStr,AMessageData);
   end;
 end;
 

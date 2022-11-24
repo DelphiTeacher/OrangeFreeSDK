@@ -115,12 +115,15 @@ procedure TForm2.SGQRCodeObtainScanResultBlockEvent(obtain: SGQRCodeObtain;
 begin
   ShowMessage(NSStrToStr(result));
 end;
+{$ENDIF IOS}
+
 procedure TForm2.tmrSetStatusBarLightTimer(Sender: TObject);
 {$IFDEF IOS}
 var
   AiOSWindowHandle:TiOSWindowHandle;
 {$ENDIF IOS}
 begin
+{$IFDEF IOS}
       //更新状态栏
       AiOSWindowHandle:=WindowHandleToPlatform(Handle);
       //在扫码打开的时候调用它会报错
@@ -168,8 +171,8 @@ begin
 //        AiOSWindowHandle.View;//.setNeedsStatusBarAppearanceUpdate;
 //      end;
 
+{$ENDIF IOS}
 end;
 
-{$ENDIF IOS}
 
 end.

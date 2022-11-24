@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">OK</string>
-    <string name="scankit_light">Kosketa lisävaloa varten</string>
-    <string name="scankit_light_off">Sammuta valo</string>
-    <string name="scankit_no_code_tip">Koodia ei havaittu.</string>
-    <string name="scankit_scan_tip">Aseta koodi kehyksen sisään</string>
-    <string name="scankit_title">Skannaus</string>
-</resources>

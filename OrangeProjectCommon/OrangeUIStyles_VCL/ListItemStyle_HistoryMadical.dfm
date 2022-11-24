@@ -1,23 +1,23 @@
 object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
   Left = 0
   Top = 0
-  Width = 578
-  Height = 419
+  Width = 1072
+  Height = 455
   TabOrder = 0
   object ItemDesignerPanel: TSkinWinItemDesignerPanel
     AlignWithMargins = True
     Left = 23
     Top = 48
     Width = 506
-    Height = 297
+    Height = 91
     ParentMouseEvent = True
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
     SelfOwnMaterial.BackColor.BorderEadges = [beBottom]
     SelfOwnMaterial.BackColor.IsFill = True
     SelfOwnMaterial.BackColor.FillColor.Alpha = 255
-    SelfOwnMaterial.BackColor.FillColor.Color = clSkyBlue
     SelfOwnMaterial.BackColor.BorderColor.Alpha = 255
     SelfOwnMaterial.BackColor.BorderColor.Color = clGray
     SelfOwnMaterial.BackColor.DrawRectSetting.Left = 10.000000000000000000
@@ -27,8 +27,10 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
     SelfOwnMaterial.BackColor.DrawEffectSetting.MouseDownEffect.BorderColor.Alpha = 255
     SelfOwnMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColor.Alpha = 255
     SelfOwnMaterial.BackColor.DrawEffectSetting.MouseOverEffect.BorderColor.Alpha = 255
+    SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.UseThemeColor = ctThemeColor
     SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.Alpha = 255
     SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.BorderColor.Alpha = 255
+    SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.EffectTypes = [drpetFillColorChange]
     SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColor.Alpha = 255
     SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.BorderColor.Alpha = 255
     SelfOwnMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColor.Alpha = 255
@@ -70,6 +72,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       Height = 30
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail5'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukRef
       KeepSelfOwnMaterial = True
@@ -124,6 +127,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       Margins.Left = 20
       ParentMouseEvent = True
       BindItemFieldName = 'ItemDetail'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukRef
       KeepSelfOwnMaterial = True
@@ -178,6 +182,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       Margins.Left = 10
       ParentMouseEvent = True
       BindItemFieldName = 'ItemCaption'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukRef
       KeepSelfOwnMaterial = False
@@ -198,6 +203,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       Height = 30
       Margins.Right = 10
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -320,8 +326,9 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       Left = 0
       Top = 0
       Width = 506
-      Height = 37
+      Height = 30
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -369,10 +376,11 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         AlignWithMargins = True
         Left = 3
         Top = 3
-        Width = 89
-        Height = 31
+        Width = 60
+        Height = 24
         ParentMouseEvent = True
         BindItemFieldName = 'Ksmc'
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -414,18 +422,21 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         HitTest = False
         MouseDownFocus = False
         Align = alLeft
+        Visible = False
         TabOrder = 0
-        Caption = #31185#23460#21517#31216
-        Text = #31185#23460#21517#31216
+        Caption = #31185#23460
+        Text = #31185#23460
         Properties.AutoSize = False
       end
       object lblTreatmentDate: TSkinWinLabel
         AlignWithMargins = True
-        Left = 98
+        Left = 403
         Top = 3
-        Width = 112
-        Height = 31
+        Width = 100
+        Height = 24
         ParentMouseEvent = True
+        BindItemFieldName = 'Zdrq'
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -466,7 +477,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         RefMaterial = swlblName_Material
         HitTest = False
         MouseDownFocus = False
-        Align = alLeft
+        Align = alRight
         TabOrder = 1
         Caption = '2020-04-26'
         Text = '2020-04-26'
@@ -474,11 +485,13 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       end
       object SkinWinLabel1: TSkinWinLabel
         AlignWithMargins = True
-        Left = 216
+        Left = 347
         Top = 3
-        Width = 71
-        Height = 31
+        Width = 50
+        Height = 24
         ParentMouseEvent = True
+        BindItemFieldName = 'Cfzmc'
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -519,19 +532,75 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         RefMaterial = swlblName_Material
         HitTest = False
         MouseDownFocus = False
-        Align = alLeft
+        Align = alRight
         TabOrder = 2
         Caption = #21021#35786
         Text = #21021#35786
         Properties.AutoSize = False
       end
+      object lblDoctorName: TSkinWinLabel
+        AlignWithMargins = True
+        Left = 69
+        Top = 3
+        Width = 272
+        Height = 24
+        ParentMouseEvent = True
+        BindItemFieldName = 'Ksmc'
+        DirectUIVisible = False
+        ComponentTypeUseKind = ctukDefault
+        MaterialUseKind = mukRef
+        KeepSelfOwnMaterial = True
+        SelfOwnMaterial.BackColor.IsFill = True
+        SelfOwnMaterial.BackColor.FillColor.Alpha = 255
+        SelfOwnMaterial.BackColor.BorderColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.MouseDownEffect.FillColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.MouseDownEffect.BorderColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.MouseOverEffect.FillColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.MouseOverEffect.BorderColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.BorderColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.BorderColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColor.Alpha = 255
+        SelfOwnMaterial.BackColor.DrawEffectSetting.FocusedEffect.BorderColor.Alpha = 255
+        SelfOwnMaterial.IsTransparent = False
+        SelfOwnMaterial.DrawCaptionParam.FontName = 'Tahoma'
+        SelfOwnMaterial.DrawCaptionParam.FontSize = 12
+        SelfOwnMaterial.DrawCaptionParam.DrawFont.Charset = DEFAULT_CHARSET
+        SelfOwnMaterial.DrawCaptionParam.DrawFont.Height = -16
+        SelfOwnMaterial.DrawCaptionParam.DrawFont.Name = 'Tahoma'
+        SelfOwnMaterial.DrawCaptionParam.DrawFont.Style = []
+        SelfOwnMaterial.DrawCaptionParam.DrawFont.FontColor.Alpha = 255
+        SelfOwnMaterial.DrawCaptionParam.FontTrimming = fttNone
+        SelfOwnMaterial.DrawCaptionParam.FontHorzAlign = fhaCenter
+        SelfOwnMaterial.DrawCaptionParam.FontVertAlign = fvaCenter
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.MouseDownEffect.FontColor.Alpha = 255
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.MouseDownEffect.FontSize = 12
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.MouseOverEffect.FontColor.Alpha = 255
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.MouseOverEffect.FontSize = 12
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Alpha = 255
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.PushedEffect.FontSize = 12
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.DisabledEffect.FontColor.Alpha = 255
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.DisabledEffect.FontSize = 12
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.FocusedEffect.FontColor.Alpha = 255
+        SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.FocusedEffect.FontSize = 12
+        RefMaterial = swlblName_Material
+        HitTest = False
+        MouseDownFocus = False
+        Align = alClient
+        TabOrder = 3
+        Caption = #31185#23460
+        Text = #31185#23460
+        Properties.AutoSize = False
+      end
     end
     object pnlNowSick: TSkinWinPanel
-      Left = 0
-      Top = 87
+      Left = 3
+      Top = 149
       Width = 506
       Height = 50
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -571,7 +640,6 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.FocusedEffect.FontSize = 12
       HitTest = False
       MouseDownFocus = False
-      Align = alTop
       TabOrder = 5
       Caption = ''
       Text = ''
@@ -582,6 +650,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         Width = 60
         Height = 44
         ParentMouseEvent = True
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -623,6 +692,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         HitTest = False
         MouseDownFocus = False
         Align = alLeft
+        Visible = False
         TabOrder = 0
         Caption = #29616#30149#21490
         Text = #29616#30149#21490
@@ -636,6 +706,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         Height = 44
         ParentMouseEvent = True
         BindItemFieldName = 'Xbs'
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -677,6 +748,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         HitTest = False
         MouseDownFocus = False
         Align = alClient
+        Visible = False
         TabOrder = 1
         Caption = #40763#28814
         Text = #40763#28814
@@ -684,11 +756,12 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       end
     end
     object pnlChiefSay: TSkinWinPanel
-      Left = 0
-      Top = 37
+      Left = 3
+      Top = 205
       Width = 506
       Height = 50
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -728,7 +801,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.FocusedEffect.FontSize = 12
       HitTest = False
       MouseDownFocus = False
-      Align = alTop
+      Visible = False
       TabOrder = 6
       Caption = ''
       Text = ''
@@ -739,6 +812,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         Width = 60
         Height = 44
         ParentMouseEvent = True
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -783,6 +857,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         HitTest = False
         MouseDownFocus = False
         Align = alLeft
+        Visible = False
         TabOrder = 0
         Caption = #20027#35785
         Text = #20027#35785
@@ -796,6 +871,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         Height = 44
         ParentMouseEvent = True
         BindItemFieldName = 'Zs'
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -837,6 +913,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         HitTest = False
         MouseDownFocus = False
         Align = alClient
+        Visible = False
         TabOrder = 1
         Caption = 
           #25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171#25105#32922#23376#30171 +
@@ -849,10 +926,11 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
     end
     object pnlDiagnose: TSkinWinPanel
       Left = 0
-      Top = 137
+      Top = 30
       Width = 506
-      Height = 50
+      Height = 61
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -892,7 +970,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
       SelfOwnMaterial.DrawCaptionParam.DrawEffectSetting.FocusedEffect.FontSize = 12
       HitTest = False
       MouseDownFocus = False
-      Align = alTop
+      Align = alClient
       TabOrder = 7
       Caption = ''
       Text = ''
@@ -901,8 +979,9 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         Left = 3
         Top = 3
         Width = 60
-        Height = 44
+        Height = 55
         ParentMouseEvent = True
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -944,6 +1023,7 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         HitTest = False
         MouseDownFocus = False
         Align = alLeft
+        Visible = False
         TabOrder = 0
         Caption = #35786#26029
         Text = #35786#26029
@@ -954,9 +1034,10 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
         Left = 69
         Top = 3
         Width = 434
-        Height = 44
+        Height = 55
         ParentMouseEvent = True
         BindItemFieldName = 'Zzdmc'
+        DirectUIVisible = False
         ComponentTypeUseKind = ctukDefault
         MaterialUseKind = mukRef
         KeepSelfOwnMaterial = True
@@ -1036,7 +1117,9 @@ object FrameListItemStyle_HistoryMadical: TFrameListItemStyle_HistoryMadical
     DrawCaptionParam.DrawEffectSetting.MouseOverEffect.FontColor.Alpha = 255
     DrawCaptionParam.DrawEffectSetting.MouseOverEffect.FontSize = 12
     DrawCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Alpha = 255
+    DrawCaptionParam.DrawEffectSetting.PushedEffect.FontColor.Color = clWhite
     DrawCaptionParam.DrawEffectSetting.PushedEffect.FontSize = 12
+    DrawCaptionParam.DrawEffectSetting.PushedEffect.EffectTypes = [dtpetFontColorChange]
     DrawCaptionParam.DrawEffectSetting.DisabledEffect.FontColor.Alpha = 255
     DrawCaptionParam.DrawEffectSetting.DisabledEffect.FontSize = 12
     DrawCaptionParam.DrawEffectSetting.FocusedEffect.FontColor.Alpha = 255

@@ -3,7 +3,7 @@ object frmDataBaseConfig: TfrmDataBaseConfig
   Top = 114
   Caption = #25968#25454#24211#37197#32622
   ClientHeight = 248
-  ClientWidth = 342
+  ClientWidth = 380
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -131,12 +131,13 @@ object frmDataBaseConfig: TfrmDataBaseConfig
     Top = 8
     Width = 160
     Height = 21
-    ItemIndex = 0
     TabOrder = 7
     Text = 'MYSQL'
     Items.Strings = (
       'MYSQL'
-      'MSSQL')
+      'MSSQL'
+      'MSSQL2000'
+      'SQLite')
   end
   object btnSelect: TButton
     Left = 8
@@ -146,6 +147,24 @@ object frmDataBaseConfig: TfrmDataBaseConfig
     Caption = #36873#25321
     TabOrder = 8
     OnClick = btnSelectClick
+  end
+  object btnTest: TButton
+    Left = 298
+    Top = 146
+    Width = 75
+    Height = 25
+    Caption = #27979#35797#36830#25509
+    TabOrder = 9
+    OnClick = btnTestClick
+  end
+  object Button1: TButton
+    Left = 298
+    Top = 115
+    Width = 75
+    Height = 25
+    Caption = #26174#31034'/'#38544#34255
+    TabOrder = 10
+    OnClick = Button1Click
   end
   object OpenDialog1: TOpenDialog
     Filter = 'ini|*.ini'

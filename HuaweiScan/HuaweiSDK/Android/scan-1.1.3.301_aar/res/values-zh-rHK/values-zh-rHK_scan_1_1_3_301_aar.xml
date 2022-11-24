@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">確認</string>
-    <string name="scankit_light">輕觸照亮</string>
-    <string name="scankit_light_off">輕觸關閉</string>
-    <string name="scankit_no_code_tip">圖片中未發現碼</string>
-    <string name="scankit_scan_tip">將碼置入取景器內即可自動掃描</string>
-    <string name="scankit_title">掃描</string>
-</resources>

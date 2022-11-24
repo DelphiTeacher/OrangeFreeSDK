@@ -2,6 +2,9 @@ unit uBaseThirdPartyAccountAuth;
 
 interface
 
+{$I OpenPlatformClient.inc}
+
+
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 //  uFileCommon,
@@ -31,6 +34,10 @@ uses
   FBLoginCommon,
   {$ENDIF HAS_FACEBOOK}
 
+//  {$IFDEF HAS_TWITTER}
+//  FBLoginCommon,
+//  {$ENDIF HAS_TWITTER}
+
 
   {$IFDEF HAS_APPLESIGNIN}
   uAppleSignIn,
@@ -43,7 +50,7 @@ uses
   uSkinListBoxType,
   uOpenCommon,
 
-//  uConst,
+  uConst,
   uLang,
 
 
@@ -84,6 +91,10 @@ type
                                 tpaatBind,
                                 tpaatUnBind
                                 );
+
+
+
+
   TBaseUserBindThirdPartyAccount=class
   public
     FActionType:TThirdPartyAccountActionType;
@@ -194,12 +205,28 @@ type
     procedure OnApplenotBindingExecuteEnd(ATimerTask:TObject);virtual;
   public
     //FaceBook登录
-    FFbOpenId:String;
-    FFbAuthToken:String;
+    FFacebookOpenId:String;
+    FFacebookAuthToken:String;
+    //Facebook的绑定和解绑
+    procedure OnFacebookBindingExecute(ATimerTask: TObject);virtual;abstract;
+    procedure OnFacebookBindingExecuteEnd(ATimerTask: TObject);virtual;abstract;
+
+    //解除绑定
+    procedure OnFacebooknotBindingExecute(ATimerTask:TObject);virtual;abstract;
+    procedure OnFacebooknotBindingExecuteEnd(ATimerTask:TObject);virtual;abstract;
+
     //facebook 授权返回
-    procedure DoFacebookLoginSuccess(Sender:TObject;AName,AGender,AUserID,ALocal,AUrl,AEmail,AToken:String);
+    procedure DoFacebookLoginSuccess(Sender:TObject;AName,AGender,AUserID,ALocal,AUserHeadUrl,AEmail,AToken:String);
     procedure DoFacebookLoginCancel(Sender:TObject);
     procedure DoFacebookLoginError(Sender:TObject;AError:String);
+  public
+    //推特的绑定和解绑
+    procedure OnTwitterBindingExecute(ATimerTask: TObject);virtual;abstract;
+    procedure OnTwitterBindingExecuteEnd(ATimerTask: TObject);virtual;abstract;
+
+    //解除绑定
+    procedure OnTwitternotBindingExecute(ATimerTask:TObject);virtual;abstract;
+    procedure OnTwitternotBindingExecuteEnd(ATimerTask:TObject);virtual;abstract;
   public
 
     //调用判断三方账号是否存在接口
@@ -230,6 +257,7 @@ type
     procedure AppleAction(AActionType:TThirdPartyAccountActionType);
 
     procedure FacebookAction(AActionType:TThirdPartyAccountActionType);
+    procedure TwitterAction(AActionType:TThirdPartyAccountActionType);
   end;
 
 
@@ -444,6 +472,12 @@ begin
 end;
 
 
+procedure TBaseUserBindThirdPartyAccount.TwitterAction(
+  AActionType: TThirdPartyAccountActionType);
+begin
+
+end;
+
 procedure TBaseUserBindThirdPartyAccount.WeiChatAction(AActionType:TThirdPartyAccountActionType);
 begin
   Clear;
@@ -566,6 +600,10 @@ end;
 
 procedure TBaseUserBindThirdPartyAccount.FacebookAction(AActionType: TThirdPartyAccountActionType);
 begin
+  uBaseLog.HandleException('TFrameLogin.FacebookAction');
+
+  uBaseLog.HandleException('TFrameLogin.FacebookAction Begin');
+
   Clear;
 
 
@@ -574,21 +612,29 @@ begin
 
   FLoginType:=Const_RegisterLoginType_Facebook;
 
-  uBaseLog.HandleException('TFrameLogin.FacebookAction');
-
-  uBaseLog.HandleException('TFrameLogin.FacebookAction Begin');
 
   {$IFDEF HAS_FACEBOOK}
 
-  InitGlobalFBLoginManager(Const_Facebook_AppId);
+    GlobalFBLoginManager.FOnFBLoginSuccess:=DoFacebookLoginSuccess;
+    GlobalFBLoginManager.FOnFBLoginCancel:=DoFacebookLoginCancel;
+    GlobalFBLoginManager.FOnFBLoginError:=DoFacebookLoginError;
 
-  GlobalFBLoginManager.FOnFBLoginSuccess:=DoFacebookLoginSuccess;
-  GlobalFBLoginManager.FOnFBLoginCancel:=DoFacebookLoginCancel;
-  GlobalFBLoginManager.FOnFBLoginError:=DoFacebookLoginError;
+    GlobalFBLoginManager.FBSDKLogin;
 
-  GlobalFBLoginManager.FBSDKLogin;
+    {$IFDEF MSWINDOWS}
+    //Windows下面测试Facebook登录
+    DoFacebookLoginSuccess(nil,'沈能','','133403422299681','',
 
-  {$ENDIF HAS_FACEBOOK}
+                            'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=133403422299681&height=50&width=50&ext=1631840998&hash=AeSm_0TaYyK4VI63nMg',
+
+                            '',
+                            'EAANWhnyf53sBAAzK9oMZBom9qrY2NXUwTsATwhCCN1BYZAWzPAcztXWwfeVnILdJWWYD5Pa4LzAD1z'
+                            +'KYyLtWx5gJjO2Tx8iCyUFmt4dMqPM4ZAO6U09EH8KnZCbhcUHYolvrDWLSQGNrAexpj0ZCnEwDbEyK'
+                            +'FvhSzsySIsntTI5hNZCX2m9Lzzg95licvNIN0cn2ak4L3ZACg7CfbHoF8eUPMIm7Ni9JYyVvyfZC4xt'
+                            +'wwQZDZD');
+    {$ENDIF}
+
+  {$ENDIF}
 
   uBaseLog.HandleException('TFrameLogin.FacebookAction End');
 end;
@@ -1247,8 +1293,8 @@ begin
     FAppleAuthToken:='';
 
     //FaceBook登录
-    FFbOpenId:='';
-    FFbAuthToken:='';
+    FFacebookOpenId:='';
+    FFacebookAuthToken:='';
 end;
 
 procedure TBaseUserBindThirdPartyAccount.DoAppleAuthLoginError(Sender: TObject; AError: string;
@@ -1357,8 +1403,8 @@ begin
 //                    GetOS,
 //                    GetOSVersion,
 //
-//                    '',//FFbOpenId,
-//                    '',//FFbAuthToken,
+//                    '',//FFacebookOpenId,
+//                    '',//FFacebookAuthToken,
 //
 //                    Self.FWxUnionId,
 //                    Self.FWxOpenId,
@@ -1487,8 +1533,8 @@ begin
 //                    ],
 //                    [AppID,
 //                    APPUserType,
-//                    FFbOpenId,
-//                    FFbAuthToken,
+//                    FFacebookOpenId,
+//                    FFacebookAuthToken,
 //
 //                    Self.FWxUnionId,
 //                    Self.FWxOpenId,
@@ -1597,36 +1643,39 @@ end;
 
 procedure TBaseUserBindThirdPartyAccount.DoFacebookLoginCancel(Sender: TObject);
 begin
+  FMX.Types.Log.d('OrangeUI -- TFrameLogin.DoFacebookLoginCancel');
   TThread.Synchronize(nil,
   procedure
   begin
-    FMX.Types.Log.d('OrangeUI -- TFrameLogin.DoFacebookLoginCancel');
+
   end);
 end;
 
 procedure TBaseUserBindThirdPartyAccount.DoFacebookLoginError(Sender: TObject; AError: String);
 begin
+  FMX.Types.Log.d('OrangeUI -- TFrameLogin.Facebook Error '+AError);
   TThread.Synchronize(nil,
   procedure
   begin
-    FMX.Types.Log.d('OrangeUI -- TFrameLogin.Facebook Error '+AError);
+    ShowMessage(AError);
   end);
 end;
 
 procedure TBaseUserBindThirdPartyAccount.DoFacebookLoginSuccess(Sender: TObject; AName, AGender, AUserID,
-  ALocal, AUrl, AEmail, AToken: String);
+  ALocal, AUserHeadUrl, AEmail, AToken: String);
 begin
+  FMX.Types.Log.d('OrangeUI -- TFrameLogin.Facebook AName '+AName);
 
 
   FUserName:=AName;
-  FUserHeadUrl:='';
+  //jfif格式的显示不出来，暂时设置为空
+  FUserHeadUrl:=AUserHeadUrl;
 
 
 
   TThread.Synchronize(nil,
   procedure
   begin
-     FMX.Types.Log.d('OrangeUI -- TFrameLogin.Facebook AName '+AName);
 //    Self.SkinFMXMemo1.Lines.Add('用户名:'+AName);
 //    Self.SkinFMXMemo1.Lines.Add('性别:'+AGender);
 //    Self.SkinFMXMemo1.Lines.Add('用户ID:'+AUserID);
@@ -1643,25 +1692,55 @@ begin
 //    FLoginPassword:='';
 
 
-    FFbOpenId:=AUserID;
-    FFbAuthToken:=AToken;
-    Self.FWxOpenId:='';
-    Self.FWxAuthToken:='';
-    Self.FAlipayOpenId:='';
-    Self.FAlipayAuthToken:='';
-    Self.FAppleOpenId:='';
-    Self.FAppleAuthToken:='';
+      FFacebookOpenId:=AUserID;
+      FFacebookAuthToken:=AToken;
+//      Self.FWxOpenId:='';
+//      Self.FWxAuthToken:='';
+//      Self.FAlipayOpenId:='';
+//      Self.FAlipayAuthToken:='';
+//      Self.FAppleOpenId:='';
+//      Self.FAppleAuthToken:='';
+//
+//
+//      FLoginType:=Const_RegisterLoginType_FaceBook;
+//
+//      ShowWaitingFrame(nil,'登录中...');
+//      //登录
+//      uTimerTask.GetGlobalTimerThread.RunTempTask(
+//          DoLoginExecute,
+//          DoLoginExecuteEnd,
+//          'Login'
+//          );
 
 
-    FLoginType:=Const_RegisterLoginType_FaceBook;
+      if Self.FActionType=tpaatBind then//'binding' then
+      begin
+          ShowWaitingFrame(nil,'绑定中...');
+          //Facebook绑定
+          uTimerTask.GetGlobalTimerThread.RunTempTask(
+                                                 OnFacebookBindingExecute,
+                                                 OnFacebookBindingExecuteEnd,
+                                                 'FacebookBinding');
+      end
+      else if Self.FActionType=tpaatLogin then//FWeiXinString='binding' then
+      begin
+          ShowWaitingFrame(nil,'登陆中...');
+          //Facebook登陆
+          uTimerTask.GetGlobalTimerThread.RunTempTask(
+                                                 DoLoginExecute,
+                                                 DoLoginExecuteEnd,
+                                                 'FacebookLogining');
+      end
+      else if Self.FActionType=tpaatUnBind then//='notbinding' then
+      begin
+          ShowWaitingFrame(nil,'解绑中...');
+          //Facebook取消绑定
+          uTimerTask.GetGlobalTimerThread.RunTempTask(
+                                                 OnFacebooknotBindingExecute,
+                                                 OnFacebooknotBindingExecuteEnd,
+                                                 'FacebooknotBinding');
+      end;
 
-    ShowWaitingFrame(nil,'登录中...');
-    //登录
-    uTimerTask.GetGlobalTimerThread.RunTempTask(
-        DoLoginExecute,
-        DoLoginExecuteEnd,
-        'Login'
-        );
 
   end);
 

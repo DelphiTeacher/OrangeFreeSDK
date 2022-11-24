@@ -58,6 +58,7 @@ interface
 uses
   Classes,
   System.StrUtils,
+  System.Types,
   IniFiles,
 
   XSuperObject,
@@ -1022,7 +1023,9 @@ begin
 //	"Locality": "金华市",
 //	"SubLocality": "婺城区",
 //	"Thoroughfare ":"东莱路 "
-//	"SubThoroughfare ":"",//}
+//	"SubThoroughfare ":"",
+//}
+
   ARegionName:=Address.FeatureName;
   if ARegionName='' then
   begin
@@ -1581,7 +1584,8 @@ begin
       PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION),
                                               JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION)
                                               ],
-            procedure(const APermissions: TArray<string>;const AGrantResults: TArray<TPermissionStatus>)
+          procedure(const APermissions: {$IF CompilerVersion >= 35.0}TClassicStringDynArray{$ELSE}TArray<string>{$IFEND};
+            const AGrantResults: {$IF CompilerVersion >= 35.0}TClassicPermissionStatusDynArray{$ELSE}TArray<TPermissionStatus>{$IFEND})
             begin
                   HandleException(nil,'TGPSLocation.StartLocation RequestPermissions CallBack');
                   if (Length(AGrantResults) = 2) then // 为什么为2？因为只申请了2个权限 ，返回肯定判断2个
@@ -2639,4 +2643,5 @@ end.
 //		}
 //	],
 //	"status": "OK"
-//}
+//}
+

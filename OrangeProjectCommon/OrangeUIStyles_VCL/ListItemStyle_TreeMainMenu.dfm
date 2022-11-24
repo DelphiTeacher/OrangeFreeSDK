@@ -10,6 +10,7 @@ object FrameListItemStyle_TreeMainMenu: TFrameListItemStyle_TreeMainMenu
     Width = 200
     Height = 40
     ParentMouseEvent = True
+    DirectUIVisible = False
     ComponentTypeUseKind = ctukDefault
     MaterialUseKind = mukSelfOwn
     KeepSelfOwnMaterial = True
@@ -63,6 +64,7 @@ object FrameListItemStyle_TreeMainMenu: TFrameListItemStyle_TreeMainMenu
       Margins.Bottom = 5
       ParentMouseEvent = True
       BindItemFieldName = 'ItemIcon'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -107,6 +109,7 @@ object FrameListItemStyle_TreeMainMenu: TFrameListItemStyle_TreeMainMenu
       MouseDownFocus = False
       Align = alLeft
       TabOrder = 0
+      Caption = ''
       Properties.AutoSize = False
       Properties.Animated = False
       Properties.AnimateSpeed = 10.000000000000000000
@@ -123,6 +126,7 @@ object FrameListItemStyle_TreeMainMenu: TFrameListItemStyle_TreeMainMenu
       Height = 40
       ParentMouseEvent = True
       BindItemFieldName = 'ItemCaption'
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -183,6 +187,7 @@ object FrameListItemStyle_TreeMainMenu: TFrameListItemStyle_TreeMainMenu
       Margins.Right = 10
       Margins.Bottom = 10
       ParentMouseEvent = True
+      DirectUIVisible = False
       ComponentTypeUseKind = ctukDefault
       MaterialUseKind = mukSelfOwn
       KeepSelfOwnMaterial = True
@@ -229,6 +234,7 @@ object FrameListItemStyle_TreeMainMenu: TFrameListItemStyle_TreeMainMenu
       MouseDownFocus = False
       Align = alRight
       TabOrder = 2
+      Caption = ''
       Properties.AutoSize = False
       Properties.Picture.ImageIndex = 0
       Properties.Picture.SkinImageList = SkinImageList1

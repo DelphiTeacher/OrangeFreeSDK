@@ -51,6 +51,7 @@ begin
   FIdHttp.Request.BasicAuthentication:=False;
   FIdHttp.Request.UserAgent:='Mozilla/3.0 (compatible; Indy Library)';
   FIdHttp.HTTPOptions:=[hoForceEncodeParams];
+
 end;
 
 destructor TIdHttpControl.Destroy;

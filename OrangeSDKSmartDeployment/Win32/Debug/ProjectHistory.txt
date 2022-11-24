@@ -1,7 +1,19 @@
+C:\OrangeFreeSDK\JCPrint\Client\JCPrint_FMX_D10_4.dproj
+<<<<<<< .mine
 C:\OrangeFreeSDK\商米人脸识别SunmiFace\TestSunmiFace.dproj
 C:\OrangeFreeSDK\商米人脸识别SunmiFace\Project10.dproj
 C:\MyFiles\ThirdPartySDK\华为推送\HuaWeiPush.dproj
 C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\DoorManager_FMX_D10_4.dproj
+||||||| .r15034
+=======
+C:\MyFiles\ThirdPartySDK\旷视的人脸SDK\APP\TestFacePass.dproj
+C:\OrangeFreeSDK\Facebook接口\FBLoginDemo_Delphi\FaceBook_D10_4.dproj
+C:\MyFiles\OrangeUIProduct\D区\App_Client\DCommunityClient_D10_4.dproj
+C:\MyFiles\OrangeUIProduct\D区\DCommunityClient_D10_4.dproj
+C:\Jmt\JmtApp\JmtApp.dproj
+C:\MyFiles\OrangeUIProduct\门业扫码入库\App_Client\DoorManager_FMX_D10_4.dproj
+C:\MyFiles\OrangeUIProduct\D区\创圈客\ChatHubClient_D10_4.dproj
+>>>>>>> .r19165
 C:\OrangeFreeSDK\TwitterLogin\Twitter_Core\TwitterLogin.dproj
 C:\OrangeFreeSDK\HuaweiScan\HuaweiScan.dproj
 C:\MyFiles\ThirdPartySDK\TestSDK\Project2.dproj

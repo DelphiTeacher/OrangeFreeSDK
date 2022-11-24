@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="scankit_confirm">V redu</string>
-    <string name="scankit_light">Dotaknite se za močnejšo svetlobo</string>
-    <string name="scankit_light_off">Izklopi luč</string>
-    <string name="scankit_no_code_tip">Zaznana ni bila nobena koda.</string>
-    <string name="scankit_scan_tip">Kodo poravnajte z okvirjem</string>
-    <string name="scankit_title">Optično branje</string>
-</resources>

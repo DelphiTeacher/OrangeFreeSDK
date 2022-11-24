@@ -1,0 +1,24 @@
+object Form8: TForm8
+  Left = 0
+  Top = 0
+  Caption = 'S'
+  ClientHeight = 480
+  ClientWidth = 359
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object S: TListBox
+    Align = Top
+    Size.Width = 359.000000000000000000
+    Size.Height = 145.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = ''
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    Viewport.Width = 355.000000000000000000
+    Viewport.Height = 141.000000000000000000
+  end
+end

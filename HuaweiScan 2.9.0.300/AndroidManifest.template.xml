@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BEGIN_INCLUDE(manifest) -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="%package%"
+        android:versionCode="%versionCode%"
+        android:versionName="%versionName%"
+        android:installLocation="%installLocation%">
+
+    <uses-sdk android:minSdkVersion="%minSdkVersion%" android:targetSdkVersion="%targetSdkVersion%" />
+
+
+    <!--相机权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--读文件权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--使用特性-->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
+    <queries>
+        <package android:name="com.huawei.hff" />
+        <package android:name="com.huawei.hms" />
+        <package android:name="com.huawei.hwid" />
+    </queries>
+
+    <%uses-permission%>
+    <uses-feature android:glEsVersion="0x00020000" android:required="True"/>
+    <application android:persistent="%persistent%" 
+        android:restoreAnyVersion="%restoreAnyVersion%" 
+        android:label="%label%" 
+        android:debuggable="%debuggable%" 
+        android:largeHeap="%largeHeap%"
+        android:icon="%icon%"
+        android:theme="%theme%"
+        android:hardwareAccelerated="%hardwareAccelerated%"
+        android:resizeableActivity="false"
+        android:requestLegacyExternalStorage="true">
+
+        <%provider%>
+        <%application-meta-data%>
+        <%services%>
+        <!-- Our activity is a subclass of the built-in NativeActivity framework class.
+             This will take care of integrating with our NDK code. -->
+        <activity android:name="com.embarcadero.firemonkey.FMXNativeActivity"
+                android:label="%activityLabel%"
+                android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+                android:launchMode="singleTask">
+            <!-- Tell NativeActivity the name of our .so -->
+            <meta-data android:name="android.app.lib_name"
+                android:value="%libNameValue%" />
+            <intent-filter>  
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter> 
+        </activity>
+        <%activity%>
+        <%receivers%>
+
+
+        <!-- jetified-agconnect-core-1.7.2.300_aar begin -->
+        <provider
+            android:name="com.huawei.agconnect.core.provider.AGConnectInitializeProvider"
+            android:authorities="%package%.AGCInitializeProvider"
+            android:exported="false" />
+
+        <service
+            android:name="com.huawei.agconnect.core.ServiceDiscovery"
+            android:exported="false" />
+        <!-- jetified-agconnect-core-1.7.2.300_aar end -->
+
+
+        <!-- jetified-dynamic-api-1.0.23.300_aar begin -->
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:dynamic-api"
+            android:value="dynamic-api:1.0.23.300" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:dynamic-api:huawei_module_dynamicloader"
+            android:value="9" />
+        <!-- jetified-dynamic-api-1.0.23.300_aar end -->
+
+
+
+        <!-- jetified-ml-computer-sdkbase-inner-3.8.0.303_aar begin -->
+        <provider
+            android:name="com.huawei.hms.mlsdk.common.provider.MLInitializerProvider"
+            android:authorities="%package%.MLInitializerProvider"
+            android:exported="false" />
+        <!-- jetified-ml-computer-sdkbase-inner-3.8.0.303_aar end -->
+
+
+
+        <!-- jetified-scanplus-2.9.0.300_aar begin -->
+        <meta-data
+            android:name="huawei_module_scankit_local"
+            android:value="20900300" />
+        <meta-data
+            android:name="huawei_module_scankit_sdk_version"
+            android:value="scanplus:2.9.0.300" />
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:scanplus"
+            android:value="scanplus:2.9.0.300" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:scanplus:huawei_module_scankit"
+            android:value="1" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:scanplus:hmscore"
+            android:value="1" />
+
+        <activity
+            android:name="com.huawei.hms.hmsscankit.ScanKitActivity"
+            android:launchMode="singleTask" >
+        </activity>
+        <!-- jetified-scanplus-2.9.0.300_aar end -->
+
+
+    </application>
+</manifest>
+<!-- END_INCLUDE(manifest) -->

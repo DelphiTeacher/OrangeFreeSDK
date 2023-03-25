@@ -1,0 +1,369 @@
+{
+   "0020-007F": {
+       "description":"Basic_Latin",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+   "00A0-00FF":{
+       "description":"Latin-1_Supplement",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+   "0100-017F":{
+       "description":"Latin Extended-A",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+   "0370-03FF": {
+       "description":"Greek and Coptic",
+       "fontFile":""
+    },
+   "10A0-10FF": {
+       "description":"Georgian",
+       "fontFile":"NotoSansGeorgian-Regular.otf"
+    },
+   "0400-04FF": {
+       "description":"Cyrillic",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+   "0500-052F": {
+       "description":"Cyrillic Supplementary",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+   "0530-058F": {
+       "description":"Armenian",
+       "fontFile":"NotoSansArmenian-Regular.otf"
+    },
+   "0590-05FF":{
+       "description":"Hebrew",
+       "fontFile":"NotoSansHebrew-Regular.ttf"
+    },
+   "0600-06FF":{
+       "description":"Arabic",
+       "fontFile":"NotoNaskhArabic-Regular.ttf"
+    },   
+    "0700-074F":{
+       "description":"Syriac",
+       "fontFile":"NotoSansSyriacEstrangela-Regular.ttf"
+    },
+   "0780-07BF":{
+       "description":"Thaana",
+       "fontFile":"NotoSansThaana-Regular.ttf"
+    },
+   "0900-097F":{
+       "description":"Devanagari",
+       "fontFile":"NotoSansDevanagari-Regular.otf"
+    },
+   "0980-09FF":{
+       "description":"Bengali",
+       "fontFile":"NotoSansBengali-Regular.otf"
+    },
+   "0A00-0A7F":{
+       "description":"Gurmukhi",
+       "fontFile":"NotoSansGurmukhi-Regular.ttf"
+    },
+   "0B00-0B7F":{
+       "description":"Oriya",
+       "fontFile":"NotoSansOriya-Regular.ttf"
+    },
+   "0B80-0BFF":{
+       "description":"Tamil",
+       "fontFile":"NotoSansTamil-Regular.otf"
+    },
+   "0C00-0C7F":{
+       "description":"Telugu",
+       "fontFile":"NotoSansTelugu-Regular.ttf"
+    },
+   "0C80-0CFF":{
+       "description":"Kannada",
+       "fontFile":"NotoSansKannada-Regular.ttf"
+    },
+   "0D00-0D7F":{
+       "description":"Malayalam",
+       "fontFile":"NotoSansMalayalam-Regular.otf"
+    },
+   "0D80-0DFF":{
+       "description":"Sinhala",
+       "fontFile":"NotoSansSinhala-Regular.otf"
+    },
+   "0E00-0E7F":{
+       "description":"Thai",
+       "fontFile":"NotoSansThai-Regular.ttf"
+    },
+   "0E80-0EFF":{
+       "description":"Lao",
+       "fontFile":"NotoSansLao-Regular.ttf"
+    },
+   "0F00-0FFF":{
+       "description":"Tibetan",
+       "fontFile":"NotoSansTibetan-Regular.ttf"
+    },
+   "1000-109F":{
+       "description":"Myanmar",
+       "fontFile":"NotoSansMyanmar-Regular-ZawDecode.ttf"
+    },
+   "10000-1007F":{
+       "description":"Linear B Syllabary",
+       "fontFile":"NotoSansLinearB-Regular.ttf"
+    },
+   "10080-100FF":{
+       "description":"Linear B Ideograms",
+       "fontFile":"NotoSansLinearB-Regular.ttf"
+    },
+   "10380-1039F":{
+       "description":"Ugaritic",
+       "fontFile":"NotoSansUgaritic-Regular.ttf"
+    },
+   "10450-1047F":{
+       "description":"Shavian",
+       "fontFile":"NotoSansShavian-Regular.ttf"
+    },
+   "10400-1044F":{
+       "description":"Deseret",
+       "fontFile":"NotoSansDeseret-Regular.ttf"
+    },
+   "10480-104AF":{
+       "description":"Osmanya",
+       "fontFile":"NotoSansOsmanya-Regular.ttf"
+    },
+   "10800-1083F":{
+       "description":"Cypriot ",
+       "fontFile":"NotoSansCypriot-Regular.ttf"
+    },
+    "1200-137F":{
+       "description":"Ethiopic",
+       "fontFile":"NotoSansEthiopic-Regular.ttf"
+    },
+    "13A0-13FF":{
+       "description":"Cherokee",
+       "fontFile":"NotoSansCherokee-Regular.ttf"
+    },
+    "1400-167F":{
+       "description":"Unified Canadian Aboriginal Syllabics",
+       "fontFile":"NotoSansCanadianAboriginal-Regular.ttf"
+    },
+    "1680-169F":{
+       "description":"Ogham",
+       "fontFile":"NotoSansOgham-Regular.ttf"
+    },
+    "16A0-16FF":{
+       "description":"Runic",
+       "fontFile":"NotoSansRunic-Regular.ttf"
+    },
+    "1700-171F":{
+       "description":"Tagalog",
+       "fontFile":"NotoSansTagalog-Regular.ttf"
+    },
+    "1720-173F":{
+       "description":"Hanunoo",
+       "fontFile":"NotoSansHanunoo-Regular.ttf"
+    },
+    "1740-175F":{
+       "description":"Buhid",
+       "fontFile":"NotoSansBuhid-Regular.ttf"
+    },
+    "1760-177F":{
+       "description":"Tagbanwa",
+       "fontFile":"NotoSansTagbanwa-Regular.ttf"
+    },
+    "1780-17FF":{
+       "description":"Khmer",
+       "fontFile":"NotoSansKhmer-VF.ttf"
+    },
+    "1800-18AF":{
+       "description":"Mongolian",
+       "fontFile":"NotoSansMongolian-Regular.ttf"
+    },
+    "1900-194F":{
+       "description":"Limbu",
+       "fontFile":"NotoSansLimbu-Regular.ttf"
+    },
+    "1950-197F":{
+       "description":"Tai Le",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "19E0-19FF":{
+       "description":"Khmer Symbols",
+       "fontFile":"NotoSansKhmer-VF.ttf"
+    },
+    "1D000-1D0FF":{
+       "description":"Byzantine Musical Symbols",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted.ttf"
+    },
+    "1D300-1D35F":{
+       "description":"Tai Xuan Jing Symbols",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "1E00-1EFF":{
+       "description":"Latin Extended Additional",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "1F00-1FFF":{
+       "description":"Greek Extended",
+       "fontFile":"NotoSansSylotiNagri-Regular.ttf"
+    },
+    "2000-206F":{
+       "description":"General Punctuation",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "20000-2A6DF":{
+       "description":"CJK",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "20A0-20CF":{
+       "description":"Currency Symbols",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted2.ttf"
+    },
+    "20D0-20FF":{
+       "description":"Combining Diacritical Marks for Symbols",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted2.ttf"
+    },
+    "2100-214F":{
+       "description":"Letterlike Symbols",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted.ttf"
+    },
+    "2200-22FF":{
+       "description":"Tai Le",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted.ttf"
+    },
+    "2300-23FF":{
+       "description":"Miscellaneous Technical",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted.ttf"
+    },
+    "2400-243F":{
+       "description":"Control Pictures",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "2440-245F":{
+       "description":"Optical Character Recognition",
+       "fontFile":"NotoSansGujarati-Regular.ttf"
+    },
+    "2460-24FF":{
+       "description":"Enclosed Alphanumerics",
+       "fontFile":"NotoSansGujarati-Regular.ttf"
+    },
+    "2500-257F":{
+       "description":"Box Drawing",
+       "fontFile":"NotoSansGujarati-Regular.ttf"
+    },
+    "2580-259F":{
+       "description":"Block Elements",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "25A0-25FF":{
+       "description":"Geometric Shapes",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "2600-26FF":{
+       "description":"Miscellaneous Symbols",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted.ttf"
+    },
+    "2700-27BF":{
+       "description":"Dingbats",
+       "fontFile":"NotoSansTaiLe-Regular.ttf"
+    },
+    "27C0-27EF":{
+       "description":"@Miscellaneous Mathematical Symbols-A",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted.ttf"
+    },
+    "27F0-27FF":{
+       "description":"@Supplemental Arrows-A",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "2800-28FF":{
+       "description":"Braille Patterns",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "2900-297F":{
+       "description":"@Supplemental Arrows-B",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "2980-29FF":{
+       "description":"Miscellaneous Mathematical Symbols-B",
+       "fontFile":"NotoSansSymbols-Regular-Subsetted2.ttf"
+    },
+    "2A00-2AFF":{
+       "description":"@Supplemental Mathematical Operators",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "2B00-2BFF":{
+       "description":"@Miscellaneous Symbols and Arrows",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "2E80-2EFF":{
+       "description":"CJK Radicals Supplement",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "2F800-2FA1F":{
+       "description":"Tai Le",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "3040-309F":{
+       "description":"Hiragana",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "30A0-30FF":{
+       "description":"Katakana",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "3100-312F":{
+       "description":"Bopomofo",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "3130-318F":{
+       "description":"Hangul Compatibility Jamo",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "3190-319F":{
+       "description":"Kanbun",
+       "fontFile":"NotoSansKannada-Regular.ttf"
+    },
+    "31A0-31BF":{
+       "description":"Tai Le",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "31F0-31FF":{
+       "description":"Katakana Phonetic Extensions",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },"3200-32FF":{
+       "description":"Enclosed CJK Letters and Months",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "3300-33FF":{
+       "description":"CJK Compatibility",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "4DC0-4DFF":{
+       "description":"Yijing Hexagram Symbols",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "4E00-9FFF":{
+       "description":"CJK Unified Ideographs",
+       "fontFile": "ZT001.ttf"
+    },
+    "FB00-FB4F":{
+       "description":"Alphabetic Presentation Forms",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "FB50-FDFF":{
+       "description":"Arabic Presentation Forms-A",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "FE00-FE0F":{
+       "description":"Variation Selectors",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "FE20-FE2F":{
+       "description":"Combining Half Marks",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "FE30-FE4F":{
+       "description":"CJK Compatibility Forms",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "FE50-FE6F":{
+       "description":"Small Form Variants",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    },
+    "FF00-FFEF":{
+       "description":"Halfwidth and Fullwidth Forms",
+       "fontFile":"NotoSansCJK-Regular.ttc"
+    }
+}

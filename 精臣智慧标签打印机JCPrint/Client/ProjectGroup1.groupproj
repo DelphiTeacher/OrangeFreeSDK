@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E7E317D9-84C7-49CC-9309-960B6C37CD1A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project20.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D11.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project20">
+        <MSBuild Projects="Project20.dproj"/>
+    </Target>
+    <Target Name="Project20:Clean">
+        <MSBuild Projects="Project20.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project20:Make">
+        <MSBuild Projects="Project20.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeUIDemo_FMX_D11">
+        <MSBuild Projects="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D11.dproj"/>
+    </Target>
+    <Target Name="OrangeUIDemo_FMX_D11:Clean">
+        <MSBuild Projects="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D11.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeUIDemo_FMX_D11:Make">
+        <MSBuild Projects="C:\MyFiles\OrangeUI Samples(Main Demo)\OrangeUISampleOfTutorial\OrangeUIDemo_FMX_D11.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project20;OrangeUIDemo_FMX_D11"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project20:Clean;OrangeUIDemo_FMX_D11:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project20:Make;OrangeUIDemo_FMX_D11:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

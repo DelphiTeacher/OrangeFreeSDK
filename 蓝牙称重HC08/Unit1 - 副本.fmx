@@ -1,0 +1,79 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 480
+  ClientWidth = 363
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object ListBox1: TListBox
+    Align = Top
+    Position.Y = 22.000000000000000000
+    Size.Width = 363.000000000000000000
+    Size.Height = 115.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    DisableFocusEffect = True
+    DefaultItemStyles.ItemStyle = 'listboxitemrightdetail'
+    DefaultItemStyles.GroupHeaderStyle = ''
+    DefaultItemStyles.GroupFooterStyle = ''
+    OnItemClick = ListBox1ItemClick
+    Viewport.Width = 359.000000000000000000
+    Viewport.Height = 111.000000000000000000
+  end
+  object btnLoad: TButton
+    Align = Top
+    Size.Width = 363.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #21152#36733#21015#34920
+    OnClick = btnLoadClick
+  end
+  object Label1: TLabel
+    Align = Top
+    Position.Y = 137.000000000000000000
+    Size.Width = 363.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #26085#24535#65306
+    TabOrder = 3
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Top
+    Position.Y = 154.000000000000000000
+    Size.Width = 363.000000000000000000
+    Size.Height = 79.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Viewport.Width = 359.000000000000000000
+    Viewport.Height = 75.000000000000000000
+  end
+  object Memo2: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Align = Client
+    Size.Width = 363.000000000000000000
+    Size.Height = 230.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Viewport.Width = 359.000000000000000000
+    Viewport.Height = 226.000000000000000000
+  end
+  object Label2: TLabel
+    Align = Top
+    Position.Y = 233.000000000000000000
+    Size.Width = 363.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #37325#37327#65306
+    TabOrder = 2
+  end
+end

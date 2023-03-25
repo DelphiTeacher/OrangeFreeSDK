@@ -1,0 +1,51 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 668
+  ClientWidth = 514
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Position.X = 40.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 38.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #25171#21360
+    OnClick = Button1Click
+  end
+  object Btnconnect: TButton
+    Position.X = 200.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #36830#25509
+    OnClick = BtnconnectClick
+  end
+  object ComboBox1: TComboBox
+    Position.X = 64.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 249.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+  end
+  object Button3: TButton
+    Position.X = 64.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 113.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = #21047#26032
+    OnClick = Button3Click
+  end
+end

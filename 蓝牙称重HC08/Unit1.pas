@@ -24,67 +24,27 @@ uses
     {$ENDIF}
   {$ENDIF}
 
-  uBaseList,
-  Androidapi.JNI.bluetoothlibrary_debug,
-  Androidapi.JNI.bleweight_debug,
+//  uBaseList,
+//  Androidapi.JNI.bluetoothlibrary_debug,
+//  Androidapi.JNI.bleweight_debug,
+
+  DeviceFrame,
 
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Layouts,
   FMX.ListBox, FMX.Controls.Presentation, FMX.StdCtrls, FMX.Memo.Types,
-  FMX.ScrollBox, FMX.Memo;
+  FMX.ScrollBox, FMX.Memo, FMX.TabControl;
 
 type
-  TJHoldBluetooth_UpdateList = class(TJavaLocal,JHoldBluetooth_UpdateList)
-    { methods }
-    procedure update(P1: Boolean; P2: JDeviceModule); cdecl; //(ZLcom/hc/bluetoothlibrary/DeviceModule;)V
-    procedure updateMessyCode(P1: Boolean; P2: JDeviceModule); cdecl; //(ZLcom/hc/bluetoothlibrary/DeviceModule;)V
-    { Property }
-  end;
-
-  TJHoldBluetooth_OnReadDataListener = class(TJavaLocal,JHoldBluetooth_OnReadDataListener)
-    { methods }
-    procedure readData(P1: JString; P2: TJavaArray<Byte>); cdecl; //(Ljava/lang/String;[B)V
-    procedure reading(P1: Boolean); cdecl; //(Z)V
-    procedure connectSucceed; cdecl; //()V
-    procedure errorDisconnect(P1: JDeviceModule); cdecl; //(Lcom/hc/bluetoothlibrary/DeviceModule;)V
-    procedure readNumber(P1: Integer); cdecl; //(I)V
-    procedure readLog(P1: JString; P2: JString; P3: JString); cdecl; //(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    procedure readVelocity(P1: Integer); cdecl; //(I)V
-
-    { Property }
-  end;
-
-
-
-
-  TMyDeviceModule=class
-    FJDeviceModule:JDeviceModule;
-  end;
-  TMyDeviceModuleList=class(TBaseList)
-  private
-    function GetItem(Index: Integer): TMyDeviceModule;
-  public
-
-    property Itemss[Index:Integer]:TMyDeviceModule read GetItem;default;
-  end;
-
 
   TForm1 = class(TForm)
-    ListBox1: TListBox;
-    btnLoad: TButton;
-    Label1: TLabel;
-    Memo1: TMemo;
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
+    TabControl1: TTabControl;
+    TabItem1: TTabItem;
+    TabItem2: TTabItem;
     procedure FormShow(Sender: TObject);
-    procedure btnLoadClick(Sender: TObject);
-    procedure ListBox1Click(Sender: TObject);
+    procedure TabControl1Change(Sender: TObject);
   private
-    mHoldBluetooth:JHoldBluetooth;
-    mJHoldBluetooth_UpdateList:JHoldBluetooth_UpdateList;
-    FMyDeviceModuleList:TMyDeviceModuleList;
-    mJHoldBluetooth_OnReadDataListener:JHoldBluetooth_OnReadDataListener;
-    modules:JList;
-    procedure SyncListBox;
+    FFrameDevice1:TFrameDevice;
+    FFrameDevice2:TFrameDevice;
     { Private declarations }
   public
     { Public declarations }
@@ -100,111 +60,6 @@ implementation
 
 {$R *.fmx}
 
-procedure TForm1.btnLoadClick(Sender: TObject);
-begin
-  if mHoldBluetooth.bluetoothState then
-  begin
-//        if (state){
-//            return mAllBluetoothManage.bleScan();
-//        }else {
-//            return mAllBluetoothManage.mixScan();
-//        }
-    mHoldBluetooth.scan(False);
-  end;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-
-  FMyDeviceModuleList:=TMyDeviceModuleList.Create();
-
-  mHoldBluetooth:=TJHoldBluetooth.JavaClass.getInstance;
-
-  //设备列表更新事件
-  mJHoldBluetooth_UpdateList:=TJHoldBluetooth_UpdateList.Create;
-
-  //初始
-  mHoldBluetooth.initHoldBluetooth(TAndroidHelper.Context,mJHoldBluetooth_UpdateList);
-end;
-
-{ TJHoldBluetooth_UpdateList }
-
-procedure TJHoldBluetooth_UpdateList.update(P1: Boolean; P2: JDeviceModule);
-var
-  AMyDeviceModule:TMyDeviceModule;
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_UpdateList.update Begin');
-  //if (isStart && deviceModule == null){//更新距离值
-  //    mainRecyclerAdapter.notifyDataSetChanged();
-  //    return;
-  //}
-  //
-  //if (isStart){
-  //    setMainBackIcon();
-  //    mModuleArray.add(deviceModule);
-  //    addFilterList(deviceModule,true);
-  //}else {
-  //    mTitle.updateLoadingState(false);
-  //}
-  if P1 and (P2=nil) then
-  begin
-    Exit;
-  end;
-  if P1 then
-  begin
-    AMyDeviceModule:=TMyDeviceModule.Create;
-    AMyDeviceModule.FJDeviceModule:=P2;
-    Form1.FMyDeviceModuleList.Add(AMyDeviceModule);
-  end
-  else
-  begin
-    TThread.Synchronize(nil,procedure
-    begin
-      Form1.SyncListBox;
-    end);
-  end;
-
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_UpdateList.update End');
-end;
-
-procedure TJHoldBluetooth_UpdateList.updateMessyCode(P1: Boolean;
-  P2: JDeviceModule);
-var
-  I:Integer;
-  AMyDeviceModule:TMyDeviceModule;
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_UpdateList.updateMessyCode Begin');
-  //
-  //for(int i= 0; i<mModuleArray.size();i++){
-  //    if (mModuleArray.get(i).getMac().equals(deviceModule.getMac())){
-  //        mModuleArray.remove(mModuleArray.get(i));
-  //        mModuleArray.add(i,deviceModule);
-  //        upDateList();
-  //        break;
-  //    }
-  //}  for I := 0 to Form1.FMyDeviceModuleList.Count-1 do
-  begin
-    if Form1.FMyDeviceModuleList[I].FJDeviceModule.getMac().equals(P2.getMac()) then
-    begin
-      Form1.FMyDeviceModuleList[I].FJDeviceModule:=P2;
-      Break;
-    end;
-  end;
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_UpdateList.updateMessyCode End');
-
-end;
-
-{ TMyDeviceModuleList }
-
-function TMyDeviceModuleList.GetItem(Index: Integer): TMyDeviceModule;
-begin
-  Result:=TMyDeviceModule(Inherited Items[Index]);
-end;
-
-procedure TForm1.FormDestroy(Sender: TObject);
-begin
-  FreeAndNil(FMyDeviceModuleList);
-end;
 
 procedure TForm1.FormShow(Sender: TObject);
 begin
@@ -218,176 +73,27 @@ begin
     nil);
   {$ENDIF}
 
+  FFrameDevice1:=TFrameDevice.Create(Self);
+  FFrameDevice1.Name:='FFrameDevice1';
+  FFrameDevice1.Parent:=Self.TabItem1;
+  FFrameDevice1.Align:=TAlignLayout.alClient;
+
+
+
 end;
 
-procedure TForm1.ListBox1Click(Sender: TObject);
+procedure TForm1.TabControl1Change(Sender: TObject);
 begin
-  if Self.ListBox1.Selected<>nil then
+  if Self.TabControl1.ActiveTab=TabItem2 then
   begin
-    FMX.Types.Log.d('OrangeUI TForm1.ListBox1Click Begin');
-//    mHoldBluetooth.setDevelopmentMode(MainActivity.this);//设置是否进入开发模式
-//    mHoldBluetooth.connect(mFilterModuleArray.get(position));
-
-    mHoldBluetooth.setDevelopmentMode(TAndroidHelper.Context);
-
-    FMX.Types.Log.d('OrangeUI TForm1.ListBox1Click 1');
-    mHoldBluetooth.connect(FMyDeviceModuleList[Self.ListBox1.Selected.Index].FJDeviceModule);
-
-    FMX.Types.Log.d('OrangeUI TForm1.ListBox1Click 2');
-    mJHoldBluetooth_OnReadDataListener:=TJHoldBluetooth_OnReadDataListener.Create;
-
-    FMX.Types.Log.d('OrangeUI TForm1.ListBox1Click 3');
-    mHoldBluetooth.setOnReadListener(mJHoldBluetooth_OnReadDataListener);
-
-    FMX.Types.Log.d('OrangeUI TForm1.ListBox1Click End');
-  end;
-end;
-
-procedure TForm1.SyncListBox;
-var
-  I:Integer;
-begin
-  Self.ListBox1.BeginUpdate;
-  try
-    Self.ListBox1.Items.Clear;
-    for I := 0 to Self.FMyDeviceModuleList.Count-1 do
+    if FFrameDevice2=nil then
     begin
-      Self.ListBox1.Items.Add(JStringToString(Self.FMyDeviceModuleList[I].FJDeviceModule.getName()));
+      FFrameDevice2:=TFrameDevice.Create(Self);
+      FFrameDevice2.Name:='FFrameDevice2';
+      FFrameDevice2.Parent:=Self.TabItem2;
+      FFrameDevice2.Align:=TAlignLayout.alClient;
     end;
-  finally
-    ListBox1.EndUpdate;
   end;
-end;
-
-{ TJHoldBluetooth_OnReadDataListener }
-
-procedure TJHoldBluetooth_OnReadDataListener.connectSucceed;
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.connectSucceed');
-//  modules = mHoldBluetooth.getConnectedArray();
-//  mMessage.readData(FRAGMENT_STATE_DATA, modules.get(0), null);
-//  mThree.readData(FRAGMENT_STATE_DATA,modules.get(0),null);
-//  mADMod.readData(FRAGMENT_STATE_DATA,modules.get(0),null);
-//  setState(CONNECTED);//设置连接状态
-//  log("连接成功: "+modules.get(0).getName());
-  Form1.modules:=Form1.mHoldBluetooth.getConnectedArray();
-  TThread.Synchronize(nil,procedure
-  begin
-//    ShowMessage('连接成功');
-    Form1.Memo1.Lines.Insert(0,'连接成功');
-  end);
-end;
-
-procedure TJHoldBluetooth_OnReadDataListener.errorDisconnect(P1: JDeviceModule);
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.errorDisconnect');
-  TThread.Synchronize(nil,procedure
-  begin
-//    ShowMessage('连接成功');
-    Form1.Memo1.Lines.Insert(0,'异常断开');
-  end);
-
-end;
-
-procedure TJHoldBluetooth_OnReadDataListener.readData(P1: JString;
-  P2: TJavaArray<Byte>);
-var
-  AJStr:JString;
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.readData');
-  TThread.Synchronize(nil,procedure
-  begin
-    Form1.Memo1.Lines.Insert(0,'收到数据');
-
-//        switch (state){
-//            case CommunicationActivity.FRAGMENT_STATE_DATA:
-//                if (module == null) {
-//                    module = (DeviceModule) o;
-//                }
-//                if (data != null) {
-//                    mDataList.add(new FragmentMessageItem(Analysis.getByteToString(data,mFragmentParameter.getCodeFormat(getContext()),isReadHex), isShowTime?Analysis.getTime():null, false, module,isShowMyData));
-//                    mAdapter.notifyDataSetChanged();
-//                    mRecyclerView.smoothScrollToPosition(mDataList.size());
-//                    mReadNumberTV.setText(String.valueOf(Integer.parseInt(mReadNumberTV.getText().toString())+data.length));
-//                    setClearRecycler(data.length);//判断是否清屏（清除缓存）
-//                }
-//                break;
-//            case CommunicationActivity.FRAGMENT_STATE_NUMBER:
-//                mSendNumberTv.setText(String.valueOf(Integer.parseInt(mSendNumberTv.getText().toString())+((int) o)));
-//                setUnsentNumberTv();
-//                break;
-//            case CommunicationActivity.FRAGMENT_STATE_SEND_SEND_TITLE:
-//                mTitle = (DefaultNavigationBar) o;
-//                break;
-//            case CommunicationActivity.FRAGMENT_STATE_SERVICE_VELOCITY:
-//                int velocity = (int) o;
-//                mVelocityTv.setText("速度: "+velocity+"B/s");
-//                break;
-//        }
-
-
-//    public static String getByteToString(byte[] bytes,String code,boolean isHex){
-//        try {
-//            if (isHex)
-//                return bytesToHexString(bytes);
-//            else
-//                return new String(bytes,0,bytes.length,code);
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-    try
-      AJStr:=TJString.JavaClass.Init(P2,0,P2.length,StringToJString('GBK'));
-      Form1.Memo1.Lines.Insert(0,JStringToString(AJStr));
-    except
-      on E:Exception do
-      begin
-        FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.readData error');
-      end;
-    end;
-
-
-  end);
-end;
-
-procedure TJHoldBluetooth_OnReadDataListener.reading(P1: Boolean);
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.reading');
-  TThread.Synchronize(nil,procedure
-  begin
-    Form1.Memo1.Lines.Insert(0,'reading');
-  end);
-
-end;
-
-procedure TJHoldBluetooth_OnReadDataListener.readLog(P1, P2, P3: JString);
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.readLog');
-  TThread.Synchronize(nil,procedure
-  begin
-    Form1.Memo1.Lines.Insert(0,'readLog');
-  end);
-
-end;
-
-procedure TJHoldBluetooth_OnReadDataListener.readNumber(P1: Integer);
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.readNumber');
-  TThread.Synchronize(nil,procedure
-  begin
-    Form1.Memo1.Lines.Insert(0,'readNumber');
-  end);
-
-end;
-
-procedure TJHoldBluetooth_OnReadDataListener.readVelocity(P1: Integer);
-begin
-  FMX.Types.Log.d('OrangeUI TJHoldBluetooth_OnReadDataListener.readVelocity');
-  TThread.Synchronize(nil,procedure
-  begin
-    Form1.Memo1.Lines.Insert(0,'readVelocity');
-  end);
 
 end;
 

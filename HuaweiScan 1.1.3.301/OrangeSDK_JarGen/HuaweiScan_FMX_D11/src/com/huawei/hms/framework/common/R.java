@@ -17,6 +17,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_cornerColor=0x7f010002;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -25,6 +26,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_frameColor=0x7f010001;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -34,6 +36,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_frameHeight=0x7f01000c;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -43,6 +46,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_frameWidth=0x7f01000b;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -50,6 +54,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_gridColumn=0x7f01000d;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -59,6 +64,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_gridHeight=0x7f01000e;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -66,6 +72,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_labelText=0x7f010005;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -74,6 +81,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_labelTextColor=0x7f010006;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -84,6 +92,7 @@ containing a value of this type.
 <tr><td><code>bottom</code></td><td>1</td><td></td></tr>
 </table>
          */
+        public static final int scankit_labelTextLocation=0x7f010009;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -93,6 +102,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_labelTextPadding=0x7f010008;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -102,6 +112,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_labelTextSize=0x7f010007;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -110,6 +121,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_laserColor=0x7f010003;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -121,6 +133,7 @@ containing a value of this type.
 <tr><td><code>grid</code></td><td>2</td><td></td></tr>
 </table>
          */
+        public static final int scankit_laserStyle=0x7f01000f;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -129,6 +142,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_maskColor=0x7f010000;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -137,6 +151,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_resultPointColor=0x7f010004;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -144,6 +159,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_showResultPoint=0x7f01000a;
         /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
@@ -152,6 +168,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_titleColor=0x7f010010;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -161,18 +178,80 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
+        public static final int scankit_titleSize=0x7f010011;
     }
     public static final class color {
+        public static final int notification_accent_color=0x7f040000;
+        public static final int scankit_viewfinder_corner=0x7f040001;
+        public static final int scankit_viewfinder_frame=0x7f040002;
+        public static final int scankit_viewfinder_lasers=0x7f040003;
+        public static final int scankit_viewfinder_mask=0x7f040004;
+        public static final int scankit_viewfinder_result_point_color=0x7f040005;
+        public static final int scankit_viewfinder_text_color=0x7f040006;
     }
     public static final class drawable {
+        public static final int ic_launcher=0x7f020000;
+        public static final int ic_notification=0x7f020001;
+        public static final int scankit_back=0x7f020002;
+        public static final int scankit_dialog_bg=0x7f020003;
+        public static final int scankit_flash_selected_selector2=0x7f020004;
+        public static final int scankit_flashlight_off=0x7f020005;
+        public static final int scankit_flashlight_on=0x7f020006;
+        public static final int scankit_photo=0x7f020007;
+        public static final int splash_image=0x7f020008;
+        public static final int splash_image_def=0x7f020009;
     }
     public static final class id {
+        public static final int a_back_img_out=0x7f070016;
+        public static final int auto_focus=0x7f070006;
+        public static final int back_img_in=0x7f07001b;
+        public static final int bottom=0x7f07000e;
+        public static final int dialog_sure_btn=0x7f070014;
+        public static final int dialog_tilte=0x7f070013;
+        public static final int flash_light_ll=0x7f07001d;
+        public static final int flash_light_text=0x7f07001f;
+        public static final int grid=0x7f070010;
+        public static final int img_btn=0x7f07001c;
+        public static final int ivFlash=0x7f07001e;
+        public static final int line=0x7f070011;
+        public static final int ll_top=0x7f070015;
+        public static final int mlkit_camera_auto_focus=0x7f070000;
+        public static final int mlkit_camera_ha_quit=0x7f070001;
+        public static final int mlkit_camera_picture_ha_begin=0x7f070002;
+        public static final int mlkit_camera_picture_ha_end=0x7f070003;
+        public static final int mlkit_camera_preview_ha_begin=0x7f070004;
+        public static final int mlkit_camera_preview_ha_end=0x7f070005;
+        public static final int none=0x7f070012;
+        public static final int scan_title=0x7f070019;
+        public static final int scankit_decode=0x7f070007;
+        public static final int scankit_decode_failed=0x7f070008;
+        public static final int scankit_decode_succeeded=0x7f070009;
+        public static final int scankit_launch_product_query=0x7f07000a;
+        public static final int scankit_quit=0x7f07000b;
+        public static final int scankit_restart_preview=0x7f07000c;
+        public static final int scankit_return_scan_result=0x7f07000d;
+        public static final int surfaceView=0x7f070017;
+        public static final int title_scan=0x7f07001a;
+        public static final int top=0x7f07000f;
+        public static final int viewfinderView=0x7f070018;
     }
     public static final class layout {
+        public static final int scankit_dialog_layout=0x7f030000;
+        public static final int scankit_layout=0x7f030001;
+        public static final int scankit_zxl_capture=0x7f030002;
+        public static final int scankit_zxl_capture_customed=0x7f030003;
     }
     public static final class string {
+        public static final int scankit_confirm=0x7f060000;
+        public static final int scankit_light=0x7f060001;
+        public static final int scankit_light_off=0x7f060002;
+        public static final int scankit_no_code_tip=0x7f060003;
+        public static final int scankit_scan_tip=0x7f060004;
+        public static final int scankit_title=0x7f060005;
     }
     public static final class style {
+        public static final int AppTheme=0x7f050000;
+        public static final int Scankit_OnClick=0x7f050001;
     }
     public static final class styleable {
         /** Attributes that can be used with a ViewfinderView.
@@ -219,6 +298,13 @@ containing a value of this type.
            @see #ViewfinderView_scankit_titleColor
            @see #ViewfinderView_scankit_titleSize
          */
+        public static final int[] ViewfinderView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
+            0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f,
+            0x7f010010, 0x7f010011
+        };
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_cornerColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -233,6 +319,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_cornerColor
         */
+        public static final int ViewfinderView_scankit_cornerColor = 2;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_frameColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -247,6 +334,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_frameColor
         */
+        public static final int ViewfinderView_scankit_frameColor = 1;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_frameHeight}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -262,6 +350,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_frameHeight
         */
+        public static final int ViewfinderView_scankit_frameHeight = 12;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_frameWidth}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -277,6 +366,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_frameWidth
         */
+        public static final int ViewfinderView_scankit_frameWidth = 11;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_gridColumn}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -290,6 +380,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_gridColumn
         */
+        public static final int ViewfinderView_scankit_gridColumn = 13;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_gridHeight}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -305,6 +396,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_gridHeight
         */
+        public static final int ViewfinderView_scankit_gridHeight = 14;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_labelText}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -318,6 +410,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_labelText
         */
+        public static final int ViewfinderView_scankit_labelText = 5;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_labelTextColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -332,6 +425,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_labelTextColor
         */
+        public static final int ViewfinderView_scankit_labelTextColor = 6;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_labelTextLocation}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -348,6 +442,7 @@ containing a value of this type.
 </table>
           @attr name com.huawei.hms.framework.common:scankit_labelTextLocation
         */
+        public static final int ViewfinderView_scankit_labelTextLocation = 9;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_labelTextPadding}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -363,6 +458,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_labelTextPadding
         */
+        public static final int ViewfinderView_scankit_labelTextPadding = 8;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_labelTextSize}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -378,6 +474,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_labelTextSize
         */
+        public static final int ViewfinderView_scankit_labelTextSize = 7;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_laserColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -392,6 +489,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_laserColor
         */
+        public static final int ViewfinderView_scankit_laserColor = 3;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_laserStyle}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -409,6 +507,7 @@ containing a value of this type.
 </table>
           @attr name com.huawei.hms.framework.common:scankit_laserStyle
         */
+        public static final int ViewfinderView_scankit_laserStyle = 15;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_maskColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -423,6 +522,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_maskColor
         */
+        public static final int ViewfinderView_scankit_maskColor = 0;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_resultPointColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -437,6 +537,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_resultPointColor
         */
+        public static final int ViewfinderView_scankit_resultPointColor = 4;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_showResultPoint}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -450,6 +551,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_showResultPoint
         */
+        public static final int ViewfinderView_scankit_showResultPoint = 10;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_titleColor}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -464,6 +566,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_titleColor
         */
+        public static final int ViewfinderView_scankit_titleColor = 16;
         /**
           <p>This symbol is the offset where the {@link com.huawei.hms.framework.common.R.attr#scankit_titleSize}
           attribute's value can be found in the {@link #ViewfinderView} array.
@@ -479,5 +582,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.huawei.hms.framework.common:scankit_titleSize
         */
+        public static final int ViewfinderView_scankit_titleSize = 17;
     };
 }

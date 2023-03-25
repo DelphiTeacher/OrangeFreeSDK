@@ -181,6 +181,7 @@ containing a value of this type.
         public static final int scankit_titleSize=0x7f010011;
     }
     public static final class color {
+        public static final int notification_accent_color=0x7f040000;
         public static final int scankit_viewfinder_corner=0x7f040001;
         public static final int scankit_viewfinder_frame=0x7f040002;
         public static final int scankit_viewfinder_lasers=0x7f040003;
@@ -189,12 +190,16 @@ containing a value of this type.
         public static final int scankit_viewfinder_text_color=0x7f040006;
     }
     public static final class drawable {
+        public static final int ic_launcher=0x7f020000;
+        public static final int ic_notification=0x7f020001;
         public static final int scankit_back=0x7f020002;
         public static final int scankit_dialog_bg=0x7f020003;
         public static final int scankit_flash_selected_selector2=0x7f020004;
         public static final int scankit_flashlight_off=0x7f020005;
         public static final int scankit_flashlight_on=0x7f020006;
         public static final int scankit_photo=0x7f020007;
+        public static final int splash_image=0x7f020008;
+        public static final int splash_image_def=0x7f020009;
     }
     public static final class id {
         public static final int a_back_img_out=0x7f070016;
@@ -245,6 +250,7 @@ containing a value of this type.
         public static final int scankit_title=0x7f060005;
     }
     public static final class style {
+        public static final int AppTheme=0x7f050000;
         public static final int Scankit_OnClick=0x7f050001;
     }
     public static final class styleable {

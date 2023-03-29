@@ -34,16 +34,21 @@ uses
   Classes,
 
   {$IFDEF FMX}
-  FMX.Types,
+//  FMX.Types,
   {$ENDIF}
   {$IFDEF VCL}
   ExtCtrls,
   {$ENDIF}
 
-  SyncObjs,
+  {$IFDEF IN_ORANGESDK}
+  uFuncCommon_Copy,
+  uBaseList_Copy,
+  {$ELSE}
+  uFuncCommon,
   uBaseList,
-  uFuncCommon;
+  {$ENDIF}
 
+  SyncObjs;
 
 
 const
@@ -223,7 +228,6 @@ type
   TTimerThread=class(TBaseServiceThread)
   private
     FTimerTaskList: TTimerTaskList;
-    FRecvEvent:TEvent;
   protected
     procedure DoExecuteTask(ATimerTask:TTimerTask);
     procedure DoExecuteTaskEnd(ATimerTask:TTimerTask);
@@ -235,6 +239,7 @@ type
     destructor Destroy;override;
   public
     Name:String;
+    FRecvEvent:TEvent;
     procedure Terminate;
     function CreateTimerTask:TTimerTask;virtual;
 
@@ -262,11 +267,11 @@ type
     ///   </para>
     /// </summary>
     function RunTempTask(
-                          AOnExecute:TTaskNotify;
-                          AOnExecuteEnd:TTaskNotify;
-                          ATaskName:String='';//方便输出日志跟踪
-                          AIsStandalone:Boolean=True
-                          ):TTimerTask;
+                        AOnExecute:TTaskNotify;
+                        AOnExecuteEnd:TTaskNotify;
+                        ATaskName:String='';//方便输出日志跟踪
+                        AIsStandalone:Boolean=True
+                        ):TTimerTask;
 
     /// <summary>
     ///   <para>
@@ -637,16 +642,35 @@ end;
 
 procedure TTimerThread.RunTask(ATimerTask:TTimerTask;const AIsStandalone:Boolean);
 begin
-//  {$IF CompilerVersion >= 30.0}
-//    TThread.CreateAnonymousThread(procedure
-//    begin
-//      DoExecuteTask(ATimerTask);
-//      DoExecuteTaskEnd(ATimerTask);
-//      FreeAndNil(ATimerTask);
-//    end).Start;
-//  {$ELSE}
-  if not AIsStandalone then
-  begin
+  {$IF CompilerVersion >= 30.0}
+      if not AIsStandalone then
+      begin
+          //加入到执行列表
+          Self.FTimerTaskList.Add(ATimerTask);
+
+          FRecvEvent.SetEvent;
+
+          //启动定时器检测是否运行结束,不需要了
+          ATimerTask.Execute;
+
+
+          if Suspended then
+          begin
+              //启动线程
+              Self.Suspended:=False;
+          end;
+
+      end
+      else
+      begin
+          TThread.CreateAnonymousThread(procedure
+          begin
+            DoExecuteTask(ATimerTask);
+            DoExecuteTaskEnd(ATimerTask);
+            FreeAndNil(ATimerTask);
+          end).Start;
+      end;
+  {$ELSE}
       //加入到执行列表
       Self.FTimerTaskList.Add(ATimerTask);
 
@@ -661,36 +685,21 @@ begin
           //启动线程
           Self.Suspended:=False;
       end;
-
-  end
-  else
-  begin
-      TThread.CreateAnonymousThread(procedure
-      begin
-        DoExecuteTask(ATimerTask);
-        DoExecuteTaskEnd(ATimerTask);
-        FreeAndNil(ATimerTask);
-      end).Start;
-  end;
-//  {$IFEND}
+  {$IFEND}
 
 end;
 
 function TTimerThread.RunTempTask(
-                          AOnExecute, AOnExecuteEnd: TTaskNotify;
-                          ATaskName:String;
-                          AIsStandalone:Boolean):TTimerTask;
-var
-  ATimerTask:TTimerTask;
+                                  AOnExecute, AOnExecuteEnd: TTaskNotify;
+                                  ATaskName:String;
+                                  AIsStandalone:Boolean):TTimerTask;
 begin
-  ATimerTask:=CreateTimerTask;
-  ATimerTask.FTaskName:=ATaskName;
-  ATimerTask.OnExecute:=AOnExecute;
-  ATimerTask.OnExecuteEnd:=AOnExecuteEnd;
-  GetGlobalTimerThread.RunTask(ATimerTask,AIsStandalone);
+  Result:=CreateTimerTask;
+  Result.FTaskName:=ATaskName;
+  Result.OnExecute:=AOnExecute;
+  Result.OnExecuteEnd:=AOnExecuteEnd;
+  GetGlobalTimerThread.RunTask(Result,AIsStandalone);
 end;
-
-
 
 procedure TTimerThread.Terminate;
 begin
@@ -844,6 +853,8 @@ initialization
 
 
 finalization
+
+
   try
     FreeGlobalTimerThread;
   except
@@ -852,6 +863,8 @@ finalization
       uBaseLog.HandleException(E,'Base','uTimerTask','finalization FreeAndNil(GlobalTimerThread)');
     end;
   end;
+
+
   try
     FreeGlobalTimerThread2;
   except
@@ -860,6 +873,8 @@ finalization
       uBaseLog.HandleException(E,'Base','uTimerTask','finalization FreeAndNil(GlobalTimerThread2)');
     end;
   end;
+
+
 //  SysUtils.FreeAndNil(GlobalThreadCheckTimer);
   SysUtils.FreeAndNil(GlobalTimerThreadList);
 

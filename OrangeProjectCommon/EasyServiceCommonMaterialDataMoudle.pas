@@ -16,7 +16,7 @@ uses
   uSkinNotifyNumberIconType, uSkinCustomListType, uSkinVirtualListType,
   uSkinListBoxType, uSkinSwitchPageListPanelType, uSkinPageControlType,
   uSkinComboBoxType, uSkinComboEditType, uSkinMemoType, uSkinTimeEditType,
-  uSkinDateEditType, uSkinListViewType, uSkinPopupType;
+  uSkinDateEditType, uSkinPopupType;
 
 type
   TdmEasyServiceCommonMaterial = class(TDataModule)
@@ -110,6 +110,7 @@ type
     edtQueryCondition_Material: TSkinEditDefaultMaterial;
     lvButtonMaterial: TSkinListViewDefaultMaterial;
     lblRedBackCaptionVertCenterMaterial: TSkinLabelDefaultMaterial;
+    lblBackBlackOpacityCaptionWhiteVertCenterMaterial: TSkinLabelDefaultMaterial;
   private
     { Private declarations }
   public

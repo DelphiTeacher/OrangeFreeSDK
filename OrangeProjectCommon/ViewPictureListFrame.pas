@@ -34,7 +34,7 @@ uses
   uSkinFireMonkeyListView, uSkinFireMonkeyImageListPlayer, uSkinImageList, uSkinFireMonkeyImageListViewer,
   uSkinAnimator,
   FMX.Controls.Presentation, uSkinButtonType, uSkinPanelType, uBaseSkinControl,
-  uSkinScrollControlType, uSkinImageListViewerType;
+  uSkinScrollControlType, uSkinImageListViewerType, uSkinLabelType;
 
 
 
@@ -48,6 +48,7 @@ type
     btnPop: TSkinFMXButton;
     tmrCheckLongTap: TTimer;
     Timer1: TTimer;
+    lblInfo: TSkinFMXLabel;
     procedure btnReturnClick(Sender: TObject);virtual;
     procedure imgPlayerImageListSwitchEnd(Sender: TObject);virtual;
     procedure cmaToolBarAnimate(Sender: TObject);virtual;
@@ -189,6 +190,11 @@ begin
 //  AIndex:=Self.pnlToolBar.Caption.IndexOf('(');
 //  ATitle:=Self.pnlToolBar.Caption.Substring(0,AIndex);
 //  ShowPicture(ATitle,Self.imgPlayer.Properties.Picture.ImageIndex);
+//  Self.lblInfo.Caption:=Self.imgPlayer.Properties.Picture.CurrentPicture.
+//  if (Self.imgPlayer.Properties.Picture.ImageIndex>=0) and (Self.imgPlayer.Properties.Picture.ImageIndex<Self.imglistPlayer.PictureList.Count) then
+//  begin
+//    Self.lblInfo.Caption:=Self.imglistPlayer.PictureList[Self.imgPlayer.Properties.Picture.ImageIndex].Caption;
+//  end;
 end;
 
 procedure TFrameBaseViewPictureList.imgPlayerMouseDown(Sender: TObject;

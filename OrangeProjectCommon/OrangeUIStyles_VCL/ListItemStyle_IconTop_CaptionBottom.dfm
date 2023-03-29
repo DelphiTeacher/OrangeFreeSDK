@@ -351,6 +351,7 @@ object FrameListItemStyle_IconTop_CaptionBottom: TFrameListItemStyle_IconTop_Cap
       Properties.Rotated = False
       Properties.RotateSpeed = 5.000000000000000000
       Properties.RotateIncrement = 20
+      ExplicitTop = -6
     end
     object imgItemCaption: TSkinWinLabel
       Left = 0

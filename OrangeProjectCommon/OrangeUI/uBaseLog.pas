@@ -31,7 +31,7 @@ interface
 uses
   SysUtils,
   Classes,
-//  IOUtils,
+  IOUtils,
 
 
 
@@ -41,7 +41,7 @@ uses
     {$ELSE}
     Windows,
     Forms,
-    {$ENDIF}
+    {$IFEND}
   {$ENDIF}
 
 
@@ -52,11 +52,12 @@ uses
     //在服务程序中会卡死
     Androidapi.Log,
     {$ELSE}
-    FMX.Types,
+      {$IFDEF MSWINDOWS}
+//      Winapi.Windows,
+      {$ELSE}
+      FMX.Types,
+      {$ENDIF}
     {$ENDIF}
-//    {$IFDEF MSWINDOWS}
-//    Winapi.Windows,
-//    {$ENDIF}
   {$ENDIF}
 
 
@@ -73,6 +74,7 @@ uses
   uFuncCommon,
   {$ENDIF}
 
+  IniFiles,
   DateUtils;
 
 
@@ -87,6 +89,27 @@ Const
 
 
 type
+  //日志一共分成5个等级，从低到高分别是：
+  //
+  //DEBUG
+  //INFO
+  //WARNING
+  //ERROR
+  //CRITICAL
+  //说明:
+  //
+  //DEBUG：详细的信息,通常只出现在诊断问题上
+  //INFO：确认一切按预期运行
+  //WARNING：一个迹象表明,一些意想不到的事情发生了,或表明一些问题在不久的将来(例如。磁盘空间低”)。这个软件还能按预期工作。
+  //ERROR：更严重的问题,软件没能执行一些功能
+  //CRITICAL：一个严重的错误,这表明程序本身可能无法继续运行
+  TLogLevelType=(lltDebug,//0
+                 lltInfo,//1
+                 lltWarnning,//2
+                 lltError,//3
+                 lltCritical//4
+                 );
+
   TBaseLog=class
   private
     //是否写日志到文件
@@ -104,6 +127,7 @@ type
     //日志文件的句柄
     FFileHandle:THandle;
 
+//    FIsCopyingLogFile:Boolean;
 
     //日志文件的最大文件大小
     FMaxFileSize: Integer;
@@ -111,8 +135,9 @@ type
     //文件打开的时间,用于判断是否需要重新建一个日志文件
     FFileOpenTime:TDateTime;
 
+    FWriteLogLevelType:TLogLevelType;
+    FOutputLogLevelType:TLogLevelType;
 
-    procedure CloseFileHandle;
     function GetFileHandle(InCreate:Boolean):Boolean;
   public
     constructor Create(const ALogFileName:String);
@@ -130,6 +155,11 @@ type
     /// </summary>
     LogKeyword:String;
 
+    procedure LoadConfig;
+    procedure SaveConfig;
+    procedure CloseFileHandle;
+    function GetLogFilePath:String;
+    function GetLogFileName:String;
 
     /// <summary>
     ///   <para>
@@ -155,7 +185,7 @@ type
     ///     Output debug information
     ///   </para>
     /// </summary>
-    procedure OutputDebugString(ADebugString:String);
+    procedure OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType=lltDebug);
 
     /// <summary>
     ///   <para>
@@ -165,7 +195,7 @@ type
     ///     Write log to file
     ///   </para>
     /// </summary>
-    procedure WriteLog(ALogString:String);
+    procedure WriteLog(ALogString:String;ALogLevelType:TLogLevelType=lltDebug);
 
     /// <summary>
     ///   <para>
@@ -175,9 +205,10 @@ type
     ///     Write log file and output debug information
     ///   </para>
     /// </summary>
-    procedure Debug(ADebugString:String);
+    procedure Debug(ADebugString:String;ALogLevelType:TLogLevelType=lltDebug);
 
 
+//    procedure CopyLogToDir(ADir:String);
 
     /// <summary>
     ///   <para>
@@ -215,7 +246,7 @@ type
     ///  Position of exception
     ///  </para>
     /// </param>
-    procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='');overload;
+    procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';ALogLevelType:TLogLevelType=lltDebug);overload;
     /// <summary>
     ///   <para>
     ///     记录异常的精简信息
@@ -224,7 +255,7 @@ type
     ///     Record detail information of exception
     ///   </para>
     /// </summary>
-    procedure HandleException(AException: Exception; const AMethodName:String);overload;
+    procedure HandleException(AException: Exception; const AMethodName:String;ALogLevelType:TLogLevelType=lltDebug);overload;
   end;
 
 
@@ -252,7 +283,7 @@ function GetGlobalLog:TBaseLog;
 ///     Output log
 ///   </para>
 /// </summary>
-procedure OutputDebugString(ADebugString:String);
+procedure OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType=lltDebug);
 
 /// <summary>
 ///   <para>
@@ -272,7 +303,7 @@ procedure ShowException(ADebugString:String);
 ///     Record detail information of exception
 ///   </para>
 /// </summary>
-procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';const APosition2: String='');overload;
+procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';const APosition2: String='';ALogLevelType:TLogLevelType=lltDebug);overload;
 /// <summary>
 ///   <para>
 ///     记录异常的简单信息
@@ -281,16 +312,24 @@ procedure HandleException(AException: Exception; const AMethodName:String; const
 ///     Record detail information of exception
 ///   </para>
 /// </summary>
-procedure HandleException(AException: Exception;const AMethodName:String);overload;
-procedure HandleException(const AMethodName:String;AException: Exception=nil);overload;
+procedure HandleException(AException: Exception;const AMethodName:String;ALogLevelType:TLogLevelType=lltDebug);overload;
+procedure HandleError(AException: Exception;const AMethodName:String);
+procedure HandleException(const AMethodName:String;AException: Exception=nil;ALogLevelType:TLogLevelType=lltDebug);overload;
 
 
+function GetNewLogFileName(const FLogFileName:String):String;
 
 
 
 implementation
 
 
+function GetNewLogFileName(const FLogFileName:String):String;
+begin
+  Result:=Copy(FLogFileName,1,Length(FLogFileName)-4)
+          +' '+FormatDateTime('YYYY-MM-DD',Now)
+          +Copy(FLogFileName,Length(FLogFileName)-4+1,MaxInt);
+end;
 
 
 
@@ -303,19 +342,24 @@ begin
   Result:=GlobalLog;
 end;
 
-procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';const APosition2: String='');
+procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';const APosition2: String='';ALogLevelType:TLogLevelType=lltDebug);
 begin
-  GetGlobalLog.HandleException(AException, AUnitName, AMethodName, APosition+APosition2);
+  GetGlobalLog.HandleException(AException, AUnitName, AMethodName, APosition+APosition2,ALogLevelType);
 end;
 
-procedure HandleException(AException: Exception;const AMethodName:String);
+procedure HandleError(AException: Exception;const AMethodName:String);
 begin
-  GetGlobalLog.HandleException(AException, AMethodName);
+  GetGlobalLog.HandleException(AException, AMethodName,TLogLevelType.lltError);
 end;
 
-procedure HandleException(const AMethodName:String;AException: Exception=nil);
+procedure HandleException(AException: Exception;const AMethodName:String;ALogLevelType:TLogLevelType);
 begin
-  GetGlobalLog.HandleException(AException, AMethodName);
+  GetGlobalLog.HandleException(AException, AMethodName,ALogLevelType);
+end;
+
+procedure HandleException(const AMethodName:String;AException: Exception=nil;ALogLevelType:TLogLevelType=lltDebug);
+begin
+  GetGlobalLog.HandleException(AException, AMethodName,ALogLevelType);
 end;
 
 procedure ShowException(ADebugString:String);
@@ -323,10 +367,10 @@ begin
   raise Exception.Create(ADebugString);
 end;
 
-procedure OutputDebugString(ADebugString:String);
+procedure OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType);
 begin
-  GetGlobalLog.OutputDebugString(ADebugString);
-  if GetGlobalLog.FIsWriteLog then GetGlobalLog.WriteLog(ADebugString+#13#10);
+  GetGlobalLog.OutputDebugString(ADebugString,ALogLevelType);
+  if GetGlobalLog.FIsWriteLog then GetGlobalLog.WriteLog(ADebugString+#13#10,ALogLevelType);
 end;
 
 
@@ -334,7 +378,7 @@ end;
 
 { TBaseLog }
 
-procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String;const AUnitName:String; const APosition: String='');
+procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String;const AUnitName:String; const APosition: String='';ALogLevelType:TLogLevelType=lltDebug);
 var
   ALogString:String;
 begin
@@ -343,14 +387,15 @@ begin
 
   if AException<>nil then
   begin
+    ALogLevelType:=TLogLevelType.lltError;
     ALogString:='Exception:'+AException.Message+ALogString;
   end;
 
   ALogString:=FormatDateTime('YYYY-MM-DD HH:MM:SS:ZZZ',Now)+' '+ALogString;
-  Debug(ALogString);
+  Debug(ALogString,ALogLevelType);
 end;
 
-procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String);
+procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String;ALogLevelType:TLogLevelType);
 var
   ALogString:String;
 begin
@@ -358,11 +403,30 @@ begin
 
   if AException<>nil then
   begin
+    ALogLevelType:=TLogLevelType.lltError;
     ALogString:='Exception:'+AException.Message+ALogString;
   end;
 
   ALogString:=FormatDateTime('YYYY-MM-DD HH:MM:SS:ZZZ',Now)+' '+ALogString;
-  Debug(ALogString);
+  Debug(ALogString,ALogLevelType);
+end;
+
+procedure TBaseLog.LoadConfig;
+var
+  AIniFile:TIniFile;
+begin
+  if FileExists(GetApplicationPath+'Config.ini') then
+  begin
+    AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+    try
+      FIsWriteLog:=AIniFile.ReadBool('Log','IsWriteLog',False);
+      FIsOutputLog:=AIniFile.ReadBool('Log','IsOutputLog',True);
+      FWriteLogLevelType:=TLogLevelType(AIniFile.ReadInteger('Log','WriteLogLevelType',0));
+      FOutputLogLevelType:=TLogLevelType(AIniFile.ReadInteger('Log','OutputLogLevelType',0));
+    finally
+      SysUtils.FreeAndNil(AIniFile);
+    end;
+  end;
 end;
 
 procedure TBaseLog.CloseFileHandle;
@@ -373,6 +437,33 @@ begin
   end;
   FFileHandle:=INVALID_HANDLE_VALUE;
 end;
+
+//procedure TBaseLog.CopyLogToDir(ADir: String);
+//var
+//  AOldIsWriteLog:Boolean;
+//begin
+//  uBaseLog.OutputDebugString('TBaseLog.CopyLogToDir ADir:'+ADir);
+//  AOldIsWriteLog:=FIsWriteLog;
+//  FIsWriteLog:=False;
+//  try
+//    try
+//      CloseFileHandle;
+//    //  CopyFile(FLogFilePath,ADir+ExtractFileName(FLogFilePath));
+//  //    if FileExists(ADir+ExtractFileName(FLogFilePath)) then
+//      if FileExists(GetLogFilePath) then
+//      begin
+//        TFile.Copy(GetLogFilePath,ADir+ExtractFileName(FLogFilePath),True);
+//      end;
+//    except
+//      on E:Exception do
+//      begin
+//        uBaseLog.OutputDebugString('TBaseLog.CopyLogToDir '+E.Message);
+//      end;
+//    end;
+//  finally
+//    FIsWriteLog:=AOldIsWriteLog;
+//  end;
+//end;
 
 constructor TBaseLog.Create(const ALogFileName: String);
 //var
@@ -417,6 +508,10 @@ begin
 
   FLogFilePath:=LogDir+ALogFileName;
 
+
+//  Result:=False;
+  Self.LoadConfig;
+
 end;
 
 destructor TBaseLog.Destroy;
@@ -430,6 +525,8 @@ var
   AOldFileHandle:THandle;
 begin
   Result:=False;
+
+
 
   if FIsWriteLog then
   begin
@@ -518,7 +615,19 @@ begin
   end;
 end;
 
-procedure TBaseLog.WriteLog(ALogString:String);
+function TBaseLog.GetLogFileName: String;
+begin
+  //插入日期
+  Result:=GetNewLogFileName(FLogFileName);
+end;
+
+function TBaseLog.GetLogFilePath: String;
+begin
+  FLogFilePath:=LogDir+GetLogFileName;
+  Result:=FLogFilePath;
+end;
+
+procedure TBaseLog.WriteLog(ALogString:String;ALogLevelType:TLogLevelType);
   {$IFDEF FMX}
 var
   B: TBytes;
@@ -527,8 +636,13 @@ var
   ALogAnsiStr:AnsiString;
   {$ENDIF}
 begin
+  if ALogLevelType<Self.FWriteLogLevelType then Exit;
+  
+
 //  OutputDebugString('TBaseLog.WriteLog Begin');
   if Not FIsWriteLog then Exit;
+//  if not FIsCopyingLogFile then Exit;
+
 
   if GetFileHandle(False) then
   begin
@@ -554,39 +668,43 @@ begin
   end;
 end;
 
-procedure TBaseLog.OutputDebugString(ADebugString:String);
+procedure TBaseLog.OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType);
 {$IFDEF ANDROID}
 var
   M: TMarshaller;
 {$ENDIF}
 begin
+  if ALogLevelType<Self.FOutputLogLevelType then Exit;
+
   try
-    {$IFDEF VCL}
-    OutputDebugStringW(PWideChar(ADebugString));
-    {$ENDIF}
 
     {$IFDEF CONSOLE}
     writeln(ADebugString);
-    {$ENDIF}
+    {$ELSE}
 //    {$IFDEF LINUX}
 //    WriteLn(ADebugString);
 //    {$ENDIF}
 
-    {$IFDEF FMX}
-
       {$IFDEF MSWINDOWS}
-        OutputDebugStringW(PWideChar(ADebugString));
+      OutputDebugStringW(PWideChar(ADebugString));
       {$ELSE}
-          {$IFDEF ANDROID}
-            //Android服务端不能使用FMX.Types.Log.d
-            LOGI(M.AsAnsi(LogKeyword+' '+ADebugString).ToPointer);
+        {$IFDEF FMX}
+
+          {$IFDEF MSWINDOWS}
+            //OutputDebugStringW(PWideChar(ADebugString));
           {$ELSE}
-              {$IFDEF IOS}
-                Log.d(LogKeyword+' '+ADebugString);
+              {$IFDEF ANDROID}
+                //Android服务端不能使用FMX.Types.Log.d
+                LOGI(M.AsAnsi(LogKeyword+' '+ADebugString).ToPointer);
               {$ELSE}
-                Log.d(ADebugString);
+                  {$IFDEF IOS}
+                    Log.d(LogKeyword+' '+ADebugString);
+                  {$ELSE}
+                    Log.d(ADebugString);
+                  {$ENDIF}
               {$ENDIF}
           {$ENDIF}
+        {$ENDIF}
       {$ENDIF}
 
     {$ENDIF}
@@ -595,11 +713,27 @@ begin
   end;
 end;
 
-procedure TBaseLog.Debug(ADebugString:String);
+procedure TBaseLog.SaveConfig;
+var
+  AIniFile:TIniFile;
 begin
-  if FIsWriteLog then WriteLog(ADebugString+#13#10);
+  AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+  try
+    AIniFile.WriteBool('Log','IsWriteLog',FIsWriteLog);
+    AIniFile.WriteBool('Log','IsOutputLog',FIsOutputLog);
+    AIniFile.WriteInteger('Log','WriteLogLevelType',Ord(FWriteLogLevelType));
+    AIniFile.WriteInteger('Log','OutputLogLevelType',Ord(FOutputLogLevelType));
+  finally
+    SysUtils.FreeAndNil(AIniFile);
+  end;
 
-  if FIsOutputLog then OutputDebugString(ADebugString);
+end;
+
+procedure TBaseLog.Debug(ADebugString:String;ALogLevelType:TLogLevelType);
+begin
+  if FIsWriteLog then WriteLog(ADebugString+#13#10,ALogLevelType);
+
+  if FIsOutputLog then OutputDebugString(ADebugString,ALogLevelType);
 end;
 
 

@@ -23,16 +23,16 @@ uses
   {$IFDEF HAS_WXPAY}
   //Î¢ÐÅµÇÂ¼
   uWeiChat,
-  {$ENDIF HAS_WXPAY}
+  {$ENDIF}
 
   {$IFDEF HAS_ALIPAY}
   //Ö§¸¶±¦µÇÂ¼
   uAlipayMobilePay,
-  {$ENDIF HAS_WXPAY}
+  {$ENDIF}
 
-  {$IFDEF HAS_FACEBOOK}
-  FBLoginCommon,
-  {$ENDIF HAS_FACEBOOK}
+//  {$IFDEF HAS_FACEBOOK}
+//  FBLoginCommon,
+//  {$ENDIF}
 
 //  {$IFDEF HAS_TWITTER}
 //  FBLoginCommon,
@@ -41,7 +41,7 @@ uses
 
   {$IFDEF HAS_APPLESIGNIN}
   uAppleSignIn,
-  {$ENDIF HAS_APPLESIGNIN}
+  {$ENDIF}
 
   WaitingFrame,
   MessageBoxFrame,
@@ -613,28 +613,28 @@ begin
   FLoginType:=Const_RegisterLoginType_Facebook;
 
 
-  {$IFDEF HAS_FACEBOOK}
-
-    GlobalFBLoginManager.FOnFBLoginSuccess:=DoFacebookLoginSuccess;
-    GlobalFBLoginManager.FOnFBLoginCancel:=DoFacebookLoginCancel;
-    GlobalFBLoginManager.FOnFBLoginError:=DoFacebookLoginError;
-
-    GlobalFBLoginManager.FBSDKLogin;
-
-    {$IFDEF MSWINDOWS}
-    //WindowsÏÂÃæ²âÊÔFacebookµÇÂ¼
-    DoFacebookLoginSuccess(nil,'ÉòÄÜ','','133403422299681','',
-
-                            'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=133403422299681&height=50&width=50&ext=1631840998&hash=AeSm_0TaYyK4VI63nMg',
-
-                            '',
-                            'EAANWhnyf53sBAAzK9oMZBom9qrY2NXUwTsATwhCCN1BYZAWzPAcztXWwfeVnILdJWWYD5Pa4LzAD1z'
-                            +'KYyLtWx5gJjO2Tx8iCyUFmt4dMqPM4ZAO6U09EH8KnZCbhcUHYolvrDWLSQGNrAexpj0ZCnEwDbEyK'
-                            +'FvhSzsySIsntTI5hNZCX2m9Lzzg95licvNIN0cn2ak4L3ZACg7CfbHoF8eUPMIm7Ni9JYyVvyfZC4xt'
-                            +'wwQZDZD');
-    {$ENDIF}
-
-  {$ENDIF}
+//  {$IFDEF HAS_FACEBOOK}
+//
+//    GlobalFBLoginManager.FOnFBLoginSuccess:=DoFacebookLoginSuccess;
+//    GlobalFBLoginManager.FOnFBLoginCancel:=DoFacebookLoginCancel;
+//    GlobalFBLoginManager.FOnFBLoginError:=DoFacebookLoginError;
+//
+//    GlobalFBLoginManager.FBSDKLogin;
+//
+//    {$IFDEF MSWINDOWS}
+//    //WindowsÏÂÃæ²âÊÔFacebookµÇÂ¼
+//    DoFacebookLoginSuccess(nil,'ÉòÄÜ','','133403422299681','',
+//
+//                            'https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=133403422299681&height=50&width=50&ext=1631840998&hash=AeSm_0TaYyK4VI63nMg',
+//
+//                            '',
+//                            'EAANWhnyf53sBAAzK9oMZBom9qrY2NXUwTsATwhCCN1BYZAWzPAcztXWwfeVnILdJWWYD5Pa4LzAD1z'
+//                            +'KYyLtWx5gJjO2Tx8iCyUFmt4dMqPM4ZAO6U09EH8KnZCbhcUHYolvrDWLSQGNrAexpj0ZCnEwDbEyK'
+//                            +'FvhSzsySIsntTI5hNZCX2m9Lzzg95licvNIN0cn2ak4L3ZACg7CfbHoF8eUPMIm7Ni9JYyVvyfZC4xt'
+//                            +'wwQZDZD');
+//    {$ENDIF}
+//
+//  {$ENDIF}
 
   uBaseLog.HandleException('TFrameLogin.FacebookAction End');
 end;

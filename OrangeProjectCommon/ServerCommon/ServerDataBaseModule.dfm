@@ -1,4 +1,5 @@
 object dmServerDataBase: TdmServerDataBase
+  OldCreateOrder = True
   Height = 296
   Width = 367
   object UniConnection1: TUniConnection

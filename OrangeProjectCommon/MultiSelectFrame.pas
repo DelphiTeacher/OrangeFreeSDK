@@ -26,7 +26,7 @@ uses
   uSkinFireMonkeyVirtualList, uSkinFireMonkeyCustomList, uSkinCheckBoxType,
   uSkinLabelType, uSkinItemDesignerPanelType, uSkinScrollControlType,
   uSkinCustomListType, uSkinVirtualListType, uSkinButtonType, uSkinPanelType,
-  uBaseSkinControl;
+  uBaseSkinControl, FMX.Edit, FMX.Controls.Presentation, uSkinFireMonkeyEdit;
 
 type
 //  TGetBaseListItemCaptionEvent=function(ABaseListItem:TObject):String of object;
@@ -40,9 +40,14 @@ type
     chkItemSelected: TSkinFMXCheckBox;
     btnReturn: TSkinFMXButton;
     btnOK: TSkinFMXButton;
+    pnlSearchBar: TSkinFMXPanel;
+    edtFilter: TSkinFMXEdit;
+    btnClearFilter: TClearEditButton;
     procedure btnReturnClick(Sender: TObject);virtual;
     procedure btnOKClick(Sender: TObject);virtual;
     procedure lbListClickItem(AItem: TSkinItem);virtual;
+    procedure edtFilterChange(Sender: TObject);virtual;
+    procedure edtFilterChangeTracking(Sender: TObject);virtual;
   private
 //    ItemCaptionFieldControlSetting:TFieldControlSetting;
 //    //列表数据控制器
@@ -58,6 +63,7 @@ type
 //    procedure DoListDataController_LoadDataToUIEnd(Sender:TObject);
     { Private declarations }
   public
+    procedure DoFilter;virtual;
 //    FAllList:TStringList;
 //    SelectedList: TStringList;
 //
@@ -203,6 +209,23 @@ begin
 //  FreeAndNil(FAllList);
 //  FreeAndNil(SelectedList);
   inherited;
+end;
+
+procedure TFrameBaseMultiSelect.DoFilter;
+begin
+
+end;
+
+procedure TFrameBaseMultiSelect.edtFilterChange(Sender: TObject);
+begin
+  DoFilter;
+
+end;
+
+procedure TFrameBaseMultiSelect.edtFilterChangeTracking(Sender: TObject);
+begin
+  DoFilter;
+
 end;
 
 //procedure TFrameBaseMultiSelect.DoListDataController_LoadDataToUIEnd(Sender: TObject);

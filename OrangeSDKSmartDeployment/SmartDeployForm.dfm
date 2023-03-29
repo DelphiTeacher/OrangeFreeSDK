@@ -36,7 +36,6 @@ object frmSmartDeploy: TfrmSmartDeploy
     Align = alClient
     Caption = 'pnlClient'
     TabOrder = 0
-    ExplicitHeight = 599
     object pcClient: TPageControl
       Left = 1
       Top = 90
@@ -45,11 +44,9 @@ object frmSmartDeploy: TfrmSmartDeploy
       ActivePage = tsAndroidJar
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 508
       object tsCurrent: TTabSheet
         Caption = #24403#21069#24067#32626
         TabVisible = False
-        ExplicitHeight = 639
         object Panel2: TPanel
           Left = 0
           Top = 0
@@ -119,7 +116,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsDeployConfig: TTabSheet
         Caption = #24067#32626#37197#32622
         ImageIndex = 5
-        ExplicitHeight = 639
         object Panel3: TPanel
           Left = 0
           Top = 0
@@ -335,7 +331,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsVariable: TTabSheet
         Caption = 'SDK'#21464#37327#37197#32622
         ImageIndex = 7
-        ExplicitHeight = 639
         object Panel10: TPanel
           Left = 0
           Top = 0
@@ -377,7 +372,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsAndroidManifestConfig: TTabSheet
         Caption = 'Android'#26435#38480#37197#32622
         ImageIndex = 2
-        ExplicitHeight = 639
         object Splitter1: TSplitter
           Left = 0
           Top = 552
@@ -408,7 +402,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           ScrollBars = ssBoth
           TabOrder = 1
           WordWrap = False
-          ExplicitHeight = 338
         end
         object Panel6: TPanel
           Left = 0
@@ -466,7 +459,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsAndroidJar: TTabSheet
         Caption = 'AndroidJar'#37197#32622
         ImageIndex = 4
-        ExplicitHeight = 474
         object Panel5: TPanel
           Left = 0
           Top = 0
@@ -506,15 +498,13 @@ object frmSmartDeploy: TfrmSmartDeploy
           Height = 508
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 427
           object pnlAndroidAarToolBar: TPanel
             Left = 1
-            Top = 245
+            Top = 200
             Width = 1073
-            Height = 47
+            Height = 92
             Align = alBottom
             TabOrder = 0
-            ExplicitTop = 164
             object btnAddAndroidAar: TButton
               Left = 0
               Top = 16
@@ -538,14 +528,14 @@ object frmSmartDeploy: TfrmSmartDeploy
               Top = 16
               Width = 240
               Height = 25
-              Caption = #29983#25104'R.Java'
+              Caption = #29983#25104'R.jar'
               TabOrder = 2
               OnClick = btnGenerateAndroidAARClick
             end
             object chkGenerateAndroid64AAR: TCheckBox
               Left = 656
               Top = 19
-              Width = 185
+              Width = 137
               Height = 17
               Caption = '64'#20301'Android'
               TabOrder = 3
@@ -567,6 +557,15 @@ object frmSmartDeploy: TfrmSmartDeploy
               State = cbChecked
               TabOrder = 4
             end
+            object Button6: TButton
+              Left = 904
+              Top = 14
+              Width = 162
+              Height = 25
+              Caption = #20174'Gradle'#20013#23548#20986'aar'
+              TabOrder = 5
+              OnClick = Button6Click
+            end
           end
           object memAndroidAars: TMemo
             Left = 1
@@ -577,25 +576,23 @@ object frmSmartDeploy: TfrmSmartDeploy
             ScrollBars = ssBoth
             TabOrder = 1
             WordWrap = False
-            ExplicitTop = 211
           end
           object memAndroidJars: TMemo
             Left = 1
             Top = 1
             Width = 1073
-            Height = 244
+            Height = 199
             Align = alClient
             ScrollBars = ssBoth
             TabOrder = 2
             WordWrap = False
-            ExplicitHeight = 163
+            ExplicitHeight = 244
           end
         end
       end
       object tsIOSConfig: TTabSheet
         Caption = 'iOS'#24211#37197#32622
         ImageIndex = 6
-        ExplicitHeight = 639
         object Panel4: TPanel
           Left = 0
           Top = 0
@@ -643,7 +640,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           Height = 490
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 574
           object Panel11: TPanel
             Left = 1
             Top = 1
@@ -651,7 +647,6 @@ object frmSmartDeploy: TfrmSmartDeploy
             Height = 488
             Align = alLeft
             TabOrder = 0
-            ExplicitHeight = 572
             object lblAddIOSFrameworkHint: TLabel
               Left = 1
               Top = 1
@@ -673,7 +668,6 @@ object frmSmartDeploy: TfrmSmartDeploy
               ScrollBars = ssBoth
               TabOrder = 0
               WordWrap = False
-              ExplicitHeight = 346
             end
             object btnAddFrameworksToAllIOSSDK: TButton
               Left = 1
@@ -696,7 +690,6 @@ object frmSmartDeploy: TfrmSmartDeploy
               ScrollBars = ssBoth
               TabOrder = 2
               WordWrap = False
-              ExplicitTop = 443
             end
             object btnAddDylibsToAllIOSSDK: TButton
               Left = 1
@@ -707,7 +700,6 @@ object frmSmartDeploy: TfrmSmartDeploy
               Caption = #28155#21152#19979#38754#30340#24211#21040#25152#26377#30340'iPhone SDK'
               TabOrder = 3
               OnClick = btnAddDylibsToAllIOSSDKClick
-              ExplicitTop = 418
             end
           end
           object Panel14: TPanel
@@ -717,7 +709,6 @@ object frmSmartDeploy: TfrmSmartDeploy
             Height = 488
             Align = alClient
             TabOrder = 1
-            ExplicitHeight = 572
             object btnProcessIOSPlistRootNodes: TButton
               Left = 1
               Top = 1
@@ -759,7 +750,6 @@ object frmSmartDeploy: TfrmSmartDeploy
               ScrollBars = ssBoth
               TabOrder = 1
               WordWrap = False
-              ExplicitHeight = 545
             end
           end
         end
@@ -767,7 +757,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsIconConfig: TTabSheet
         Caption = #24037#31243#22270#26631#21644#21551#21160#22270#29255#35774#32622
         ImageIndex = 3
-        ExplicitHeight = 639
         object pnlAppIcon: TPanel
           Left = 0
           Top = 0
@@ -866,7 +855,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           Height = 369
           Align = alClient
           TabOrder = 1
-          ExplicitHeight = 453
           object lblAppLaunchImageHint: TLabel
             Left = 13
             Top = 16
@@ -1004,7 +992,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object TabSheet1: TTabSheet
         Caption = #25209#37327#37197#32622#24037#31243#25152#38656#35201#30340'SDK'
         ImageIndex = 8
-        ExplicitHeight = 639
         object lvNeedUseSDKs: TListView
           Left = 0
           Top = 0
@@ -1024,7 +1011,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           MultiSelect = True
           TabOrder = 0
           ViewStyle = vsReport
-          ExplicitHeight = 639
         end
         object btnBatchProcessSDKs: TButton
           Left = 359
@@ -1055,9 +1041,8 @@ object frmSmartDeploy: TfrmSmartDeploy
         end
       end
       object tsWeiXinJar: TTabSheet
-        Caption = #29983#25104'Jar'
+        Caption = 'AndroidSDK'#37197#32622
         ImageIndex = 5
-        ExplicitHeight = 639
         DesignSize = (
           1075
           555)
@@ -1169,10 +1154,8 @@ object frmSmartDeploy: TfrmSmartDeploy
           Anchors = [akLeft, akTop, akRight, akBottom]
           TabOrder = 10
           Visible = False
-          ExplicitHeight = 268
           object TabSheet2: TTabSheet
             Caption = 'WXEntryActivity.java'
-            ExplicitHeight = 234
             object memWXEntryActivity: TMemo
               Left = 0
               Top = 0
@@ -1259,13 +1242,11 @@ object frmSmartDeploy: TfrmSmartDeploy
                 '}')
               TabOrder = 0
               WordWrap = False
-              ExplicitHeight = 234
             end
           end
           object TabSheet3: TTabSheet
             Caption = 'WXPayEntryActivity.java'
             ImageIndex = 1
-            ExplicitHeight = 234
             object memWXPayEntryActivity: TMemo
               Left = 0
               Top = 0
@@ -1351,13 +1332,11 @@ object frmSmartDeploy: TfrmSmartDeploy
                 '}')
               TabOrder = 0
               WordWrap = False
-              ExplicitHeight = 234
             end
           end
           object TabSheet4: TTabSheet
             Caption = 'OnWeixinListener.java'
             ImageIndex = 2
-            ExplicitHeight = 234
             object memOnWeixinListener: TMemo
               Left = 0
               Top = 0
@@ -1378,13 +1357,11 @@ object frmSmartDeploy: TfrmSmartDeploy
                 '}')
               TabOrder = 0
               WordWrap = False
-              ExplicitHeight = 234
             end
           end
           object TabSheet5: TTabSheet
             Caption = 'wxapi.pas'
             ImageIndex = 3
-            ExplicitHeight = 234
             object memWxApiPas: TMemo
               Left = 0
               Top = 0
@@ -1540,7 +1517,6 @@ object frmSmartDeploy: TfrmSmartDeploy
                 'end.')
               TabOrder = 0
               WordWrap = False
-              ExplicitHeight = 234
             end
           end
         end
@@ -1683,7 +1659,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       object tsThanks: TTabSheet
         Caption = #40483#35874
         ImageIndex = 9
-        ExplicitHeight = 639
         object Memo1: TMemo
           Left = 0
           Top = 0
@@ -1693,7 +1668,6 @@ object frmSmartDeploy: TfrmSmartDeploy
           Lines.Strings = (
             'xm QQ:910885622')
           TabOrder = 0
-          ExplicitHeight = 639
         end
       end
     end
@@ -1840,7 +1814,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       ScrollBars = ssBoth
       TabOrder = 0
       WordWrap = False
-      ExplicitHeight = 130
     end
     object pnlLogCaption: TPanel
       Left = 1
@@ -1853,7 +1826,6 @@ object frmSmartDeploy: TfrmSmartDeploy
       Ctl3D = False
       ParentCtl3D = False
       TabOrder = 1
-      ExplicitLeft = -7
     end
   end
   object dsCurrent: TDataSource

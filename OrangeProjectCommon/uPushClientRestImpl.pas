@@ -19,6 +19,11 @@ uses
   uBaseHttpControl,
   uTimerTask,
   uFuncCommon,
+
+  uManager,
+  uOpenClientCommon,
+  uConst,
+
 //  uGetDeviceInfo,
   uRestInterfaceCall,
   uPushClientLogic,
@@ -47,8 +52,16 @@ type
   //推送的逻辑实现
   TPushClientRestImpl = class(TPushClientLogic)
   public
-    //服务器地址
-    PushServerUrl:String;
+//    //应用ID
+//    AppID:String;
+//    //应用类型,如客户端,商家端,骑手端
+//    AppType:String;
+//    //用户FID
+//    UserFID:String;
+//    Key:String;
+//
+//    //服务器地址
+//    PushManageInterfaceUrl:String;
   public
 
     //注册推送到服务器
@@ -81,6 +94,13 @@ var
   ATaskDesc:String;
   ASuperObject:ISuperObject;
 begin
+//  if (UserFID='0') or (Self.UserFID='') then
+  if (GlobalManager.User.fid='0') or (GlobalManager.User.fid='') then
+  begin
+    Exit;
+  end;
+
+
   HandleException(nil,'OrangeUI UpdatePushIsAtBackground Begin');
 
   if (Self<>nil)
@@ -97,15 +117,17 @@ begin
 
                 ATaskDesc:=SimpleCallAPI('update_user_push_is_at_background',
                                         nil,
-                                        PushServerUrl,
+                                        PushManageInterfaceUrl,
                                         ['appid',
+                                        'key',
                                         'app_type',
                                         'push_type',
                                         'client_id',
                                         'ios_device_token',
                                         'is_at_background'],
                                         [AppID,
-                                        AppType,
+                                        GlobalManager.User.Key,
+                                        Const_GetuiPush_AppType,
                                         Self.FBasePush.GetPushType,
                                         Self.FBasePush.GetClientID,
                                         Self.FBasePush.DeviceToken,
@@ -166,7 +188,7 @@ begin
         TTimerTask(ATimerTask).TaskDesc:=
                   SimpleCallAPI('register_user_push',
                       nil,
-                      PushServerUrl,
+                      PushManageInterfaceUrl,
                       ['appid',
                       'user_fid',
                       'key',
@@ -179,9 +201,9 @@ begin
                       'is_need_push'
                       ],
                       [AppID,
-                      UserFID,
-                      '',
-                      AppType,
+                      GlobalManager.User.FID,
+                      GlobalManager.User.Key,
+                      Const_GetuiPush_AppType,
                       Self.FBasePush.GetPushType,
                       Self.FBasePush.ClientID,
                       Self.FBasePush.DeviceToken,
@@ -189,8 +211,8 @@ begin
 //                      GetPhoneType,
                       1
                       ],
-                                        GlobalRestAPISignType,
-                                        GlobalRestAPIAppSecret
+                      GlobalRestAPISignType,
+                      GlobalRestAPIAppSecret
                       );
 
 
@@ -273,15 +295,17 @@ begin
       TTimerTask(ATimerTask).TaskDesc:=
             SimpleCallAPI('update_user_push_badge',
                           nil,
-                          PushServerUrl,
+                          PushManageInterfaceUrl,
                           ['appid',
+                          'key',
                           'app_type',
                           'push_type',
                           'client_id',
                           'ios_device_token',
                           'badge'],
                           [AppID,
-                          AppType,
+                          GlobalManager.User.Key,
+                          Const_GetuiPush_AppType,
                           Self.FBasePush.GetPushType,
                           Self.FBasePush.ClientID,
                           Self.FBasePush.DeviceToken,
@@ -355,19 +379,19 @@ begin
 
       TTimerTask(ATimerTask).TaskDesc:=SimpleCallAPI('update_user_is_need_push',
                     nil,
-                    PushServerUrl,
+                    PushManageInterfaceUrl,
                     ['appid',
                     'app_type',
                     'user_fid',
                     'key',
                     'is_need_push'],
                     [AppID,
-                    AppType,
-                    UserFID,
-                    '',
+                    Const_GetuiPush_AppType,
+                    GlobalManager.User.FID,
+                    GlobalManager.User.Key,
                     Self.FIsNeedPush],
-                                        GlobalRestAPISignType,
-                                        GlobalRestAPIAppSecret
+                    GlobalRestAPISignType,
+                    GlobalRestAPIAppSecret
                     );
 
 

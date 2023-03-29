@@ -32,8 +32,19 @@ uses
 //  {$ENDIF}
 
 
-  uLang,
+//  uLang,
   SysUtils;
+
+
+
+const
+  //缩略图前缀
+  THUMB_FILE_PREFIX='thumb_';
+
+const
+  //AccessToken的自定义头名称
+  CUSTROM_HEADER_ACCESS_TOKEN='key';
+
 
 
 const
@@ -48,11 +59,15 @@ const
   //页面框架的页面类型
   //列表页面
   Const_PageType_ListPage='list_page';
+  //表格管理页面
   Const_PageType_TableManagePage='table_manage_page';
   //编辑页面
   Const_PageType_EditPage='edit_page';
   //查看页面
   Const_PageType_ViewPage='view_page';
+
+
+
   //自定义页面
   Const_PageType_CustomPage='custom_page';
   //树型列表页面
@@ -141,6 +156,7 @@ const
 
   Const_PageAction_SelectDateArea='select_date_area';
   Const_PageAction_ValueChange='value_change';
+  Const_PageAction_ReturnFrame='return_frame';
   {$ENDREGION '页面框架的页面区域'}
 
 
@@ -341,6 +357,7 @@ const
   // 支付宝登录
   Const_RegisterLoginType_Alipay = 'alipay';
   Const_RegisterLoginType_Apple = 'apple';
+  Const_RegisterLoginType_FumaMX = 'fumamx';
   {$ENDREGION}
 
 
@@ -363,11 +380,17 @@ const
   //已完成/用户确认收货
   Const_OrderState_Done='done';
 
+
+
+
   //到店付
   Const_OrderState_PayTillDown='pay_till_done';
 
+
   //商家出餐
   Const_OrderState_Shoper_Finish_Goods='shoper_finish_goods';
+
+
   //次要状态
   //骑手接单
   Const_OrderState_Rider_Accept_Order='rider_accept_order';
@@ -382,11 +405,19 @@ const
   //骑手取消订单
   Const_OrderState_Rider_Cancelled='rider_cancelled';
 
+
+
   //自己配送的商家派单给骑手
   Const_OrderState_shoper_pending_order='shoper_pending_order';
 
+
+
   //用户确认收货
   Const_OrderState_User_Accept='user_accept';
+
+
+
+
 
   //(我)申请了售后服务
   Const_OrderState_Wait_Process_Customer_Service='wait_process_customer_service';
@@ -610,7 +641,7 @@ const
   //订单消息,订单状态更改的通知
   Const_NoticeCalssify_Order='order';
   //其他消息,如申请挂勾码、酒店审核通过、
-  Const_NoticeCalssify_Other='other';
+   Const_NoticeCalssify_Other='other';
   //站内信,员工通知酒店经理
   Const_NoticeCalssify_Mail='mail';
   //内容中心,点赞,评论
@@ -750,6 +781,11 @@ const
 
   //赠送话费
   Const_NoticeSubCalssify_GiftPhoneBalance='gift_phone_balance';
+
+
+  //急救达人//
+  //身体异常
+  Const_NoticeSubCalssify_Exception='exception';
 
 
   //其他
@@ -1147,11 +1183,11 @@ begin
   Result:='';
   if ASex=0 then
   begin
-    Result:=Trans('先生');
+    Result:=('先生');
   end
   else if ASex=1 then
   begin
-    Result:=Trans('女士');
+    Result:=('女士');
   end;
 end;
 
@@ -1160,19 +1196,19 @@ end;
 //  Result:='';
 //  if AMethod=0 then
 //  begin
-//    Result:=Trans('不配送');
+//    Result:=('不配送');
 //  end
 //  else if AMethod=1 then
 //  begin
-//    Result:=Trans('平台配送');
+//    Result:=('平台配送');
 //  end
 //  else if AMethod=3 then
 //  begin
-//    Result:=Trans('快递');
+//    Result:=('快递');
 //  end
 //  else
 //  begin
-//    Result:=Trans('商家自己配送');
+//    Result:=('商家自己配送');
 //  end;
 //end;
 
@@ -1201,35 +1237,35 @@ function GetRuleType(ATuleType:String):String;
 begin
   Result:='';
 
-  if ATuleType=Const_RuleType_Register then Result:=Trans('注册');
-  if ATuleType=Const_RuleType_InviteRegister then Result:=Trans('邀请好友注册');
-  if ATuleType=Const_RuleType_ConsumeMoney then Result:=Trans('消费');
-  if ATuleType=Const_RuleType_MyManConsumeMoney then Result:=Trans('邀请的好友消费赠送积分');
-  if ATuleType=Const_RuleType_DelayDailyGiftLeft then Result:=Trans('分期每天赠送剩余积分');
-  if ATuleType=Const_RuleType_CommentOrder then Result:=Trans('下单评论');
-  if ATuleType=Const_RuleType_ExchangeScore then Result:=Trans('积分兑换');
-  if ATuleType=Const_RuleType_AuditFailReback then Result:=Trans('积分兑换申请审核失败,返还');
-  if ATuleType=Const_RuleType_ProcessFailReback then Result:=Trans('积分兑换申请处理失败,返还');
+  if ATuleType=Const_RuleType_Register then Result:=('注册');
+  if ATuleType=Const_RuleType_InviteRegister then Result:=('邀请好友注册');
+  if ATuleType=Const_RuleType_ConsumeMoney then Result:=('消费');
+  if ATuleType=Const_RuleType_MyManConsumeMoney then Result:=('邀请的好友消费赠送积分');
+  if ATuleType=Const_RuleType_DelayDailyGiftLeft then Result:=('分期每天赠送剩余积分');
+  if ATuleType=Const_RuleType_CommentOrder then Result:=('下单评论');
+  if ATuleType=Const_RuleType_ExchangeScore then Result:=('积分兑换');
+  if ATuleType=Const_RuleType_AuditFailReback then Result:=('积分兑换申请审核失败,返还');
+  if ATuleType=Const_RuleType_ProcessFailReback then Result:=('积分兑换申请处理失败,返还');
 
 end;
 
 function GetCoopSchemeDeliverTypeStr(ACoopSchemeDeliverType:TCoopSchemeDeliverType):String;
 begin
   case ACoopSchemeDeliverType of
-    dtNone: Result:=Trans('不配送');
-    dtExpress: Result:=Trans('平台专送');
-    dtSelf: Result:=Trans('自己配送');
-    dtPosting: Result:=Trans('快递');
+    dtNone: Result:=('不配送');
+    dtExpress: Result:=('平台专送');
+    dtSelf: Result:=('自己配送');
+    dtPosting: Result:=('快递');
   end;
 end;
 
 function GetDeliverTypeStr(ADeliverType:String):String;
 begin
   Result:='';
-  if ADeliverType=Const_DeliverType_EatInShop then Result:=Trans('堂食');
-  if ADeliverType=Const_DeliverType_SelfTake then Result:=Trans('自取');
-  if ADeliverType=Const_DeliverType_NeedDeliver then Result:=Trans('需要配送');
-  if ADeliverType=Const_DeliverType_Express then Result:=Trans('快递');
+  if ADeliverType=Const_DeliverType_EatInShop then Result:=('堂食');
+  if ADeliverType=Const_DeliverType_SelfTake then Result:=('自取');
+  if ADeliverType=Const_DeliverType_NeedDeliver then Result:=('需要配送');
+  if ADeliverType=Const_DeliverType_Express then Result:=('快递');
 
 end;
 
@@ -1237,18 +1273,18 @@ function GetBillMoneyType(AMoneyType:String):String;
 begin
   Result:='';
 
-  if AMoneyType=Const_MoneyType_Income then Result:=Trans('收入');
-  if AMoneyType=Const_MoneyType_Consume then Result:=Trans('消费');
-  if AMoneyType=Const_MoneyType_Withdraw then Result:=Trans('提现');
-  if AMoneyType=Const_MoneyType_Refund then Result:=Trans('退款');
-  if AMoneyType=Const_MoneyType_Compensate then Result:=Trans('赔付');
-  if AMoneyType=Const_MoneyType_Reback then Result:=Trans('返还');
-  if AMoneyType=Const_MoneyType_ServiceFee then Result:=Trans('扣除服务费');
-  if AMoneyType=Const_MoneyType_Score_Exchange then Result:=Trans('积分兑换');
-  if AMoneyType=Const_MoneyType_MyManConsumeMoney then Result:=Trans('邀请的好友消费赠送余额');
-  if AMoneyType=Const_MoneyType_PayForPush then Result:=Trans('商家付费推送消息');
-  if AMoneyType=Const_MoneyType_StockShareDividend then Result:=Trans('股东分红赠送');
-  if AMoneyType=Const_MoneyType_StockGiftToIntroducer then Result:=Trans('邀请股东赠送');
+  if AMoneyType=Const_MoneyType_Income then Result:=('收入');
+  if AMoneyType=Const_MoneyType_Consume then Result:=('消费');
+  if AMoneyType=Const_MoneyType_Withdraw then Result:=('提现');
+  if AMoneyType=Const_MoneyType_Refund then Result:=('退款');
+  if AMoneyType=Const_MoneyType_Compensate then Result:=('赔付');
+  if AMoneyType=Const_MoneyType_Reback then Result:=('返还');
+  if AMoneyType=Const_MoneyType_ServiceFee then Result:=('扣除服务费');
+  if AMoneyType=Const_MoneyType_Score_Exchange then Result:=('积分兑换');
+  if AMoneyType=Const_MoneyType_MyManConsumeMoney then Result:=('邀请的好友消费赠送余额');
+  if AMoneyType=Const_MoneyType_PayForPush then Result:=('商家付费推送消息');
+  if AMoneyType=Const_MoneyType_StockShareDividend then Result:=('股东分红赠送');
+  if AMoneyType=Const_MoneyType_StockGiftToIntroducer then Result:=('邀请股东赠送');
 
 
 end;
@@ -1259,19 +1295,19 @@ begin
 
   if AType=Const_Activity_Type_Full then
   begin
-    Result:=Trans('满减活动');
+    Result:=('满减活动');
   end
   else if AType=Const_Activity_Type_Special then
   begin
-    Result:=Trans('特价活动');
+    Result:=('特价活动');
   end
   else if AType=Const_Activity_Type_Discount then
   begin
-    Result:=Trans('打折活动');
+    Result:=('打折活动');
   end
   else if AType=Const_Activity_Type_Coupon then
   begin
-    Result:=Trans('红包');
+    Result:=('红包');
   end
   else
   begin
@@ -1283,11 +1319,11 @@ end;
 //function GetNoticeCalssifyName(ANoticeCalssify:String):String;
 //begin
 //  Result:='';
-//  if ANoticeCalssify=Const_NoticeCalssify_System then Result:=Trans('系统公告');
-//  if ANoticeCalssify=Const_NoticeCalssify_Order then Result:=Trans('订单消息');
-////  if ANoticeCalssify=Const_NoticeCalssify_Account then Result:=Trans('账号消息');
-//  if ANoticeCalssify=Const_NoticeCalssify_Other then Result:=Trans('其他消息');
-//  if ANoticeCalssify=Const_NoticeCalssify_Mail then Result:=Trans('站内信');
+//  if ANoticeCalssify=Const_NoticeCalssify_System then Result:=('系统公告');
+//  if ANoticeCalssify=Const_NoticeCalssify_Order then Result:=('订单消息');
+////  if ANoticeCalssify=Const_NoticeCalssify_Account then Result:=('账号消息');
+//  if ANoticeCalssify=Const_NoticeCalssify_Other then Result:=('其他消息');
+//  if ANoticeCalssify=Const_NoticeCalssify_Mail then Result:=('站内信');
 //end;
 
 function GetAuditStateStr(AAuditState:TAuditState;AAuditType:String):String;
@@ -1297,19 +1333,19 @@ begin
   if AAuditType='cert_audit' then
   begin
     case AAuditState of
-      asRequestAudit: Result:=Trans('待实名审核');
-      asDefault: Result:=Trans('实名未审核');
-      asAuditPass: Result:=Trans('实名通过');
-      asAuditReject: Result:=Trans('实名审核拒绝');
+      asRequestAudit: Result:=('待实名审核');
+      asDefault: Result:=('实名未审核');
+      asAuditPass: Result:=('实名通过');
+      asAuditReject: Result:=('实名审核拒绝');
     end;
   end
   else //if (AAuditType='') or (AAuditType='audit') then
   begin
     case AAuditState of
-      asRequestAudit: Result:=Trans('待审核');
-      asDefault: Result:=Trans('未审核');
-      asAuditPass: Result:=Trans('审核通过');
-      asAuditReject: Result:=Trans('审核拒绝');
+      asRequestAudit: Result:=('待审核');
+      asDefault: Result:=('未审核');
+      asAuditPass: Result:=('审核通过');
+      asAuditReject: Result:=('审核拒绝');
     end;
   end
 end;
@@ -1317,10 +1353,10 @@ end;
 function GetProcessStateStr(AProcessState:TProcessState):String;
 begin
   case AProcessState of
-    asRequestProcess: Result:=Trans('等待处理');
-    asProcessDefault: Result:=Trans('未处理');
-    asProcessPass: Result:=Trans('处理成功');
-    asProcessReject: Result:=Trans('处理失败');
+    asRequestProcess: Result:=('等待处理');
+    asProcessDefault: Result:=('未处理');
+    asProcessPass: Result:=('处理成功');
+    asProcessReject: Result:=('处理失败');
   end;
 end;
 
@@ -1328,21 +1364,21 @@ function GetPaymentTypeStr(APaymentType:String):String;
 begin
   //默认
   Result:=APaymentType;
-  if APaymentType=Const_PaymentType_BankTranser then Result:=Trans('线下转账');
-  if APaymentType=Const_PaymentType_WeiXinPay then Result:=Trans('微信支付');
-  if APaymentType=Const_PaymentType_Alipay then Result:=Trans('支付宝支付');
-  if APaymentType=Const_PaymentType_Pxpay then Result:=Trans('Pxpay支付');
-  if APaymentType=Const_PaymentType_Stripepay then Result:=Trans('Stripe支付');
-  if APaymentType=Const_PaymentType_Polipay then Result:=Trans('Polipay支付');
-  if APaymentType=Const_PaymentType_AccountBalance then Result:=Trans('余额支付');
-  if APaymentType=Const_PaymentType_CashOnDelivery then Result:=Trans('货到付款');
+  if APaymentType=Const_PaymentType_BankTranser then Result:=('线下转账');
+  if APaymentType=Const_PaymentType_WeiXinPay then Result:=('微信支付');
+  if APaymentType=Const_PaymentType_Alipay then Result:=('支付宝支付');
+  if APaymentType=Const_PaymentType_Pxpay then Result:=('Pxpay支付');
+  if APaymentType=Const_PaymentType_Stripepay then Result:=('Stripe支付');
+  if APaymentType=Const_PaymentType_Polipay then Result:=('Polipay支付');
+  if APaymentType=Const_PaymentType_AccountBalance then Result:=('余额支付');
+  if APaymentType=Const_PaymentType_CashOnDelivery then Result:=('货到付款');
 
-  if APaymentType=Const_PaymentType_CashOnDelivery then Result:=Trans('货到付款');
-  if APaymentType=Const_PaymentType_PayAtStore then Result:=Trans('到店付');
-  if APaymentType=Const_PaymentType_PosDebitCard then Result:=Trans('POS机刷借记卡');
-  if APaymentType=Const_PaymentType_PosCreditCard then Result:=Trans('POS机刷信用卡');
-  if APaymentType=Const_PaymentType_PaymentCreditCard then Result:=Trans('PxPay刷信用卡');
-  if APaymentType=Const_PaymentType_PaymentDebitCard then Result:=Trans('PxPay刷借记卡');
+  if APaymentType=Const_PaymentType_CashOnDelivery then Result:=('货到付款');
+  if APaymentType=Const_PaymentType_PayAtStore then Result:=('到店付');
+  if APaymentType=Const_PaymentType_PosDebitCard then Result:=('POS机刷借记卡');
+  if APaymentType=Const_PaymentType_PosCreditCard then Result:=('POS机刷信用卡');
+  if APaymentType=Const_PaymentType_PaymentCreditCard then Result:=('PxPay刷信用卡');
+  if APaymentType=Const_PaymentType_PaymentDebitCard then Result:=('PxPay刷借记卡');
 end;
 
 function GetUserOrderStateStr(AOrderState:String;AHasRider:Boolean=True):String;
@@ -1350,62 +1386,62 @@ begin
 //  Result:=AOrderState;
   Result:='';
 
-  if AOrderState=Const_OrderState_WaitPay then Result:=Trans('待付款');
-  if AOrderState=Const_OrderState_Cancelled then Result:=Trans('已取消');
-  if AOrderState=Const_OrderState_Payed then Result:=Trans('已付款,待商家接单');
-  if AOrderState=Const_OrderState_Accepted then Result:=Trans('商家已接单');
-  if AOrderState=Const_OrderState_Reject then Result:=Trans('商家拒单');
+  if AOrderState=Const_OrderState_WaitPay then Result:=('待付款');
+  if AOrderState=Const_OrderState_Cancelled then Result:=('已取消');
+  if AOrderState=Const_OrderState_Payed then Result:=('已付款,待商家接单');
+  if AOrderState=Const_OrderState_Accepted then Result:=('商家已接单');
+  if AOrderState=Const_OrderState_Reject then Result:=('商家拒单');
 
   if AHasRider then
   begin
-    if AOrderState=Const_OrderState_Sent then Result:=Trans('商家已出餐');
+    if AOrderState=Const_OrderState_Sent then Result:=('商家已出餐');
 
     //次要状态
-    if AOrderState=Const_OrderState_Shoper_Finish_Goods then Result:=Trans('商家已出餐');
+    if AOrderState=Const_OrderState_Shoper_Finish_Goods then Result:=('商家已出餐');
 
 
     //有骑手端时打开
-    if AOrderState=Const_OrderState_Rider_Accept_Order then Result:=Trans('骑手已接单');
-    if AOrderState=Const_OrderState_Rider_At_Sender then Result:=Trans('骑手已到店');
-    if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=Trans('骑手已取货');
-    if AOrderState=Const_OrderState_Rider_Sending then Result:=Trans('骑手派送中');
-    if AOrderState=Const_OrderState_Rider_Arrived then Result:=Trans('骑手已送达');
+    if AOrderState=Const_OrderState_Rider_Accept_Order then Result:=('骑手已接单');
+    if AOrderState=Const_OrderState_Rider_At_Sender then Result:=('骑手已到店');
+    if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=('骑手已取货');
+    if AOrderState=Const_OrderState_Rider_Sending then Result:=('骑手派送中');
+    if AOrderState=Const_OrderState_Rider_Arrived then Result:=('骑手已送达');
 
   end
   else
   begin
     //亿诚生活  商家就是骑手    加了骑手端
-    if AOrderState=Const_OrderState_Sent then Result:=Trans('商家已发货');
+    if AOrderState=Const_OrderState_Sent then Result:=('商家已发货');
 
     //次要状态
     //有骑手端时注释
-    if AOrderState=Const_OrderState_Shoper_Finish_Goods then Result:=Trans('商家已发货');
-    if AOrderState=Const_OrderState_Rider_Accept_Order then Result:=Trans('商家已出发');
-    if AOrderState=Const_OrderState_Rider_At_Sender then Result:=Trans('商家已出发');
-    if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=Trans('商家已出发');
-    if AOrderState=Const_OrderState_Rider_Sending then Result:=Trans('商家已出发');
-    if AOrderState=Const_OrderState_Rider_Arrived then Result:=Trans('商家已送达');
+    if AOrderState=Const_OrderState_Shoper_Finish_Goods then Result:=('商家已发货');
+    if AOrderState=Const_OrderState_Rider_Accept_Order then Result:=('商家已出发');
+    if AOrderState=Const_OrderState_Rider_At_Sender then Result:=('商家已出发');
+    if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=('商家已出发');
+    if AOrderState=Const_OrderState_Rider_Sending then Result:=('商家已出发');
+    if AOrderState=Const_OrderState_Rider_Arrived then Result:=('商家已送达');
     //------
 
     //这个状态  平台商家 发货应该还要用
-    if AOrderState=Const_OrderState_User_Accept then Result:=Trans('用户确认收货');
+    if AOrderState=Const_OrderState_User_Accept then Result:=('用户确认收货');
 
-    if AOrderState=Const_OrderState_shoper_pending_order then Result:=Trans('待骑手接单');
+    if AOrderState=Const_OrderState_shoper_pending_order then Result:=('待骑手接单');
 
   end;
   //有骑手端时打开
-//  if AOrderState=Const_OrderState_Rider_Accept_Order then Result:=Trans('骑手已接单');
-//  if AOrderState=Const_OrderState_Rider_At_Sender then Result:=Trans('骑手已到店');
-//  if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=Trans('骑手已取货');
-//  if AOrderState=Const_OrderState_Rider_Sending then Result:=Trans('骑手派送中');
-//  if AOrderState=Const_OrderState_Rider_Arrived then Result:=Trans('骑手已送达');
+//  if AOrderState=Const_OrderState_Rider_Accept_Order then Result:=('骑手已接单');
+//  if AOrderState=Const_OrderState_Rider_At_Sender then Result:=('骑手已到店');
+//  if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=('骑手已取货');
+//  if AOrderState=Const_OrderState_Rider_Sending then Result:=('骑手派送中');
+//  if AOrderState=Const_OrderState_Rider_Arrived then Result:=('骑手已送达');
 
 
 
 
-  if AOrderState=Const_OrderState_Done then Result:=Trans('已完成');
+  if AOrderState=Const_OrderState_Done then Result:=('已完成');
 
-  if AOrderState=Const_OrderState_PayTillDown then Result:=Trans('待商家接单');
+  if AOrderState=Const_OrderState_PayTillDown then Result:=('待商家接单');
 
 end;
 
@@ -1414,19 +1450,19 @@ begin
 //  Result:=AOrderState;
   Result:='';
 
-  if AOrderState=Const_OrderState_WaitPay then Result:=Trans('待付款');
-  if AOrderState=Const_OrderState_Cancelled then Result:=Trans('已取消');
-  if AOrderState=Const_OrderState_Payed then Result:=Trans('待骑手接单');
-  if AOrderState=Const_OrderState_Accepted then Result:=Trans('待骑手取货');
-  if AOrderState=Const_OrderState_Reject then Result:=Trans('订单被拒绝');
+  if AOrderState=Const_OrderState_WaitPay then Result:=('待付款');
+  if AOrderState=Const_OrderState_Cancelled then Result:=('已取消');
+  if AOrderState=Const_OrderState_Payed then Result:=('待骑手接单');
+  if AOrderState=Const_OrderState_Accepted then Result:=('待骑手取货');
+  if AOrderState=Const_OrderState_Reject then Result:=('订单被拒绝');
 
-  if AOrderState=Const_OrderState_Rider_Sending then Result:=Trans('骑手派送中');
-  if AOrderState=Const_OrderState_Rider_At_Sender then Result:=Trans('骑手已到店');
-  if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=Trans('骑手已取货');
-  if AOrderState=Const_OrderState_Rider_Arrived then Result:=Trans('骑手已送达');
+  if AOrderState=Const_OrderState_Rider_Sending then Result:=('骑手派送中');
+  if AOrderState=Const_OrderState_Rider_At_Sender then Result:=('骑手已到店');
+  if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=('骑手已取货');
+  if AOrderState=Const_OrderState_Rider_Arrived then Result:=('骑手已送达');
 
-  if AOrderState=Const_OrderState_Sent then Result:=Trans('骑手派送中');
-  if AOrderState=Const_OrderState_Done then Result:=Trans('已完成');
+  if AOrderState=Const_OrderState_Sent then Result:=('骑手派送中');
+  if AOrderState=Const_OrderState_Done then Result:=('已完成');
 
 end;
 
@@ -1435,22 +1471,22 @@ begin
 //  Result:=AOrderState;
   Result:='';
 
-  if AOrderState=Const_OrderState_WaitPay then Result:=Trans('待付款');
-  if AOrderState=Const_OrderState_Cancelled then Result:=Trans('已取消');
-  if AOrderState=Const_OrderState_Payed then Result:=Trans('待接单');
-  if AOrderState=Const_OrderState_PayTillDown then Result:=Trans('待接单');
+  if AOrderState=Const_OrderState_WaitPay then Result:=('待付款');
+  if AOrderState=Const_OrderState_Cancelled then Result:=('已取消');
+  if AOrderState=Const_OrderState_Payed then Result:=('待接单');
+  if AOrderState=Const_OrderState_PayTillDown then Result:=('待接单');
   
-  if AOrderState=Const_OrderState_Accepted then Result:=Trans('待取货');
-  if AOrderState=Const_OrderState_Reject then Result:=Trans('订单被拒绝');
+  if AOrderState=Const_OrderState_Accepted then Result:=('待取货');
+  if AOrderState=Const_OrderState_Reject then Result:=('订单被拒绝');
 
-  if AOrderState=Const_OrderState_Rider_Arrived then Result:=Trans('已到达');
-  if AOrderState=Const_OrderState_Rider_At_Sender then Result:=Trans('已到店');
-  if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=Trans('已取货');
-  if AOrderState=Const_OrderState_Rider_Sending then Result:=Trans('配送中');
+  if AOrderState=Const_OrderState_Rider_Arrived then Result:=('已到达');
+  if AOrderState=Const_OrderState_Rider_At_Sender then Result:=('已到店');
+  if AOrderState=Const_OrderState_Rider_Take_Goods then Result:=('已取货');
+  if AOrderState=Const_OrderState_Rider_Sending then Result:=('配送中');
 
-  if AOrderState=Const_OrderState_Sent then Result:=Trans('配送中');
+  if AOrderState=Const_OrderState_Sent then Result:=('配送中');
 
-  if AOrderState=Const_OrderState_Done then Result:=Trans('已完成');
+  if AOrderState=Const_OrderState_Done then Result:=('已完成');
 
 end;
 
@@ -1465,15 +1501,15 @@ begin
 //  Const_PayState_Payed='payed';
 //  //付款失败
 //  Const_PayState_PayFail='pay_fail';
-  if APayState=Const_PayState_WaitPay then Result:=Trans('未付款');
-  if APayState=Const_PayState_Payed then Result:=Trans('已付款');
-  if APayState=Const_PayState_PayTillDone then Result:=Trans('待付款');
+  if APayState=Const_PayState_WaitPay then Result:=('未付款');
+  if APayState=Const_PayState_Payed then Result:=('已付款');
+  if APayState=Const_PayState_PayTillDone then Result:=('待付款');
   if (APayState=Const_PayState_Refunded)
-      or (APayState='refuned') then Result:=Trans('已退款');
+      or (APayState='refuned') then Result:=('已退款');
 
 
-//  if APayState=Const_PayState_PayFail then Result:=Trans('付款失败');
-//  if APayState=Const_PayState_NoNeedPay then Result:=Trans('不需要付款');
+//  if APayState=Const_PayState_PayFail then Result:=('付款失败');
+//  if APayState=Const_PayState_NoNeedPay then Result:=('不需要付款');
 end;
 
 //获取通知标题及内容
@@ -1551,4 +1587,6 @@ end;
 
 
 end.
+
+
 

@@ -34,10 +34,12 @@ uses
 //  ActiveX,
   uBaseLog,
   uFuncCommon,
+  XSuperObject,
 
   StrUtils,
   uBaseDBHelper,
   uDataBaseConfig,
+  uDatasetToJson,
 
 
   {$IFNDEF NOT_USE_kbmMWUNIDACConnectionPool}
@@ -113,9 +115,9 @@ type
     property Connection:TUniConnection read FConnection write SetConnection;
     //查询
     function SelfQuery(AQueryString:String;
-                        AParamNames:TStringDynArray;
-                        AParamValues:TVariantDynArray;
-                        AOperation:TSQLOperation;
+                        AParamNames:TStringDynArray=[];
+                        AParamValues:TVariantDynArray=[];
+                        AOperation:TSQLOperation=asoOpen;
                         AParamsCompleted:Boolean=False;
                         ACustomQueryDataSet:TDataSet=nil):Boolean;override;
   end;
@@ -139,12 +141,13 @@ var
   AUniConnection:TUniConnection;
 begin
     //直连SQLServer时不再需要CoUnInitialize
-//  if SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000') then
-//  begin
-//    {$IFDEF MSWINDOWS}
-//    CoInitialize(nil);
-//    {$ENDIF}
-//  end;
+  if (SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000'))
+    and (ADataBaseConfig.FSpecificOptions_Provider<>'prDirect') then
+  begin
+    {$IFDEF MSWINDOWS}
+    CoInitialize(nil);
+    {$ENDIF}
+  end;
   try
       Result:=False;
 
@@ -194,15 +197,16 @@ begin
               //      'MySQL.UseUnicode=True'
               //      'SQL Server.Provider=prDirect')
 
-
-              //在windows的service模式下设置直连会报错
-//              {$IFDEF IS_WINDOWS_SERVICE}
-//              AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
-//              {$ELSE}
-              AUniConnection.SpecificOptions.Values['Provider']:=ADataBaseConfig.FSpecificOptions_Provider;//'prDirect';
-//              {$ENDIF}
-              AUniConnection.SpecificOptions.Values['NativeClientVersion']:=ADataBaseConfig.FSpecificOptions_NativeClientVersion;//'prDirect';
-
+              if ADataBaseConfig.FSpecificOptions_Provider='prDirect' then
+              begin
+                //在windows的service模式下设置直连会报错
+  //              {$IFDEF IS_WINDOWS_SERVICE}
+  //              AUniConnection.SpecificOptions.Values['Provider']:='prDirect';
+  //              {$ELSE}
+                AUniConnection.SpecificOptions.Values['Provider']:=ADataBaseConfig.FSpecificOptions_Provider;//'prDirect';
+  //              {$ENDIF}
+                AUniConnection.SpecificOptions.Values['NativeClientVersion']:=ADataBaseConfig.FSpecificOptions_NativeClientVersion;//'prDirect';
+              end;
 
           end
           else if SameText(ADataBaseConfig.FDBType,'SQLite') then
@@ -243,7 +247,7 @@ begin
 
               //连接数据库,MYSQL
               AUniConnection.Server:=ADataBaseConfig.FDBHostName;
-              AUniConnection.Port:=StrToInt(ADataBaseConfig.FDBHostPort);
+              AUniConnection.Port:=StrToIntDef(ADataBaseConfig.FDBHostPort,0);
               AUniConnection.Username:=ADataBaseConfig.FDBUserName;
               AUniConnection.Password:=ADataBaseConfig.FDBPassword;
               AUniConnection.Database:=ADataBaseConfig.FDBDataBaseName;
@@ -267,13 +271,14 @@ begin
 
 
   finally
-      //直连SQLServer时不再需要CoUnInitialize
-//    if SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000') then
-//    begin
-//      {$IFDEF MSWINDOWS}
-//      CoUnInitialize();
-//      {$ENDIF}
-//    end;
+    //直连SQLServer时不再需要CoUnInitialize
+    if (SameText(ADataBaseConfig.FDBType,'MSSQL') or SameText(ADataBaseConfig.FDBType,'MSSQL2000'))
+      and (ADataBaseConfig.FSpecificOptions_Provider<>'prDirect') then
+    begin
+      {$IFDEF MSWINDOWS}
+      CoUnInitialize();
+      {$ENDIF}
+    end;
   end;
 end;
 
@@ -392,6 +397,7 @@ begin
 
 end;
 
+
 {$IFNDEF NOT_USE_kbmMWUNIDACConnectionPool}
 function TUniDBHelper.GetUnidacConnectionFromPool: TkbmMWunidacConnection;
 begin
@@ -458,7 +464,7 @@ begin
   end;
 
 
-
+  if SameText(Self.DBType,'SQLite') then  Self.Lock;
 
   if SameText(Self.DBType,'MSSQL') or SameText(Self.DBType,'MSSQL2000') then
   begin
@@ -596,6 +602,7 @@ begin
         end;
 
   finally
+    if SameText(Self.DBType,'SQLite') then  Self.UnLock;
     if SameText(Self.DBType,'MSSQL') or SameText(Self.DBType,'MSSQL2000') then
     begin
       {$IFDEF MSWINDOWS}

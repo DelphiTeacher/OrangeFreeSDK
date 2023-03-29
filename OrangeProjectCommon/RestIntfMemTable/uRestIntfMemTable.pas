@@ -1,6 +1,21 @@
 unit uRestIntfMemTable;
 
 interface
+{$IF DEFINED(ANDROID) OR DEFINED(IOS) OR DEFINED(MACOS) }
+  {$DEFINE FMX}
+{$IFEND}
+
+
+
+//请在工程下放置FrameWork.inc
+//或者在工程设置中配置FMX编译指令
+//才可以正常编译此单元
+{$IFNDEF FMX}
+  {$IFNDEF VCL}
+    {$I FrameWork.inc}
+  {$ENDIF}
+{$ENDIF}
+
 
 
 uses
@@ -11,7 +26,8 @@ uses
   XSuperObject,
   uTimerTask,
   uTimerTaskEvent,
-  Dialogs,
+//  {$IFDEF FMX}
+//  Dialogs,
   Math,
 
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
@@ -187,7 +203,7 @@ begin
   try
     if TTimerTask(ATimerTask).TaskTag=TASK_FAIL then
     begin
-      ShowMessage(TTimerTask(ATimerTask).TaskDesc);
+//      ShowMessage(TTimerTask(ATimerTask).TaskDesc);
     end;
   finally
     if Assigned(OnExecuteEnd) then
@@ -242,7 +258,7 @@ begin
                         Self
                         ) and (ACode=SUCC) then
   begin
-    ShowMessage(ADesc);
+//    ShowMessage(ADesc);
 
 //    //显示到表格上
 //    Self.DataSource1.DataSet:=tblData;
@@ -253,7 +269,7 @@ begin
   end
   else
   begin
-    ShowMessage(ADesc);
+//    ShowMessage(ADesc);
   end;
 
 end;

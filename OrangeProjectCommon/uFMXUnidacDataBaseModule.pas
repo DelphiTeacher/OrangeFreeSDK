@@ -26,9 +26,9 @@ uses
 //  Vcl.Controls,
 //  Vcl.StdCtrls,
 //  Vcl.ExtCtrls,
-  uLang,
+//  uLang,
   {$IFDEF FMX}
-  FMX.Types,
+//  FMX.Types,
   {$ENDIF}
   {$IFDEF VCL}
   ExtCtrls,
@@ -139,7 +139,7 @@ begin
   //数据库连接池
   DBHelperPool:=TUniDBHelperPool.Create(nil);
   TUniDBHelperPool(DBHelperPool).FDBConfig:=DBConfig;
-  DBHelperPool.FIsUseUnidacConnectionPool:=False;
+  TUniDBHelperPool(DBHelperPool).FIsUseUnidacConnectionPool:=False;
 //  TUniDBHelperPool(DBHelperPool).FUnidacConnectionPool:=dmServerDataBase.kbmMWUNIDACConnectionPool1;
 
 

@@ -29,7 +29,6 @@ uses
   SysUtils,
   Classes,
   Math,
-  StrUtils,
 
 //  {$IFDEF VCL}
 //  Windows,
@@ -41,20 +40,27 @@ uses
     {$ELSE}
     Windows,
     Forms,
-    {$ENDIF}
+    {$IFEND}
   {$ENDIF}
 
   {$IFDEF FMX}
 //  WindowsApi.Windows,
-  FMX.Forms,
+    {$IFDEF MSWINDOWS}
+//    FMX.Forms,
+    {$ENDIF}
   {$ENDIF}
 
   {$IFDEF FMX}
   System.IOUtils,
   {$ENDIF}
 
-  uFuncCommon;
+  {$IFDEF IN_ORANGESDK}
+  uFuncCommon_Copy,
+  {$ELSE}
+  uFuncCommon,
+  {$ENDIF}
 
+  StrUtils;
 
 
 

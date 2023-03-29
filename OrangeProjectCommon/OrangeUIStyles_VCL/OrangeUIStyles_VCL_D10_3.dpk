@@ -66,6 +66,12 @@ contains
   ListItemStyle_IconCaptionLeft_NotifyNumberRight in 'ListItemStyle_IconCaptionLeft_NotifyNumberRight.pas' {FrameListItemStyle_IconCaptionLeft_NotifyNumberRight},
   ListItemStyle_IconCaptionLeft_NotifyIconRight in 'ListItemStyle_IconCaptionLeft_NotifyIconRight.pas' {FrameListItemStyle_IconCaptionLeft_NotifyIconRight},
   ListItemStyle_IconCaptionLeft_ArrowRight in 'ListItemStyle_IconCaptionLeft_ArrowRight.pas',
-  ListItemStyle_DashBoardSummaryItem in 'ListItemStyle_DashBoardSummaryItem.pas';
+  ListItemStyle_DashBoardSummaryItem in 'ListItemStyle_DashBoardSummaryItem.pas',
+  ListItemStyle_ProgressBar in 'ListItemStyle_ProgressBar.pas',
+  ListItemStyle_IconTop_CaptionDetailBottom in 'ListItemStyle_IconTop_CaptionDetailBottom.pas',
+  ListItemStyle_TwoIconButton in 'ListItemStyle_TwoIconButton.pas',
+  ListItemStyle_IconLeft_CaptionLeft in 'ListItemStyle_IconLeft_CaptionLeft.pas',
+  ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite in 'ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite.pas' {FrameListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite},
+  ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont in 'ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont.pas';
 
 end.

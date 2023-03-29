@@ -33,7 +33,7 @@ uses
     {$ELSE}
     Windows,
     Forms,
-    {$ENDIF}
+    {$IFEND}
   {$ENDIF}
 
 
@@ -511,11 +511,12 @@ end;
 //记录语言索引到中文并获取翻译,二合一
 function Trans(AIndex:String):String;
 begin
-  Result:=RecAndTrans(GlobalLang,
-                      AIndex,
-                      'cn',
-                      AIndex,
-                      GlobalCurLang);
+  Result:=AIndex;//
+//          RecAndTrans(GlobalLang,
+//                      AIndex,
+//                      'cn',
+//                      AIndex,
+//                      GlobalCurLang);
 end;
 
 

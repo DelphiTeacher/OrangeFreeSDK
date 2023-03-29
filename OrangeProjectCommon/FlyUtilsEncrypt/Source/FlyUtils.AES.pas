@@ -388,7 +388,7 @@ begin
   FillChar(InitVector[0], I, 0);
   J := Length(IvBytes);
   J := Min(J, I);
-  Move(IvBytes[0], InitVector[0], J);
+  if J>0 then Move(IvBytes[0], InitVector[0], J);
     
   { --  128 位密匙最大长度为 16 个字符 -- }
   if KeyBit = kb128 then

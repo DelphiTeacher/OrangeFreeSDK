@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 /// <summary>
 ///   <para>
-///     æ—¥å¿—çš„åŸºç±»
+///     ÈÕÖ¾µÄ»ùÀà
 ///   </para>
 ///   <para>
 ///     Base class of log
@@ -18,8 +18,8 @@ interface
 
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -27,84 +27,115 @@ interface
 {$ENDIF}
 
 
-//å¯ä»¥åœ¨AndroidæœåŠ¡ä¸­ä½¿ç”¨
+//¿ÉÒÔÔÚAndroid·şÎñÖĞÊ¹ÓÃ
 uses
   SysUtils,
   Classes,
+//  IOUtils,
 
 
 
-  {$IFDEF VCL}
-  Windows,
-  Forms,
+  {$IFDEF MSWINDOWS}
+    {$IF CompilerVersion >= 30.0}
+    Winapi.Windows,
+    {$ELSE}
+    Windows,
+    Forms,
+    {$IFEND}
   {$ENDIF}
 
 
 
   {$IFDEF FMX}
     {$IFDEF ANDROID}
-    //Androidå¹³å°ä¸ä½¿ç”¨FMX.Types.Log.dæ¥è¾“å‡ºæ—¥å¿—,
-    //åœ¨æœåŠ¡ç¨‹åºä¸­ä¼šå¡æ­»
+    //AndroidÆ½Ì¨²»Ê¹ÓÃFMX.Types.Log.dÀ´Êä³öÈÕÖ¾,
+    //ÔÚ·şÎñ³ÌĞòÖĞ»á¿¨ËÀ
     Androidapi.Log,
     {$ELSE}
-    FMX.Types,
+      {$IFDEF MSWINDOWS}
+//      Winapi.Windows,
+      {$ELSE}
+      FMX.Types,
+      {$ENDIF}
     {$ENDIF}
-    {$IFDEF MSWINDOWS}
-    Winapi.Windows,
-    {$ENDIF MSWINDOWS}
   {$ENDIF}
 
 
 
-//  {$IFDEF IN_ORANGESDK}
-  //åœ¨OrangeSDKåŒ…é‡Œé¢
+
+
+  {$IFDEF IN_ORANGESDK}
+  //ÔÚOrangeSDK°üÀïÃæ
   uFileCommon_Copy,
   uFuncCommon_Copy,
-//  {$ELSE}
-//  //åœ¨OrangeUIé‡Œé¢
-//  uFileCommon,
-//  uFuncCommon,
-//  {$ENDIF}
+  {$ELSE}
+  //ÔÚOrangeUIÀïÃæ
+  uFileCommon,
+  uFuncCommon,
+  {$ENDIF}
 
+  IniFiles,
   DateUtils;
 
 
 
 
 
-
 Const
-  CONST_BASELOG_FILENAME='OrangeUI.log';
+  CONST_BASELOG_FILENAME='OrangeUI_Copy.log';
 
 
 
 
 
 type
+  //ÈÕÖ¾Ò»¹²·Ö³É5¸öµÈ¼¶£¬´ÓµÍµ½¸ß·Ö±ğÊÇ£º
+  //
+  //DEBUG
+  //INFO
+  //WARNING
+  //ERROR
+  //CRITICAL
+  //ËµÃ÷:
+  //
+  //DEBUG£ºÏêÏ¸µÄĞÅÏ¢,Í¨³£Ö»³öÏÖÔÚÕï¶ÏÎÊÌâÉÏ
+  //INFO£ºÈ·ÈÏÒ»ÇĞ°´Ô¤ÆÚÔËĞĞ
+  //WARNING£ºÒ»¸ö¼£Ïó±íÃ÷,Ò»Ğ©ÒâÏë²»µ½µÄÊÂÇé·¢ÉúÁË,»ò±íÃ÷Ò»Ğ©ÎÊÌâÔÚ²»¾ÃµÄ½«À´(ÀıÈç¡£´ÅÅÌ¿Õ¼äµÍ¡±)¡£Õâ¸öÈí¼ş»¹ÄÜ°´Ô¤ÆÚ¹¤×÷¡£
+  //ERROR£º¸üÑÏÖØµÄÎÊÌâ,Èí¼şÃ»ÄÜÖ´ĞĞÒ»Ğ©¹¦ÄÜ
+  //CRITICAL£ºÒ»¸öÑÏÖØµÄ´íÎó,Õâ±íÃ÷³ÌĞò±¾Éí¿ÉÄÜÎŞ·¨¼ÌĞøÔËĞĞ
+  TLogLevelType=(lltDebug,
+                 lltInfo,
+                 lltWarnning,
+                 lltError,
+                 lltCritical
+                 );
+
   TBaseLog=class
   private
-    //æ˜¯å¦å†™æ—¥å¿—åˆ°æ–‡ä»¶
+    //ÊÇ·ñĞ´ÈÕÖ¾µ½ÎÄ¼ş
     FIsWriteLog:Boolean;
-    //æ˜¯å¦è¾“å‡ºè°ƒè¯•ä¿¡æ¯
+    //ÊÇ·ñÊä³öµ÷ÊÔĞÅÏ¢
     FIsOutputLog:Boolean;
 
     LogDir:String;
 
-    //æ—¥å¿—æ–‡ä»¶çš„æ–‡ä»¶å
+    //ÈÕÖ¾ÎÄ¼şµÄÎÄ¼şÃû
     FLogFileName:String;
     FLogFilePath:String;
 
 
-    //æ—¥å¿—æ–‡ä»¶çš„å¥æŸ„
+    //ÈÕÖ¾ÎÄ¼şµÄ¾ä±ú
     FFileHandle:THandle;
 
 
-    //æ—¥å¿—æ–‡ä»¶çš„æœ€å¤§æ–‡ä»¶å¤§å°
+    //ÈÕÖ¾ÎÄ¼şµÄ×î´óÎÄ¼ş´óĞ¡
     FMaxFileSize: Integer;
 
-    //æ–‡ä»¶æ‰“å¼€çš„æ—¶é—´,ç”¨äºåˆ¤æ–­æ˜¯å¦éœ€è¦é‡æ–°å»ºä¸€ä¸ªæ—¥å¿—æ–‡ä»¶
+    //ÎÄ¼ş´ò¿ªµÄÊ±¼ä,ÓÃÓÚÅĞ¶ÏÊÇ·ñĞèÒªÖØĞÂ½¨Ò»¸öÈÕÖ¾ÎÄ¼ş
     FFileOpenTime:TDateTime;
 
+    FWriteLogLevelType:TLogLevelType;
+    FOutputLogLevelType:TLogLevelType;
 
     procedure CloseFileHandle;
     function GetFileHandle(InCreate:Boolean):Boolean;
@@ -116,7 +147,7 @@ type
     //adb logcat | grep baidu
     /// <summary>
     ///   <para>
-    ///     åœ¨å®‰å“ä¸‹è¾“å‡ºæ—¥å¿—çš„å…³é”®å­—,æ–¹ä¾¿è¿‡æ»¤
+    ///     ÔÚ°²×¿ÏÂÊä³öÈÕÖ¾µÄ¹Ø¼ü×Ö,·½±ã¹ıÂË
     ///   </para>
     ///   <para>
     ///     Keyword of output log on android,to filtration
@@ -124,10 +155,12 @@ type
     /// </summary>
     LogKeyword:String;
 
+    procedure LoadConfig;
+    procedure SaveConfig;
 
     /// <summary>
     ///   <para>
-    ///     æ—¥å¿—æ–‡ä»¶çš„æœ€å¤§æ–‡ä»¶å¤§å°
+    ///     ÈÕÖ¾ÎÄ¼şµÄ×î´óÎÄ¼ş´óĞ¡
     ///   </para>
     ///   <para>
     ///     Max file size of log file
@@ -135,99 +168,102 @@ type
     /// </summary>
     property MaxFileSize:Integer read FMaxFileSize write FMaxFileSize;
   public
-    //æ˜¯å¦å†™æ—¥å¿—åˆ°æ–‡ä»¶
+    //ÊÇ·ñĞ´ÈÕÖ¾µ½ÎÄ¼ş
     property IsWriteLog:Boolean read FIsWriteLog write FIsWriteLog;
-    //æ˜¯å¦è¾“å‡ºè°ƒè¯•ä¿¡æ¯
+    //ÊÇ·ñÊä³öµ÷ÊÔĞÅÏ¢
     property IsOutputLog:Boolean read FIsOutputLog write FIsOutputLog;
 
 
     /// <summary>
     ///   <para>
-    ///     è¾“å‡ºè°ƒè¯•ä¿¡æ¯
+    ///     Êä³öµ÷ÊÔĞÅÏ¢
     ///   </para>
     ///   <para>
     ///     Output debug information
     ///   </para>
     /// </summary>
-    procedure OutputDebugString(ADebugString:String);
+    procedure OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType=lltDebug);
 
     /// <summary>
     ///   <para>
-    ///     å†™æ—¥å¿—åˆ°æ–‡ä»¶
+    ///     Ğ´ÈÕÖ¾µ½ÎÄ¼ş
     ///   </para>
     ///   <para>
     ///     Write log to file
     ///   </para>
     /// </summary>
-    procedure WriteLog(ALogString:String);
+    procedure WriteLog(ALogString:String;ALogLevelType:TLogLevelType=lltDebug);
 
     /// <summary>
     ///   <para>
-    ///     æ—¢å†™æ—¥å¿—æ–‡ä»¶,åˆè¾“å‡ºè°ƒè¯•ä¿¡æ¯
+    ///     ¼ÈĞ´ÈÕÖ¾ÎÄ¼ş,ÓÖÊä³öµ÷ÊÔĞÅÏ¢
     ///   </para>
     ///   <para>
     ///     Write log file and output debug information
     ///   </para>
     /// </summary>
-    procedure Debug(ADebugString:String);
+    procedure Debug(ADebugString:String;ALogLevelType:TLogLevelType=lltDebug);
 
 
 
     /// <summary>
     ///   <para>
-    ///     è®°å½•å¼‚å¸¸çš„è¯¦ç»†ä¿¡æ¯
+    ///     ¼ÇÂ¼Òì³£µÄÏêÏ¸ĞÅÏ¢
     ///   </para>
     ///   <para>
     ///     Record detail information of exception
     ///   </para>
     /// </summary>
     /// <param name="AException">
-    ///   å¼‚å¸¸
+    ///   Òì³£
     ///  <para>
     ///  Exception
     ///  </para>
     /// </param>
     /// <param name="AModuleName">
-    ///   æ¨¡å—åç§°
+    ///   Ä£¿éÃû³Æ
     ///  <para>
     ///  Module name
     ///  </para>
     /// </param>
     /// <param name="AUnitName">
-    ///   å•å…ƒåç§°
+    ///   µ¥ÔªÃû³Æ
     ///  Unit name
     /// </param>
     /// <param name="AMethodName">
-    ///   æ–¹æ³•åç§°
+    ///   ·½·¨Ãû³Æ
     ///  <para>
     ///  Method Name
     ///  </para>
     /// </param>
     /// <param name="APosition">
-    ///   å¼‚å¸¸ä½ç½®
+    ///   Òì³£Î»ÖÃ
     ///  <para>
     ///  Position of exception
     ///  </para>
     /// </param>
-    procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='');overload;
+    procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';ALogLevelType:TLogLevelType=lltDebug);overload;
     /// <summary>
     ///   <para>
-    ///     è®°å½•å¼‚å¸¸çš„ç²¾ç®€ä¿¡æ¯
+    ///     ¼ÇÂ¼Òì³£µÄ¾«¼òĞÅÏ¢
     ///   </para>
     ///   <para>
     ///     Record detail information of exception
     ///   </para>
     /// </summary>
-    procedure HandleException(AException: Exception; const AMethodName:String);overload;
+    procedure HandleException(AException: Exception; const AMethodName:String;ALogLevelType:TLogLevelType=lltDebug);overload;
   end;
 
 
 
+var
+  //È«¾ÖµÄÈÕÖ¾¶ÔÏó
+  GlobalLog:TBaseLog;
 
 
 /// <summary>
 ///   <para>
-///     è·å–å…¨å±€çš„æ—¥å¿—å¯¹è±¡
+///     »ñÈ¡È«¾ÖµÄÈÕÖ¾¶ÔÏó
 ///   </para>
 ///   <para>
 ///     Get global log
@@ -237,17 +273,17 @@ function GetGlobalLog:TBaseLog;
 
 /// <summary>
 ///   <para>
-///     è¾“å‡ºæ—¥å¿—
+///     Êä³öÈÕÖ¾
 ///   </para>
 ///   <para>
 ///     Output log
 ///   </para>
 /// </summary>
-procedure OutputDebugString(ADebugString:String);
+procedure OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType=lltDebug);
 
 /// <summary>
 ///   <para>
-///     å¼¹å‡ºå¼‚å¸¸å¯¹è¯æ¡†
+///     µ¯³öÒì³£¶Ô»°¿ò
 ///   </para>
 ///   <para>
 ///     Pop up dialog box of exception
@@ -257,23 +293,24 @@ procedure ShowException(ADebugString:String);
 
 /// <summary>
 ///   <para>
-///     è®°å½•å¼‚å¸¸çš„è¯¦ç»†ä¿¡æ¯
+///     ¼ÇÂ¼Òì³£µÄÏêÏ¸ĞÅÏ¢
 ///   </para>
 ///   <para>
 ///     Record detail information of exception
 ///   </para>
 /// </summary>
-procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='');overload;
+procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';const APosition2: String='';ALogLevelType:TLogLevelType=lltDebug);overload;
 /// <summary>
 ///   <para>
-///     è®°å½•å¼‚å¸¸çš„ç®€å•ä¿¡æ¯
+///     ¼ÇÂ¼Òì³£µÄ¼òµ¥ĞÅÏ¢
 ///   </para>
 ///   <para>
 ///     Record detail information of exception
 ///   </para>
 /// </summary>
-procedure HandleException(AException: Exception;const AMethodName:String);overload;
-procedure HandleException(const AMethodName:String;AException: Exception=nil);overload;
+procedure HandleException(AException: Exception;const AMethodName:String;ALogLevelType:TLogLevelType=lltDebug);overload;
+procedure HandleError(AException: Exception;const AMethodName:String);
+procedure HandleException(const AMethodName:String;AException: Exception=nil;ALogLevelType:TLogLevelType=lltDebug);overload;
 
 
 
@@ -283,9 +320,6 @@ implementation
 
 
 
-var
-  //å…¨å±€çš„æ—¥å¿—å¯¹è±¡
-  GlobalLog:TBaseLog;
 
 
 function GetGlobalLog:TBaseLog;
@@ -297,19 +331,24 @@ begin
   Result:=GlobalLog;
 end;
 
-procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='');
+procedure HandleException(AException: Exception; const AMethodName:String; const AUnitName:String;const APosition: String='';const APosition2: String='';ALogLevelType:TLogLevelType=lltDebug);
 begin
-  GetGlobalLog.HandleException(AException, AUnitName, AMethodName, APosition);
+  GetGlobalLog.HandleException(AException, AUnitName, AMethodName, APosition+APosition2,ALogLevelType);
 end;
 
-procedure HandleException(AException: Exception;const AMethodName:String);
+procedure HandleError(AException: Exception;const AMethodName:String);
 begin
-  GetGlobalLog.HandleException(AException, AMethodName);
+  GetGlobalLog.HandleException(AException, AMethodName,TLogLevelType.lltError);
 end;
 
-procedure HandleException(const AMethodName:String;AException: Exception=nil);
+procedure HandleException(AException: Exception;const AMethodName:String;ALogLevelType:TLogLevelType);
 begin
-  GetGlobalLog.HandleException(AException, AMethodName);
+  GetGlobalLog.HandleException(AException, AMethodName,ALogLevelType);
+end;
+
+procedure HandleException(const AMethodName:String;AException: Exception=nil;ALogLevelType:TLogLevelType=lltDebug);
+begin
+  GetGlobalLog.HandleException(AException, AMethodName,ALogLevelType);
 end;
 
 procedure ShowException(ADebugString:String);
@@ -317,10 +356,10 @@ begin
   raise Exception.Create(ADebugString);
 end;
 
-procedure OutputDebugString(ADebugString:String);
+procedure OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType);
 begin
-  GetGlobalLog.OutputDebugString(ADebugString);
-  if GetGlobalLog.FIsWriteLog then GetGlobalLog.WriteLog(ADebugString+#13#10);
+  GetGlobalLog.OutputDebugString(ADebugString,ALogLevelType);
+  if GetGlobalLog.FIsWriteLog then GetGlobalLog.WriteLog(ADebugString+#13#10,ALogLevelType);
 end;
 
 
@@ -328,7 +367,7 @@ end;
 
 { TBaseLog }
 
-procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String;const AUnitName:String; const APosition: String='');
+procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String;const AUnitName:String; const APosition: String='';ALogLevelType:TLogLevelType=lltDebug);
 var
   ALogString:String;
 begin
@@ -337,14 +376,15 @@ begin
 
   if AException<>nil then
   begin
+    ALogLevelType:=TLogLevelType.lltError;
     ALogString:='Exception:'+AException.Message+ALogString;
   end;
 
   ALogString:=FormatDateTime('YYYY-MM-DD HH:MM:SS:ZZZ',Now)+' '+ALogString;
-  Debug(ALogString);
+  Debug(ALogString,ALogLevelType);
 end;
 
-procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String);
+procedure TBaseLog.HandleException(AException: Exception; const AMethodName:String;ALogLevelType:TLogLevelType);
 var
   ALogString:String;
 begin
@@ -352,11 +392,30 @@ begin
 
   if AException<>nil then
   begin
+    ALogLevelType:=TLogLevelType.lltError;
     ALogString:='Exception:'+AException.Message+ALogString;
   end;
 
   ALogString:=FormatDateTime('YYYY-MM-DD HH:MM:SS:ZZZ',Now)+' '+ALogString;
-  Debug(ALogString);
+  Debug(ALogString,ALogLevelType);
+end;
+
+procedure TBaseLog.LoadConfig;
+var
+  AIniFile:TIniFile;
+begin
+  if FileExists(GetApplicationPath+'Config.ini') then
+  begin
+    AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+    try
+      FIsWriteLog:=AIniFile.ReadBool('Log','IsWriteLog',False);
+      FIsOutputLog:=AIniFile.ReadBool('Log','IsOutputLog',True);
+      FWriteLogLevelType:=TLogLevelType(AIniFile.ReadInteger('Log','WriteLogLevelType',0));
+      FOutputLogLevelType:=TLogLevelType(AIniFile.ReadInteger('Log','OutputLogLevelType',0));
+    finally
+      SysUtils.FreeAndNil(AIniFile);
+    end;
+  end;
 end;
 
 procedure TBaseLog.CloseFileHandle;
@@ -379,14 +438,14 @@ begin
   FIsWriteLog:=False;
   FIsOutputLog:=True;
 
-  //æœ€å¤§æ—¥å¿—æ–‡ä»¶æ˜¯10M
+  //×î´óÈÕÖ¾ÎÄ¼şÊÇ10M
   FMaxFileSize:=10*1024*1024;
   FFileHandle:= INVALID_HANDLE_VALUE;
   LogDir:=GetApplicationPath+'log'+PathDelim;
 
 
 //  {$IFDEF MSWINDOWS}
-//  //å¦‚æœæ˜¯æˆ‘ç‹èƒ½çš„ç”µè„‘,é‚£ä¹ˆåˆ›å»ºæ—¥å¿—æ–‡ä»¶
+//  //Èç¹ûÊÇÎÒÍõÄÜµÄµçÄÔ,ÄÇÃ´´´½¨ÈÕÖ¾ÎÄ¼ş
 //  if DirectoryExists('E:\MyFiles\') then
 //  begin
 //    LogDir:='E:\MyFiles\';
@@ -402,7 +461,7 @@ begin
 
 
 
-//  //ç”Ÿæˆæ—¥å¿—ç›®å½•
+//  //Éú³ÉÈÕÖ¾Ä¿Â¼
 //  if Not DirectoryExists(LogDir) then
 //  begin
 //    SysUtils.ForceDirectories(LogDir);
@@ -410,6 +469,10 @@ begin
 
 
   FLogFilePath:=LogDir+ALogFileName;
+
+
+//  Result:=False;
+  Self.LoadConfig;
 
 end;
 
@@ -429,10 +492,9 @@ begin
   begin
 
 
+        //Èç¹û³¬¹ıÁËÒ»p-0ol.Ìì,ÄÇÃ´ÖØ½¨Ò»¸öÈÕÖ¾ÎÄ¼ş
 
-        //å¦‚æœè¶…è¿‡äº†ä¸€p-0ol.å¤©,é‚£ä¹ˆé‡å»ºä¸€ä¸ªæ—¥å¿—æ–‡ä»¶
-
-        //æµ‹è¯•ä¸€åˆ†é’Ÿ
+        //²âÊÔÒ»·ÖÖÓ
         //    if Ceil(FFileOpenTime)<>Ceil(Now) then
 //        if DateUtils.MinutesBetween(Now,FFileOpenTime)>1 then
         if FormatDateTime('YYYY-MM-DD',FFileOpenTime)<>FormatDateTime('YYYY-MM-DD',Now) then
@@ -448,39 +510,49 @@ begin
 
         if InCreate or Not FileExists(FLogFilePath) then
         begin
-            //å…³é—­å¥æŸ„
+//            OutputDebugString('TBaseLog.GetFileHandle Need Create '+FLogFilePath);
+            //¹Ø±Õ¾ä±ú
             CloseFileHandle;
 
 
-            //ç”Ÿæˆæ—¥å¿—ç›®å½•
+            //Éú³ÉÈÕÖ¾Ä¿Â¼
             if Not DirectoryExists(LogDir) then
             begin
               SysUtils.ForceDirectories(LogDir);
             end;
 
-            //åˆ›å»ºæ–‡ä»¶
-            FFileHandle:=FileCreate(FLogFilePath, fmCreate or fmOpenWrite or fmShareDenyNone);
+            //´´½¨ÎÄ¼ş
+            FFileHandle:=FileCreate(FLogFilePath, fmCreate or fmOpenWrite{$IFDEF POSIX},FileAccessRights{$ENDIF});
+
+
             FFileOpenTime:=Now;
+            //½â¾öµÚÒ»´Î´´½¨´ò²»¿ªµÄÎÊÌâ
+            CloseFileHandle;
+            FFileHandle:=FileOpen(FLogFilePath,fmOpenWrite);//{$IFDEF POSIX},FileAccessRights{$ENDIF});
+            FFileOpenTime:=Now;
+
+
         end
         else
         begin
+//            OutputDebugString('TBaseLog.GetFileHandle File Exist '+FLogFilePath);
 
-            //å­˜åœ¨æ–‡ä»¶,åˆ™æ‰“å¼€æ–‡ä»¶
+            //´æÔÚÎÄ¼ş,Ôò´ò¿ªÎÄ¼ş
             if FFileHandle = INVALID_HANDLE_VALUE then
             begin
 
-              //ç”Ÿæˆæ—¥å¿—ç›®å½•
+              //Éú³ÉÈÕÖ¾Ä¿Â¼
               if Not DirectoryExists(LogDir) then
               begin
                 SysUtils.ForceDirectories(LogDir);
               end;
 
-              FFileHandle:=FileOpen(FLogFilePath,fmOpenWrite or fmShareDenyNone);
+              FFileHandle:=FileOpen(FLogFilePath,fmOpenWrite);//{$IFDEF POSIX},FileAccessRights{$ENDIF});
               FFileOpenTime:=Now;
             end;
 
 
-            //æ–‡ä»¶æœ€å
+            //ÎÄ¼ş×îºó
             if FFileHandle <> INVALID_HANDLE_VALUE then
             begin
               FileSeek(FFileHandle,0,2);
@@ -490,34 +562,43 @@ begin
 
 
   end;
+//  OutputDebugString('TBaseLog.GetFileHandle FFileHandle:'+IntToStr(FFileHandle));
+//  OutputDebugString('TBaseLog.GetFileHandle INVALID_HANDLE_VALUE:'+IntToStr(INVALID_HANDLE_VALUE));
 
   if FFileHandle <> INVALID_HANDLE_VALUE then
   begin
     Result:=True;
+  end
+  else
+  begin
+
   end;
 end;
 
-procedure TBaseLog.WriteLog(ALogString:String);
+procedure TBaseLog.WriteLog(ALogString:String;ALogLevelType:TLogLevelType);
   {$IFDEF FMX}
 var
   B: TBytes;
-  {$ENDIF}
-  {$IFDEF VCL}
+  {$ELSE}
 var
   ALogAnsiStr:AnsiString;
   {$ENDIF}
 begin
+  if ALogLevelType<Self.FWriteLogLevelType then Exit;
+  
+
+//  OutputDebugString('TBaseLog.WriteLog Begin');
   if Not FIsWriteLog then Exit;
 
   if GetFileHandle(False) then
   begin
+//    OutputDebugString('TBaseLog.WriteLog GetFileHandle Succ');
     try
-        //è½¬æ¢æˆAnsiå­—ç¬¦é›†
+        //×ª»»³ÉAnsi×Ö·û¼¯
         {$IFDEF FMX}
         B := TEncoding.ANSI.GetBytes(ALogString);
         FileWrite(FFileHandle, B[0],Length(B));
-        {$ENDIF}
-        {$IFDEF VCL}
+        {$ELSE}
         ALogAnsiStr:=ALogString;
         FileWrite(FFileHandle, ALogAnsiStr[1],Length(ALogAnsiStr));
 //        B := TEncoding.Default.GetBytes(ALogString);
@@ -525,54 +606,101 @@ begin
     finally
 
     end;
+  end
+  else
+  begin
+//    OutputDebugString('TBaseLog.WriteLog GetFileHandle Fail');
+
   end;
 end;
 
-procedure TBaseLog.OutputDebugString(ADebugString:String);
+procedure TBaseLog.OutputDebugString(ADebugString:String;ALogLevelType:TLogLevelType);
 {$IFDEF ANDROID}
 var
   M: TMarshaller;
 {$ENDIF}
 begin
-  try
-    {$IFDEF VCL}
-    OutputDebugStringW(PWideChar(ADebugString));
-    {$ENDIF}
+  if ALogLevelType<Self.FOutputLogLevelType then Exit;
 
-    {$IFDEF FMX}
+  try
+
+    {$IFDEF CONSOLE}
+    writeln(ADebugString);
+    {$ELSE}
+//    {$IFDEF LINUX}
+//    WriteLn(ADebugString);
+//    {$ENDIF}
 
       {$IFDEF MSWINDOWS}
-        OutputDebugStringW(PWideChar(ADebugString));
+      OutputDebugStringW(PWideChar(ADebugString));
       {$ELSE}
-          {$IFDEF ANDROID}
-            //AndroidæœåŠ¡ç«¯ä¸èƒ½ä½¿ç”¨FMX.Types.Log.d
-            LOGI(M.AsAnsi(LogKeyword+' '+ADebugString).ToPointer);
+        {$IFDEF FMX}
+
+          {$IFDEF MSWINDOWS}
+            //OutputDebugStringW(PWideChar(ADebugString));
           {$ELSE}
-              {$IFDEF IOS}
-                Log.d(LogKeyword+' '+ADebugString);
+              {$IFDEF ANDROID}
+                //Android·şÎñ¶Ë²»ÄÜÊ¹ÓÃFMX.Types.Log.d
+                LOGI(M.AsAnsi(LogKeyword+' '+ADebugString).ToPointer);
               {$ELSE}
-                Log.d(ADebugString);
+                  {$IFDEF IOS}
+                    Log.d(LogKeyword+' '+ADebugString);
+                  {$ELSE}
+                    Log.d(ADebugString);
+                  {$ENDIF}
               {$ENDIF}
           {$ENDIF}
+        {$ENDIF}
       {$ENDIF}
 
     {$ENDIF}
   except
-    //å¦‚æœæœ‰ä¸èƒ½è¾“å‡ºçš„å­—ç¬¦,ä¼šæŠ¥é”™å¯¼è‡´é—ªé€€
+    //Èç¹ûÓĞ²»ÄÜÊä³öµÄ×Ö·û,»á±¨´íµ¼ÖÂÉÁÍË
   end;
 end;
 
-procedure TBaseLog.Debug(ADebugString:String);
+procedure TBaseLog.SaveConfig;
+var
+  AIniFile:TIniFile;
 begin
-  if FIsWriteLog then WriteLog(ADebugString+#13#10);
+  AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+  try
+    AIniFile.WriteBool('Log','IsWriteLog',FIsWriteLog);
+    AIniFile.WriteBool('Log','IsOutputLog',FIsOutputLog);
+    AIniFile.WriteInteger('Log','WriteLogLevelType',Ord(FWriteLogLevelType));
+    AIniFile.WriteInteger('Log','OutputLogLevelType',Ord(FOutputLogLevelType));
+  finally
+    SysUtils.FreeAndNil(AIniFile);
+  end;
 
-  if FIsOutputLog then OutputDebugString(ADebugString);
+end;
+
+procedure TBaseLog.Debug(ADebugString:String;ALogLevelType:TLogLevelType);
+begin
+  if FIsWriteLog then WriteLog(ADebugString+#13#10,ALogLevelType);
+
+  if FIsOutputLog then OutputDebugString(ADebugString,ALogLevelType);
 end;
 
 
 
 Initialization
   GlobalLog:=nil;
+
+//  if DirectoryExists('C:\MyFiles') or DirectoryExists('D:\MyFiles') then
+//  begin
+//    //ĞèÒª¼ÇÂ¼ÈÕÖ¾
+//    uBaseLog.GetGlobalLog.IsWriteLog:=True;
+//    if DirectoryExists('C:\MyFiles\') then
+//    begin
+//      uBaseLog.GetGlobalLog.LogDir:='C:\MyFiles\log\';
+//    end;
+//    if DirectoryExists('D:\MyFiles\log\') then
+//    begin
+//      uBaseLog.GetGlobalLog.LogDir:='D:\MyFiles\log\';
+//    end;
+//  end;
+
 
 
 Finalization
@@ -582,6 +710,7 @@ Finalization
 
 
 end.
+
 
 
 

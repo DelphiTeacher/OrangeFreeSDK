@@ -18,11 +18,13 @@ uses
   VCL.Imaging.Jpeg,
   Math,
   System.Win.Registry,
+  System.Zip,
 
   Types,
   FMX.Graphics,
   FMX.Types,
   uFuncCommon_Copy,
+  System.IOUtils,
 
   Winapi.GDIPAPI,
   Winapi.GDIPOBJ,
@@ -214,6 +216,7 @@ type
     tsThanks: TTabSheet;
     Memo1: TMemo;
     chkGenerateReleaseRJar: TCheckBox;
+    Button6: TButton;
     procedure btnProcessDeployConfigClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -264,6 +267,7 @@ type
     procedure btnBatchProcessSDKsClick(Sender: TObject);
     procedure btnProcessAndroidAARClick(Sender: TObject);
     procedure Button7Click(Sender: TObject);
+    procedure Button6Click(Sender: TObject);
   private
     //工程启动图片文件
     FProjectLaunchImageFileName:String;
@@ -914,11 +918,11 @@ begin
         ASaveDir:=ExtractFilePath(Self.edtProjectFilePath.Text);
 
 
-        SizePicture(FProjectIconFileName,24,24,ASaveDir,'_','',ACornerSizePercent);
-        SizePicture(FProjectIconFileName,36,36,ASaveDir,'_','',ACornerSizePercent);
-        SizePicture(FProjectIconFileName,48,48,ASaveDir,'_','',ACornerSizePercent);
-        SizePicture(FProjectIconFileName,72,72,ASaveDir,'_','',ACornerSizePercent);
-        SizePicture(FProjectIconFileName,96,96,ASaveDir,'_','',ACornerSizePercent);
+        SizePicture(FProjectIconFileName,24,24,ASaveDir,'x','',ACornerSizePercent);
+        SizePicture(FProjectIconFileName,36,36,ASaveDir,'x','',ACornerSizePercent);
+        SizePicture(FProjectIconFileName,48,48,ASaveDir,'x','',ACornerSizePercent);
+        SizePicture(FProjectIconFileName,72,72,ASaveDir,'x','',ACornerSizePercent);
+        SizePicture(FProjectIconFileName,96,96,ASaveDir,'x','',ACornerSizePercent);
 
 
 
@@ -1757,6 +1761,63 @@ begin
                 'test.png',
                 StrToFloat(Self.edtIconCornerSizePercent.Text)
                 );
+
+end;
+
+procedure GenerateAarOrJar(ASourceAarDir:String;ADestDir:String);
+var
+  AFileList:TStringDynArray;
+  ADirList:TStringDynArray;
+  I: Integer;
+  AAarFileName:String;
+begin
+
+  //判断是jar还是aar
+  //如果是aar，那么里面是一个目录,没有jar
+  //如果是jar，那么里面只有一个jar文件
+  AFileList:=TDirectory.GetFiles(ASourceAarDir);
+  ADirList:=TDirectory.GetDirectories(ASourceAarDir);
+
+  for I := 0 to Length(AFileList)-1 do
+  begin
+    if SameText(ExtractFileExt(AFileList[I]),'.jar')
+      and not FileExists(ADestDir+ExtractFileName(AFileList[I]) ) then
+    begin
+      //是jar
+      TFile.Copy(AFileList[I],ADestDir+ExtractFileName(AFileList[I]));
+      Exit;
+    end;
+  end;
+
+  //可能是aar
+  for I := 0 to Length(ADirList)-1 do
+  begin
+    AAarFileName:=TPath.GetFileName(ADirList[I]);
+    if FileExists(ADirList[I]+'\AndroidManifest.xml')
+      and FileExists(ADirList[I]+'\jars\'+'classes.jar')
+      and not FileExists(ADestDir+AAarFileName+'.aar') then
+    begin
+      //是一个jar，里面有一个jars目录，里面有一个jar
+      CopyFile(PWideChar(ADirList[I]+'\jars\'+'classes.jar'),PWideChar(ADirList[I]+'\'+'classes.jar'),True);
+      //压缩成aar
+      TZipFile.ZipDirectoryContents(ADestDir+AAarFileName+'.aar',ADirList[I]);
+    end;
+  end;
+
+end;
+
+procedure TfrmSmartDeploy.Button6Click(Sender: TObject);
+var
+  I:Integer;
+  ADirList:TStringDynArray;
+begin
+  //C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1
+  ADirList:=System.IOUtils.TDirectory.GetDirectories('C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1\');
+  for I := 0 to Length(ADirList)-1 do
+  begin
+    GenerateAarOrJar(ADirList[I]+'\','C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1\');
+
+  end;
 
 end;
 

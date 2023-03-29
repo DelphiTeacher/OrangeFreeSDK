@@ -56,7 +56,11 @@ uses
 
   uFuncCommon,
   IdURI,
+  uBaseList,
   SysUtils;
+
+
+
 
 const
     user_agent_list:array [0..17] of string = (
@@ -161,6 +165,7 @@ type
     ///  </para>
     /// </returns>
     function Post(const AHttpUrl:String;ARequestStream:TStream;AResponseStream:TStream):Boolean;overload;virtual;abstract;
+    procedure SetCustomHeader(ACustomHeaders:TVariantDynArray);virtual;abstract;
   end;
 
 
@@ -170,12 +175,13 @@ type
   {$IFDEF NEED_SystemHttpControl}
   TSystemHttpControl=class(THttpControl)
   protected
-    FOnReceiveData:TReceiveDataEvent;
-
-  protected
-    procedure DoNeedClientCertificate(const Sender: TObject; const ARequest: TURLRequest; const ACertificateList: TCertificateList;
-                                      var AnIndex: Integer);
-    procedure DoNetHTTPClientReceiveData(const Sender: TObject; AContentLength,AReadCount: Int64; var Abort: Boolean);virtual;
+//    FOnReceiveData:TReceiveDataEvent;
+//
+//  protected
+    //可能是因为赋了这个事件，导致在HTTP服务中卡死
+//    procedure DoNeedClientCertificate(const Sender: TObject; const ARequest: TURLRequest; const ACertificateList: TCertificateList;
+//                                      var AnIndex: Integer);
+//    procedure DoNetHTTPClientReceiveData(const Sender: TObject; AContentLength,AReadCount: Int64; var Abort: Boolean);virtual;
   public
     constructor Create;override;
     destructor Destroy;override;
@@ -185,12 +191,42 @@ type
 
     function Get(const AHttpUrl:String;AResponseStream:TStream):Boolean;overload;override;
     function Post(const AHttpUrl:String;ARequestStream:TStream;AResponseStream:TStream):Boolean;overload;override;
-  public
-    property OnReceiveData:TReceiveDataEvent read FOnReceiveData write FOnReceiveData;
+    procedure SetCustomHeader(ACustomHeaderPairs:TVariantDynArray);override;
+//  public
+//    property OnReceiveData:TReceiveDataEvent read FOnReceiveData write FOnReceiveData;
   end;
   {$ENDIF}
 
 
+  //请求的参数键值对
+  TQueryParameter=class
+  private
+    FName:String;
+    FValue:Variant;
+  public
+    constructor Create(const AName:String;const AValue:Variant);
+    destructor Destroy;override;
+  public
+    property Name:String read FName write FName;
+    property Value:Variant read FValue write FValue;
+  end;
+
+  //参数列表
+  TQueryParameters=class(TBaseList)
+  private
+    function GetItem(Index: Integer): TQueryParameter;
+  public
+    //需要按照名字顺序排序,如果名字相同,那要根据值来排序,生成的签名才是有用的
+    procedure Sort;
+    function GetUtf8UrlEncodeQueryParamsStr:String;
+    function GetUtf8UrlEncodeQueryParamsStr1:String;
+    function GetSignQueryParamsStr:String;
+    //添加一对键值
+    procedure AddQueryParameter(const AName:String;const AValue:Variant);
+  public
+    function FindItemByName(AName:String):TQueryParameter;
+    property Items[Index:Integer]:TQueryParameter read GetItem;default;
+  end;
 
 
 //type
@@ -349,9 +385,14 @@ function IsSupportIPV6Host_IOS(const Host:String):Boolean;
 {$ENDIF}
 
 
+{$IF CompilerVersion>=30.0}
 //下载图片
 function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
+{$IFEND}
 
+//HasWWW:是不是包含域名,是域名的话，参数列表前面会加?号
+function ParseUrlQueryParameters(URL:String;HasWWW:Boolean=True):TQueryParameters;
+function GetUrlParamValue(AURL:String;AParamName:String;HasWWW:Boolean=True):String;
 
 
 
@@ -490,6 +531,103 @@ implementation
 
 
 
+function _IntToHex(Value: Integer; Digits: Integer): String;
+begin
+  Result := SysUtils.IntToHex(Value, Digits);
+end;
+
+function XDigit(Ch : Char) : Integer;
+begin
+  if (Ch >= '0') and (Ch <= '9') then
+      Result := Ord(Ch) - Ord('0')
+  else
+      Result := (Ord(Ch) and 15) + 9;
+end;
+
+
+function IsXDigit(Ch : Char) : Boolean;
+begin
+  Result := ((Ch >= '0') and (Ch <= '9')) or
+            ((Ch >= 'a') and (Ch <= 'f')) or
+            ((Ch >= 'A') and (Ch <= 'F'));
+end;
+
+function htoin(Value : PChar; Len : Integer) : Integer;
+var
+  I : Integer;
+begin
+  Result := 0;
+  I      := 0;
+  while (I < Len) and (Value[I] = ' ') do
+      I := I + 1;
+  while (I < len) and (IsXDigit(Value[I])) do begin
+      Result := Result * 16 + XDigit(Value[I]);
+      I := I + 1;
+  end;
+end;
+
+function htoi2(Value : PChar) : Integer;
+begin
+  Result := htoin(Value, 2);
+end;
+
+function FuncUrlEncode(const S : String) : String;
+var
+  I : Integer;
+  Ch : Char;
+begin
+  Result := '';
+  for I := 1 to Length(S) do begin
+      Ch := S[I];
+      if ((Ch >= '0') and (Ch <= '9')) or
+         ((Ch >= 'a') and (Ch <= 'z')) or
+         ((Ch >= 'A') and (Ch <= 'Z')) or
+         (Ch = '.') or (Ch = '-') or (Ch = '_') or (Ch = '~')then
+          Result := Result + Ch
+      else
+          Result := Result + '%' + _IntToHex(Ord(Ch), 2);
+  end;
+end;
+
+function FuncUrlEncodeUTF8(const S : UTF8String) : String;
+var
+  I : Integer;
+  Ch : AnsiChar;
+begin
+  Result := '';
+  for I := 1 to Length(S) do begin
+      Ch := S[I];
+      if ((Ch >= '0') and (Ch <= '9')) or
+         ((Ch >= 'a') and (Ch <= 'z')) or
+         ((Ch >= 'A') and (Ch <= 'Z')) or
+         (Ch = '.') or (Ch = '-') or (Ch = '_') or (Ch = '~')then
+          Result := Result + Ch
+      else
+          Result := Result + '%' + _IntToHex(Ord(Ch), 2);
+  end;
+end;
+
+function urlEncode(URL: string): string;
+var
+  URL1: string;
+begin
+  URL1 := FuncUrlEncode(URL);
+  //URL1 := StringReplace(URL1, '+', ' ', [rfReplaceAll, rfIgnoreCase]);
+  result := URL1;
+end;
+
+function UrlEncodeUTF8(URL: UTF8String): string;
+var
+  URL1: string;
+begin
+  URL1 := FuncUrlEncodeUTF8(URL);
+  //URL1 := StringReplace(URL1, '+', ' ', [rfReplaceAll, rfIgnoreCase]);
+  result := URL1;
+end;
+
+
+
+{$IF CompilerVersion>=30.0}
 //下载图片
 function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
 var
@@ -523,6 +661,8 @@ begin
     FreeAndNil(AResponseStream);
   end;
 end;
+{$IFEND}
+
 
 
 {$IFDEF NEED_SystemHttpControl}
@@ -546,8 +686,9 @@ begin
   //Post上传文件流的时候要设置,不然IDHttpServer接收到请求的时候会报错
   //会以为流里面的是UrlParams
   FNetHTTPClient.ContentType:='application/octet-stream; charset=utf-8';
-  FNetHTTPClient.OnReceiveData:=Self.DoNetHTTPClientReceiveData;
-  FNetHTTPClient.OnNeedClientCertificate:=DoNeedClientCertificate;
+
+//  FNetHTTPClient.OnReceiveData:=Self.DoNetHTTPClientReceiveData;
+//  FNetHTTPClient.OnNeedClientCertificate:=DoNeedClientCertificate;
 end;
 
 destructor TSystemHttpControl.Destroy;
@@ -558,20 +699,20 @@ begin
   inherited;
 end;
 
-procedure TSystemHttpControl.DoNeedClientCertificate(const Sender: TObject;
-  const ARequest: TURLRequest; const ACertificateList: TCertificateList;
-  var AnIndex: Integer);
-begin
-  //
-end;
+//procedure TSystemHttpControl.DoNeedClientCertificate(const Sender: TObject;
+//  const ARequest: TURLRequest; const ACertificateList: TCertificateList;
+//  var AnIndex: Integer);
+//begin
+//  //
+//end;
 
-procedure TSystemHttpControl.DoNetHTTPClientReceiveData(const Sender: TObject;AContentLength, AReadCount: Int64; var Abort: Boolean);
-begin
-  if Assigned(FOnReceiveData) then
-  begin
-    FOnReceiveData(Sender,AContentLength,AReadCount,Abort);
-  end;
-end;
+//procedure TSystemHttpControl.DoNetHTTPClientReceiveData(const Sender: TObject;AContentLength, AReadCount: Int64; var Abort: Boolean);
+//begin
+//  if Assigned(FOnReceiveData) then
+//  begin
+//    FOnReceiveData(Sender,AContentLength,AReadCount,Abort);
+//  end;
+//end;
 
 function TSystemHttpControl.Get(const AHttpUrl: String;AResponseStream: TStream): Boolean;
 //var
@@ -646,6 +787,21 @@ begin
       end;
     end;
 end;
+
+procedure TSystemHttpControl.SetCustomHeader(ACustomHeaderPairs:TVariantDynArray);
+var
+  ANameValuePair:TNameValuePair;
+  I: Integer;
+begin
+  SetLength(Self.FNetHTTPRequestHeaders,Length(ACustomHeaderPairs) div 2);
+  for I := 0 to Length(ACustomHeaderPairs) div 2 - 1 do
+  begin
+    ANameValuePair.Name:= ACustomHeaderPairs[I*2];//'Content-type';
+    ANameValuePair.Value:= ACustomHeaderPairs[I*2+1];//AContentType;//'application/json';
+    Self.FNetHTTPRequestHeaders[I]:=ANameValuePair;
+  end;
+end;
+
 {$ENDIF}
 
 
@@ -665,615 +821,194 @@ end;
 
 
 
-//function GetWhereKeyJson(AFieldNames:Array of String;
-//                            AFieldValues:Array of Variant):String;
-//begin
-//  Result:=GetWhereConditions(AFieldNames,AFieldValues);
-//end;
+function ParseUrlQueryParameters(URL:String;HasWWW:Boolean):TQueryParameters;
+var
+  I: Integer;
+  AName,AValue:String;
+  AEqualCharIndex:Integer;
+  AParamStrList:TStringList;
+  AParametersString:String;
+  AParametersStringStartIndex:Integer;
+begin
+  Result:=TQueryParameters.Create;
+  if HasWWW then
+  begin
+    //解析出参数列表字符串
+    AParametersStringStartIndex:=Pos('?',URL);
+    AParametersString:=Copy(URL,AParametersStringStartIndex+1,MaxInt);
+  end
+  else
+  begin
+    AParametersString:=URL;
+  end;
+
+  if AParametersString<>'' then
+  begin
+    //找到参数列表字符串
+    AParamStrList:=TStringList.Create;
+    Try
+      AParamStrList.Delimiter:='&';
+      AParamStrList.DelimitedText:=AParametersString;
+      for I := 0 to AParamStrList.Count-1 do
+      begin
+        if (AParamStrList[I]<>'') then
+        begin
+          AEqualCharIndex:=Pos('=',AParamStrList[I]);
+          if AEqualCharIndex>0 then
+          begin
+            AName:=Copy(AParamStrList[I],1,AEqualCharIndex-1);
+            AValue:=Copy(AParamStrList[I],AEqualCharIndex+1,Length(AParamStrList[I])-AEqualCharIndex);
+            Result.AddQueryParameter(AName,AValue);
+          end;
+        end;
+      end;
+    Finally
+      AParamStrList.Free;
+    End;
+  end;
+
+end;
+
+function GetUrlParamValue(AURL:String;AParamName:String;HasWWW:Boolean=True):String;
+var
+  AQueryParameter:TQueryParameter;
+  AQueryParameters:TQueryParameters;
+begin
+  Result:='';
+  AQueryParameters:=ParseUrlQueryParameters(AURL);
+  try
+    AQueryParameter:=AQueryParameters.FindItemByName(AParamName);
+    if AQueryParameter<>nil then
+    begin
+      Result:=AQueryParameter.Value;
+    end;
+  finally
+    FreeAndNil(AQueryParameters);
+  end;
+
+end;
 
 
-//function GetWhereConditions(AFieldNames:Array of String;
-//                            AFieldValues:Array of Variant):String;
-//var
-//  I:Integer;
-//
-//  AWhereKeyJson:ISuperObject;
-//  AWhereKeyJsonArray:ISuperArray;
-//begin
-//  AWhereKeyJsonArray:=TSuperArray.Create;
-//
-//  for I := 0 to Length(AFieldNames)-1 do
-//  begin
-//
-//    AWhereKeyJson:=TSuperObject.Create;
-//    AWhereKeyJson.S['logical_operator']:='AND';
-//    AWhereKeyJson.S['name']:=AFieldNames[I];
-//    AWhereKeyJson.S['operator']:='=';
-//    AWhereKeyJson.V['value']:=AFieldValues[I];
-//
-//    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
-//
-//  end;
-//
-//  Result:=AWhereKeyJsonArray.AsJSON;
-//end;
-//
-//
-//function GetWhereConditionsPro(AFieldNames:Array of String;
-//                            AFieldOpers:Array of String;
-//                            AFieldValues:Array of Variant):String;
-//var
-//  I:Integer;
-//
-//  AWhereKeyJson:ISuperObject;
-//  AWhereKeyJsonArray:ISuperArray;
-//begin
-//  AWhereKeyJsonArray:=TSuperArray.Create;
-//
-//  for I := 0 to Length(AFieldNames)-1 do
-//  begin
-//
-//    AWhereKeyJson:=TSuperObject.Create;
-//    AWhereKeyJson.S['logical_operator']:='AND';
-//    AWhereKeyJson.S['name']:=AFieldNames[I];
-//    AWhereKeyJson.S['operator']:=AFieldOpers[I];
-//    AWhereKeyJson.V['value']:=AFieldValues[I];
-//
-//    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
-//
-//  end;
-//
-//  Result:=AWhereKeyJsonArray.AsJSON;
-//end;
-//
-//function SimpleCallAPI_TableCommonGetRecordList(
-//                      ARestName: String;
-//                      AHttpControl: THttpControl;
-//                      AInterfaceUrl:String;
-//                      AAppID:Integer;
-//                      AUserFID:String;
-//                      AKey:String;
-//                      APageIndex:Integer;
-//                      APageSize:Integer;
-//                      AWhereConditions:TVariantDynArray;
-//                      AOrderBy:String;
-//                      AWhereSQL:String): String;
-//var
-//  AWhereKeyJson:ISuperObject;
-//  AWhereKeyJsonArray:ISuperArray;
-//
-//  ASuperObject:ISuperObject;
-//  I: Integer;
-//begin
-//  Result:='';
-//
-//
-//  //条件
-//  AWhereKeyJsonArray:=TSuperArray.Create;
-//  for I := 0 to Length(AWhereConditions) div 4 -1 do
-//  begin
-//    AWhereKeyJson:=TSuperObject.Create;
-//    AWhereKeyJson.S['logical_operator']:=AWhereConditions[I*4];
-//    AWhereKeyJson.S['name']:=AWhereConditions[I*4+1];
-//    AWhereKeyJson.S['operator']:=AWhereConditions[I*4+2];
-//    AWhereKeyJson.V['value']:=AWhereConditions[I*4+3];
-//    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
-//  end;
-//
-//
-//
-//  Result:=SimpleCallAPI('get_record_list',
-//                    AHttpControl,
-//                    AInterfaceUrl,
-//                    ['appid',
-//                    'user_fid',
-//                    'key',
-//                    'rest_name',
-//                    'pageindex',
-//                    'pagesize',
-//                    'where_key_json',
-//                    'order_by',
-//                    'where_sql'],
-//                    [AAppID,
-//                    AUserFID,
-//                    AKey,
-//                    ARestName,
-//                    APageIndex,
-//                    APageSize,
-//                    AWhereKeyJsonArray.AsJson,
-//                    AOrderBy,
-//                    AWhereSQL
-//                    ]
-//                    );
-//
-//
-//end;
-//
-//
-//function JsonSimpleCall(API: String;
-//                        //可以为nil
-//                        AHttpControl: THttpControl;
-//                        AInterfaceUrl:String;
-//                        AParamJsonArray:ISuperArray):String;
-//var
-//  ACallResult:Boolean;
-//  AIsNeedFreeAHttpControl:Boolean;
-//  AResponseStream: TStringStream;
-//begin
-////  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'begin');
-//
-//  Result:='';
-//
-//  AIsNeedFreeAHttpControl:=False;
-//  if AHttpControl=nil then
-//  begin
-//    AIsNeedFreeAHttpControl:=True;
-//    AHttpControl:=TSystemHttpControl.Create;
-//  end;
-//
-//
-//  //AResponseStream:=TStringStream.Create('',TEncoding.UTF8);
-//  AResponseStream:=TStringStream.Create('',TEncoding.UTF8);
-//  try
-//
-//
-//    //2、登录
-//    //APP到电脑
-//    //[
-//    //  {"HotelID":"分店号","Action":"Login","AccountID":"工号","PassWord":"密码"}
-//    //]
-//    //
-//    //电脑到APP
-//    //[
-//    //  {"Action":"Login","Flag":"4"},
-//    //  {
-//    //	 权限参数,隐藏功能按钮
-//    //	 ...
-//    //  }
-//    //]
-//
-//
-//
-//    GlobalLastParamJsonArray:=AParamJsonArray;
-//    ACallResult:=JsonSimplePost(
-//                       API,
-//                       AHttpControl,
-//                       AInterfaceUrl,
-//                       AParamJsonArray,
-//                       AResponseStream
-//                       );
-//
-//
-//    if ACallResult then
-//    begin
-//        //调用成功
-//
-//        //保存成临时文件,用来查日志
-//        {$IFDEF MSWINDOWS}
-//        AResponseStream.Position:=0;
-//        AResponseStream.
-//            SaveToFile(GetApplicationPath
-////                        +ReplaceStr(API,'/','_')+' '
-//                        +AParamJsonArray.O[0].S['Action']+' '
-//                        +FormatDateTime('YYYY-MM-DD HH-MM-SS-ZZZ',Now)+'.json');
-//        {$ENDIF}
-//
-//
-//
-//        AResponseStream.Position:=0;
-//        try
-//          Result:=AResponseStream.DataString;//列名 'SvrHandID' 无效。
-//        except
-//          on E:Exception do
-//          begin
-//            //编码不能识别,需要特殊处理一下
-//            Result:='';
-//          end;
-//        end;
-//
-//        //服务不可用
-//        if Result='Service Unavailable' then
-//        begin
-//          Result:='';
-//        end;
-//
-//        if Result='Internal Server Error' then
-//        begin
-//          Result:='';
-//        end;
-//
-//
-//    end
-//    else
-//    begin
-//        //调用失败
-//
-//    end;
-//
-//  finally
-//    SysUtils.FreeAndNil(AResponseStream);
-//    if AIsNeedFreeAHttpControl then
-//    begin
-//      SysUtils.FreeAndNil(AHttpControl);
-//    end;
-//  end;
-//
-////  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'end');
-//
-//
-//end;
-//
-//function JsonSimpleCall(API: String;
-//                        AHttpControl: THttpControl;
-//                        AInterfaceUrl:String;
-//                        AJsonParamNames:Array of String;
-//                        AJsonParamValues:Array of Variant):String;
-//var
-//  I:Integer;
-//  AParamJsonArray:ISuperArray;
-//  AParamJson:ISuperObject;
-//begin
-////  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'begin');
-//
-//  Result:='';
-//
-//
-//  AParamJsonArray:=TSuperArray.Create;
-//  AParamJson:=TSuperObject.Create;
-//  AParamJsonArray.O[0]:=AParamJson;
-//
-//  for I:=0 to Length(AJsonParamNames)-1 do
-//  begin
-//    AParamJson.V[AJsonParamNames[I]]:=AJsonParamValues[I];
-//  end;
-//
-//
-//  Result:=JsonSimpleCall(
-//                     API,
-//                     AHttpControl,
-//                     AInterfaceUrl,
-//                     AParamJsonArray
-//                     );
-//
-//end;
-//
-//
-//function SimpleCallAPI(API: String;
-//                      AHttpControl:THttpControl;
-//                      AInterfaceUrl:String;
-//                      AUrlParamNames:Array of String;
-//                      AUrlParamValues:Array of Variant;
-//                      AIsPost:Boolean): String;
-//var
-//  ACallResult:Boolean;
-//  AResponseStream: TStringStream;
-//begin
-////  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'begin');
-//
-//  Result:='';
-//
-//  AResponseStream:=TStringStream.Create('',TEncoding.UTF8);
-//  try
-//    ACallResult:=SimpleGet(
-//                       API,
-//                       AHttpControl,
-//                       AInterfaceUrl,
-//                       AUrlParamNames,
-//                       AUrlParamValues,
-//                       AResponseStream,
-//                       AIsPost
-//                       );
-//
-//
-//    if ACallResult then
-//    begin
-//        //调用成功
-//
-//
-//
-////        //保存成临时文件,用来查日志
-////        {$IFDEF MSWINDOWS}
-////        AResponseStream.Position:=0;
-////        AResponseStream.
-////            SaveToFile(GetApplicationPath
-//////                        +ReplaceStr(API,'/','_')+' '
-////                        +FormatDateTime('YYYY-MM-DD HH-MM-SS-ZZZ',Now)+'.json');
-////        {$ENDIF}
-//
-//
-//
-//
-//        AResponseStream.Position:=0;
-//        Result:=AResponseStream.DataString;
-//
-//        //服务不可用
-//        if Result='Service Unavailable' then
-//        begin
-//          Result:='';
-//        end;
-//
-//        if Result='Internal Server Error' then
-//        begin
-//          Result:='';
-//        end;
-//
-//
-//    end
-//    else
-//    begin
-//      //调用失败
-//
-//    end;
-//
-//  finally
-//    SysUtils.FreeAndNil(AResponseStream);
-//  end;
-//
-////  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'end');
-//end;
-//
-//
-//function SimpleCallAPI(API: String;
-//          AHttpControl: THttpControl;
-//          AInterfaceUrl:String;
-//          AUrlParamNames:Array of String;
-//          AUrlParamValues:Array of Variant;
-//          var ACode:Integer;
-//          var ADesc:String;
-//          var ADataJson:ISuperObject): Boolean;
-//var
-//  AHttpResponse:String;
-//  ASuperObject:ISuperObject;
-//begin
-//  Result:=False;
-//
-//  //在外面初始好了,不用再在里面初始了
-//  ACode:=FAIL;
-//  ADesc:='';
-//  ADataJson:=nil;
-//
-//  AHttpResponse:=SimpleCallAPI(API,
-//                              AHttpControl,
-//                              AInterfaceUrl,
-//                              AUrlParamNames,
-//                              AUrlParamValues);
-//  if (AHttpResponse<>'')
-////    and not SameText(AHttpResponse,'Service Unavailable')
-//    then
-//  begin
-//      try
-//        ASuperObject:=TSuperObject.Create(AHttpResponse);
-//
-//        ACode:=ASuperObject.I['Code'];
-//        ADesc:=ASuperObject.S['Desc'];
-//        ADataJson:=ASuperObject.O['Data'];
-//
-//        if ACode=SUCC then
-//        begin
-//          //接口返回成功
-//          Result:=True;
-//        end;
-//
-//      except
-//        on E:Exception do
-//        begin
-//          ADesc:=E.Message;
-//          uBaseLog.HandleException(E,'SimpleCallAPI Url:'+AInterfaceUrl+' API'+API);
-//        end;
-//      end;
-//  end
-//  else
-//  begin
-//      ADesc:=API+Trans('接口调用失败'+AHttpResponse);
-//  end;
-//end;
-//
-//function SimpleGet(API: String;
-//                  AHttpControl:THttpControl;
-//                  AInterfaceUrl:String;
-//                  AUrlParamNames:Array of String;
-//                  AUrlParamValues:Array of Variant;
-//                  AResponseStream: TStream;
-//                  AIsPost:Boolean=False): Boolean;
-//var
-//  I:Integer;
-//  AStrValue:String;
-//  AParamsStr:String;
-//  ABefore:TDateTime;
-//  AIsNeedFreeAHttpControl:Boolean;
-//begin
-//    ABefore:=Now;
-////    FMX.Types.Log.d('SimplePost'+' '+'begin'+' '+FormatDateTime('HH:MM:SS',ABefore));
-//
-//
-//  AIsNeedFreeAHttpControl:=False;
-//  if AHttpControl=nil then
-//  begin
-//    AIsNeedFreeAHttpControl:=True;
-//    AHttpControl:=TSystemHttpControl.Create;
-//  end;
-//  try
-//
-//      AParamsStr:='';
-//      for I:=0 to Length(AUrlParamNames)-1 do
-//      begin
-//        AStrValue:=AUrlParamValues[I];
-//        if AParamsStr<>'' then
-//        begin
-//          AParamsStr:=AParamsStr+'&'+AUrlParamNames[I]+'='+AStrValue;
-//        end
-//        else
-//        begin
-//          AParamsStr:=AUrlParamNames[I]+'='+AStrValue;
-//        end;
-//      end;
-//
-//      if Assigned(OnCallAPIEvent) then
-//      begin
-//        OnCallAPIEvent(AHttpControl,AInterfaceUrl+API+'?'+AParamsStr);
-//      end;
-//
-//      if not AIsPost then
-//      begin
-//        Result:=AHttpControl.Get(
-//            TIdURI.URLEncode(AInterfaceUrl+API+'?'+AParamsStr),
-//            AResponseStream);
-//      end
-//      else
-//      begin
-//        Result:=AHttpControl.Post(
-//            TIdURI.URLEncode(AInterfaceUrl+API+'?'+AParamsStr),
-//            nil,
-//            AResponseStream);
-//      end;
-//
-//  finally
-//    if AIsNeedFreeAHttpControl then
-//    begin
-//      SysUtils.FreeAndNil(AHttpControl);
-//    end;
-//  end;
-//
-////    uBaseLog.OutputDebugString('SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'耗时'+IntToStr(DateUtils.SecondsBetween(ABefore,Now)));
-//
-//end;
-//
-//function JsonSimplePost(API: String;
-//                  AHttpControl:THttpControl;
-//                  AInterfaceUrl:String;
-//                  AParamJsonArray:ISuperArray;
-////                  AJsonParamNames:Array of String;
-////                  AJsonParamValues:Array of Variant;
-//                  AResponseStream: TStream): Boolean;
-//var
-//  ABefore:TDateTime;
-//  ARequestStream:TStringStream;
-//begin
-//    ABefore:=Now;
-////    FMX.Types.Log.d('SimplePost'+' '+'begin'+' '+FormatDateTime('HH:MM:SS',ABefore));
-//
-//
-//    if Assigned(OnCallAPIEvent) then
-//    begin
-//      OnCallAPIEvent(AHttpControl,AInterfaceUrl+API);
-//    end;
-//
-//
-//
-//    ARequestStream:=TStringStream.Create('',TEncoding.UTF8);
-//    try
-//        ARequestStream.WriteString(AParamJsonArray.AsJSON);
-//        ARequestStream.Position:=0;
-//
-//        Result:=AHttpControl.Post(
-//                                TIdURI.URLEncode(AInterfaceUrl+API),
-//                                ARequestStream,
-//                                AResponseStream);
-//    finally
-//      FreeAndNil(ARequestStream);
-//    end;
-//
-//
-////    uBaseLog.OutputDebugString('SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'耗时'+IntToStr(DateUtils.SecondsBetween(ABefore,Now)));
-//
-//end;
+{ TQueryParameter }
 
+constructor TQueryParameter.Create(const AName:String;const AValue:Variant);
+begin
+  FName:=AName;
+  FValue:=AValue;
+end;
 
+destructor TQueryParameter.Destroy;
+begin
+  inherited;
+end;
 
+{ TQueryParameters }
 
+function TQueryParameters.GetUtf8UrlEncodeQueryParamsStr: String;
+var
+  I:Integer;
+  ValueStr:String;
+begin
+  Result:='';
+  for I := 0 to Count-1 do
+  begin
+    ValueStr:=Items[I].Value;
+    if ValueStr<>'' then
+    begin
+      Result:=Result+Items[I].Name+'='+URLEncodeUTF8(UTF8Encode(ValueStr));
+      if I<Count-1 then
+      begin
+        Result:=Result+'&';
+      end;
+    end;
+  end;
+end;
 
-//function SimpleCallAPIByTimerTask(API: String;
-//                                  AInterfaceUrl:String;
-//                                  AUrlParamNames:Array of String;
-//                                  AUrlParamValues:Array of Variant;
-//                                  AOnExecuteEnd:TTimerTaskNotify;
-//                                  AOnExecuteEndCallback:TTimerTaskNotifyCallback): String;
-//var
-//  I:Integer;
-//  ACallAPITaskItem:TCallAPITaskItem;
-//begin
-//  ACallAPITaskItem:=TCallAPITaskItem.Create;
-//  ACallAPITaskItem.API:=API;
-//  ACallAPITaskItem.InterfaceUrl:=AInterfaceUrl;
-//  ACallAPITaskItem.OnExecuteEnd:=AOnExecuteEnd;
-//  ACallAPITaskItem.OnExecuteEndCallback:=AOnExecuteEndCallback;
-//
-//  //复制参数名数组
-//  SetLength(ACallAPITaskItem.UrlParamNames,Length(AUrlParamNames));
-//  for I := 0 to Length(AUrlParamNames)-1 do
-//  begin
-//    ACallAPITaskItem.UrlParamNames[I]:=AUrlParamNames[I];
-//  end;
-//
-//  //复制参数值数组
-//  SetLength(ACallAPITaskItem.UrlParamValues,Length(AUrlParamValues));
-//  for I := 0 to Length(AUrlParamValues)-1 do
-//  begin
-//    ACallAPITaskItem.UrlParamValues[I]:=AUrlParamValues[I];
-//  end;
-//
-//
-//  GetGlobalTimerThread.RunTempTask(
-//      ACallAPITaskItem.DoTaskExecute,
-//      ACallAPITaskItem.DoTaskExecuteEnd,
-//      'SimpleCallAPIByTimerTask'
-//      );
-//  GlobalCallAPITaskList.Add(ACallAPITaskItem);
-//
-//end;
-//
-//
-//{ TCallAPITaskItem }
-//
-//procedure TCallAPITaskItem.DoTaskExecute(ATimerTask: TObject);
-//begin
-//  //出错
-//  TTimerTask(ATimerTask).TaskTag:=0;
-//  try
-//
-//    TTimerTask(ATimerTask).TaskDesc:=SimpleCallAPI(Self.API,
-//                                          nil,
-//                                          Self.InterfaceUrl,
-//                                          Self.UrlParamNames,
-//                                          Self.UrlParamValues
-//                                          );
-//
-//    if TTimerTask(ATimerTask).TaskDesc<>'' then
-//    begin
-//      TTimerTask(ATimerTask).TaskTag:=0;
-//    end;
-//
-//  except
-//    on E:Exception do
-//    begin
-//      //异常
-//      TTimerTask(ATimerTask).TaskDesc:=E.Message;
-//    end;
-//  end;
-//end;
-//
-//procedure TCallAPITaskItem.DoTaskExecuteEnd(ATimerTask: TObject);
-//begin
-//  if Assigned(Self.OnExecuteEnd) then
-//  begin
-//    OnExecuteEnd(TTimerTask(ATimerTask));
-//  end;
-//  if Assigned(Self.OnExecuteEndCallback) then
-//  begin
-//    OnExecuteEndCallback(TTimerTask(ATimerTask));
-//  end;
-//end;
-//
-//
-//
-//
-//initialization
-//  GlobalCallAPITaskList:=TBaseList.Create;
-//
-//finalization
-//  FreeAndNil(GlobalCallAPITaskList);
+function TQueryParameters.GetUtf8UrlEncodeQueryParamsStr1: String;
+var
+  I:Integer;
+  ValueStr:String;
+begin
+  Result:='';
+  for I := 0 to Count-1 do
+  begin
+    ValueStr:=Items[I].Value;
+    if ValueStr<>'' then
+    begin
+      Result:=Result+Items[I].Name+'%3D'+URLEncode(URLEncodeUTF8(UTF8Encode(ValueStr)));
+      if I<Count-1 then
+      begin
+        Result:=Result+'%26';
+      end;
+    end;
+  end;
+end;
 
+procedure TQueryParameters.AddQueryParameter(const AName: String;const AValue: Variant);
+begin
+  Self.Add(TQueryParameter.Create(AName,AValue));
+end;
 
+function TQueryParameters.FindItemByName(AName: String): TQueryParameter;
+var
+  I: Integer;
+begin
+  Result:=nil;
+  for I := 0 to Self.Count - 1 do
+  begin
+    if Items[I].Name=AName then
+    begin
+      Result:=Items[I];
+      Break;
+    end;
+  end;
+end;
+
+function TQueryParameters.GetItem(Index: Integer): TQueryParameter;
+begin
+  Result:=TQueryParameter(Inherited Items[Index]);
+end;
+
+function TQueryParameters.GetSignQueryParamsStr: String;
+var
+  I:Integer;
+  ValueStr:String;
+begin
+  Result:='';
+  for I := 0 to Count-1 do
+  begin
+    ValueStr:=Items[I].Value;
+    //if ValueStr<>'' then
+    begin
+      Result:=Result+Items[I].Name+ValueStr;
+    end;
+  end;
+end;
+
+function SortByName_Compare(Item1, Item2: Pointer): Integer;
+var
+  Param1,Param2:TQueryParameter;
+begin
+  Param1:=TQueryParameter(Item1);
+  Param2:=TQueryParameter(Item2);
+  if Param1.FName>Param2.FName then
+  begin
+    Result:=1;
+  end
+  else if Param1.FName<Param2.FName then
+  begin
+    Result:=-1;
+  end
+  else
+  begin
+    Result:=0;
+  end;
+end;
+
+procedure TQueryParameters.Sort;
+begin
+  FItems.Sort(SortByName_Compare);
+end;
 
 
 

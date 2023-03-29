@@ -735,7 +735,7 @@ begin
               begin
                 //raise Exception.Create('CustomObject pool limit exceeded.');
                 Inc(FWaitCount);
-                uBaseLog.HandleException(nil,'TObjectPool.GetPoolObject '+'CustomObject pool limit exceeded. Wait FWaitCount:'+IntToStr(FWaitCount));
+//                uBaseLog.HandleException(nil,'TObjectPool.GetPoolObject '+'CustomObject pool limit exceeded. Wait FWaitCount:'+IntToStr(FWaitCount));
 
               end;
 
@@ -757,7 +757,7 @@ begin
       FRecvEvent.WaitFor(INFINITE);
       Dec(FWaitCount);
 
-      uBaseLog.HandleException(nil,'TObjectPool.GetPoolObject '+'CustomObject pool limit exceeded. OK Try FWaitCount:'+IntToStr(FWaitCount));
+//      uBaseLog.HandleException(nil,'TObjectPool.GetPoolObject '+'CustomObject pool limit exceeded. OK Try FWaitCount:'+IntToStr(FWaitCount));
 
     end;
 

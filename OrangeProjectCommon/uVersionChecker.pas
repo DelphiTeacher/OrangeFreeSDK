@@ -125,7 +125,7 @@ type
 //                              //第一检测地址
 //                              //拼接如下字符串FAppUpdateServerUrl+'/Upload/'+IntToStr(AppID)+'/'+'Update/'+AppUserTypeName+'/Version.ini'
 //                              AAppUpdateServerUrl:String;
-//                              //第二检测地址
+//                              //第二检测地址                             UpdateApp
 //                              AImageHttpServerUrl:String='');
     //检测新版本
     procedure CheckNewVersionByIni(AUpdateConfigIniUrl:String;
@@ -488,10 +488,10 @@ begin
 
                 //Android跳转到更新页面
                 //老版本
-                ShowFrame(TFrame(GlobalUpdateFrame),TFrameUpdate,Application.MainForm,nil,nil,nil,Application,False,False,ufsefNone);
+                ShowFrame(TFrame(GlobalUpdateFrame),TFrameUpdate,Application.MainForm,nil,nil,nil,Application,False,False,ufsefAlpha);//ufsefNone);
                 GlobalUpdateFrame.UpdateApp(
                                             ADownloadPackageURL,
-                                            System.IOUtils.TPath.GetSharedDownloadsPath+PathDelim+ExtractFileName(ReplaceStr(FDownloadPackageURL,'/','\'))
+                                            System.IOUtils.TPath.GetSharedDownloadsPath+PathDelim+ExtractFileName(ReplaceStr(FDownloadPackageURL,'/',PathDelim))
                                             );
 
 
@@ -523,7 +523,7 @@ begin
         {$ELSE}
             //跳转到更新页面
             //老版本
-            ShowFrame(TFrame(GlobalUpdateFrame),TFrameUpdate,Application.MainForm,nil,nil,nil,Application,False,False,ufsefNone);
+            ShowFrame(TFrame(GlobalUpdateFrame),TFrameUpdate,Application.MainForm,nil,nil,nil,Application,False,False,ufsefAlpha);//ufsefNone);
             GlobalUpdateFrame.UpdateApp(
                                         ADownloadPackageURL,
                                         System.IOUtils.TPath.GetSharedDownloadsPath+PathDelim+ExtractFileName(ReplaceStr(FDownloadPackageURL,'/','\'))

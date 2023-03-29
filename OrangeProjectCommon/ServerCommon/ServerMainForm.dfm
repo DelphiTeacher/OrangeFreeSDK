@@ -18,10 +18,11 @@ object frmServerMain: TfrmServerMain
   object pnlToolBar: TPanel
     Left = 0
     Top = 0
-    Width = 701
+    Width = 705
     Height = 105
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 701
     object Label1: TLabel
       Left = 52
       Top = 12
@@ -107,17 +108,15 @@ object frmServerMain: TfrmServerMain
   object pcClient: TPageControl
     Left = 0
     Top = 105
-    Width = 701
-    Height = 348
+    Width = 705
+    Height = 349
     ActivePage = tsLog
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 701
+    ExplicitHeight = 348
     object tsPerformance: TTabSheet
       Caption = #24615#33021
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label3: TLabel
         Left = 16
         Top = 16
@@ -180,33 +179,27 @@ object frmServerMain: TfrmServerMain
     object tsLog: TTabSheet
       Caption = #26085#24535
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object memLog: TMemo
         Left = 0
         Top = 0
-        Width = 693
-        Height = 316
+        Width = 697
+        Height = 317
         Align = alClient
         ScrollBars = ssVertical
         TabOrder = 0
         OnDblClick = memLogDblClick
+        ExplicitWidth = 693
+        ExplicitHeight = 316
       end
     end
     object tsDatabasePool: TTabSheet
       Caption = #25968#25454#24211#36830#25509#27744
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gridDatabasePool: TStringGrid
         Left = 0
         Top = 0
-        Width = 693
-        Height = 316
+        Width = 697
+        Height = 317
         Align = alClient
         DefaultColWidth = 100
         Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing]
@@ -223,92 +216,6 @@ object frmServerMain: TfrmServerMain
           24
           24
           24)
-      end
-    end
-    object tsAuth: TTabSheet
-      Caption = #25480#26435
-      ImageIndex = 3
-      object Label7: TLabel
-        Left = 13
-        Top = 22
-        Width = 56
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
-        Caption = #25480#26435#20844#21496
-      end
-      object Label8: TLabel
-        Left = 13
-        Top = 54
-        Width = 84
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
-        Caption = #25480#26435#24212#29992#36873#25321
-      end
-      object Label9: TLabel
-        Left = 13
-        Top = 86
-        Width = 70
-        Height = 17
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
-        Caption = #25480#26435#24212#29992'ID'
-      end
-      object edtCompanyName: TEdit
-        Left = 105
-        Top = 19
-        Width = 193
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
-        TabOrder = 0
-        Text = #37329#21326#21170#30028#20449#24687#25216#26415#26377#38480#20844#21496
-      end
-      object btnQueryAuth: TButton
-        Left = 317
-        Top = 19
-        Width = 75
-        Height = 25
-        Caption = #26597#35810#25480#26435
-        TabOrder = 1
-        OnClick = btnQueryAuthClick
-      end
-      object cmbApps: TComboBox
-        Left = 104
-        Top = 51
-        Width = 194
-        Height = 25
-        TabOrder = 2
-        OnChange = cmbAppsChange
-      end
-      object btnSaveAuth: TButton
-        Left = 144
-        Top = 130
-        Width = 75
-        Height = 25
-        Caption = #20445#23384#25480#26435
-        TabOrder = 3
-        OnClick = btnSaveAuthClick
-      end
-      object edtAppID: TEdit
-        Left = 105
-        Top = 83
-        Width = 193
-        Height = 25
-        Margins.Left = 4
-        Margins.Top = 4
-        Margins.Right = 4
-        Margins.Bottom = 4
-        TabOrder = 4
       end
     end
   end

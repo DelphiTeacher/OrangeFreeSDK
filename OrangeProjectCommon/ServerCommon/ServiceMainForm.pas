@@ -78,7 +78,9 @@ begin
 
 
 
-  Started:=GlobalServiceProject.Start;
+  GlobalServiceProject.Start;
+
+  Started:=True;
 
   uBaseLog.HandleException(nil,'TsrvMyHis.ServiceStart End');
 end;

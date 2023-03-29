@@ -10,7 +10,7 @@ uses
 //  Vcl.Controls,
 //  Vcl.StdCtrls,
 //  Vcl.ExtCtrls,
-  uLang,
+//  uLang,
   System.StrUtils,
   uFileCommon,
 //  DES,
@@ -67,8 +67,6 @@ type
     //数据库连接DataModule
     dmServerDataBase: TdmServerDataBase;
 
-    //是否已连接数据库,避免重复启动
-    IsStarted:Boolean;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -135,7 +133,7 @@ begin
   TUniDBHelperPool(DBHelperPool).FDBConfig:=DBConfig;
   TUniDBHelperPool(DBHelperPool).FUnidacConnectionPool:=dmServerDataBase.kbmMWUNIDACConnectionPool1;
 //  DBHelperPool.FIsUseUnidacConnectionPool:=False;
-  DBHelperPool.FIsUseUnidacConnectionPool:=True;
+  TUniDBHelperPool(DBHelperPool).FIsUseUnidacConnectionPool:=True;
 
 
 
@@ -153,7 +151,6 @@ begin
 //  FreeAndNil(tmrActiveMySQLPoolConnection);
 
 //  FreeAndNil(DBHelper);
-  FreeAndNil(DBHelperPool);
 
   FreeAndNil(dmServerDataBase);
 
@@ -244,10 +241,12 @@ begin
               //SQLITE不支持并发
               dmServerDataBase.kbmMWUNIDACConnectionPool1.MaxConnections:=DBConfig.FMaxConnections;
 
-
+              //mysql才需要,而SQLITE,ES则不需要
+              if SameText(DBConfig.FDBType,'MYSQL') or SameText(DBConfig.FDBType,'MSSQL') or SameText(DBConfig.FDBType,'MSSQL2000') then
+              begin
 //              Self.tmrActiveMySQLPoolConnection.Enabled := True;
-              FActiveMySQLPoolConnectionThread:=TActiveMySQLPoolConnectionThread.Create(False,Self);
-
+                FActiveMySQLPoolConnectionThread:=TActiveMySQLPoolConnectionThread.Create(False,Self);
+              end;
           finally
             FreeAndNil(ADBHelper);
           end;
@@ -303,7 +302,7 @@ end;
 //  //从数据库连接池中取出可用链接
 //  if (ASQLDBHelper.GetConnectionFromPool = nil) then
 //  begin
-//    ADesc:=Trans('服务端无可用的数据库连接');
+//    ADesc:=('服务端无可用的数据库连接');
 //    Exit;
 //  end;
 //
@@ -348,7 +347,7 @@ end;
 //  //从数据库连接池中取出可用链接
 //  if (ASQLDBHelper.GetConnectionFromPool = nil) then
 //  begin
-//    ADesc:=Trans('服务端无可用的数据库连接');
+//    ADesc:=('服务端无可用的数据库连接');
 //    Exit;
 //  end;
 //

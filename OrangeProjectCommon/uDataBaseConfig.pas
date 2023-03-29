@@ -34,7 +34,6 @@ type
     procedure Clear;
     procedure Load(AIniFileName:String=Const_Default_DBConfigFileName);
     procedure Save(AIniFileName:String=Const_Default_DBConfigFileName);
-  private
   public
     //数据库类型
     FDBType:String;
@@ -169,9 +168,17 @@ end;
 function TDataBaseConfig.IsEmpty: Boolean;
 begin
   //SQLITE则不需要主机名
-  Result:=(FDBHostName='')
-          or (FDBDataBaseName='')
-          ;
+  if SameText(FDBType,'SQLITE') then
+  begin
+    Result:=(FDBDataBaseName='')
+            ;
+  end
+  else
+  begin
+    Result:=(FDBHostName='')
+            or (FDBDataBaseName='')
+            ;
+  end;
 end;
 
 procedure TDataBaseConfig.Load(AIniFileName:String);
@@ -235,6 +242,7 @@ begin
 
   //连接方式
   Self.FSpecificOptions_Provider:=AIniFile.ReadString('','SpecificOptions_Provider','prDirect');
+//  Self.FSpecificOptions_Provider:=AIniFile.ReadString('','SpecificOptions_Provider','');
   Self.FSpecificOptions_NativeClientVersion:=AIniFile.ReadString('','SpecificOptions_NativeClientVersion','ncAuto');
 
   //连接池最大连接数

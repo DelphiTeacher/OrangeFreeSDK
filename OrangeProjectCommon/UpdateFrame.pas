@@ -7,7 +7,7 @@ uses
   System.SysUtils,uFuncCommon, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms,
 
-
+  uBaseLog,
   uFileCommon,
 //  SysUtils,
 
@@ -329,8 +329,13 @@ end;
 
 procedure TFrameUpdate.UpdateApp(AppDownloadUrl:String;AppLocalFilePath:String);
 begin
+  uBaseLog.OutputDebugString('TFrameUpdate.UpdateApp FAppDownloadUrl Begin');
+
   FAppDownloadUrl:=AppDownloadUrl;
   FAppLocalFilePath:=AppLocalFilePath;
+
+  uBaseLog.OutputDebugString('【FAppDownloadUrl】：' + FAppDownloadUrl);
+  uBaseLog.OutputDebugString('【FAppLocalFilePath】：' + FAppLocalFilePath);
 
   DoUpdateApp;
 end;

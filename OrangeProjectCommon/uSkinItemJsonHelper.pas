@@ -19,6 +19,7 @@ uses
   uGraphicCommon,
   uSkinListLayouts,
   uSkinVirtualListType,
+  uSkinVirtualGridType,
 //  uSkinListViewType,
 
   {$IF CompilerVersion <= 21.0} // XE or older
@@ -138,6 +139,20 @@ type
   public
     property Json:ISuperObject read FJson write FJson;
   end;
+
+
+
+  //表格数据行
+  TSkinJsonVirtualGridRow=class(TSkinVirtualGridRow)
+  private
+    FJson: ISuperObject;
+  public
+    //根据绑定的FieldName获取Item的值,然后赋给绑定的控件
+    function GetValueByBindItemField(AFieldName:String):Variant;override;
+  public
+    property Json:ISuperObject read FJson write FJson;
+  end;
+
 
 
 //  TSkinJsonListBoxItem=TJsonSkinItem;
@@ -465,6 +480,31 @@ end;
 { TSuperArray }
 
 
+
+{ TSkinJsonVirtualGridRow }
+
+function TSkinJsonVirtualGridRow.GetValueByBindItemField(
+  AFieldName: String): Variant;
+begin
+  if (FJson<>nil) and FJson.Contains(AFieldName) then
+  begin
+    //设计时不能直接返回值,要判断一下,不然IDE中要报错的,但速度应该会稍微变慢
+    Result:=FJson.V[AFieldName];
+  end
+//  if FJson<>nil then
+//  begin
+//    try
+//      Result:=FJson.V[AFieldName];
+//    except
+//
+//    end;
+//  end;
+  else
+  begin
+    Result:=inherited GetValueByBindItemField(AFieldName);
+  end;
+
+end;
 
 initialization
   RegisterSkinItemClass(TJsonSkinItem);

@@ -27,9 +27,9 @@ uses
 //  Vcl.Controls,
 //  Vcl.StdCtrls,
 //  Vcl.ExtCtrls,
-  uLang,
+//  uLang,
   {$IFDEF FMX}
-  FMX.Types,
+//  FMX.Types,
   {$ENDIF}
   {$IFDEF VCL}
   ExtCtrls,
@@ -45,6 +45,7 @@ uses
   uBaseList,
   uFileCommon,
   uTimerTask,
+  SyncObjs,
   Generics.Collections,
 
   uObjectPool,
@@ -86,6 +87,8 @@ type
   TBaseDatabaseModuleClass=class of TBaseDatabaseModule;
   TBaseDatabaseModule=class
   public
+    Name:String;
+
     //独享的数据库连接配置
     DBConfig: TDataBaseConfig;
 
@@ -93,7 +96,7 @@ type
 //    DBType:String;
 
     //DBHelper池
-    DBHelperPool:TUniDBHelperPool;
+    DBHelperPool:TObjectPool;
     FDBHelperPoolErrorMsg:String;
 
 
@@ -106,6 +109,8 @@ type
 
 
 
+    //是否已连接数据库,避免重复启动
+    IsStarted:Boolean;
 
 //    //数据库查询使用组件
 //    DBHelper: TBaseDBHelper;
@@ -130,6 +135,31 @@ type
   public
     //数据库配置文件名
     property DBConfigFileName: String read FDBConfigFileName write SetDBConfigFileName;
+  end;
+
+  TBaseDatabaseModuleList=class(TBaseList)
+  private
+    function GetItem(Index: Integer): TBaseDatabaseModule;
+  public
+    function FindByName(AName:String):TBaseDatabaseModule;
+    property Items[Index:Integer]:TBaseDatabaseModule read GetItem;default;
+  end;
+
+
+  //根据Hash的首字母分多个数据库
+  THashDBModuleManager=class
+  public
+    FDBFileDir:String;
+    FDBFileName:String;
+    FLock:TCriticalSection;
+    FDBModuleList:TBaseDatabaseModuleList;
+    FDBModuleClass:TBaseDatabaseModuleClass;
+    constructor Create(ADBFileName:String;ADBFileDir:String;ADBModuleClass:TBaseDatabaseModuleClass);
+    destructor Destroy;override;
+  public
+    //根据Hash的首字母获取指定的数据库
+    function GetDBModule(AHash:String;var ADesc:String):TBaseDatabaseModule;
+//    procedure PrepareDBModules(var ADesc:String);
   end;
 
 
@@ -167,6 +197,7 @@ end;
 destructor TBaseDatabaseModule.Destroy;
 begin
   FreeAndNil(DBConfig);
+  FreeAndNil(DBHelperPool);
 
   inherited;
 end;
@@ -217,13 +248,14 @@ begin
       //从数据库连接池中取出可用链接
       if (ASQLDBHelper.GetConnectionFromPool = nil) then
       begin
-        ADesc:=Trans('服务端无可用的数据库连接');
+        ADesc:=('服务端无可用的数据库连接');
         Exit;
       end;
 
 
-      //3分钟测试检测一下连接
-      if DateUtils.SecondsBetween(ASQLDBHelper.FLastUseTime,Now)>3*60 then
+      //3分钟测试检测一下连接,ES和SQLITE不需要
+      if ( SameText(DBConfig.FDBType,'MYSQL') or SameText(DBConfig.FDBType,'MSSQL') )
+        and (DateUtils.SecondsBetween(ASQLDBHelper.FLastUseTime,Now)>3*60) then
       begin
 
 
@@ -255,8 +287,8 @@ begin
               Inc(FStatus.ConnectedTimes);
           end;
 
-          ASQLDBHelper.FLastUseTime:=Now;
       end;
+      ASQLDBHelper.FLastUseTime:=Now;
 
 
       //使用次数
@@ -328,5 +360,162 @@ begin
 
 end;
 
+
+{ TBaseDatabaseModuleList }
+
+function TBaseDatabaseModuleList.FindByName(AName: String): TBaseDatabaseModule;
+var
+  I: Integer;
+begin
+  Result:=nil;
+  for I := 0 to Self.Count-1 do
+  begin
+    if Items[I].Name=AName then
+    begin
+      Result:=Items[I];
+      Break;
+    end;
+  end;
+end;
+
+function TBaseDatabaseModuleList.GetItem(Index: Integer): TBaseDatabaseModule;
+begin
+  Result:=TBaseDatabaseModule(Inherited Items[Index]);
+end;
+
+
+{ THashDBModuleManager }
+
+constructor THashDBModuleManager.Create(ADBFileName:String;ADBFileDir:String;ADBModuleClass:TBaseDatabaseModuleClass);
+begin
+  FDBFileName:=ADBFileName;
+  FDBFileDir:=ADBFileDir;
+  FDBModuleList:=TBaseDatabaseModuleList.Create;
+  FDBModuleClass:=ADBModuleClass;
+  FLock:=TCriticalSection.Create;
+
+end;
+
+destructor THashDBModuleManager.Destroy;
+begin
+  FreeAndNil(FLock);
+  FreeAndNil(FDBModuleList);
+  inherited;
+end;
+
+function THashDBModuleManager.GetDBModule(AHash: String;var ADesc:String): TBaseDatabaseModule;
+var
+  ASQLDBHelper:TBaseDBHelper;
+  ADBModule:TBaseDatabaseModule;
+  ATableBackFix:String;
+begin
+//  ATableBackFix:=Copy(AHash,1,2);
+  //只取一位首字母
+//  ATableBackFix:=Copy(AHash,1,1);
+
+  //写死,先只用一个
+  ATableBackFix:='0';
+
+  Result:=Self.FDBModuleList.FindByName(ATableBackFix);
+  if Result=nil then
+  begin
+    FLock.Enter;
+    try
+
+      //进来之后,再找一次
+      Result:=Self.FDBModuleList.FindByName(ATableBackFix);
+      if Result<>nil then Exit;
+
+
+      ForceDirectories(FDBFileDir);
+
+      //不存在,则新建
+      Result:=FDBModuleClass.Create;
+      Result.Name:=ATableBackFix;
+
+      Result.DBConfig.FDBType:='SQLITE';
+      Result.DBConfig.FDBHostName:='';
+      Result.DBConfig.FDBHostPort:='';
+      Result.DBConfig.FDBUserName:='';
+      Result.DBConfig.FDBPassword:='';
+      Result.DBConfig.FMaxConnections:=1;
+      Result.DBConfig.FDBDataBaseName:=FDBFileDir+FDBFileName+'_'+Result.Name+'.db';
+      Result.DBHelperPool.MaxCustomObjects:=1;
+      Result.DoPrepareStart(ADesc);
+
+
+      //执行下建库的脚本
+
+      //检查数据库并更新
+      ADesc:='';
+      if not Result.GetDBHelperFromPool(ASQLDBHelper,ADesc) then
+      begin
+        Exit;
+      end;
+      try
+
+        //判断是否存在版本信息表，不存在就创建
+        if not ASQLDBHelper.SelfQuery('CREATE TABLE IF NOT EXISTS tblhash_fid_map("hash" varchar[50] NOT NULL,"fid" varchar[50] NOT NULL,PRIMARY KEY ("hash")); ',
+                                     [],
+                                     [],
+                                     asoExec) then
+        begin
+          //数据库连接失败或异常
+          ADesc := '判断是否存在版本信息表时' + '数据库连接失败或异常' + ' ' + ASQLDBHelper.LastExceptMessage;
+          Exit;
+        end;
+
+      finally
+        Result.FreeDBHelperToPool(ASQLDBHelper);
+      end;
+
+
+      Self.FDBModuleList.Add(Result);
+    finally
+      FLock.Leave;
+    end;
+
+  end;
+end;
+
+//procedure THashDBModuleManager.PrepareDBModules(var ADesc: String);
+//begin
+//  Self.GetDBModule('0',ADesc);
+//  Self.GetDBModule('1',ADesc);
+//  Self.GetDBModule('2',ADesc);
+//  Self.GetDBModule('3',ADesc);
+//  Self.GetDBModule('4',ADesc);
+//  Self.GetDBModule('5',ADesc);
+//  Self.GetDBModule('6',ADesc);
+//  Self.GetDBModule('7',ADesc);
+//  Self.GetDBModule('8',ADesc);
+//  Self.GetDBModule('9',ADesc);
+//  Self.GetDBModule('A',ADesc);
+//  Self.GetDBModule('B',ADesc);
+//  Self.GetDBModule('C',ADesc);
+//  Self.GetDBModule('D',ADesc);
+//  Self.GetDBModule('E',ADesc);
+//  Self.GetDBModule('F',ADesc);
+//  Self.GetDBModule('G',ADesc);
+//  Self.GetDBModule('H',ADesc);
+//  Self.GetDBModule('I',ADesc);
+//  Self.GetDBModule('J',ADesc);
+//  Self.GetDBModule('K',ADesc);
+//  Self.GetDBModule('L',ADesc);
+//  Self.GetDBModule('M',ADesc);
+//  Self.GetDBModule('N',ADesc);
+//  Self.GetDBModule('O',ADesc);
+//  Self.GetDBModule('P',ADesc);
+//  Self.GetDBModule('Q',ADesc);
+//  Self.GetDBModule('R',ADesc);
+//  Self.GetDBModule('S',ADesc);
+//  Self.GetDBModule('T',ADesc);
+//  Self.GetDBModule('U',ADesc);
+//  Self.GetDBModule('V',ADesc);
+//  Self.GetDBModule('W',ADesc);
+//  Self.GetDBModule('X',ADesc);
+//  Self.GetDBModule('Y',ADesc);
+//  Self.GetDBModule('Z',ADesc);
+//end;
 
 end.

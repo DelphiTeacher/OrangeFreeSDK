@@ -60,6 +60,7 @@ var
   //当前是否是谷歌专版
   GlobalIsGooglePlayVersion:Boolean;
 
+  GlobalIsAlwaysNeedLogin:Boolean;
   //是否需要登陆,有些APP直接就登陆了,不需要登陆界面
   GlobalIsNeedLoginThenShowMainFrame:Boolean;
 

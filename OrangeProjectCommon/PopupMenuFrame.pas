@@ -339,6 +339,13 @@ end;
 
 procedure TFramePopupMenu.DoHide;
 begin
+//  EnableMessageBoxFrameTopMost;
+  if GlobalTopMostFrameList<>nil then
+  begin
+    GlobalTopMostFrameList.Remove(Self,False);
+  end;
+
+
   //一定要放在隐藏WaitingFrame的后面
   //先隐藏WaitingFrame,再还原显示原生控件,免得WaitingFrame被盖住
   RestoreGlobalEditListAsPlatformType;
@@ -445,15 +452,10 @@ end;
 
 procedure TFramePopupMenu.HidePopupMenu;
 begin
-//  EnableMessageBoxFrameTopMost;
-  if GlobalTopMostFrameList<>nil then
-  begin
-    GlobalTopMostFrameList.Remove(Self,False);
-  end;
 
   //隐藏弹出框
   HideFrame;//(Self,hfcttBeforeReturnFrame,ufsefNone);
-  ReturnFrame;//(Self);
+  ReturnFrame(Self);
 end;
 
 procedure TFramePopupMenu.Init(const ACaption: String;
@@ -531,7 +533,6 @@ begin
 
 
 
-  HidePopupMenu;
 
 
   //选择的菜单项
@@ -545,6 +546,10 @@ begin
   end;
   ModalResultIndex:=Sender.Index;
   ModalResultItem:=Sender;
+
+
+  HidePopupMenu;
+
 end;
 
 procedure TFramePopupMenu.lbMenusClickItemDesignerPanelChild(Sender: TObject;

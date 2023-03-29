@@ -71,7 +71,8 @@ uses
   DateUtils,
   uMapCommon,
   uBaseList,
-  FMX.Types,
+  uTimerTask,
+//  FMX.Types,
 
   System.Net.URLClient,
   System.Net.HttpClient,
@@ -87,26 +88,27 @@ uses
     Androidapi.JNI.GraphicsContentViewText,
     Androidapi.JNI.Os,
     Androidapi.JNI.App,
+    Androidapi.JNI.Location,
     System.Generics.Collections,
     System.Messaging,
 
 
-    {$IFNDEF IN_ANDROIDSERVICE}
-    //Android服务中不能使用这个文件,不然会卡死
-    FMX.Helpers.Android,
-    {$ENDIF}
+//    {$IFNDEF IN_ANDROIDSERVICE}
+//    //Android服务中不能使用这个文件,不然会卡死
+//    FMX.Helpers.Android,
+//    {$ENDIF}
 
     {$IF RTLVersion=32}// 10.2  TJManifest_permission
     uOpenCommon,
     uAndroidPermission_D10_2,
     {$ENDIF}
 
-    {$IF RTLVersion>=33}// 10.3+
-    System.Permissions, // 动态权限单元
-    {$ENDIF}
 
   {$ENDIF}
 
+  {$IF RTLVersion>=33}// 10.3+
+  System.Permissions, // 动态权限单元
+  {$ENDIF}
 
   {$IFDEF USE_INI_LOCATION}
   FMX.Types,
@@ -129,12 +131,12 @@ uses
     System.iOS.Sensors,
     {$ENDIF}
     System.Sensors.Components,
-  {$ENDIF USE_LOCATIONSENSOR}
+  {$ENDIF}
 
 
 
 //  FMX.AddressBook.Types,
-  FMX.Dialogs,
+//  FMX.Dialogs,
 
   SysUtils;
 
@@ -333,9 +335,19 @@ type
 //    Constructor Create(CreateSuspended: Boolean;
 //                        AGPSLocation:TGPSLocation);
 //  end;
+  TPermissionSuccProc=reference to procedure();
 
 
+//  TRequestLocationPermissionsResultEvent = procedure(Sender: TObject; const APermissions: TClassicStringDynArray;
+//    const AGrantResults: TClassicPermissionStatusDynArray;AIsSucc:Boolean) of object;
 
+
+  TCheckLocationTimeoutThread=class(TBaseServiceThread)
+  protected
+    FGPSLocation:TGPSLocation;
+    procedure Execute;override;
+    constructor Create(ACreateSuspended:Boolean;AGPSLocation:TGPSLocation);
+  end;
 
   //获取定位
   TGPSLocation=class(TComponent)
@@ -379,7 +391,7 @@ type
     FOnGeocodeAddrTimeout: TNotifyEvent;
     FOnGeocodeAddrError: TNotifyEvent;
 
-    FPermissionStatus:TAuthorizationType;
+//    FPermissionStatus:TAuthorizationType;
 
     function GetLatitude: Double;
     function GetLongitude: Double;
@@ -390,6 +402,7 @@ type
   public
     //是否需要调用API获取Addr
     LocationChanged:Boolean;
+    LocationTime:TDateTime;
 
     Location:TLocation;
 
@@ -460,7 +473,7 @@ type
 
     //状态-定位是否已经超时了
     IsLocationTimeout:Boolean;
-
+    FCheckLocationTimeoutThread:TCheckLocationTimeoutThread;
 
   public
 
@@ -497,6 +510,16 @@ type
     procedure CustomSaveToIni(AIniFile:TIniFile);overload;
 //    procedure SaveToJson(AFilePath:String);
   public
+    //通知更改的管理者
+    FSkinObjectChangeManager:TSkinObjectChangeManager;
+
+
+//    FOnRequestPermissionResult:TRequestLocationPermissionsResultEvent;
+
+
+
+
+
     procedure AssignTo(AMapAnnotation:TMapAnnotation);
 
     //清除数据和状态
@@ -504,6 +527,9 @@ type
 
     //设置定位参数
     procedure SetLocationOption;
+
+    //检查权限
+    class procedure CheckPermission(ASuccMethod:TPermissionSuccProc;AFailMethod:TPermissionSuccProc);
     //开始定位
     function StartLocation:Boolean;
     function DoStartLocation:Boolean;
@@ -516,8 +542,10 @@ type
     //解析成为地址
     function GeocodeAddr:Boolean;
 
-
-    function GetPermissionStatus:TAuthorizationType;
+    //GPS是否打开
+    class function IsGPSOpened:Boolean;
+    //权限是否允许
+    class function IsPermissionGranted:Boolean;
   published
     //百度定位下使用
     //扫描间隔(毫秒)
@@ -527,6 +555,8 @@ type
   published
     //GPS经纬度的类型
     property GPSType:TGPSType read GetGPSType write SetGPSType;
+
+
 
     //定位启动失败的事件
     property OnStartError:TNotifyEvent read FOnStartError write FOnStartError;
@@ -575,6 +605,84 @@ end;
 
 
 { TGPSLocation }
+
+class procedure TGPSLocation.CheckPermission(ASuccMethod,
+  AFailMethod: TPermissionSuccProc);
+begin
+  {$IFDEF ANDROID}
+      {$IF RTLVersion>=32}// 10.2+
+      PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION),
+                                              JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION)
+                                              ],
+          procedure(const APermissions: {$IF CompilerVersion >= 35.0}TClassicStringDynArray{$ELSE}TArray<string>{$IFEND};
+            const AGrantResults: {$IF CompilerVersion >= 35.0}TClassicPermissionStatusDynArray{$ELSE}TArray<TPermissionStatus>{$IFEND})
+            begin
+                  HandleException(nil,'TGPSLocation.StartLocation RequestPermissions CallBack Length(AGrantResults)='+IntToStr(Length(AGrantResults)));
+
+                  if (Length(AGrantResults) = 2) then // 为什么为2？因为只申请了2个权限 ，返回肯定判断2个
+                  begin
+                      if (AGrantResults[0] = TPermissionStatus.Granted)
+                        and (AGrantResults[1] = TPermissionStatus.Granted)
+                        then
+                      begin
+                          //授权成功
+//                          if (AGPSLocation<>nil) and Assigned(AGPSLocation.FOnRequestPermissionResult) then AGPSLocation.FOnRequestPermissionResult(Self,APermissions,AGrantResults,True);
+
+                          HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Granted');
+                          //ShowHintFrame(nil,'开始启动定位!');
+                          if Assigned(ASuccMethod) then
+                          begin
+                            ASuccMethod();
+                          end;
+                      end
+                      else
+                      begin
+                          HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied');
+
+                          if (AGrantResults[0] <> TPermissionStatus.Granted) then
+                          begin
+                            HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied '+JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION));
+                          end;
+                          if (AGrantResults[1] <> TPermissionStatus.Granted) then
+                          begin
+                            HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied '+JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION));
+                          end;
+
+//                          if (AGPSLocation<>nil) and Assigned(AGPSLocation.FOnRequestPermissionResult) then AGPSLocation.FOnRequestPermissionResult(Self,APermissions,AGrantResults,False);
+
+                          if Assigned(AFailMethod) then
+                          begin
+                            AFailMethod();
+                          end;
+
+                      end;
+                  end
+                  else
+                  begin
+
+                  end;
+            end);
+      {$ELSE}
+//      if (AGPSLocation<>nil) and Assigned(AGPSLocation.FOnRequestPermissionResult) then AGPSLocation.FOnRequestPermissionResult(AGPSLocation,[],[],True);
+      if Assigned(ASuccMethod) then
+      begin
+        ASuccMethod();
+      end;
+      {$ENDIF}
+  {$ELSE}
+  //IOS,Windows等其他平台
+//  if (AGPSLocation<>nil) and Assigned(AGPSLocation.FOnRequestPermissionResult) then AGPSLocation.FOnRequestPermissionResult(AGPSLocation,[],[],True);
+  if Assigned(ASuccMethod) then
+  begin
+    ASuccMethod();
+  end;
+//  if Assigned(AFailMethod) then
+//  begin
+//    AFailMethod();
+//  end;
+  {$ENDIF}
+
+end;
 
 procedure TGPSLocation.Clear;
 begin
@@ -699,6 +807,8 @@ begin
 //  //那IOS,Windows平台下则需要此线程
 //  FAutoSyncAddrThread:=TAutoSyncAddrThread.Create(False,Self);
 
+  //通知更改的管理者
+  FSkinObjectChangeManager:=TSkinObjectChangeManager.Create(Self);
 
 end;
 
@@ -728,6 +838,7 @@ begin
 //  FAutoSyncAddrThread.Terminate;
 //  FAutoSyncAddrThread.WaitFor;
 //  FreeAndNil(FAutoSyncAddrThread);
+  FreeAndNil(FSkinObjectChangeManager);
 
   inherited;
 end;
@@ -796,15 +907,18 @@ begin
       begin
         OnLocationChange(Self);
       end;
+
+      FSkinObjectChangeManager.DoChange(Self,'LocationChange');
+
   end;
 
   HandleException(nil,'TGPSLocation.DoReceiveLocation End ');
 end;
 
 
-function TGPSLocation.GetPermissionStatus:TAuthorizationType;
+class function TGPSLocation.IsPermissionGranted:Boolean;
 begin
-  Result:=TAuthorizationType.atNotSpecified;
+  Result:=False;//TAuthorizationType.atNotSpecified;
 
   //低版本的API等级是不需要权限的
 //  TAuthorizationType = (atNotSpecified, atUnauthorized, atAuthorized);
@@ -812,42 +926,19 @@ begin
 
   {$IFDEF USE_LOCATIONSENSOR}
         {$IFDEF IOS}
-        if (FLocationSensor<>nil) then
-        begin
-            //需要Active为True,不然Sensor为nil
-            try
-                FLocationSensor.Active:=True;
-
-                if (FLocationSensor.Sensor<>nil) then
-                begin
-                  Result:=FLocationSensor.Sensor.Authorized;
-                end
-                else
-                begin
-                  ShowMessage('FLocationSensor.Sensor nil');
-                end;
-            except
-              on E:Exception do
-              begin
-                HandleException(E,'TGPSLocation.GetPermissionStatus End ');
-                //异常的话表示没有授权
-                Result:=TAuthorizationType.atUnauthorized;
-              end;
-            end;
-        end
-        else
-        begin
-            ShowMessage('FLocationSensor nil');
-        end;
+        Result:=True;
+        Exit;
         {$ENDIF}
 
         {$IFDEF ANDROID}
-        Result:=FPermissionStatus;
+        Result:=TPermissionsService.DefaultService.IsPermissionGranted(JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION))
+              and TPermissionsService.DefaultService.IsPermissionGranted(JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION));
+        Exit;
         {$ENDIF}
   {$ENDIF}
 
 
-
+  Result:=True;
 end;
 
 
@@ -1127,6 +1218,24 @@ begin
 
 end;
 
+class function TGPSLocation.IsGPSOpened: Boolean;
+  {$IFDEF ANDROID}
+var
+  ALocationManager:JLocationManager;
+  {$ENDIF}
+begin
+  Result:=False;
+  {$IFDEF ANDROID}
+  ALocationManager := TJLocationManager.Wrap(TAndroidHelper.Context.getSystemService(TJContext.JavaClass.LOCATION_SERVICE));
+  Result:=ALocationManager.isProviderEnabled(TJLocationManager.JavaClass.GPS_PROVIDER)
+          or ALocationManager.isProviderEnabled(TJLocationManager.JavaClass.NETWORK_PROVIDER)
+          or ALocationManager.isProviderEnabled(TJLocationManager.JavaClass.PASSIVE_PROVIDER);
+  Exit;
+  {$ENDIF}
+  //其他平台，比如IOS,Windows
+  Result:=True;
+end;
+
 //{$IFDEF USE_INI_LOCATION}
 procedure TGPSLocation.LoadFromIni(AIniFilePath: String);
 var
@@ -1303,6 +1412,7 @@ end;
 procedure TGPSLocation.SetLatitude(const Value: Double);
 begin
   Self.Location.Latitude:=Value;
+  LocationTime:=Now;
 end;
 
 procedure TGPSLocation.SetLocationOption;
@@ -1366,6 +1476,7 @@ end;
 procedure TGPSLocation.SetLongitude(const Value: Double);
 begin
   Self.Location.Longitude:=Value;
+  LocationTime:=Now;
 end;
 
 function TGPSLocation.DoStartLocation:Boolean;
@@ -1373,7 +1484,7 @@ begin
   HandleException(nil,'TGPSLocation.StartLocation Begin');
 
   //能调用定位说明已经有权限了
-  FPermissionStatus:=TAuthorizationType.atAuthorized;
+//  FPermissionStatus:=TAuthorizationType.atAuthorized;
 
 
   Result:=False;
@@ -1419,40 +1530,46 @@ begin
       end;
 
 
+//      if Self.IsLocationTimeout or Self.IsStartError or not Self.LocationChanged then
+//      begin
+//        HandleException(nil,'TGPSLocation.StartLocation Prepare 上次定位超时或启动失败或没有定位到,则先关闭LocationSensor ');
+//        FLocationSensor.Active:=False;
+//      end;
+
       HandleException(nil,'TGPSLocation.StartLocation Prepare TLocationSensor.Active ');
       //启动GPS定位
-      if not FLocationSensor.Active then
-      begin
+//      if not FLocationSensor.Active then//不能加这句,不然GPS打开之后就调用不到Active:=True了,就启动不了定位了
+//      begin
         HandleException(nil,'TGPSLocation.StartLocation FLocationSensor.Active:=True');
         FLocationSensor.Active:=True;
-      end;
+//      end;
 
 
       IsStartedLocation:=True;
 
 
-      //检测定位是否超时
-      TThread.CreateAnonymousThread(procedure
-      begin
-          HandleException(nil,'TGPSLocation.StartLocation Sleep('+IntToStr(LocationTimeout)+') Begin');
-          //等待超时时间
-          Sleep(LocationTimeout);
-          HandleException(nil,'TGPSLocation.StartLocation Sleep('+IntToStr(LocationTimeout)+') End');
-
-          //判断定位是否超时
-          if
-            //定位启动后没有获取到经纬度
-            Not Self.HasLocatedAfterStart then
-          begin
-              HandleException(nil,'TGPSLocation.StartLocation OnLocationTimeout');
-              Self.IsLocationTimeout:=True;
-              if Assigned(Self.OnLocationTimeout) then
-              begin
-                Self.OnLocationTimeout(Self);
-              end;
-          end;
-
-      end).Start;
+//      //检测定位是否超时
+//      TThread.CreateAnonymousThread(procedure
+//      begin
+//          HandleException(nil,'TGPSLocation.StartLocation Sleep('+IntToStr(LocationTimeout)+') Begin');
+//          //等待超时时间
+//          Sleep(LocationTimeout);
+//          HandleException(nil,'TGPSLocation.StartLocation Sleep('+IntToStr(LocationTimeout)+') End');
+//
+//          //判断定位是否超时
+//          if
+//            //定位启动后没有获取到经纬度
+//            Not Self.HasLocatedAfterStart then
+//          begin
+//              HandleException(nil,'TGPSLocation.StartLocation OnLocationTimeout');
+//              Self.IsLocationTimeout:=True;
+//              if Assigned(Self.OnLocationTimeout) then
+//              begin
+//                Self.OnLocationTimeout(Self);
+//              end;
+//          end;
+//
+//      end).Start;
 
 
 
@@ -1465,21 +1582,34 @@ begin
       //判断是否已经定位到了经纬度
       //是否获取到地址
       HandleException(nil,'TGPSLocation.StartLocation Prepare TLocationSensor.Sensor ');
+      if (Self.FLocationSensor.Sensor=nil) then
+      begin
+        HandleException(nil,'TGPSLocation.StartLocation Prepare TLocationSensor.Sensor=nil');
+      end;
+//      if (Self.FLocationSensor.Sensor<>nil) and (Self.FLocationSensor.Sensor<>nil) then
+//      begin
+//        HandleException(nil,'TGPSLocation.StartLocation Prepare TLocationSensor.Sensor=nil');
+//      end;
+
+
       if (Self.FLocationSensor.Sensor<>nil) then
       begin
         if (FloatToStr(Self.FLocationSensor.Sensor.latitude)<>'NAN') then
         begin
-          DoLocationSensor1LocationChanged(
-                        FLocationSensor,
-                        TLocationCoord2D.Create(Self.FLocationSensor.Sensor.Latitude,
-                                                Self.FLocationSensor.Sensor.Longitude),
-                        TLocationCoord2D.Create(Self.FLocationSensor.Sensor.Latitude,
-                                                Self.FLocationSensor.Sensor.Longitude)
-                        );
+            //定位成功了
+            DoLocationSensor1LocationChanged(
+                          FLocationSensor,
+                          TLocationCoord2D.Create(Self.FLocationSensor.Sensor.Latitude,
+                                                  Self.FLocationSensor.Sensor.Longitude),
+                          TLocationCoord2D.Create(Self.FLocationSensor.Sensor.Latitude,
+                                                  Self.FLocationSensor.Sensor.Longitude)
+                          );
         end
         else
         begin
             HandleException(nil,'TGPSLocation.StartLocation Prepare TLocationSensor.Sensor NAN');
+            FCheckLocationTimeoutThread:=TCheckLocationTimeoutThread.Create(False,Self);
+            FCheckLocationTimeoutThread.FreeOnTerminate:=True;
         end;
       end;
 
@@ -1579,43 +1709,85 @@ function TGPSLocation.StartLocation: Boolean;
 begin
   HandleException(nil,'TGPSLocation.StartLocation');
 
-  {$IFDEF ANDROID}
-      {$IF RTLVersion>=32}// 10.2+
-      PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION),
-                                              JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION)
-                                              ],
-          procedure(const APermissions: {$IF CompilerVersion >= 35.0}TClassicStringDynArray{$ELSE}TArray<string>{$IFEND};
-            const AGrantResults: {$IF CompilerVersion >= 35.0}TClassicPermissionStatusDynArray{$ELSE}TArray<TPermissionStatus>{$IFEND})
-            begin
-                  HandleException(nil,'TGPSLocation.StartLocation RequestPermissions CallBack');
-                  if (Length(AGrantResults) = 2) then // 为什么为2？因为只申请了2个权限 ，返回肯定判断2个
-                  begin
-                    if (AGrantResults[0] = TPermissionStatus.Granted)
-                      and (AGrantResults[1] = TPermissionStatus.Granted)
-                      then
-                    begin
+  Self.CheckPermission(
+    procedure
+    begin
+      HandleException(nil,'TGPSLocation.StartLocation CheckPermission SUCC');
+//      if Self.IsGPSOpened then
+//      begin
+//        HandleException(nil,'TGPSLocation.StartLocation CheckPermission SUCC GPS is Open');
+        Self.DoStartLocation;
+//      end
+//      else
+//      begin
+//        HandleException(nil,'TGPSLocation.StartLocation CheckPermission SUCC GPS is not Open');
+//
+//      end;
 
-                        HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Granted');
-                        //ShowHintFrame(nil,'开始启动定位!');
-                        if not DoStartLocation then
-                        begin
-                          //ShowHintFrame(nil,'启动定位失败!');
-                        end;
-                    end
-                    else
-                    begin
-                        HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied');
-                    end;
-                  end;
-            end);
-      Result:=True;
-      {$ELSE}
-      Result:=DoStartLocation;
-      {$ENDIF}
-  {$ELSE}
-  //IOS
-  Result:=DoStartLocation;
-  {$ENDIF}
+    end,
+    procedure
+    begin
+      HandleException(nil,'TGPSLocation.StartLocation CheckPermission Fail');
+    end
+    );
+
+//  {$IFDEF ANDROID}
+//      {$IF RTLVersion>=32}// 10.2+
+//      PermissionsService.RequestPermissions([JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION),
+//                                              JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION)
+//                                              ],
+//          procedure(const APermissions: {$IF CompilerVersion >= 35.0}TClassicStringDynArray{$ELSE}TArray<string>{$IFEND};
+//            const AGrantResults: {$IF CompilerVersion >= 35.0}TClassicPermissionStatusDynArray{$ELSE}TArray<TPermissionStatus>{$IFEND})
+//            begin
+//                  HandleException(nil,'TGPSLocation.StartLocation RequestPermissions CallBack Length(AGrantResults)='+IntToStr(Length(AGrantResults)));
+//
+//                  if (Length(AGrantResults) = 2) then // 为什么为2？因为只申请了2个权限 ，返回肯定判断2个
+//                  begin
+//                      if (AGrantResults[0] = TPermissionStatus.Granted)
+//                        and (AGrantResults[1] = TPermissionStatus.Granted)
+//                        then
+//                      begin
+//                          //授权成功
+//                          if Assigned(FOnRequestPermissionResult) then FOnRequestPermissionResult(Self,APermissions,AGrantResults,True);
+//
+//                          HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Granted');
+//                          //ShowHintFrame(nil,'开始启动定位!');
+//                          if not DoStartLocation then
+//                          begin
+//                            //ShowHintFrame(nil,'启动定位失败!');
+//                          end;
+//
+//                      end
+//                      else
+//                      begin
+//                          HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied');
+//
+//                          if (AGrantResults[0] <> TPermissionStatus.Granted) then
+//                          begin
+//                            HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied '+JStringToString(TJManifest_permission.JavaClass.ACCESS_COARSE_LOCATION));
+//                          end;
+//                          if (AGrantResults[1] <> TPermissionStatus.Granted) then
+//                          begin
+//                            HandleException(nil,'TGPSLocation.StartLocation RequestPermissions Denied '+JStringToString(TJManifest_permission.JavaClass.ACCESS_FINE_LOCATION));
+//                          end;
+//
+//                          if Assigned(FOnRequestPermissionResult) then FOnRequestPermissionResult(Self,APermissions,AGrantResults,False);
+//
+//                      end;
+//                  end
+//                  else
+//                  begin
+//
+//                  end;
+//            end);
+//      Result:=True;
+//      {$ELSE}
+//      Result:=DoStartLocation;
+//      {$ENDIF}
+//  {$ELSE}
+//  //IOS
+//  Result:=DoStartLocation;
+//  {$ENDIF}
 
 end;
 
@@ -2203,6 +2375,82 @@ end;
 
 
 
+
+{ TCheckLocationTimeoutThread }
+
+constructor TCheckLocationTimeoutThread.Create(ACreateSuspended: Boolean;
+  AGPSLocation: TGPSLocation);
+begin
+  FGPSLocation:=AGPSLocation;
+  Inherited Create(ACreateSuspended);
+end;
+
+procedure TCheckLocationTimeoutThread.Execute;
+var
+  AStartTime:TDateTime;
+begin
+  inherited;
+
+  AStartTime:=Now();
+//    //设置定位超时时间(毫秒)
+//    LocationTimeout:Integer;
+  while not Self.Terminated and (DateUtils.MilliSecondsBetween(Now,AStartTime)<FGPSLocation.LocationTimeout) do
+  begin
+    try
+        HandleException(nil,'TCheckLocationTimeoutThread.Execute Begin');
+        //等待超时时间
+        Sleep(1000);
+        HandleException(nil,'TGPSLocation.StartLocation Sleep('+IntToStr(FGPSLocation.LocationTimeout)+') End');
+
+
+
+        if (FGPSLocation.FLocationSensor.Sensor<>nil)
+             and (FloatToStr(FGPSLocation.FLocationSensor.Sensor.latitude)<>'NAN') then
+        begin
+            HandleException(nil,'TCheckLocationTimeoutThread.Execute TLocationSensor.Sensor not NAN');
+            //定位成功了
+            FGPSLocation.DoLocationSensor1LocationChanged(
+                          FGPSLocation.FLocationSensor,
+                          TLocationCoord2D.Create(FGPSLocation.FLocationSensor.Sensor.Latitude,
+                                                  FGPSLocation.FLocationSensor.Sensor.Longitude),
+                          TLocationCoord2D.Create(FGPSLocation.FLocationSensor.Sensor.Latitude,
+                                                  FGPSLocation.FLocationSensor.Sensor.Longitude)
+                          );
+            Exit;
+
+        end
+        else
+        begin
+          HandleException(nil,'TCheckLocationTimeoutThread.Execute TLocationSensor.Sensor NAN');
+        end;
+
+
+        //判断定位是否超时
+        if
+          //定位启动后没有获取到经纬度
+          Not FGPSLocation.HasLocatedAfterStart then
+        begin
+            HandleException(nil,'TCheckLocationTimeoutThread.Execute TGPSLocation.StartLocation OnLocationTimeout');
+
+            FGPSLocation.IsLocationTimeout:=True;
+            if Assigned(FGPSLocation.OnLocationTimeout) then
+            begin
+              FGPSLocation.OnLocationTimeout(Self);
+            end;
+
+            Exit;
+        end;
+
+    except
+      on E:Exception do
+      begin
+        HandleException(nil,'TCheckLocationTimeoutThread.Execute Error:'+E.Message);
+      end;
+    end;
+
+  end;
+
+end;
 
 initialization
   GPSTypeNames[gtWGS84]:='wgs84';

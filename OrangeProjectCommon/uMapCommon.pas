@@ -10,7 +10,7 @@ uses
   Classes,
   UITypes,
   StrUtils,
-  FMX.Types,
+//  FMX.Types,
   IdURI,
 //  uAppCommon,
 
@@ -22,20 +22,21 @@ uses
   {$IFDEF ANDROID}
   Androidapi.JNI.JavaTypes,Androidapi.JNI.Telephony,
   Androidapi.JNI.Net,Androidapi.JNI.GraphicsContentViewText,
-  Androidapi.Helpers,FMX.Helpers.Android,
+  Androidapi.Helpers,
+//  FMX.Helpers.Android,
   Androidapi.JNI.Embarcadero,
-  FMX.VirtualKeyboard,
   Androidapi.JNI.App, Androidapi.JNIBridge,
   System.SyncObjs,
-  FMX.Platform.Android,
+//  FMX.VirtualKeyboard,
+//  FMX.Platform.Android,
   {$ENDIF}
 
-  {$IFDEF ANDROID}
-  uMobileUtils,
-  {$ENDIF}
-  {$IFDEF IOS}
-  uMobileUtils,
-  {$ENDIF}
+//  {$IFDEF ANDROID}
+//  uMobileUtils,
+//  {$ENDIF}
+//  {$IFDEF IOS}
+//  uMobileUtils,
+//  {$ENDIF}
 
 
   XSuperObject,
@@ -125,6 +126,10 @@ type
     StrokeWeight:Integer;//粗细4
     StrokeOpacity:Double;//透明度0.5
 
+
+    //是否已经添加到地图上
+    IsAddedMarkerToMap:Boolean;
+    IsAddedPolylineToMap:Boolean;
     procedure Clear;
     function IconUrl:String;
   end;
@@ -185,30 +190,6 @@ function GetGoogleRouteDistance(AStartLocation:TLocation;
                                 var AError:String;
                                 var ADistance:Double):Boolean;
 
-//百度地图以URI的方式调起路线规划
-procedure BaiduMapUriRoutePlan(AStartLocation:TLocation;
-                                AEndLocation:TLocation;
-                                ARoutePlanType:TRoutePlanType;
-                                AStartName:String;
-                                AEndName:String;
-                                AYourCompanyName:String;
-                                AYourAppName:String);
-
-//高德地图以URI的方式调起路线规划
-procedure AMapUriRoutePlan(AStartLocation:TLocation;
-                          AEndLocation:TLocation;
-                          ARoutePlanType:TRoutePlanType;
-                          AStartName:String;
-                          AEndName:String;
-                          ASourceApplicationName:String);
-
-
-//谷歌地图以URI的方式调起路线规划
-procedure GoogleMapUriRoutePlan(AStartLocation:TLocation;
-                                AEndLocation:TLocation;
-                                ARoutePlanType:TRoutePlanType;
-                                AStartName:String;
-                                AEndName:String);
 
 
 
@@ -751,251 +732,6 @@ begin
 end;
 
 
-
-procedure GoogleMapUriRoutePlan(AStartLocation:TLocation;
-                                AEndLocation:TLocation;
-                                ARoutePlanType:TRoutePlanType;
-                                AStartName:String;
-                                AEndName:String);
-var
-  AUrl:String;
-{$IFDEF ANDROID}
-var
-  Intent:JIntent;
-{$ENDIF}
-begin
-        //IOS下
-        {$IFDEF IOS}
-        //comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic
-        //comgooglemaps://?saddr=Google+Inc,+8th+Avenue,+New+York,+NY&daddr=John+F.+Kennedy+International+Airport,+Van+Wyck+Expressway,+Jamaica,+New+York
-            //&directionsmode=transit
-        //comgooglemaps://?saddr=Google,+1600+Amphitheatre+Parkway,+Mountain+View,+CA+94043&daddr=Google+Inc,+345+Spear+Street,+San+Francisco,+CA
-            //&center=37.422185,-122.083898
-            //&zoom=10
-        //comgooglemaps://?saddr=2025+Garcia+Ave,+Mountain+View,+CA,+USA&daddr=Google,+1600+Amphitheatre+Parkway,+Mountain+View,+CA,+United+States
-            //&center=37.423725,-122.0877
-            //&directionsmode=walking
-            //&zoom=17
-        //谷歌官方文档
-        //https://developers.google.com/maps/documentation/urls/ios-urlscheme
-
-        AUrl:='comgooglemaps://?'
-          +'saddr='+FloatToStr(AStartLocation.Latitude)+','
-                  +FloatToStr(AStartLocation.Longitude)
-          +'&daddr='+FloatToStr(AEndLocation.Latitude)+','
-                  +FloatToStr(AEndLocation.Longitude);
-
-        case ARoutePlanType of
-          rptTransit: AUrl:=AUrl+'&directionsmode=transit';
-          rptDriving: AUrl:=AUrl+'&directionsmode=driving';
-//          rptNavigation: AUrl:=AUrl+'&t=0';
-          rptWalking: AUrl:=AUrl+'&directionsmode=walking';
-          rptRiding: AUrl:=AUrl+'&directionsmode=bicycling';
-        end;
-        {$ENDIF}
-        {$IFDEF ANDROID}
-        //谷歌官方文档
-        //https://developers.google.com/maps/documentation/urls/android-intents
-        AUrl:='google.navigation:'
-              +'q='+FloatToStr(AEndLocation.Latitude)+','
-                  +FloatToStr(AEndLocation.Longitude);
-
-        case ARoutePlanType of
-//          rptTransit: AUrl:=AUrl+'&mode=t';
-          rptDriving: AUrl:=AUrl+'&mode=d';
-//          rptNavigation: AUrl:=AUrl+'&t=0';
-          rptWalking: AUrl:=AUrl+'&mode=w';
-          rptRiding: AUrl:=AUrl+'&mode=b';
-        end;
-        {$ENDIF}
-
-
-        {$IFDEF IOS}
-        OpenWebBrowserAndNavigateURL(AUrl);
-        {$ENDIF}
-        {$IFDEF ANDROID}
-        Intent := TJIntent.JavaClass.init();
-        intent.setAction(TJIntent.JavaClass.ACTION_VIEW);
-        intent.setData(
-            TJnet_Uri.JavaClass.parse(
-                StringToJString(AUrl)
-                ));
-        intent.setPackage(StringToJString('com.google.android.apps.maps'));
-
-        SharedActivityContext.startActivity(Intent);
-        {$ENDIF}
-end;
-
-
-procedure AMapUriRoutePlan(AStartLocation:TLocation;
-                          AEndLocation:TLocation;
-                          ARoutePlanType:TRoutePlanType;
-                          AStartName:String;
-                          AEndName:String;
-                          ASourceApplicationName:String);
-var
-  AUrl:String;
-{$IFDEF ANDROID}
-var
-  Intent:JIntent;
-{$ENDIF}
-begin
-        //IOS下
-        {$IFDEF IOS}
-        //https://www.jianshu.com/p/e4039b5a1a43
-        //http://lbs.amap.com/api/amap-mobile/guide/ios/route
-
-        AUrl:='iosamap://path?'
-            +'sourceApplication='+ASourceApplicationName;
-        {$ENDIF}
-        {$IFDEF ANDROID}
-        AUrl:='amapuri://route/plan/?';
-        {$ENDIF}
-
-
-        AUrl:=AUrl+'&sid='+'BGVIS1'
-            +'&slat='+FloatToStr(AStartLocation.Latitude)
-            +'&slon='+FloatToStr(AStartLocation.Longitude)
-            +'&sname='+AStartName
-            +'&did='+'BGVIS2'
-            +'&dlat='+FloatToStr(AEndLocation.Latitude)
-            +'&dlon='+FloatToStr(AEndLocation.Longitude)
-            +'&dname='+AEndName
-            +'&dev=0';
-
-
-        //t = 0 驾车；
-        //t = 1 公交；
-        //t = 2 步行；
-        //t = 3 骑行（骑行仅在V788以上版本支持）；
-        case ARoutePlanType of
-          rptTransit: AUrl:=AUrl+'&t=1';
-          rptDriving: AUrl:=AUrl+'&t=0';
-//          rptNavigation: AUrl:=AUrl+'&t=0';
-          rptWalking: AUrl:=AUrl+'&t=2';
-          rptRiding: AUrl:=AUrl+'&t=3';
-        end;
-
-
-        {$IFDEF IOS}
-        //有中文,需要Url编码
-        AUrl:=TIdURI.URLEncode(AUrl);
-
-//        AUrl:='iosamap://path?sourceApplication=applicationName&sid=BGVIS1&slat=39.92848272&slon=116.39560823&sname=A&did=BGVIS2&dlat=39.98848272&dlon=116.47560823&dname=B&dev=0&t=0';
-        OpenWebBrowserAndNavigateURL(AUrl);
-        {$ENDIF}
-        {$IFDEF ANDROID}
-        //发送消息
-        //act=android.intent.action.VIEW
-        //cat=android.intent.category.DEFAULT
-        //dat=amapuri://route/plan/?sid=BGVIS1&slat=39.92848272&slon=116.39560823&sname=A&did=BGVIS2&dlat=39.98848272&dlon=116.47560823&dname=B&dev=0&t=0
-        //pkg=com.autonavi.minimap
-        Intent := TJIntent.JavaClass.init();
-        intent.setAction(TJIntent.JavaClass.ACTION_VIEW);
-        intent.addCategory(TJIntent.JavaClass.CATEGORY_DEFAULT);
-        intent.setData(
-            TJnet_Uri.JavaClass.parse(
-                StringToJString(AUrl)
-                ));
-        intent.setPackage(StringToJString('com.autonavi.minimap'));
-
-        SharedActivityContext.startActivity(Intent);
-        {$ENDIF}
-
-end;
-
-
-procedure BaiduMapUriRoutePlan(AStartLocation:TLocation;
-                                AEndLocation:TLocation;
-                                ARoutePlanType:TRoutePlanType;
-                                AStartName:String;
-                                AEndName:String;
-                                AYourCompanyName:String;
-                                AYourAppName:String);
-var
-  AUrl:String;
-begin
-        //IOS下
-        {$IFDEF IOS}
-        //百度官方说明文档
-        //http://lbsyun.baidu.com/index.php?title=uri/api/ios
-        AUrl:='baidumap://map/direction?';
-        {$ENDIF}
-        {$IFDEF ANDROID}
-        //发送消息
-        AUrl:= 'intent://map/direction?';
-        {$ENDIF}
-
-
-
-        //起点
-        if AStartName<>'' then
-        begin
-          AUrl:=AUrl+'origin='+'name:'+AStartName+'|'
-                +'latlng:'
-                      +FloatToStr(AStartLocation.Latitude)
-                      +','+FloatToStr(AStartLocation.Longitude)
-        end
-        else
-        begin
-          AUrl:=AUrl+'origin='+FloatToStr(AStartLocation.Latitude)
-                      +','+FloatToStr(AStartLocation.Longitude)
-        end;
-        //终点
-        if AEndName<>'' then
-        begin
-          AUrl:=AUrl+'&destination='
-            +'name:'+AEndName+'|'
-                +'latlng:'
-                      +FloatToStr(AEndLocation.Latitude)
-                      +','+FloatToStr(AEndLocation.Longitude)
-        end
-        else
-        begin
-          AUrl:=AUrl+'&destination='
-                      +FloatToStr(AEndLocation.Latitude)
-                      +','+FloatToStr(AEndLocation.Longitude)
-        end;
-
-        //导航模式
-        case ARoutePlanType of
-          rptTransit: AUrl:=AUrl+'&mode=transit';
-          rptDriving: AUrl:=AUrl+'&mode=driving';
-//          rptNavigation: AUrl:=AUrl+'&mode=navigation';
-          rptWalking: AUrl:=AUrl+'&mode=walking';
-          rptRiding: AUrl:=AUrl+'&mode=riding';
-        end;
-
-
-
-
-        {$IFDEF IOS}
-        //此参数不传值，不保证服务。
-        AUrl:=AUrl+'&src=webapp.navi.'+AYourCompanyName+'.'+AYourAppName;
-        //有中文,需要Url编码,不然跳转不过去
-        AUrl:=TIdURI.URLEncode(AUrl);
-
-//        url:='baidumap://map/direction?origin=34.264642646862,108.95108518068&destination=40.007623,116.360582&mode=driving';
-        OpenWebBrowserAndNavigateURL(AUrl);
-        {$ENDIF}
-        {$IFDEF ANDROID}
-        //要加这一段,不然会闪退
-        AUrl:=AUrl+'#Intent;'
-                    +'scheme=bdapp;'
-                    +'package=com.baidu.BaiduMap;'
-                    +'end';
-
-
-//        //Android不用加这一段
-//        //有中文,需要Url编码,不然跳转不过去
-//        AUrl:=TIdURI.URLEncode(AUrl);
-
-        OpenWebBrowserAndNavigateURL(AUrl);
-        {$ENDIF}
-
-end;
-
-
 function GetGoogleRoutePlan(AStartLocation:TMapAnnotation;
                             AEndLocation:TMapAnnotation;
                             AGoogleAPIKey:String;
@@ -1023,7 +759,7 @@ begin
   AResponseStream:=TStringStream.Create('',TEncoding.UTF8);
   try
     try
-        FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 1');
+        uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 1');
 
         //接口说明地址
         //https://maps.googleapis.com/maps/api/directions/json?
@@ -1077,15 +813,15 @@ begin
             ) then
         begin
 
-            FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 2 '+AResponseStream.DataString);
+            uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 2 '+AResponseStream.DataString);
 
 
             ASuperObject:=TSuperObject.Create(AResponseStream.DataString);
             if (ASuperObject.S['status']='OK') then
             begin
-                FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 3 OK');
+                uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 3 OK');
 
-                FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 4 Data'+ASuperObject.AsJSON);
+                uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 4 Data'+ASuperObject.AsJSON);
                 if ASuperObject.Contains('routes')
                   and (ASuperObject.A['routes'].Length>0)
                   and ASuperObject.A['routes'].O[0].Contains('legs')
@@ -1093,7 +829,7 @@ begin
                   and ASuperObject.A['routes'].O[0].A['legs'].O[0].Contains('steps') then
                 begin
 
-                    FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 5 ');
+                    uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 5 ');
 
                     Result:=TMapAnnotationList.Create();
 
@@ -1128,14 +864,14 @@ begin
                 end
                 else
                 begin
-                    FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 3 DataStruct is not valid ');
+                    uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 3 DataStruct is not valid ');
                     //调用失败
                     AError:=AResponseStream.DataString;
                 end;
             end
             else if ASuperObject.S['status']='NOT_FOUND' then
             begin
-                FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 3 Error ');
+                uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 3 Error ');
                 //调用失败
                 AError:='NOT_FOUND';
             end
@@ -1195,7 +931,7 @@ begin
   AResponseStream:=TStringStream.Create('',TEncoding.UTF8);
   try
     try
-        FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 1');
+        uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 1');
 
         //接口说明地址
         //https://maps.googleapis.com/maps/api/directions/json?
@@ -1218,13 +954,13 @@ begin
           ) then
         begin
 
-            FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 2 '+AResponseStream.DataString);
+            uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 2 '+AResponseStream.DataString);
 
 
           ASuperObject:=TSuperObject.Create(AResponseStream.DataString);
           if (ASuperObject.S['status']='OK') then
           begin
-            FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 3 OK');
+            uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 3 OK');
 
 
             if ASuperObject.Contains('routes')
@@ -1238,14 +974,14 @@ begin
             end
             else
             begin
-                FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 3 DataStruct is not valid ');
+                uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 3 DataStruct is not valid ');
                 //调用失败
                 AError:=AResponseStream.DataString;
             end;
           end
           else
           begin
-              FMX.Types.Log.d('OrangeUI GetGoogleRoutePlan 3 Error ');
+              uBaseLog.OutputDebugString('OrangeUI GetGoogleRoutePlan 3 Error ');
               //调用失败
               AError:=AResponseStream.DataString;
           end;
@@ -1380,7 +1116,7 @@ begin
             else
             begin
                 //调用失败
-                FMX.Types.Log.d('OrangeUI GetBaiduRoutePlan 3 DataStruct is not valid ');
+                uBaseLog.OutputDebugString('OrangeUI GetBaiduRoutePlan 3 DataStruct is not valid ');
                 AError:=AResponseStream.DataString;
             end;
 
@@ -1388,7 +1124,7 @@ begin
         else
         begin
             //调用失败
-            FMX.Types.Log.d('OrangeUI GetBaiduRoutePlan 3 Error ');
+            uBaseLog.OutputDebugString('OrangeUI GetBaiduRoutePlan 3 Error ');
             AError:=AResponseStream.DataString;
         end;
 

@@ -1,9 +1,10 @@
 object frmDataBaseConfig: TfrmDataBaseConfig
   Left = 271
   Top = 114
+  BorderStyle = bsSingle
   Caption = #25968#25454#24211#37197#32622
-  ClientHeight = 248
-  ClientWidth = 380
+  ClientHeight = 258
+  ClientWidth = 390
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,6 +12,7 @@ object frmDataBaseConfig: TfrmDataBaseConfig
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
@@ -170,5 +172,17 @@ object frmDataBaseConfig: TfrmDataBaseConfig
     Filter = 'ini|*.ini'
     Left = 40
     Top = 136
+  end
+  object UniConnection1: TUniConnection
+    Left = 312
+    Top = 48
+  end
+  object MySQLUniProvider1: TMySQLUniProvider
+    Left = 312
+    Top = 16
+  end
+  object SQLServerUniProvider1: TSQLServerUniProvider
+    Left = 320
+    Top = 200
   end
 end

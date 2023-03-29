@@ -16,7 +16,7 @@ uses
   DateUtils,
 //  uMapCommon,
   uBaseList_Copy,
-  FMX.Types,
+//  FMX.Types,
 
   System.Net.URLClient,
   System.Net.HttpClient,
@@ -36,10 +36,10 @@ uses
     System.Messaging,
 
 
-    {$IFNDEF IN_ANDROIDSERVICE}
-    //Android服务中不能使用这个文件,不然会卡死
-    FMX.Helpers.Android,
-    {$ENDIF}
+//    {$IFNDEF IN_ANDROIDSERVICE}
+//    //Android服务中不能使用这个文件,不然会卡死
+//    FMX.Helpers.Android,
+//    {$ENDIF}
 
   {$ENDIF}
 

@@ -78,10 +78,6 @@ type
     FNewURL:String;
 //    FHistoryURLList:TStringList;
 
-    //创建WebBrowser
-    procedure DoShow;
-//    //停止并隐藏WebBrowser
-//    procedure DoHide;
 
   public
     FWebBrowser: TWebBrowser;
@@ -103,8 +99,12 @@ type
     FOnWebBrowserDidStartLoad:TWebBrowserDidStartLoad;
     FOnWebBrowserShouldStartLoadWithRequest:TWebBrowsershouldStartLoadWithRequest;
     FOnLoadEnd:TWebBrowserLoadEndEvent;
+    //创建WebBrowser
+    procedure DoShow;
+//    //停止并隐藏WebBrowser
+//    procedure DoHide;
     procedure DoLoadUrl(AUrl:String);
-    procedure LoadUrl(AUrl:String;ACaption:String='网页';AIsFirstLoad:Boolean=True);
+    procedure LoadUrl(AUrl:String;ACaption:String='网页';AIsFirstLoad:Boolean=True;AISNeedFreeWebBrowser:Boolean=True);
     procedure LoadBodyHtml(ABodyHtml:String;ATempFileName:String;AIsFirstLoad:Boolean=True);
     { Public declarations }
   end;
@@ -371,12 +371,19 @@ end;
 //  DoLoadUrl(Const_News_Url+IntToStr(news_fid));
 //end;
 
-procedure TFrameWebBrowser.LoadUrl(AUrl:String;ACaption:String;AIsFirstLoad:Boolean);
+procedure TFrameWebBrowser.LoadUrl(AUrl:String;ACaption:String;AIsFirstLoad:Boolean;AISNeedFreeWebBrowser:Boolean);
 begin
   FMX.Types.Log.d('OrangeUI LoadUrl Begin');
 
-  //先释放,点击返回按钮的时候要返回上一页，不释放的话，会一直返回到之前打开过的页面，因为这是一个公共页面
-  FreeAndNil(Self.FWebBrowser);
+
+  if AISNeedFreeWebBrowser then
+  begin
+    //先释放,点击返回按钮的时候要返回上一页，不释放的话，会一直返回到之前打开过的页面，因为这是一个公共页面
+    FreeAndNil(Self.FWebBrowser);
+  end;
+
+
+
 
   //隐藏键盘工具栏,WebBrowser弹出的键盘自带
   SetVirtualKeyboardToolBarEnabled(False);

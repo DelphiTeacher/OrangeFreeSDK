@@ -32,7 +32,7 @@ uses
   StrUtils,
   INIFiles,
   IdURI,
-  uLang,
+//  uLang,
   uBaseLog,
   uBaseList,
 //  uOpenCommon,
@@ -56,9 +56,9 @@ uses
   {$IFEND}
 
 
-  {$IF CompilerVersion <= 21.0}
-  uIdHttpControl,
-  {$IFEND}
+//  {$IF CompilerVersion <= 21.0}
+//  uIdHttpControl,
+//  {$IFEND}
 
 
 
@@ -68,7 +68,7 @@ uses
 //  {$ELSE}
 
   {$IF CompilerVersion > 21.0}
-  System.Hash ,
+  System.Hash,
   System.NetEncoding,
   System.Net.URLClient,
   System.Net.HttpClient,
@@ -78,12 +78,13 @@ uses
 //  {$ENDIF}
 
   ZLib,
+  uDatasetToJson,
   uBaseHttpControl
   ;
 
 const
   //Rest接口签名类型
-  CONST_REST_SIGNTYPE_XFAPP='1';
+//  CONST_REST_SIGNTYPE_XFAPP='1';
   CONST_REST_SIGNTYPE_MD5='md5';
 
 Const
@@ -107,6 +108,7 @@ Const
 
 
 type
+  //会排序的StringList
   TNStringList = class(TStringList)
   protected
     function CompareStrings(const S1, S2: string): Integer; override;
@@ -121,6 +123,31 @@ type
 //  TRestInterfaceCall=class(TObject,IRestInterfaceCall)
 //
 //  end;
+
+
+  TParamSigner=class
+  public
+    function GetSignName:String;virtual;abstract;
+    //根据参数获取签名
+    function SignParam(AUrlParamNames:TStringDynArray;
+                      AUrlParamValues:TVariantDynArray;ASignSecret:String):String;virtual;abstract;
+    function SignParamPair(AUrlParamPairs:TVariantDynArray;ASignSecret:String):String;
+  end;
+  TParamSignerList=class(TBaseList)
+  private
+    function GetItem(Index: Integer): TParamSigner;
+  public
+    function Find(ASignName:String):TParamSigner;
+    property Items[Index:Integer]:TParamSigner read GetItem;default;
+  end;
+  TMD5ParamSigner=class(TParamSigner)
+  public
+    function GetSignName:String;
+    //根据参数获取签名
+    function SignParam(AUrlParamNames:TStringDynArray;
+                      AUrlParamValues:TVariantDynArray;ASignSecret:String):String;override;
+  end;
+
 
 
 //拼接参数到链接中
@@ -145,21 +172,21 @@ function SimpleGet(API: String;
                   ASignSecret:String='';
                   AIsPost:Boolean=False;
                   APostStream:TStream=nil;
-                  ACustomHeaders:TVariantDynArray=[]):Boolean;
+                  ACustomHeaderPairs:TVariantDynArray=[]):Boolean;
 
 
 
 //调用rest接口,返回字符串
 function SimpleCallAPI(API: String;
-                      AHttpControl: THttpControl;
-                      AInterfaceUrl:String;
-                      AUrlParamNames:TStringDynArray;
-                      AUrlParamValues:TVariantDynArray;
+                      AHttpControl: THttpControl=nil;
+                      AInterfaceUrl:String='';
+                      AUrlParamNames:TStringDynArray=[];
+                      AUrlParamValues:TVariantDynArray=[];
                       ASignType:String='';
                       ASignSecret:String='';
                       AIsPost:Boolean=False;
                       APostStream:TStream=nil;
-                      ACustomHeaders:TVariantDynArray=[]): String;overload;
+                      ACustomHeaderPairs:TVariantDynArray=[]): String;overload;
 function SimpleCallAPIPostString(API: String;
                       AHttpControl: THttpControl;
                       AInterfaceUrl:String;
@@ -169,7 +196,7 @@ function SimpleCallAPIPostString(API: String;
                       ASignSecret:String='';
                       AIsPost:Boolean=False;
                       APostString:String='';
-                      ACustomHeaders:TVariantDynArray=[]): String;overload;
+                      ACustomHeaderPairs:TVariantDynArray=[]): String;overload;
 
 //调用rest接口,返回字符串,在服务端中使用
 function SimpleCallAPI(API: String;
@@ -197,6 +224,7 @@ function SaveRecordToServer(AInterfaceUrl:String;
                             AUserFID:String;
                             AKey:String;
                             ATableCommonRestName:String;
+
                             AFID:Variant;
                             ARecordDataJson:ISuperObject;
                             var AIsAdd:Boolean;
@@ -204,10 +232,12 @@ function SaveRecordToServer(AInterfaceUrl:String;
                             var ADataJson:ISuperObject;
                             ASignType:String;
                             ASignSecret:String;
+
                             AHasAppID:Boolean=True;
                             AFIDFieldName:String='fid';
+                            //不建议使用
                             AUpdateRecordCustomWhereSQL:String='';
-                            AWhereKeyJson:String=''):Boolean;
+                            AUpdateWhereKeyJson:String=''):Boolean;
 
 
 {$IF CompilerVersion > 21.0}
@@ -263,20 +293,22 @@ function DoUploadFile(ALocalFilePath:String;
                       var ADesc:String):Boolean;
 
 
-function GetWhereCondition(ALogicalOperator:String;
-                            AFieldName:String;
-                            ACompareOperator:String;
-                            AFieldValue:Variant;
-                            AFieldValueIsField:Boolean=False):ISuperObject;
-
-function GetWhereConditions(AFieldNames:TStringDynArray;
-                            AFieldValues:TVariantDynArray):String;
-function GetWhereKeyJson(AFieldNames:TStringDynArray;
-                            AFieldValues:TVariantDynArray):String;
-function GetWhereConditionsPro(AFieldNames:TStringDynArray;
-                            //比较运算符
-                            AFieldOpers:TStringDynArray;
-                            AFieldValues:TVariantDynArray):String;
+//function GetWhereCondition(ALogicalOperator:String;
+//                            AFieldName:String;
+//                            ACompareOperator:String;
+//                            AFieldValue:Variant;
+//                            AFieldValueIsField:Boolean=False;
+//                            AFieldValueIsCheckEmpty:Boolean=False;
+//                            AFieldEmptyValue:String=''):ISuperObject;
+//
+//function GetWhereConditions(AFieldNames:TStringDynArray;
+//                            AFieldValues:TVariantDynArray):String;
+//function GetWhereKeyJson(AFieldNames:TStringDynArray;
+//                            AFieldValues:TVariantDynArray):String;
+//function GetWhereConditionsPro(AFieldNames:TStringDynArray;
+//                            //比较运算符
+//                            AFieldOpers:TStringDynArray;
+//                            AFieldValues:TVariantDynArray):String;
 //拆分为两个数组
 procedure SplitterNameValues(AUrlParamNameValues:TVariantDynArray;
                             var ANameArray:TStringDynArray;
@@ -302,6 +334,7 @@ function decryptstr(const s:string; skey:string):string;overload;    //解密字
 {$IF CompilerVersion > 21.0}
 function LoadSignAsStringList(sl:TStringList; skey:string):string;
 function LoadMD5SignAsStringList(sl:TStringList; skey:string):string;   //获取sign签名
+function LoadSignString(sl:TStringList):string;   //获取sign签名的字符串
 {$IFEND}
 
 
@@ -317,9 +350,9 @@ var
   GlobalRestAPIAppSecret:String;
   //是否启用加签的接口调用
   GlobalRestAPICheckSignIsEnable:Boolean;
+  GlobalParamSignerList:TParamSignerList;
 
-
-
+//返回签名
 function SignParam(
                   AUrlParamNames:TStringDynArray;
                   AUrlParamValues:TVariantDynArray;
@@ -334,8 +367,14 @@ function DownloadAndUpload(
                   var AUploadedRemotePath:String;
                   var AError:String):Boolean;
 
+procedure RegisterParamSigner(AParamSigner:TParamSigner);
+
 implementation
 
+procedure RegisterParamSigner(AParamSigner:TParamSigner);
+begin
+  GlobalParamSignerList.Add(AParamSigner);
+end;
 
 
 function DownloadAndUpload(
@@ -513,7 +552,7 @@ begin
       else
       begin
         //Http调用失败
-        ADesc:=Trans('服务器连接失败');
+        ADesc:=('服务器连接失败');
       end;
 
 
@@ -525,83 +564,90 @@ begin
 
 end;
 
-
-function GetWhereKeyJson(AFieldNames:TStringDynArray;
-                            AFieldValues:TVariantDynArray):String;
-begin
-  Result:=GetWhereConditions(AFieldNames,AFieldValues);
-end;
-
-
-function GetWhereCondition(ALogicalOperator:String;
-                            AFieldName:String;
-                            ACompareOperator:String;
-                            AFieldValue:Variant;
-                            AFieldValueIsField:Boolean=False):ISuperObject;
-begin
-
-  Result:=TSuperObject.Create;
-  Result.S['logical_operator']:=ALogicalOperator;//'AND';
-  Result.S['name']:=AFieldName;
-  Result.S['operator']:=ACompareOperator;//'=';
-  Result.V['value']:=AFieldValue;
-  Result.B['value_is_field']:=AFieldValueIsField;
-
-end;
-
-function GetWhereConditions(AFieldNames:TStringDynArray;
-                            AFieldValues:TVariantDynArray):String;
-var
-  I:Integer;
-
-  AWhereKeyJson:ISuperObject;
-  AWhereKeyJsonArray:ISuperArray;
-begin
-  AWhereKeyJsonArray:=TSuperArray.Create;
-
-  for I := 0 to Length(AFieldNames)-1 do
-  begin
-
-    AWhereKeyJson:=TSuperObject.Create;
-    AWhereKeyJson.S['logical_operator']:='AND';
-    AWhereKeyJson.S['name']:=AFieldNames[I];
-    AWhereKeyJson.S['operator']:='=';
-    AWhereKeyJson.V['value']:=AFieldValues[I];
-
-    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
-
-  end;
-
-  Result:=AWhereKeyJsonArray.AsJSON;
-end;
-
-
-function GetWhereConditionsPro(AFieldNames:TStringDynArray;
-                            AFieldOpers:TStringDynArray;
-                            AFieldValues:TVariantDynArray):String;
-var
-  I:Integer;
-
-  AWhereKeyJson:ISuperObject;
-  AWhereKeyJsonArray:ISuperArray;
-begin
-  AWhereKeyJsonArray:=TSuperArray.Create;
-
-  for I := 0 to Length(AFieldNames)-1 do
-  begin
-
-    AWhereKeyJson:=TSuperObject.Create;
-    AWhereKeyJson.S['logical_operator']:='AND';
-    AWhereKeyJson.S['name']:=AFieldNames[I];
-    AWhereKeyJson.S['operator']:=AFieldOpers[I];
-    AWhereKeyJson.V['value']:=AFieldValues[I];
-
-    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
-
-  end;
-
-  Result:=AWhereKeyJsonArray.AsJSON;
-end;
+//
+//function GetWhereCondition(ALogicalOperator:String;
+//                            AFieldName:String;
+//                            ACompareOperator:String;
+//                            AFieldValue:Variant;
+//                            AFieldValueIsField:Boolean=False;
+//                            AFieldValueIsCheckEmpty:Boolean=False;
+//                            AFieldEmptyValue:String=''):ISuperObject;
+//begin
+//  Result:=nil;
+//  if AFieldValueIsCheckEmpty and (AFieldValue=AFieldEmptyValue) then
+//  begin
+//    Exit;
+//  end;
+//
+//  Result:=TSuperObject.Create;
+//  Result.S['logical_operator']:=ALogicalOperator;//'AND';
+//  Result.S['name']:=AFieldName;
+//  Result.S['operator']:=ACompareOperator;//'=';
+//  Result.V['value']:=AFieldValue;
+//  Result.B['value_is_field']:=AFieldValueIsField;
+//
+//end;
+//
+//function GetWhereConditions(AFieldNames:TStringDynArray;
+//                            AFieldValues:TVariantDynArray):String;
+//var
+//  I:Integer;
+//
+//  AWhereKeyJson:ISuperObject;
+//  AWhereKeyJsonArray:ISuperArray;
+//begin
+//  AWhereKeyJsonArray:=TSuperArray.Create;
+//
+//  for I := 0 to Length(AFieldNames)-1 do
+//  begin
+//
+//    AWhereKeyJson:=TSuperObject.Create;
+//    AWhereKeyJson.S['logical_operator']:='AND';
+//    AWhereKeyJson.S['name']:=AFieldNames[I];
+//    AWhereKeyJson.S['operator']:='=';
+//    AWhereKeyJson.V['value']:=AFieldValues[I];
+//
+//    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
+//
+//  end;
+//
+//  Result:=AWhereKeyJsonArray.AsJSON;
+//end;
+//
+//
+//function GetWhereKeyJson(AFieldNames:TStringDynArray;
+//                            AFieldValues:TVariantDynArray):String;
+//begin
+//  Result:=GetWhereConditions(AFieldNames,AFieldValues);
+//end;
+//
+//
+//function GetWhereConditionsPro(AFieldNames:TStringDynArray;
+//                            AFieldOpers:TStringDynArray;
+//                            AFieldValues:TVariantDynArray):String;
+//var
+//  I:Integer;
+//
+//  AWhereKeyJson:ISuperObject;
+//  AWhereKeyJsonArray:ISuperArray;
+//begin
+//  AWhereKeyJsonArray:=TSuperArray.Create;
+//
+//  for I := 0 to Length(AFieldNames)-1 do
+//  begin
+//
+//    AWhereKeyJson:=TSuperObject.Create;
+//    AWhereKeyJson.S['logical_operator']:='AND';
+//    AWhereKeyJson.S['name']:=AFieldNames[I];
+//    AWhereKeyJson.S['operator']:=AFieldOpers[I];
+//    AWhereKeyJson.V['value']:=AFieldValues[I];
+//
+//    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
+//
+//  end;
+//
+//  Result:=AWhereKeyJsonArray.AsJSON;
+//end;
 
 {$IF CompilerVersion > 21.0}
 function SimpleCallAPI_TableCommonGetRecordList(
@@ -687,7 +733,7 @@ function SaveRecordToServer(AInterfaceUrl:String;
                             AHasAppID:Boolean;
                             AFIDFieldName:String;
                             AUpdateRecordCustomWhereSQL:String;
-                            AWhereKeyJson:String):Boolean;
+                            AUpdateWhereKeyJson:String):Boolean;
 var
   ACode: Integer;
   AFIDIsEmpty:Boolean;
@@ -699,62 +745,69 @@ begin
   Result:=False;
   AIsAdd:=False;
 
-  AWhereKeyJsonStr:='';
-  if AWhereKeyJson<>'' then
+  if VarIsNULL(AFID) and (AFIDFieldName<>'') and ARecordDataJson.Contains(AFIDFieldName) then
   begin
-    AWhereKeyJsonStr:=AWhereKeyJson;
+    AFID:=ARecordDataJson.V[AFIDFieldName];
+  end;
+
+  AWhereKeyJsonStr:='';
+  if AUpdateWhereKeyJson<>'' then
+  begin
+    AWhereKeyJsonStr:=AUpdateWhereKeyJson;
   end
   else
-  if not VarIsNULL(AFID) then
   begin
-    if AHasAppID then
+    if not VarIsNULL(AFID) then
     begin
-      AWhereKeyJsonStr:=GetWhereKeyJson(ConvertToStringDynArray(['appid',AFIDFieldName]),ConvertToVariantDynArray([AAppID,AFID]));
-    end
-    else
-    begin
-      AWhereKeyJsonStr:=GetWhereKeyJson(ConvertToStringDynArray([AFIDFieldName]),ConvertToVariantDynArray([AFID]));
-    end;
+      if AHasAppID then
+      begin
+        AWhereKeyJsonStr:=GetWhereKeyJson(ConvertToStringDynArray(['appid',AFIDFieldName]),ConvertToVariantDynArray([AAppID,AFID]));
+      end
+      else
+      begin
+        AWhereKeyJsonStr:=GetWhereKeyJson(ConvertToStringDynArray([AFIDFieldName]),ConvertToVariantDynArray([AFID]));
+      end;
 
+    end;
   end;
 
 
   AFIDIsEmpty:=False;
   if (AUpdateRecordCustomWhereSQL='') then
   begin
-    if VarIsNULL(AFID) then
-    begin
-      AFIDIsEmpty:=True;
-    end
-    else
-    begin
+      if VarIsNULL(AFID) then
+      begin
+          AFIDIsEmpty:=True;
+      end
+      else
+      begin
 
-      if (VarType(AFID)=varInteger)
-        or (VarType(AFID)=varInt64)
-        or (VarType(AFID)=varSmallint)
-        or (VarType(AFID)=varByte)
-        or (VarType(AFID)=varWord)
-        or (VarType(AFID)=varLongWord)
-        {$IF CompilerVersion > 21.0}
-        or (VarType(AFID)=varUInt32)
-        {$IFEND}
-        or (VarType(AFID)=varUInt64)
-        then
-      begin
-        AFIDIsEmpty:=(AFID=0);
-      end
-      else
-      if (VarType(AFID)=varString) or (VarType(AFID)=varUString) then
-      begin
-        AFIDIsEmpty:=(AFID='');
-      end
-      else
-      begin
-        ADesc:='AFID值类型不支持';
-        Exit;
+          if (VarType(AFID)=varInteger)
+            or (VarType(AFID)=varInt64)
+            or (VarType(AFID)=varSmallint)
+            or (VarType(AFID)=varByte)
+            or (VarType(AFID)=varWord)
+            or (VarType(AFID)=varLongWord)
+            {$IF CompilerVersion > 21.0}
+            or (VarType(AFID)=varUInt32)
+            {$IFEND}
+            or (VarType(AFID)=varUInt64)
+            then
+          begin
+            AFIDIsEmpty:=(AFID=0);
+          end
+          else
+          if (VarType(AFID)=varString) or (VarType(AFID)=varUString) then
+          begin
+            AFIDIsEmpty:=(AFID='');
+          end
+          else
+          begin
+            ADesc:='AFID值类型不支持';
+            Exit;
+          end;
+
       end;
-
-    end;
   end;
 
 
@@ -1072,7 +1125,7 @@ function SimpleCallAPI(API: String;
                       ASignSecret:String;
                       AIsPost:Boolean;
                       APostStream:TStream;
-                  ACustomHeaders:TVariantDynArray): String;
+                      ACustomHeaderPairs:TVariantDynArray): String;
 var
   ACallResult:Boolean;
   AResponseStream: TStringStream;
@@ -1096,7 +1149,7 @@ begin
                           ASignType,
                           ASignSecret,
                           AIsPost,
-                          APostStream,ACustomHeaders
+                          APostStream,ACustomHeaderPairs
                          );
 
 
@@ -1155,7 +1208,7 @@ function SimpleCallAPIPostString(API: String;
                                   ASignSecret:String;
                                   AIsPost:Boolean;
                                   APostString:String;
-                                  ACustomHeaders:TVariantDynArray): String;
+                                  ACustomHeaderPairs:TVariantDynArray): String;
 var
   APostStream:TStringStream;
 begin
@@ -1177,7 +1230,7 @@ begin
                           ASignType,
                           ASignSecret,
                           AIsPost,
-                          APostStream,ACustomHeaders
+                          APostStream,ACustomHeaderPairs
                          );
   finally
     SysUtils.FreeAndNil(APostStream);
@@ -1249,6 +1302,7 @@ begin
       if AHttpResponse='Service Unavailable' then
       begin
         ADesc:=AHttpResponse;
+        uBaseLog.HandleError(nil,'SimpleCallAPI Url:'+AInterfaceUrl+' API:'+API+' AHttpResponse:'+AHttpResponse);
         Result:=False;
         Exit;
       end;
@@ -1258,6 +1312,7 @@ begin
       if AHttpResponse='Internal Server Error' then
       begin
         ADesc:=AHttpResponse;
+        uBaseLog.HandleError(nil,'SimpleCallAPI Url:'+AInterfaceUrl+' API:'+API+' AHttpResponse:'+AHttpResponse);
         Result:=False;
         Exit;
       end;
@@ -1265,14 +1320,15 @@ begin
       if AHttpResponse='Service . not available.' then
       begin
         ADesc:=AHttpResponse;
+        uBaseLog.HandleError(nil,'SimpleCallAPI Url:'+AInterfaceUrl+' API:'+API+' AHttpResponse:'+AHttpResponse);
         Result:=False;
         Exit;
       end;
 
       //'Service . not available.'
-
+      //'HTTP/1.1 500 Internal'
       //'Timeout/error waiting for connection.'
-
+      //'Bad response. The server or forwarder response doesn''t look like HTTP.'#$D#$A
       try
           ASuperObject:=SO(AHttpResponse);
 
@@ -1288,17 +1344,17 @@ begin
 
             if ACode<>SUCC then
             begin
-              uBaseLog.HandleException(nil,'SimpleCallAPI '
+              uBaseLog.HandleError(nil,'SimpleCallAPI '
                                             +' API:'+API
                                             +' Url:'+AInterfaceUrl
                                             );
               if ADataJson<>nil then
               begin
-              uBaseLog.HandleException(nil,'SimpleCallAPI '
-                                            +' API:'+API
-                                            +' Url:'+AInterfaceUrl
-                                            +' DataJson:'+ADataJson.AsJSON
-                                            );
+                uBaseLog.HandleException(nil,'SimpleCallAPI '
+                                              +' API:'+API
+                                              +' Url:'+AInterfaceUrl
+                                              +' DataJson:'+ADataJson.AsJSON
+                                              );
 
               end;
             end;
@@ -1309,14 +1365,14 @@ begin
         on E:Exception do
         begin
           ADesc:=E.Message+#13#10+AHttpResponse;
-          uBaseLog.HandleException(E,'SimpleCallAPI Url:'+AInterfaceUrl+' API'+API+' '+AHttpResponse);
+          uBaseLog.HandleException(E,'SimpleCallAPI Url:'+AInterfaceUrl+' API:'+API+' AHttpResponse:'+AHttpResponse);
         end;
       end;
   end
   else
   begin
       //返回为空
-      ADesc:=API+Trans('接口调用失败'+AHttpResponse+',请检查网络连接');
+      ADesc:=API+('接口调用失败'+AHttpResponse+',请检查网络连接');
   end;
 end;
 
@@ -1330,6 +1386,7 @@ var
   I:Integer;
   AStrValue:String;
   sl:TStringList;
+  AParamSigner:TParamSigner;
 begin
   Result:='';
   if ASignType='' then
@@ -1337,40 +1394,49 @@ begin
     Exit;
   end;
 
+//  AParamSigner:=GlobalParamSignerList.Find(ASignType);
+//  if AParamSigner=nil then
+//  begin
+//    Exit;
+//  end;
+
+//  Result:=AParamSigner.SignParam(AUrlParamNames,AUrlParamValues,ASignSecret);
+//  Exit;
+
   {$IF CompilerVersion > 21.0}
 
-  if ASignType=CONST_REST_SIGNTYPE_XFAPP then
-  begin
-
-      sl:=TStringList.Create;
-      try
-          sl.Values['signtype']:=CONST_REST_SIGNTYPE_XFAPP;
-
-
-          //需要签名
-          for I:=0 to Length(AUrlParamNames)-1 do
-          begin
-//              AStrValue:=AUrlParamValues[I];
-              AStrValue:='';
-              if not VarIsNull(AUrlParamValues[I]) then
-              begin
-                AStrValue:=AUrlParamValues[I];
-              end;
-
-              sl.Values[AUrlParamNames[I]]:=AStrValue;
-
-          end;
-
-
-          //GlobalRestAPISignType_AppSecret_XFApp
-          Result:=LoadSignAsStringList(sl,ASignSecret);
-
-
-      finally
-        FreeAndNil(sl);
-      end;
-
-  end;
+//  if ASignType=CONST_REST_SIGNTYPE_XFAPP then
+//  begin
+//
+//      sl:=TStringList.Create;
+//      try
+//          sl.Values['signtype']:=CONST_REST_SIGNTYPE_XFAPP;
+//
+//
+//          //需要签名
+//          for I:=0 to Length(AUrlParamNames)-1 do
+//          begin
+////              AStrValue:=AUrlParamValues[I];
+//              AStrValue:='';
+//              if not VarIsNull(AUrlParamValues[I]) then
+//              begin
+//                AStrValue:=AUrlParamValues[I];
+//              end;
+//
+//              sl.Values[AUrlParamNames[I]]:=AStrValue;
+//
+//          end;
+//
+//
+//          //GlobalRestAPISignType_AppSecret_XFApp
+//          Result:=LoadSignAsStringList(sl,ASignSecret);
+//
+//
+//      finally
+//        FreeAndNil(sl);
+//      end;
+//
+//  end;
 
 
   if ASignType=CONST_REST_SIGNTYPE_MD5 then
@@ -1378,7 +1444,7 @@ begin
 
       sl:=TStringList.Create;
       try
-          sl.Values['signtype']:=CONST_REST_SIGNTYPE_MD5;
+//          sl.Values['signtype']:=CONST_REST_SIGNTYPE_MD5;
 
 
           //需要签名
@@ -1405,6 +1471,8 @@ begin
       end;
 
   end;
+
+
   {$IFEND}
 
 end;
@@ -1537,8 +1605,8 @@ var
   AParamsStr:String;
   AUrlEncode:String;
   AHasSignParam:Boolean;
-  AHasTimestamp:Boolean;
-  AHasNonce:Boolean;
+//  AHasTimestamp:Boolean;
+//  AHasNonce:Boolean;
 begin
       Result:='';
 
@@ -1560,40 +1628,40 @@ begin
       AHasSignParam:=(FindInArray('sign',AUrlParamNames)<>-1);
 
 
-      //启用了调用Rest接口都自动加上签名
-      {$IF CompilerVersion > 21.0}
-      if GlobalRestAPICheckSignIsEnable then
-      begin
-          AHasTimestamp:=(FindInArray('timestamp',AUrlParamNames)<>-1);
-          AHasNonce:=(FindInArray('nonce',AUrlParamNames)<>-1);
+//      //启用了调用Rest接口都自动加上签名
+//      {$IF CompilerVersion > 21.0}
+//      if GlobalRestAPICheckSignIsEnable then
+//      begin
+//          AHasTimestamp:=(FindInArray('timestamp',AUrlParamNames)<>-1);
+////          AHasNonce:=(FindInArray('nonce',AUrlParamNames)<>-1);
+//
+//
+//          //已经存在时间戳了就不再传了
+//          if not AHasTimestamp then
+//          begin
+//            AUrlParamNames:=AddStrToArray(AUrlParamNames,'timestamp');
+//            AUrlParamValues:=AddValueToArray(AUrlParamValues,
+//                                            //秒
+//                                            DateTimeToUnix(now,false)
+//                                            //timeIntervalSince1970(Now)
+//                                            );
+//          end;
+//
+//
+//          //已经存在随机数了,就不再传了
+//          if not AHasNonce then
+//          begin
+//            AUrlParamNames:=AddStrToArray(AUrlParamNames,'nonce');
+//            AUrlParamValues:=AddValueToArray(AUrlParamValues,
+//                                              IntToStr(//timeIntervalSince1970(Now)
+//                                                        DateTimeToUnix(now,false)
+//                                                        )+GetRandStr(5)
+//                                              );
+//          end;
+//      end;
+//      {$IFEND}
 
-
-          //已经存在时间戳了就不再传了
-          if not AHasTimestamp then
-          begin
-            AUrlParamNames:=AddStrToArray(AUrlParamNames,'timestamp');
-            AUrlParamValues:=AddValueToArray(AUrlParamValues,
-                                            //秒
-                                            DateTimeToUnix(now,false)
-                                            //timeIntervalSince1970(Now)
-                                            );
-          end;
-
-
-          //已经存在随机数了,就不再传了
-          if not AHasNonce then
-          begin
-            AUrlParamNames:=AddStrToArray(AUrlParamNames,'nonce');
-            AUrlParamValues:=AddValueToArray(AUrlParamValues,
-                                              IntToStr(//timeIntervalSince1970(Now)
-                                                        DateTimeToUnix(now,false)
-                                                        )+GetRandStr(5)
-                                              );
-          end;
-      end;
-      {$IFEND}
-
-
+      //要排序过
       for I:=0 to Length(AUrlParamNames)-1 do
       begin
 
@@ -1605,11 +1673,11 @@ begin
 
         if AParamsStr<>'' then
         begin
-          AParamsStr:=AParamsStr+'&'+AUrlParamNames[I]+'='+AStrValue;
+          AParamsStr:=AParamsStr+'&'+AUrlParamNames[I]+'='+TNetEncoding.URL.Encode(AStrValue);
         end
         else
         begin
-          AParamsStr:=AUrlParamNames[I]+'='+AStrValue;
+          AParamsStr:=AUrlParamNames[I]+'='+TNetEncoding.URL.Encode(AStrValue);
         end;
 
       end;
@@ -1630,7 +1698,7 @@ begin
         and (ASignType<>'') then
       begin
         AParamsStr:=AParamsStr
-                    +'&'+'signtype'+'='+ASignType
+//                    +'&'+'signtype'+'='+ASignType
                     +'&'+'sign'+'='+SignParam(AUrlParamNames,
                                               AUrlParamValues,
                                               ASignType,
@@ -1645,7 +1713,10 @@ begin
       begin
 //          AUrlEncode:=AInterfaceUrl+API+'?'+AParamsStr;
 //          {$IF CompilerVersion > 21.0}
-          AUrlEncode:=TIdURI.URLEncode(AInterfaceUrl+API+'?'+AParamsStr);
+          //参数AParamsStr都用URL编码过了,应该不用再编码了。
+          AUrlEncode:=TIdURI.URLEncode(AInterfaceUrl+API)+'?'+AParamsStr;
+
+
 //          {$IFEND}
       end
       else
@@ -1672,7 +1743,7 @@ function SimpleGet(API: String;
                   ASignSecret:String;
                   AIsPost:Boolean;
                   APostStream:TStream;
-                  ACustomHeaders:TVariantDynArray): Boolean;
+                  ACustomHeaderPairs:TVariantDynArray): Boolean;
 var
   ABefore:TDateTime;
   AIsNeedFreeAHttpControl:Boolean;
@@ -1683,11 +1754,9 @@ var
   AExtractResponseStream: TStream;
 
   AUrlEncode:String;
-  ANameValuePair:TNameValuePair;
-  I: Integer;
 begin
   ABefore:=Now;
-  uBaseLog.HandleException(nil,'SimplePost'+' '+'begin'+' '+FormatDateTime('HH:MM:SS',ABefore));
+//  uBaseLog.HandleException(nil,'SimplePost'+' '+'begin'+' '+FormatDateTime('HH:MM:SS',ABefore));
 
 
   AIsNeedFreeAHttpControl:=False;
@@ -1701,26 +1770,20 @@ begin
     {$ELSE}
     AHttpControl:=TSystemHttpControl.Create;
     {$ENDIF}
+  end;
 
-    if Length(ACustomHeaders)>0 then
+    if Length(ACustomHeaderPairs)>0 then
     begin
-      if AHttpControl is TSystemHttpControl then
-      begin
-      
-        SetLength(TSystemHttpControl(AHttpControl).FNetHTTPRequestHeaders,Length(ACustomHeaders) div 2);
-        for I := 0 to Length(ACustomHeaders) div 2 - 1 do
-        begin
-          ANameValuePair.Name:= ACustomHeaders[I*2];//'Content-type';
-          ANameValuePair.Value:= ACustomHeaders[I*2+1];//AContentType;//'application/json';
-          TSystemHttpControl(AHttpControl).FNetHTTPRequestHeaders[I]:=ANameValuePair;
-        end;
+      AHttpControl.SetCustomHeader(ACustomHeaderPairs);
+//      if AHttpControl is TSystemHttpControl then
+//      begin
+//
+//
+//      end;
 
-      end;
-      
     end;
 
 
-  end;
 
   try
 
@@ -1774,7 +1837,7 @@ begin
       {$ENDIF}
 
 
-      uBaseLog.OutputDebugString('SimpleGet '+AUrlEncode);
+//      uBaseLog.OutputDebugString('SimpleGet '+AUrlEncode);
 
 
       ARecvStream:=AResponseStream;
@@ -2063,6 +2126,33 @@ function LoadMD5SignAsStringList(sl:TStringList; skey:string):string;   //获取
 
     sl1.Free;
   end;
+
+function LoadSignString(sl:TStringList):string;   //获取sign签名的字符串
+  var
+    i     : Integer;
+    sText : string;
+    md5   : THashMD5;
+    sl1   : TNStringList;
+  begin
+    Result := '';
+    if sl = nil then Exit;
+
+    sl1 :=  TNStringList.Create;
+
+    for i := 0 to sl.Count -1  do begin
+      sl1.Values[sl.Names[i]] :=  sl.ValueFromIndex[i];
+    end;
+
+    sl1.Sort;
+    for i := 0 to sl1.Count - 1 do begin
+      if i > 0 then  sText := sText + '&';
+      sText := sText + sl1.Names[i] + '=' + sl1.ValueFromIndex[i] ;
+    end;
+
+    Result := sText;//encryptstr(sText,skey);
+
+    sl1.Free;
+  end;
 {$IFEND}
 
 
@@ -2158,11 +2248,100 @@ function LoadMD5SignAsStringList(sl:TStringList; skey:string):string;   //获取
 //  FreeAndNil(GlobalCallAPITaskList);
 
 
-initialization
+{ TParamSignerList }
 
+function TParamSignerList.Find(ASignName: String): TParamSigner;
+var
+  I: Integer;
+begin
+  Result:=nil;
+  for I := 0 to Self.Count-1 do
+  begin
+    if SameText(Items[I].GetSignName,ASignName) then
+    begin
+      Result:=Items[I];
+      Exit;
+    end;
+  end;
+end;
+
+function TParamSignerList.GetItem(Index: Integer): TParamSigner;
+begin
+  Result:=TParamSigner(Inherited Items[Index]);
+end;
+
+{ TParamSigner }
+
+function TParamSigner.SignParamPair(AUrlParamPairs: TVariantDynArray;ASignSecret:String): String;
+var
+  AUrlParamNames:TStringDynArray;
+  AUrlParamValues:TVariantDynArray;
+  I: Integer;
+begin
+  SetLength(AUrlParamNames,Length(AUrlParamPairs) div 2);
+  SetLength(AUrlParamValues,Length(AUrlParamPairs) div 2);
+  for I := 0 to Length(AUrlParamPairs) div 2 -1 do
+  begin
+    AUrlParamNames[I]:=AUrlParamPairs[I*2];
+    AUrlParamValues[I]:=AUrlParamPairs[I*2+1];
+  end;
+  Result:=SignParam(AUrlParamNames,AUrlParamValues,ASignSecret);
+end;
+
+{ TMD5ParamSigner }
+
+function TMD5ParamSigner.GetSignName: String;
+begin
+  Result:='MD5';
+end;
+
+function TMD5ParamSigner.SignParam(AUrlParamNames: TStringDynArray;
+  AUrlParamValues: TVariantDynArray;ASignSecret:String): String;
+var
+  I:Integer;
+  AStrValue:String;
+  sl:TStringList;
+begin
+      sl:=TStringList.Create;
+      try
+//          sl.Values['signtype']:=CONST_REST_SIGNTYPE_MD5;
+
+
+          //需要签名
+          for I:=0 to Length(AUrlParamNames)-1 do
+          begin
+//              AStrValue:=AUrlParamValues[I];
+              AStrValue:='';
+              if not VarIsNull(AUrlParamValues[I]) then
+              begin
+                AStrValue:=AUrlParamValues[I];
+              end;
+
+              sl.Values[AUrlParamNames[I]]:=AStrValue;
+
+          end;
+
+
+          //GlobalRestAPISignType_AppSecret_XFApp
+          Result:=LoadMD5SignAsStringList(sl,ASignSecret);
+
+
+      finally
+        FreeAndNil(sl);
+      end;
+
+
+end;
+
+initialization
+  GlobalParamSignerList:=TParamSignerList.Create();
+
+finalization
+  FreeAndNil(GlobalParamSignerList);
 
 
 end.
+
 
 
 

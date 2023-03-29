@@ -15,8 +15,9 @@ uses
   System.SysUtils, System.Variants,
   System.Classes,
   DateUtils,
+  StrUtils,
 
-  uLang,
+//  uLang,
   IniFiles,
   IdGlobal,
   uBaseLog,
@@ -85,6 +86,7 @@ uses
     MySQLUniProvider,
     kbmMWCustomSQLMetaData,
     kbmMWMSSQLMetaData,
+    kbmMWHTTPStdTransStream,
   //  uRestInterfaceCall,
 
     UniProvider, DBAccess,
@@ -264,11 +266,13 @@ type
   end;
 
 
-
+  //一分钟打印一次
   //输出服务端状态的线程
   TServiceStatusOutputThread=class(TBaseServiceThread)
   protected
+    FServiceProject:TServiceProject;
     procedure Execute;override;
+    constructor Create(ACreateSuspended:Boolean;AServiceProject:TServiceProject);
   end;
 
 
@@ -290,6 +294,25 @@ type
     FServiceProject:TServiceProject;
     procedure Execute;override;
     constructor Create(ACreateSuspended:Boolean;AServiceProject:TServiceProject);
+  end;
+
+
+  //用户Token
+  TUserAccessToken=class
+    AppID:String;
+    UserFID:String;
+    IsSystem:Boolean;
+    AccessToken:String;
+    AccessTokenCreateTime:TDateTime;
+  end;
+  TUserAccessTokenList=class(TBaseList)
+  private
+    function GetItem(Index: Integer): TUserAccessToken;
+  public
+    function Add(AAppID:String;AUserFID:String;AAccessToken:String;AIsSystem:Boolean=False):TUserAccessToken;overload;
+    function Find(AAppID:String;AUserFID:String;AIsSystem:Boolean=False):TUserAccessToken;overload;
+    function Find(AAccessToken:String):TUserAccessToken;overload;
+    property Items[Index:Integer]:TUserAccessToken read GetItem;default;
   end;
 
 
@@ -345,17 +368,21 @@ type
 
     //是否启用接口参数验签名
     IsEnableRestAPICheckSign:Boolean;
+    //是否检查Header中的Key
+    IsEnableRestAPICheckAccessToken:Boolean;
     IsNeedLoadAppList:Boolean;
 
-    NonceList:TStringList;
-    NonceListLock:TCriticalSection;
-    //上一次是什么时候清的
-    LastNoceListClearTime:TDateTime;
-    //上一次清的时候还剩多少,下一期清
-    LastNoceListCount:Integer;
+//    NonceList:TStringList;
+//    NonceListLock:TCriticalSection;
+//    //上一次是什么时候清的
+//    LastNoceListClearTime:TDateTime;
+//    //上一次清的时候还剩多少,下一期清
+//    LastNoceListCount:Integer;
 
-
-
+    //用户令牌列表
+    FUserAccessTokenList:TUserAccessTokenList;
+    //白名单列表
+    FIPWhiteList:TStringList;
   public
 
     //接口调用统计列表
@@ -397,12 +424,14 @@ type
     //更新开放平台的应用列表
     function SyncAppList(var ADesc:String):Boolean;
     //检测接口的签名
-    function CheckInterfaceSign(AAPI:String;AUrlParams:String;var ADesc:String):Boolean;
+    function CheckInterfaceSign(ClientIdent: TkbmMWClientIdentity;ARequestTransportStream:IkbmMWCustomRequestTransportStream;AAPI:String;AUrlParams:String;var ADesc:String):Boolean;
     {$IFDEF USE_IDHTTPSERVERMODE}
     {$ELSE}
     procedure SyncAppListEvent(const AScheduledEvent:IkbmMWScheduledEvent);
-    function CheckInterfaceSignByAppSecret(AUrlParams:String;
-                                            AAppSecret_XFAPP:String;
+    function CheckInterfaceSignByAppSecret(AApp:TOpenPlatformApp;AUrlParams:String;
+                                            ASignType:string;
+                                            ASign:String;
+                                            AAppSecret:String;
                                             var ADesc:String;
                                             AOldQueryParams:TkbmMWHTTPQueryValues=nil
                                             ):Boolean;
@@ -430,16 +459,13 @@ type
     function Stop: Boolean;
   public
     //Redis连接池
-    {$IFDEF USE_IDHTTPSERVERMODE}
-    {$ELSE}
-    {$ENDIF}
-
     function GetRedisClient:TRedisClient;
     procedure FreeRedisClient(ARedisClient:TRedisClient);
 
   public
-
     function ServerUrl:String;
+    function DomainUrl:String;
+    function FileManageDomainUrl:String;
     function ServerUploadUrl:String;
     function UserCenterServer:String;
     function CaptchaServer:String;
@@ -447,6 +473,8 @@ type
     function ScoreCenterServer:String;
     function ShopCenterServer:String;
     function PayCenterServer:String;
+
+    procedure FixContentPicPath(AContentJson:ISuperObject);
   public
     function IsValidUserRestUrl:String;
     //查询验证码的接口地址
@@ -596,7 +624,7 @@ begin
                                     asoExec) then
       begin
         //数据库连接失败或异常
-        ADesc:='更新应用包名时'+Trans('数据库连接失败或异常')+' '+ASQLDBHelper.LastExceptMessage;
+        ADesc:='更新应用包名时'+'数据库连接失败或异常'+' '+ASQLDBHelper.LastExceptMessage;
         Exit;
       end;
       ADataJson.S['client_android_package']:=AClientAppPackage;
@@ -722,7 +750,7 @@ begin
 end;
 
 
-function TServiceProject.CheckInterfaceSign(AAPI:String;AUrlParams: String;var ADesc: String): Boolean;
+function TServiceProject.CheckInterfaceSign(ClientIdent: TkbmMWClientIdentity;ARequestTransportStream:IkbmMWCustomRequestTransportStream;AAPI:String;AUrlParams: String;var ADesc: String): Boolean;
   {$IFDEF USE_IDHTTPSERVERMODE}
   {$ELSE}
 var
@@ -734,6 +762,10 @@ var
   ASignType:String;
   ASign:String;
   AServerSign:String;
+  AUserAccessToken:TUserAccessToken;
+  reqh:TkbmMWHTTPTransportStreamHelper;
+  AKey:String;
+  AClientIP:String;
   {$ENDIF}
 begin
 
@@ -749,12 +781,30 @@ begin
 
 
 
-  if not IsEnableRestAPICheckSign then
+  if not IsEnableRestAPICheckSign and not IsEnableRestAPICheckAccessToken then
   begin
     Result:=True;
     Exit;
   end;
 
+
+  //先判断白名单
+  AClientIP:=ClientIdent.RemoteLocation;
+  if AClientIP<>'' then
+  begin
+    I:=Pos(':',AClientIP);
+    if I>0 then
+    begin
+      AClientIP:=Copy(AClientIP,1,I-1);
+      if //(AClientIP='127.0.0.1') or
+        (Self.FIPWhiteList.IndexOf(AClientIP)<>-1) then
+      begin
+        //在白名单里面,则不检测签名
+        Result:=True;
+        Exit;
+      end;
+    end;
+  end;
 
 
 
@@ -766,97 +816,149 @@ begin
 
 
 
-      //判断有没有appid
-      if AQueryParams.ValueByName['appid']='' then
+      if IsEnableRestAPICheckAccessToken and (AQueryParams.ValueByName['sign']='') then
       begin
-          ADesc:='appid参数不存在';
-          //表示不签名
-          Result:=False;
-          Exit;
 
+          reqh:=TkbmMWHTTPTransportStreamHelper(ARequestTransportStream.Helper);
+          AKey:=reqh.Header.ValueByName[CUSTROM_HEADER_ACCESS_TOKEN];
 
-//          //表示不签名
-//          Result:=True;
-//          Exit;
-      end;
-      AAppID:='';
-//      TryStrToInt(AQueryParams.ValueByName['appid'],AAppID);
-      AAppID:=AQueryParams.ValueByName['appid'];
+          if AKey='' then
+          begin
+            AKey:=AQueryParams.ValueByName['key'];
+          end;
 
+          //判断有没有sign
+          if (AKey='')then
+          begin
+              Inc(InvalidCallCount);
+              ADesc:='key参数不存在';
+              Exit;
+          end;
 
+          AUserAccessToken:=Self.FUserAccessTokenList.Find(AKey);
+          if AUserAccessToken=nil then
+          begin
+              Inc(InvalidCallCount);
+              ADesc:='key:'+AKey+'无效或已过期';
+              Exit;
+          end;
 
-      //判断是否需要签名
-      //判断APP是否存在
-      AApp:=Self.AppList.Find(AAppID);
-      if AApp=nil then
-      begin
-        ADesc:='appid为'+(AAppID)+'的App不存在';
-        Exit;
-      end;
-      if AApp.is_enable_sign=0 then
-      begin
-          //该App不需要签名就能调用
+          //有key就验证key,就不验证签名了
           Result:=True;
           Exit;
       end;
 
 
 
-
-      //判断有没有sign
-      if AQueryParams.ValueByName['sign']='' then
+      if IsEnableRestAPICheckSign then
       begin
-          Inc(InvalidCallCount);
-          ADesc:='sign参数不存在';
-          Exit;
-      end;
-
-
-
-      //判断有没有signtype
-      if AQueryParams.ValueByName['signtype']='' then
-      begin
-          Inc(InvalidCallCount);
-          ADesc:='signtype参数不存在';
-          Exit;
-      end;
-
-
-
-      ASign:=AQueryParams.ValueByName['sign'];
-      ASignType:=AQueryParams.ValueByName['signtype'];
-
-
-
-      AAppID:=AQueryParams.ValueByName['appid'];
-//      if not TryStrToInt(AQueryParams.ValueByName['appid'],AAppID) then
-//      begin
-//          Inc(InvalidCallCount);
-//          ADesc:='appid参数不合法';
-//          Exit;
-//      end;
-
-
-
-
-
-      //1是旋风OnLine项目所使用的签名方式
-      if ASignType<>'' then
-      begin
-          //1是旋风OnLine项目所使用的签名方式
-
-          //判断APP的私钥是否存在
-          if not CheckInterfaceSignByAppSecret(AUrlParams,
-                                              AApp.appsecret_xfapp,
-                                              ADesc,
-                                              AQueryParams) then
+          //判断有没有appid
+          if AQueryParams.ValueByName['appid']='' then
           begin
+              ADesc:='appid参数不存在';
+              //表示不签名
+              Result:=False;
+              Exit;
+
+
+    //          //表示不签名
+    //          Result:=True;
+    //          Exit;
+          end;
+//          AAppID:='';
+    //      TryStrToInt(AQueryParams.ValueByName['appid'],AAppID);
+          AAppID:=AQueryParams.ValueByName['appid'];
+
+
+
+          //判断是否需要签名
+          //判断APP是否存在
+          AApp:=Self.AppList.Find(AAppID);
+          if AApp=nil then
+          begin
+            ADesc:='appid为'+(AAppID)+'的App不存在';
             Exit;
           end;
 
 
-      end;
 
+
+
+
+
+
+          if AApp.is_enable_sign=0 then
+          begin
+              //该App不需要签名就能调用
+              Result:=True;
+              Exit;
+          end;
+
+
+
+
+          //判断有没有sign
+          if AQueryParams.ValueByName['sign']='' then
+          begin
+              Inc(InvalidCallCount);
+              ADesc:='sign参数不存在';
+              Exit;
+          end;
+
+
+
+          //判断有没有signtype
+          ASignType:=AQueryParams.ValueByName['signtype'];
+          if ASignType='' then
+          begin
+            ASignType:=AApp.sign_type;
+          end;
+//          if AQueryParams.ValueByName['signtype']='' then
+          if ASignType='' then
+          begin
+              Inc(InvalidCallCount);
+              ADesc:='sign_type不存在';
+              Exit;
+          end;
+
+
+
+          ASign:=AQueryParams.ValueByName['sign'];
+
+
+
+//          AAppID:=AQueryParams.ValueByName['appid'];
+    //      if not TryStrToInt(AQueryParams.ValueByName['appid'],AAppID) then
+    //      begin
+    //          Inc(InvalidCallCount);
+    //          ADesc:='appid参数不合法';
+    //          Exit;
+    //      end;
+
+
+
+
+
+          //1是旋风OnLine项目所使用的签名方式
+          if ASignType<>'' then
+          begin
+              //1是旋风OnLine项目所使用的签名方式
+
+              //判断APP的私钥是否存在
+              if not CheckInterfaceSignByAppSecret(AApp,AUrlParams,
+                                                  ASignType,
+                                                  ASign,
+                                                  AApp.appsecret,
+                                                  ADesc,
+                                                  AQueryParams) then
+              begin
+                Exit;
+              end;
+
+
+          end;
+
+      end;
 
 
       Result:=True;
@@ -866,7 +968,7 @@ begin
     begin
       uBaseLog.HandleException(nil,'TServiceProject.CheckInterfaceSign '+AAPI+' '+ADesc);
     end;
-    Result:=True;//内测阶段，只记录不开放
+//    Result:=True;//内测阶段，只记录不开放
     FreeAndNil(AQueryParams);
   end;
   {$ENDIF}
@@ -876,8 +978,10 @@ end;
 
 {$IFDEF USE_IDHTTPSERVERMODE}
 {$ELSE}
-function TServiceProject.CheckInterfaceSignByAppSecret(AUrlParams,
-  AAppSecret_XFAPP: String;
+function TServiceProject.CheckInterfaceSignByAppSecret(AApp:TOpenPlatformApp;AUrlParams,
+  ASignType:string;
+  ASign:String;
+  AAppSecret: String;
   var ADesc: String;
   AOldQueryParams:TkbmMWHTTPQueryValues=nil): Boolean;
 var
@@ -885,8 +989,8 @@ var
   I: Integer;
   sl:TStringList;
   AAppID:String;
-  ASignType:String;
-  ASign:String;
+//  ASignType:String;
+//  ASign:String;
   AServerSign:String;
   ATimestamp:Int64;
 begin
@@ -908,13 +1012,13 @@ begin
         AQueryParams.AsString:=AUrlParams;
       end;
 
-      //判断有没有appid
-      if AQueryParams.ValueByName['appid']='' then
-      begin
-          Inc(InvalidCallCount);
-          ADesc:='appid参数不存在';
-          Exit;
-      end;
+//      //判断有没有appid
+//      if AQueryParams.ValueByName['appid']='' then
+//      begin
+//          Inc(InvalidCallCount);
+//          ADesc:='appid参数不存在';
+//          Exit;
+//      end;
 
 
 
@@ -943,80 +1047,84 @@ begin
 
 
 
-
-      //判断有没有nonce随机数
-      if AQueryParams.ValueByName['nonce']='' then
-      begin
-          //老版本的接口
-          //ADesc:='nonce参数不存在';
-          //Exit;
-      end
-      else
-      begin
-
-
-          //判断有没有重复
-          if NonceList.IndexOf(AQueryParams.ValueByName['nonce'])<>-1 then
-          begin
-            //重复了
-            Inc(InvalidCallCount);
-            ADesc:='nonce参数不能重复';
-            Exit;
-          end;
-          NonceListLock.Enter;
-          try
-            NonceList.Add(AQueryParams.ValueByName['nonce']);
-
-            //删除过期的,一方面这个随机数只要保证90秒之内的请求不要重复就可以了
-            //超过90秒由timestamp会检测
-            if DateUtils.SecondsBetween(LastNoceListClearTime,Now)>5*60 then
-            begin
-              //上一次是什么时候清的
-              LastNoceListClearTime:=Now;
-              //清掉上一90秒的
-              for I := 0 to LastNoceListCount-1 do
-              begin
-                NonceList.Delete(0);
-              end;
-              //上一次清的时候还剩多少,下一期清
-              LastNoceListCount:=NonceList.Count;
-            end;
-
-          finally
-            NonceListLock.Leave;
-          end;
-
-      end;
-
-
-
-
-      //判断有没有sign
-      if AQueryParams.ValueByName['sign']='' then
-      begin
-          Inc(InvalidCallCount);
-          ADesc:='sign参数不存在';
-          Exit;
-      end;
+      //nonce有锁，影响性能
+//      //判断有没有nonce随机数
+//      if AQueryParams.ValueByName['nonce']='' then
+//      begin
+//          //老版本的接口
+//          //ADesc:='nonce参数不存在';
+//          //Exit;
+//      end
+//      else
+//      begin
+//
+//
+//          //判断有没有重复
+//          if NonceList.IndexOf(AQueryParams.ValueByName['nonce'])<>-1 then
+//          begin
+//            //重复了
+//            Inc(InvalidCallCount);
+//            ADesc:='nonce参数不能重复';
+//            Exit;
+//          end;
+//          NonceListLock.Enter;
+//          try
+//            NonceList.Add(AQueryParams.ValueByName['nonce']);
+//
+//            //删除过期的,一方面这个随机数只要保证90秒之内的请求不要重复就可以了
+//            //超过90秒由timestamp会检测
+//            if DateUtils.SecondsBetween(LastNoceListClearTime,Now)>5*60 then
+//            begin
+//              //上一次是什么时候清的
+//              LastNoceListClearTime:=Now;
+//              //清掉上一90秒的
+//              for I := 0 to LastNoceListCount-1 do
+//              begin
+//                NonceList.Delete(0);
+//              end;
+//              //上一次清的时候还剩多少,下一期清
+//              LastNoceListCount:=NonceList.Count;
+//            end;
+//
+//          finally
+//            NonceListLock.Leave;
+//          end;
+//
+//      end;
 
 
 
-      //判断有没有signtype
-      if AQueryParams.ValueByName['signtype']='' then
-      begin
-          Inc(InvalidCallCount);
-          ADesc:='signtype参数不存在';
-          Exit;
-      end;
+
+//      //判断有没有sign
+//      if AQueryParams.ValueByName['sign']='' then
+//      begin
+//          Inc(InvalidCallCount);
+//          ADesc:='sign参数不存在';
+//          Exit;
+//      end;
+
+
+//      ASignType:=AQueryParams.ValueByName['signtype'];
+//      if ASignType='' then
+//      begin
+//        ASignType:=Self.AppList.Find(AQueryParams.ValueByName['appid']).sign_type;
+//      end;
+////      //判断有没有signtype
+////      if AQueryParams.ValueByName['signtype']='' then
+//      if ASignType='' then
+//      begin
+//          Inc(InvalidCallCount);
+//          ADesc:='sign_type不存在';
+//          Exit;
+//      end;
 
 
 
-      ASign:=AQueryParams.ValueByName['sign'];
-      ASignType:=AQueryParams.ValueByName['signtype'];
+//      ASign:=AQueryParams.ValueByName['sign'];
 
 
 
-      AAppID:=AQueryParams.ValueByName['appid'];
+//      AAppID:=AQueryParams.ValueByName['appid'];
 //      if not TryStrToInt(AQueryParams.ValueByName['appid'],AAppID) then
 //      begin
 //          Inc(InvalidCallCount);
@@ -1027,16 +1135,61 @@ begin
 
 
 
-      //1是旋风OnLine项目所使用的签名方式
-      if ASignType=CONST_REST_SIGNTYPE_XFAPP then
+//      //1是旋风OnLine项目所使用的签名方式
+//      if ASignType=CONST_REST_SIGNTYPE_XFAPP then
+//      begin
+//          //1是旋风OnLine项目所使用的签名方式
+//
+//          //判断APP的私钥是否存在
+//          if AAppSecret='' then
+//          begin
+//            Inc(InvalidCallCount);
+//            ADesc:='appid为'+(AAppID)+'的私钥appsecrect为空';
+//            Exit;
+//          end;
+//
+//
+//          sl:=TStringList.Create;
+//          try
+//
+//              //开始验签
+//              for I := 0 to AQueryParams.Count-1 do
+//              begin
+//
+//                if AQueryParams[I].Name<>'sign' then
+//                begin
+//                  sl.Values[AQueryParams[I].Name]:=AQueryParams[I].Value;
+//                end;
+//              end;
+//
+//              //生成签名
+//              AServerSign:=uModule_InterfaceSign.LoadSignAsStringList(sl,AAppSecret);
+//
+//
+//              //比对
+//              if ASign<>AServerSign then
+//              begin
+//                Inc(InvalidCallCount);
+//                ADesc:='签名不一致,请升级新版本';
+//                Exit;
+//              end;
+//
+//
+//          finally
+//            FreeAndNil(sl);
+//          end;
+//
+//      end
+//      else
+      if ASignType=CONST_REST_SIGNTYPE_MD5 then
       begin
           //1是旋风OnLine项目所使用的签名方式
 
           //判断APP的私钥是否存在
-          if AAppSecret_XFAPP='' then
+          if AAppSecret='' then
           begin
             Inc(InvalidCallCount);
-            ADesc:='appid为'+(AAppID)+'的私钥appsecrect_xfapp为空';
+            ADesc:='appid为'+(AAppID)+'的私钥appsecrect为空';
             Exit;
           end;
 
@@ -1055,58 +1208,14 @@ begin
               end;
 
               //生成签名
-              AServerSign:=uModule_InterfaceSign.LoadSignAsStringList(sl,AAppSecret_XFAPP);
+              AServerSign:=uModule_InterfaceSign.LoadMD5SignAsStringList(sl,AAppSecret);
 
 
               //比对
-              if ASign<>AServerSign then
+              if not SameText(ASign,AServerSign) then
               begin
                 Inc(InvalidCallCount);
-                ADesc:='签名不一致,请升级新版本';
-                Exit;
-              end;
-
-
-          finally
-            FreeAndNil(sl);
-          end;
-
-      end
-      else if ASignType=CONST_REST_SIGNTYPE_MD5 then
-      begin
-          //1是旋风OnLine项目所使用的签名方式
-
-          //判断APP的私钥是否存在
-          if AAppSecret_XFAPP='' then
-          begin
-            Inc(InvalidCallCount);
-            ADesc:='appid为'+(AAppID)+'的私钥appsecrect_xfapp为空';
-            Exit;
-          end;
-
-
-          sl:=TStringList.Create;
-          try
-
-              //开始验签
-              for I := 0 to AQueryParams.Count-1 do
-              begin
-
-                if AQueryParams[I].Name<>'sign' then
-                begin
-                  sl.Values[AQueryParams[I].Name]:=AQueryParams[I].Value;
-                end;
-              end;
-
-              //生成签名
-              AServerSign:=uModule_InterfaceSign.LoadMD5SignAsStringList(sl,AAppSecret_XFAPP);
-
-
-              //比对
-              if ASign<>AServerSign then
-              begin
-                Inc(InvalidCallCount);
-                ADesc:='签名不一致,请升级新版本';
+                ADesc:='签名不一致';
                 Exit;
               end;
 
@@ -1134,7 +1243,8 @@ begin
 
   Result:=True;
 
-end;{$ENDIF}
+end;
+{$ENDIF}
 
 
 
@@ -1177,7 +1287,7 @@ end;
 
 constructor TServiceProject.Create;
 begin
-  Name := Trans('默认服务');
+  Name := ('默认服务');
 
   Port:=10000;
   SSLPort:=0;
@@ -1211,13 +1321,15 @@ begin
   {$ENDIF}
 
 
-  NonceList:=TStringList.Create;
-  NonceListLock:=TCriticalSection.Create;
+//  NonceList:=TStringList.Create;
+//  NonceListLock:=TCriticalSection.Create;
 
+  FUserAccessTokenList:=TUserAccessTokenList.Create();
 //  FServiceModuleInitProcList:=TServiceModuleInitProcList.Create;
 
   //接口调用统计列表
   FAPICallStatisticsList:=TAPICallStatisticsList.Create();
+  FIPWhiteList:=TStringList.Create;
 end;
 
 destructor TServiceProject.Destroy;
@@ -1256,11 +1368,14 @@ begin
 
 
 
-  FreeAndNil(NonceList);
-  FreeAndNil(NonceListLock);
+  FreeAndNil(FUserAccessTokenList);
+
+//  FreeAndNil(NonceList);
+//  FreeAndNil(NonceListLock);
 
   FreeAndNil(FAPICallStatisticsList);
 
+  FreeAndNil(FIPWhiteList);
   Inherited;
 end;
 
@@ -1275,10 +1390,61 @@ begin
   end;
 end;
 
+function TServiceProject.DomainUrl: String;
+begin
+  Result:='http://'+Domain+':'+IntToStr(Self.Port)+'/';
+end;
+
+function TServiceProject.FileManageDomainUrl: String;
+begin
+  Result:=DomainUrl+'filemanage/';
+end;
+
+procedure TServiceProject.FixContentPicPath(AContentJson: ISuperObject);
+ begin
+  if (AContentJson.S['pic1_path']<>'') and not IsUrl(AContentJson.S['pic1_path']) then
+  begin
+    AContentJson.S['pic1_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic1_path'],'\','/');
+  end;
+  if (AContentJson.S['pic2_path']<>'') and not IsUrl(AContentJson.S['pic2_path']) then
+  begin
+    AContentJson.S['pic2_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic2_path'],'\','/');
+  end;
+  if (AContentJson.S['pic3_path']<>'') and not IsUrl(AContentJson.S['pic3_path']) then
+  begin
+    AContentJson.S['pic3_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic3_path'],'\','/');
+  end;
+  if (AContentJson.S['pic4_path']<>'') and not IsUrl(AContentJson.S['pic4_path']) then
+  begin
+    AContentJson.S['pic4_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic4_path'],'\','/');
+  end;
+  if (AContentJson.S['pic5_path']<>'') and not IsUrl(AContentJson.S['pic5_path']) then
+  begin
+    AContentJson.S['pic5_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic5_path'],'\','/');
+  end;
+  if (AContentJson.S['pic6_path']<>'') and not IsUrl(AContentJson.S['pic6_path']) then
+  begin
+    AContentJson.S['pic6_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic6_path'],'\','/');
+  end;
+  if (AContentJson.S['pic7_path']<>'') and not IsUrl(AContentJson.S['pic7_path']) then
+  begin
+    AContentJson.S['pic7_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic7_path'],'\','/');
+  end;
+  if (AContentJson.S['pic8_path']<>'') and not IsUrl(AContentJson.S['pic8_path']) then
+  begin
+    AContentJson.S['pic8_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic8_path'],'\','/');
+  end;
+  if (AContentJson.S['pic9_path']<>'') and not IsUrl(AContentJson.S['pic9_path']) then
+  begin
+    AContentJson.S['pic9_path']:=GlobalServiceProject.FileManageDomainUrl+ReplaceStr(AContentJson.S['pic9_path'],'\','/');
+  end;
+
+end;
+
 procedure TServiceProject.FreeRedisClient(ARedisClient: TRedisClient);
 begin
   {$IFDEF HAS_REDIS}
-  GetGlobalRedisClientPool.FreeCustomObject(ARedisClient);
+  if IsNeedRedis then GetGlobalRedisClientPool.FreeCustomObject(ARedisClient);
   {$ENDIF}
 end;
 
@@ -1365,7 +1531,7 @@ begin
 //    Result.SELECT(0);    // 选择库，默认有16个（0..15）
   Result:=nil;
   {$IFDEF HAS_REDIS}
-  Result:=TRedisClient(GetGlobalRedisClientPool.GetCustomObject);
+  if IsNeedRedis then Result:=TRedisClient(GetGlobalRedisClientPool.GetCustomObject);
   {$ENDIF}
 end;
 
@@ -1421,6 +1587,12 @@ var
   AIniFile:TIniFile;
 begin
   uBaseLog.HandleException(nil,'TServiceProject.Load');
+
+  //白名单列表
+  if FileExists(GetApplicationPath+'IPWhiteList.txt') then
+  begin
+    FIPWhiteList.LoadFromFile(GetApplicationPath+'IPWhiteList.txt');
+  end;
 
   if IsNeedLoadServiceProjectFromIni and FileExists(GetApplicationPath+'Config.ini') then
   begin
@@ -1551,6 +1723,9 @@ var
   AIdSocketHandle:TIdSocketHandle;
 {$ENDIF}
 begin
+  uBaseLog.HandleException(nil,'TServiceProject.DoStart Begin');
+
+
   Result := False;
 
 
@@ -1564,7 +1739,6 @@ begin
 
     try
 
-      uBaseLog.HandleException(nil,'TServiceProject.Start Begin');
 
       {$IFDEF USE_IDHTTPSERVERMODE}
       {$ELSE}
@@ -1614,7 +1788,8 @@ begin
 
       //取到开放平台的APP列表
       //顺序不能换
-      if IsEnableRestAPICheckSign or IsNeedLoadAppList then
+      if //IsEnableRestAPICheckSign or
+        IsNeedLoadAppList then
       begin
           //查询所有App列有
           AError:='';
@@ -1669,10 +1844,10 @@ begin
       begin
         //初始模块失败
         {$IFDEF MSWINDOWS}
-        ShowMessage(AMessages);
+        //ShowMessage(AMessages);
         {$ENDIF}
 
-        uBaseLog.HandleException(nil,'TServiceProject.Start '+AMessages);
+        uBaseLog.HandleException(nil,'TServiceProject.DoStart '+AMessages);
         Exit;
       end;
 
@@ -1742,10 +1917,9 @@ begin
         //          //
         //          .Active:=True;
 
-              FServiceStatusOutputThread:=TServiceStatusOutputThread.Create(False);
+              FServiceStatusOutputThread:=TServiceStatusOutputThread.Create(False,Self);
 
 
-              uBaseLog.HandleException(nil,'TServiceProject.Start End');
 
       {$ENDIF}
 
@@ -1786,12 +1960,15 @@ begin
       FOnStartEnd(Self,Result,AMessages);
     end;
 
+    uBaseLog.HandleException(nil,'TServiceProject.Start End');
   end;
 
 end;
 
 procedure TServiceProject.Start;
 begin
+  uBaseLog.HandleException(nil,'TServiceProject.Start Begin');
+
   if FSerivceStartThread<>nil then
   begin
     FSerivceStartThread.Terminate;
@@ -1799,6 +1976,9 @@ begin
     FreeAndNil(FSerivceStartThread);
   end;
   FSerivceStartThread:=TSerivceStartThread.Create(False,Self);
+
+
+  uBaseLog.HandleException(nil,'TServiceProject.Start End');
 
 end;
 
@@ -1810,6 +1990,8 @@ var
 begin
   Result:=False;
 
+  uBaseLog.HandleException(nil,'TServiceProject.Stop Begin ');
+
   if FSerivceStartThread<>nil then
   begin
     FSerivceStartThread.Terminate;
@@ -1818,9 +2000,17 @@ begin
   end;
 
 
+  if FServiceStatusOutputThread<>nil then
+  begin
+    FServiceStatusOutputThread.Terminate;
+    FServiceStatusOutputThread.WaitFor;
+    FreeAndNil(FServiceStatusOutputThread);
+  end;
+
+
   {$IFDEF USE_IDHTTPSERVERMODE}
   {$ELSE}
-  if (kbmMWServer1=nil) or not kbmMWServer1.Active then Exit;
+  //if (kbmMWServer1=nil) or not kbmMWServer1.Active then Exit;
   {$ENDIF}
 
 
@@ -1856,9 +2046,6 @@ begin
 
       {$IFDEF USE_IDHTTPSERVERMODE}
       {$ELSE}
-        FServiceStatusOutputThread.Terminate;
-        FServiceStatusOutputThread.WaitFor;
-        FreeAndNil(FServiceStatusOutputThread);
 
         AStartTime:=Now;
         uBaseLog.HandleException(nil,'kbmMWServer1.Stop Begin ');
@@ -1907,6 +2094,7 @@ begin
     CoUnInitialize;
     {$ENDIF}
   end;
+  uBaseLog.HandleException(nil,'TServiceProject.Stop End ');
 end;
 
 function TServiceProject.SyncAppList(var ADesc:String):Boolean;
@@ -2037,13 +2225,7 @@ function TKbmMWServiceModule.DoPrepareStart(var AError:String): Boolean;
 begin
   Result := False;
 
-
-  if not FIsInited then
-  begin
-    Self.Init;
-    FIsInited:=True;
-  end;
-
+  Inherited;
 
   if (FServiceProject<>nil) and (FServiceProject.IsUseOneDBModule) then
   begin
@@ -2094,6 +2276,13 @@ end;
 
 function TServiceModule.DoPrepareStart(var AError: String): Boolean;
 begin
+
+  if not FIsInited then
+  begin
+    Self.Init;
+    FIsInited:=True;
+  end;
+
   Result:=True;
 end;
 
@@ -2201,6 +2390,14 @@ end;
 
 { TServiceStatusOutputThread }
 
+constructor TServiceStatusOutputThread.Create(ACreateSuspended: Boolean;
+  AServiceProject: TServiceProject);
+begin
+  inherited Create(ACreateSuspended);
+  FServiceProject:=AServiceProject;
+
+end;
+
 procedure TServiceStatusOutputThread.Execute;
 var
   I: Integer;
@@ -2215,7 +2412,8 @@ begin
   begin
 
       SleepThread(60*1000);
-
+      //加载日志设置,因为可能会更新,有时候需要输出日志
+      uBaseLog.GetGlobalLog.LoadConfig;
 
     //    //上次总调用数
     //    LastSumCallCount:Integer;
@@ -2226,22 +2424,22 @@ begin
 
       ALog:='服务端状态:'+#13#10;
 
-    //  Self.lblSumCallCount.Caption:=IntToStr(GlobalServiceProject.SumCallCount);
-      ALog:=ALog+'接口总调用次数:'+IntToStr(GlobalServiceProject.SumCallCount)+#13#10;
+    //  Self.lblSumCallCount.Caption:=IntToStr(FServiceProject.SumCallCount);
+      ALog:=ALog+'接口总调用次数:'+IntToStr(FServiceProject.SumCallCount)+#13#10;
 
 
 
-      if GlobalServiceProject.SumCallCount-GlobalServiceProject.LastSumCallCount>GlobalServiceProject.MaxParallelCallCountPerSecond then
+      if FServiceProject.SumCallCount-FServiceProject.LastSumCallCount>FServiceProject.MaxParallelCallCountPerSecond then
       begin
-        GlobalServiceProject.MaxParallelCallCountPerSecond:=GlobalServiceProject.SumCallCount-GlobalServiceProject.LastSumCallCount;
+        FServiceProject.MaxParallelCallCountPerSecond:=FServiceProject.SumCallCount-FServiceProject.LastSumCallCount;
       end;
-//      Self.lblMaxCallCountPerSecond.Caption:=IntToStr(GlobalServiceProject.MaxParallelCallCountPerSecond);
-      ALog:=ALog+'每秒最高并发数:'+IntToStr(GlobalServiceProject.MaxParallelCallCountPerSecond)+#13#10;
+//      Self.lblMaxCallCountPerSecond.Caption:=IntToStr(FServiceProject.MaxParallelCallCountPerSecond);
+      ALog:=ALog+'每秒最高并发数:'+IntToStr(FServiceProject.MaxParallelCallCountPerSecond)+#13#10;
 
 
-      GlobalServiceProject.LastSumCallCount:=GlobalServiceProject.SumCallCount;
-    //  Self.lblInvalidCallCount.Caption:=IntToStr(GlobalServiceProject.InvalidCallCount);
-      ALog:=ALog+'无效调用次数:'+IntToStr(GlobalServiceProject.InvalidCallCount)+#13#10;
+      FServiceProject.LastSumCallCount:=FServiceProject.SumCallCount;
+    //  Self.lblInvalidCallCount.Caption:=IntToStr(FServiceProject.InvalidCallCount);
+      ALog:=ALog+'无效调用次数:'+IntToStr(FServiceProject.InvalidCallCount)+#13#10;
 
 
 
@@ -2251,7 +2449,7 @@ begin
 
 
       ASumCurCount:=0;
-    //  Self.gridDatabasePool.RowCount:=GlobalServiceProject.ServiceModuleList.Count+2;
+    //  Self.gridDatabasePool.RowCount:=FServiceProject.ServiceModuleList.Count+2;
     //  Self.gridDatabasePool.ColCount:=9;
     //
     //  Self.gridDatabasePool.Cells[0,0]:='模块名';
@@ -2264,9 +2462,9 @@ begin
     //  Self.gridDatabasePool.Cells[7,0]:='连接断开次数';
     //  Self.gridDatabasePool.Cells[8,0]:='重连成功次数';
       //先将数据库模块显示出来
-      for I := 0 to GlobalServiceProject.ServiceModuleList.Count-1 do
+      for I := 0 to FServiceProject.ServiceModuleList.Count-1 do
       begin
-        AServiceModule:=TServiceModule(GlobalServiceProject.ServiceModuleList[I]);
+        AServiceModule:=TServiceModule(FServiceProject.ServiceModuleList[I]);
 
     //    Self.gridDatabasePool.Cells[0,I+1]:=AServiceModule.Name;
         ALog:=ALog+'模块名:'+AServiceModule.Name+#9;
@@ -2317,9 +2515,9 @@ begin
                   +#13#10;
       //输出接口调用统计
       //先将数据库模块显示出来
-      for I := 0 to GlobalServiceProject.FAPICallStatisticsList.Count-1 do
+      for I := 0 to FServiceProject.FAPICallStatisticsList.Count-1 do
       begin
-        AAPICallStatisticsItem:=GlobalServiceProject.FAPICallStatisticsList.Items[I];
+        AAPICallStatisticsItem:=FServiceProject.FAPICallStatisticsList.Items[I];
         ALog:=ALog
                   +FloatToStr(AAPICallStatisticsItem.FMaxCostMilliSeconds)+#9
                   +FloatToStr(AAPICallStatisticsItem.FSumCostMilliSeconds / AAPICallStatisticsItem.FCount)+#9
@@ -2407,6 +2605,7 @@ var
   AMessage:String;
 begin
   uBaseLog.HandleException(nil,'TSerivceStartThread.Execute Begin');
+  uBaseLog.GetGlobalLog.OutputDebugString('TSerivceStartThread.Execute Begin');
 
   AStarted:=False;
   while not AStarted and not Self.Terminated do
@@ -2417,22 +2616,79 @@ begin
     if AStarted then
     begin
       uBaseLog.HandleException(nil,'TSerivceStartThread.Execute 服务启动成功');
+      uBaseLog.GetGlobalLog.OutputDebugString('TSerivceStartThread.Execute 服务启动成功');
     end
     else
     begin
-      uBaseLog.HandleException(nil,'TSerivceStartThread.Execute 服务启动失败:'+AMessage);
-      SleepThread(10*1000);
+      uBaseLog.HandleException(nil,'TSerivceStartThread.Execute 服务启动失败:'+AMessage+',10秒后重试');
+      uBaseLog.GetGlobalLog.OutputDebugString('TSerivceStartThread.Execute 服务启动失败:'+AMessage+',10秒后重试');
+      SleepThread(5*1000);
     end;
 
   end;
 
   uBaseLog.HandleException(nil,'TSerivceStartThread.Execute End');
+  uBaseLog.GetGlobalLog.OutputDebugString('TSerivceStartThread.Execute End');
 
+end;
+
+{ TUserAccessTokenList }
+
+function TUserAccessTokenList.Add(AAppID, AUserFID,AAccessToken: String;AIsSystem:Boolean=False): TUserAccessToken;
+begin
+  Result:=TUserAccessToken.Create;
+  Result.AppID:=AAppID;
+  Result.UserFID:=AUserFID;
+  Result.AccessToken:=AAccessToken;
+  Result.IsSystem:=AIsSystem;
+  Self.Add(Result);
+end;
+
+function TUserAccessTokenList.Find(AAppID, AUserFID: String;AIsSystem:Boolean=False): TUserAccessToken;
+var
+  I: Integer;
+begin
+  Result:=nil;
+  for I := 0 to Self.Count-1 do
+  begin
+    if (Items[I].AppID=AAppID)
+      and (Items[I].UserFID=AUserFID)
+      and (Items[I].IsSystem=AIsSystem) then
+    begin
+      Result:=Items[I];
+      Break;
+    end;
+  end;
+end;
+
+function TUserAccessTokenList.Find(AAccessToken: String): TUserAccessToken;
+var
+  I: Integer;
+begin
+  Result:=nil;
+  for I := 0 to Self.Count-1 do
+  begin
+    if (Items[I].AccessToken=AAccessToken) then
+    begin
+      Result:=Items[I];
+      Break;
+    end;
+  end;
+end;
+
+function TUserAccessTokenList.GetItem(Index: Integer): TUserAccessToken;
+begin
+  Result:=TUserAccessToken(Inherited Items[Index]);
 end;
 
 initialization
   //需要记录日志
   uBaseLog.GetGlobalLog.IsWriteLog:=True;
+  uBaseLog.GetGlobalLog.SaveConfig;
+//  {$IFDEF CONSOLE}
+  //经测试在Windows下,Console程序打印日志会卡死
+  GetGlobalLog.IsOutputLog:=False;
+//  {$ENDIF}
   uBaseLog.GetGlobalLog.HandleException(nil,'服务端初始');
 
 

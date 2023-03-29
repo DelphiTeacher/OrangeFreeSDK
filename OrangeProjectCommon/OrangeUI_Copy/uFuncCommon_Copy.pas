@@ -35,6 +35,8 @@ uses
   Math,
   RTLConsts,
 
+  System.NetEncoding,
+
   XMLDoc,
   XMLIntf,
 
@@ -88,7 +90,7 @@ const
 
 type
   TVariantDynArray=array of Variant;
-  TStringDynArray=array of String;
+//  TStringDynArray=array of String;
 
 
 type
@@ -209,16 +211,23 @@ function HighStr(AStr:String):Integer;
 
 //将点分字符串转换为数组
 function GetStringArray(ACommaText:String):TStringDynArray;
+procedure QuotedStringArray(AStringDynArray:TStringDynArray);
+function QuotedStringArrayToStr(AStringDynArray:TStringDynArray):String;
 function GetStringListArray(AStringList:TStringList):TStringDynArray;
+function ConvertArrayToStringList(AStringDynArray:TStringDynArray):TStringList;
 //获取字符串列表Name的数组
 function GetStringListNameArray(AStringList:TStringList):TStringDynArray;
 //获取字符串列表Value的数组
 function GetStringListValueArray(AStringList:TStringList):TStringDynArray;
 //释放绑在StringList中的对象
 procedure FreeStringListObjects(AStringList:TStringList);
+function SplitString(AStr:String;ADelimiterChar:Char=','):TStringList;
+function QuotedStringList(AStringList:TStringList):String;
 
 
+//判断在数组中是否存在
 function FindInArray(AStr:String;AArray:Array of String):Integer;
+//
 procedure CopyStringArray(var ASrcArray,ADestArray:Array of String);
 procedure CopyVariantArray(var ASrcArray,ADestArray:Array of Variant);
 function AddStrToArray(AArray:Array of String;AStr:String):TStringDynArray;
@@ -230,16 +239,23 @@ function ConvertToStringDynArray(AArray:Array of String):TStringDynArray;
 function ConvertToVariantDynArray(AVariants:Array of Variant):TVariantDynArray;
 //function ConvertToStringArray(AArray:Array of String):Array of String;
 //function ConvertToVariantArray(AVariants:Array of Variant):TVariantDynArray;
+procedure SplitNameValuePairArray(AVariants:TVariantDynArray;
+                                  var AUrlParamNames:TStringDynArray;
+                                  var AUrlParamValues:TVariantDynArray);
+procedure CopyVariantArrayValue(ASrcVariants,ADestVariants:TVariantDynArray);
+procedure CopyStringArrayValue(ASrcVariants,ADestVariants:TStringDynArray);
 
 
 function SaveStringToFile(AString:String;AFilePath:String{$IF CompilerVersion >= 21.0};AEncoding:TEncoding{$IFEND}):Boolean;
 function GetStringFromFile(AFilePath:String{$IF CompilerVersion >= 21.0};AEncoding:TEncoding{$IFEND}):String;
 {$IF CompilerVersion >= 21.0}
-function GetTextFileEncoding(const AFileName: string): TEncoding;
 //比2007高的版本
+function GetTextFileEncoding(const AFileName: string): TEncoding;
 function GetStringFromTextFile(AFilePath:String):String;
 {$IFEND}
 
+function time2str(timeInMs: Int64; fmt: string = 'hh:mm:ss.ms'): string;
+function time2str2(timeInMs: Int64; hhdevide: string=':'; mmdevide: string=':'; ssdevide: string=':';ANeedFixZero:Boolean=False): string;
 
 
 //生成验证码,四位
@@ -313,6 +329,7 @@ function SettingChatTime(ADateTime:TDateTime;AIsRecentChat:Boolean):String;
 function GetUniqueAndroidStartActivityForRequestCode(ARequestName:String;ABaseIndex:Integer=1000):Integer;
 
 function IsVideoFile(AFilePath:String):Boolean;
+function IsImageFile(AFilePath:String):Boolean;
 
 function ExtractFileNameNoExt(AFilePath:String):String;
 
@@ -355,14 +372,44 @@ function PosAndCutString(ASubStr:String;
                           //是否需要剪切掉子串
                           AIsNeedCutSubStr:Boolean):Boolean;
 
-{$IFDEF MSWINDOWS}
+{$IF DEFINED(MSWINDOWS) OR DEFINED(LINUX)}
 function PosAndCutAnsiString(ASubStr:AnsiString;
                           var AOriginStr:AnsiString;
                           var ACuttedStr:AnsiString;
                           var AIndex:Integer;
                           //是否需要剪切掉子串
                           AIsNeedCutSubStr:Boolean):Boolean;
-{$ENDIF}
+{$IFEND}
+
+
+function CopyString(AString:String;AStartIndex:Integer;ALength:Integer):String;
+//根据图片内容判断是什么后缀名
+function GetPicStreamFileExt(AResponseStream:TStream):String;
+
+{$IF CompilerVersion >= 30.0}
+function ExcludeTrailingSlash(const S: string): string;
+{$IFEND}
+function RemoveUrlProtocal(const AUrl: string): string;
+
+
+function StrHash(const SoureStr: string): Cardinal;
+function StrJavaHash(const SoureStr: string): Integer;
+
+
+//保存base64格式的图片到文件
+//"image_uri":"data:image/jpeg;base64,/9j/4A
+//返回文件名
+function GetImageBase64(AImageBase64:String;var AFileExt:String;var AImageStream:TMemoryStream):Boolean;
+
+
+
+function GetMimeType(AFileName:String):String;overload;
+function GetMimeType(AContent:TStream):String;overload;
+
+//是否是链接
+function IsUrl(AUrl:String):Boolean;
+//https://www.orangeui.cn，转换为orangeui.cn
+function ExtractDomain(AUrl:String):String;
 
 
 var
@@ -372,9 +419,335 @@ var
 
 
 
+
 implementation
 
 
+function ExtractDomain(AUrl:String):String;
+var
+  AIndex:Integer;
+begin
+  Result:=AUrl;
+  if (Pos('http://',LowerCase(AUrl))>0) then
+  begin
+    Result:=Copy(Result,Length('http://')+1,MaxInt);
+  end;
+
+  if (Pos('https://',LowerCase(AUrl))>0) then
+  begin
+    Result:=Copy(Result,Length('https://')+1,MaxInt);
+  end;
+
+  if (Copy(LowerCase(AUrl),1,4)='www.') then
+  begin
+    Result:=Copy(Result,Length('www.')+1,MaxInt);
+  end;
+
+  AIndex:=Pos('/',Result);
+  if AIndex>0 then
+  begin
+    Result:=Copy(Result,1,AIndex-1);
+  end;
+
+end;
+
+
+function IsUrl(AUrl:String):Boolean;
+begin
+  Result:=False;
+  if (Pos('http://',AUrl)>0)
+    or (Pos('https://',AUrl)>0) then
+  begin
+    Result:=True;
+  end;
+end;
+
+function GetMimeType(AContent:TStream):String;
+var
+  Suffic:array [0..2] of AnsiChar;
+begin
+  AContent.Position:=0;
+  AContent.Read(Suffic,3);
+  AContent.Position:=0;
+  if Suffic='BMP' then
+  begin
+    Result:='image/bmp';
+  end
+  else if Suffic='GIF' then
+  begin
+    Result:='image/gif';
+  end
+  else if Suffic='PNG' then
+  begin
+    Result:='image/png';
+  end
+  else if Suffic='JPG' then
+  begin
+    Result:='image/jpeg';
+  end
+  else
+  begin
+    Result:='application/octet-stream';
+  end;
+end;
+
+function GetMimeType(AFileName:String):String;
+var
+  LowerCaseFileExt:String;
+begin
+  LowerCaseFileExt:=LowerCase(ExtractFileExt(AFileName));
+  if LowerCaseFileExt='.bmp' then
+  begin
+    result:='image/bmp';
+  end
+  else if LowerCaseFileExt='.gif' then
+  begin
+    result:='image/gif';
+  end
+  else if (LowerCaseFileExt='.jpg') or (LowerCaseFileExt='.jpeg') then
+  begin
+    result:='image/jpeg';
+  end
+  else if LowerCaseFileExt='.png' then
+  begin
+    result:='image/png';
+  end
+  else
+  begin
+  result:='application/octet-stream';
+  end;
+end;
+
+function GetFileExt(AMimeType:String):String;
+begin
+  Result:='';
+  if AMimeType='image/bmp' then
+  begin
+    result:='.bmp';
+  end
+  else if AMimeType='image/gif' then
+  begin
+    result:='.gif';
+  end
+  else if (AMimeType='image/jpeg') then
+  begin
+    result:='.jpg';
+  end
+  else if AMimeType='image/png' then
+  begin
+    result:='.png';
+  end;
+end;
+
+
+function GetImageBase64(AImageBase64:String;var AFileExt:String;var AImageStream:TMemoryStream):Boolean;
+var
+  AStartIndex:Integer;
+  AEndIndex:Integer;
+  AImageMimeType:String;
+  ABase64:String;
+  ABase64Stream:TStringStream;
+begin
+  Result:=False;
+
+  //"image_uri":"data:image/jpeg;base64,/9j/4A
+  if Copy(AImageBase64,1,5)<>'data:' then
+  begin
+    Exit;
+  end;
+  AStartIndex:=Pos(';',AImageBase64);
+  if AStartIndex=0 then
+  begin
+    Exit;
+  end;
+  AImageMimeType:=Copy(AImageBase64,Length('data:')+1,AStartIndex-(Length('data:')+1));
+  AFileExt:=GetFileExt(AImageMimeType);
+  if AFileExt='' then
+  Begin
+    //不支持的文件类型
+    Exit;
+  End;
+  AStartIndex:=AStartIndex+Length('base64,')+1;
+  ABase64:=Copy(AImageBase64,AStartIndex,MaxInt);
+
+
+  AImageStream:=TMemoryStream.Create;
+  ABase64Stream:=TStringStream.Create(ABase64,TEncoding.UTF8);
+  try
+    ABase64Stream.Position:=0;
+    TNetEncoding.Base64.Decode(ABase64Stream,AImageStream);
+  finally
+    FreeAndNil(ABase64Stream);
+  end;
+
+  Result:=True;
+
+end;
+
+function QuotedStringList(AStringList:TStringList):String;
+var
+  I: Integer;
+begin
+  Result:='';
+  for I := 0 to AStringList.Count-1 do
+  begin
+    if Result<>'' then
+    begin
+      Result:=Result+',';
+    end;
+    Result:=Result+QuotedStr(AStringList[I]);
+  end;
+end;
+
+
+function SplitString(AStr:String;ADelimiterChar:Char):TStringList;
+begin
+  Result:=TStringList.Create;
+  Result.StrictDelimiter:=True;
+  Result.Delimiter:=ADelimiterChar;
+  Result.DelimitedText:=AStr;
+end;
+
+
+function RemoveUrlProtocal(const AUrl: string): string;
+begin
+  Result:=AUrl;
+  if (Pos('http://',LowerCase(Result))=1) then
+  begin
+    Result:=Copy(AUrl,Length('http://')+1,MaxInt);
+  end;
+  if (Pos('https://',LowerCase(Result))=1) then
+  begin
+    Result:=Copy(AUrl,Length('https://')+1,MaxInt);
+  end;
+
+end;
+
+{$IF CompilerVersion >= 30.0}
+function IsSlash(const S: string; Index: Integer): Boolean;
+begin
+  Result := (Index >= Low(string)) and (Index <= High(S)) and (S[Index] = '/')
+    and (ByteType(S, Index) = mbSingleByte);
+end;
+
+function ExcludeTrailingSlash(const S: string): string;
+begin
+  Result := S;
+  if IsPathDelimiter(Result, High(Result)) then
+    SetLength(Result, Length(Result)-1);
+end;
+{$IFEND}
+
+
+function StrHash(const SoureStr: string): Cardinal;
+const
+  cLongBits = 32;
+  cOneEight = 4;
+  cThreeFourths = 24;
+  cHighBits = $F0000000;
+var
+  I: Integer;
+  P: PChar;
+  Temp: Cardinal;
+begin
+  Result := 0;
+  P := PChar(SoureStr);
+  I := Length(SoureStr);
+  while I > 0 do
+  begin
+    Result := (Result shl cOneEight) + Ord(P^);
+    Temp := Result and cHighBits;
+    if Temp <> 0 then
+      Result := (Result xor (Temp shr cThreeFourths)) and (not cHighBits);
+    Dec(I);
+    Inc(P);
+  end;
+end;
+
+
+function StrJavaHash(const SoureStr: string): Integer;
+var
+  I: Integer;
+begin
+  Result := 0;
+  I := 0;
+  {$OVERFLOWCHECKS OFF}
+  for I := 1 to Length(SoureStr) do
+  begin
+    Result := 31*Result + Ord(SoureStr[I]);
+  end;
+  {$OVERFLOWCHECKS ON}
+end;
+
+function GetPicStreamFileExt(AResponseStream:TStream):String;
+var
+  AFileHeaderBytes:Array [0..4] of Byte;
+begin
+  AResponseStream.Position:=0;
+  Result:='';
+
+  //下载成功
+  AResponseStream.Position:=0;
+  AResponseStream.Read(AFileHeaderBytes[0],Length(AFileHeaderBytes));
+  AResponseStream.Position:=0;
+
+
+  //比对是否是图片文件
+//    if Copy(ImageExt,1,2)='BM' then
+  if (AFileHeaderBytes[0]=Ord('B'))
+    and (AFileHeaderBytes[1]=Ord('M')) then
+  begin
+      //if AUrlCacheItem.FileExt='' then
+      Result:='.bmp';
+  end
+  else
+  if (AFileHeaderBytes[0]=Ord('G'))
+    and (AFileHeaderBytes[1]=Ord('I'))
+    and (AFileHeaderBytes[2]=Ord('F')) then
+//    else if Copy(ImageExt,1,3)='GIF' then
+  begin
+      //if AUrlCacheItem.FileExt='' then
+      Result:='.gif';
+  end
+  else
+  if (AFileHeaderBytes[1]=Ord('P'))
+    and (AFileHeaderBytes[2]=Ord('N'))
+    and (AFileHeaderBytes[3]=Ord('G')) then
+//    else if Copy(ImageExt,2,3)='PNG' then
+  begin
+      //if AUrlCacheItem.FileExt='' then
+      Result:='.png';
+  end
+  else
+  if (AFileHeaderBytes[0]=255)
+    and (AFileHeaderBytes[1]=216) then
+//    else if (Copy(ImageExt,1,1)=#255) and (Copy(ImageExt,2,1)=#216) then
+  begin
+      //0xff,0xd8
+      //if AUrlCacheItem.FileExt='' then
+      Result:='.jpg';
+  end
+  else
+  begin
+      //文件内容出错
+      //uBaseLog.OutputDebugString('TDefaultDownloadManager.DownloadItem 文件内容出错');
+//      AUrlCacheItem.State:=dpsDownloadImageInvalid;
+//      AIsValidResponse:=False;
+  end;
+  ;
+
+end;
+
+function CopyString(AString:String;AStartIndex:Integer;ALength:Integer):String;
+begin
+  {$IFDEF FMX}
+  Result:=AString.Substring(AStartIndex-1,ALength);
+  {$ENDIF}
+  {$IFDEF VCL}
+  Result:=Copy(AString,AStartIndex,ALength);
+  {$ENDIF}
+
+end;
 
 //定位并且剪切字符串
 function PosAndCutString(ASubStr:String;var AOriginStr:String;var ACuttedStr:String;var AIndex:Integer;AIsNeedCutSubStr:Boolean):Boolean;
@@ -398,7 +771,7 @@ begin
   end;
 end;
 
-{$IFDEF MSWINDOWS}
+{$IF DEFINED(MSWINDOWS) OR DEFINED(LINUX)}
 function PosAndCutAnsiString(ASubStr:AnsiString;var AOriginStr:AnsiString;var ACuttedStr:AnsiString;var AIndex:Integer;AIsNeedCutSubStr:Boolean):Boolean;
 begin
   Result:=False;
@@ -419,7 +792,7 @@ begin
     Result:=True;
   end;
 end;
-{$ENDIF}
+{$IFEND}
 
 
 //从链接中取出文件名
@@ -449,7 +822,7 @@ begin
 
 
 
-
+  
 end;
 
 function XDigit(Ch : Char) : Integer;
@@ -815,6 +1188,87 @@ begin
 end;
 
 
+function w2s(w: word): string;
+begin
+  if (w < 10)  then Result := '0' + IntToStr(w)
+  else              Result := IntToStr(w);
+end;
+
+function time2str(timeInMs: Int64; fmt: string = 'hh:mm:ss.ms'): string;
+var
+  dd, hh, mm, ss, ms: Word;
+begin
+  if (timeInMs < 0) then timeInMs := 0;
+
+  ms := timeInMs mod 1000; timeInMs := timeInMs div 1000;
+  ss := timeInMs mod 60;   timeInMs := timeInMs div 60;
+  mm := timeInMs mod 60;   timeInMs := timeInMs div 60;
+  hh := timeInMs mod 24;   timeInMs := timeInMs div 24;
+  dd := timeInMs;
+
+  Result := fmt;
+  Result := StringReplace(Result, 'dd',  w2s(dd), [rfReplaceAll, rfIgnoreCase]);
+  Result := StringReplace(Result, 'hh',  w2s(hh), [rfReplaceAll, rfIgnoreCase]);
+  Result := StringReplace(Result, 'mm',  w2s(mm), [rfReplaceAll, rfIgnoreCase]);
+  Result := StringReplace(Result, 'ss',  w2s(ss), [rfReplaceAll, rfIgnoreCase]);
+  Result := StringReplace(Result, 'ms',  w2s(ms), [rfReplaceAll, rfIgnoreCase]);
+end;
+
+function time2str2(timeInMs: Int64; hhdevide: string; mmdevide: string; ssdevide: string;ANeedFixZero:Boolean): string;
+var
+  dd, hh, mm, ss, ms: Word;
+begin
+  if (timeInMs < 0) then timeInMs := 0;
+
+  ms := timeInMs mod 1000; timeInMs := timeInMs div 1000;
+  ss := timeInMs mod 60;   timeInMs := timeInMs div 60;
+  mm := timeInMs mod 60;   timeInMs := timeInMs div 60;
+  hh := timeInMs mod 24;   timeInMs := timeInMs div 24;
+  dd := timeInMs;
+
+  Result := '';
+
+  if ANeedFixZero then
+  begin
+    if hh>0 then
+    begin
+      Result := Result+w2s(hh)+hhdevide;
+    end;
+    if mm>0 then
+    begin
+      Result := Result+w2s(mm)+mmdevide;
+    end;
+    if ss>0 then
+    begin
+      Result := Result+w2s(ss)+ssdevide;
+    end;
+  end
+  else
+  begin
+    if hh>0 then
+    begin
+      Result := Result+IntToStr(hh)+hhdevide;
+    end;
+    if mm>0 then
+    begin
+      Result := Result+IntToStr(mm)+mmdevide;
+    end;
+    if ss>0 then
+    begin
+      Result := Result+IntToStr(ss)+ssdevide;
+    end;
+  end;
+
+
+
+
+//  Result := StringReplace(Result, 'hh',  w2s(hh), [rfReplaceAll, rfIgnoreCase]);
+//  Result := StringReplace(Result, 'mm',  w2s(mm), [rfReplaceAll, rfIgnoreCase]);
+//  Result := StringReplace(Result, 'ss',  w2s(ss), [rfReplaceAll, rfIgnoreCase]);
+//  Result := StringReplace(Result, 'ms',  w2s(ms), [rfReplaceAll, rfIgnoreCase]);
+end;
+
+
 
 function ExtractFileNameNoExt(AFilePath:String):String;
 var
@@ -832,6 +1286,18 @@ begin
   Result:=False;
   AFileExt:=LowerCase(ExtractFileExt(AFilePath));
   if AFileExt='.mp4' then
+  begin
+    Result:=True;
+  end;
+end;
+
+function IsImageFile(AFilePath:String):Boolean;
+var
+  AFileExt:String;
+begin
+  Result:=False;
+  AFileExt:=LowerCase(ExtractFileExt(AFilePath));
+  if (AFileExt='.jpg') or (AFileExt='.jpeg') or (AFileExt='.gif') or (AFileExt='.png') or (AFileExt='.bmp') then
   begin
     Result:=True;
   end;
@@ -1899,6 +2365,43 @@ begin
   end;
 end;
 
+procedure SplitNameValuePairArray(AVariants:TVariantDynArray;
+                                  var AUrlParamNames:TStringDynArray;
+                                  var AUrlParamValues:TVariantDynArray);
+var
+  I: Integer;
+begin
+  SetLength(AUrlParamNames,Length(AVariants) div 2);
+  SetLength(AUrlParamValues,Length(AVariants) div 2);
+  for I := 0 to Length(AVariants) div 2 - 1 do
+  begin
+    AUrlParamNames[I]:=AVariants[I*2];
+    AUrlParamValues[I]:=AVariants[I*2+1];
+  end;
+
+end;
+
+procedure CopyVariantArrayValue(ASrcVariants,ADestVariants:TVariantDynArray);
+var
+  I: Integer;
+begin
+  for I := 0 to Length(ASrcVariants)-1 do
+  begin
+    ADestVariants[I]:=ASrcVariants[I];
+  end;
+end;
+
+procedure CopyStringArrayValue(ASrcVariants,ADestVariants:TStringDynArray);
+var
+  I: Integer;
+begin
+  for I := 0 to Length(ASrcVariants)-1 do
+  begin
+    ADestVariants[I]:=ASrcVariants[I];
+  end;
+end;
+
+
 function ConvertToVariantDynArray(AVariants:Array of Variant):TVariantDynArray;
 var
   I: Integer;
@@ -1921,6 +2424,17 @@ begin
     FreeAndNil(AObject);
   end;
   AStringList.Clear;
+end;
+
+function ConvertArrayToStringList(AStringDynArray:TStringDynArray):TStringList;
+var
+  I:Integer;
+begin
+  Result:=TStringList.Create;
+  for I := 0 to Length(AStringDynArray)-1 do
+  begin
+    Result.Add(AStringDynArray[I]);
+  end;
 end;
 
 function GetStringListArray(AStringList:TStringList):TStringDynArray;
@@ -1964,7 +2478,9 @@ begin
   SetLength(Result,0);
   AStringList:=TStringList.Create;
   try
-    AStringList.CommaText:=ACommaText;
+    AStringList.StrictDelimiter:=True;
+    AStringList.Delimiter:=',';
+    AStringList.DelimitedText:=ACommaText;
     SetLength(Result,AStringList.Count);
     for I := 0 to AStringList.Count-1 do
     begin
@@ -1975,6 +2491,31 @@ begin
   end;
 end;
 
+procedure QuotedStringArray(AStringDynArray:TStringDynArray);
+var
+  I:Integer;
+begin
+  for I := 0 to Length(AStringDynArray)-1 do
+  begin
+    AStringDynArray[I]:=QuotedStr(AStringDynArray[I]);
+  end;
+
+end;
+
+function QuotedStringArrayToStr(AStringDynArray:TStringDynArray):String;
+var
+  I:Integer;
+begin
+  Result:='';
+  for I := 0 to Length(AStringDynArray)-1 do
+  begin
+    if Result<>'' then
+    begin
+      Result:=Result+',';
+    end;
+    Result:=Result+QuotedStr(AStringDynArray[I]);
+  end;
+end;
 
 function LowStr(AStr:String):Integer;
 begin
@@ -2072,7 +2613,7 @@ begin
 
 //  Result:=ReplaceStr(Result,'{','');
 //  Result:=ReplaceStr(Result,'}','');
-
+  
   //D7
   Result:=StringReplace(Result,'{','', [rfReplaceAll]);
   Result:=StringReplace(Result,'}','', [rfReplaceAll]);
@@ -2144,12 +2685,11 @@ end;
 
 function UIGetTickCount: LongWord;
 begin
-  {$IFDEF FMX}
+  {$IF DEFINED(FMX) OR DEFINED(LINUX)}
   Result:=TThread.GetTickCount;
-  {$ENDIF}
-  {$IFDEF VCL}
+  {$ELSE}
   Result:=GetTickCount;
-  {$ENDIF}
+  {$IFEND}
 end;
 
 procedure ObjAddRef(Obj:TObject);
@@ -2211,6 +2751,7 @@ finalization
 
 
 end.
+
 
 
 

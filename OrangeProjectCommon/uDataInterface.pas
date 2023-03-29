@@ -9,7 +9,7 @@ uses
   SysUtils,
   uBaseLog,
   uBaseList,
-  uLang,
+//  uLang,
   Types,
   Variants,
   DB,
@@ -55,7 +55,7 @@ type
 
 
   //列表数据列类型
-  TDataIntfResultType=(ldtNone,
+  TDataIntfResultType=(//ldtNone,
                         //
                         ldtJson,
                         //列表
@@ -203,7 +203,6 @@ type
 
     //当前编辑的记录FID
     EditingRecordKeyValue:Variant;
-//    EditingRecordKeyFieldName:String;
 
     //接口返回是否新增了数据
     IsAddedRecord:Boolean;
@@ -215,6 +214,12 @@ type
 
     //给用户自定义的接口查询条件的数组字符串
     CustomWhereKeyJson:String;
+
+    //如果不存在,则添加
+    IsAddIfNotExist:Boolean;
+    CheckExistFieldNames:String;
+//    EditingRecordKeyFieldName:String;
+
   public
     procedure Clear;
   end;
@@ -235,7 +240,7 @@ type
 //    FDataListOtherFieldNames: String;
     procedure SetFieldNameList(const Value: TStringList);
   protected
-    //表的字段列表
+    //表的字段列表,用于设计时给设计器选择
     FFieldNameList:TStringList;
     FIsInited:Boolean;
     procedure SetIsInited(const Value: Boolean);virtual;
@@ -282,7 +287,7 @@ type
                           var ADataJson:ISuperObject
                            ):Boolean;virtual;abstract;
     //获取记录列表
-    function GetDataList(
+     function GetDataList(
 //                           AAppID:String;
 //                           APageIndex:Integer;
 //                           APageSize:Integer;
@@ -328,6 +333,14 @@ type
     function SaveData(
                       //要保存的数据
                       ASaveDataSetting:TSaveDataSetting;
+                      //原数据
+//                      ALoadDataIntfResult:TDataIntfResult;
+                      ADataIntfResult:TDataIntfResult):Boolean;virtual;abstract;
+    //保存记录列表
+    function SaveDataList(
+                      //要保存的数据
+                      ASaveDataSetting:TSaveDataSetting;
+                      ARecordList:ISuperArray;
                       //原数据
 //                      ALoadDataIntfResult:TDataIntfResult;
                       ADataIntfResult:TDataIntfResult):Boolean;virtual;abstract;
@@ -702,7 +715,7 @@ end;
 procedure TDataIntfResult.Clear;
 begin
   //返回的数据类型
-  DataType:=TDataIntfResultType.ldtNone;
+  DataType:=TDataIntfResultType.ldtJson;//TDataIntfResultType.ldtNone;
   Succ:=False;
 
 //    Code:Integer;
@@ -731,7 +744,7 @@ var
 begin
   Result:=TStringList.Create;
   case Self.DataType of
-    ldtNone: ;
+//    ldtNone: ;
     ldtJson:
     begin
       for I := 0 to Self.DataJson.A['RecordList'].Length-1 do
@@ -748,7 +761,7 @@ function TDataIntfResult.GetRecordList: ISuperArray;
 begin
   Result:=nil;
   case Self.DataType of
-    ldtNone: ;
+//    ldtNone: ;
     ldtJson:
     begin
       Result:=Self.DataJson.A['RecordList'];
@@ -923,6 +936,9 @@ begin
 
 //  EditingRecordKeyFieldName:='fid';
 
+
+  IsAddIfNotExist:=False;
+  CheckExistFieldNames:='';
 end;
 
 

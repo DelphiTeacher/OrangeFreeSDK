@@ -10,6 +10,7 @@ uses
   {$IFDEF LINUX}
   {$ELSE}
   JPEG,
+  PngImage,
 //  uGraphicCommon,
   Graphics,
   {$ENDIF}
@@ -31,8 +32,11 @@ const
 {$IFDEF LINUX}
 {$ELSE}
 //生成缩略图
-procedure GenerateThumbJpegFile(AJpegStream:TStream;AThumbFilePath:String);
+procedure GenerateThumbJpegFile(AJpegStream:TStream;AThumbFilePath:String);overload;
+procedure GenerateThumbJpegFile(AJpegFilePath:String;AThumbFilePath:String);overload;
+
 function GetJpegFileSize(AJpegFilePath:String):TSize;
+function GetPictureFileSize(AJpegFilePath:String):TSize;
 
 
 function GenerateThumbBmpFile(AJpegStream:TStream;AThumbFilePath:String):Boolean;
@@ -43,6 +47,58 @@ implementation
 
 {$IFDEF LINUX}
 {$ELSE}
+
+
+function GetPictureFileSize(AJpegFilePath:String):TSize;
+var
+  AFileExt:String;
+var
+  SourceJpg: TJPEGImage;
+  SourcePng: TPngImage;
+begin
+  Result.cx:=0;
+  Result.cy:=0;
+  AFileExt:=ExtractFileExt(AJpegFilePath);
+
+  if SameText(AFileExt,'.jpg') then
+  begin
+      SourceJpg := TJPEGImage.Create;
+      try
+        try
+           //读取源文件
+           SourceJpg.LoadFromFile(AJpegFilePath);
+           //计算缩小比例
+           Result.cx:=SourceJpg.Width;
+           Result.cy:=SourceJpg.Height;
+        except
+
+        end;
+      finally
+         SourceJpg.Free;
+      end;
+  end;
+
+
+  if SameText(AFileExt,'.png') then
+  begin
+      SourcePng := TPngImage.Create;
+      try
+        try
+           //读取源文件
+           SourcePng.LoadFromFile(AJpegFilePath);
+           //计算缩小比例
+           Result.cx:=SourcePng.Width;
+           Result.cy:=SourcePng.Height;
+        except
+
+        end;
+      finally
+         SourcePng.Free;
+      end;
+  end;
+
+
+end;
 
 function GetJpegFileSize(AJpegFilePath:String):TSize;
 var
@@ -66,6 +122,25 @@ begin
   end;
 end;
 
+procedure GenerateThumbJpegFile(AJpegFilePath:String;AThumbFilePath:String);overload;
+var
+  AFileExt:String;
+  AFileStream:TFileStream;
+begin
+  AFileExt:=ExtractFileExt(AJpegFilePath);
+  if not SameText(AFileExt,'.jpg') and not SameText(AFileExt,'.jpeg') then
+  begin
+    Exit;
+  end;
+  
+  AFileStream:=TFileStream.Create(AJpegFilePath,fmOpenRead);
+  try
+    GenerateThumbJpegFile(AFileStream,AThumbFilePath);
+  finally
+    FreeAndNil(AFileStream);
+  end;
+
+end;
 
 procedure GenerateThumbJpegFile(AJpegStream:TStream;AThumbFilePath:String);
 var

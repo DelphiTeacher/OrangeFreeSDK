@@ -24,6 +24,8 @@ uses
 //	public static double pi = 3.1415926535897932384626;
 //	public static double a = 6378245.0;
 //	public static double ee = 0.00669342162296594323;
+const
+  OneMeter=0.00000805;
 
 const
   pi=3.1415926535897932384626;
@@ -190,8 +192,8 @@ function outOfChina(lat:Double;lon:Double):Boolean;
 function transform(lat:Double;lon:Double):TGPS;
 function transformLat(x:Double;y:Double):Double;
 function transformLon(x:Double;y:Double):Double;
-//根据经纬度获取两地距离
 function getRad(d: Double): Double;
+//根据经纬度获取两地距离
 function GetFlatternDistance(lat1, lng1, lat2, lng2: Double): Double;
 
 
@@ -585,6 +587,12 @@ begin
     h2 := (3*r +1)/2/s;
 
     Result := d*(1 + fl*(h1*sf*(1-sg) - h2*(1-sf)*sg));
+
+    if (FloatToStr(Result) = 'NAN') then
+    begin
+      Result:= 0;
+    end;
+
   except
 
   end;

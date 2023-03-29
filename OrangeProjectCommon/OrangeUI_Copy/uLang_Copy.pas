@@ -1,4 +1,4 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 unit uLang_Copy;
 
 interface
@@ -17,17 +17,24 @@ interface
 
 
 uses
-  {$IFDEF FMX}
-  FMX.Types,
-  FMX.Forms,
-  FMX.Controls,
-  {$ENDIF FMX}
+//  {$IFDEF FMX}
+//  FMX.Types,
+//  FMX.Forms,
+//  FMX.Controls,
+//  {$ENDIF}
 
+  {$IFDEF VCL}
+  Controls,
+  {$ENDIF}
 
   {$IFDEF MSWINDOWS}
-  Winapi.Windows,
-  {$ENDIF MSWINDOWS}
-
+    {$IF CompilerVersion >= 30.0}
+    Winapi.Windows,
+    {$ELSE}
+    Windows,
+    Forms,
+    {$IFEND}
+  {$ENDIF}
 
 
   Classes,
@@ -38,14 +45,53 @@ uses
 const
   IID_ILangProcess:TGUID='{7893099B-0F42-4EFA-81ED-47F2278D9856}';
 
+
+
+
+
 type
-  //è¯­è¨€ç±»å‹(ä¸­æ–‡,è‹±æ–‡)
+
+//  {$IFDEF IN_ANDROIDSERVICE}
+//    {$DEFINE NOLANG}
+//  {$ENDIF}
+//
+//  {$IFDEF LINUX}
+//    {$DEFINE NOLANG}
+//  {$ENDIF}
+
+//  //¿Ø¼şParentµÄÀà,ÒÔ¼°×Ó¿Ø¼şµÄÀàĞÍ,ÓÃÓÚ±éÀú×Ó¿Ø¼ş
+//  {$IFDEF VCL}
+//    //ÔÚVCLÏÂ,¸¸¿Ø¼şÊÇWinControl,¿ÉÒÔ·Å×Ó¿Ø¼şÔÚÀïÃæ
+//    TParentControl=TWinControl;
+//    TChildControl=TControl;
+//  {$ENDIF}
+//  {$IFDEF FMX}
+//    TParentControl=TFmxObject;
+//    TChildControl=TFmxObject;
+//  {$ELSE}
+//      {$IFDEF LINUX}
+//      TControl=TObject;
+//      TParentControl=TObject;
+//      TChildControl=TObject;
+//      TLang=TObject;
+//      {$ENDIF}
+//  {$ENDIF}
+//
+//
+//  {$IFDEF MSWINDOWS}
+//  {$ENDIF}
+
+
+
+
+
+  //ÓïÑÔÀàĞÍ(ÖĞÎÄ,Ó¢ÎÄ)
   TLangKind=(lkZH,
               lkEN,
               //?
               lkTag);
 
-  //High(TLangKind)+1å­˜æ”¾Tag
+  //High(TLangKind)+1´æ·ÅTag
   TLangStrings=array[Low(TLangKind)..High(TLangKind)] of string;
 
 
@@ -82,7 +128,7 @@ type
     property StoreInForm: Boolean read FStoreInForm write FStoreInForm default True;
     property Lang: string read FLang write SetLang;
   end;
-  {$ENDIF VCL}
+  {$ENDIF}
 
 
   TLangKindStringArray=array[Low(TLangKind)..High(TLangKind)] of string;
@@ -90,10 +136,10 @@ type
 
   ILangProcess=interface
     ['{7893099B-0F42-4EFA-81ED-47F2278D9856}']
-    //è®°å½•å¤šè¯­è¨€çš„ç´¢å¼•
-    procedure RecordControlLangIndex(APrefix:String;ALang:TLang;ACurLang:String);
-    //ç¿»è¯‘
-    procedure TranslateControlLang(APrefix:String;ALang:TLang;ACurLang:String);
+    //¼ÇÂ¼¶àÓïÑÔµÄË÷Òı
+    procedure RecordControlLangIndex(APrefix:String;ALang:TObject;ACurLang:String);
+    //·­Òë
+    procedure TranslateControlLang(APrefix:String;ALang:TObject;ACurLang:String);
   end;
 
 
@@ -103,7 +149,7 @@ type
 
 
 var
-  //åŸå¤šè¯­è¨€å¤„ç†
+  //Ô­¶àÓïÑÔ´¦Àí-ÒÑ·ÏÆú
   LangStrings:array of TLangStrings;
   LangStringsCount:Integer;
 
@@ -111,88 +157,90 @@ var
 
 
 var
-  //å¤šè¯­è¨€ç»„ä»¶
-  GlobalLang:TLang;
+  //¶àÓïÑÔ×é¼ş
+//  GlobalLang:TLang;
+  //ÊÇ·ñÆôÓÃ¶àÓïÑÔ
+  IsEnableMultiLang:Boolean;
+
+
 var
   LangKind:TLangKind;
 
-  //å½“å‰çš„è¯­è¨€,æ¯”å¦‚cn,en,jpç­‰,ç”¨äºä¿å­˜åˆ°
+
+
+//µ±Ç°µÄÓïÑÔ,±ÈÈçcn,en,jpµÈ,ÓÃÓÚ±£´æµ½
 function GlobalCurLang:String;
 
 
 
 
-//åŸå¤šè¯­è¨€å¤„ç†-å·²åºŸå¼ƒ
+//Ô­¶àÓïÑÔ´¦Àí-ÒÑ·ÏÆú
 procedure RegLangString(const ALangTag:String;const ALangKind:TLangKind;const ALangString:String);overload;
 procedure RegLangString(const ALangTag:String;const ALangStrings:Array of String);overload;
 function FindLangStringIndex(const ALangTag:String):Integer;
 function GetLangString(const ALangTag:String;const ALangKind:TLangKind):String;overload;
-
-
 function GetLangString(const ALangStrings:Array of String):String;overload;
 
 
 
 
-//æ–°å¤šè¯­è¨€å¤„ç†
-//è®°å½•å¤šè¯­è¨€çš„ç´¢å¼•åˆ°ALang
-procedure RecordLangIndex(ALang:TLang;
-                          AIndex:String;
-                          ARecLang:String;
-                          ARecLangIndexValue:String);
-//ä»ALangè·å–ç´¢å¼•çš„ç¿»è¯‘
-function GetLangValue(ALang:TLang;
-                      AIndex:String;
-                      ACurLang:String):String;
-//è®°å½•è¯­è¨€ç´¢å¼•å¹¶è·å–ç¿»è¯‘,äºŒåˆä¸€
-function RecAndTrans(ALang:TLang;
-                      AIndex:String;
-                      ARecLang:String;
-                      ARecLangIndexValue:String;
-                      ATransLang:String):String;
-
-//è®°å½•è¯­è¨€ç´¢å¼•åˆ°ä¸­æ–‡å¹¶è·å–ç¿»è¯‘,äºŒåˆä¸€
-function Trans(AIndex:String):String;
-
-
-{$IFDEF FMX}
-//è®°å½•çˆ¶æ§ä»¶çš„æ‰€æœ‰å­æ§ä»¶çš„è¯­è¨€ç´¢å¼•,ä»…Windowså¹³å°
-procedure DoRecordSubControlsLangIndex(
-                            //çˆ¶æ§ä»¶,Frameæˆ–Form
-                            AParent:TFmxObject;
-                            //è¯­è¨€æ§ä»¶
-                            ALang:TLang;
-                            //å½“å‰çš„è¯­è¨€
-                            ACurLang:String='cn';
-                            //å‰ç¼€,å¦‚FrameLogin.btnLogin.
-                            APrefix:String='');
-//ç¿»è¯‘çˆ¶æ§ä»¶çš„æ‰€æœ‰å­æ§ä»¶
-procedure DoTranslateSubControlsLang(
-                            //çˆ¶æ§ä»¶,Frameæˆ–Form
-                            AParent:TFmxObject;
-                            //è¯­è¨€æ§ä»¶
-                            ALang:TLang;
-                            //å½“å‰çš„è¯­è¨€
-                            ACurLang:String='cn';
-                            //å‰ç¼€,å¦‚FrameLogin.btnLogin.
-                            APrefix:String='');
-//è®°å½•å¹¶ç¿»è¯‘å­æ§ä»¶
-function RecAndTransControl(
-                  //çˆ¶æ§ä»¶,Frameæˆ–Form
-                  AParent:TFmxObject;
-                  //å­æ§ä»¶
-                  ASub:TControl;
-                  //å±æ€§æˆ–å…³é”®å­—,æ¯”å¦‚Caption
-                  AProperty:String;
-                  //è¯­è¨€æ§ä»¶
-                  ALang:TLang;
-                  //è®°å½•çš„è¯­è¨€
-                  ARecLang:String;
-                  //å½“å‰è¯­è¨€çš„ç¿»è¯‘
-                  ARecLangIndexValue:String;
-                  //ç¿»è¯‘çš„è¯­è¨€
-                  ATransLang:String):String;
-{$ENDIF FMX}
+////ĞÂ¶àÓïÑÔ´¦Àí
+////¼ÇÂ¼¶àÓïÑÔµÄË÷Òıµ½ALang
+//procedure RecordLangIndex(ALang:TLang;
+//                          AIndex:String;
+//                          ARecLang:String;
+//                          ARecLangIndexValue:String);
+////´ÓALang»ñÈ¡Ë÷ÒıµÄ·­Òë
+//function GetLangValue(ALang:TLang;
+//                      AIndex:String;
+//                      ACurLang:String):String;
+////¼ÇÂ¼ÓïÑÔË÷Òı²¢»ñÈ¡·­Òë,¶şºÏÒ»
+//function RecAndTrans(ALang:TLang;
+//                      AIndex:String;
+//                      ARecLang:String;
+//                      ARecLangIndexValue:String;
+//                      ATransLang:String):String;
+//
+////¼ÇÂ¼ÓïÑÔË÷Òıµ½ÖĞÎÄ²¢»ñÈ¡·­Òë,¶şºÏÒ»
+//function Trans(AIndex:String):String;
+//
+//
+////¼ÇÂ¼¸¸¿Ø¼şµÄËùÓĞ×Ó¿Ø¼şµÄÓïÑÔË÷Òı,½öWindowsÆ½Ì¨
+//procedure DoRecordSubControlsLangIndex(
+//                            //¸¸¿Ø¼ş,Frame»òForm
+//                            AParent:TChildControl;
+//                            //ÓïÑÔ¿Ø¼ş
+//                            ALang:TLang;
+//                            //µ±Ç°µÄÓïÑÔ
+//                            ACurLang:String='cn';
+//                            //Ç°×º,ÈçFrameLogin.btnLogin.
+//                            APrefix:String='');
+////·­Òë¸¸¿Ø¼şµÄËùÓĞ×Ó¿Ø¼ş
+//procedure DoTranslateSubControlsLang(
+//                            //¸¸¿Ø¼ş,Frame»òForm
+//                            AParent:TChildControl;
+//                            //ÓïÑÔ¿Ø¼ş
+//                            ALang:TLang;
+//                            //µ±Ç°µÄÓïÑÔ
+//                            ACurLang:String='cn';
+//                            //Ç°×º,ÈçFrameLogin.btnLogin.
+//                            APrefix:String='');
+////¼ÇÂ¼²¢·­Òë×Ó¿Ø¼ş
+//function RecAndTransControl(
+//                  //¸¸¿Ø¼ş,Frame»òForm
+//                  AParent:TChildControl;
+//                  //×Ó¿Ø¼ş
+//                  ASub:TControl;
+//                  //ÊôĞÔ»ò¹Ø¼ü×Ö,±ÈÈçCaption
+//                  AProperty:String;
+//                  //ÓïÑÔ¿Ø¼ş
+//                  ALang:TLang;
+//                  //¼ÇÂ¼µÄÓïÑÔ
+//                  ARecLang:String;
+//                  //µ±Ç°ÓïÑÔµÄ·­Òë
+//                  ARecLangIndexValue:String;
+//                  //·­ÒëµÄÓïÑÔ
+//                  ATransLang:String):String;
 
 {$IFDEF MSWINDOWS}
 function GetWindowsLanguage: string;
@@ -255,257 +303,276 @@ end;
 
 
 
-{$IFDEF FMX}
-function RecAndTransControl(
-                  //çˆ¶æ§ä»¶,Frameæˆ–Form
-                  AParent:TFmxObject;
-                  //å­æ§ä»¶
-                  ASub:TControl;
-                  //å±æ€§,æ¯”å¦‚Caption
-                  AProperty:String;
-                  //è¯­è¨€æ§ä»¶
-                  ALang:TLang;
-                  //è®°å½•çš„è¯­è¨€
-                  ARecLang:String;
-                  //å½“å‰è¯­è¨€çš„ç¿»è¯‘
-                  ARecLangIndexValue:String;
-                  //ç¿»è¯‘çš„è¯­è¨€
-                  ATransLang:String):String;
-begin
-  Result:=RecAndTrans(ALang,
-            //æ¯”å¦‚FrameLogin.btnLogin.Caption
-            AParent.Name+'.'+ASub.Name+'.'+AProperty,
-            //æ¯”å¦‚cn
-            ARecLang,
-            //æ¯”å¦‚ç™»é™†
-            ARecLangIndexValue,
-            //ç¿»è¯‘çš„è¯­è¨€,æ¯”å¦‚en
-            ATransLang);
-end;
-
-procedure DoRecordSubControlsLangIndex(
-                            //çˆ¶æ§ä»¶,Frameæˆ–Form
-                            AParent:TFmxObject;
-                            //è¯­è¨€æ§ä»¶
-                            ALang:TLang;
-                            //å½“å‰çš„è¯­è¨€
-                            ACurLang:String;
-                            //å‰ç¼€,å¦‚FrameLogin.btnLogin.
-                            APrefix:String);
-var
-  I: Integer;
-  ALangProcess:ILangProcess;
-begin
-  //ä»…åœ¨Windowsä¸‹é¢è®°å½•
-  {$IFDEF MSWINDOWS}
-
-
-  //åªéœ€è¦FrameLogin.btnLogin.Caption,
-  //ä¸éœ€è¦åŠ ä¸Šçˆ¶æ§ä»¶,é¿å…å¤ªé•¿,å¦‚FrameLogin.pnlUserName.edtLogin.HelpText
-  if APrefix='' then
-  begin
-    APrefix:=AParent.Name+'.';
-  end;
-
-
-  if AParent is TControl then
-  begin
-      //éå†å­æ§ä»¶
-      for I := 0 to TControl(AParent).ControlsCount-1 do
-      begin
-        if TControl(AParent).Controls[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.RecordControlLangIndex(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //éå†å­æ§ä»¶çš„å­æ§ä»¶
-          DoRecordSubControlsLangIndex(TControl(AParent).Controls[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-
-
-  if AParent is TForm then
-  begin
-      //éå†å­æ§ä»¶
-      for I := 0 to TForm(AParent).ChildrenCount-1 do
-      begin
-        if TForm(AParent).Children[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.RecordControlLangIndex(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //éå†å­æ§ä»¶çš„å­æ§ä»¶
-          DoRecordSubControlsLangIndex(TForm(AParent).Children[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-
-
-  {$ENDIF}
-end;
-
-
-procedure DoTranslateSubControlsLang(
-                            //çˆ¶æ§ä»¶,Frameæˆ–Form
-                            AParent:TFmxObject;
-                            //è¯­è¨€æ§ä»¶
-                            ALang:TLang;
-                            //å½“å‰çš„è¯­è¨€
-                            ACurLang:String;
-                            //å‰ç¼€,å¦‚FrameLogin.btnLogin.
-                            APrefix:String);
-var
-  I: Integer;
-  ALangProcess:ILangProcess;
-begin
-
-  //åªéœ€è¦FrameLogin.btnLogin.Caption,
-  //ä¸éœ€è¦åŠ ä¸Šçˆ¶æ§ä»¶,é¿å…å¤ªé•¿,å¦‚FrameLogin.pnlUserName.edtLogin.HelpText
-  if APrefix='' then
-  begin
-    APrefix:=AParent.Name+'.';
-  end;
-
-
-  if AParent is TControl then
-  begin
-      //éå†å­æ§ä»¶
-      for I := 0 to TControl(AParent).ControlsCount-1 do
-      begin
-        if TControl(AParent).Controls[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.TranslateControlLang(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //éå†å­æ§ä»¶çš„å­æ§ä»¶
-          DoTranslateSubControlsLang(TControl(AParent).Controls[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-
-
-  if AParent is TForm then
-  begin
-      //éå†å­æ§ä»¶
-      for I := 0 to TForm(AParent).ChildrenCount-1 do
-      begin
-        if TForm(AParent).Children[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.TranslateControlLang(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //éå†å­æ§ä»¶çš„å­æ§ä»¶
-          DoTranslateSubControlsLang(TForm(AParent).Children[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-end;
-{$ENDIF FMX}
-
-
-
-function GetLangValue(ALang:TLang;AIndex:String;ACurLang:String):String;
-begin
-  Result:='';
-  //å­˜åœ¨ç´¢å¼•
-  if ALang.Original.IndexOf(AIndex)<>-1 then
-  begin
-    //å­˜åœ¨è¯­è¨€
-    if ALang.Resources.IndexOf(ACurLang)<>-1 then
-    begin
-      //è·å–ç¿»è¯‘
-      Result:=ALang.LangStr[ACurLang].Values[AIndex];
-    end;
-  end;
-end;
-
-
-//è®°å½•è¯­è¨€ç´¢å¼•å¹¶è·å–ç¿»è¯‘
-function Trans(AIndex:String):String;
-begin
-  Result:=RecAndTrans(GlobalLang,
-                      AIndex,
-                      'cn',
-                      AIndex,
-                      GlobalCurLang);
-end;
-
-
-//è®°å½•å¹¶ç¿»è¯‘è¯­è¨€ç´¢å¼•
-function RecAndTrans(
-                    ALang:TLang;
-                    AIndex:String;
-                    ARecLang:String;
-                    ARecLangIndexValue:String;
-                    ATransLang:String):String;
-begin
-  RecordLangIndex(ALang,AIndex,ARecLang,ARecLangIndexValue);
-
-  Result:=GetLangValue(ALang,
-                       AIndex,
-                       ATransLang
-                        );
-
-  if Result='' then
-  begin
-    Result:=ARecLangIndexValue;
-  end;
-end;
-
-procedure RecordLangIndex(ALang:TLang;AIndex:String;ARecLang:String;ARecLangIndexValue:String);
-begin
-  {$IFDEF MSWINDOWS}
-  //ä¸å­˜åœ¨ç´¢å¼•
-  if ALang.Original.IndexOf(AIndex)=-1 then
-  begin
-    //æ·»åŠ ç´¢å¼•
-    ALang.Original.Add(AIndex);
-
-    //ä¸å­˜åœ¨è¯­è¨€
-    if ALang.Resources.IndexOf(ARecLang)=-1 then
-    begin
-      //æ·»åŠ è¯­è¨€
-      ALang.AddLang(ARecLang);
-    end;
-
-    //æ·»åŠ ç¿»è¯‘
-    ALang.LangStr[ARecLang].Values[AIndex]:=ARecLangIndexValue;
-  end;
-  {$ENDIF}
-end;
+////{$IFDEF FMX}
+//function RecAndTransControl(
+//                  //¸¸¿Ø¼ş,Frame»òForm
+//                  AParent:TChildControl;
+//                  //×Ó¿Ø¼ş
+//                  ASub:TControl;
+//                  //ÊôĞÔ,±ÈÈçCaption
+//                  AProperty:String;
+//                  //ÓïÑÔ¿Ø¼ş
+//                  ALang:TLang;
+//                  //¼ÇÂ¼µÄÓïÑÔ
+//                  ARecLang:String;
+//                  //µ±Ç°ÓïÑÔµÄ·­Òë
+//                  ARecLangIndexValue:String;
+//                  //·­ÒëµÄÓïÑÔ
+//                  ATransLang:String):String;
+//begin
+//  if not IsEnableMultiLang then Exit;
+//  {$IFDEF LINUX}
+//  {$ELSE}
+//  Result:=RecAndTrans(ALang,
+//            //±ÈÈçFrameLogin.btnLogin.Caption
+//            AParent.Name+'.'+ASub.Name+'.'+AProperty,
+//            //±ÈÈçcn
+//            ARecLang,
+//            //±ÈÈçµÇÂ½
+//            ARecLangIndexValue,
+//            //·­ÒëµÄÓïÑÔ,±ÈÈçen
+//            ATransLang);
+//  {$ENDIF}
+//end;
+//
+//procedure DoRecordSubControlsLangIndex(
+//                            //¸¸¿Ø¼ş,Frame»òForm
+//                            AParent:TChildControl;
+//                            //ÓïÑÔ¿Ø¼ş
+//                            ALang:TLang;
+//                            //µ±Ç°µÄÓïÑÔ
+//                            ACurLang:String;
+//                            //Ç°×º,ÈçFrameLogin.btnLogin.
+//                            APrefix:String);
+//var
+//  I: Integer;
+//  ALangProcess:ILangProcess;
+//begin
+//  {$IFDEF FMX}
+//  //½öÔÚWindowsÏÂÃæ¼ÇÂ¼
+//  {$IFDEF MSWINDOWS}
+//
+//  if not IsEnableMultiLang then Exit;
+//
+//
+//  //Ö»ĞèÒªFrameLogin.btnLogin.Caption,
+//  //²»ĞèÒª¼ÓÉÏ¸¸¿Ø¼ş,±ÜÃâÌ«³¤,ÈçFrameLogin.pnlUserName.edtLogin.HelpText
+//  if APrefix='' then
+//  begin
+//    APrefix:=AParent.ClassName.Substring(1,MaxInt)+'.';
+//  end;
+//
+//
+//  if AParent is TControl then
+//  begin
+//      //±éÀú×Ó¿Ø¼ş
+//      for I := 0 to TControl(AParent).ControlsCount-1 do
+//      begin
+//        if TControl(AParent).Controls[I].GetInterface(IID_ILangProcess,ALangProcess) then
+//        begin
+//          ALangProcess.RecordControlLangIndex(
+//            APrefix,
+//            ALang,
+//            ACurLang
+//            );
+//
+//          //±éÀú×Ó¿Ø¼şµÄ×Ó¿Ø¼ş
+//          DoRecordSubControlsLangIndex(TControl(AParent).Controls[I],
+//                                ALang,
+//                                ACurLang,
+//                                APrefix
+//                                );
+//        end;
+//      end;
+//  end;
+//
+//
+//
+//  if AParent is TForm then
+//  begin
+//      //±éÀú×Ó¿Ø¼ş
+//      for I := 0 to TForm(AParent).ChildrenCount-1 do
+//      begin
+//        if TForm(AParent).Children[I].GetInterface(IID_ILangProcess,ALangProcess) then
+//        begin
+//          ALangProcess.RecordControlLangIndex(
+//            APrefix,
+//            ALang,
+//            ACurLang
+//            );
+//
+//          //±éÀú×Ó¿Ø¼şµÄ×Ó¿Ø¼ş
+//          DoRecordSubControlsLangIndex(TForm(AParent).Children[I],
+//                                ALang,
+//                                ACurLang,
+//                                APrefix
+//                                );
+//        end;
+//      end;
+//  end;
+//
+//
+//
+//  {$ENDIF}
+//  {$ENDIF}
+//end;
+//
+//
+//procedure DoTranslateSubControlsLang(
+//                            //¸¸¿Ø¼ş,Frame»òForm
+//                            AParent:TChildControl;
+//                            //ÓïÑÔ¿Ø¼ş
+//                            ALang:TLang;
+//                            //µ±Ç°µÄÓïÑÔ
+//                            ACurLang:String;
+//                            //Ç°×º,ÈçFrameLogin.btnLogin.
+//                            APrefix:String);
+//var
+//  I: Integer;
+//  ALangProcess:ILangProcess;
+//begin
+//  {$IFDEF FMX}
+//  if not IsEnableMultiLang then Exit;
+//
+//
+//
+//  //Ö»ĞèÒªFrameLogin.btnLogin.Caption,
+//  //²»ĞèÒª¼ÓÉÏ¸¸¿Ø¼ş,±ÜÃâÌ«³¤,ÈçFrameLogin.pnlUserName.edtLogin.HelpText
+//  if APrefix='' then
+//  begin
+//    APrefix:=AParent.ClassName.Substring(1,MaxInt)+'.';
+//  end;
+//
+//
+//  if AParent is TControl then
+//  begin
+//      //±éÀú×Ó¿Ø¼ş
+//      for I := 0 to TControl(AParent).ControlsCount-1 do
+//      begin
+//        if TControl(AParent).Controls[I].GetInterface(IID_ILangProcess,ALangProcess) then
+//        begin
+//          ALangProcess.TranslateControlLang(
+//            APrefix,
+//            ALang,
+//            ACurLang
+//            );
+//
+//          //±éÀú×Ó¿Ø¼şµÄ×Ó¿Ø¼ş
+//          DoTranslateSubControlsLang(TControl(AParent).Controls[I],
+//                                ALang,
+//                                ACurLang,
+//                                APrefix
+//                                );
+//        end;
+//      end;
+//  end;
+//
+//
+//
+//  if AParent is TForm then
+//  begin
+//      //±éÀú×Ó¿Ø¼ş
+//      for I := 0 to TForm(AParent).ChildrenCount-1 do
+//      begin
+//        if TForm(AParent).Children[I].GetInterface(IID_ILangProcess,ALangProcess) then
+//        begin
+//          ALangProcess.TranslateControlLang(
+//            APrefix,
+//            ALang,
+//            ACurLang
+//            );
+//
+//          //±éÀú×Ó¿Ø¼şµÄ×Ó¿Ø¼ş
+//          DoTranslateSubControlsLang(TForm(AParent).Children[I],
+//                                ALang,
+//                                ACurLang,
+//                                APrefix
+//                                );
+//        end;
+//      end;
+//  end;
+//  {$ENDIF FMX}
+//
+//end;
+////{$ENDIF FMX}
+//
+//
+//
+//function GetLangValue(ALang:TLang;AIndex:String;ACurLang:String):String;
+//begin
+//  Result:='';
+//  {$IFDEF LINUX}
+//  {$ELSE}
+//  //´æÔÚË÷Òı
+//  if ALang.Original.IndexOf(AIndex)<>-1 then
+//  begin
+//    //´æÔÚÓïÑÔ
+//    if ALang.Resources.IndexOf(ACurLang)<>-1 then
+//    begin
+//      //»ñÈ¡·­Òë
+//      Result:=ALang.LangStr[ACurLang].Values[AIndex];
+//    end;
+//  end;
+//  {$ENDIF}
+//end;
+//
+//
+////¼ÇÂ¼ÓïÑÔË÷Òıµ½ÖĞÎÄ²¢»ñÈ¡·­Òë,¶şºÏÒ»
+//function Trans(AIndex:String):String;
+//begin
+//  Result:=RecAndTrans(GlobalLang,
+//                      AIndex,
+//                      'cn',
+//                      AIndex,
+//                      GlobalCurLang);
+//end;
+//
+//
+////¼ÇÂ¼²¢·­ÒëÓïÑÔË÷Òı
+//function RecAndTrans(
+//                    ALang:TLang;
+//                    AIndex:String;
+//                    ARecLang:String;
+//                    ARecLangIndexValue:String;
+//                    ATransLang:String):String;
+//begin
+//  if IsEnableMultiLang then
+//  begin
+//    RecordLangIndex(ALang,AIndex,ARecLang,ARecLangIndexValue);
+//
+//    Result:=GetLangValue(ALang,
+//                         AIndex,
+//                         ATransLang
+//                          );
+//  end;
+//
+//  if not IsEnableMultiLang or (Result='') then
+//  begin
+//    Result:=ARecLangIndexValue;
+//  end;
+//end;
+//
+//procedure RecordLangIndex(ALang:TLang;AIndex:String;ARecLang:String;ARecLangIndexValue:String);
+//begin
+//  {$IFDEF MSWINDOWS}
+//  //²»´æÔÚË÷Òı
+//  if ALang.Original.IndexOf(AIndex)=-1 then
+//  begin
+//    //Ìí¼ÓË÷Òı
+//    ALang.Original.Add(AIndex);
+//
+//    //²»´æÔÚÓïÑÔ
+//    if ALang.Resources.IndexOf(ARecLang)=-1 then
+//    begin
+//      //Ìí¼ÓÓïÑÔ
+//      ALang.AddLang(ARecLang);
+//    end;
+//
+//    //Ìí¼Ó·­Òë
+//    ALang.LangStr[ARecLang].Values[AIndex]:=ARecLangIndexValue;
+//  end;
+//  {$ENDIF}
+//end;
 
 function FindLangStringIndex(const ALangTag:String):Integer;
 var
@@ -755,24 +822,28 @@ begin
   end;
 end;
 
-
 initialization
   SetLength(LangStrings,2048);
 
 
-  GlobalLang:=TLang.Create(nil);
-//  //å½“å‰çš„è¯­è¨€
+//  {$IFDEF LINUX}
+//  {$ELSE}
+//  GlobalLang:=TLang.Create(nil);
+//  {$ENDIF}
+
+
+//  //µ±Ç°µÄÓïÑÔ
 //  GlobalCurLang:='cn';
   //chinese
   LangKind:=TLangKind.lkZH;
 
 
   {$IFDEF MSWINDOWS}
-  if GetWindowsLanguage<>'ä¸­æ–‡(ç®€ä½“ï¼Œä¸­å›½)' then
+  if GetWindowsLanguage<>'ÖĞÎÄ(¼òÌå£¬ÖĞ¹ú)' then
   begin
-//    //å½“å‰çš„è¯­è¨€
+//    //µ±Ç°µÄÓïÑÔ
 //    GlobalCurLang:='en';
-    //ä¸­æ–‡
+    //ÖĞÎÄ
     LangKind:=TLangKind.lkEN;
   end;
   {$ENDIF}
@@ -784,7 +855,7 @@ initialization
 
 finalization
   SetLength(LangStrings,0);
-  FreeAndNil(GlobalLang);
+//  FreeAndNil(GlobalLang);
 
 end.
 

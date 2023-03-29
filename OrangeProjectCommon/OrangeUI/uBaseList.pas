@@ -33,11 +33,14 @@ interface
 
 uses
   Classes,
-  SysUtils,
-
-
+  {$IFDEF IN_ORANGESDK}
+  uBaseLog_Copy,
+  uFuncCommon_Copy,
+  {$ELSE}
   uBaseLog,
-  uFuncCommon;
+  uFuncCommon,
+  {$ENDIF}
+  SysUtils;
 
 
 
@@ -143,7 +146,7 @@ type
     //是否释放了
     FIsDestroy:Boolean;
   public
-    constructor Create(AOwner:TObject);
+    constructor Create(AOwner:TObject);virtual;
     destructor Destroy;override;
   public
     //开始释放,通知Link去除一些引用(不调用OnChange事件)
@@ -225,7 +228,8 @@ type
     ///   </para>
     /// </summary>
     procedure RegisterChanges(Value: TSkinObjectChangeLink);overload;
-    procedure RegisterChanges(AName:String;AOnChange: TNotifyEvent);overload;
+    function RegisterChanges(AName:String;AOnChange: TNotifyEvent):TSkinObjectChangeLink;overload;
+    function RegisterChanges(AName:String;AOnMessage: TNotifyMessageEvent):TSkinObjectChangeLink;overload;
 
     /// <summary>
     ///   <para>
@@ -237,6 +241,7 @@ type
     /// </summary>
     procedure UnRegisterChanges(Value: TSkinObjectChangeLink);overload;
     procedure UnRegisterChanges(AName:String;AOnChange: TNotifyEvent);overload;
+    procedure UnRegisterChanges(AName:String;AOnMessage: TNotifyMessageEvent);overload;
   public
 
     /// <summary>
@@ -1021,7 +1026,7 @@ begin
     //通知关联的控件
     for I := FLinks.Count - 1 downto 0 do
     begin
-      if TSkinObjectChangeLink(FLinks[I]).FName=AName then
+      if (TSkinObjectChangeLink(FLinks[I]).FName='') or (TSkinObjectChangeLink(FLinks[I]).FName=AName) then
       begin
         TSkinObjectChangeLink(FLinks[I]).DoChange(Sender,AMessageID,AMessageDataStr,AMessageData);
       end;
@@ -1084,7 +1089,10 @@ end;
 procedure TSkinObjectChangeManager.RegisterChanges(Value: TSkinObjectChangeLink);
 begin
   Value.FSender := Self;
-  if FLinks <> nil then FLinks.Add(Value);
+  if (FLinks <> nil) and (FLinks.IndexOf(Value)=-1) then
+  begin
+    FLinks.Add(Value);
+  end;
 end;
 
 procedure TSkinObjectChangeManager.BeginDestroy(Sender:TObject);
@@ -1123,17 +1131,61 @@ begin
   Result:=Self.FLinks.Count;
 end;
 
-procedure TSkinObjectChangeManager.RegisterChanges(AName: String;
-  AOnChange: TNotifyEvent);
+function TSkinObjectChangeManager.RegisterChanges(AName: String;
+  AOnChange: TNotifyEvent):TSkinObjectChangeLink;
+begin
+  Result:=TSkinObjectChangeLink.Create;
+  Result.FName:=AName;
+  Result.OnChange:=AOnChange;
+  Result.FIsTemp:=True;
+//  Result.OnDestroy:=OnSkinImageListDestroy;
+  Self.RegisterChanges(Result);
+end;
+
+function TSkinObjectChangeManager.RegisterChanges(AName: String;
+  AOnMessage: TNotifyMessageEvent):TSkinObjectChangeLink;
+begin
+  Result:=TSkinObjectChangeLink.Create;
+  Result.FName:=AName;
+  Result.OnMessage:=AOnMessage;
+  Result.FIsTemp:=True;
+//  Result.OnDestroy:=OnSkinImageListDestroy;
+  Self.RegisterChanges(Result);
+end;
+
+procedure TSkinObjectChangeManager.UnRegisterChanges(AName: String;
+  AOnMessage: TNotifyMessageEvent);
 var
+  I: Integer;
   AChangeLink:TSkinObjectChangeLink;
 begin
-  AChangeLink:=TSkinObjectChangeLink.Create;
-  AChangeLink.FName:=AName;
-  AChangeLink.OnChange:=AOnChange;
-  AChangeLink.FIsTemp:=True;
-//  AChangeLink.OnDestroy:=OnSkinImageListDestroy;
-  Self.RegisterChanges(AChangeLink);
+  if FLinks <> nil then
+  begin
+    //通知关联的控件
+    for I := FLinks.Count - 1 downto 0 do
+    begin
+      if (TSkinObjectChangeLink(FLinks[I]).FName=AName)
+        {}
+//        and (TMethod(TSkinObjectChangeLink(FLinks[I]).FOnChange)=TMethod(AOnChange))
+        and (TMethod(TSkinObjectChangeLink(FLinks[I]).FOnMessage).Code=TMethod(AOnMessage).Code)
+        and (TMethod(TSkinObjectChangeLink(FLinks[I]).FOnMessage).Data=TMethod(AOnMessage).Data)
+        then
+      begin
+        AChangeLink:=TSkinObjectChangeLink(FLinks[I]);
+
+        FLinks.Delete(I,False);
+
+        if AChangeLink.FIsTemp then
+        begin
+          FreeAndNil(AChangeLink);
+        end;
+
+        Break;
+      end;
+    end;
+  end;
+
+
 end;
 
 destructor TSkinObjectChangeManager.Destroy;

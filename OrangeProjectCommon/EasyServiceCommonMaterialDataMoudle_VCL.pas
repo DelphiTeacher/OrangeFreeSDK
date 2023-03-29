@@ -105,6 +105,8 @@ type
     pcLeftMargin2: TSkinPageControlDefaultMaterial;
     btnThemeColorIconLeftCaptionRightGroupLeft: TSkinButtonDefaultMaterial;
     btnThemeColorIconLeftCaptionRightGroupMiddle: TSkinButtonDefaultMaterial;
+    btnTransparentDropDownButtonMaterial: TSkinButtonDefaultMaterial;
+    lbFilterClassify_Material: TSkinListBoxDefaultMaterial;
   private
     { Private declarations }
   public

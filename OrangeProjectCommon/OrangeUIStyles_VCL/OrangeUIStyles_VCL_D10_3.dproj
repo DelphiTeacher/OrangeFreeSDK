@@ -228,6 +228,14 @@
         <DCCReference Include="ListItemStyle_DashBoardSummaryItem.pas">
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="ListItemStyle_ProgressBar.pas"/>
+        <DCCReference Include="ListItemStyle_IconTop_CaptionDetailBottom.pas"/>
+        <DCCReference Include="ListItemStyle_TwoIconButton.pas"/>
+        <DCCReference Include="ListItemStyle_IconLeft_CaptionLeft.pas"/>
+        <DCCReference Include="ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite.pas">
+            <Form>FrameListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite</Form>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

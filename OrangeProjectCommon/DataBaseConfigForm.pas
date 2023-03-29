@@ -15,7 +15,8 @@ uses
   uBaseDBHelper,
 
   System.Classes,
-  Vcl.Forms,Vcl.AppEvnts, Vcl.StdCtrls, Vcl.Controls, Vcl.Dialogs;
+  Vcl.Forms,Vcl.AppEvnts, Vcl.StdCtrls, Vcl.Controls, Vcl.Dialogs, Data.DB,
+  DBAccess, Uni, SQLServerUniProvider, UniProvider, MySQLUniProvider;
 
 
 
@@ -39,6 +40,9 @@ type
     OpenDialog1: TOpenDialog;
     btnTest: TButton;
     Button1: TButton;
+    UniConnection1: TUniConnection;
+    MySQLUniProvider1: TMySQLUniProvider;
+    SQLServerUniProvider1: TSQLServerUniProvider;
     procedure btnOKClick(Sender: TObject);
     procedure btnCancelClick(Sender: TObject);
     procedure btnSelectClick(Sender: TObject);
@@ -117,7 +121,10 @@ begin
   if FDBHelper.Connect(FDataBaseConfig) then
   begin
     ShowMessage('连接成功');
-    Exit;
+  end
+  else
+  begin
+    ShowMessage('连接失败');
   end;
 
 end;

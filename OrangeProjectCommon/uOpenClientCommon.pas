@@ -31,11 +31,11 @@ uses
 
 
 //  FMX.Types,
-  uLang,
+//  uLang,
 
-  {$IFDEF FMX}
-  uDrawPicture,
-  {$ENDIF}
+//  {$IFDEF FMX}
+//  uDrawPicture,
+//  {$ENDIF}
 
   uBaseLog,
   Variants,
@@ -100,7 +100,7 @@ type
     fid:String;//Int64;//64,
 
 
-//    //appid:Int64;//1002,
+    //appid:Int64;//1002,
     email:String;//"",
     phone:String;//"18957901025",
 //    password:String;//"123456",
@@ -1227,12 +1227,12 @@ type
     head_pic_path:String;
     EvaluateReplyList:TEvaluateReplyList;
   public
-  {$IFDEF FMX}
-    Pic1:TDrawPicture;//"1.jpeg",
-    Pic2:TDrawPicture;//"2.jpeg",
-    Pic3:TDrawPicture;//"3.jpeg",
-    Pic4:TDrawPicture;
-  {$ENDIF FMX}
+//  {$IFDEF FMX}
+//    Pic1:TDrawPicture;//"1.jpeg",
+//    Pic2:TDrawPicture;//"2.jpeg",
+//    Pic3:TDrawPicture;//"3.jpeg",
+//    Pic4:TDrawPicture;
+//  {$ENDIF FMX}
   public
     //获取图片url
     function Getpic1path:String;
@@ -2143,6 +2143,8 @@ type
   protected
     function CustomLoadFromINI(AIniFile:TIniFile): Boolean;virtual;
     function CustomSaveToINI(AIniFile:TIniFile): Boolean;virtual;
+    procedure CustomLoadFromUserConfigINI(AIniFile:TIniFile);virtual;
+    procedure CustomSaveToUserConfigINI(AIniFile:TIniFile);virtual;
   public
     //定位相关
 
@@ -2175,7 +2177,7 @@ type
 
 
     //上次选择的语言
-    LangKind:TLangKind;
+    //LangKind:TLangKind;
 
 
     //用户名
@@ -2238,6 +2240,7 @@ type
   public
     procedure Load;
     procedure Save;
+    procedure Logout;virtual;
   public
     constructor Create;virtual;
     destructor Destroy;override;
@@ -2288,6 +2291,8 @@ var
   //通用接口框架
   TableRestCenterInterfaceUrl:String;
   ProgramFrameworkRestCenterInterfaceUrl:String;
+
+var
   //茶叶生态
 //  TeaEcologyInterfaceUrl:String;
   //积分中心
@@ -2309,8 +2314,6 @@ var
   XFOlineRestServiceUrl:String;
   FastmsgCenterInterfaceUrl:String;
 
-var
-
   //通用接口
   CommonRestCenterInterfaceUrl:String;
   //汽修管理接口地址
@@ -2319,11 +2322,12 @@ var
   DoorManageInterfaceUrl:String;
   //中心授权服务器
   CenterInterfaceUrl:String;
-
-
   //医生工作站中心接口地址
   DoctorWorkStationCenterInterfaceUrl:String;
-
+  //健康穿戴接口地址
+  HealthWearCenterInterfaceUrl:String;
+  //搜索中心
+  SearchCenterInterfaceUrl:String;
 
 
 
@@ -2422,9 +2426,24 @@ function IsTakeAwayFoodShop(AShop:TShop):Boolean;
 {$ENDIF}
 
 
+function GetFileUploadRemotePath(AAppID:String;
+                                 AFileDir:String):String;
+
 
 implementation
 
+
+
+function GetFileUploadRemotePath(AAppID:String;
+                                 AFileDir:String):String;
+begin
+  Result:='Upload'+PathDelim
+                  +AAppID+PathDelim
+                  +AFileDir+PathDelim
+                  +FormatDateTime('YYYY',Now)+PathDelim
+                  +FormatDateTime('YYYY-MM-DD',Now)+PathDelim;
+
+end;
 
 //获取内容中心该用户的账号列表的统计数据
 procedure GetContentCenterAccountStatistics(AAccountList:ISuperArray;ADataJson:ISuperObject);
@@ -2611,6 +2630,11 @@ begin
   //http://127.0.0.1:10000/doctor_workstation/
   DoctorWorkStationCenterInterfaceUrl:=InterfaceUrl+'doctor_workstation/';
 
+
+  //健康穿戴
+  HealthWearCenterInterfaceUrl:=InterfaceUrl+'health_wear_manage/';
+
+  SearchCenterInterfaceUrl:=InterfaceUrl+'searchcenter/';
 
 end;
 
@@ -3708,7 +3732,7 @@ function TNotice.ParseFromJson(AJson: ISuperObject): Boolean;
 begin
   fid:=AJson.I['fid'];//2
 //  //Self.appid:=AJson.I['appid'];//1001,
-  sender_fid:=AJson.I['sender_fid'];
+//  sender_fid:=AJson.I['sender_fid'];
   notice_classify:=AJson.S['notice_classify'];
   notice_sub_type:=AJson.S['notice_sub_type'];
   caption:=AJson.S['caption'];
@@ -6871,24 +6895,24 @@ begin
   inherited;
   EvaluateReplyList:=TEvaluateReplyList.Create;
 
-  {$IFDEF FMX}
-  Pic1:=TDrawPicture.Create('','');//"1.jpeg",
-  Pic2:=TDrawPicture.Create('','');//"2.jpeg",
-  Pic3:=TDrawPicture.Create('','');//"3.jpeg",
-  Pic4:=TDrawPicture.Create('','');
-  {$ENDIF FMX}
+//  {$IFDEF FMX}
+//  Pic1:=TDrawPicture.Create('','');//"1.jpeg",
+//  Pic2:=TDrawPicture.Create('','');//"2.jpeg",
+//  Pic3:=TDrawPicture.Create('','');//"3.jpeg",
+//  Pic4:=TDrawPicture.Create('','');
+//  {$ENDIF FMX}
 end;
 
 destructor TEvaluate.Destroy;
 begin
   FreeAndNil(EvaluateReplyList);
 
-  {$IFDEF FMX}
-  SysUtils.FreeAndNil(Pic1);
-  SysUtils.FreeAndNil(Pic2);
-  SysUtils.FreeAndNil(Pic3);
-  SysUtils.FreeAndNil(Pic4);
-  {$ENDIF FMX}
+//  {$IFDEF FMX}
+//  SysUtils.FreeAndNil(Pic1);
+//  SysUtils.FreeAndNil(Pic2);
+//  SysUtils.FreeAndNil(Pic3);
+//  SysUtils.FreeAndNil(Pic4);
+//  {$ENDIF FMX}
   inherited;
 end;
 
@@ -6976,11 +7000,11 @@ begin
 
   head_pic_path:=AJson.S['head_pic_path'];
 
-  {$IFDEF FMX}
-  Pic1.Url:=Self.Getpic1path;//"1.jpeg",
-  Pic2.Url:=Self.Getpic2path;//"2.jpeg",
-  Pic3.Url:=Self.Getpic3path;//"3.jpeg",
-  {$ENDIF FMX}
+//  {$IFDEF FMX}
+//  Pic1.Url:=Self.Getpic1path;//"1.jpeg",
+//  Pic2.Url:=Self.Getpic2path;//"2.jpeg",
+//  Pic3.Url:=Self.Getpic3path;//"3.jpeg",
+//  {$ENDIF FMX}
 
 
   user_custom_data:=AJson.S['user_custom_data'];
@@ -8458,6 +8482,9 @@ begin
   published_community_count:=AJson.I['published_community_count'];
   published_group_count:=AJson.I['published_group_count'];
 
+  //登录令牌,用于确认用户已经登录
+  //GlobalManager.User.key:=ASuperObject.O['Data'].S['Key'];
+  key:=AJson.S['login_key'];
 
 
 end;
@@ -8538,7 +8565,17 @@ begin
 
 end;
 
+procedure TBaseManager.CustomLoadFromUserConfigINI(AIniFile: TIniFile);
+begin
+
+end;
+
 function TBaseManager.CustomSaveToINI(AIniFile: TIniFile): Boolean;
+begin
+
+end;
+
+procedure TBaseManager.CustomSaveToUserConfigINI(AIniFile: TIniFile);
 begin
 
 end;
@@ -8602,7 +8639,7 @@ begin
   Self.ServerPort:=AIniFile.ReadInteger('','ServerPort',ServerPort);
 
 
-  Self.LangKind:=TLangKind(AIniFile.ReadInteger('','LangKind',Ord(LangKind)));
+//  Self.LangKind:=TLangKind(AIniFile.ReadInteger('','LangKind',Ord(LangKind)));
 
 
   //用户定位的经纬度
@@ -8639,7 +8676,19 @@ begin
 end;
 
 procedure TBaseManager.LoadUserConfig;
+var
+  AIniFile:TIniFile;
 begin
+//  Result:=False;
+
+  AIniFile:=TIniFile.Create(GetUserLocalDir+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+  try
+    CustomLoadFromUserConfigINI(AIniFile);
+  finally
+    SysUtils.FreeAndNil(AIniFile);
+  end;
+
+
 
   //最后一次登录的用户的部分信息
   if FileExists(GetUserLocalDir+'LastLoginInfo.json') then
@@ -8648,6 +8697,20 @@ begin
     Self.User.ParseFromJson(User.Json);
 //    TopRecentChatsJsonArrayStr:=User.Json.S['TopRecentChatsJsonArrayStr'];
   end;
+
+end;
+
+procedure TBaseManager.Logout;
+begin
+  //登录状态为未登录
+  Self.IsLogin:=False;
+
+  //退出登录  清空密码
+  Self.LastLoginPass:='';
+  Self.User.Clear;//fid:='';
+  //保存INI
+  Self.Save;
+
 
 end;
 
@@ -8689,7 +8752,7 @@ begin
   AIniFile.WriteString('','ServerHost',Self.ServerHost);
   AIniFile.WriteInteger('','ServerPort',Self.ServerPort);
 
-  AIniFile.WriteInteger('','LangKind',Ord(Self.LangKind));
+//  AIniFile.WriteInteger('','LangKind',Ord(Self.LangKind));
 
 
   //用户选择的经纬度
@@ -8728,9 +8791,20 @@ begin
 end;
 
 procedure TBaseManager.SaveUserConfig;
+var
+  AIniFile:TIniFile;
 begin
 
   ForceDirectories(GetUserLocalDir);
+//  Result:=False;
+
+  AIniFile:=TIniFile.Create(GetUserLocalDir+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+  try
+    CustomSaveToUserConfigINI(AIniFile);
+  finally
+    SysUtils.FreeAndNil(AIniFile);
+  end;
+
 
 end;
 

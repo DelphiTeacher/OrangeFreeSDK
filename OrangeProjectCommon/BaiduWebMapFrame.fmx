@@ -207,16 +207,22 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
     Size.Width = 353.000000000000000000
     Size.Height = 424.000000000000000000
     Size.PlatformDefault = False
-    Visible = False
     OnClick = ProcessNativeControlModalShowPanel1Click
     OnResize = ProcessNativeControlModalShowPanel1Resize
+    OnGetNativeControlBitmap = ProcessNativeControlModalShowPanel1GetNativeControlBitmap
   end
   object tmrNavigate: TTimer
     Enabled = False
     Interval = 10
     OnTimer = tmrNavigateTimer
-    Left = 136
-    Top = 330
+    Left = 160
+    Top = 338
+  end
+  object tmrInitMap: TTimer
+    Enabled = False
+    OnTimer = tmrInitMapTimer
+    Left = 160
+    Top = 402
   end
   object tteGetRoutePlan: TTimerTaskEvent
     TaskID = 0

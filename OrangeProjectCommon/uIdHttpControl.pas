@@ -56,6 +56,7 @@ type
   public
     function Get(const HttpUrl:String;AResponseStream:TStream):Boolean;overload;override;
     function Post(const HttpUrl:String;ARequestStream:TStream;AResponseStream:TStream):Boolean;overload;override;
+    procedure SetCustomHeader(ACustomHeaderPairs:TVariantDynArray);override;
   end;
 
 
@@ -178,6 +179,23 @@ begin
         uBaseLog.HandleException(E,'Main','uIdHttpControl TIdHttpControl.Pos '+HttpUrl);
       end;
     end;
+end;
+
+procedure TIdHttpControl.SetCustomHeader(ACustomHeaderPairs: TVariantDynArray);
+var
+  I: Integer;
+begin
+  for I := 0 to Length(ACustomHeaderPairs) div 2 - 1 do
+  begin
+    if ACustomHeaderPairs[I*2]='user-agent' then
+    begin//'Mozilla/3.0 (compatible; Indy Library)'
+      Self.FIdHttp.Request.UserAgent:=ACustomHeaderPairs[I*2+1];
+    end
+    else
+    begin
+      Self.FIdHttp.Request.CustomHeaders.AddPair(ACustomHeaderPairs[I*2],ACustomHeaderPairs[I*2+1]);
+    end;
+  end;
 end;
 
 //procedure TIdHttpControl.ReCreateIdHttp;

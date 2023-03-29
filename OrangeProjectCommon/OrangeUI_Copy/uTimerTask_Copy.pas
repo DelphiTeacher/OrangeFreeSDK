@@ -1,7 +1,7 @@
-ï»¿//convert pas to utf8 by Â¥
+//convert pas to utf8 by
 /// <summary>
 ///   <para>
-///     ä»»åŠ¡
+///     ÈÎÎñ
 ///   </para>
 ///   <para>
 ///     Task
@@ -18,8 +18,8 @@ interface
 
 
 
-//è¯·åœ¨å·¥ç¨‹ä¸‹æ”¾ç½®FrameWork.inc
-//æˆ–è€…åœ¨å·¥ç¨‹è®¾ç½®ä¸­é…ç½®FMXç¼–è¯‘æŒ‡ä»¤
+//ÇëÔÚ¹¤³ÌÏÂ·ÅÖÃFrameWork.inc
+//»òÕßÔÚ¹¤³ÌÉèÖÃÖĞÅäÖÃFMX±àÒëÖ¸Áî
 {$IFNDEF FMX}
   {$IFNDEF VCL}
     {$I FrameWork.inc}
@@ -34,15 +34,20 @@ uses
   Classes,
 
   {$IFDEF FMX}
-  FMX.Types,
+//  FMX.Types,
   {$ENDIF}
   {$IFDEF VCL}
   ExtCtrls,
   {$ENDIF}
-
+  {$IFDEF IN_ORANGESDK}
+  uFuncCommon_Copy,
   uBaseList_Copy,
-  uFuncCommon_Copy;
+  {$ELSE}
+  uFuncCommon,
+  uBaseList_Copy,
+  {$ENDIF}
 
+  SyncObjs;
 
 
 const
@@ -59,15 +64,15 @@ const
 
 
 type
-  //æ‰§è¡Œçš„ä»»åŠ¡
+  //Ö´ĞĞµÄÈÎÎñ
   TTimerTask=class;
-  //ä»»åŠ¡é€šçŸ¥äº‹ä»¶(å°†ä¼šå¼ƒç”¨)
+  //ÈÎÎñÍ¨ÖªÊÂ¼ş(½«»áÆúÓÃ)
   TTaskNotify=procedure(ATimerTask:TObject) of object;
   TTimerTaskNotify=procedure(ATimerTask:TTimerTask) of object;
 
 
 
-  //å‚æ•°é”®å€¼å¯¹
+  //²ÎÊı¼üÖµ¶Ô
   TTaskParam=class
   private
     FName:String;
@@ -76,20 +81,20 @@ type
     constructor Create(const AName:String;const AValue:Variant);
     destructor Destroy;override;
   public
-    //å‚æ•°å
+    //²ÎÊıÃû
     property Name:String read FName write FName;
-    //å‚æ•°å€¼
+    //²ÎÊıÖµ
     property Value:Variant read FValue write FValue;
   end;
 
 
 
-  //å‚æ•°åˆ—è¡¨
+  //²ÎÊıÁĞ±í
   TTaskParamList=class(TBaseList)
   private
     function GetItem(Index: Integer): TTaskParam;
   public
-    //æ·»åŠ ä¸€å¯¹é”®å€¼
+    //Ìí¼ÓÒ»¶Ô¼üÖµ
     procedure AddParam(const AName:String;const AValue:Variant);
   public
     function GetItemByName(AName:String):TTaskParam;
@@ -107,11 +112,11 @@ type
 
 
 
-  //çº¿ç¨‹ä»»åŠ¡
+  //Ïß³ÌÈÎÎñ
   TTimerTask=class
   private
-    //å¯ä»¥æ ¹æ®æ­¤IDæ¥åŒºåˆ†æ‰€æ‰§è¡Œçš„ä»»åŠ¡
-    FTaskID: Integer;
+    //¿ÉÒÔ¸ù¾İ´ËIDÀ´Çø·ÖËùÖ´ĞĞµÄÈÎÎñ
+    FTaskID: String;
     FTaskName:String;
 
 
@@ -130,18 +135,18 @@ type
     FOnExecute: TTaskNotify;
 
 
-    //æ‰§è¡Œ
+    //Ö´ĞĞ
     procedure Execute;
     procedure SetTaskObject(const Value: TObject);
     procedure SetTaskObject1(const Value: TObject);
   public
-    constructor Create(const ATaskID:Integer=0);
+    constructor Create(const ATaskID:String='');
     destructor Destroy;override;
   public
 //    PageIndex:Integer;
 //    PageSize:Integer;
 
-    //æ˜¯å¦å·²ç»ˆæ­¢
+    //ÊÇ·ñÒÑÖÕÖ¹
     Termiated:Boolean;
     procedure Termiate;
 
@@ -150,33 +155,33 @@ type
     procedure FreeTaskObject1;
 
 
-    //ä»»åŠ¡ID,ä»»åŠ¡ç±»å‹
-    property TaskID:Integer read FTaskID write FTaskID;
+    //ÈÎÎñID,ÈÎÎñÀàĞÍ
+    property TaskID:String read FTaskID write FTaskID;
     property TaskName:String read FTaskName write FTaskName;
     property TaskData:Pointer read FTaskData write FTaskData;
-    //ä»»åŠ¡å¯¹è±¡
+    //ÈÎÎñ¶ÔÏó
     property TaskObject:TObject read FTaskObject write SetTaskObject;
     property TaskObject1:TObject read FTaskObject1 write SetTaskObject1;
-    //ä»»åŠ¡æè¿°
+    //ÈÎÎñÃèÊö
     property TaskDesc:String read FTaskDesc write FTaskDesc;
-    //ä»»åŠ¡æ ‡ç­¾
+    //ÈÎÎñ±êÇ©
     property TaskTag:Integer read FTaskTag write FTaskTag;
     property TaskOtherInfo:TStringList read FTaskOtherInfo;
-    //å‚æ•°
+    //²ÎÊı
     property TaskParams:TTaskParamList read FTaskParams;
 
 
 
-    //æ˜¯å¦æ‰§è¡Œä¸­
+    //ÊÇ·ñÖ´ĞĞÖĞ
     property IsExecuting:Boolean read FIsExecuting write FIsExecuting;
-    //æ˜¯å¦æ‰§è¡ŒæˆåŠŸ
+    //ÊÇ·ñÖ´ĞĞ³É¹¦
     property IsExecuteSucc:Boolean read FIsExecuteSucc write FIsExecuteSucc;
 
 
   public
-    //éœ€è¦åœ¨çº¿ç¨‹ä¸­æ‰§è¡Œçš„æ–¹æ³•
+    //ĞèÒªÔÚÏß³ÌÖĞÖ´ĞĞµÄ·½·¨
     property OnExecute:TTaskNotify read FOnExecute write FOnExecute;
-    //æ‰§è¡Œç»“æŸ(åœ¨ä¸»çº¿ç¨‹ä¸­è°ƒç”¨)
+    //Ö´ĞĞ½áÊø(ÔÚÖ÷Ïß³ÌÖĞµ÷ÓÃ)
     property OnExecuteEnd:TTaskNotify read FOnExecuteEnd write FOnExecuteEnd;
 
   end;
@@ -184,7 +189,7 @@ type
 
 
 
-  //ä»»åŠ¡åˆ—è¡¨
+  //ÈÎÎñÁĞ±í
   TTimerTaskList=class(TBaseList)
   private
     function GetItem(Index: Integer): TTimerTask;
@@ -195,14 +200,25 @@ type
 
 
 
+
+
+
+
+
+
+
+
+
   TBaseServiceThread=class(TThread)
   public
     procedure SleepThread(ATimeout:Integer;ACheckTerminateInterval:Integer=1000);
   end;
 
+//  TTimerThreadCanExecuteEvent=function(Sender:TObject):Boolean of object;
+
   /// <summary>
   ///   <para>
-  ///     æ‰§è¡Œä»»åŠ¡çš„çº¿ç¨‹
+  ///     Ö´ĞĞÈÎÎñµÄÏß³Ì
   ///   </para>
   ///   <para>
   ///     Thread of executing task
@@ -213,47 +229,52 @@ type
     FTimerTaskList: TTimerTaskList;
   protected
     procedure DoExecuteTask(ATimerTask:TTimerTask);
+    procedure DoExecuteTaskEnd(ATimerTask:TTimerTask);
     procedure Execute;override;
-    procedure TerminatedSet;override;
+    procedure DoExecute;virtual;
+    procedure TerminatedSet;{$IF CompilerVersion >= 30.0}override;{$IFEND}
   public
     constructor Create(ACreateSuspended:Boolean);
     destructor Destroy;override;
   public
     Name:String;
+    FRecvEvent:TEvent;
+    procedure Terminate;
+    function CreateTimerTask:TTimerTask;virtual;
 
-    //ä¸€ä¸ªä»»åŠ¡æ‰§è¡Œå®Œä¼‘æ¯çš„æ—¶é—´
-    TaskSleep:Integer;
+//    //Ò»¸öÈÎÎñÖ´ĞĞÍêĞİÏ¢µÄÊ±¼ä
+//    TaskSleep:Integer;
 
     /// <summary>
     ///   <para>
-    ///     è¿è¡Œä»»åŠ¡
+    ///     ÔËĞĞÈÎÎñ
     ///   </para>
     ///   <para>
     ///     Run task
     ///   </para>
     /// </summary>
-    procedure RunTask(ATimerTask:TTimerTask;const AIsStandalone:Boolean=False);
+    procedure RunTask(ATimerTask:TTimerTask;const AIsStandalone:Boolean=True);
 
 
 
     /// <summary>
     ///   <para>
-    ///     è¿è¡Œä»»åŠ¡
+    ///     ÔËĞĞÈÎÎñ
     ///   </para>
     ///   <para>
     ///     Run task
     ///   </para>
     /// </summary>
     function RunTempTask(
-                          AOnExecute:TTaskNotify;
-                          AOnExecuteEnd:TTaskNotify;
-                          ATaskName:String='';//æ–¹ä¾¿è¾“å‡ºæ—¥å¿—è·Ÿè¸ª
-                          AIsStandalone:Boolean=False
-                          ):TTimerTask;
+                        AOnExecute:TTaskNotify;
+                        AOnExecuteEnd:TTaskNotify;
+                        ATaskName:String='';//·½±ãÊä³öÈÕÖ¾¸ú×Ù
+                        AIsStandalone:Boolean=True
+                        ):TTimerTask;
 
     /// <summary>
     ///   <para>
-    ///     ä»»åŠ¡åˆ—è¡¨
+    ///     ÈÎÎñÁĞ±í
     ///   </para>
     ///   <para>
     ///     Task list
@@ -263,7 +284,7 @@ type
 
     /// <summary>
     ///   <para>
-    ///     å·²å®Œæˆçš„ä»»åŠ¡åˆ—è¡¨
+    ///     ÒÑÍê³ÉµÄÈÎÎñÁĞ±í
     ///   </para>
     ///   <para>
     ///     Finished TaskList
@@ -276,9 +297,20 @@ type
 
 
 
+
+
+
+
+
+
+var
+//  GlobalOnTimerThreadCanExecute:TTimerThreadCanExecuteEvent;
+  GlobalIsTimerThreadCanExecute:Boolean;
+
+
 /// <summary>
 ///   <para>
-///     è·å–å…¨å±€çº¿ç¨‹
+///     »ñÈ¡È«¾ÖÏß³Ì
 ///   </para>
 ///   <para>
 ///     Get global thread
@@ -289,7 +321,7 @@ function GetGlobalTimerThread2:TTimerThread;
 
 /// <summary>
 ///   <para>
-///     é‡Šæ”¾å…¨å±€çº¿ç¨‹
+///     ÊÍ·ÅÈ«¾ÖÏß³Ì
 ///   </para>
 ///   <para>
 ///     Release global thread
@@ -299,12 +331,14 @@ procedure FreeGlobalTimerThread;
 procedure FreeGlobalTimerThread2;
 
 
-//åœ¨çº¿ç¨‹ä¸­åˆ†æ¬¡Sleep
-//æ¯”å¦‚æˆ‘è¦è®©çº¿ç¨‹ç¡ä¸ªä¸€åˆ†é’Ÿ,ä½†æˆ‘æœ‰æ—¶éœ€è¦ç«‹å³å…³é—­ç¨‹åº
-//ç­‰çº¿ç¨‹é€€å‡ºè¿˜è¦ç­‰ä¸€åˆ†é’Ÿ,æˆ‘å°±åˆ†æ¬¡ç¡,ä¸€æ¬¡ç¡ä¸ª1ç§’
-//åˆ†ä¸ª60æ¬¡,å¦‚æœçº¿ç¨‹æ²¡æœ‰ä¸­æ­¢,ç»§ç»­ç¡,
-//é¿å…ç­‰åœ¨é‚£é‡Œ
+//ÔÚÏß³ÌÖĞ·Ö´ÎSleep
+//±ÈÈçÎÒÒªÈÃÏß³ÌË¯¸öÒ»·ÖÖÓ,µ«ÎÒÓĞÊ±ĞèÒªÁ¢¼´¹Ø±Õ³ÌĞò
+//µÈÏß³ÌÍË³ö»¹ÒªµÈÒ»·ÖÖÓ,ÎÒ¾Í·Ö´ÎË¯,Ò»´ÎË¯¸ö1Ãë
+//·Ö¸ö60´Î,Èç¹ûÏß³ÌÃ»ÓĞÖĞÖ¹,¼ÌĞøË¯,
+//±ÜÃâµÈÔÚÄÇÀï
 //procedure SleepThread(AThread:TThread;ATimeout:Integer;ACheckTerminateInterval:Integer=1000);
+
+
 
 
 implementation
@@ -316,12 +350,12 @@ uses
 
 
 var
-  //å…¨å±€çš„çº¿ç¨‹
+  //È«¾ÖµÄÏß³Ì
   GlobalTimerThread:TTimerThread;
-  //å…¨å±€çš„çº¿ç¨‹2
+  //È«¾ÖµÄÏß³Ì2
   GlobalTimerThread2:TTimerThread;
 
-  //çº¿ç¨‹åˆ—è¡¨
+  //Ïß³ÌÁĞ±í
   GlobalTimerThreadList:TList;
 
 
@@ -338,24 +372,27 @@ var
 //  end;
 //end;
 
-
+//    GlobalTimerThread.Terminate;
+//    GlobalTimerThread.WaitFor;
+//    GlobalTimerThread.Free;
 
 
 procedure FreeGlobalTimerThread;
 begin
   if GlobalTimerThread<>nil then
   begin
+    GlobalTimerThread.FRecvEvent.SetEvent;
     GlobalTimerThread.Terminate;
     GlobalTimerThread.WaitFor;
   end;
-  uFuncCommon_Copy.FreeAndNil(GlobalTimerThread);
+  SysUtils.FreeAndNil(GlobalTimerThread);
 end;
 
 function GetGlobalTimerThread:TTimerThread;
 begin
   if GlobalTimerThread=nil then
   begin
-    //ç«‹å³å¯åŠ¨
+    //Á¢¼´Æô¶¯
     GlobalTimerThread:=TTimerThread.Create(False);
     GlobalTimerThread.Name:='GlobalTimerThread';
   end;
@@ -366,17 +403,18 @@ procedure FreeGlobalTimerThread2;
 begin
   if GlobalTimerThread2<>nil then
   begin
+    GlobalTimerThread2.FRecvEvent.SetEvent;
     GlobalTimerThread2.Terminate;
     GlobalTimerThread2.WaitFor;
   end;
-  uFuncCommon_Copy.FreeAndNil(GlobalTimerThread2);
+  SysUtils.FreeAndNil(GlobalTimerThread2);
 end;
 
 function GetGlobalTimerThread2:TTimerThread;
 begin
   if GlobalTimerThread2=nil then
   begin
-    //ç«‹å³å¯åŠ¨
+    //Á¢¼´Æô¶¯
     GlobalTimerThread2:=TTimerThread.Create(False);
     GlobalTimerThread2.Name:='GlobalTimerThread-2';
   end;
@@ -433,94 +471,57 @@ end;
 
 constructor TTimerThread.Create(ACreateSuspended: Boolean);
 begin
-  //ç›´æ¥å¯åŠ¨
+  //Ö±½ÓÆô¶¯
   inherited Create(ACreateSuspended);
 
-  TaskSleep:=50;
+//  TaskSleep:=50;
 
   FTimerTaskList:=TTimerTaskList.Create;
 
   GlobalTimerThreadList.Add(Self);
+
+
+  FRecvEvent:=TEvent.Create(nil, True, False, '');
+end;
+
+function TTimerThread.CreateTimerTask: TTimerTask;
+begin
+  Result:=TTimerTask.Create();
 end;
 
 destructor TTimerThread.Destroy;
 begin
+
   GlobalTimerThreadList.Remove(Self);
 
   inherited;
-  uFuncCommon_Copy.FreeAndNil(FTimerTaskList);
+  SysUtils.FreeAndNil(FTimerTaskList);
+  FreeAndNil(FRecvEvent);
 end;
 
-procedure TTimerThread.DoExecuteTask(ATimerTask: TTimerTask);
-begin
-
-      //æœ‰ä»»åŠ¡,é‚£ä¹ˆæ‰§è¡Œä»»åŠ¡
-      uBaseLog_Copy.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecute Begin TaskName:'+ATimerTask.TaskName);
-      try
-          if Assigned(ATimerTask.FOnExecute) then
-          begin
-              try
-                ATimerTask.FOnExecute(ATimerTask);
-              except
-                on E:Exception do
-                begin
-                  uBaseLog_Copy.HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecute');
-                end;
-              end;
-          end;
-      finally
-        ATimerTask.FIsExecuting:=False;
-        uBaseLog_Copy.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecute End TaskName:'+ATimerTask.TaskName);
-      end;
-
-
-      if Assigned(ATimerTask.FOnExecuteEnd) then
-      begin
-          //åŒæ­¥
-          TThread.Synchronize(nil,procedure
-          begin
-              //è°ƒç”¨ä»»åŠ¡ç»“æŸäº‹ä»¶
-              uBaseLog_Copy.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecuteEnd Begin TaskName:'+ATimerTask.TaskName);
-              try
-                  try
-
-                    if Assigned(ATimerTask.FOnExecuteEnd) then
-                    begin
-                      ATimerTask.FOnExecuteEnd(ATimerTask);
-                    end;
-
-                  except
-                    on E:Exception do
-                    begin
-                      uBaseLog_Copy.HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecuteEnd');
-                    end;
-                  end;
-              finally
-                uBaseLog_Copy.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecuteEnd End TaskName:'+ATimerTask.TaskName);
-              end;
-          end);
-      end;
-
-
-      FreeAndNil(ATimerTask);
-
-
-end;
-
-procedure TTimerThread.Execute;
+procedure TTimerThread.DoExecute;
 var
   ATimerTask:TTimerTask;
+//  AIsCanExecute:Boolean;
 begin
-  inherited;
-
-  while Not Terminated do
-  begin
-
       ATimerTask:=nil;
 
+//      AIsCanExecute:=False;
+      repeat
+          //ÅĞ¶ÏÊÇ·ñÔÊĞí·ÃÎÊÍøÂç
+//          if Assigned(GlobalOnTimerThreadCanExecute) then
+//          begin
+//            AIsCanExecute:=GlobalOnTimerThreadCanExecute(Self);
+//          end;
+          if not GlobalIsTimerThreadCanExecute then
+          begin
+            Sleep(1000);
+          end;
+      until GlobalIsTimerThreadCanExecute;
 
 
-      //å–å‡ºéœ€è¦æ‰§è¡Œçš„ä»»åŠ¡
+
+      //È¡³öĞèÒªÖ´ĞĞµÄÈÎÎñ
       if FTimerTaskList.Count>0 then
       begin
         ATimerTask:=FTimerTaskList.Items[0];
@@ -533,19 +534,105 @@ begin
       begin
 
           DoExecuteTask(ATimerTask);
+          DoExecuteTaskEnd(ATimerTask);
+          FreeAndNil(ATimerTask);
 
-          if TaskSleep>0 then
-          begin
-            Sleep(TaskSleep);
-          end;
+//          if TaskSleep>0 then
+//          begin
+//            Sleep(TaskSleep);
+//          end;
 
       end
       else
       begin
-          //æ²¡æœ‰ä»»åŠ¡,æŒ‚èµ·ç­‰å¾…
-          Sleep(100);
+          //Ã»ÓĞÈÎÎñ,¹ÒÆğµÈ´ı
+          //Sleep(100);
       end;
 
+end;
+
+procedure TTimerThread.DoExecuteTask(ATimerTask: TTimerTask);
+begin
+
+      //ÓĞÈÎÎñ,ÄÇÃ´Ö´ĞĞÈÎÎñ
+//      uBaseLog.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecute Begin TaskName:'+ATimerTask.TaskName);
+      try
+          if Assigned(ATimerTask.FOnExecute) then
+          begin
+              try
+                ATimerTask.FOnExecute(ATimerTask);
+              except
+                on E:Exception do
+                begin
+                  HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecute'+' TaskName:'+ATimerTask.TaskName);
+                end;
+              end;
+          end;
+      finally
+        ATimerTask.FIsExecuting:=False;
+//        uBaseLog.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecute End TaskName:'+ATimerTask.TaskName);
+      end;
+
+
+
+
+end;
+
+procedure TTimerThread.DoExecuteTaskEnd(ATimerTask: TTimerTask);
+begin
+
+      if Assigned(ATimerTask.FOnExecuteEnd) then
+      begin
+          //Í¬²½
+          TThread.Synchronize(nil,procedure
+          begin
+              //µ÷ÓÃÈÎÎñ½áÊøÊÂ¼ş
+//              uBaseLog.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecuteEnd Begin TaskName:'+ATimerTask.TaskName);
+              try
+                  try
+
+                    if Assigned(ATimerTask.FOnExecuteEnd) then
+                    begin
+                      ATimerTask.FOnExecuteEnd(ATimerTask);
+                    end;
+
+                  except
+                    on E:Exception do
+                    begin
+                      HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecuteEnd'+' TaskName:'+ATimerTask.TaskName);
+                    end;
+                  end;
+              finally
+//                uBaseLog.HandleException(nil,'OrangeUICommon','uTimerTask','ATimerTask.FOnExecuteEnd End TaskName:'+ATimerTask.TaskName);
+              end;
+          end);
+      end;
+
+
+end;
+
+procedure TTimerThread.Execute;
+begin
+  inherited;
+
+  while Not Terminated do
+  begin
+
+      //È¡³öĞèÒªÖ´ĞĞµÄÈÎÎñ
+      if FTimerTaskList.Count=0 then
+      begin
+        //Ã»ÓĞÈÎÎñµÄÊ±ºò²ÅĞèÒªµÈ´ı
+  //      FRecvEvent.WaitFor(100);
+        FRecvEvent.WaitFor(INFINITE);
+        FRecvEvent.ResetEvent;
+      end;
+
+      if Not Terminated then
+      begin
+
+        Self.DoExecute;
+
+      end;
 
 
   end;
@@ -554,41 +641,61 @@ end;
 
 procedure TTimerThread.RunTask(ATimerTask:TTimerTask;const AIsStandalone:Boolean);
 begin
+  {$IF CompilerVersion >= 30.0}
+      if not AIsStandalone then
+      begin
+          //¼ÓÈëµ½Ö´ĞĞÁĞ±í
+          Self.FTimerTaskList.Add(ATimerTask);
 
-  if not AIsStandalone then
-  begin
-      //åŠ å…¥åˆ°æ‰§è¡Œåˆ—è¡¨
+          FRecvEvent.SetEvent;
+
+          //Æô¶¯¶¨Ê±Æ÷¼ì²âÊÇ·ñÔËĞĞ½áÊø,²»ĞèÒªÁË
+          ATimerTask.Execute;
+
+
+          if Suspended then
+          begin
+              //Æô¶¯Ïß³Ì
+              Self.Suspended:=False;
+          end;
+
+      end
+      else
+      begin
+          TThread.CreateAnonymousThread(procedure
+          begin
+            DoExecuteTask(ATimerTask);
+            DoExecuteTaskEnd(ATimerTask);
+            FreeAndNil(ATimerTask);
+          end).Start;
+      end;
+  {$ELSE}
+      //¼ÓÈëµ½Ö´ĞĞÁĞ±í
       Self.FTimerTaskList.Add(ATimerTask);
 
+      FRecvEvent.SetEvent;
 
-      //å¯åŠ¨å®šæ—¶å™¨æ£€æµ‹æ˜¯å¦è¿è¡Œç»“æŸ
+      //Æô¶¯¶¨Ê±Æ÷¼ì²âÊÇ·ñÔËĞĞ½áÊø,²»ĞèÒªÁË
       ATimerTask.Execute;
 
 
       if Suspended then
       begin
-          //å¯åŠ¨çº¿ç¨‹
+          //Æô¶¯Ïß³Ì
           Self.Suspended:=False;
       end;
-  end
-  else
-  begin
-      TThread.CreateAnonymousThread(procedure
-      begin
-        DoExecuteTask(ATimerTask);
-      end).Start;
-  end;
+  {$IFEND}
 
 end;
 
 function TTimerThread.RunTempTask(
-                          AOnExecute, AOnExecuteEnd: TTaskNotify;
-                          ATaskName:String;
-                          AIsStandalone:Boolean):TTimerTask;
+                                  AOnExecute, AOnExecuteEnd: TTaskNotify;
+                                  ATaskName:String;
+                                  AIsStandalone:Boolean):TTimerTask;
 var
   ATimerTask:TTimerTask;
 begin
-  ATimerTask:=TTimerTask.Create();
+  ATimerTask:=CreateTimerTask;
   ATimerTask.FTaskName:=ATaskName;
   ATimerTask.OnExecute:=AOnExecute;
   ATimerTask.OnExecuteEnd:=AOnExecuteEnd;
@@ -596,6 +703,13 @@ begin
 end;
 
 
+
+procedure TTimerThread.Terminate;
+begin
+  FRecvEvent.SetEvent;
+  Inherited Terminate;
+  FRecvEvent.SetEvent;
+end;
 
 procedure TTimerThread.TerminatedSet;
 var
@@ -610,7 +724,7 @@ end;
 
 { TTimerTask }
 
-constructor TTimerTask.Create(const ATaskID:Integer);
+constructor TTimerTask.Create(const ATaskID:String);
 begin
   FTaskID:=ATaskID;
 
@@ -623,26 +737,26 @@ destructor TTimerTask.Destroy;
 begin
   SetTaskObject(nil);
   SetTaskObject1(nil);
-  uFuncCommon_Copy.FreeAndNil(FTaskOtherInfo);
-  uFuncCommon_Copy.FreeAndNil(FTaskParams);
+  SysUtils.FreeAndNil(FTaskOtherInfo);
+  SysUtils.FreeAndNil(FTaskParams);
   inherited;
 end;
 
 procedure TTimerTask.Execute;
 begin
-  //å¼€å§‹æ£€æµ‹
+  //¿ªÊ¼¼ì²â
   FIsExecuteSucc:=False;
   FIsExecuting:=True;
 end;
 
 procedure TTimerTask.FreeTaskObject;
 begin
-  uFuncCommon_Copy.FreeAndNil(FTaskObject);
+  SysUtils.FreeAndNil(FTaskObject);
 end;
 
 procedure TTimerTask.FreeTaskObject1;
 begin
-  uFuncCommon_Copy.FreeAndNil(FTaskObject1);
+  SysUtils.FreeAndNil(FTaskObject1);
 end;
 
 procedure TTimerTask.SetTaskObject(const Value: TObject);
@@ -665,7 +779,7 @@ begin
   except
     on E:Exception do
     begin
-      uBaseLog_Copy.HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.SetTaskObject');
+      HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.SetTaskObject');
     end;
   end;
 end;
@@ -690,7 +804,7 @@ begin
   except
     on E:Exception do
     begin
-      uBaseLog_Copy.HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.SetTaskObject1');
+      HandleException(E,'OrangeUICommon','uTimerTask','ATimerTask.SetTaskObject1');
     end;
   end;
 end;
@@ -737,28 +851,35 @@ initialization
   GlobalTimerThreadList:=TList.Create;
   GlobalTimerThread:=nil;
   GlobalTimerThread2:=nil;
+  GlobalIsTimerThreadCanExecute:=True;
 
 
 
 finalization
+
+
   try
     FreeGlobalTimerThread;
   except
     on E:Exception do
     begin
-      uBaseLog_Copy.HandleException(E,'Base','uTimerTask','finalization FreeAndNil(GlobalTimerThread)');
+      HandleException(E,'Base','uTimerTask','finalization FreeAndNil(GlobalTimerThread)');
     end;
   end;
+
+
   try
     FreeGlobalTimerThread2;
   except
     on E:Exception do
     begin
-      uBaseLog_Copy.HandleException(E,'Base','uTimerTask','finalization FreeAndNil(GlobalTimerThread2)');
+      HandleException(E,'Base','uTimerTask','finalization FreeAndNil(GlobalTimerThread2)');
     end;
   end;
-//  uFuncCommon_Copy.FreeAndNil(GlobalThreadCheckTimer);
-  uFuncCommon_Copy.FreeAndNil(GlobalTimerThreadList);
+
+
+//  SysUtils.FreeAndNil(GlobalThreadCheckTimer);
+  SysUtils.FreeAndNil(GlobalTimerThreadList);
 
 
 end.

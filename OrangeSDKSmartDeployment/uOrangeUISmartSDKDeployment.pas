@@ -13,7 +13,9 @@ uses
 //  Winapi.Messages,
 //  Vcl.Graphics,
   System.Win.Registry,
-  {$ENDIF MSWINDOWS}
+  FMX.Forms,
+  FMX.Dialogs,
+  {$ENDIF}
 
   System.SysUtils,
   System.Variants,
@@ -34,8 +36,6 @@ uses
 
 //uses
   StrUtils,
-  FMX.Forms,
-  FMX.Dialogs,
 
   Zip,
 
@@ -789,7 +789,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       AXMLDocument.LoadFromFile(AProjectFilePath);
       AXMLDocument.Active:=True;
@@ -1083,84 +1083,84 @@ begin
       //将工程res目录的资源文件做一个MD5值的缓存,下次再编译的时候判断是否与缓存相同,相同则不需要再次处理
       //先获取文件列表
       //判断工程的res目录下是否存在需要布署的子文件
-      if FileExists(AJarGenRootDir+'res_files_cache.json') then
-      begin
-          AResFileArray:=TSuperArray.Create(GetStringFromFile(AJarGenRootDir+'res_files_cache.json',TEncoding.UTF8));
-
-          AAbsoluteFileList:=TStringList.Create;
-          try
-            DoGetFileList(AProjectGenPath+'res',AAbsoluteFileList);
-            if AAbsoluteFileList.Count=AResFileArray.Length then
-            begin
-              //判断文件有没有多,有没有少
-
-
-              AIsSame:=True;
-
-              for I := 0 to AResFileArray.Length-1 do
-              begin
-
-                //找到一个删除一个
-                AResFileJson:=AResFileArray.O[I];
-
-
-                AIndex:=AAbsoluteFileList.IndexOf(AProjectGenPath+'res'+AResFileJson.S['FileName']);
-
-                if AIndex<>-1 then
-                begin
-                  //原文件存在,比对MD5是否相等,如果不同,则需要重新生成R.jar
-                  if MD5Print(MD5File(AAbsoluteFileList[AIndex]))<>AResFileJson.S['MD5'] then
-                  begin
-                    //不同
-                    AIsSame:=False;
-                    Break;
-                  end
-                  else
-                  begin
-                    //相同
-                    AAbsoluteFileList.Delete(AIndex);
-                  end;
-
-                end
-                else
-                begin
-                  //原文件不存在,则需要重新生成R.jar
-                  AIsSame:=False;
-                  Break;
-                end;
-
-              end;
-
-
-              if AAbsoluteFileList.Count>0 then
-              begin
-                //有新文件,需要重新生成R.jar
-                AIsSame:=False;
-              end;
-
-
-
-              //相同,则不需要再生成
-              if AIsSame then
-              begin
-
-                HandleException(nil,'生成R.jar:res目录中文件未修改,不需要重新生成!');
-                AGetCommandLineOutputEvent('','生成R.jar','res目录中文件未修改,不需要重新生成!');
-
-
-                Result:=True;
-                Exit;
-              end;
-
-            end
-            else
-            begin
-              //文件数相等,需要重新生成R.jar
-            end;
-          finally
-            FreeAndNil(AAbsoluteFileList);
-          end;
-      end;
+//      if FileExists(AJarGenRootDir+'res_files_cache.json') then
+//      begin
+//          AResFileArray:=TSuperArray.Create(GetStringFromFile(AJarGenRootDir+'res_files_cache.json',TEncoding.UTF8));
+//
+//          AAbsoluteFileList:=TStringList.Create;
+//          try
+//            DoGetFileList(AProjectGenPath+'res',AAbsoluteFileList);
+//            if AAbsoluteFileList.Count=AResFileArray.Length then
+//            begin
+//              //判断文件有没有多,有没有少
+//
+//
+//              AIsSame:=True;
+//
+//              for I := 0 to AResFileArray.Length-1 do
+//              begin
+//
+//                //找到一个删除一个
+//                AResFileJson:=AResFileArray.O[I];
+//
+//
+//                AIndex:=AAbsoluteFileList.IndexOf(AProjectGenPath+'res'+AResFileJson.S['FileName']);
+//
+//                if AIndex<>-1 then
+//                begin
+//                  //原文件存在,比对MD5是否相等,如果不同,则需要重新生成R.jar
+//                  if MD5Print(MD5File(AAbsoluteFileList[AIndex]))<>AResFileJson.S['MD5'] then
+//                  begin
+//                    //不同
+//                    AIsSame:=False;
+//                    Break;
+//                  end
+//                  else
+//                  begin
+//                    //相同
+//                    AAbsoluteFileList.Delete(AIndex);
+//                  end;
+//
+//                end
+//                else
+//                begin
+//                  //原文件不存在,则需要重新生成R.jar
+//                  AIsSame:=False;
+//                  Break;
+//                end;
+//
+//              end;
+//
+//
+//              if AAbsoluteFileList.Count>0 then
+//              begin
+//                //有新文件,需要重新生成R.jar
+//                AIsSame:=False;
+//              end;
+//
+//
+//
+//              //相同,则不需要再生成
+//              if AIsSame then
+//              begin
+//
+//                HandleException(nil,'生成R.jar:res目录中文件未修改,不需要重新生成!');
+//                AGetCommandLineOutputEvent('','生成R.jar','res目录中文件未修改,不需要重新生成!');
+//
+//
+//                Result:=True;
+//                Exit;
+//              end;
+//
+//            end
+//            else
+//            begin
+//              //文件数相等,需要重新生成R.jar
+//            end;
+//          finally
+//            FreeAndNil(AAbsoluteFileList);
+//          end;
+//      end;
 
 
 
@@ -1276,7 +1276,8 @@ begin
 
 
 
-      //所需要生成R.java的
+      //所需要生成R.java的AndroidManifest.xml列表
+      //生成R.java
       for I := 0 to AAndroidManifestXmlFilePaths.Count-1 do
       begin
           //将相关的src
@@ -1409,7 +1410,13 @@ begin
       {$IFDEF MSWINDOWS}
       //生成最终的R.jar
       //ShellExecute(0, nil, PChar(AGenJarBatFilePath), nil, nil, SW_SHOWMAXIMIZED);
-      uCommandLineHelper_Copy.ExecuteCommand(AGenJarBatFilePath,'C:\','生成R.jar',AGetCommandLineOutputEvent);//,PI);
+      uCommandLineHelper_Copy.ExecuteCommand(
+        //如果可执行文件没有参数,而且路径带空格括号一些字符，那么需要用双引号括起来
+        '"'+AGenJarBatFilePath+'"',
+                                                  //'C:\',
+                                                  ExtractFilePath(AGenJarBatFilePath),
+                                                  '生成R.jar',
+                                                  AGetCommandLineOutputEvent);//,PI);
       {$ENDIF}
 
 
@@ -1544,7 +1551,9 @@ begin
               );
             if not AProjectConfig.ProcessAll(AProjectFilePath) then
             begin
+              {$IFDEF MSWINDOWS}
               ShowMessage(ASuperObject.A['enabled_sdks'].S[I]+'布署失败');
+              {$ENDIF}
               Exit;
             end;
           finally
@@ -1887,7 +1896,7 @@ var
 begin
   Result:='';
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       AXMLDocument.LoadFromFile(AAndroidManifestXmlFilePath);
       AXMLDocument.Active:=True;
@@ -1921,7 +1930,7 @@ begin
   AFileName:=Copy(AFileName,1,Length(AFileName)-4);//去掉后缀.xml
 
   //创建XML文档
-  AXMLADocument:=TXMLDocument.Create(Application);
+  AXMLADocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       AXMLADocument.LoadFromFile(AXMLAFilePath);
       AXMLADocument.Active:=True;
@@ -1995,8 +2004,8 @@ end;
 //  AXMLNode:IXMLNode;
 //begin
 //  //创建XML文档
-//  AXMLADocument:=TXMLDocument.Create(Application);
-//  AXMLBDocument:=TXMLDocument.Create(Application);
+//  AXMLADocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
+//  AXMLBDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
 //  try
 //      AXMLADocument.LoadFromFile(AXMLAFilePath);
 //      AXMLADocument.Active:=True;
@@ -2176,7 +2185,7 @@ begin
 
 
   ABatStringList.Add('@echo off');
-  ABatStringList.Add('cd '+ATempJarDirPath);
+  ABatStringList.Add('cd "'+ATempJarDirPath+'"');
   ABatStringList.Add(Copy(ATempJarDirPath,1,2));
   ABatStringList.Add('');
   ABatStringList.Add('setlocal');
@@ -2238,8 +2247,9 @@ begin
           +' -d '+'"'+ATempJarDirPath+'output\classes'+'"'
 
           //不能用引号"，不然java文件找不到
-//          +'"'+AJavaSourceFiles[I]+'"'
-          +' '+AJavaSourceFiles[I]+''
+          +' "'+AJavaSourceFiles[I]+'"'
+//          +' '+AJavaSourceFiles[I]+''
+
 //            +'src\com\ggggcexx\orangeui\wxapi\*.java'
 
           );
@@ -2289,11 +2299,11 @@ begin
   //dx --dex --output classes2.dex base.jar
   if ATempDexedJarFilePath<>'' then
   begin
-    ABatStringList.Add('"%ANDROID_BT%\dx" --dex --output '+ATempDexedJarFilePath+' '+AJarFileName);
+    ABatStringList.Add('"%ANDROID_BT%\dx" --dex --output "'+ATempDexedJarFilePath+'" '+AJarFileName);
   end
   else
   begin
-    ABatStringList.Add('"%ANDROID_BT%\dx" --dex --output '+GetJarDexedFileName(AJarFileName)+' '+AJarFileName);
+    ABatStringList.Add('"%ANDROID_BT%\dx" --dex --output "'+GetJarDexedFileName(AJarFileName)+'" '+AJarFileName);
   end;
 
 
@@ -2785,7 +2795,7 @@ end;
 //
 //
 //  //创建XML文档
-//  AXMLDocument:=TXMLDocument.Create(Application);
+//  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
 //  try
 //      AXMLDocument.LoadFromFile(AProjectFilePath);
 //      AXMLDocument.Active:=True;
@@ -4286,7 +4296,10 @@ begin
 //                          'C:\Users\Public\Documents\Embarcadero\Studio\17.0\PlatformSDKs\android-sdk-windows\build-tools\22.0.1\aapt.exe',
 //                          Self.edtAndroidSDKBuildTools.Text+'\'+'aapt.exe',
 //                          AAndroidSDKBuildTools+'\'+'aapt.exe',
+//                          AAndroidSDKBuildTools+'aapt.exe',
+                          //Android 11开始用新的aapt2.exe
                           AAndroidSDKBuildTools+'aapt.exe',
+
                           //Android系统jar包android.jar路径
 //                          'C:\Users\Public\Documents\Embarcadero\Studio\17.0\PlatformSDKs\android-sdk-windows\platforms\android-22\android.jar',
 //                          Self.edtAndroidSDKPlatform.Text+'\'+'android.jar',
@@ -4349,7 +4362,9 @@ begin
         begin
           HandleException(nil,AGenJarFileNameNoExt+':'+'R.java生成失败'+AAndroidManifestXmlFilePath);
 //          AGetCommandLineOutputEvent('',AGenJarFileNameNoExt,'准备根据aar包中的R.txt去除R.java中的重复资源定义');
+              {$IFDEF MSWINDOWS}
           ShowMessage(AGenJarFileNameNoExt+':'+'R.java生成失败'+AAndroidManifestXmlFilePath);
+              {$ENDIF}
           Exit;
         end;
 
@@ -4491,47 +4506,44 @@ begin
       AKey:='\Software\Embarcadero\BDS\'+ADelphiVersion+'\'+'PlatformSDKs'+'\';
 
       //找到AndroidSDK
-      if AReg.OpenKey(AKey,False) then
-      begin
-          ATempStr:=AReg.ReadString('Default_Android');
-
-          if ATempStr<>'' then
-          begin
-              if AReg.OpenKey(AKey+ATempStr,False) then
-              begin
-
-                  //C:\Program Files\Java\jdk1.8.0_202\bin\KeyTool.exe
-
-                  AJDKDir:=AReg.ReadString('JDKKeyToolPath');
-                  AJDKDir:=ExtractFilePath(AJDKDir);
-                  AJDKDir:=AJDKDir.Substring(0,AJDKDir.Length-1);
-                  AJDKDir:=ExtractFilePath(AJDKDir);
-                  AJDKDir:=AJDKDir.Substring(0,AJDKDir.Length-1);
-
-
-
-                  AAndroidSDKDir:=AReg.ReadString('SystemRoot');
-                  AAndroidSDKPlatform:=AReg.ReadString('SDKApiLevelPath');
-                  AAndroidSDKBuildTools:=ExtractFilePath(AReg.ReadString('SDKAaptPath'));
-
-                  if DirectoryExists(AJDKDir)
-                    or DirectoryExists(AAndroidSDKDir)
-                    or DirectoryExists(AAndroidSDKPlatform)
-                    or DirectoryExists(AAndroidSDKBuildTools)
-                     then
-                  begin
-                    Result:=True;
-                  end;
-
-              end;
-          end;
-
-      end
-      else
+      if not AReg.OpenKey(AKey,False) then
       begin
           DoDeployConfigLog(nil,'AddLibraryToIOSSDK Open key "'+AKey+'" fail!');
           Exit;
       end;
+      ATempStr:=AReg.ReadString('Default_Android');
+
+      if ATempStr<>'' then
+      begin
+          if AReg.OpenKey(AKey+ATempStr,False) then
+          begin
+
+              //C:\Program Files\Java\jdk1.8.0_202\bin\KeyTool.exe
+
+              AJDKDir:=AReg.ReadString('JDKKeyToolPath');
+              AJDKDir:=ExtractFilePath(AJDKDir);
+              AJDKDir:=AJDKDir.Substring(0,AJDKDir.Length-1);
+              AJDKDir:=ExtractFilePath(AJDKDir);
+              AJDKDir:=AJDKDir.Substring(0,AJDKDir.Length-1);
+
+
+
+              AAndroidSDKDir:=AReg.ReadString('SystemRoot');
+              AAndroidSDKPlatform:=AReg.ReadString('SDKApiLevelPath');
+              AAndroidSDKBuildTools:=ExtractFilePath(AReg.ReadString('SDKAaptPath'));
+
+              if DirectoryExists(AJDKDir)
+                or DirectoryExists(AAndroidSDKDir)
+                or DirectoryExists(AAndroidSDKPlatform)
+                or DirectoryExists(AAndroidSDKBuildTools)
+                 then
+              begin
+                Result:=True;
+              end;
+
+          end;
+      end;
+
 
 
 //          AIsExists:=False;
@@ -4606,7 +4618,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
     //  AXMLDocument.Version:='1.0';
     //  AXMLDocument.Encoding:='GB2312';
@@ -4673,7 +4685,7 @@ begin
   Self.FCurrentDeployFileList.Clear(True);
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       //  AXMLDocument.Version:='1.0';
       //  AXMLDocument.Encoding:='GB2312';
@@ -4723,8 +4735,8 @@ begin
           XMLNode:=XMLNode.ChildNodes.FindNode('Deployment');
           if (XMLNode<>nil) then
           begin
-            if (XMLNode.Attributes['Version']='3') then
-            begin
+//            if (XMLNode.Attributes['Version']='3') then
+//            begin
                     //列出所有DeployFile
 
                     for I := 0 to XMLNode.ChildNodes.Count-1 do
@@ -4813,13 +4825,13 @@ begin
 
                     Result:=True;
 
-            end
-            else
-            begin
-              DoDeployConfigLog(nil,GetLangString(['不支持此Deployment版本',
-                                    'Not support this deployment version']));
-                                    //'不支持此Deployment版本');
-            end;
+//            end
+//            else
+//            begin
+//              DoDeployConfigLog(nil,GetLangString(['不支持此Deployment版本',
+//                                    'Not support this deployment version']));
+//                                    //'不支持此Deployment版本');
+//            end;
           end
           else
           begin
@@ -5150,9 +5162,11 @@ begin
 
   if not FileExists(AAndroidManifestFilePath) then
   begin
+              {$IFDEF MSWINDOWS}
       ShowMessage(GetLangString(['AndroidManifest.template.xml文件不存在,请先在Android平台下编译生成该文件',
                                     'AndroidManifest.template.xml is not exist,Please build at Android platform first']));
                                     //'AndroidManifest.template.xml文件不存在,请先在Android平台下编译生成该文件');
+              {$ENDIF}
       Exit;
   end;
 
@@ -5252,9 +5266,11 @@ begin
           end
           else
           begin
+              {$IFDEF MSWINDOWS}
               ShowMessage(GetLangString(['AndroidManifest.template.xml格式不正确,无法定位</application>',
                                         'Can not find </application> in AndroidManifest.template.xml']));
                                         //'AndroidManifest.template.xml格式不正确,无法定位</application>');
+              {$ENDIF}
               Exit;
           end;
 
@@ -5305,7 +5321,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
     //  AXMLDocument.Version:='1.0';
     //  AXMLDocument.Encoding:='GB2312';
@@ -5665,9 +5681,11 @@ begin
 
   if not FileExists(AAndroidManifestFilePath) then
   begin
+              {$IFDEF MSWINDOWS}
       ShowMessage(GetLangString(['AndroidManifest.template.xml文件不存在,请先在Android平台下编译生成该文件',
                                     'AndroidManifest.template.xml is not exist,Please build at Android platform first'  ]));
                                     //'AndroidManifest.template.xml文件不存在,请先在Android平台下编译生成该文件');
+              {$ENDIF}
       Exit;
   end;
 
@@ -5761,9 +5779,11 @@ begin
               end
               else
               begin
+              {$IFDEF MSWINDOWS}
                   ShowMessage(GetLangString(['AndroidManifest.template.xml格式不正确,无法定位<uses-feature',
                                               'Can not find <uses-feature in AndroidManifest.template.xml'  ]));
                                               //'AndroidManifest.template.xml格式不正确,无法定位<uses-feature');
+              {$ENDIF}
                   Exit;
               end;
 
@@ -5826,9 +5846,11 @@ begin
 
   if Not FileExists(AProjectFilePath) then
   begin
+              {$IFDEF MSWINDOWS}
     ShowMessage(GetLangString(['工程文件不存在',
                                 'Project file is not exist'  ]));
                                 //'工程文件不存在');
+              {$ENDIF}
     Exit;
   end;
 
@@ -5838,9 +5860,11 @@ begin
   AInfoPlistTemplateFilePath:=ExtractFilePath(AProjectFilePath)+'info.plist.TemplateiOS.xml';
   if not FileExists(AInfoPlistTemplateFilePath) then
   begin
+              {$IFDEF MSWINDOWS}
     ShowMessage(GetLangString(['info.plist.TemplateiOS.xml文件不存在,请先在IOS平台下运行一下,它会自动生成',
                                 'info.plist.TemplateiOS.xml is not exist,Please build at IOS platform first'  ]));
                                 //'info.plist.TemplateiOS.xml文件不存在,请先在IOS平台下运行一下,它会自动生成');
+              {$ENDIF}
     Exit;
   end;
 
@@ -5893,8 +5917,8 @@ begin
 
   //处理XML
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
-  AInsertXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
+  AInsertXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   ACFBundleURLSchemesList:=TStringList.Create;
   try
       AXMLDocument.LoadFromXML(AInfoPlistXMLStr);
@@ -6151,17 +6175,21 @@ begin
   //因为需要计算出相对目录
   if (AProjectFilePath='') then
   begin
+              {$IFDEF MSWINDOWS}
     ShowMessage(GetLangString(['请选择工程文件',
                                 'Please select project file'  ]));
                                 //'请选择工程文件');
+              {$ENDIF}
     Exit;
   end;
 
   if Not FileExists(AProjectFilePath) then
   begin
+              {$IFDEF MSWINDOWS}
     ShowMessage(GetLangString(['工程文件不存在',
                                 'Project file is not exist'  ]));
                                 //'工程文件不存在');
+              {$ENDIF}
     Exit;
   end;
 
@@ -6175,7 +6203,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       AXMLDocument.LoadFromFile(AProjectFilePath);
       AXMLDocument.Active:=True;
@@ -6308,7 +6336,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       AXMLDocument.LoadFromFile(AProjectFilePath);
       AXMLDocument.Active:=True;
@@ -6349,8 +6377,8 @@ begin
           AXMLNode:=AXMLNode.ChildNodes.FindNode('Deployment');
           if (AXMLNode<>nil) then
           begin
-            if (AXMLNode.Attributes['Version']='3') then
-            begin
+//            if (AXMLNode.Attributes['Version']='3') then
+//            begin
 
 
                   //把布署文件列表添加到工程文件的xml
@@ -6369,36 +6397,42 @@ begin
 
                   Result:=True;
 
-            end
-            else
-            begin
-  //              DoDeployConfigLog(Self,'不支持此工程文件的Deployment版本');
-                ShowMessage(GetLangString(['不支持此工程文件的Deployment版本',
-                                          'Can not support this deployment version'  ]));
-                                          //'不支持此工程文件的Deployment版本');
-            end;
+//            end
+//            else
+//            begin
+//  //              DoDeployConfigLog(Self,'不支持此工程文件的Deployment版本');
+//                ShowMessage(GetLangString(['不支持此工程文件的Deployment版本',
+//                                          'Can not support this deployment version'  ]));
+//                                          //'不支持此工程文件的Deployment版本');
+//            end;
           end
           else
           begin
   //            DoDeployConfigLog(Self,'此工程文件不存在Deployment节点');
+              {$IFDEF MSWINDOWS}
               ShowMessage(GetLangString(['此工程文件不存在Deployment节点',
                                           'Deployment node is not exist'  ]));
                                           //'此工程文件不存在Deployment节点');
+              {$ENDIF}
           end;
           end
         else
         begin
   //          DoDeployConfigLog(Self,'此工程文件不存在BorlandProject节点');
+              {$IFDEF MSWINDOWS}
             ShowMessage(GetLangString(['此工程文件不存在BorlandProject节点',
                                           'BorlandProject node is not exist'  ]));
                                           //'此工程文件不存在BorlandProject节点');
+              {$ENDIF}
         end;
       end
       else
       begin
+              {$IFDEF MSWINDOWS}
         ShowMessage(GetLangString(['不存在ProjectExtensions节点',
                                     'ProjectExtensions node is not exist'  ]));
                                     //'不存在ProjectExtensions节点');
+              {$ENDIF}
       end;
 
 
@@ -6649,7 +6683,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
     //  AXMLDocument.Version:='1.0';
     //  AXMLDocument.Encoding:='GB2312';
@@ -6716,11 +6750,11 @@ begin
               SaveProjectPictureToProjectXMLNode(192,192,'Android_LauncherIcon192',AXMLNode.ChildNodes[I]);
 
 
-              SaveProjectPictureToProjectXMLNode(24,24,'Android_NotificationIcon24',AXMLNode.ChildNodes[I],'24_24.png');
-              SaveProjectPictureToProjectXMLNode(36,36,'Android_NotificationIcon36',AXMLNode.ChildNodes[I],'36_36.png');
-              SaveProjectPictureToProjectXMLNode(48,48,'Android_NotificationIcon48',AXMLNode.ChildNodes[I],'48_48.png');
-              SaveProjectPictureToProjectXMLNode(72,72,'Android_NotificationIcon72',AXMLNode.ChildNodes[I],'72_72.png');
-              SaveProjectPictureToProjectXMLNode(96,96,'Android_NotificationIcon96',AXMLNode.ChildNodes[I],'96_96.png');
+              SaveProjectPictureToProjectXMLNode(24,24,'Android_NotificationIcon24',AXMLNode.ChildNodes[I],'24*24.png');
+              SaveProjectPictureToProjectXMLNode(36,36,'Android_NotificationIcon36',AXMLNode.ChildNodes[I],'36*36.png');
+              SaveProjectPictureToProjectXMLNode(48,48,'Android_NotificationIcon48',AXMLNode.ChildNodes[I],'48*48.png');
+              SaveProjectPictureToProjectXMLNode(72,72,'Android_NotificationIcon72',AXMLNode.ChildNodes[I],'72*72.png');
+              SaveProjectPictureToProjectXMLNode(96,96,'Android_NotificationIcon96',AXMLNode.ChildNodes[I],'96*96.png');
 
 
             end;
@@ -6902,7 +6936,7 @@ begin
 
 
   //创建XML文档
-  AXMLDocument:=TXMLDocument.Create(Application);
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
   try
       AXMLDocument.LoadFromFile(AProjectFilePath);
       AXMLDocument.Active:=True;
@@ -7475,7 +7509,7 @@ begin
                     ADeployFilePlatform.Overwrite:='False';
 
                     //但SO默认不布暑
-                    ADeployFilePlatform.Enabled:='false';
+                    //ADeployFilePlatform.Enabled:='false';
 
                     ADeployFile.Platforms.Add(ADeployFilePlatform);
 
@@ -7571,9 +7605,11 @@ begin
   end
   else
   begin
+              {$IFDEF MSWINDOWS}
       ShowMessage(GetLangString(['布署文件不存在:'+AAbsolutePath,
                                     'File is not exist:'+AAbsolutePath  ]));
                                     //'布署文件不存在:'+AAbsolutePath);
+              {$ENDIF}
   end;
 
 end;

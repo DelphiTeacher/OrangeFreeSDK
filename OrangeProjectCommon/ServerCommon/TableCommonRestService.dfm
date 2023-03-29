@@ -1,4 +1,5 @@
 object srvTableCommonRestService: TsrvTableCommonRestService
+  OldCreateOrder = True
   GatherStatistics = False
   OnCORS = kbmMWCustomHTTPSmartServiceCORS
   Height = 461

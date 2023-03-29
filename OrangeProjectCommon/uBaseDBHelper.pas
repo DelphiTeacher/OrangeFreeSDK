@@ -9,11 +9,12 @@ uses
   SyncObjs,
   Classes,
   DB,
-  uLang,
+//  uLang,
   uBaseLog,
   StrUtils,
   uFuncCommon,
   XSuperObject,
+  uDatasetToJson,
   uDataBaseConfig,
   Variants;
 
@@ -74,7 +75,7 @@ type
     function Query:TDataset;virtual;abstract;
     function NewTempQuery:TDataset;virtual;abstract;
 
-    function QueryRecordList:ISuperArray;virtual;abstract;
+    function QueryRecordList:ISuperArray;virtual;
     //上次异常字符串
     property LastExceptMessage:String read FLastExceptMessage write FLastExceptMessage;
 
@@ -100,13 +101,26 @@ type
                                   AOtherQuery:String='';
                                   AOperation:TSQLOperation=asoExec;
                                   ACustomQueryDataSet:TDataSet=nil):Boolean;
+    //简单插入2
+    function SelfQuery_EasyInsert2(ATableName:String;
+                                  ASetParamNameValues:TVariantDynArray;
+                                  AOtherQuery:String='';
+                                  AOperation:TSQLOperation=asoExec;
+                                  ACustomQueryDataSet:TDataSet=nil):Boolean;
     //简单更新
     function SelfQuery_EasyUpdate(ATableName:String;
                                   ASetParamNames:TStringDynArray;
                                   ASetParamValues:TVariantDynArray;
                                   ATempWhere:String;
-                                  AWhereParamNames:TStringDynArray;
-                                  AWhereParamValues:TVariantDynArray;
+                                  AWhereParamNames:TStringDynArray=[];
+                                  AWhereParamValues:TVariantDynArray=[];
+                                  AOtherQuery:String='';
+                                  AOperation:TSQLOperation=asoExec;
+                                  ACustomQueryDataSet:TDataSet=nil):Boolean;
+    function SelfQuery_EasyUpdate2(ATableName:String;
+                                  ASetParamNameValues:TVariantDynArray;
+                                  ATempWhere:String;
+                                  AWhereParaNameValues:TVariantDynArray=[];
                                   AOtherQuery:String='';
                                   AOperation:TSQLOperation=asoExec;
                                   ACustomQueryDataSet:TDataSet=nil):Boolean;
@@ -117,14 +131,50 @@ type
                                   ASetParamNames:TStringDynArray;
                                   ASetParamValues:TVariantDynArray;
                                   ATempWhere:String;
-                                  AWhereParamNames:TStringDynArray;
-                                  AWhereParamValues:TVariantDynArray;
+                                  AWhereParamNames:TStringDynArray=[];
+                                  AWhereParamValues:TVariantDynArray=[];
                                   AIsNeedUpdate:Boolean=True//;
 //                                  AOtherQuery:String='';
 //                                  AOperation:TSQLOperation=asoExec
                                   ):Boolean;
-
-
+  public
+    //使用json操作//
+    //添加一条记录
+    function AddRecord(ATableName:String;ARecordDataJson:ISuperObject;
+                      //ES数据库插入的时候需要主键
+                      AKeyFieldName:String;
+                      ASelectAfterInsert:String;
+                      var AAddedRecordDataJson:ISuperObject
+                      ):Boolean;virtual;
+    //获取字段列表
+    function GetFieldList(ATableName:String;ASelectText:String;
+                           var ARecordList:ISuperArray
+                           ):Boolean;virtual;
+    //获取一条记录
+    function GetRecord(ATableName:String;
+                      AKeyFieldName:String;
+                      AKeyFieldValue:Variant;
+                      var ARecordDataJson:ISuperObject
+                      ):Boolean;virtual;
+    //获取多条记录
+    function GetRecordList(ATableName:String;
+                          APageIndex:Integer;
+                          APageSize:Integer;
+                          AWhereKeyJsonArray:ISuperArray;
+                          var ADataJson:ISuperObject
+                          ):Boolean;virtual;
+    //更新一条记录
+    function UpdateRecord(ATableName:String;AUpdateRecordDataJson:ISuperObject;
+                          AKeyFieldName:String;
+                          AKeyFieldValue:Variant;
+                          var AUpdatedRecordDataJson:ISuperObject
+                          ):Boolean;overload;virtual;
+    function UpdateRecord(ATableName:String;AUpdateRecordDataJson:ISuperObject;
+                          AKeyFieldName:String;
+                          AWhereKeyJsonArray:ISuperArray;
+                          var AUpdatedRecordDataJson:ISuperObject
+                          ):Boolean;overload;virtual;
+  public
     property S[AFieldName:String]:String read GetFieldStringValue;
     property I[AFieldName:String]:Integer read GetFieldIntegerValue;
     property F[AFieldName:String]:Double read GetFieldFloatValue;
@@ -235,6 +285,59 @@ end;
 
 { TBaseDBHelper }
 
+function TBaseDBHelper.AddRecord(ATableName: String;
+  ARecordDataJson: ISuperObject; AKeyFieldName: String;
+  ASelectAfterInsert:String;
+                      var AAddedRecordDataJson:ISuperObject): Boolean;
+var
+  AParamNames:TStringDynArray;
+  AParamValues:TVariantDynArray;
+begin
+  //获取需要添加的字段,去掉表中不存在的字段
+  ConvertJsonToArray(ARecordDataJson,
+                      AParamNames,
+                      AParamValues);
+  //MYSQL的方式
+  //需要返回数据集
+  Result:=Self.SelfQuery_EasyInsert(
+                                    ATableName,
+                                    AParamNames,
+                                    AParamValues,
+                                    //获取刚插入的这条数据
+                                    ASelectAfterInsert,
+                                    {$IF CompilerVersion > 21.0} // XE or older
+                                    asoOpen
+                                    {$ELSE}
+                                    //D2010版本的UniDAC执行Insert+Select不能返回数据集
+                                    asoExec
+                                    {$IFEND}
+                                    );
+
+  {$IF CompilerVersion > 21.0} // XE or older
+  {$ELSE}
+  //D2010版本的UniDAC执行Insert+Select不能返回数据集
+  if not ASQLDBHelper.SelfQuery(ASelectAfterInsert,
+                                ConvertToStringDynArray([]),
+                                ConvertToVariantDynArray([])
+                                ) then
+  begin
+      //添加失败
+      ADesc:=ASQLDBHelper.LastExceptMessage;
+      Exit;
+  end;
+  {$IFEND}
+
+  if not ARecordDataJson.Contains(AKeyFieldName) then
+  begin
+    AAddedRecordDataJson:=JSonFromRecord(Query);
+  end
+  else
+  begin
+    AAddedRecordDataJson:=ARecordDataJson;
+  end;
+
+end;
+
 procedure TBaseDBHelper.Close;
 begin
   Query.Close;
@@ -276,14 +379,87 @@ begin
   Result:=Self.Query.FieldByName(AFieldName).AsInteger;
 end;
 
+function TBaseDBHelper.GetFieldList(ATableName, ASelectText: String;
+  var ARecordList: ISuperArray): Boolean;
+begin
+  Result:=False;
+
+  ARecordList:=nil;
+
+  if ASelectText='' then
+  begin
+    ASelectText:=' SELECT * FROM '+ATableName+' '+' WHERE (1<>1) ';
+  end;
+
+
+  //需要返回数据集
+  if not Self.SelfQuery(
+          //要判断一下有没有WHERE了,有就加WHERE,没有就不加WHERE,加AND
+          ASelectText,
+          ConvertToStringDynArray([]),
+          ConvertToVariantDynArray([]),
+          asoOpen
+          ) then
+  begin
+      //查询失败
+      Exit;
+  end;
+
+
+  //成功
+  ARecordList:=GetDatasetFieldDefsJson(Self.Query);
+
+  Result:=True;
+
+
+
+end;
+
 function TBaseDBHelper.GetFieldStringValue(AFieldName: String): String;
 begin
   Result:=Self.Query.FieldByName(AFieldName).AsString;
 end;
 
+function TBaseDBHelper.GetRecord(ATableName, AKeyFieldName:String;
+  AKeyFieldValue: Variant; var ARecordDataJson: ISuperObject): Boolean;
+begin
+  Result:=False;
+//    //查询
+//    function SelfQuery(AQueryString:String;
+//                      AParamNames:TStringDynArray=[];
+//                      AParamValues:TVariantDynArray=[];
+//                      AOperation:TSQLOperation=asoOpen;
+//                      AParamsCompleted:Boolean=False;
+//                      ACustomQueryDataSet:TDataSet=nil):Boolean;virtual;abstract;
+  if not SelfQuery('SELECT * FROM '+ATableName+' WHERE '+AKeyFieldName+'=:'+AKeyFieldName,
+                  [AKeyFieldName],[AKeyFieldValue]) then
+  begin
+    Exit;
+  end;
+
+  if not Query.Eof then
+  begin
+    ARecordDataJson:=JsonFromRecord(Query);
+  end;
+  Result:=True;
+end;
+
+function TBaseDBHelper.GetRecordList(ATableName: String; APageIndex,
+  APageSize: Integer; AWhereKeyJsonArray: ISuperArray;
+  var ADataJson: ISuperObject): Boolean;
+begin
+
+end;
+
 procedure TBaseDBHelper.Lock;
 begin
   FLock.Enter;
+end;
+
+function TBaseDBHelper.QueryRecordList: ISuperArray;
+begin
+  Result:=JSonArrayFromDataSetTo(Self.Query);
+
 end;
 
 function TBaseDBHelper.SelfQuery_Exists(AQueryString: String;
@@ -303,7 +479,7 @@ begin
   if Not Result then
   begin
     //数据库连接失败或异常
-    ADesc:=Trans('数据库连接失败或异常')+' '+Self.FLastExceptMessage;
+    ADesc:='数据库连接失败或异常'+' '+Self.FLastExceptMessage;
     Exit;
   end;
 
@@ -311,7 +487,7 @@ begin
   if Self.Query.Eof then
   begin
     Result:=False;
-    ADesc:=ARecordCaption+Trans('记录不存在!');
+    ADesc:=ARecordCaption+'记录不存在!';
     Exit;
   end;
 
@@ -414,6 +590,17 @@ begin
 
 end;
 
+function TBaseDBHelper.SelfQuery_EasyInsert2(ATableName: String;
+  ASetParamNameValues: TVariantDynArray; AOtherQuery: String;
+  AOperation: TSQLOperation; ACustomQueryDataSet: TDataSet): Boolean;
+var
+  ASetParamNames:TStringDynArray;
+  ASetParamValues:TVariantDynArray;
+begin
+  uFuncCommon.SplitNameValuePairArray(ASetParamNameValues,ASetParamNames,ASetParamValues);
+  Result:=SelfQuery_EasyInsert(ATableName,ASetParamNames,ASetParamValues,AOtherQuery,AOperation,ACustomQueryDataSet);
+end;
+
 function TBaseDBHelper.SelfQuery_EasySave(ATableName:String;
                                   AInsertParamNames:TStringDynArray;
                                   AInsertParamValues:TVariantDynArray;
@@ -422,9 +609,7 @@ function TBaseDBHelper.SelfQuery_EasySave(ATableName:String;
                                   ATempWhere:String;
                                   AWhereParamNames:TStringDynArray;
                                   AWhereParamValues:TVariantDynArray;
-                                  AIsNeedUpdate:Boolean=True//;
-//                                  AOtherQuery:String='';
-//                                  AOperation:TSQLOperation=asoExec
+                                  AIsNeedUpdate:Boolean
                                   ): Boolean;
 begin
   Result:=False;
@@ -552,6 +737,23 @@ begin
   Result:=SelfQuery(AQueryString,AParamNames,AParamValues,AOperation,False,ACustomQueryDataSet);
 end;
 
+function TBaseDBHelper.SelfQuery_EasyUpdate2(ATableName: String;
+  ASetParamNameValues: TVariantDynArray; ATempWhere: String;
+  AWhereParaNameValues: TVariantDynArray;
+  AOtherQuery: String; AOperation: TSQLOperation;
+  ACustomQueryDataSet: TDataSet): Boolean;
+var
+  ASetParamNames:TStringDynArray;
+  ASetParamValues:TVariantDynArray;
+  AWhereParamNames:TStringDynArray;
+  AWhereParamValues:TVariantDynArray;
+begin
+  uFuncCommon.SplitNameValuePairArray(ASetParamNameValues,ASetParamNames,ASetParamValues);
+  uFuncCommon.SplitNameValuePairArray(AWhereParaNameValues,AWhereParamNames,AWhereParamValues);
+  Result:=SelfQuery_EasyUpdate(ATableName,ASetParamNames,ASetParamValues,ATempWhere,AWhereParamNames,AWhereParamValues,AOtherQuery,AOperation,ACustomQueryDataSet);
+
+end;
+
 procedure TBaseDBHelper.UnLock;
 begin
   FLock.Leave;
@@ -562,6 +764,121 @@ begin
 
 end;
 
+
+function TBaseDBHelper.UpdateRecord(ATableName: String;
+  AUpdateRecordDataJson: ISuperObject;
+  AKeyFieldName:String;
+  AWhereKeyJsonArray: ISuperArray;
+  var AUpdatedRecordDataJson: ISuperObject): Boolean;
+var
+  AParamNames:TStringDynArray;
+  AParamValues:TVariantDynArray;
+  ATempWhere:String;
+begin
+  Result:=False;
+//    //查询
+//    function SelfQuery(AQueryString:String;
+//                      AParamNames:TStringDynArray=[];
+//                      AParamValues:TVariantDynArray=[];
+//                      AOperation:TSQLOperation=asoOpen;
+//                      AParamsCompleted:Boolean=False;
+//                      ACustomQueryDataSet:TDataSet=nil):Boolean;virtual;abstract;
+//  if not SelfQuery('UPDATE '+ATableName+' WHERE '+AKeyFieldName+'=:'+AKeyFieldName,
+//                  [AKeyFieldName],[AKeyFieldValue]) then
+//  begin
+//    Exit;
+//  end;
+
+  ATempWhere:=GetWhereConditionSQL(AWhereKeyJsonArray,nil,nil);
+
+  //需要更新的字段
+  //��SQLServer�²�֧�ָ���fid
+  ConvertJsonToArray(AUpdateRecordDataJson,AParamNames,AParamValues);
+  //需要返回数据集
+  if not Self.SelfQuery_EasyUpdate(
+                                          ATableName,
+                                          AParamNames,
+                                          AParamValues,
+                                          ' WHERE (1=1) '+ATempWhere,
+                                          ConvertToStringDynArray([]),
+                                          ConvertToVariantDynArray([]),
+                                          'SELECT * FROM '+ATableName+' WHERE (1=1) '+ATempWhere,//+ATempWhere,
+                                          {$IF CompilerVersion > 21.0} // XE or older
+                                          asoOpen
+                                          {$ELSE}
+                                          //D2010版本的UniDAC执行Insert+Select不能返回数据集
+                                          asoExec
+                                          {$IFEND}
+                                          ) then
+  begin
+      //修改失败
+      Exit;
+  end;
+
+//  if not Query.Eof then
+//  begin
+//    ARecordDataJson:=JsonFromRecord(Query);
+//  end;
+  Result:=True;
+
+
+end;
+
+function TBaseDBHelper.UpdateRecord(ATableName: String;
+  AUpdateRecordDataJson: ISuperObject;
+  AKeyFieldName:String;
+  AKeyFieldValue:Variant;
+                          var AUpdatedRecordDataJson:ISuperObject
+  ): Boolean;
+var
+  AParamNames:TStringDynArray;
+  AParamValues:TVariantDynArray;
+begin
+  Result:=False;
+//    //查询
+//    function SelfQuery(AQueryString:String;
+//                      AParamNames:TStringDynArray=[];
+//                      AParamValues:TVariantDynArray=[];
+//                      AOperation:TSQLOperation=asoOpen;
+//                      AParamsCompleted:Boolean=False;
+//                      ACustomQueryDataSet:TDataSet=nil):Boolean;virtual;abstract;
+//  if not SelfQuery('UPDATE '+ATableName+' WHERE '+AKeyFieldName+'=:'+AKeyFieldName,
+//                  [AKeyFieldName],[AKeyFieldValue]) then
+//  begin
+//    Exit;
+//  end;
+
+  //需要更新的字段
+  //��SQLServer�²�֧�ָ���fid
+  ConvertJsonToArray(AUpdateRecordDataJson,AParamNames,AParamValues);
+  //需要返回数据集
+  if not Self.SelfQuery_EasyUpdate(
+                                          ATableName,
+                                          AParamNames,
+                                          AParamValues,
+                                          ' AND '+AKeyFieldName+'=:'+AKeyFieldName,
+                                          ConvertToStringDynArray([AKeyFieldName]),
+                                          ConvertToVariantDynArray([AKeyFieldValue]),
+                                          'SELECT * FROM '+ATableName+' WHERE '+AKeyFieldName+'='+QuotedStr(VarToStr(AKeyFieldValue)),//+ATempWhere,
+                                          {$IF CompilerVersion > 21.0} // XE or older
+                                          asoOpen
+                                          {$ELSE}
+                                          //D2010版本的UniDAC执行Insert+Select不能返回数据集
+                                          asoExec
+                                          {$IFEND}
+                                          ) then
+  begin
+      //修改失败
+      Exit;
+  end;
+
+//  if not Query.Eof then
+//  begin
+//    ARecordDataJson:=JsonFromRecord(Query);
+//  end;
+  Result:=True;
+
+end;
 
 initialization
 //  GetGlobalDBLog.WriteLog('test');

@@ -54,9 +54,22 @@ Const
   //+'_'+'FieldDefs'
   FIELD_DEFS='FieldDefs';
 
-  DEFAULT_IsNeedNullField=True;
+  { TODO : 注释掉了 }
+  //这个可能用处在值为null，字段也存在，字段不存在可能会有问题。
+  //网页表格中有些字段为空,则会显示为undefined
+  DEFAULT_IsNeedNullField=True;//Integer;//
 
 type
+  //有些接口传入的查询条件要能特殊处理来组成条件
+  //比如keyword的参数,需要name、addr、phone等多列来查询
+  //所以需要拼成一个很长的SQL
+  TOnGetWhereConditionItemSQLEvent=
+      function(Sender:TObject;
+              ALogicOperator,     //逻辑运算符,NOT,AND,OR
+              AName,              //参数名,比如name,keyword
+              AOperator:String;   //比较符,比如>,<,=,LIKE
+              AValue:Variant      //比较值
+              ):String of object;
 
   TVarTypeDynArray=Array of TVarType;
 
@@ -73,10 +86,38 @@ type
     function ParseFromJsonArray(JsonObjectClass:TBaseJsonObjectClass;JsonArray:ISuperArray):Boolean;virtual;
   end;
 
+  {$REGION 'TWhereKeyTranslator 查询条件字段翻译'}
+  //查询条件字段翻译
+  TWhereKeyTranslator=class
+  public
+    //条件
+    Key:String;
+    //FieldName
+    FieldNames:TStringList;
+    function DoGetWhereConditionItemSQL(
+                                        ALogicOperator,
+                                        AOperator:String;
+                                        AValue:Variant):String;
+  public
+    constructor Create;
+    destructor Destroy;override;
+  end;
+  TWhereKeyTranslatorList=class(TBaseList)
+  private
+    function GetItem(Index: Integer): TWhereKeyTranslator;
+  public
+    function Find(AKey:String):TWhereKeyTranslator;
+    function Add(AKey:String;
+                 AFieldNamesCommaText:String):TWhereKeyTranslator;
+    property Items[Index:Integer]:TWhereKeyTranslator read GetItem;default;
+  end;
+  {$ENDREGION}
 
 
 var
+  //返回数据集的时候,是否返回数据集的字段,用于在客户端生成表格的列
   GlobalIsReturnDatasetFieldDefs:Boolean;
+
 
 
 //通用的格式
@@ -103,7 +144,8 @@ function CreateJsonValueByField(Json: ISuperObject;Field: TField;AFieldMapList:T
 
 //返回通用的记录的Json数组["name":"王能","age":35,"phone":"18957901025"]
 function JSonFromRecord(DataSet: TDataSet;AFieldMapList:TStringList=nil;AIsNeedNullField:Boolean=DEFAULT_IsNeedNullField): ISuperObject;
-procedure JSonFromRecordTo(DataSet: TDataSet;ASuperObject:ISuperObject;AFieldMapList:TStringList=nil;AIsNeedNullField:Boolean=DEFAULT_IsNeedNullField);
+procedure JSonFromRecordTo(DataSet: TDataSet;ASuperObject:ISuperObject;AFieldMapList:TStringList=nil;AIsNeedNullField:Boolean=DEFAULT_IsNeedNullField;
+                                ANoNeedFieldNameList:TStringList=nil);
 
 
 {$IF CompilerVersion > 21.0} // XE or older
@@ -174,6 +216,10 @@ function GetJsonNameArray(AJson:ISuperObject;AIgnoreFieldList:TStringList=nil;
                             AIsNeedNullValueField:Boolean=True;
                             AIsNeedArrayValueField:Boolean=True;
                             AIsNeedObjectValueField:Boolean=True):TStringDynArray;
+function CopyJson(AJson:ISuperObject;AIgnoreFieldList:TStringList=nil;
+                            AIsNeedNullValueField:Boolean=True;
+                            AIsNeedArrayValueField:Boolean=True;
+                            AIsNeedObjectValueField:Boolean=True):ISuperObject;
 //function GetJsonValueTypeArray(AJson:ISuperObject;AFieldList:TStringList=nil):Array of Integer;
 //function GetJsonValueArray(AJson:ISuperObject;AFieldList:String=''):TVariantDynArray;
 
@@ -196,9 +242,12 @@ function LocateJsonArray(AJsonArray:ISuperArray;
                           ANames:TStringDynArray;
                           AValues:TVariantDynArray;
                           AStartIndex:Integer=0):ISuperObject;overload;
-function GetJsonArrayValues(AJsonArray: ISuperArray;AName:String):TVariantDynArray;
+//从Json数组中取出某一个字段的值,然后拼成数组
+function GetJsonArrayValues(AJsonArray: ISuperArray;AKeyName:String):TVariantDynArray;overload;
+function GetJsonArrayValues2(AJsonArray: ISuperArray;AKeyName:String):ISuperArray;overload;
 function ConvertArrayToStringList(AValues:TVariantDynArray):TStringList;
-
+function GetJsonArrayValuesCommaText(AJsonArray: ISuperArray;AKeyName:String):String;overload;
+function GetJsonArrayValuesCommaText(AJsonArray: ISuperArray):String;overload;
 
 //将Json数组转换成层级的
 procedure ConvertJsonArrayToLevel(AJsonArray:ISuperArray;
@@ -209,12 +258,37 @@ procedure ConvertJsonArrayToLevel(AJsonArray:ISuperArray;
                                   //比如0
                                   AParentFieldValue:String;
                                   ALevelJsonArray:ISuperArray);
-procedure MergeJson(AJson:ISuperObject;AToJson:ISuperObject);
+function LocateArray(AStr:String;AStringArray:TStringDynArray):Integer;
+procedure MergeJson(AFromJson:ISuperObject;AToJson:ISuperObject;AIsOverride:Boolean=True;AIsMergeArray:Boolean=False;AIgnoreFieldList:TStringDynArray=[]);
 
+
+
+
+//生成查询条件
 function GetWhereConditions(AFieldNames:Array of String;
-                            AFieldValues:Array of Variant):String;
+                            AFieldValues:Array of Variant):String;overload;
 
-function ConvertJsonArray(AJsonArray:Array of ISuperObject):ISuperArray;
+
+function ConvertJsonArray(AJsonArray:Array of ISuperObject):ISuperArray;overload;
+
+
+function GetWhereCondition(ALogicalOperator:String;
+                            AFieldName:String;
+                            ACompareOperator:String;
+                            AFieldValue:Variant;
+                            AFieldValueIsField:Boolean=False;
+                            AFieldValueIsCheckEmpty:Boolean=False;
+                            AFieldEmptyValue:String=''):ISuperObject;
+
+function GetWhereConditions(AFieldNames:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;overload;
+function GetWhereKeyJson(AFieldNames:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+function GetWhereConditionsPro(AFieldNames:TStringDynArray;
+                            //比较运算符
+                            AFieldOpers:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+
 
 function GetFieldCondition(ALogicalOperator:String;
                             AFieldName:String;
@@ -222,6 +296,9 @@ function GetFieldCondition(ALogicalOperator:String;
                             ACompareOperator:String;
                             AFieldValue:Variant;
                             AFieldValueIsFieldName:Boolean=False):ISuperObject;
+
+
+
 
 function CutStringArray(AFieldNames:Array of String;ACount:Integer):TStringDynArray;
 function CutVariantArray(AFieldValues:TVariantDynArray;ACount:Integer):TVariantDynArray;
@@ -249,7 +326,361 @@ function GetParamValue(ANameArray:TStringDynArray;
                             AParamName:String;
                             ADefaultValue:Variant):Variant;
 
+//获取更新Json
+//function GetUpdateRecordJson(AOldJson:ISuperObject;ANewJson:ISuperObject):ISuperObject;
+
+function GetJsonValueArray(AFieldNames:Array of String;AJson:ISuperObject):TVariantDynArray;
+
+
+//获取默认的条件
+function GetWhereConditionItemSQL(
+                                        ALogicOperator,
+                                        AName,
+                                        AOperator:String;
+                                        AValue: Variant;
+                            AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''): String;
+
+//获取Where条件
+function GetWhereConditionSQL(AWhereKeyJsonArray:ISuperArray;
+                              AWhereKeyTranslatorList:TWhereKeyTranslatorList;
+                              AFieldTableAliasList:TStringList
+                              ):String;//virtual;
+
+//判断json是否存在别的字段
+function IsJsonHasNotExistsField(ARecordDataJson:ISuperObject;AFieldDefArray:ISuperArray;AParentFieldName:String;var ADesc:String):Boolean;
+
 implementation
+
+function IsJsonHasNotExistsField(ARecordDataJson:ISuperObject;AFieldDefArray:ISuperArray;AParentFieldName:String;var ADesc:String):Boolean;
+var
+  AParamNames:TStringDynArray;
+  I: Integer;
+  AFieldDefJson:ISuperObject;
+  J: Integer;
+begin
+  Result:=False;
+
+  if AParentFieldName<>'' then
+  begin
+    AParentFieldName:=AParentFieldName+'.'
+  end;
+
+  AParamNames:=GetJsonNameArray(ARecordDataJson);
+  for I := 0 to Length(AParamNames)-1 do
+  begin
+    AFieldDefJson:=LocateJsonArray(AFieldDefArray,'name',AParamNames[I]);
+    if AFieldDefJson=nil then
+    begin
+
+        //字段不存在
+        if ADesc<>'' then
+        begin
+          ADesc:=ADesc+',';
+        end;
+        ADesc:=ADesc+'表中不存在'+AParentFieldName+AParamNames[I];
+        Result:=True;
+
+    end
+    else
+    begin
+        //字段已经存在
+
+
+            //字段存在,是不是数组类型,如果是数组对象类型,则要判断里面的对象的字段是不是超了
+            if ARecordDataJson.GetType(AParamNames[I])=varArray then
+            begin
+                if AFieldDefJson.Contains('FieldList') then
+                begin
+                  //数组类型,判断子节点
+                  for J := 0 to ARecordDataJson.A[AParamNames[I]].Length-1 do
+                  begin
+                    if IsJsonHasNotExistsField(ARecordDataJson.A[AParamNames[I]].O[J],AFieldDefJson.A['FieldList'],AParentFieldName+AParamNames[I],ADesc) then
+                    begin
+                      Result:=True;
+                    end;
+
+                  end;
+                end
+                else
+                begin
+                  //类型不匹配
+                  if ADesc<>'' then
+                  begin
+                    ADesc:=ADesc+',';
+                  end;
+                  ADesc:=ADesc+AParentFieldName+AParamNames[I]+'字段类型不匹配';
+                  Result:=True;
+                end;
+            end
+            else if ARecordDataJson.GetType(AParamNames[I])=varObject then
+            begin
+                if AFieldDefJson.Contains('FieldList') then
+                begin
+                  if IsJsonHasNotExistsField(ARecordDataJson.O[AParamNames[I]],AFieldDefJson.A['FieldList'],AParentFieldName+AParamNames[I],ADesc) then
+                  begin
+                    Result:=True;
+                  end;
+                end
+                else
+                begin
+                  //类型不匹配
+                  if ADesc<>'' then
+                  begin
+                    ADesc:=ADesc+',';
+                  end;
+                  ADesc:=ADesc+AParentFieldName+AParamNames[I]+'字段类型不匹配';
+                  Result:=True;
+                end;
+            end;
+
+
+    end;
+  end;
+
+
+end;
+
+
+function GetWhereCondition(ALogicalOperator:String;
+                            AFieldName:String;
+                            ACompareOperator:String;
+                            AFieldValue:Variant;
+                            AFieldValueIsField:Boolean=False;
+                            AFieldValueIsCheckEmpty:Boolean=False;
+                            AFieldEmptyValue:String=''):ISuperObject;
+begin
+  Result:=nil;
+  if AFieldValueIsCheckEmpty and (AFieldValue=AFieldEmptyValue) then
+  begin
+    Exit;
+  end;
+
+  Result:=TSuperObject.Create;
+  Result.S['logical_operator']:=ALogicalOperator;//'AND';
+  Result.S['name']:=AFieldName;
+  Result.S['operator']:=ACompareOperator;//'=';
+  Result.V['value']:=AFieldValue;
+  Result.B['value_is_field']:=AFieldValueIsField;
+
+end;
+
+function GetWhereConditions(AFieldNames:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+var
+  I:Integer;
+
+  AWhereKeyJson:ISuperObject;
+  AWhereKeyJsonArray:ISuperArray;
+begin
+  AWhereKeyJsonArray:=TSuperArray.Create;
+
+  for I := 0 to Length(AFieldNames)-1 do
+  begin
+
+    AWhereKeyJson:=TSuperObject.Create;
+    AWhereKeyJson.S['logical_operator']:='AND';
+    AWhereKeyJson.S['name']:=AFieldNames[I];
+    AWhereKeyJson.S['operator']:='=';
+    AWhereKeyJson.V['value']:=AFieldValues[I];
+
+    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
+
+  end;
+
+  Result:=AWhereKeyJsonArray.AsJSON;
+end;
+
+
+function GetWhereKeyJson(AFieldNames:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+begin
+  Result:=GetWhereConditions(AFieldNames,AFieldValues);
+end;
+
+
+function GetWhereConditionsPro(AFieldNames:TStringDynArray;
+                            AFieldOpers:TStringDynArray;
+                            AFieldValues:TVariantDynArray):String;
+var
+  I:Integer;
+
+  AWhereKeyJson:ISuperObject;
+  AWhereKeyJsonArray:ISuperArray;
+begin
+  AWhereKeyJsonArray:=TSuperArray.Create;
+
+  for I := 0 to Length(AFieldNames)-1 do
+  begin
+
+    AWhereKeyJson:=TSuperObject.Create;
+    AWhereKeyJson.S['logical_operator']:='AND';
+    AWhereKeyJson.S['name']:=AFieldNames[I];
+    AWhereKeyJson.S['operator']:=AFieldOpers[I];
+    AWhereKeyJson.V['value']:=AFieldValues[I];
+
+    AWhereKeyJsonArray.O[I]:=AWhereKeyJson;
+
+  end;
+
+  Result:=AWhereKeyJsonArray.AsJSON;
+end;
+
+
+
+//function GetUpdateRecordJson(AOldJson:ISuperObject;ANewJson:ISuperObject):ISuperObject;
+//begin
+//  Result:=nil;
+//
+//end;
+
+//function TBaseQueryItem.GetWhereConditionSQL(AWhereKeyJsonArray: ISuperArray): String;
+function GetWhereConditionSQL(AWhereKeyJsonArray: ISuperArray;
+                              AWhereKeyTranslatorList:TWhereKeyTranslatorList;
+                              AFieldTableAliasList:TStringList): String;
+var
+  I:Integer;
+  ASubWhereConditionSQL:String;
+  AWhereConditionItemSQL:String;
+  AWhereKeyTranslator:TWhereKeyTranslator;
+  AFieldTableAlias:String;
+begin
+  Result:='';
+  ASubWhereConditionSQL:='';
+
+  for I := 0 to AWhereKeyJsonArray.Length-1 do
+  begin
+      if AWhereKeyJsonArray.O[I].Contains('conditions') then
+      begin
+          //子条件列表
+          ASubWhereConditionSQL:=GetWhereConditionSQL(AWhereKeyJsonArray.O[I].A['conditions'],AWhereKeyTranslatorList,AFieldTableAliasList);
+
+          Result:=Result
+                +' '+AWhereKeyJsonArray.O[I].S['logical_operator']
+                +' ('+ASubWhereConditionSQL+') ';
+
+      end
+      else
+      begin
+
+          //自定义获取条件表达式
+          AWhereKeyTranslator:=nil;
+          if AWhereKeyTranslatorList<>nil then AWhereKeyTranslatorList.Find(AWhereKeyJsonArray.O[I].S['name']);
+          if AWhereKeyTranslator<>nil then
+          begin
+              AWhereConditionItemSQL:=AWhereKeyTranslator.DoGetWhereConditionItemSQL(
+                                          AWhereKeyJsonArray.O[I].S['logical_operator'],
+                                          AWhereKeyJsonArray.O[I].S['operator'],
+                                          AWhereKeyJsonArray.O[I].V['value']);
+          end
+          else
+          begin
+
+//              if Assigned(Self.OnGetWhereConditionItemSQLEvent) then
+//              begin
+//                AWhereConditionItemSQL:=OnGetWhereConditionItemSQLEvent(Self,
+//                                          AWhereKeyJsonArray.O[I].S['logical_operator'],
+//                                          AWhereKeyJsonArray.O[I].S['name'],
+//                                          AWhereKeyJsonArray.O[I].S['operator'],
+//                                          AWhereKeyJsonArray.O[I].V['value']);
+//              end
+//              else
+//              begin
+                AFieldTableAlias:='';
+                if AFieldTableAliasList<>nil then
+                begin
+                  AFieldTableAlias:=AFieldTableAliasList.Values[AWhereKeyJsonArray.O[I].S['name']];
+                end;
+                //单个条件
+                AWhereConditionItemSQL:=GetWhereConditionItemSQL(
+                                            AWhereKeyJsonArray.O[I].S['logical_operator'],
+                                            AWhereKeyJsonArray.O[I].S['name'],
+                                            AWhereKeyJsonArray.O[I].S['operator'],
+                                            AWhereKeyJsonArray.O[I].V['value'],
+                                            AWhereKeyJsonArray.O[I].B['value_is_field'],
+                                            AFieldTableAlias
+                                            );
+
+//              end;
+
+          end;
+
+
+          Result:=Result+AWhereConditionItemSQL;
+      end;
+  end;
+end;
+
+
+function GetWhereConditionItemSQL(ALogicOperator,
+              AName,
+              AOperator:String;
+              AValue:Variant;
+                            AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''): String;
+var
+  AValueStr:String;
+begin
+  //有些字段有表别名,则要加上表别名
+//  if Self.FFieldTableAliasList.Values[AName]<>'' then
+//  begin
+//    AName:=Self.FFieldTableAliasList.Values[AName]+AName;
+//  end;
+
+  if AFieldTableAlias<>'' then
+  begin
+    AName:=AFieldTableAlias+AName;
+  end;
+
+  if SameText(AOperator,'LIKE') then
+  begin
+      //LIKE i'm  -> LIKE i''m
+      AValueStr:=QuotedStr(AValue);
+      //去掉两边的引号
+      AValueStr:=Copy(AValueStr,2,Length(AValueStr)-2);
+      Result:=' '+ALogicOperator+' ( '+AName+' '+AOperator+' ''%'+AValueStr+'%'' ) ';
+  end
+  else if SameText(AOperator,'IN') then
+  begin
+      //IN ('待派','已派工')  ->  IN (''待派'',''已派工'')
+      Result:=' '+ALogicOperator+' ( '+AName+' '+AOperator+' '+AValue+' ) ';
+  end
+  else if SameText(AOperator,'IS') then
+  begin
+      //IS NULL,IS NOT NULL
+      Result:=' '+ALogicOperator+' ( '+AName+' '+AOperator+' '+AValue+' ) ';
+  end
+  else
+  begin
+      if (VarType(AValue)=varString)
+        or (VarType(AValue)=varUString) then
+      begin
+        if not AFieldValueIsField then
+        begin
+          Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+QuotedStr(AValue)+') ';
+        end
+        else
+        begin
+          Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+AValue+') ';
+        end;
+      end
+      else
+      begin
+        AValueStr:=AValue;
+        Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+AValueStr+') ';
+      end;
+  end;
+end;
+
+
+function GetJsonValueArray(AFieldNames:Array of String;AJson:ISuperObject):TVariantDynArray;
+var
+  I: Integer;
+begin
+  SetLength(Result,Length(AFieldNames));
+  for I := 0 to Length(AFieldNames)-1 do
+  begin
+    Result[I]:=AJson.V[AFieldNames[I]];
+  end;
+end;
 
 //获取参数数组中的参数值
 function GetParamValue(ANameArray:TStringDynArray;
@@ -331,6 +762,7 @@ begin
 
       //直接取字段类型的整型值
       ASuperObject.I['field_type']:=Ord(AFieldDef.DataType);
+      ASuperObject.S['data_type']:='';
 
 
 
@@ -599,21 +1031,51 @@ begin
   end;
 end;
 
+function LocateArray(AStr:String;AStringArray:TStringDynArray):Integer;
+var
+  I: Integer;
+begin
+  Result:=-1;
+  for I := 0 to Length(AStringArray)-1 do
+  begin
+    if AStringArray[I]=AStr then
+    begin
+      Result:=I;
+      Break;
+    end;
+  end;
+end;
 
-procedure MergeJson(AJson:ISuperObject;AToJson:ISuperObject);
+procedure MergeJson(AFromJson:ISuperObject;AToJson:ISuperObject;AIsOverride:Boolean=True;AIsMergeArray:Boolean=False;AIgnoreFieldList:TStringDynArray=[]);
 var
   I: Integer;
   AParamNames:TStringDynArray;
-  AParamValues:TVariantDynArray;
 begin
   //获取需要添加的字段,去掉表中不存在的字段
-  ConvertJsonToArray(AJson,
-                      AParamNames,
-                      AParamValues,
-                      nil);
+  AParamNames:=GetJsonNameArray(AFromJson,nil,True,AIsMergeArray);
   for I := 0 to Length(AParamNames)-1 do
   begin
-    AToJson.V[AParamNames[I]]:=AParamValues[I];
+    if LocateArray(AParamNames[I],AIgnoreFieldList)<>-1 then Continue;
+    
+    //直接覆盖
+    if AIsOverride
+      //不存在,才添加
+      or not AIsOverride and not AToJson.Contains(AParamNames[I]) then
+    begin
+      if (AFromJson.GetType(AParamNames[I])=varArray) and AIsMergeArray then
+      begin
+        AToJson.A[AParamNames[I]]:=AFromJson.A[AParamNames[I]];
+      end
+      else
+      if AFromJson.GetType(AParamNames[I])=varObject then
+      begin
+        AToJson.O[AParamNames[I]]:=AFromJson.O[AParamNames[I]];
+      end
+      else
+      begin
+        AToJson.V[AParamNames[I]]:=AFromJson.V[AParamNames[I]];
+      end;
+    end;
   end;
 
 end;
@@ -647,9 +1109,13 @@ begin
   Result:=SA();
   for I := 0 to Length(AJsonArray)-1 do
   begin
-    Result.O[I]:=AJsonArray[I];
+    if AJsonArray[I]<>nil then
+    begin
+      Result.O[Result.Length]:=AJsonArray[I];
+    end;
   end;
 end;
+
 
 function GetFieldCondition(ALogicalOperator:String;
                             AFieldName:String;
@@ -783,14 +1249,29 @@ begin
 
 end;
 
-function GetJsonArrayValues(AJsonArray: ISuperArray;AName:String):TVariantDynArray;
+function GetJsonArrayValues(AJsonArray: ISuperArray;AKeyName:String):TVariantDynArray;
 var
   I:Integer;
 begin
   SetLength(Result,AJsonArray.Length);
   for I := 0 to AJsonArray.Length-1 do
   begin
-    Result[I]:=AJsonArray.O[I].V[AName];
+    Result[I]:=AJsonArray.O[I].V[AKeyName];
+  end;
+
+end;
+
+function GetJsonArrayValues2(AJsonArray: ISuperArray;AKeyName:String):ISuperArray;
+var
+  I:Integer;
+  AVariantDynArray:TVariantDynArray;
+begin
+  AVariantDynArray:=GetJsonArrayValues(AJsonArray,AKeyName);
+
+  Result:=SA();
+  for I := 0 to Length(AVariantDynArray)-1 do
+  begin
+    Result.V[I]:=AVariantDynArray[I];
   end;
 
 end;
@@ -803,6 +1284,35 @@ begin
   for I := 0 to Length(AValues)-1 do
   begin
     Result.Add(AValues[I]);
+  end;
+end;
+
+function GetJsonArrayValuesCommaText(AJsonArray: ISuperArray;AKeyName:String):String;
+var
+  AStringList:TStringList;
+begin
+  AStringList:=ConvertArrayToStringList(GetJsonArrayValues(AJsonArray,AKeyName));
+  try
+    Result:=AStringList.CommaText;
+  finally
+    FreeAndNil(AStringList);
+  end;
+end;
+
+function GetJsonArrayValuesCommaText(AJsonArray: ISuperArray):String;
+var
+  AStr:String;
+  I: Integer;
+begin
+  Result:='';
+  for I := 0 to AJsonArray.Length-1 do
+  begin
+    AStr:=AJsonArray.V[I];
+    if Result<>'' then
+    begin
+      Result:=Result+',';
+    end;
+    Result:=Result+AStr;
   end;
 end;
 
@@ -1181,6 +1691,64 @@ begin
   end;
 
 end;
+
+function CopyJson(AJson:ISuperObject;AIgnoreFieldList:TStringList=nil;
+                            AIsNeedNullValueField:Boolean=True;
+                            AIsNeedArrayValueField:Boolean=True;
+                            AIsNeedObjectValueField:Boolean=True):ISuperObject;
+var
+  I:Integer;
+  {$IF CompilerVersion > 21.0} // XE or older
+  ASuperEnumerator:TSuperEnumerator<IJSONPair>;
+  {$ELSE} // D2010之前
+  ASuperEnumerator:TSuperAvlIterator;
+  {$IFEND} // XE or older
+  ACurrentName:String;
+  ACurrentValue:Variant;
+begin
+
+  Result:=SO();
+
+  //遍历所有key
+  I:=0;
+  {$IF CompilerVersion > 21.0} // XE or older
+  ASuperEnumerator:=AJson.GetEnumerator;
+  {$ELSE} // D2010之前
+  ASuperEnumerator:=AJson.AsObject.GetEnumerator;
+  {$IFEND} // XE or older
+
+
+  while ASuperEnumerator.MoveNext do
+  begin
+
+    {$IF CompilerVersion > 21.0} // XE or older
+    ACurrentName:=ASuperEnumerator.GetCurrent.Name;
+    ACurrentValue:=ASuperEnumerator.GetCurrent.AsVariant;
+    {$ELSE} // D2010之前
+    ACurrentName:=ASuperEnumerator.Current.Name;
+    ACurrentValue:=AJson.V[ASuperEnumerator.Current.Name];
+    {$IFEND} // XE or older
+
+    if Not SameText(
+          Copy(ACurrentName,1,Length(NOPOST)),
+          NOPOST)
+        and (
+              (AIgnoreFieldList=nil)
+            or (AIgnoreFieldList<>nil) and (AIgnoreFieldList.IndexOf(ACurrentName)=-1)
+            )
+         and (AIsNeedNullValueField or not AIsNeedNullValueField and not VarIsNULL(ACurrentValue))
+         and (AIsNeedArrayValueField or not AIsNeedArrayValueField and (AJson.GetType(ACurrentName)<>varArray)  )
+         and (AIsNeedObjectValueField or not AIsNeedObjectValueField and (AJson.GetType(ACurrentName)<>varObject)  )
+         then
+    begin
+      Result.V[ACurrentName]:=ACurrentValue;
+
+    end;
+  end;
+
+end;
+
+
 
 //function GetJsonValueArray(AJson:ISuperObject;AFieldList:String):TVariantDynArray;
 //var
@@ -1711,6 +2279,7 @@ function JSonFromRecord(DataSet: TDataSet;AFieldMapList:TStringList=nil;AIsNeedN
 begin
   Result:=nil;
 
+
   if not DataSet.Eof then
   begin
     Result := TSuperObject.Create();
@@ -1721,7 +2290,7 @@ begin
 end;
 
 
-procedure JSonFromRecordTo(DataSet: TDataSet;ASuperObject:ISuperObject;AFieldMapList:TStringList=nil;AIsNeedNullField:Boolean=DEFAULT_IsNeedNullField);
+procedure JSonFromRecordTo(DataSet: TDataSet;ASuperObject:ISuperObject;AFieldMapList:TStringList=nil;AIsNeedNullField:Boolean=DEFAULT_IsNeedNullField;ANoNeedFieldNameList:TStringList=nil);
 var
   i:Integer;
 begin
@@ -1729,8 +2298,12 @@ begin
     begin
       for i := 0 to DataSet.FieldCount - 1 do
       begin
+        //不需要的字段
+        if (ANoNeedFieldNameList=nil) or (ANoNeedFieldNameList.IndexOf(DataSet.Fields[i].FieldName)=-1) then
+        begin
             //值不为空
             CreateJsonValueByField(ASuperObject,DataSet.Fields[i],AFieldMapList,AIsNeedNullField);
+        end;
       end;
     end;
 end;
@@ -1897,7 +2470,7 @@ function ReturnJson(ACode:Integer;
                     ADesc2:String;
                     ADataJson2:ISuperObject;
                     ANameArray:TStringDynArray;
-                    AValueArray:TVariantDynArray):ISuperObject;
+                     AValueArray:TVariantDynArray):ISuperObject;
 var
 //  ASign:String;
   ATimestamp:Integer;
@@ -2010,6 +2583,88 @@ constructor TBaseJsonObject.Create;
 begin
 
 end;
+
+{ TWhereKeyTranslator }
+
+constructor TWhereKeyTranslator.Create;
+begin
+  FieldNames:=TStringList.Create;
+
+end;
+
+destructor TWhereKeyTranslator.Destroy;
+begin
+  FreeAndNil(FieldNames);
+  inherited;
+end;
+
+function TWhereKeyTranslator.DoGetWhereConditionItemSQL(ALogicOperator,
+  AOperator: String; AValue: Variant): String;
+var
+  I: Integer;
+begin
+  Result:='';
+  if (AValue<>'') and (Self.FieldNames.Count>0) then
+  begin
+      Result:=' '+ALogicOperator+' ( ';
+
+      Result:=Result+' ( '+FieldNames[0]+' LIKE ''%'+AValue+'%'') ';
+      for I := 1 to FieldNames.Count-1 do
+      begin
+        Result:=Result+' OR ( '+FieldNames[I]+' LIKE ''%'+AValue+'%'') ';
+      end;
+
+//            +'    (车牌号 LIKE ''%'+AValue+'%'') '
+//            +' OR (车主 LIKE ''%'+AValue+'%'') '
+//            +' OR (往来单位 LIKE ''%'+AValue+'%'') '
+//            +' OR (名称输入码 LIKE ''%'+AValue+'%'') '
+//            +' OR (联系人 LIKE ''%'+AValue+'%'') '
+//            +' OR (联系电话 LIKE ''%'+AValue+'%'') '
+//            +' OR (驾驶员电话 LIKE ''%'+AValue+'%'') '
+
+      Result:=Result+' ) ';
+
+  end;
+
+end;
+
+{ TWhereKeyTranslatorList }
+
+function TWhereKeyTranslatorList.Add(AKey,AFieldNamesCommaText: String): TWhereKeyTranslator;
+begin
+  Result:=TWhereKeyTranslator.Create;
+
+  Result.Key:=AKey;
+  Result.FieldNames.CommaText:=AFieldNamesCommaText;
+
+  Inherited Add(Result);
+end;
+
+function TWhereKeyTranslatorList.Find(AKey: String): TWhereKeyTranslator;
+var
+  I: Integer;
+begin
+  Result:=nil;
+  for I := 0 to Self.Count-1 do
+  begin
+    if SameText(Items[I].Key,AKey) then
+    begin
+      Result:=Items[I];
+      Break;
+    end;
+  end;
+end;
+
+function TWhereKeyTranslatorList.GetItem(Index: Integer): TWhereKeyTranslator;
+begin
+  Result:=TWhereKeyTranslator(Inherited Items[Index]);
+end;
+
+//initialization
+//
+//  { TODO : 注释掉了 }
+//  //这个可能用处在值为null，字段也存在，字段不存在可能会有问题。
+//  DEFAULT_IsNeedNullField:=True;
 
 
 end.

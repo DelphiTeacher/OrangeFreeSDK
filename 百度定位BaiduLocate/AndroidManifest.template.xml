@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- BEGIN_INCLUDE(manifest) -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="%package%"
+    android:versionCode="%versionCode%"
+    android:versionName="%versionName%"
+    android:installLocation="%installLocation%">
+    <uses-sdk android:minSdkVersion="%minSdkVersion%" android:targetSdkVersion="%targetSdkVersion%" />
+<%uses-permission%>
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <queries>
+<%queries-child-elements%>
+    </queries>
+
+    <meta-data
+      android:name="com.baidu.lbsapi.API_KEY"
+      android:value="4ylDcWdXpha1GWRGRbnVsPvDDVkSDzQk" >
+    </meta-data>
+
+
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!-- 这个权限用于访问系统接口提供的卫星定位信息-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!-- 访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+	<!-- 后台定位 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:persistent="%persistent%"
+        android:restoreAnyVersion="%restoreAnyVersion%"
+        android:label="%label%"
+        android:debuggable="%debuggable%"
+        android:largeHeap="%largeHeap%"
+        android:icon="%icon%"
+        android:theme="%theme%"
+        android:hardwareAccelerated="%hardwareAccelerated%"
+        android:resizeableActivity="false"
+        android:requestLegacyExternalStorage="true">
+<%provider%>
+<%application-meta-data%>
+<%uses-libraries%>
+<%services%>
+        <!-- Our activity is a subclass of the built-in NativeActivity framework class.
+             This will take care of integrating with our NDK code. -->
+        <activity
+            android:name="com.embarcadero.firemonkey.FMXNativeActivity"
+            android:label="%activityLabel%"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:launchMode="singleTask">
+            <!-- Tell NativeActivity the name of our .so -->
+            <meta-data android:name="android.app.lib_name" android:value="%libNameValue%" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+<%activity%>
+<%receivers%>
+
+
+
+    <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote"> </service>
+
+
+
+    </application>
+</manifest>
+<!-- END_INCLUDE(manifest) -->

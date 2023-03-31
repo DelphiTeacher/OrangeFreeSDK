@@ -9,7 +9,7 @@ object Form2: TForm2
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnShow = FormShow
-  DesignerMasterStyle = 0
+  DesignerMasterStyle = 1
   object Button1: TButton
     Align = Top
     Size.Width = 346.000000000000000000
@@ -29,8 +29,8 @@ object Form2: TForm2
     Size.Height = 163.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 3
-    Viewport.Width = 342.000000000000000000
-    Viewport.Height = 159.000000000000000000
+    Viewport.Width = 338.000000000000000000
+    Viewport.Height = 155.000000000000000000
   end
   object Button2: TButton
     Align = Top

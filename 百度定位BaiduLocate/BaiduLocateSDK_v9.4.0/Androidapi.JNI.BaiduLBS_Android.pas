@@ -22,7 +22,7 @@ unit Androidapi.JNI.BaiduLBS_Android;
 
 interface
 
-
+{$IFDEF ANDROID}
 uses
   Androidapi.JNIBridge,
   Androidapi.JNI.JavaTypes,
@@ -7755,8 +7755,11 @@ type
   end;
 
   TJPoiRegion = class(TJavaGenericImport<JPoiRegionClass, JPoiRegion>) end;
+{$ENDIF}
 
 implementation
+
+{$IFDEF ANDROID}
 
 procedure RegisterTypes;
 begin
@@ -8269,5 +8272,6 @@ end;
 
 initialization
   RegisterTypes;
+{$ENDIF}
 
 end.

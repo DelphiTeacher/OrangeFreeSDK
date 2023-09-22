@@ -1,0 +1,167 @@
+object FrmMain: TFrmMain
+  Left = 0
+  Top = 0
+  Caption = 'Demo'
+  ClientHeight = 540
+  ClientWidth = 353
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnDestroy = FormDestroy
+  DesignerMasterStyle = 3
+  object btnInit: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #21021#22987#21270
+    OnClick = btnInitClick
+  end
+  object edtTrack2: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 5
+    Position.X = 184.000000000000000000
+    Position.Y = 112.000000000000000000
+    Size.Width = 153.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object btnCheckMagCard: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 56.000000000000000000
+    Size.Width = 321.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = #26816#27979#30913#26465#21345
+    OnClick = btnCheckMagCardClick
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    TextSettings.WordWrap = True
+    Align = Bottom
+    Position.Y = 380.000000000000000000
+    Size.Width = 353.000000000000000000
+    Size.Height = 160.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Viewport.Width = 345.000000000000000000
+    Viewport.Height = 152.000000000000000000
+  end
+  object Label1: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 120.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #33719#21462#30913#26465'2'#36712#21495#30721
+  end
+  object Label2: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 41.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #22359#21495
+  end
+  object edtBlock: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Text = '1'
+    Position.X = 56.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label3: TLabel
+    Position.X = 128.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 57.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #23494#30721
+  end
+  object Edit3: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    Text = 'FFFFFFFFFFFF'
+    Position.X = 168.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 153.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object btnCheckIcCard: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 321.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Text = #26816#27979'IC'#21345
+    OnClick = btnCheckIcCardClick
+  end
+  object Label4: TLabel
+    Position.X = 16.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 23.000000000000000000
+    Size.PlatformDefault = False
+    Text = #35835#20986'IC'#21345#30340#20869#23481
+  end
+  object edtContent: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    Text = '123456'
+    Position.X = 152.000000000000000000
+    Position.Y = 256.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object btnBeep: TButton
+    Position.X = 264.000000000000000000
+    Position.Y = 8.000000000000000000
+    TabOrder = 15
+    Text = #34562#40483
+    OnClick = btnBeepClick
+  end
+  object btnAuthCard: TButton
+    Position.X = 16.000000000000000000
+    Position.Y = 296.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 16
+    Text = #35748#35777
+    OnClick = btnAuthCardClick
+  end
+  object btnReadCard: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 296.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 44.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 17
+    Text = #35835#21345
+    OnClick = btnReadCardClick
+  end
+  object Button1: TButton
+    Position.X = 256.000000000000000000
+    Position.Y = 296.000000000000000000
+    TabOrder = 18
+    Text = #20889#21345
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Position.X = 144.000000000000000000
+    Position.Y = 344.000000000000000000
+    TabOrder = 20
+    Text = #25481#30005
+    OnClick = Button2Click
+  end
+end

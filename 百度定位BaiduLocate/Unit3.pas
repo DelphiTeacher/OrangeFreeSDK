@@ -6,6 +6,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
 
+//  uFuncCommon,
+
 
   {$IFDEF ANDROID}
   FMX.Platform.Android,
@@ -31,7 +33,7 @@ uses
 
 
   FMX.Controls.Presentation, FMX.StdCtrls, System.Sensors,
-  System.Sensors.Components, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
+  System.Sensors.Components, FMX.Memo.Types, FMX.ScrollBox, FMX.Memo, FMX.Edit;
 
 type
   TJBDLocationListener=class(TJavaLocal,JBDLocationListener)
@@ -42,8 +44,11 @@ type
   TForm3 = class(TForm)
     Button1: TButton;
     Memo1: TMemo;
+    Button2: TButton;
+    edtScanSpan: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -109,9 +114,9 @@ begin
   //可选，默认false，设置定位时是否需要海拔信息，默认不需要，除基础定位版本都可用
   locationOption.setIsNeedAltitude(false);
   //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者，该模式下开发者无需再关心定位间隔是多少，定位SDK本身发现位置变化就会及时回调给开发者
-  locationOption.setOpenAutoNotifyMode();
+  //locationOption.setOpenAutoNotifyMode();
   //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者
-  locationOption.setOpenAutoNotifyMode(3000,1, TJLocationClientOption.JavaClass.LOC_SENSITIVITY_HIGHT);
+  //locationOption.setOpenAutoNotifyMode(3000,1, TJLocationClientOption.JavaClass.LOC_SENSITIVITY_HIGHT);
   //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
   locationClient.setLocOption(locationOption);
   //开始定位
@@ -144,9 +149,17 @@ begin
 
   TThread.Synchronize(nil,procedure
   begin
-    Form3.Memo1.Lines.Insert(0,FloatToStr(P1.getLatitude)+','+FloatToStr(P1.getLongitude));
+    Form3.Memo1.Lines.Insert(0,DateTimeToStr(Now)+' '+FloatToStr(P1.getLatitude)+','+FloatToStr(P1.getLongitude));
   end);
 
+
+end;
+
+procedure TForm3.Button2Click(Sender: TObject);
+begin
+  locationOption.setScanSpan(StrToInt(Self.edtScanSpan.Text)*1000);
+  //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
+  locationClient.setLocOption(locationOption);
 
 end;
 

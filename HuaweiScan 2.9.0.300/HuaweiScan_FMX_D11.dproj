@@ -7,7 +7,7 @@
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Android</Platform>
-        <TargetedPlatforms>693267</TargetedPlatforms>
+        <TargetedPlatforms>37907</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
@@ -56,6 +56,12 @@
     <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Android' and '$(Cfg_1)'=='true') or '$(Cfg_1_Android)'!=''">
+        <Cfg_1_Android>true</Cfg_1_Android>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
@@ -196,26 +202,25 @@
         <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSLocationAlwaysAndWhenInUseUsageDescription=The reason for accessing the location information of the user;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=The reason for accessing the accelerometer;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers</VerInfo_Keys>
         <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DBXInterBaseDriver;emsclientfiredac;DataSnapFireDAC;tethering;bindcompfmx;FireDACIBDriver;fmx;FireDACDBXDriver;dbexpress;IndyCore;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;soapserver;bindengine;CloudService;kbmmwHTTPSYS_D103;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;IndyIPServer;IndySystem;fmxFireDAC;FireDAC;FireDACSqliteDriver;ibmonitor;soaprtl;DbxCommonDriver;ibxpress;ibxbindings;xmlrtl;DataSnapNativeClient;FireDACDSDriver;soapmidas;rtl;DbxClientDriver;CustomIPTransport;bindcomp;IndyIPClient;dbxcds;ChinaCock;DataSnapProviderClient;dsnapxml;dbrtl;IndyProtocols;fmxase;$(DCC_UsePackage);$(DCC_UsePackage)</DCC_UsePackage>
+        <iOS_AppStore1024>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_1024x1024.png</iOS_AppStore1024>
         <iPhone_AppIcon120>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png</iPhone_AppIcon120>
         <iPhone_AppIcon180>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_180x180.png</iPhone_AppIcon180>
-        <iPhone_Spotlight80>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png</iPhone_Spotlight80>
-        <iPhone_Spotlight120>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_120x120.png</iPhone_Spotlight120>
-        <iPad_AppIcon152>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png</iPad_AppIcon152>
-        <iPad_AppIcon167>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_167x167.png</iPad_AppIcon167>
-        <iPad_SpotLight80>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png</iPad_SpotLight80>
-        <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
         <iPhone_Launch2x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_2x.png</iPhone_Launch2x>
         <iPhone_LaunchDark2x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImageDark_2x.png</iPhone_LaunchDark2x>
         <iPhone_Launch3x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_3x.png</iPhone_Launch3x>
         <iPhone_LaunchDark3x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImageDark_3x.png</iPhone_LaunchDark3x>
-        <iPad_Launch2x>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImage_2x.png</iPad_Launch2x>
-        <iPad_LaunchDark2x>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageDark_2x.png</iPad_LaunchDark2x>
-        <iOS_AppStore1024>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_1024x1024.png</iOS_AppStore1024>
-        <iPhone_Notification60>$(BDS)\bin\Artwork\iOS\iPhone\FM_NotificationIcon_60x60.png</iPhone_Notification60>
+        <iPhone_Spotlight80>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png</iPhone_Spotlight80>
+        <iPhone_Spotlight120>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_120x120.png</iPhone_Spotlight120>
+        <iPhone_Setting58>$(BDS)\bin\Artwork\iOS\iPhone\FM_SettingIcon_58x58.png</iPhone_Setting58>
         <iPhone_Setting87>$(BDS)\bin\Artwork\iOS\iPhone\FM_SettingIcon_87x87.png</iPhone_Setting87>
         <iPhone_Notification40>$(BDS)\bin\Artwork\iOS\iPhone\FM_NotificationIcon_40x40.png</iPhone_Notification40>
-        <iPhone_Setting58>$(BDS)\bin\Artwork\iOS\iPhone\FM_SettingIcon_58x58.png</iPhone_Setting58>
+        <iPhone_Notification60>$(BDS)\bin\Artwork\iOS\iPhone\FM_NotificationIcon_60x60.png</iPhone_Notification60>
+        <iPad_AppIcon152>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png</iPad_AppIcon152>
+        <iPad_AppIcon167>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_167x167.png</iPad_AppIcon167>
+        <iPad_Launch2x>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImage_2x.png</iPad_Launch2x>
+        <iPad_LaunchDark2x>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageDark_2x.png</iPad_LaunchDark2x>
+        <iPad_SpotLight80>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png</iPad_SpotLight80>
+        <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
         <iPad_Notification40>$(BDS)\bin\Artwork\iOS\iPad\FM_NotificationIcon_40x40.png</iPad_Notification40>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_OSX64)'!=''">
@@ -228,10 +233,6 @@
         <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=1.0.0;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true;LSApplicationCategoryType=public.app-category.utilities;NSLocationUsageDescription=The reason for accessing the location information of the user;NSContactsUsageDescription=The reason for accessing the contacts;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSCameraUsageDescription=The reason for accessing the camera;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSMotionUsageDescription=The reason for accessing the accelerometer;NSDesktopFolderUsageDescription=The reason for accessing the Desktop folder;NSDocumentsFolderUsageDescription=The reason for accessing the Documents folder;NSDownloadsFolderUsageDescription=The reason for accessing the Downloads folder;NSNetworkVolumesUsageDescription=The reason for accessing files on a network volume;NSRemovableVolumesUsageDescription=The reason for accessing files on a removable volume;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <Base_OSX64>true</Base_OSX64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-        <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXInterBaseDriver;emsclientfiredac;DataSnapFireDAC;tethering;FireDACMSSQLDriver;bindcompfmx;DBXOracleDriver;inetdb;FireDACIBDriver;fmx;fmxdae;FireDACDBXDriver;dbexpress;IndyCore;dsnap;DataSnapCommon;emsclient;FireDACCommon;RESTBackendComponents;soapserver;bindengine;DBXMySQLDriver;CloudService;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;IndyIPServer;IndySystem;fmxFireDAC;FireDAC;FireDACSqliteDriver;ibmonitor;FireDACPgDriver;FireDACASADriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;ibxpress;DataSnapServer;ibxbindings;xmlrtl;DataSnapNativeClient;fmxobj;FireDACDSDriver;soapmidas;rtl;DbxClientDriver;DBXSybaseASADriver;CustomIPTransport;bindcomp;DBXInformixDriver;IndyIPClient;dbxcds;FireDACODBCDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;dsnapxml;dbrtl;FireDACMongoDBDriver;IndyProtocols;inetdbxpress;fmxase;$(DCC_UsePackage);$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DataSnapServerMidas;DBXDb2Driver;DBXInterBaseDriver;FmxTeeUI926;vclactnband;rbCIDE1926;vclFireDAC;SysCoreORM;rbDAD1926;rbDB1926;emsclientfiredac;dacfmx260;DataSnapFireDAC;tethering;svnui;FireDACADSDriver;FMXTeeLanguage926;rbRest1926;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;svn;DBXOracleDriver;inetdb;XLSReadWriteII;SysCoreEditor;emsedge;FireDACIBDriver;fmx;fmxdae;vquery260;vclib;rbUSER1926;dacvcl260;FireDACDBXDriver;dbexpress;IndyCore;FMXTeeImport926;rbRIDE1926;vclx;rbDIDE1926;dsnap;DataSnapCommon;emsclient;uniGUI26Chart;FireDACCommon;uniGUI26m;unidac260;RESTBackendComponents;DataSnapConnectors;uSynEdit_R2022;VCLRESTComponents;soapserver;vclie;FMXTeeDB926;bindengine;DBXMySQLDriver;CloudService;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;rbRCL1926;OrangeSDKDesign_FMX_D10_3;kbmmwHTTPSYS_D103;QExport4RT;FireDACCommonODBC;FireDACCommonDriver;rbTCUI1926;DataSnapClient;kbmMemRunD103Pro;inet;bindcompdbx;IndyIPCommon;dclRBDBE1926;vcl;DBXSybaseASEDriver;IndyIPServer;rbRAP1926;IndySystem;FireDACDb2Driver;FMXTee926;dsnapcon;rbIDE1926;FireDACMSAccDriver;FireDACInfxDriver;fmxFireDAC;vclimg;uniGUI26VCL;SysCoreEx;FireDAC;SysCore;SysCorePrint;unidacvcl260;emshosting;rbTC1926;FireDACSqliteDriver;ibmonitor;FireDACPgDriver;FireDACASADriver;kbmMWRunD103Ent;DBXOdbcDriver;FireDACTDataDriver;crcontrols260;rbBDE1926;soaprtl;DbxCommonDriver;rbRTL1926;ibxpress;SysCoreOther;DataSnapServer;ibxbindings;xmlrtl;DataSnapNativeClient;fmxobj;FireDACDSDriver;soapmidas;rtl;emsserverresource;DbxClientDriver;vclwinx;DBXSybaseASADriver;dac260;CustomIPTransport;vcldsnap;dclRBADO1926;dclRBIBE1926;bindcomp;appanalytics;FMXTeePro926;DBXInformixDriver;IndyIPClient;bindcompvcl;dclRBE1926;dclRBFireDAC1926;dbxcds;VclSmp;ChinaCock;adortl;FireDACODBCDriver;rbADO1926;rbIBE1926;DataSnapIndy10ServerTransport;unidacfmx260;DataSnapProviderClient;dsnapxml;dbrtl;FireDACMongoDBDriver;IndyProtocols;inetdbxpress;rbDBE1926;rbFireDAC1926;FMXTree26;rbUSERDesign1926;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
@@ -263,6 +264,12 @@
         <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Android)'!=''">
+        <PF_KeyStore>huaweipushtest.keystore</PF_KeyStore>
+        <PF_KeyStorePass>857E479A5FCF07DFCF26E560D171E33F81850535A05F97C997AA0FF88E783C8ADB56A385E3111C2FC1E2577DFAC4C363BA95367E043722D3163A459DE5E4229DC938F341D558FA9BBFF8AF117237859AF7D53319C3477255EB006E7F</PF_KeyStorePass>
+        <VerInfo_Build>1</VerInfo_Build>
+        <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -283,11 +290,9 @@
         <Android_NotificationAccentColor>#000000</Android_NotificationAccentColor>
         <VerInfo_Keys>package=com.ggggcexx.huaweipushtest;label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
         <PF_KeyStore>huaweipushtest.keystore</PF_KeyStore>
-        <PF_KeyStorePass>857E479A5FCF07DFCF26E560A4467BA2E44808467EBBECAD9F0A77648E3C3C87DB1DA3F8E3431C6BC1AE577CFADBC36BBAE93603046D229E167945DFE5FF22D6C924F373D516FACDBFBBAF5207401D4992333E581DE5096EE3EC16E3</PF_KeyStorePass>
+        <PF_KeyStorePass>857E479A5FCF07DFCF26E560A4467BA2E4480846A007979E97FF0FD68E643CD0DB48A3D6E35F1C31C1B0572FFA95C375BABB3651043C2288165745F0E5F4228DC949F31ED506FADDBFCAAF0D071E1D0F92013E44C3477255EB006E7F</PF_KeyStorePass>
         <PF_AliasKey>jj</PF_AliasKey>
-        <PF_AliasKeyPass>857E479A5FCF07DFCF26E560A4467BA2E44808467EBBECAD9F0A77648E3C3C87DB1DA3F8E3431C6BC1AE577CFADBC36BBAE93603046D229E167945DFE5FF22D6C924F373D516FACDBFBBAF5207401D4992333E581DE5096EE3EC16E3</PF_AliasKeyPass>
-        <PostBuildEvent><![CDATA["C:\OrangeFreeSDK\OrangeSDKSmartDeployment\Win32\Debug\OrangeSDKHelper.exe" $(PROJECTPATH)
-$(PostBuildEvent)]]></PostBuildEvent>
+        <PF_AliasKeyPass>857E479A5FCF5585A304712AD15DE33A81940557A005978797B40FAA8E6D3CD0DB48A3D6E3181C3AC1B85752FAB3C36BBABA361304262290166845ECE5BA2290C95DF35DD544A894D3853B427237859AF7D53319C3477255EB006E7F</PF_AliasKeyPass>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Android64)'!=''">
         <VerInfo_Build>1</VerInfo_Build>
@@ -377,238 +382,73 @@ $(PostBuildEvent)]]></PostBuildEvent>
                     <Source Name="MainSource">HuaweiScan_FMX_D11.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k280.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp280.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBC1926.bpl">File C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBC1926.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBIBE1926.bpl">File C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBIBE1926.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBDBE1926.bpl">File C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBDBE1926.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBFireDAC1926.bpl">File C:\三方控件\RBuilder\RAD Studio 10.3.3 绿色版\\Lib\Win32\dclRBFireDAC1926.bpl not found</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\20.0\Bpl\FMDHTMLEditD2010.bpl">ProfDHTMLEdit for Delphi 2010</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k260.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp260.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\TeeChart Pro VCL FMX Source Code 2020.29\Source\..\Compiled\Delphi26.win32\Bin\DclTeePro926.bpl">TeeChart Pro 2020 VCL Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\TeeChart Pro VCL FMX Source Code 2020.29\Source\..\Compiled\Delphi26.win32\Bin\DclTeeMaker126.bpl">TeeMaker</Excluded_Packages>
+                    <Excluded_Packages Name="C:\三方控件\TeeChart Pro VCL FMX Source Code 2020.29\Source\..\TeeTree\Compiled\Delphi26.win32\Bin\DclTree2D26Tee9.bpl">TeeTree 2 Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="4">
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Configuration="Release" Class="Android_LauncherIcon144"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Release" Class="Android_LauncherIcon192"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Release" Class="Android_LauncherIcon192">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Release" Class="Android_LauncherIcon192">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Release" Class="Android_LauncherIcon192"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Configuration="Release" Class="Android_LauncherIcon192"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Release" Class="Android_LauncherIcon36"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Configuration="Release" Class="Android_LauncherIcon48"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Configuration="Release" Class="Android_LauncherIcon72"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96">
-                    <Platform Name="Android">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_launcher.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Configuration="Release" Class="Android_LauncherIcon96"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24">
-                    <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Configuration="Release" Class="Android_NotificationIcon24"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Release" Class="Android_NotificationIcon36"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Release" Class="Android_NotificationIcon36">
-                    <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Release" Class="Android_NotificationIcon36">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Release" Class="Android_NotificationIcon36"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Configuration="Release" Class="Android_NotificationIcon36"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Release" Class="Android_NotificationIcon48"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Release" Class="Android_NotificationIcon48">
-                    <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Release" Class="Android_NotificationIcon48">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Release" Class="Android_NotificationIcon48"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Configuration="Release" Class="Android_NotificationIcon48"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72">
-                    <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Configuration="Release" Class="Android_NotificationIcon72"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96">
-                    <Platform Name="Android">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96">
-                    <Platform Name="Android64">
-                        <RemoteName>ic_notification.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Configuration="Release" Class="Android_NotificationIcon96"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Release" Class="Android_SplashImage426"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Release" Class="Android_SplashImage426">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Release" Class="Android_SplashImage426">
-                    <Platform Name="Android64">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Release" Class="Android_SplashImage426"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Configuration="Release" Class="Android_SplashImage426"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470">
-                    <Platform Name="Android64">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Configuration="Release" Class="Android_SplashImage470"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640">
-                    <Platform Name="Android64">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Configuration="Release" Class="Android_SplashImage640"/>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Release" Class="Android_SplashImage960"/>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Release" Class="Android_SplashImage960">
-                    <Platform Name="Android">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Release" Class="Android_SplashImage960">
-                    <Platform Name="Android64">
-                        <RemoteName>splash_image.png</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiv7aFile">
-                    <Platform Name="Android64">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Release" Class="Android_SplashImage960"/>
+                <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Configuration="Release" Class="Android_SplashImage960"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiv7aFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile"/>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile">
-                    <Platform Name="Android">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile">
-                    <Platform Name="Android64">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeArmeabiFile"/>
                 <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
-                    <Platform Name="Android">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile">
-                    <Platform Name="Android64">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
+                <DeployFile LocalName="$(BDS)\lib\android\debug\mips\libnative-activity.so" Configuration="Release" Class="AndroidLibnativeMipsFile"/>
                 <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
@@ -638,92 +478,22 @@ $(PostBuildEvent)]]></PostBuildEvent>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest">
-                    <Platform Name="Android64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\colors.xml" Configuration="Release" Class="Android_Colors">
-                    <Platform Name="Android64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\HuaweiScan_FMX_D11.classes" Configuration="Release" Class="AndroidClasses">
-                    <Platform Name="Android64">
-                        <Operation>64</Operation>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\libHuaweiScan_FMX_D11.so" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Android64">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\splash_image_def.xml" Configuration="Release" Class="AndroidSplashImageDef">
-                    <Platform Name="Android64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\strings.xml" Configuration="Release" Class="Android_Strings">
-                    <Platform Name="Android64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\styles-v21.xml" Configuration="Release" Class="AndroidSplashStylesV21">
-                    <Platform Name="Android64">
-                        <RemoteName>styles.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android64\D11\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles">
-                    <Platform Name="Android64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\colors.xml" Configuration="Release" Class="Android_Colors">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\HuaweiScan_FMX_D11.classes" Configuration="Release" Class="AndroidClasses">
-                    <Platform Name="Android">
-                        <Operation>64</Operation>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\libHuaweiScan_FMX_D11.so" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Android">
-                        <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\splash_image_def.xml" Configuration="Release" Class="AndroidSplashImageDef">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\strings.xml" Configuration="Release" Class="Android_Strings">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\styles-v21.xml" Configuration="Release" Class="AndroidSplashStylesV21">
-                    <Platform Name="Android">
-                        <RemoteName>styles.xml</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Android\D11\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles">
-                    <Platform Name="Android">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="Android64\D11\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest"/>
+                <DeployFile LocalName="Android64\D11\Release\colors.xml" Configuration="Release" Class="Android_Colors"/>
+                <DeployFile LocalName="Android64\D11\Release\HuaweiScan_FMX_D11.classes" Configuration="Release" Class="AndroidClasses"/>
+                <DeployFile LocalName="Android64\D11\Release\libHuaweiScan_FMX_D11.so" Configuration="Release" Class="ProjectOutput"/>
+                <DeployFile LocalName="Android64\D11\Release\splash_image_def.xml" Configuration="Release" Class="AndroidSplashImageDef"/>
+                <DeployFile LocalName="Android64\D11\Release\strings.xml" Configuration="Release" Class="Android_Strings"/>
+                <DeployFile LocalName="Android64\D11\Release\styles-v21.xml" Configuration="Release" Class="AndroidSplashStylesV21"/>
+                <DeployFile LocalName="Android64\D11\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles"/>
+                <DeployFile LocalName="Android\D11\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest"/>
+                <DeployFile LocalName="Android\D11\Release\colors.xml" Configuration="Release" Class="Android_Colors"/>
+                <DeployFile LocalName="Android\D11\Release\HuaweiScan_FMX_D11.classes" Configuration="Release" Class="AndroidClasses"/>
+                <DeployFile LocalName="Android\D11\Release\libHuaweiScan_FMX_D11.so" Configuration="Release" Class="ProjectOutput"/>
+                <DeployFile LocalName="Android\D11\Release\splash_image_def.xml" Configuration="Release" Class="AndroidSplashImageDef"/>
+                <DeployFile LocalName="Android\D11\Release\strings.xml" Configuration="Release" Class="Android_Strings"/>
+                <DeployFile LocalName="Android\D11\Release\styles-v21.xml" Configuration="Release" Class="AndroidSplashStylesV21"/>
+                <DeployFile LocalName="Android\D11\Release\styles.xml" Configuration="Release" Class="AndroidSplashStyles"/>
                 <DeployFile LocalName="Android\Release\AndroidManifest.xml" Configuration="Release" Class="ProjectAndroidManifest"/>
                 <DeployFile LocalName="Android\Release\colors.xml" Configuration="Release" Class="Android_Colors"/>
                 <DeployFile LocalName="Android\Release\HuaweiScan_FMX_D11.classes" Configuration="Release" Class="AndroidClasses"/>
@@ -3248,10 +3018,10 @@ $(PostBuildEvent)]]></PostBuildEvent>
                 <Platform value="Android">True</Platform>
                 <Platform value="Android64">True</Platform>
                 <Platform value="iOSDevice64">True</Platform>
-                <Platform value="iOSSimARM64">True</Platform>
+                <Platform value="iOSSimARM64">False</Platform>
                 <Platform value="Linux64">False</Platform>
                 <Platform value="OSX64">True</Platform>
-                <Platform value="OSXARM64">True</Platform>
+                <Platform value="OSXARM64">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
@@ -3261,12 +3031,4 @@ $(PostBuildEvent)]]></PostBuildEvent>
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
     <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
-    <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Android'">
-        <PreBuildEvent/>
-        <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
-        <PreLinkEvent/>
-        <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>&quot;C:\OrangeFreeSDK\OrangeSDKSmartDeployment\Win32\Debug\OrangeSDKHelper.exe&quot; $(PROJECTPATH)</PostBuildEvent>
-        <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
-    </PropertyGroup>
 </Project>

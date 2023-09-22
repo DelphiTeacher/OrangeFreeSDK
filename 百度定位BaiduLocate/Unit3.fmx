@@ -13,7 +13,7 @@ object Form3: TForm3
     Position.X = 24.000000000000000000
     Position.Y = 64.000000000000000000
     TabOrder = 0
-    Text = 'Button1'
+    Text = #24320#22987#23450#20301
     OnClick = Button1Click
   end
   object Memo1: TMemo
@@ -27,5 +27,22 @@ object Form3: TForm3
     TabOrder = 1
     Viewport.Width = 293.000000000000000000
     Viewport.Height = 341.000000000000000000
+  end
+  object Button2: TButton
+    Position.X = 168.000000000000000000
+    Position.Y = 64.000000000000000000
+    TabOrder = 2
+    Text = #35774#32622#38388#38548
+    OnClick = Button2Click
+  end
+  object edtScanSpan: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 3
+    Text = '10'
+    Position.X = 256.000000000000000000
+    Position.Y = 64.000000000000000000
+    Size.Width = 65.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
   end
 end

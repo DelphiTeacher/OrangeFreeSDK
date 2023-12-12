@@ -1,0 +1,2 @@
+-keep class com.bytedance.applog.convert.ClickIdProvider {public *; }
+-keep class com.bytedance.applog.convert.IPIDProvider {public *; }

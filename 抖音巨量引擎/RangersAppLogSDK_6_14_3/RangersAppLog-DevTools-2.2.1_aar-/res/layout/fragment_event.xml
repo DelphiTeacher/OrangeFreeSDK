@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/body"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/card_bg"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_bg">
+
+                <EditText
+                    android:id="@+id/keyword"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:background="@null"
+                    android:hint="搜索关键字"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="32dp"
+                    android:singleLine="true"
+                    android:textColor="#1D2129"
+                    android:textColorHint="#86909C"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:src="@drawable/search" />
+            </RelativeLayout>
+
+            <com.bytedance.applog.devtools.ui.component.MoreBtn
+                android:id="@+id/more_btn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/filter_more_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="6dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+
+                android:orientation="horizontal">
+
+                <com.bytedance.applog.devtools.ui.component.DropMenu
+                    android:id="@+id/search_scope"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:text="模糊搜索" />
+
+
+                <com.bytedance.applog.devtools.ui.component.DropMenu
+                    android:id="@+id/type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:text="全部类型" />
+
+                <com.bytedance.applog.devtools.ui.component.SortBtn
+                    android:id="@+id/sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp" />
+
+                <!--clear-->
+                <ImageView
+                    android:id="@+id/pull"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/refresh_icon" />
+
+                <!--clear-->
+                <ImageView
+                    android:id="@+id/clear"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/icon_clear" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.bytedance.applog.devtools.ui.component.DropMenu
+                    android:id="@+id/filter_local_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    app:text="模糊搜索" />
+
+                <com.bytedance.applog.devtools.ui.component.DropMenu
+                    android:id="@+id/filter_remote_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:text="全部类型" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/card_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:orientation="horizontal">
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/event_total_num"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:text_icon="@drawable/event_total_icon"
+                app:num_color="#333333"
+                app:num="0"
+                app:text="总计" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/event_warning_num"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:text_icon="@drawable/event_warning_icon"
+                app:num="0"
+                app:num_color="#FF7D00"
+                app:text="异常" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/event_success_num"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:text_icon="@drawable/event_success_icon"
+                app:num="0"
+                app:num_color="#00B42A"
+                app:text="成功" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/event_db_num"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                app:text_icon="@drawable/event_db_icon"
+                app:num_color="#86909C"
+                app:num="0"
+                app:text="缓存" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="34dp"
+            android:background="#33000000" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="34dp"
+            android:layout_marginLeft="66dp"
+            android:background="#33000000" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/content"
+            android:layout_marginTop="34dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:padding="12dp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

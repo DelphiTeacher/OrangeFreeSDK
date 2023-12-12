@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btn"
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:background="@drawable/filter_icon_square_bg">
+
+    <ImageView
+        android:id="@+id/btn_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/filter_icon_square" />
+</RelativeLayout>

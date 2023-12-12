@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bytedance.applog"
+    android:versionCode="6140390"
+    android:versionName="6.14.3" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="29" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+        <service
+            android:name="com.volcengine.onekit.component.ComponentDiscoveryService"
+            android:exported="false" >
+            <meta-data
+                android:name="com.bytedance.applog.onekit.AnalyticsComponentRegistrar"
+                android:value="com.volcengine.onekit.component.ComponentRegistrar" />
+            <meta-data
+                android:name="com.bytedance.applog.onekit.DeviceComponentRegistrar"
+                android:value="com.volcengine.onekit.component.ComponentRegistrar" />
+        </service>
+
+        <activity android:name="com.bytedance.applog.migrate.MigrateDetectorActivity" />
+
+        <receiver
+            android:name="com.bytedance.applog.collector.Collector"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>

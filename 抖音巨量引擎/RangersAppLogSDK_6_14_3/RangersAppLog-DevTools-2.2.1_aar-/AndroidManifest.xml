@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bytedance.applog.devtools"
+    android:versionCode="2020190"
+    android:versionName="2.2.1" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="31" />
+
+    <application>
+        <provider
+            android:name="com.bytedance.applog.devtools.provider.AppLifeCycleProvider"
+            android:authorities="com.jzxyqn.jzxygame.devtools.AppLifeCycleProvider"
+            android:exported="false" />
+        <provider
+            android:name="com.bytedance.applog.devtools.provider.CustomFileProvider"
+            android:authorities="com.jzxyqn.jzxygame"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/applog_devtools_provider_paths" />
+        </provider>
+    </application>
+
+</manifest>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.bytedance.applog.devtools.ui.component.DialogRootView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/box_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99000000"
+    android:orientation="vertical">
+
+    <com.bytedance.applog.devtools.ui.component.DialogContentView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/dialog_bkg"
+        android:paddingTop="20dp"
+        android:clickable="true">
+
+    </com.bytedance.applog.devtools.ui.component.DialogContentView>
+
+</com.bytedance.applog.devtools.ui.component.DialogRootView>

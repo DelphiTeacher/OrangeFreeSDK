@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/expand_collapse_btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:paddingBottom="12dp">
+
+            <ImageView
+                android:id="@+id/expand_collapse_btn_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/icon_collapse" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <RelativeLayout
+            android:id="@+id/close_btn"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/close" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:scrollbars="none"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="12dp">
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/event_warning_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                app:num="0"
+                app:num_color="#333333"
+                app:text="事件异常"
+                app:text_icon="@drawable/event_warning_icon" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/params_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                app:num="0"
+                app:num_color="#333333"
+                app:text="属性总数"
+                app:text_icon="@drawable/event_total_icon" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/warn_params_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                app:num="0"
+                app:num_color="#FF7D00"
+                app:text="异常属性"
+                app:text_icon="@drawable/validator_warning" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/new_params_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                app:num="0"
+                app:num_color="#5594F9"
+                app:text="新增属性"
+                app:text_icon="@drawable/validator_tip" />
+
+            <com.bytedance.applog.devtools.ui.component.IconTextView
+                android:id="@+id/lost_params_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="18dp"
+                app:num="0"
+                app:num_color="#5594F9"
+                app:text="缺失属性"
+                app:text_icon="@drawable/validator_lost_params" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="#33000000" />
+
+    <HorizontalScrollView
+        android:id="@+id/jsonBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <com.bytedance.applog.devtools.jsonviewer.JsonViewer
+                android:id="@+id/json_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp" />
+        </ScrollView>
+    </HorizontalScrollView>
+
+</LinearLayout>

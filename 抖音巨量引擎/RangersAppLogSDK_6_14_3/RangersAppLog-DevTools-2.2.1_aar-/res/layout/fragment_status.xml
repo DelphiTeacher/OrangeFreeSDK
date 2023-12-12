@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.bytedance.applog.devtools.ui.component.StatusItemView
+            android:id="@+id/check_version"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:step="1"
+            app:title="版本检查" />
+
+        <com.bytedance.applog.devtools.ui.component.StatusItemView
+            android:id="@+id/check_init"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:step="2"
+            app:title="初始化检查" />
+
+        <com.bytedance.applog.devtools.ui.component.StatusItemView
+            android:id="@+id/check_module"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:step="3"
+            app:title="功能接入检查" />
+
+        <com.bytedance.applog.devtools.ui.component.StatusItemView
+            android:id="@+id/check_remote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:step="4"
+            app:title="服务接口检查" />
+
+        <com.bytedance.applog.devtools.ui.component.StatusItemView
+            android:id="@+id/check_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:is_last="true"
+            app:step="5"
+            app:title="埋点上报检查" />
+
+    </LinearLayout>
+</ScrollView>

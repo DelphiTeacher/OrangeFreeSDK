@@ -1,0 +1,72 @@
+object Form4: TForm4
+  Left = 0
+  Top = 0
+  Caption = 'Form4'
+  ClientHeight = 480
+  ClientWidth = 381
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object btnInit: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = #21021#22987
+    OnClick = btnInitClick
+  end
+  object btnRegister: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #27880#20876#38170#28857
+    OnClick = btnRegisterClick
+  end
+  object btnPay: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = #25903#20184#38170#28857
+    OnClick = btnPayClick
+  end
+  object btnStartPlay: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 272.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = #24320#22987#29609#28216#25103
+    OnClick = btnStartPlayClick
+  end
+  object Button2: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 328.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = #32467#26463#29609#28216#25103
+    Visible = False
+    OnClick = btnStartPlayClick
+  end
+  object btnCreateGameRole: TButton
+    Position.X = 136.000000000000000000
+    Position.Y = 208.000000000000000000
+    Size.Width = 121.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    Text = #21019#24314#28216#25103#35282#33394
+    OnClick = btnCreateGameRoleClick
+  end
+end

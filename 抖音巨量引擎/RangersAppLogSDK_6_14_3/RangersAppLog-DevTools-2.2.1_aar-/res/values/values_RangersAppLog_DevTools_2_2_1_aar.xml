@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="jsonViewer_textColorBool">#ff8c00</color>
+    <color name="jsonViewer_textColorNull">#808080</color>
+    <color name="jsonViewer_textColorNumber">#ee422e</color>
+    <color name="jsonViewer_textColorString">#008000</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <style name="JsonViewer.TextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">monospace</item>
+    </style>
+    <declare-styleable name="DevTools">
+        <attr format="string" name="tag"/>
+        <attr format="color" name="textColorString"/>
+        <attr format="color" name="textColorBool"/>
+        <attr format="color" name="textColorNull"/>
+        <attr format="color" name="textColorNumber"/>
+        <attr format="string" name="text"/>
+        <attr format="integer" name="selected_icon"/>
+        <attr format="integer" name="unselected_icon"/>
+        <attr format="boolean" name="selected"/>
+        <attr format="string" name="label"/>
+        <attr format="string" name="text_value"/>
+        <attr format="string" name="title"/>
+        <attr format="integer" name="step"/>
+        <attr format="boolean" name="is_last"/>
+        <attr format="integer" name="text_icon"/>
+        <attr format="string" name="num"/>
+        <attr format="color" name="num_color"/>
+    </declare-styleable>
+</resources>

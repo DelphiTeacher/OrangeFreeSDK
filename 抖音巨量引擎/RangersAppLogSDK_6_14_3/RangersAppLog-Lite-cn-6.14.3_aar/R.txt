@@ -1,0 +1,6 @@
+int id applog_tag_ignore 0x7f0b0001
+int id applog_tag_view_id 0x7f0b0002
+int id applog_tag_view_name 0x7f0b0003
+int id text_tip 0x7f0b0004
+int layout applog_activity_simulate 0x7f0e0001
+int string app_name 0x7f140001

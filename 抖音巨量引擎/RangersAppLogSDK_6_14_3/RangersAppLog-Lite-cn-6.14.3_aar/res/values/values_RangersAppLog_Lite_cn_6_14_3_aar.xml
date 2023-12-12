@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="applog_tag_ignore" type="id"/>
+    <item name="applog_tag_view_id" type="id"/>
+    <item name="applog_tag_view_name" type="id"/>
+</resources>

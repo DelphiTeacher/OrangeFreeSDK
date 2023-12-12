@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:clickable="true"
+    android:paddingRight="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AppLog DevTools"
+            android:textColor="#111111"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:id="@+id/app_id_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="1dp"
+                        android:text="APP ID"
+                        android:textColor="#86909C"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/app_id_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="183955"
+                        android:textColor="#333333"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/down" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/close_btn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="36dp">
+
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/close" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--    new navigation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal"
+        android:paddingStart="24dp"
+        android:paddingRight="24dp">
+
+        <com.bytedance.applog.devtools.ui.component.NavItemView
+            android:id="@+id/nav_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:selected_icon="@drawable/nav_status_selected"
+            app:text="接入"
+            app:unselected_icon="@drawable/nav_status_unselected" />
+
+        <com.bytedance.applog.devtools.ui.component.NavItemView
+            android:id="@+id/nav_setting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:selected_icon="@drawable/nav_setting_selected"
+            app:text="配置"
+            app:unselected_icon="@drawable/nav_setting_unselected" />
+
+        <com.bytedance.applog.devtools.ui.component.NavItemView
+            android:id="@+id/nav_event"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:selected_icon="@drawable/nav_event_selected"
+            app:text="事件"
+            app:unselected_icon="@drawable/nav_event_unselected" />
+
+        <com.bytedance.applog.devtools.ui.component.NavItemView
+            android:id="@+id/nav_log"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:selected_icon="@drawable/nav_log_selected"
+            app:text="日志"
+            app:unselected_icon="@drawable/nav_log_unselected" />
+
+        <com.bytedance.applog.devtools.ui.component.NavItemView
+            android:id="@+id/nav_net"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:selected_icon="@drawable/nav_net_selected"
+            app:text="网络"
+            app:unselected_icon="@drawable/nav_net_unselected" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/contentPanel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.bytedance.applog.devtools.ui.StatusFragment
+            android:id="@+id/statusFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+
+        <com.bytedance.applog.devtools.ui.AppInfoFragment
+            android:id="@+id/baseInfoFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.bytedance.applog.devtools.ui.LogFragment
+            android:id="@+id/logFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.bytedance.applog.devtools.ui.EventFragment
+            android:id="@+id/eventFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.bytedance.applog.devtools.ui.NetworkFragment
+            android:id="@+id/networkFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

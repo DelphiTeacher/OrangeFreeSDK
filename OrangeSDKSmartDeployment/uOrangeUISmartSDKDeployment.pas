@@ -13,8 +13,10 @@ uses
 //  Winapi.Messages,
 //  Vcl.Graphics,
   System.Win.Registry,
-  FMX.Forms,
-  FMX.Dialogs,
+//  FMX.Forms,
+//  FMX.Dialogs,
+  Forms,
+  Dialogs,
   {$ENDIF}
 
   System.SysUtils,
@@ -394,8 +396,13 @@ type
     constructor Create;
     destructor Destroy;override;
   public
+
+//    FJDKDir,
+//    FAndroidSDKDir, FAndroidSDKPlatform, FAndroidSDKBuildTools: String;
+
 //    //获取Android的包名
 //    function GetAndroidPackageName(AProjectFilePath:String):String;
+
     //从工程文件加载文件布署列表
     function LoadDeployFileListFromProject(AProjectFilePath:String):Boolean;
 
@@ -589,7 +596,7 @@ var
 //procedure CombineXMLNode(ASrcNode:IXMLNode;ADestNode:IXMLNode);
 //合并XML
 //procedure CombineXML(AXMLAFilePath:String;AXMLBFilePath:String;ADestXMLFilePath:String);
-procedure ReNameDumpXMLNode(AXMLAFilePath:String;ANameList:TStringList);
+procedure ReNameDumpXMLNode(AXMLAFilePath:String;ANameList:TStringList;AIsNeedRename:Boolean);
 
 
 
@@ -697,6 +704,7 @@ procedure DoGetFileList(dirName:string;AFilePathList:TStringList);
 
 //取出AndroidManifest.xml中的包名
 function GetAndroidPackageName(AAndroidManifestXmlFilePath:String):String;
+function GetProjectAndroidPackageName(AProjectFilePath:String):String;
 
 procedure ProcessConfigVariables(AStringList:TStringList;AConfigVariableList:TConfigVariableList);
 
@@ -762,7 +770,11 @@ function GenerateProject_R_Java_Jar(AProjectFilePath:String;
                                     AAndroidPlatform:String;
                                     ADebugOrRelease:String;
                                     ADelphiVersion:String;
-                                    AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
+                                    AGetCommandLineOutputEvent:TGetCommandLineOutputEvent;
+                                    AJDKDir:String;
+                                    AAndroidSDKDir:String;
+                                    AAndroidSDKPlatform:String;
+                                    AAndroidSDKBuildTools:String
                                     ):Boolean;
 
 //从工程文件中获取生成目录
@@ -900,7 +912,11 @@ function GenerateProject_R_Java_Jar(AProjectFilePath:String;
                                     AAndroidPlatform:String;
                                     ADebugOrRelease:String;
                                     ADelphiVersion:String;
-                                    AGetCommandLineOutputEvent:TGetCommandLineOutputEvent
+                                    AGetCommandLineOutputEvent:TGetCommandLineOutputEvent;
+                                    AJDKDir:String;
+                                    AAndroidSDKDir:String;
+                                    AAndroidSDKPlatform:String;
+                                    AAndroidSDKBuildTools:String
                                     ):Boolean;
 var
   I:Integer;
@@ -915,10 +931,10 @@ var
   AAndroidJarList:TStringList;
   AAbsoluteFileList:TStringList;
 
-  var AJDKDir:String;
-  var AAndroidSDKDir:String;
-  var AAndroidSDKPlatform:String;
-  var AAndroidSDKBuildTools:String;
+//  var AJDKDir:String;
+//  var AAndroidSDKDir:String;
+//  var AAndroidSDKPlatform:String;
+//  var AAndroidSDKBuildTools:String;
 
   ABatStringList:TStringList;
   AGenJarBatFilePath:String;
@@ -964,24 +980,24 @@ begin
 
 
 
-  if not FProjectConfig.GetAndroidSDKSetting(
-                                            //19.0,20.0
-                                            ADelphiVersion,//'20.0',
-                                            //后面都不带\
-                                            AJDKDir,
-                                            AAndroidSDKDir,
-                                            AAndroidSDKPlatform,
-                                            AAndroidSDKBuildTools
-                                            ) then
-  begin
-    AGetCommandLineOutputEvent('','','Delphi的AndroidSDK配置有问题!');
-    HandleException(nil,'Delphi的AndroidSDK配置有问题!');
-//    TThread.Synchronize(nil,procedure
-//    begin
-//      ShowMessage('Delphi的AndroidSDK配置有问题!');
-//    end);
-    Exit;
-  end;
+//  if not FProjectConfig.GetAndroidSDKSetting(
+//                                            //19.0,20.0
+//                                            ADelphiVersion,//'20.0',
+//                                            //后面都不带\
+//                                            AJDKDir,
+//                                            AAndroidSDKDir,
+//                                            AAndroidSDKPlatform,
+//                                            AAndroidSDKBuildTools
+//                                            ) then
+//  begin
+//    AGetCommandLineOutputEvent('','','Delphi的AndroidSDK配置有问题!');
+//    HandleException(nil,'Delphi的AndroidSDK配置有问题!');
+////    TThread.Synchronize(nil,procedure
+////    begin
+////      ShowMessage('Delphi的AndroidSDK配置有问题!');
+////    end);
+//    Exit;
+//  end;
 
 
 
@@ -1889,6 +1905,174 @@ begin
   {$ENDIF}
 end;
 
+function GetVersionInfoKeyPackage(AXMLNode: IXMLNode;AProjectGroupCondition:String):String;
+var
+  I: Integer;
+  AXMLChildNode: IXMLNode;
+  AVerInfo_KeysNode:IXMLNode;
+  AVerInfo_Keys:TStringList;
+begin
+
+  Result:='';
+
+
+//    <PropertyGroup Condition="'$(Cfg_2_Android)'!=''">
+//        <PF_KeyStorePass>857E479A5FCF07DFCF26E560A4467BA2E44808467EBBECAD97E40FA78E273CF6DB5EA3DEE3551C63C1A4572EFACFC36ABAB3361C046522D316204584E58822A2C958F35CD507FA8FBFBAAF0007301D44921D3E131DF90939EB006E7F</PF_KeyStorePass>
+//        <PF_AliasKey>police</PF_AliasKey>
+//        <PF_KeyStore>E:\MyFiles\OrangeUIProduct\粤警党风\APP\police_138575wangneng.keystore</PF_KeyStore>
+//        <PF_AliasKeyPass>857E479A5FCF07DFCF26E560D171E33F81850535A05F97C997AA0FF88E783C8ADB56A385E3111C2FC1E2577DFAC4C363BA95367E043722D3163A459DE5E4229DC938F341D558FA9BBFF8AF117237859AF7D53319C3477255EB006E7F</PF_AliasKeyPass>
+//        <BT_BuildType>AppStore</BT_BuildType>
+
+//        <Android_LauncherIcon36>android36.png</Android_LauncherIcon36>
+//        <Android_LauncherIcon48>android48.png</Android_LauncherIcon48>
+//        <Android_LauncherIcon72>android72.png</Android_LauncherIcon72>
+//        <Android_LauncherIcon96>android96.png</Android_LauncherIcon96>
+
+//        <Android_LauncherIcon144>android144.png</Android_LauncherIcon144>
+
+//        <VerInfo_Build>1</VerInfo_Build>
+//        <Android_SplashTileMode>disabled</Android_SplashTileMode>
+//        <Android_SplashGravity>fill</Android_SplashGravity>
+
+//        <Android_SplashImage426>android_fill_426x320.png</Android_SplashImage426>
+//        <Android_SplashImage470>android_fill_470x320.png</Android_SplashImage470>
+//        <Android_SplashImage640>android_fill_640x480.png</Android_SplashImage640>
+//        <Android_SplashImage960>android_fill_960x720.png</Android_SplashImage960>
+
+//        <VerInfo_Keys>package=com.ggggcexx.policepartywind;label=粤警党风;versionCode=1;versionName=1.2.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
+//    </PropertyGroup>
+
+
+
+
+
+        //看看Android32的Release有没有设置
+        for I := 0 to AXMLNode.ChildNodes.Count-1 do
+        begin
+          AXMLChildNode:=AXMLNode.ChildNodes[I];
+
+
+            //Android
+            if (AXMLChildNode.NodeName='PropertyGroup')
+              and (
+
+//                   (AXMLChildNode.Attributes['Condition']='''$(Base_Android)''!=''''')
+//                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android)''!=''''')
+//                or
+
+//                 (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android)''!=''''')
+                 (AXMLChildNode.Attributes['Condition']=AProjectGroupCondition)
+
+//                or (AXMLChildNode.Attributes['Condition']='''$(Base_Android64)''!=''''')
+//                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_1_Android64)''!=''''')
+//                or (AXMLChildNode.Attributes['Condition']='''$(Cfg_2_Android64)''!=''''')
+                ) then
+            begin
+                //VerInfo_Keys
+  //              SaveProjectPictureToProjectXMLNode(426,320,'Android_SplashImage426',AXMLNode.ChildNodes[I]);
+
+                AVerInfo_KeysNode:=AXMLChildNode.ChildNodes.FindNode('VerInfo_Keys');
+
+                if AVerInfo_KeysNode<>nil then
+                begin
+                  //package=com.ggggcexx.policepartywind;
+                  AVerInfo_Keys:=uFuncCommon_Copy.SplitString(AVerInfo_KeysNode.Text,';');
+
+                  Result:=AVerInfo_Keys.Values['package'];
+                end;
+
+                Break;
+
+            end;
+
+        end;
+
+
+
+
+
+
+end;
+
+
+function GetProjectAndroidPackageName(AProjectFilePath:String):String;
+var
+  AXMLNode: IXMLNode;
+  AXMLChildNode: IXMLNode;
+  AXMLDocument: TXMLDocument;
+  I: Integer;
+  APackage:String;
+begin
+
+  Result:='';
+
+  //因为需要计算出相对目录
+  if (AProjectFilePath='') then
+  begin
+    DoDeployConfigLog(nil,GetLangString(['请选择工程文件',
+                                        'Please select project file'  ]));
+                                        //'请选择工程文件');
+    Exit;
+  end;
+
+  if Not FileExists(AProjectFilePath) then
+  begin
+    DoDeployConfigLog(nil,GetLangString(['工程文件不存在',
+                                        'Project file is not exist'  ]));
+                                        //'工程文件不存在');
+    Exit;
+  end;
+
+  {$IFDEF MSWINDOWS}
+  CoInitialize(nil);
+  {$ENDIF}
+  //创建XML文档
+  AXMLDocument:=TXMLDocument.Create({$IFDEF MSWINDOWS}Application{$ELSE}nil{$ENDIF});
+  try
+      AXMLDocument.LoadFromFile(AProjectFilePath);
+      AXMLDocument.Active:=True;
+      AXMLNode:=AXMLDocument.DocumentElement;
+
+
+      APackage:=GetVersionInfoKeyPackage(AXMLNode,'''$(Cfg_2_Android)''!=''''');
+
+      if (APackage='')
+        or (APackage='com.embarcadero.$(MSBuildProjectName)')
+        then
+      begin
+
+          APackage:=GetVersionInfoKeyPackage(AXMLNode,'''$(Cfg_1_Android)''!=''''');
+
+          if (APackage='')
+            or (APackage='com.embarcadero.$(MSBuildProjectName)')
+            then
+          begin
+
+              APackage:=GetVersionInfoKeyPackage(AXMLNode,'''$(Base_Android)''!=''''');
+
+              if (APackage='')
+                or (APackage='com.embarcadero.$(MSBuildProjectName)')
+                then
+              begin
+
+                APackage:='com.embarcadero.'+ReplaceStr( ExtractFileName(AProjectFilePath), '.dproj', '' );
+              end;
+
+          end;
+
+      end;
+
+      Result:=APackage;
+
+  finally
+    AXMLDocument.Free;
+    {$IFDEF MSWINDOWS}
+    CoUnInitialize();
+    {$ENDIF}
+  end;
+
+end;
+
 function GetAndroidPackageName(AAndroidManifestXmlFilePath:String):String;
 var
   AXMLDocument: TXMLDocument;
@@ -1916,7 +2100,7 @@ begin
 
 end;
 
-procedure ReNameDumpXMLNode(AXMLAFilePath:String;ANameList:TStringList);
+procedure ReNameDumpXMLNode(AXMLAFilePath:String;ANameList:TStringList;AIsNeedRename:Boolean);
 var
   AXMLADocument: TXMLDocument;
   AXMLANode: IXMLNode;
@@ -1958,29 +2142,34 @@ begin
 
         if ANameList.IndexOf(AXMLNode.NodeName+'_'+AName)=-1 then
         begin
+          //不存在
           ANameList.Add(AXMLNode.NodeName+'_'+AName);
           continue;
         end;
 
 
-        AXMLNode.Attributes['name']:=AName+'_dump_'+AFileName;
 
+        if AIsNeedRename then
+        begin
+          AXMLNode.Attributes['name']:=AName+'_dump_'+AFileName;
 
-//          //判断是否存在重复的节点
-//          AXMLNode:=FindSameAndroidResourceNode(AXMLANode,AXMLBNode.ChildNodes[I]);
-//          if AXMLNode=nil then
-//          begin
-//              //不存在此名称的
-//              //直接复制
-//              AXMLANode.ChildNodes.Add(AXMLBNode.ChildNodes[I]);
-//          end
-//          else
-//          begin
-//              //已经存在此节点
-//              DoDeployConfigLog(nil,GetLangString(['此XML节点已存在',
-//                                                  'The xml node is not exist']));
-//          end;
-        AIsChanged:=True;
+  //          //判断是否存在重复的节点
+  //          AXMLNode:=FindSameAndroidResourceNode(AXMLANode,AXMLBNode.ChildNodes[I]);
+  //          if AXMLNode=nil then
+  //          begin
+  //              //不存在此名称的
+  //              //直接复制
+  //              AXMLANode.ChildNodes.Add(AXMLBNode.ChildNodes[I]);
+  //          end
+  //          else
+  //          begin
+  //              //已经存在此节点
+  //              DoDeployConfigLog(nil,GetLangString(['此XML节点已存在',
+  //                                                  'The xml node is not exist']));
+  //          end;
+          AIsChanged:=True;
+        end;
+
       end;
 
       if AIsChanged then
@@ -4480,7 +4669,8 @@ begin
 end;
 
 
-function TProjectConfig.GetAndroidSDKSetting(ADelphiVersion: String; var AJDKDir,
+function TProjectConfig.GetAndroidSDKSetting(ADelphiVersion: String;
+  var AJDKDir,
   AAndroidSDKDir, AAndroidSDKPlatform, AAndroidSDKBuildTools: String): Boolean;
 {$IFDEF MSWINDOWS}
 var
@@ -5436,6 +5626,7 @@ var
   AValuesXMLNodeNameList:TStringList;
   ADirs:TArray<String>;
   J: Integer;
+  AFileList:TArray<String>;
 begin
   Result:=False;
 
@@ -5456,115 +5647,159 @@ begin
       for I := 0 to AAndroidAarList.Count-1 do
       begin
           if Trim(AAndroidAarList[I])='' then Continue;
-          
+
 
           //dmcBig_MediaPicker\support-compat-28.0.0.aar
           AAndroidAarFilePath:=AAndroidAarList[I];
-          AAndroidAarRelativeDirPath:=ChangeFileExt(AAndroidAarList[I],'_aar')+'\';
-
           AAndroidAarFilePath:=ConvertRelativePathToAbsolutePath(ExtractFilePath(AProjectFilePath),AAndroidAarFilePath);
-          AAndroidAarDirPath:=ChangeFileExt(AAndroidAarFilePath,'_aar')+'\';
-          //dmcBig_MediaPicker\support-compat-28.0.0_aar\support-compat-28.0.0.aar.jar
-          AAndroidJarList.Add(AAndroidAarRelativeDirPath+ExtractFileName(AAndroidAarList[I])+'.jar');
 
 
-          if not DirectoryExists(AAndroidAarDirPath) then
+          //判断是aar还是jar
+          if ExtractFileExt(AAndroidAarList[I])='.aar' then
           begin
+              AAndroidAarRelativeDirPath:=ChangeFileExt(AAndroidAarList[I],'_aar')+'\';
+              AAndroidAarFilePath:=ConvertRelativePathToAbsolutePath(ExtractFilePath(AProjectFilePath),AAndroidAarFilePath);
 
-            //目录不存在,则解压
-            {$IFDEF IN_ORANGESDKSMARTTOOL}
-            ziper:=TVCLZip.Create(application);
-            ziper.ZipName:=AAndroidAarFilePath;//获取压缩文件名
-            ziper.DestDir:=AAndroidAarDirPath;
-            ziper.DoAll := True;
-            ziper.OverwriteMode := Always;
-            ziper.RelativePaths:=true;//是否保持目录bai结构
-            ziper.AddDirEntriesOnRecurse:=true;
-            ziper.RecreateDirs:=true;//创建目录
-            ziper.UnZip;
-            ziper.Free;
-            {$ELSE}
-            //icons.zip文件改过了,需要重新解压
-            TZipFile.ExtractZipFile(AAndroidAarFilePath,AAndroidAarDirPath);
-            {$ENDIF}
+              AAndroidAarDirPath:=ChangeFileExt(AAndroidAarFilePath,'_aar')+'\';
+              //dmcBig_MediaPicker\support-compat-28.0.0_aar\support-compat-28.0.0.aar.jar
+              AAndroidJarList.Add(AAndroidAarRelativeDirPath+ExtractFileName(AAndroidAarList[I])+'.jar');
 
-            //将里面的classes.jar重命名
-            ReNameFile(AAndroidAarDirPath+'\'+'classes.jar',
-                        AAndroidAarDirPath+'\'+ExtractFileName(AAndroidAarFilePath)+'.jar');
 
-          end;
+              if not DirectoryExists(AAndroidAarDirPath) then
+              begin
 
-          //删除空目录,省的麻烦
-          ADirs:=TDirectory.GetDirectories(AAndroidAarDirPath);
-          for J := 0 to Length(ADirs)-1 do
+                //目录不存在,则解压
+                {$IFDEF IN_ORANGESDKSMARTTOOL}
+                ziper:=TVCLZip.Create(application);
+                ziper.ZipName:=AAndroidAarFilePath;//获取压缩文件名
+                ziper.DestDir:=AAndroidAarDirPath;
+                ziper.DoAll := True;
+                ziper.OverwriteMode := Always;
+                ziper.RelativePaths:=true;//是否保持目录bai结构
+                ziper.AddDirEntriesOnRecurse:=true;
+                ziper.RecreateDirs:=true;//创建目录
+                ziper.UnZip;
+                ziper.Free;
+                {$ELSE}
+                //icons.zip文件改过了,需要重新解压
+                TZipFile.ExtractZipFile(AAndroidAarFilePath,AAndroidAarDirPath);
+                {$ENDIF}
+
+                //将里面的classes.jar重命名
+                ReNameFile(AAndroidAarDirPath+'\'+'classes.jar',
+                            AAndroidAarDirPath+'\'+ExtractFileName(AAndroidAarFilePath)+'.jar');
+
+              end;
+
+              //删除空目录,省的麻烦
+              ADirs:=TDirectory.GetDirectories(AAndroidAarDirPath);
+              for J := 0 to Length(ADirs)-1 do
+              begin
+                if TDirectory.IsEmpty(ADirs[J]) then
+                begin
+                  RemoveDir(ADirs[J]);
+                end;
+
+              end;
+
+
+
+              //判断res目录是否存在需要布署的文件,如果有,则需要布署
+              //无论有没有,都布署即可,省事
+              if DirectoryExists(AAndroidAarDirPath+'res') then
+              begin
+
+                ADeployConfig:=TDeployConfig.Create;
+                ADeployConfig.Platform_:='Android';
+                ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'res\';
+                ADeployConfig.RemoteDir:='res\';
+
+                ADeployConfigList.Add(ADeployConfig);
+
+
+
+
+              end;
+
+              //判断assets目录是否存在需要布署的文件,如果有,则需要布署
+              if DirectoryExists(AAndroidAarDirPath+'assets') then
+              begin
+
+                ADeployConfig:=TDeployConfig.Create;
+                ADeployConfig.Platform_:='Android';
+                ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'assets\';
+                ADeployConfig.RemoteDir:='assets\';
+
+                ADeployConfigList.Add(ADeployConfig);
+
+              end;
+
+
+
+
+              //判断jni目录是否存在需要布署的文件,如果有,则需要布署
+              //无论有没有,都布署即可,省事
+              if DirectoryExists(AAndroidAarDirPath+'jni') then
+              begin
+
+                //32位默认都勾选，需要布署  armeabi-v7a\    arm64-v8a
+                ADeployConfig:=TDeployConfig.Create;
+                ADeployConfig.Platform_:='Android';
+                ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\armeabi-v7a\';
+                ADeployConfig.RemoteDir:='library\lib\armeabi-v7a\';
+
+                ADeployConfigList.Add(ADeployConfig);
+
+
+                //64位
+                if DirectoryExists(AAndroidAarDirPath+'jni\arm64-v8a') then
+                begin
+                  ADeployConfig:=TDeployConfig.Create;
+                  ADeployConfig.Platform_:='Android64';
+                  ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\arm64-v8a\';
+                  ADeployConfig.RemoteDir:='library\lib\arm64-v8a\';
+
+                  ADeployConfigList.Add(ADeployConfig);
+                end;
+
+
+
+              end;
+
+
+              //里面如果有jar,那么要添加进去 libs目录
+              if DirectoryExists(AAndroidAarDirPath+'libs') then
+              begin
+
+                AFileList:=TDirectory.GetFiles(AAndroidAarDirPath+'libs');
+                for J := 0 to Length(AFileList)-1 do
+                begin
+                  if SameText(ExtractFileExt(AFileList[J]),'.jar') then
+                  begin
+                    AAndroidJarList.Add(AFileList[J]);
+                  end;
+                end;
+
+              end;
+
+
+              //拷一个AndroidManifest.xml出来，改名为AndroidManifest.xml.origin,用做备份
+              if not FileExists(AAndroidAarDirPath+'AndroidManifest.xml.origin')
+                and FileExists(AAndroidAarDirPath+'AndroidManifest.xml') then
+              begin
+//                CopyFile(PWideChar(AAndroidAarDirPath+'AndroidManifest.xml'),PWideChar(AAndroidAarDirPath+'AndroidManifest.xml.origin'),False);
+                TFile.Copy(AAndroidAarDirPath+'AndroidManifest.xml',AAndroidAarDirPath+'AndroidManifest.xml.origin')
+              end;
+              //再将AndroidManifest.xml中的包名改为当前工程的包名,不然生成R.jar的时候，会失败
+
+
+
+
+          end
+          else
           begin
-            if TDirectory.IsEmpty(ADirs[J]) then
-            begin
-              RemoveDir(ADirs[J]);
-            end;
-
-          end;
-
-
-
-          //判断res目录是否存在需要布署的文件,如果有,则需要布署
-          //无论有没有,都布署即可,省事
-          if DirectoryExists(AAndroidAarDirPath+'res') then
-          begin
-
-            ADeployConfig:=TDeployConfig.Create;
-            ADeployConfig.Platform_:='Android';
-            ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'res\';
-            ADeployConfig.RemoteDir:='res\';
-
-            ADeployConfigList.Add(ADeployConfig);
-
-
-
-
-          end;
-
-          //判断assets目录是否存在需要布署的文件,如果有,则需要布署
-          if DirectoryExists(AAndroidAarDirPath+'assets') then
-          begin
-
-            ADeployConfig:=TDeployConfig.Create;
-            ADeployConfig.Platform_:='Android';
-            ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'assets\';
-            ADeployConfig.RemoteDir:='assets\';
-
-            ADeployConfigList.Add(ADeployConfig);
-
-          end;
-
-
-
-
-          //判断jni目录是否存在需要布署的文件,如果有,则需要布署
-          //无论有没有,都布署即可,省事
-          if DirectoryExists(AAndroidAarDirPath+'jni') then
-          begin
-
-            //32位默认都勾选，需要布署  armeabi-v7a\    arm64-v8a
-            ADeployConfig:=TDeployConfig.Create;
-            ADeployConfig.Platform_:='Android';
-            ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\armeabi-v7a\';
-            ADeployConfig.RemoteDir:='library\lib\armeabi-v7a\';
-
-            ADeployConfigList.Add(ADeployConfig);
-
-
-            //64位
-            if DirectoryExists(AAndroidAarDirPath+'jni\arm64-v8a') then
-            begin
-              ADeployConfig:=TDeployConfig.Create;
-              ADeployConfig.Platform_:='Android64';
-              ADeployConfig.LocalDir:=AAndroidAarRelativeDirPath+'jni\arm64-v8a\';
-              ADeployConfig.RemoteDir:='library\lib\arm64-v8a\';
-
-              ADeployConfigList.Add(ADeployConfig);
-            end;
-
+              //是Jar
+              AAndroidJarList.Add(AAndroidAarRelativeDirPath+ExtractFileName(AAndroidAarList[I])+'.jar');
 
 
           end;

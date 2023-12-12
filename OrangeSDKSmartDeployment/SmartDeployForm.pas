@@ -81,7 +81,6 @@ type
     btnDeleteDeployConfig: TButton;
     odSelectAndroidJar: TOpenDialog;
     Panel5: TPanel;
-    btnAddAndroidJar: TButton;
     Panel6: TPanel;
     lblAndroidPermissionHint: TLabel;
     Panel7: TPanel;
@@ -178,7 +177,6 @@ type
     lblCurrentConfig: TLabel;
     lblBackColorHexCodeHint: TLabel;
     lblDeployPreviewTargetPlatform: TLabel;
-    btnProcessAndroidJar: TButton;
     pnlAndroidAarToolBar: TPanel;
     btnAddAndroidAar: TButton;
     memAndroidAars: TMemo;
@@ -217,6 +215,16 @@ type
     Memo1: TMemo;
     chkGenerateReleaseRJar: TCheckBox;
     Button6: TButton;
+    Button8: TButton;
+    OpenDialog1: TOpenDialog;
+    Button9: TButton;
+    Button10: TButton;
+    Button11: TButton;
+    odSelectJava: TOpenDialog;
+    cmbBuildToolsVersion: TComboBox;
+    Button12: TButton;
+    btnAddAndroidJar: TButton;
+    btnProcessAndroidJar: TButton;
     procedure btnProcessDeployConfigClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -268,6 +276,12 @@ type
     procedure btnProcessAndroidAARClick(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button6Click(Sender: TObject);
+    procedure Button8Click(Sender: TObject);
+    procedure Button9Click(Sender: TObject);
+    procedure Button10Click(Sender: TObject);
+    procedure Button11Click(Sender: TObject);
+    procedure cmbBuildToolsVersionChange(Sender: TObject);
+    procedure Button12Click(Sender: TObject);
   private
     //工程启动图片文件
     FProjectLaunchImageFileName:String;
@@ -1329,6 +1343,9 @@ begin
   //处理jar
   btnProcessAndroidJarClick(nil);
 
+  //处理Aar
+  btnProcessAndroidAarClick(nil);
+
 
 
   //处理IOS编译参数
@@ -1718,10 +1735,35 @@ begin
                               AAndroidPlatform,
                               ADebugOrRelease,
                               Self.cmbDelphiVersions.Text,
-                              Self.DoGetCommandLineOutput
+                              Self.DoGetCommandLineOutput,
+                              Self.edtJDKDir.Text,
+                              Self.edtAndroidSDKDir.Text,
+                              Self.edtAndroidSDKPlatform.Text,
+                              Self.edtAndroidSDKBuildTools.Text
                               );
 
 
+end;
+
+procedure TfrmSmartDeploy.Button10Click(Sender: TObject);
+begin
+  if odSelectAndroidJar.Execute() then
+  begin
+    Self.memUsedAndroidJars.Lines.AddStrings(odSelectAndroidJar.Files)
+  end;
+end;
+
+procedure TfrmSmartDeploy.Button11Click(Sender: TObject);
+begin
+  if odSelectJava.Execute() then
+  begin
+    Self.memJavaSourceFiles.Lines.AddStrings(odSelectJava.Files);
+  end;
+end;
+
+procedure TfrmSmartDeploy.Button12Click(Sender: TObject);
+begin
+  //
 end;
 
 procedure TfrmSmartDeploy.Button1Click(Sender: TObject);
@@ -1766,8 +1808,8 @@ end;
 
 procedure GenerateAarOrJar(ASourceAarDir:String;ADestDir:String);
 var
-  AFileList:TStringDynArray;
-  ADirList:TStringDynArray;
+//  AFileList:TStringDynArray;
+//  ADirList:TStringDynArray;
   I: Integer;
   AAarFileName:String;
 begin
@@ -1775,34 +1817,57 @@ begin
   //判断是jar还是aar
   //如果是aar，那么里面是一个目录,没有jar
   //如果是jar，那么里面只有一个jar文件
-  AFileList:=TDirectory.GetFiles(ASourceAarDir);
-  ADirList:=TDirectory.GetDirectories(ASourceAarDir);
+//  AFileList:=TDirectory.GetFiles(ASourceAarDir);
+//  ADirList:=TDirectory.GetDirectories(ASourceAarDir);
 
-  for I := 0 to Length(AFileList)-1 do
+//  for I := 0 to Length(AFileList)-1 do
+//  begin
+//    if SameText(ExtractFileExt(AFileList[I]),'.jar')
+//      and not FileExists(ADestDir+ExtractFileName(AFileList[I]) ) then
+//    begin
+//      //是jar
+//      TFile.Copy(AFileList[I],ADestDir+ExtractFileName(AFileList[I]));
+//      Exit;
+//    end;
+//  end;
+
+//  //可能是aar
+//  for I := 0 to Length(ADirList)-1 do
+//  begin
+//    AAarFileName:=TPath.GetFileName(ADirList[I]);
+//    if FileExists(ADirList[I]+'\AndroidManifest.xml')
+//      and FileExists(ADirList[I]+'\jars\'+'classes.jar')
+//      and not FileExists(ADestDir+AAarFileName+'.aar') then
+//    begin
+//      //是一个jar，里面有一个jars目录，里面有一个jar
+//      CopyFile(PWideChar(ADirList[I]+'\jars\'+'classes.jar'),PWideChar(ADirList[I]+'\'+'classes.jar'),True);
+//      //压缩成aar
+//      TZipFile.ZipDirectoryContents(ADestDir+AAarFileName+'.aar',ADirList[I]);
+//    end;
+//  end;
+
+  AAarFileName:=TPath.GetFileName(ASourceAarDir);
+
+  //判断是否是aar
+  if FileExists(ASourceAarDir+'\AndroidManifest.xml')
+      and FileExists(ASourceAarDir+'\jars\'+'classes.jar') then
   begin
-    if SameText(ExtractFileExt(AFileList[I]),'.jar')
-      and not FileExists(ADestDir+ExtractFileName(AFileList[I]) ) then
-    begin
-      //是jar
-      TFile.Copy(AFileList[I],ADestDir+ExtractFileName(AFileList[I]));
-      Exit;
-    end;
+    //是一个aar
+    //将classes.jar拷出来
+    //是一个jar，里面有一个jars目录，里面有一个jar
+    CopyFile(PWideChar(ASourceAarDir+'\jars\'+'classes.jar'),PWideChar(ASourceAarDir+'\classes.jar'),True);
+    //压缩成aar
+    TZipFile.ZipDirectoryContents(ADestDir+AAarFileName+'.aar',ASourceAarDir);
+  end
+  else
+  begin
+    //如果是jar
+    //那么
+
+
   end;
 
-  //可能是aar
-  for I := 0 to Length(ADirList)-1 do
-  begin
-    AAarFileName:=TPath.GetFileName(ADirList[I]);
-    if FileExists(ADirList[I]+'\AndroidManifest.xml')
-      and FileExists(ADirList[I]+'\jars\'+'classes.jar')
-      and not FileExists(ADestDir+AAarFileName+'.aar') then
-    begin
-      //是一个jar，里面有一个jars目录，里面有一个jar
-      CopyFile(PWideChar(ADirList[I]+'\jars\'+'classes.jar'),PWideChar(ADirList[I]+'\'+'classes.jar'),True);
-      //压缩成aar
-      TZipFile.ZipDirectoryContents(ADestDir+AAarFileName+'.aar',ADirList[I]);
-    end;
-  end;
+
 
 end;
 
@@ -1810,14 +1875,29 @@ procedure TfrmSmartDeploy.Button6Click(Sender: TObject);
 var
   I:Integer;
   ADirList:TStringDynArray;
+  ASubDirList:TStringDynArray;
+  J: Integer;
 begin
   //C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1
-  ADirList:=System.IOUtils.TDirectory.GetDirectories('C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1\');
+  //先钭一个目录
+  //C:\Users\Administrator\.gradle\caches\transforms-3
+//  ADirList:=System.IOUtils.TDirectory.GetDirectories('C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1\');
+  ADirList:=System.IOUtils.TDirectory.GetDirectories('C:\Users\Administrator\.gradle\caches\transforms-3\');
+//  ADirList:=System.IOUtils.TDirectory.GetDirectories('C:\Users\Administrator\.gradle\caches\transforms-3\5704de195441da262a1d207a21eb2942\transformed\activity-1.2.3\');
   for I := 0 to Length(ADirList)-1 do
   begin
-    GenerateAarOrJar(ADirList[I]+'\','C:\Users\ggggcexx\.gradle\caches\transforms-2\files-2.1\');
+//    GenerateAarOrJar('C:\Users\Administrator\.gradle\caches\transforms-3\5704de195441da262a1d207a21eb2942\transformed\activity-1.2.3','C:\');
+//    GenerateAarOrJar(ADirList[I]+'\transformed\activity-1.2.3\','C:\');
+
+    ASubDirList:=System.IOUtils.TDirectory.GetDirectories(ADirList[I]+'\'+'\transformed\');
+
+    if Length(ASubDirList)=1 then
+    begin
+      GenerateAarOrJar(ASubDirList[0],'C:\');
+    end;
 
   end;
+
 
 end;
 
@@ -1859,6 +1939,155 @@ begin
 
 
   AEnabledSDKNames.Free;
+
+
+end;
+
+procedure TfrmSmartDeploy.Button8Click(Sender: TObject);
+var
+  I:Integer;
+  AValuesXMLNodeNameList:TStringList;
+begin
+  //处理重复的xml
+  //判断res\values\里面有没有values***.xml
+  //然后重命名掉重复的资源
+  AValuesXMLNodeNameList:=TStringList.Create;
+  try
+    OpenDialog1.Title:='选择不去重的xml文件';
+    if not OpenDialog1.Execute() then
+    begin
+      Exit;
+    end;
+
+    for I := 0 to OpenDialog1.Files.Count-1 do
+    begin
+//        ADeployFile:=ADeployConfigList.FPreviewDeployFileList[I];
+//        if (Pos('\res\values\values',ADeployFile.LocalName)>0)
+//          and (ExtractFileExt(ADeployFile.LocalName)='.xml') then
+//        begin
+//          ReNameDumpXMLNode(ExtractFilePath(AProjectFilePath)+ADeployFile.LocalName,AValuesXMLNodeNameList);
+//        end;
+      ReNameDumpXMLNode(OpenDialog1.Files[I],AValuesXMLNodeNameList,False);
+    end;
+
+    OpenDialog1.Title:='选择要去重的xml文件';
+    if not OpenDialog1.Execute() then
+    begin
+      Exit;
+    end;
+
+
+    for I := 0 to OpenDialog1.Files.Count-1 do
+    begin
+//        ADeployFile:=ADeployConfigList.FPreviewDeployFileList[I];
+//        if (Pos('\res\values\values',ADeployFile.LocalName)>0)
+//          and (ExtractFileExt(ADeployFile.LocalName)='.xml') then
+//        begin
+//          ReNameDumpXMLNode(ExtractFilePath(AProjectFilePath)+ADeployFile.LocalName,AValuesXMLNodeNameList);
+//        end;
+      ReNameDumpXMLNode(OpenDialog1.Files[I],AValuesXMLNodeNameList,True);
+    end;
+
+  finally
+    FreeAndNil(AValuesXMLNodeNameList);
+  end;
+
+end;
+
+procedure TfrmSmartDeploy.Button9Click(Sender: TObject);
+var
+  ATempRootDir:String;
+  ATempJarDir:String;
+//var
+//  APasSources:TStringList;
+//  AProjectPath:String;
+begin
+//  //保存配置
+//  Self.SaveToINI(ExtractFilePath(Application.ExeName)+'Config.ini');
+
+
+//  AProjectPath:=Self.edtProjectFilePath.Text;
+//  if Self.edtProjectFilePath.Text='' then
+//  begin
+//    AProjectPath:=Application.ExeName;
+//  end;
+//
+//  FProjectConfig.GenerateJar(
+//          //工程目录
+//          AProjectPath,//Self.edtProjectFilePath.Text,
+//          //将Jar生成在哪个目录,Jar源码目录在哪个目录下等
+//          'WeiXinSDK',
+//          //未处理的Jar源码的目录
+//          'JarSource',
+//          //Jar的包名,比如com.ggggcexx.myeasyserivce.wxapi
+//          Self.edtWeiXinAndroidPackage.Text+'.wxapi',
+//          //应用的包名,用于替换源码中的旧包名
+//          Self.edtWeiXinAndroidPackage.Text,
+//          //生成的jar文件名
+//          'wxapi.jar',
+//          //编译所需要用到的其他jar包
+//          Self.memUsedAndroidJars.Lines,
+//
+//          //AndroidSDK
+//          Self.edtJDKDir.Text,
+//          Self.edtAndroidSDKDir.Text,
+//          Self.edtAndroidSDKPlatform.Text,
+//          Self.edtAndroidSDKBuildTools.Text
+//          );
+//
+//
+//  APasSources:=TStringList.Create;
+//
+//  //修改Androidapi.JNI.wxapi.pas
+//  APasSources.LoadFromFile(ExtractFilePath(edtProjectFilePath.Text)+'WeiXinSDK'+'\'+'Androidapi.JNI.wxapi_origin.pas');
+//  ReplaceStringList('com.ggggcexx.orangeui',Self.edtWeiXinAndroidPackage.Text,APasSources);
+//  ReplaceStringList('com/ggggcexx/orangeui',ReplaceStr(Self.edtWeiXinAndroidPackage.Text,'.','/'),APasSources);
+//  APasSources.SaveToFile(ExtractFilePath(edtProjectFilePath.Text)+'WeiXinSDK'+'\'+'Androidapi.JNI.wxapi.pas');
+//
+//
+//  APasSources.Free;
+//
+//  Exit;
+
+
+  //先创建临时文件夹Temp,以aar为命名
+  //ProjectFilePath\JarGen\Main_R_Java\
+  if Self.edtProjectFilePath.Text='' then
+  begin
+    //如果没有指定工程目录，直接生成到工具目录
+    ATempRootDir:=ExtractFilePath(Application.ExeName)+CONST_JAR_TEMP_DIR+'\';
+  end
+  else
+  begin
+    //如果指定了工程目录,就在工程目录下
+    ATempRootDir:=ExtractFilePath(Self.edtProjectFilePath.Text)+CONST_JAR_TEMP_DIR+'\';
+  end;
+  ATempJarDir:=ATempRootDir+'CustomJar'+'\';
+
+
+
+  GenerateWeiXinJarBatToProject(
+          //ProjectFilePath\JarGen
+          ATempRootDir,
+          //ProjectFilePath\JarGen\WeiXinSDK
+          ATempJarDir,
+
+
+          Self.edtJDKDir.Text,
+          Self.edtAndroidSDKDir.Text,
+          Self.edtAndroidSDKPlatform.Text,
+          Self.edtAndroidSDKBuildTools.Text,
+
+
+          ATempJarDir+'custom.jar',
+          Self.memUsedAndroidJars.Lines,
+
+          Self.edtWeiXinAndroidPackage.Text,
+          Self.memWXEntryActivity.Lines,
+          Self.memWXPayEntryActivity.Lines,
+          Self.memOnWeixinListener.Lines,
+          Self.memWxApiPas.Lines
+          );
 
 
 end;
@@ -2146,6 +2375,26 @@ begin
 
 end;
 
+procedure TfrmSmartDeploy.cmbBuildToolsVersionChange(Sender: TObject);
+var
+  AAndroidSDKBuildTools:String;
+  AAndroidSDKBuildToolVersion:String;
+  AAndroidSDKBuildToolParentDir:String;
+begin
+
+  AAndroidSDKBuildTools:=Self.edtAndroidSDKBuildTools.Text;
+
+  //将BuildTools的几个版本都加载出来
+  if AAndroidSDKBuildTools[Length(AAndroidSDKBuildTools)]=PathDelim then
+  begin
+    AAndroidSDKBuildTools:=Copy(AAndroidSDKBuildTools,1,Length(AAndroidSDKBuildTools)-1);
+  end;
+
+  AAndroidSDKBuildToolParentDir:=ExtractFilePath(AAndroidSDKBuildTools);
+
+  Self.edtAndroidSDKBuildTools.Text:=AAndroidSDKBuildToolParentDir+cmbBuildToolsVersion.Text+PathDelim;
+end;
+
 procedure TfrmSmartDeploy.cmbConfigFilePathChange(Sender: TObject);
 begin
 
@@ -2236,11 +2485,18 @@ procedure TfrmSmartDeploy.btnLoadAndroidSDKFromRegClick(Sender: TObject);
 //  AKeyStringList:TStringList;
 var AJDKDir,
   AAndroidSDKDir, AAndroidSDKPlatform, AAndroidSDKBuildTools: String;
+  AAndroidSDKBuildToolVersion:String;
+  AAndroidSDKBuildToolParentDir:String;
+  ASubDirectories:TArray<String>;
+  I: Integer;
 begin
 
   Self.FProjectConfig.GetAndroidSDKSetting(Self.cmbDelphiVersions.Text,
-                                    AJDKDir, AAndroidSDKDir, AAndroidSDKPlatform, AAndroidSDKBuildTools
-                                    );
+                                            AJDKDir,
+                                            AAndroidSDKDir,
+                                            AAndroidSDKPlatform,
+                                            AAndroidSDKBuildTools
+                                            );
 
 
   Self.edtJDKDir.Text:=AJDKDir;
@@ -2248,6 +2504,29 @@ begin
   Self.edtAndroidSDKPlatform.Text:=AAndroidSDKPlatform;
   Self.edtAndroidSDKBuildTools.Text:=AAndroidSDKBuildTools;
 
+  //将BuildTools的几个版本都加载出来
+  if AAndroidSDKBuildTools[Length(AAndroidSDKBuildTools)]=PathDelim then
+  begin
+    AAndroidSDKBuildTools:=Copy(AAndroidSDKBuildTools,1,Length(AAndroidSDKBuildTools)-1);
+  end;
+
+  AAndroidSDKBuildToolVersion:=ExtractFileName(AAndroidSDKBuildTools);
+  AAndroidSDKBuildToolParentDir:=ExtractFilePath(AAndroidSDKBuildTools);
+  ASubDirectories:=TDirectory.GetDirectories(AAndroidSDKBuildToolParentDir);
+
+  Self.cmbBuildToolsVersion.OnChange:=nil;
+  try
+    Self.cmbBuildToolsVersion.Items.Clear;
+    for I := 0 to Length(ASubDirectories)-1 do
+    begin
+      Self.cmbBuildToolsVersion.Items.Add(ExtractFileName(ASubDirectories[I]));
+
+    end;
+    Self.cmbBuildToolsVersion.ItemIndex:=Self.cmbBuildToolsVersion.Items.Add(AAndroidSDKBuildToolVersion);
+
+  finally
+    Self.cmbBuildToolsVersion.OnChange:=cmbBuildToolsVersionChange;
+  end;
 
   //保存配置
   Self.SaveToINI(ExtractFilePath(Application.ExeName)+'Config.ini');

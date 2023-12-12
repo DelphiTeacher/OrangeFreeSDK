@@ -1,0 +1,83 @@
+object Form5: TForm5
+  Left = 0
+  Top = 0
+  Caption = 'Form5'
+  ClientHeight = 480
+  ClientWidth = 337
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object btnConnect: TButton
+    Position.X = 80.000000000000000000
+    Position.Y = 104.000000000000000000
+    TabOrder = 0
+    Text = #36830#25509
+    OnClick = btnConnectClick
+  end
+  object edtIP: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 1
+    Text = '192.168.31.118'
+    Position.X = 104.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label1: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 88.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #25171#21360#26426'IP'#22320#22336
+    TabOrder = 3
+  end
+  object edtPort: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Text = '9100'
+    Position.X = 104.000000000000000000
+    Position.Y = 62.000000000000000000
+    Size.Width = 169.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Label2: TLabel
+    Position.X = 8.000000000000000000
+    Position.Y = 67.000000000000000000
+    Size.Width = 88.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = #31471#21475
+    TabOrder = 2
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 8.000000000000000000
+    Position.Y = 248.000000000000000000
+    Size.Width = 321.000000000000000000
+    Size.Height = 224.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Viewport.Width = 317.000000000000000000
+    Viewport.Height = 220.000000000000000000
+  end
+  object btnPrintTest: TButton
+    Position.X = 80.000000000000000000
+    Position.Y = 146.000000000000000000
+    TabOrder = 6
+    Text = #25171#21360#27979#35797#39029
+    OnClick = btnPrintTestClick
+  end
+  object btnPrint: TButton
+    Position.X = 80.000000000000000000
+    Position.Y = 184.000000000000000000
+    TabOrder = 7
+    Text = #25171#21360
+    OnClick = btnPrintClick
+  end
+end

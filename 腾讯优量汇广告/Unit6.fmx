@@ -1,0 +1,25 @@
+object Form6: TForm6
+  Left = 0
+  Top = 0
+  Caption = 'Form6'
+  ClientHeight = 480
+  ClientWidth = 346
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object btnInit: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 1
+    Text = #21021#22987
+    OnClick = btnInitClick
+  end
+  object Button1: TButton
+    Position.X = 120.000000000000000000
+    Position.Y = 216.000000000000000000
+    TabOrder = 2
+    Text = #21019#24314#25511#20214
+    OnClick = Button1Click
+  end
+end

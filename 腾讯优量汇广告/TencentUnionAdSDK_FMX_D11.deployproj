@@ -1,0 +1,1655 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='Android'">BGR6R19912014798</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'">
+        <DeployFile Include="Win32\Debug\TencentUnionAdSDK_FMX_D11.exe" Condition="'$(Config)'=='Debug'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\</RemoteDir>
+            <RemoteName>TencentUnionAdSDK_FMX_D11.exe</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Android64'">
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_exit_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_exit_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_progress_thumb_normal.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_progress_thumb_normal.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\anim\slide_up.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\anim\</RemoteDir>
+            <RemoteName>slide_up.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_exit_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_exit_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_progress_thumb_normal.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_progress_thumb_normal.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_browse.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_browse.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_browse.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_browse.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_volume_on.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_download.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_replay.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_replay.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_replay.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_replay.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_back.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_video_detail_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_video_detail_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_video_detail_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_video_detail_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_volume_off.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\values\values_GDTSDK_unionNormal_4_541_1411_aar.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values\</RemoteDir>
+            <RemoteName>values_GDTSDK_unionNormal_4_541_1411_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_back_to_port.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_back_to_port.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_back_to_port.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_back_to_port.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\anim\slide_right_in.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\anim\</RemoteDir>
+            <RemoteName>slide_right_in.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\values-sw720dp-v17\values-sw720dp-v17_GDTSDK_unionNormal_4_541_1411_aar.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values-sw720dp-v17\</RemoteDir>
+            <RemoteName>values-sw720dp-v17_GDTSDK_unionNormal_4_541_1411_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\xml\gdt_file_path.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\xml\</RemoteDir>
+            <RemoteName>gdt_file_path.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\assets\gdt_plugin\gdtadv2.jar">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\assets\gdt_plugin\</RemoteDir>
+            <RemoteName>gdtadv2.jar</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\values-sw600dp-v13\values-sw600dp-v13_GDTSDK_unionNormal_4_541_1411_aar.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values-sw600dp-v13\</RemoteDir>
+            <RemoteName>values-sw600dp-v13_GDTSDK_unionNormal_4_541_1411_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_seekbar_progress.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_progress.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_seekbar_progress.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_progress.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_seekbar_background.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_background.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_seekbar_background.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_background.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Android'">
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_exit_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_exit_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_progress_thumb_normal.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_progress_thumb_normal.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\anim\slide_up.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\anim\</RemoteDir>
+            <RemoteName>slide_up.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_exit_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_exit_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_progress_thumb_normal.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_progress_thumb_normal.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_browse.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_browse.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_browse.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_browse.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_volume_on.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_pause.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_pause.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\TencentUnionAdSDK_FMX_D11.classes" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\classes\</RemoteDir>
+            <RemoteName>TencentUnionAdSDK_FMX_D11.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libTencentUnionAdSDK.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_download.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_replay.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_replay.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_replay.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_replay.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_play.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_play.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_back.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_video_detail_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_video_detail_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_video_detail_close.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_video_detail_close.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-anydpi-v24\gdt_ic_native_volume_off.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\libTencentUnionAdSDK_FMX_D11.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libTencentUnionAdSDK_FMX_D11.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>gdbserver</RemoteName>
+            <DeployClass>AndroidGDBServer</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\values\values_GDTSDK_unionNormal_4_541_1411_aar.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values\</RemoteDir>
+            <RemoteName>values_GDTSDK_unionNormal_4_541_1411_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_express_back_to_port.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_back_to_port.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_back_to_port.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_back_to_port.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_express_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_express_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_volume_on.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_volume_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\anim\slide_right_in.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\anim\</RemoteDir>
+            <RemoteName>slide_right_in.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-ldpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_back.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\values-sw720dp-v17\values-sw720dp-v17_GDTSDK_unionNormal_4_541_1411_aar.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values-sw720dp-v17\</RemoteDir>
+            <RemoteName>values-sw720dp-v17_GDTSDK_unionNormal_4_541_1411_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-mdpi-v4\gdt_ic_native_download.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_download.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\library\lib\mips\</RemoteDir>
+            <RemoteName>libTencentUnionAdSDK.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\xml\gdt_file_path.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\xml\</RemoteDir>
+            <RemoteName>gdt_file_path.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\assets\gdt_plugin\gdtadv2.jar">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\assets\gdt_plugin\</RemoteDir>
+            <RemoteName>gdtadv2.jar</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\values-sw600dp-v13\values-sw600dp-v13_GDTSDK_unionNormal_4_541_1411_aar.xml">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\values-sw600dp-v13\</RemoteDir>
+            <RemoteName>values-sw600dp-v13_GDTSDK_unionNormal_4_541_1411_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_seekbar_progress.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_progress.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_seekbar_progress.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_progress.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xhdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxxhdpi-v4\gdt_ic_native_volume_off.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_native_volume_off.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_enter_fullscreen.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_enter_fullscreen.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-xxhdpi-v4\gdt_ic_seekbar_background.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_background.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="TencentUnionSDK\Android\GDTSDK.unionNormal.4.541.1411_aar\res\drawable-hdpi-v4\gdt_ic_seekbar_background.9.png">
+            <RemoteDir>TencentUnionAdSDK_FMX_D11\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>gdt_ic_seekbar_background.9.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSXARM64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimARM64'"/>
+</Project>

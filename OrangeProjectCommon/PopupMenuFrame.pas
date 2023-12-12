@@ -44,7 +44,7 @@ uses
   uSkinPanelType, uSkinRadioButtonType, uSkinFireMonkeyRadioButton,
   uSkinFireMonkeyPopup, uTimerTaskEvent, FMX.Edit, FMX.Controls.Presentation,
   uSkinTreeViewType, uSkinFireMonkeyTreeView, uSkinItemDesignerPanelType,
-  uDrawCanvas;
+  uDrawCanvas, uSkinListViewType;
 
 
 

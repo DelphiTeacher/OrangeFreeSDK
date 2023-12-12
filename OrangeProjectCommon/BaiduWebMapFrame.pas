@@ -157,6 +157,7 @@ type
 //    procedure TestJS;
     procedure SyncCenter;
     function AddMarker(AMapAnnotation:TMapAnnotation;AIsExecute:Boolean=True):String;
+    function UpdateMarker(AMapAnnotation:TMapAnnotation;AIsExecute:Boolean=True):String;
     function AddPolyline(ABeginMapAnnotation:TMapAnnotation;
                             AEndMapAnnotation:TMapAnnotation;AIsExecute:Boolean=True):String;
 
@@ -297,6 +298,25 @@ begin
   end;
   AMapAnnotation.IsAddedMarkerToMap:=True;
 end;
+function TFrameBaiduWebMap.UpdateMarker(AMapAnnotation: TMapAnnotation;
+  AIsExecute: Boolean): String;
+begin
+  Result:='';
+  if not Self.FIsFinishLoad then Exit;
+  if not AMapAnnotation.IsUpdatedMarkerToMap and AMapAnnotation.Location.HasData then
+  begin
+    Result:='updateMarker('
+                                       + FloatToStr(AMapAnnotation.Location.ConvertToBD09.Longitude) + ','
+                                       + FloatToStr(AMapAnnotation.Location.ConvertToBD09.Latitude) + ','
+                                       + QuotedStr(AMapAnnotation.IconFilePath)
+                                       +');';
+    if AIsExecute then
+    begin
+      Self.FWebBrowser.EvaluateJavaScript(Result);
+    end;
+  end;
+  AMapAnnotation.IsUpdatedMarkerToMap:=True;
+end;
 
 function TFrameBaiduWebMap.AddPolyline(ABeginMapAnnotation,
   AEndMapAnnotation: TMapAnnotation;AIsExecute:Boolean=True):String;
@@ -385,8 +405,8 @@ begin
   Self.pnlToolBar.SelfOwnMaterialToDefault.BackColor.FillColor.Color:=SkinThemeColor;
 
 
-  RecordSubControlsLang(Self);
-  TranslateSubControlsLang(Self);
+//  RecordSubControlsLang(Self);
+//  TranslateSubControlsLang(Self);
 end;
 
 //function TFrameBaiduWebMap.CreateMarker(AMapAnnotation: TMapAnnotation;AMarkId:String): String;
@@ -800,6 +820,13 @@ begin
       //添加标注
       AJS:=AJS+AddMarker(FMapAnnotationList[I],False);
     end;
+
+    //更新标注
+    if not FMapAnnotationList[I].IsUpdatedMarkerToMap and FMapAnnotationList[I].Location.HasData then
+    begin
+      //添加标注
+      AJS:=AJS+UpdateMarker(FMapAnnotationList[I],False);
+    end;
   end;
 
   //添加线条
@@ -1197,6 +1224,5 @@ begin
 //    HideWaitingFrame;
   end;
 end;
-
 
 end.

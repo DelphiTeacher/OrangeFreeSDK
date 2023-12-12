@@ -1,0 +1,168 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{7A7B58A9-B22F-4708-9C72-ACB5ED7884D5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\..\Demo\D10_3\IconPickerFMX.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\..\OrangeUIControl\OrangeUIControl_VCL_D10_3.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\..\OrangeUIDesign\OrangeUIDesign_VCL_D10_3.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\..\OrangeUI Samples(Test)\TestDrawSVG\Project4.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SVGImage32Package.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SVGIconPackage.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SVGIconImageList.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dclSVGIconImageList.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SVGIconImageListFMX.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="dclSVGIconImageListFMX.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demo\D10_3\SVGIconImageListDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Demo\D10_3\CategoryButtonTest.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="IconPickerFMX">
+        <MSBuild Projects="..\..\Demo\D10_3\IconPickerFMX.dproj"/>
+    </Target>
+    <Target Name="IconPickerFMX:Clean">
+        <MSBuild Projects="..\..\Demo\D10_3\IconPickerFMX.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="IconPickerFMX:Make">
+        <MSBuild Projects="..\..\Demo\D10_3\IconPickerFMX.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeUIControl_VCL_D10_3">
+        <MSBuild Projects="..\..\..\..\OrangeUIControl\OrangeUIControl_VCL_D10_3.dproj"/>
+    </Target>
+    <Target Name="OrangeUIControl_VCL_D10_3:Clean">
+        <MSBuild Projects="..\..\..\..\OrangeUIControl\OrangeUIControl_VCL_D10_3.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeUIControl_VCL_D10_3:Make">
+        <MSBuild Projects="..\..\..\..\OrangeUIControl\OrangeUIControl_VCL_D10_3.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrangeUIDesign_VCL_D10_3">
+        <MSBuild Projects="..\..\..\..\OrangeUIDesign\OrangeUIDesign_VCL_D10_3.dproj"/>
+    </Target>
+    <Target Name="OrangeUIDesign_VCL_D10_3:Clean">
+        <MSBuild Projects="..\..\..\..\OrangeUIDesign\OrangeUIDesign_VCL_D10_3.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrangeUIDesign_VCL_D10_3:Make">
+        <MSBuild Projects="..\..\..\..\OrangeUIDesign\OrangeUIDesign_VCL_D10_3.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Project4">
+        <MSBuild Projects="..\..\..\..\OrangeUI Samples(Test)\TestDrawSVG\Project4.dproj"/>
+    </Target>
+    <Target Name="Project4:Clean">
+        <MSBuild Projects="..\..\..\..\OrangeUI Samples(Test)\TestDrawSVG\Project4.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project4:Make">
+        <MSBuild Projects="..\..\..\..\OrangeUI Samples(Test)\TestDrawSVG\Project4.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SVGImage32Package">
+        <MSBuild Projects="SVGImage32Package.dproj"/>
+    </Target>
+    <Target Name="SVGImage32Package:Clean">
+        <MSBuild Projects="SVGImage32Package.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SVGImage32Package:Make">
+        <MSBuild Projects="SVGImage32Package.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SVGIconPackage">
+        <MSBuild Projects="SVGIconPackage.dproj"/>
+    </Target>
+    <Target Name="SVGIconPackage:Clean">
+        <MSBuild Projects="SVGIconPackage.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SVGIconPackage:Make">
+        <MSBuild Projects="SVGIconPackage.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SVGIconImageList">
+        <MSBuild Projects="SVGIconImageList.dproj"/>
+    </Target>
+    <Target Name="SVGIconImageList:Clean">
+        <MSBuild Projects="SVGIconImageList.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SVGIconImageList:Make">
+        <MSBuild Projects="SVGIconImageList.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="dclSVGIconImageList">
+        <MSBuild Projects="dclSVGIconImageList.dproj"/>
+    </Target>
+    <Target Name="dclSVGIconImageList:Clean">
+        <MSBuild Projects="dclSVGIconImageList.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dclSVGIconImageList:Make">
+        <MSBuild Projects="dclSVGIconImageList.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SVGIconImageListFMX">
+        <MSBuild Projects="SVGIconImageListFMX.dproj"/>
+    </Target>
+    <Target Name="SVGIconImageListFMX:Clean">
+        <MSBuild Projects="SVGIconImageListFMX.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SVGIconImageListFMX:Make">
+        <MSBuild Projects="SVGIconImageListFMX.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="dclSVGIconImageListFMX">
+        <MSBuild Projects="dclSVGIconImageListFMX.dproj"/>
+    </Target>
+    <Target Name="dclSVGIconImageListFMX:Clean">
+        <MSBuild Projects="dclSVGIconImageListFMX.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dclSVGIconImageListFMX:Make">
+        <MSBuild Projects="dclSVGIconImageListFMX.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SVGIconImageListDemo">
+        <MSBuild Projects="..\..\Demo\D10_3\SVGIconImageListDemo.dproj"/>
+    </Target>
+    <Target Name="SVGIconImageListDemo:Clean">
+        <MSBuild Projects="..\..\Demo\D10_3\SVGIconImageListDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SVGIconImageListDemo:Make">
+        <MSBuild Projects="..\..\Demo\D10_3\SVGIconImageListDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CategoryButtonTest">
+        <MSBuild Projects="..\..\Demo\D10_3\CategoryButtonTest.dproj"/>
+    </Target>
+    <Target Name="CategoryButtonTest:Clean">
+        <MSBuild Projects="..\..\Demo\D10_3\CategoryButtonTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CategoryButtonTest:Make">
+        <MSBuild Projects="..\..\Demo\D10_3\CategoryButtonTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="IconPickerFMX;OrangeUIControl_VCL_D10_3;OrangeUIDesign_VCL_D10_3;Project4;SVGImage32Package;SVGIconPackage;SVGIconImageList;dclSVGIconImageList;SVGIconImageListFMX;dclSVGIconImageListFMX;SVGIconImageListDemo;CategoryButtonTest"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="IconPickerFMX:Clean;OrangeUIControl_VCL_D10_3:Clean;OrangeUIDesign_VCL_D10_3:Clean;Project4:Clean;SVGImage32Package:Clean;SVGIconPackage:Clean;SVGIconImageList:Clean;dclSVGIconImageList:Clean;SVGIconImageListFMX:Clean;dclSVGIconImageListFMX:Clean;SVGIconImageListDemo:Clean;CategoryButtonTest:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="IconPickerFMX:Make;OrangeUIControl_VCL_D10_3:Make;OrangeUIDesign_VCL_D10_3:Make;Project4:Make;SVGImage32Package:Make;SVGIconPackage:Make;SVGIconImageList:Make;dclSVGIconImageList:Make;SVGIconImageListFMX:Make;dclSVGIconImageListFMX:Make;SVGIconImageListDemo:Make;CategoryButtonTest:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

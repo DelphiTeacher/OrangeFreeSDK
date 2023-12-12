@@ -41,7 +41,6 @@ uses
   DateUtils,
 //  XSuperObject,
   uBaseDBHelper,
-  uUniDBHelper,
   uBaseList,
   uFileCommon,
   uTimerTask,
@@ -50,15 +49,16 @@ uses
 
   uObjectPool,
 
-  uUniDBHelperPool,
-  uDataBaseConfig,
-
-  UniProvider, Data.DB, DBAccess, Uni,
   //kbmMWUniDAC,
 //  kbmMWCustomSQLMetaData, kbmMWMSSQLMetaData,
   //kbmMWCustomConnectionPool,
-  MySQLUniProvider,
-  SQLServerUniProvider;
+//  MySQLUniProvider,
+//  SQLServerUniProvider,
+
+//  UniProvider, Data.DB, DBAccess, Uni,
+  uUniDBHelper,
+//  uUniDBHelperPool,
+  uDataBaseConfig;
 
 
 
@@ -129,6 +129,7 @@ type
     function DoPrepareStop: Boolean;virtual;
     //获取数据库状态
     function GetStatus():TDatabaseModuleStatus;virtual;abstract;
+    function GetStatusStr:String;
   public
     constructor Create; virtual;
     destructor Destroy; override;
@@ -303,6 +304,36 @@ begin
 
 end;
 
+function TBaseDatabaseModule.GetStatusStr: String;
+var
+  ALog:String;
+  ASumCurCount:Integer;
+  ADatabaseModuleStatus:TDatabaseModuleStatus;
+begin
+    ALog:='';
+    ADatabaseModuleStatus:=Self.GetStatus;
+    //      Self.gridDatabasePool.Cells[1,I+1]:=IntToStr(ADatabaseModuleStatus.MaxCount);
+          ALog:=ALog+'最大数:'+IntToStr(ADatabaseModuleStatus.MaxCount)+#9;
+    //      Self.gridDatabasePool.Cells[2,I+1]:=IntToStr(ADatabaseModuleStatus.CurCount);
+          ALog:=ALog+'当前数:'+IntToStr(ADatabaseModuleStatus.CurCount)+#9;
+          ASumCurCount:=ASumCurCount+ADatabaseModuleStatus.CurCount;
+
+    //      Self.gridDatabasePool.Cells[3,I+1]:=IntToStr(ADatabaseModuleStatus.LockTimes);
+          ALog:=ALog+'使用次数:'+IntToStr(ADatabaseModuleStatus.LockTimes)+#9;
+    //      Self.gridDatabasePool.Cells[4,I+1]:=IntToStr(ADatabaseModuleStatus.UnlockTimes);
+          ALog:=ALog+'归还次数:'+IntToStr(ADatabaseModuleStatus.UnlockTimes)+#9;
+    //      Self.gridDatabasePool.Cells[5,I+1]:=IntToStr(ADatabaseModuleStatus.CheckConnectTimes);
+          ALog:=ALog+'检测连接状态次数:'+IntToStr(ADatabaseModuleStatus.CheckConnectTimes)+#9;
+    //      Self.gridDatabasePool.Cells[6,I+1]:=IntToStr(ADatabaseModuleStatus.ConnectedTimes);
+          ALog:=ALog+'连接成功次数:'+IntToStr(ADatabaseModuleStatus.ConnectedTimes)+#9;
+    //      Self.gridDatabasePool.Cells[7,I+1]:=IntToStr(ADatabaseModuleStatus.DisconnectedTimes);
+          ALog:=ALog+'连接断开次数:'+IntToStr(ADatabaseModuleStatus.DisconnectedTimes)+#9;
+    //      Self.gridDatabasePool.Cells[8,I+1]:=IntToStr(ADatabaseModuleStatus.ReConnectedTimes);
+          ALog:=ALog+'重连成功次数:'+IntToStr(ADatabaseModuleStatus.ReConnectedTimes)+#13#10;
+
+    Result:=ALog;
+end;
+
 procedure TBaseDatabaseModule.SetDBConfigFileName(const Value: String);
 begin
   if FDBConfigFileName<>Value then
@@ -321,7 +352,7 @@ begin
           else
           begin
               //使用手动设置
-              uBaseLog.HandleException(nil,'TUnidacDatabaseModule.SetDBConfigFileName '+FDBConfigFileName+' not found!');
+              uBaseLog.HandleException(nil,'TBaseDatabaseModule.SetDBConfigFileName '+FDBConfigFileName+' not found!');
               //AError:='数据库配置文件'+DBConfigFileName+' 不存在!';
               //Exit;
           end;

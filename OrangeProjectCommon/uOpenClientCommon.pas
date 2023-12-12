@@ -31,7 +31,7 @@ uses
 
 
 //  FMX.Types,
-//  uLang,
+  uLang,
 
 //  {$IFDEF FMX}
 //  uDrawPicture,
@@ -147,6 +147,7 @@ type
     notice_unread_count:Int64;//14,
 
     key:String;
+    server_version:String;
 
     second_contactor_name:String;
     second_contactor_phone:String;
@@ -2177,7 +2178,7 @@ type
 
 
     //上次选择的语言
-    //LangKind:TLangKind;
+//    LangKind:TLangKind;
 
 
     //用户名
@@ -2566,15 +2567,20 @@ begin
   ServerHost:=AServer;
 
 
-  if not AIsSSL then
+  if (APort=443) then
   begin
     //服务端接口地址
-    InterfaceUrl:='http://'+AServer+':'+IntToStr(APort)+'/';
+    InterfaceUrl:='https://'+AServer+'/';
+  end
+  else if AIsSSL then
+  begin
+    //服务端接口地址
+    InterfaceUrl:='https://'+AServer+':'+IntToStr(APort)+'/';
   end
   else
   begin
     //服务端接口地址
-    InterfaceUrl:='https://'+AServer+':'+IntToStr(APort)+'/';
+    InterfaceUrl:='http://'+AServer+':'+IntToStr(APort)+'/';
   end;
 
   //支持HTTPS
@@ -8485,6 +8491,7 @@ begin
   //登录令牌,用于确认用户已经登录
   //GlobalManager.User.key:=ASuperObject.O['Data'].S['Key'];
   key:=AJson.S['login_key'];
+  server_version:=AJson.S['server_version'];
 
 
 end;
@@ -8639,7 +8646,7 @@ begin
   Self.ServerPort:=AIniFile.ReadInteger('','ServerPort',ServerPort);
 
 
-//  Self.LangKind:=TLangKind(AIniFile.ReadInteger('','LangKind',Ord(LangKind)));
+  LangKind:=TLangKind(AIniFile.ReadInteger('','LangKind',Ord(LangKind)));
 
 
   //用户定位的经纬度
@@ -8752,7 +8759,7 @@ begin
   AIniFile.WriteString('','ServerHost',Self.ServerHost);
   AIniFile.WriteInteger('','ServerPort',Self.ServerPort);
 
-//  AIniFile.WriteInteger('','LangKind',Ord(Self.LangKind));
+  AIniFile.WriteInteger('','LangKind',Ord(LangKind));
 
 
   //用户选择的经纬度

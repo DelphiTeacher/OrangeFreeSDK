@@ -34,11 +34,12 @@ uses
   Classes,
 
   {$IFDEF FMX}
+  //在安卓服务中不能使用FMX.开头的单元
 //  FMX.Types,
   {$ENDIF}
-  {$IFDEF VCL}
-  ExtCtrls,
-  {$ENDIF}
+//  {$IFDEF VCL}
+//  ExtCtrls,
+//  {$ENDIF}
 
   {$IFDEF IN_ORANGESDK}
   uFuncCommon_Copy,

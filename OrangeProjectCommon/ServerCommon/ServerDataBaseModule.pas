@@ -28,6 +28,8 @@ uses
 //  DataBaseConfigForm,
   uBaseDatabaseModule,
 //  uTableCommonRestCenter,
+//  MySQLUniProvider,
+//  SQLServerUniProvider,
 
   UniProvider, Data.DB, DBAccess, Uni, SQLServerUniProvider,MySQLUniProvider,SQLiteUniProvider,
   kbmMWUniDAC,

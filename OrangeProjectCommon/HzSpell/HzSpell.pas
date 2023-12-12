@@ -30,8 +30,9 @@ type
 //procedure Register;
 
 function GetHzPy(const AHzStr: string): string; overload;
+function GetHzPyFull(const AHzStr: string): string; overload;
 function GetHzPy(HzChar: PByte; Len: Integer): String; overload;
-function GetHzPyFull(HzChar: TBytes): String;
+function GetHzPyFull(HzChar: TBytes): String;overload;
 function GetHzPyHead(HzChar: PByte; Len: Integer): String;
 function GetPyChars(HzChar: TBytes): String;
 
@@ -48,6 +49,15 @@ var
 begin
   HzSpell1 := THzSpell.Create(nil);
   result := HzSpell1.PyHeadOfHz(AHzStr);
+  freeandnil(HzSpell1);
+end;
+
+function GetHzPyFull(const AHzStr: string): string;
+var
+  HzSpell1: THzSpell;
+begin
+  HzSpell1 := THzSpell.Create(nil);
+  result := HzSpell1.PyOfHz(AHzStr);
   freeandnil(HzSpell1);
 end;
 

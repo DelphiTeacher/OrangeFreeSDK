@@ -1,0 +1,70 @@
+﻿
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8dlnIKumxm6hAhkxs7OyCrg3"></script>
+<style type="text/css">
+html,body{
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+    }
+</style>
+</head>
+<body>
+    <div style="width:100%;height:100%" id="container" />
+</body>
+</html>
+<script type="text/javascript">
+    var map = new BMap.Map("container")
+    // var myBeginIcon = null
+    // var myEndIcon = null
+
+    // map.centerAndZoom(new BMap.Point(119.655991996522,29.0830317321422), 18);
+    // map.enableScrollWheelZoom();
+
+    // var Marker_SetPointAnnotation;
+    // var Has_Marker_SetPointAnnotation = false;
+
+    //初始化遮盖物图标
+    // function initMapIcon(beginIconPath, endIconPath){
+    //     myBeginIcon = new BMap.Icon(beginIconPath, new BMap.Size(32,32), {imageOffset: new BMap.Size(0, 0)})
+    //     myEndIcon = new BMap.Icon(endIconPath, new BMap.Size(32,32), {imageOffset: new BMap.Size(0, 0)})
+    // }
+
+    // 添加标记
+    function addMarker(longitude, latitude, iconPath){
+        //var nowMapIcon = iconType == 'beginIcon' ? myBeginIcon : iconType == 'endIcon' ? myEndIcon : null
+        console.log('【iconPath】：', iconPath)
+        if (iconPath != '') {
+            var myMapIcon = new BMap.Icon(iconPath, new BMap.Size(32,32), {anchor: new BMap.Size(16, 32)})
+            var Marker_0 = new BMap.Marker(new BMap.Point(longitude,latitude), {icon:myMapIcon})
+            map.addOverlay(Marker_0)
+        } else {
+            var Marker_0=new BMap.Marker(new BMap.Point(longitude,latitude))
+            map.addOverlay(Marker_0)
+        }
+
+        // var contentMarker_0="<b></b><br>";
+        // var optsMarker_0 = { width: 150  };
+        // var infoWindowMarker_0 = new BMap.InfoWindow(contentMarker_0, optsMarker_0);
+        // Marker_0.addEventListener('click',function(){
+        //     Marker_0.openInfoWindow(infoWindowMarker_0);
+        // });
+    }
+
+    // 添加线条
+    function addPolyline(longitude,latitude,longitude2,latitude2){
+        var polyline1=new BMap.Polyline([new BMap.Point(longitude,latitude),new BMap.Point(longitude2,latitude2)],{strokeColor:"#008000", strokeWeight:6, strokeOpacity:1});
+        map.addOverlay(polyline1);
+    }
+
+
+    // 测试添加标记
+    // addMarker(119.655991996522,29.0830317321422);
+    //addStatic
+
+
+</script>

@@ -56,6 +56,14 @@ contains
   ListItemStyle_MailList2 in 'ListItemStyle_MailList2.pas',
   ListItemStyle_MailListWithTag in 'ListItemStyle_MailListWithTag.pas',
   ListItemStyle_TreeMainMenu_LabelAndArrow in 'ListItemStyle_TreeMainMenu_LabelAndArrow.pas',
-  EasyServiceCommonMaterialDataMoudle_VCL in '..\EasyServiceCommonMaterialDataMoudle_VCL.pas';
+  EasyServiceCommonMaterialDataMoudle_VCL in '..\EasyServiceCommonMaterialDataMoudle_VCL.pas',
+  ListItemStyle_IconLeft_CaptionLeft in 'ListItemStyle_IconLeft_CaptionLeft.pas',
+  ListItemStyle_MessageHintCard in 'ListItemStyle_MessageHintCard.pas',
+  ListItemStyle_CaptionSelectedMark in 'ListItemStyle_CaptionSelectedMark.pas',
+  ListItemStyle_MessageHintCard2 in 'ListItemStyle_MessageHintCard2.pas',
+  ListItemStyle_IconCaptionLeft_ArrowRight in 'ListItemStyle_IconCaptionLeft_ArrowRight.pas',
+  ListItemStyle_IconCaptionLeft_DetailRight in 'ListItemStyle_IconCaptionLeft_DetailRight.pas',
+  ListItemStyle_IconCaptionLeft_NotifyIconRight in 'ListItemStyle_IconCaptionLeft_NotifyIconRight.pas',
+  ListItemStyle_IconCaptionLeft_NotifyNumberRight in 'ListItemStyle_IconCaptionLeft_NotifyNumberRight.pas';
 
 end.

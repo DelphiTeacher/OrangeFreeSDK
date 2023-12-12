@@ -581,6 +581,12 @@ begin
     c := (1-sg)*(1-sl) + sf*sl;
 
     w := ArcTan(sqrt(s/c));
+    if w=0 then
+    begin
+      Result:= 0;
+      Exit;
+    end;
+
     r := sqrt(s*c)/w;
     d := 2 * w * a;
     h1 := (3*r -1)/2/c;

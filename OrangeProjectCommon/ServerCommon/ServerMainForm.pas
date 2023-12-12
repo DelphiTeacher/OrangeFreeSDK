@@ -291,9 +291,9 @@ begin
   begin
       if AIsStartSucc then
       begin
-          Self.Caption := GlobalServiceProject.Name + '云服务' + ' ' + '启动成功';
+          Self.Caption := GlobalServiceProject.Name + '云服务' +' '+GlobalServiceProject.FVersion+ ' ' + '启动成功';
           Self.btnStartServer.Enabled := False;
-          Self.memLog.Lines.Add('云服务' + ' ' + '启动成功');
+          Self.memLog.Lines.Add('云服务' +' '+GlobalServiceProject.FVersion+ ' ' + '启动成功');
 
 
 
@@ -302,7 +302,7 @@ begin
       end
       else
       begin
-          Self.memLog.Lines.Add('云服务' + ' ' + '启动失败：'+AError);
+          Self.memLog.Lines.Add('云服务' +' '+GlobalServiceProject.FVersion+ ' ' + '启动失败：'+AError);
       end;
   end);
 
@@ -345,7 +345,7 @@ begin
   end;
 
 
-  Self.Caption:=(GlobalServiceProject.Name + '云服务');
+  Self.Caption:=GlobalServiceProject.Name + '云服务'+' '+GlobalServiceProject.FVersion;
   Self.edtPort.Text:=IntToStr(GlobalServiceProject.Port);
   Self.edtSSLPort.Text:=IntToStr(GlobalServiceProject.SSLPort);
 

@@ -410,6 +410,12 @@ function GetMimeType(AContent:TStream):String;overload;
 function IsUrl(AUrl:String):Boolean;
 //https://www.orangeui.cn，转换为orangeui.cn
 function ExtractDomain(AUrl:String):String;
+//去除Whatsapp的非法字符
+function RemoveWhatsappInvalidChar(AWhatsapp:String):String;
+//计算这个字符串在列表中的个数
+function CountStrInList(AStr:String;AStrList:TStringList):Integer;
+
+function FindTextInStringList(AStr:String;AStrList:TStringList):Integer;
 
 
 var
@@ -423,11 +429,66 @@ var
 implementation
 
 
+function FindTextInStringList(AStr:String;AStrList:TStringList):Integer;
+var
+  I: Integer;
+begin
+  Result:=-1;
+  for I := 0 to AStrList.Count-1 do
+  begin
+    if SameText(Trim(AStrList[I]),Trim(AStr)) then
+    begin
+      Result:=I;
+      Exit;
+    end;
+  end;
+end;
+
+
+
+
+//计算这个字符串在列表中的个数
+function CountStrInList(AStr:String;AStrList:TStringList):Integer;
+var
+  I: Integer;
+begin
+  Result:=0;
+  for I := 0 to AStrList.Count-1 do
+  begin
+    if SameText(AStrList[I],AStr) then
+    begin
+      Inc(Result);
+    end;
+  end;
+end;
+
+
+//去除Whatsapp的非法字符
+function RemoveWhatsappInvalidChar(AWhatsapp:String):String;
+var
+  I: Integer;
+begin
+  Result:='';
+  //Mobile:
+//  Result:=ReplaceStr(Result,'+','');
+//  Result:=ReplaceStr(Result,' ','');
+
+  for I := 1 to Length(AWhatsapp) do
+  begin
+    if (AWhatsapp[I]>='0') and (AWhatsapp[I]<='9') then
+    begin
+      Result:=Result+AWhatsapp[I];
+    end;
+  end;
+
+end;
+
+
 function ExtractDomain(AUrl:String):String;
 var
   AIndex:Integer;
 begin
-  Result:=AUrl;
+  Result:=Trim(AUrl);
   if (Pos('http://',LowerCase(AUrl))>0) then
   begin
     Result:=Copy(Result,Length('http://')+1,MaxInt);
@@ -438,10 +499,26 @@ begin
     Result:=Copy(Result,Length('https://')+1,MaxInt);
   end;
 
-  if (Copy(LowerCase(AUrl),1,4)='www.') then
+  if (Copy(LowerCase(Result),1,4)='www.') then
   begin
     Result:=Copy(Result,Length('www.')+1,MaxInt);
   end;
+
+  if (Copy(LowerCase(Result),1,4)='www,') then
+  begin
+    Result:=Copy(Result,Length('www,')+1,MaxInt);
+  end;
+
+  if LowerCase(Result)='www' then
+  begin
+    Result:='';
+  end;
+
+  if LowerCase(Result)='null' then
+  begin
+    Result:='';
+  end;
+
 
   AIndex:=Pos('/',Result);
   if AIndex>0 then
@@ -2751,6 +2828,9 @@ finalization
 
 
 end.
+
+
+
 
 
 

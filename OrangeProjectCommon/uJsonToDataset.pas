@@ -219,9 +219,10 @@ begin
       except
           on E:Exception do
           begin
-            uBaseLog.HandleException(E,'LoadRecordFromJson');
+            uBaseLog.HandleException(E,'LoadRecordFromJson field:'+AFieldDef.Name);
           end;
       end;
+
   end;
   Result:=True;
 end;

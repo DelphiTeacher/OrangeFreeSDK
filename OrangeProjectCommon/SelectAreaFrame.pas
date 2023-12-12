@@ -24,6 +24,7 @@ uses
   XSuperJson,
 
 
+  uFrameContext,
   uUIFunction, uSkinButtonType,
   uSkinPanelType, uBaseSkinControl, FMX.Controls.Presentation, FMX.ScrollBox,
   FMX.Memo, uTimerTaskEvent, uDrawCanvas, FMX.Memo.Types;

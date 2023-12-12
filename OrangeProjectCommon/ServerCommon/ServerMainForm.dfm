@@ -11,18 +11,19 @@ object frmServerMain: TfrmServerMain
   Font.Height = -14
   Font.Name = 'Tahoma'
   Font.Style = []
+  OldCreateOrder = True
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
+  PixelsPerInch = 96
   TextHeight = 17
   object pnlToolBar: TPanel
     Left = 0
     Top = 0
-    Width = 705
+    Width = 701
     Height = 105
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 701
     object Label1: TLabel
       Left = 52
       Top = 12
@@ -108,13 +109,11 @@ object frmServerMain: TfrmServerMain
   object pcClient: TPageControl
     Left = 0
     Top = 105
-    Width = 705
-    Height = 349
+    Width = 701
+    Height = 348
     ActivePage = tsLog
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 701
-    ExplicitHeight = 348
     object tsPerformance: TTabSheet
       Caption = #24615#33021
       object Label3: TLabel
@@ -182,14 +181,12 @@ object frmServerMain: TfrmServerMain
       object memLog: TMemo
         Left = 0
         Top = 0
-        Width = 697
-        Height = 317
+        Width = 693
+        Height = 316
         Align = alClient
         ScrollBars = ssVertical
         TabOrder = 0
         OnDblClick = memLogDblClick
-        ExplicitWidth = 693
-        ExplicitHeight = 316
       end
     end
     object tsDatabasePool: TTabSheet

@@ -373,6 +373,9 @@ type
   function SO(JSON: String = '{}'): ISuperObject;
   function SA(JSON: String = '[]'): ISuperArray;
 
+var
+  GlobalJSONCount:Integer;
+
 implementation
 
  // ** Zero Based Strings Definations...
@@ -417,6 +420,8 @@ begin
   TValue.Make(@JVal, TypeInfo(T), M);
   FJSONObj := M.AsType<T>;
   FInterface := TVAlue.From<T>(FJSONObj).AsInterface;
+
+  Inc(GlobalJSONCount);
 end;
 
 function TBaseJSON<T, Typ>.GetValue<C>(const Name: Typ): C;
@@ -557,6 +562,9 @@ constructor TBaseJSON<T, Typ>.Create(JSON: T);
 begin
   FJSONObj := JSON;
   FInterface := TValue.From<T>(JSON).AsInterface;
+
+  Inc(GlobalJSONCount);
+
 end;
 
 function TBaseJSON<T, Typ>.DefaultValueClass<TT>(const Value: TValue): TT;
@@ -612,6 +620,8 @@ end;
 
 destructor TBaseJSON<T, Typ>.Destroy;
 begin
+  Dec(GlobalJSONCount);
+
   inherited;
 end;
 

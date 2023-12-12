@@ -242,6 +242,9 @@ function LocateJsonArray(AJsonArray:ISuperArray;
                           ANames:TStringDynArray;
                           AValues:TVariantDynArray;
                           AStartIndex:Integer=0):ISuperObject;overload;
+function LocateJsonArrayValueArray(AJsonArray:ISuperArray;
+                        AIndex:Integer;
+                        AValue:Variant):ISuperArray;
 //从Json数组中取出某一个字段的值,然后拼成数组
 function GetJsonArrayValues(AJsonArray: ISuperArray;AKeyName:String):TVariantDynArray;overload;
 function GetJsonArrayValues2(AJsonArray: ISuperArray;AKeyName:String):ISuperArray;overload;
@@ -267,6 +270,8 @@ procedure MergeJson(AFromJson:ISuperObject;AToJson:ISuperObject;AIsOverride:Bool
 //生成查询条件
 function GetWhereConditions(AFieldNames:Array of String;
                             AFieldValues:Array of Variant):String;overload;
+function GetWhereConditionArray(AFieldNames:Array of String;
+                            AFieldValues:Array of Variant):ISuperArray;overload;
 
 
 function ConvertJsonArray(AJsonArray:Array of ISuperObject):ISuperArray;overload;
@@ -334,17 +339,28 @@ function GetJsonValueArray(AFieldNames:Array of String;AJson:ISuperObject):TVari
 
 //获取默认的条件
 function GetWhereConditionItemSQL(
-                                        ALogicOperator,
-                                        AName,
-                                        AOperator:String;
-                                        AValue: Variant;
+                            ALogicOperator,
+                            AName,
+                            AOperator:String;
+                            AValue: Variant;
                             AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''): String;
-
 //获取Where条件
 function GetWhereConditionSQL(AWhereKeyJsonArray:ISuperArray;
                               AWhereKeyTranslatorList:TWhereKeyTranslatorList;
                               AFieldTableAliasList:TStringList
                               ):String;//virtual;
+//获取ES格式的查询条件
+function GetWhereConditionItemESQuery(AESQuery:ISuperObject;
+                            ALogicOperator,
+                            AName,
+                            AOperator:String;
+                            AValue: Variant;
+                            AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''):ISuperObject;
+function GetWhereConditionESQuery(AWhereKeyJsonArray:ISuperArray;
+                              AWhereKeyTranslatorList:TWhereKeyTranslatorList=nil;
+                              AFieldTableAliasList:TStringList=nil
+                              ):ISuperObject;//virtual;
+
 
 //判断json是否存在别的字段
 function IsJsonHasNotExistsField(ARecordDataJson:ISuperObject;AFieldDefArray:ISuperArray;AParentFieldName:String;var ADesc:String):Boolean;
@@ -610,11 +626,130 @@ begin
   end;
 end;
 
+function GetWhereConditionESQuery(AWhereKeyJsonArray: ISuperArray;
+                              AWhereKeyTranslatorList:TWhereKeyTranslatorList;
+                              AFieldTableAliasList:TStringList): ISuperObject;
+var
+  I:Integer;
+  AHasOR:Boolean;
+  ASubWhereConditionSQL:ISuperObject;
+  AWhereConditionItemSQL:ISuperObject;
+  AWhereConditionItemSQLArray:ISuperArray;
+  AWhereKeyTranslator:TWhereKeyTranslator;
+  AFieldTableAlias:String;
+begin
+  Result:=SO();
+  AHasOR:=False;
+  AWhereConditionItemSQLArray:=SA();
+//  Result.O['bool'].A['must'];
+//  ASubWhereConditionSQL:='';
+
+  for I := 0 to AWhereKeyJsonArray.Length-1 do
+  begin
+      if AWhereKeyJsonArray.O[I].Contains('conditions') then
+      begin
+          //子条件列表
+
+          ASubWhereConditionSQL:=GetWhereConditionESQuery(AWhereKeyJsonArray.O[I].A['conditions'],AWhereKeyTranslatorList,AFieldTableAliasList);
+
+//          Result:=Result
+//                +' '+AWhereKeyJsonArray.O[I].S['logical_operator']
+//                +' ('+ASubWhereConditionSQL+') ';
+
+          AWhereConditionItemSQL:=SO();
+          AWhereConditionItemSQL.O['bool']:=ASubWhereConditionSQL;
+
+//        AWhereConditionItemSQLArray.O[AWhereConditionItemSQLArray.Length]:=AWhereConditionItemSQL;
+      end
+      else
+      begin
+
+          //自定义获取条件表达式
+//          AWhereKeyTranslator:=nil;
+//          if AWhereKeyTranslatorList<>nil then AWhereKeyTranslatorList.Find(AWhereKeyJsonArray.O[I].S['name']);
+//          if AWhereKeyTranslator<>nil then
+//          begin
+//              AWhereConditionItemSQL:=AWhereKeyTranslator.DoGetWhereConditionItemSQL(
+//                                          AWhereKeyJsonArray.O[I].S['logical_operator'],
+//                                          AWhereKeyJsonArray.O[I].S['operator'],
+//                                          AWhereKeyJsonArray.O[I].V['value']);
+//          end
+//          else
+//          begin
+
+//              if Assigned(Self.OnGetWhereConditionItemSQLEvent) then
+//              begin
+//                AWhereConditionItemSQL:=OnGetWhereConditionItemSQLEvent(Self,
+//                                          AWhereKeyJsonArray.O[I].S['logical_operator'],
+//                                          AWhereKeyJsonArray.O[I].S['name'],
+//                                          AWhereKeyJsonArray.O[I].S['operator'],
+//                                          AWhereKeyJsonArray.O[I].V['value']);
+//              end
+//              else
+//              begin
+
+                if SameText(AWhereKeyJsonArray.O[I].S['logical_operator'],'OR') then
+                begin
+                  AHasOR:=True;
+                end;
+                
+                AFieldTableAlias:='';
+                if AFieldTableAliasList<>nil then
+                begin
+                  AFieldTableAlias:=AFieldTableAliasList.Values[AWhereKeyJsonArray.O[I].S['name']];
+                end;
+
+                //单个条件
+                AWhereConditionItemSQL:=GetWhereConditionItemESQuery(Result,//Result.O['bool'],
+                                                                      AWhereKeyJsonArray.O[I].S['logical_operator'],
+                                                                      AWhereKeyJsonArray.O[I].S['name'],
+                                                                      AWhereKeyJsonArray.O[I].S['operator'],
+                                                                      AWhereKeyJsonArray.O[I].V['value'],
+                                                                      AWhereKeyJsonArray.O[I].B['value_is_field'],
+                                                                      AFieldTableAlias
+                                                                      );
+
+
+
+
+//              end;
+
+//          end;
+
+
+//          Result:=Result+AWhereConditionItemSQL;
+
+//        Result.A['must'].O[Result.A['must'].Length]:=AWhereConditionItemSQL;
+
+//          Result.O['bool']:=AWhereConditionItemSQL;
+
+      end;
+      AWhereConditionItemSQLArray.O[AWhereConditionItemSQLArray.Length]:=AWhereConditionItemSQL;
+
+  end;
+
+  //根据and 和 or 来拼是must还是should
+  if AWhereConditionItemSQLArray.Length>0 then
+  begin
+    if not AHasOR then
+    begin
+      //用MUST
+      Result.A['must']:=AWhereConditionItemSQLArray;
+    end
+    else
+    begin
+      Result.A['should']:=AWhereConditionItemSQLArray;
+    end;
+  end;
+  
+
+end;
+
 
 function GetWhereConditionItemSQL(ALogicOperator,
-              AName,
-              AOperator:String;
-              AValue:Variant;
+                            AName,
+                            AOperator:String;
+                            AValue:Variant;
                             AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''): String;
 var
   AValueStr:String;
@@ -648,6 +783,11 @@ begin
       //IS NULL,IS NOT NULL
       Result:=' '+ALogicOperator+' ( '+AName+' '+AOperator+' '+AValue+' ) ';
   end
+  else if SameText(AOperator,'EXISTS') then
+  begin
+      //不为空
+      Result:=' '+ALogicOperator+' ( IFNULL('+AName+','''') <> '+''''+' ) ';
+  end
   else
   begin
       if (VarType(AValue)=varString)
@@ -667,6 +807,179 @@ begin
         AValueStr:=AValue;
         Result:=' '+ALogicOperator+' ('+AName+' '+AOperator+' '+AValueStr+') ';
       end;
+  end;
+end;
+
+function GetWhereConditionItemESQuery(AESQuery:ISuperObject;
+                                      ALogicOperator,
+                                      AName,
+                                      AOperator:String;
+                                      AValue:Variant;
+                                      AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''):ISuperObject;
+var
+  AValueStr:String;
+  AValueList:TStringList;
+  I: Integer;
+begin
+  Result:=SO();
+
+  //有些字段有表别名,则要加上表别名
+//  if Self.FFieldTableAliasList.Values[AName]<>'' then
+//  begin
+//    AName:=Self.FFieldTableAliasList.Values[AName]+AName;
+//  end;
+  //https://blog.csdn.net/m0_38071129/article/details/126423242
+
+  if AFieldTableAlias<>'' then
+  begin
+    AName:=AFieldTableAlias+AName;
+  end;
+
+  //ES的搜索条件：https://blog.csdn.net/xyc1211/article/details/120349794
+  if SameText(AOperator,'LIKE') then
+  begin
+
+      AValueStr:=VarToStr(AValue);
+      if POS(' ',AValue)>0 then
+      begin
+
+        //如果关键词有空格,那么只需要同时满足存在这两个字段就可以了
+//        Result.O['match'].V[AName]:=AValue;
+        AValueList:=SplitString(AValueStr,' ');
+        try
+          for I := 0 to AValueList.Count-1 do
+          begin
+            Result.O['bool'].A['must'].O[Result.O['bool'].A['must'].Length].O['term'].S[AName]:=AValueList[I];
+          end;
+        finally
+          FreeAndNil(AValueList);
+        end;
+
+      end
+      else
+      begin
+        //如果关键词有空格,那么只需要同时满足存在这两个字段就可以了
+        Result.O['match'].V[AName]:=AValue;
+      end;
+
+  end
+  else if SameText(AOperator,'IN') then
+  begin
+      //('','','')
+      AValueStr:=VarToStr(AValue);
+      //去掉括号
+      AValueStr:=Trim(AValueStr);
+      AValueStr:=Copy(AValueStr,2,Length(AValueStr)-2);
+      //去掉全部的单引号
+      AValueStr:=ReplaceStr(AValueStr,'''','');
+      AValueList:=SplitString(AValueStr);
+      try
+        for I := 0 to AValueList.Count-1 do
+        begin
+          Result.O['terms'].A[AName].S[I]:=AValueList[I];
+        end;
+      finally
+        FreeAndNil(AValueList);
+      end;
+  end
+  else if SameText(AOperator,'IS') then
+  begin
+      //IS NULL,IS NOT NULL
+      if SameText(AValue,'null') then
+      begin
+        //IS NULL
+        Result.O['bool'].A['must_not'].O[Result.O['bool'].A['must_not'].Length].O['exists'].S['field']:=AName;
+      end
+      else
+      begin
+        //IS NOT NULL
+        Result.O['exists'].S['field']:=AName;
+      end;
+  end
+  else
+  if SameText(AOperator,'EXISTS') then
+  begin
+      //存在字段
+      Result.O['bool'].A['must'].O[Result.O['bool'].A['must'].Length].O['exists'].S['field']:=AName;
+      Result.O['bool'].A['must_not'].O[Result.O['bool'].A['must_not'].Length].O['term'].S[AName]:='';
+  end
+  else
+  if SameText(AOperator,'wildcard') then
+  begin
+      Result.O['wildcard'].V[AName]:=AValue;
+  end
+  else
+  if SameText(AOperator,'raw') then
+  begin
+      //直接就是原始
+      Result:=SO(AValue);
+  end
+//  else
+//  //时间范围
+//  if SameText(AOperator,'RANGE') then
+//  begin
+//      //大于
+//      Result.O['range'].O[AName].S['gte']:=AValue;
+//      //小于
+//      Result.O['range'].O[AName].S['lte']:=AValue;
+//  end
+  else
+  //时间范围
+  if SameText(AOperator,'<=') then
+  begin
+      //小于
+      Result.O['range'].O[AName].S['lte']:=AValue;
+  end
+  else
+  //时间范围
+  if SameText(AOperator,'<') then
+  begin
+      //小于
+      Result.O['range'].O[AName].S['lt']:=AValue;
+  end
+  else
+  //时间范围
+  if SameText(AOperator,'>=') then
+  begin
+      //大于
+      Result.O['range'].O[AName].S['gte']:=AValue;
+  end
+  else
+  //时间范围
+  if SameText(AOperator,'>') then
+  begin
+      //大于
+      Result.O['range'].O[AName].S['gt']:=AValue;
+  end
+  else
+  if SameText(AOperator,'=') then
+  begin
+//      if (VarToStr(AValue)='') then
+//      begin
+//        //值为空则表示：
+//        //字段不存在,或者值为空字符串
+//        Result.O['bool'].A['should'].O[Result.O['bool'].A['should'].Length].O['exists'].S['field']:=AName;
+//        Result.O['bool'].A['should'].O[Result.O['bool'].A['should'].Length].O['term'].S[AName]:='';
+//      end
+//      else
+//      begin
+        Result.O['term'].V[AName]:=AValue;
+//      end;
+  end
+  else
+  if SameText(AOperator,'<>') then
+  begin
+    if (VarToStr(AValue)='') then
+    begin
+      //值不为空则表示：
+      //存在值且不为空字符串
+      Result.O['bool'].A['must'].O[Result.O['bool'].A['must'].Length].O['exists'].S['field']:=AName;
+    end;
+    Result.O['bool'].A['must_not'].O[Result.O['bool'].A['must_not'].Length].O['term'].S[AName]:=AValue;
+  end
+  else//简单的比较条件
+  begin
+      raise Exception.Create('GetWhereConditionItemESQuery UnSupport Operator');
   end;
 end;
 
@@ -1062,17 +1375,20 @@ begin
       //不存在,才添加
       or not AIsOverride and not AToJson.Contains(AParamNames[I]) then
     begin
+      //是否需要覆盖数组
       if (AFromJson.GetType(AParamNames[I])=varArray) and AIsMergeArray then
       begin
         AToJson.A[AParamNames[I]]:=AFromJson.A[AParamNames[I]];
       end
       else
+      //是否需要覆盖对象
       if AFromJson.GetType(AParamNames[I])=varObject then
       begin
         AToJson.O[AParamNames[I]]:=AFromJson.O[AParamNames[I]];
       end
       else
       begin
+        //
         AToJson.V[AParamNames[I]]:=AFromJson.V[AParamNames[I]];
       end;
     end;
@@ -1140,6 +1456,19 @@ begin
   Result:=AWhereKeyJson;
 end;
 
+function GetWhereConditionArray(AFieldNames:Array of String;
+                            AFieldValues:Array of Variant):ISuperArray;
+var
+  I:Integer;
+begin
+  Result:=TSuperArray.Create;
+
+  for I := 0 to Length(AFieldNames)-1 do
+  begin
+    Result.O[I]:=GetFieldCondition('AND',AFieldNames[I],'=',AFieldValues[I]);
+  end;
+
+end;
 
 function GetWhereConditions(AFieldNames:Array of String;
                             AFieldValues:Array of Variant):String;
@@ -1201,7 +1530,7 @@ begin
   for I := AStartIndex to AJsonArray.Length-1 do
   begin
     //遍历所有key
-    if (AJsonArray.O[I].V[AName]=AValue) then
+    if (AJsonArray.O[I].Contains(AName)) and (AJsonArray.O[I].V[AName]=AValue) then
     begin
       Result:=AJsonArray.O[I];
       Break;
@@ -1223,6 +1552,24 @@ begin
     if (AJsonArray.V[I]=AValue) then
     begin
       Result:=I;
+      Break;
+    end;
+  end;
+
+end;
+
+function LocateJsonArrayValueArray(AJsonArray:ISuperArray;
+                                    AIndex:Integer;
+                                    AValue:Variant):ISuperArray;
+var
+  I:Integer;
+begin
+  Result:=nil;
+  for I := 0 to AJsonArray.Length-1 do
+  begin
+    if (AJsonArray.A[I].V[AIndex]=AValue) then
+    begin
+      Result:=AJsonArray.A[I];
       Break;
     end;
   end;
@@ -1283,7 +1630,7 @@ begin
   Result:=TStringList.Create;
   for I := 0 to Length(AValues)-1 do
   begin
-    Result.Add(AValues[I]);
+    Result.Add(VarToStr(AValues[I]));
   end;
 end;
 
@@ -1490,6 +1837,11 @@ begin
       ACurrentValue:=AJson.V[ASuperEnumerator.Current.Name];
       {$IFEND} // XE or older
 
+      if (AFieldList<>nil) and (AFieldList.IndexOf(ACurrentName)=-1) then
+      begin
+        uBaseLog.HandleException(nil,'ConvertJsonToArray Key不存在：'+ACurrentName);
+        continue;
+      end;
 
       if  //字段没有NOPOST前缀
           Not SameText(
@@ -2131,11 +2483,16 @@ begin
               begin
                 Json.S[AKeyName]:=FormatDateTime('YYYY-MM-DD HH:MM:SS',Field.AsDateTime);
               end;
-              ftSmallint,ftInteger,ftWord,ftLargeint,ftTimeStamp,ftLongWord,ftShortint,ftByte:
+              ftSmallint,ftInteger,ftWord,//ftTimeStamp,
+              ftLongWord,ftShortint,ftByte:
               begin
                 Json.I[AKeyName] := Field.AsInteger;
               end;
-              ftFloat,ftCurrency,ftBCD,ftFMTBcd,ftExtended,ftSingle:
+              ftLargeint:
+              begin
+                Json.I[AKeyName] := Field.AsLargeInt;
+              end;
+              ftFloat,ftCurrency,ftBCD,ftFMTBcd,ftExtended,ftSingle,ftTimeStamp:
               begin
                 Json.F[AKeyName] := Field.AsFloat;
               end;

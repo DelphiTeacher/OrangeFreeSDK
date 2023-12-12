@@ -548,12 +548,12 @@ begin
   SizeToDelete := 0;
    if (APaddingMode = TPaddingMode.pmZeroPadding) then
   begin
-    OutStream.Seek(0, soFromEnd);
+    OutStream.Seek(Int64(0), soFromEnd);
     while (TestByte = 0) and (OutStream.Position > OldPosition) do
     begin
-      OutStream.Seek(-1, soFromCurrent);
+      OutStream.Seek(Int64(-1), soFromCurrent);
       OutStream.Read(TestByte, 1);
-      OutStream.Seek(-1, soFromCurrent);
+      OutStream.Seek(Int64(-1), soFromCurrent);
       if TestByte = 0 then
         inc(SizeToDelete);
     end;

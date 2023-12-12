@@ -110,6 +110,8 @@ type
                  lltCritical//4
                  );
 
+  TBaseLogEvent=procedure(const ALog:String;ALogLevelType:TLogLevelType) of object;
+
   TBaseLog=class
   private
     //是否写日志到文件
@@ -138,6 +140,7 @@ type
     FWriteLogLevelType:TLogLevelType;
     FOutputLogLevelType:TLogLevelType;
 
+
     function GetFileHandle(InCreate:Boolean):Boolean;
   public
     constructor Create(const ALogFileName:String);
@@ -155,8 +158,8 @@ type
     /// </summary>
     LogKeyword:String;
 
-    procedure LoadConfig;
-    procedure SaveConfig;
+    procedure LoadConfig(AConfigFileName:string='Config.ini');
+    procedure SaveConfig(AConfigFileName:string='Config.ini');
     procedure CloseFileHandle;
     function GetLogFilePath:String;
     function GetLogFileName:String;
@@ -171,6 +174,7 @@ type
     /// </summary>
     property MaxFileSize:Integer read FMaxFileSize write FMaxFileSize;
   public
+    FOnLog:TBaseLogEvent;
     //是否写日志到文件
     property IsWriteLog:Boolean read FIsWriteLog write FIsWriteLog;
     //是否输出调试信息
@@ -317,18 +321,18 @@ procedure HandleError(AException: Exception;const AMethodName:String);
 procedure HandleException(const AMethodName:String;AException: Exception=nil;ALogLevelType:TLogLevelType=lltDebug);overload;
 
 
-function GetNewLogFileName(const FLogFileName:String):String;
+function GetNewLogFileName(const ALogFileName:String):String;
 
 
 
 implementation
 
 
-function GetNewLogFileName(const FLogFileName:String):String;
+function GetNewLogFileName(const ALogFileName:String):String;
 begin
-  Result:=Copy(FLogFileName,1,Length(FLogFileName)-4)
+  Result:=Copy(ALogFileName,1,Length(ALogFileName)-4)
           +' '+FormatDateTime('YYYY-MM-DD',Now)
-          +Copy(FLogFileName,Length(FLogFileName)-4+1,MaxInt);
+          +Copy(ALogFileName,Length(ALogFileName)-4+1,MaxInt);
 end;
 
 
@@ -411,13 +415,13 @@ begin
   Debug(ALogString,ALogLevelType);
 end;
 
-procedure TBaseLog.LoadConfig;
+procedure TBaseLog.LoadConfig(AConfigFileName:string);
 var
   AIniFile:TIniFile;
 begin
-  if FileExists(GetApplicationPath+'Config.ini') then
+  if FileExists(GetApplicationPath+AConfigFileName) then
   begin
-    AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+    AIniFile:=TIniFile.Create(GetApplicationPath+AConfigFileName{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
     try
       FIsWriteLog:=AIniFile.ReadBool('Log','IsWriteLog',False);
       FIsOutputLog:=AIniFile.ReadBool('Log','IsOutputLog',True);
@@ -510,7 +514,7 @@ begin
 
 
 //  Result:=False;
-  Self.LoadConfig;
+  Self.LoadConfig('Config.ini');
 
 end;
 
@@ -679,6 +683,8 @@ begin
   try
 
     {$IFDEF CONSOLE}
+    //向管道写数据,但是吧，会被当成python输出数据读进去
+//    writeln('log_begin '+ADebugString+' log_end');
     writeln(ADebugString);
     {$ELSE}
 //    {$IFDEF LINUX}
@@ -713,11 +719,11 @@ begin
   end;
 end;
 
-procedure TBaseLog.SaveConfig;
+procedure TBaseLog.SaveConfig(AConfigFileName:string);
 var
   AIniFile:TIniFile;
 begin
-  AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
+  AIniFile:=TIniFile.Create(GetApplicationPath+AConfigFileName{$IFNDEF MSWINDOWS},TEncoding.UTF8{$ENDIF});
   try
     AIniFile.WriteBool('Log','IsWriteLog',FIsWriteLog);
     AIniFile.WriteBool('Log','IsOutputLog',FIsOutputLog);
@@ -734,6 +740,11 @@ begin
   if FIsWriteLog then WriteLog(ADebugString+#13#10,ALogLevelType);
 
   if FIsOutputLog then OutputDebugString(ADebugString,ALogLevelType);
+
+  if Assigned(FOnLog) then
+  begin
+    FOnLog(ADebugString,ALogLevelType);
+  end;
 end;
 
 

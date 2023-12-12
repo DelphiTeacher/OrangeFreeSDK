@@ -12,10 +12,13 @@ interface
 
 uses
   Classes,
-  uBaseLog,
+//  uBaseLog,
 //  Windows ,
   SyncObjs,
   SysUtils;
+  
+const
+  INFINITE = Cardinal($FFFFFFFF);       {$EXTERNALSYM INFINITE}
 
 type
   TPoolObjectClass = class of TPoolObject;

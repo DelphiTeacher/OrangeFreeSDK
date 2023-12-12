@@ -48,6 +48,11 @@ const
 
 
 const
+  Const_AIModel_ChatGPT3_5='chatgpt 3.5';
+  Const_AIModel_ChatGPT4='chatgpt 4';
+
+
+const
   //编辑页面输入Panel的默认素材
   Const_ControlStyle_EditPageInputPanelDefault='EditPageInputPanelDefault';
   //编辑页面输入Label的默认素材
@@ -1024,11 +1029,59 @@ function GetScoreRuleTypeStr(ARuleType:String):String;
 function GetTelAPIMessage(ACode:Integer):String;
 
 
-
+//1孚盟大数据（包括深挖库数据-李丽提供给王能，现有领英库数据-王能自己从库里查询）
+//2 Google
+//3 Facebook
+//4 Instagram
+//5 Google Map
+//6 Yelp
+//7 Yellow Page
+//8 Yandex
+function GetPlatformByMXAutoDevSource(ADevSource:Integer):String;
+function GetMXAutoDevSourceByPlatform(AFromPlatform:String):Integer;
 
 implementation
 
+function GetPlatformByMXAutoDevSource(ADevSource:Integer):String;
+begin
+  Result:='';
+  case ADevSource of
+    1:Result:='fumadata';//孚盟大数据（包括深挖库数据-李丽提供给王能，现有领英库数据-王能自己从库里查询）
+    2:Result:='google';// Google
+    3:Result:='facebook';// Facebook
+    4:Result:='instagram';// Instagram
+    5:Result:='googleMap';// Google Map
+    6:Result:='yelp';// Yelp
+    7:Result:='yellowPage';// Yellow Page
+    8:Result:='yandex';// Yandex
+    else
+    begin
+      Result:='else';
+    end;
+  end;
+end;
 
+function GetMXAutoDevSourceByPlatform(AFromPlatform:String):Integer;
+begin
+  Result:=0;
+  //孚盟大数据（包括深挖库数据-李丽提供给王能，现有领英库数据-王能自己从库里查询）
+  if (AFromPlatform='fumadata') or (AFromPlatform='linkedin_db') then Result:=1;
+  // Google
+  if AFromPlatform='google' then Result:=2;
+  // Facebook
+  if AFromPlatform='facebook' then Result:=3;
+  // Instagram
+  if AFromPlatform='ins' then Result:=4;
+  // Google Map
+  if AFromPlatform='googleMap' then Result:=5;
+  // Yelp
+  if AFromPlatform='yelp' then Result:=6;
+  // Yellow Page
+  if AFromPlatform='yellowPage' then Result:=7;
+  // Yandex
+  if AFromPlatform='yandex' then Result:=8;
+
+end;
 
 
 

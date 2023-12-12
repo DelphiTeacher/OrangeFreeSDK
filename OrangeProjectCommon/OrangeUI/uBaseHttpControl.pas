@@ -387,13 +387,16 @@ function IsSupportIPV6Host_IOS(const Host:String):Boolean;
 
 {$IF CompilerVersion>=30.0}
 //下载图片
-function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
+function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;overload;
+function DownloadImage(APicUrl:String;AResponseStream:TStream;AIsRandomUserAgent:Boolean=False):Boolean;overload;
 {$IFEND}
 
 //HasWWW:是不是包含域名,是域名的话，参数列表前面会加?号
 function ParseUrlQueryParameters(URL:String;HasWWW:Boolean=True):TQueryParameters;
 function GetUrlParamValue(AURL:String;AParamName:String;HasWWW:Boolean=True):String;
 
+function GetCustomHeader(ACustomHeaderPairs:TVariantDynArray):TNetHeaders;overload;
+function GetCustomHeader(ACustomHeaderPairs:TStringList):TNetHeaders;overload;
 
 
 implementation
@@ -629,15 +632,16 @@ end;
 
 {$IF CompilerVersion>=30.0}
 //下载图片
-function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
+
+function DownloadImage(APicUrl:String;AResponseStream:TStream;AIsRandomUserAgent:Boolean=False):Boolean;
 var
 //  AHttpControl:THttpControl;
   ANetHTTPClient:TNetHTTPClient;
-  AResponseStream:TMemoryStream;
+//  AResponseStream:TMemoryStream;
 begin
   Result:=False;
   ANetHTTPClient:=TNetHTTPClient.Create(nil);
-  AResponseStream:=TMemoryStream.Create;
+//  AResponseStream:=TMemoryStream.Create;
   try
     try
       if AIsRandomUserAgent then
@@ -646,18 +650,56 @@ begin
         Randomize();
         ANetHTTPClient.CustomHeaders['user-agent']:=user_agent_list[Random(Length(user_agent_list))];
       end;
-
+      uBaseLog.HandleException(nil,'DownloadImage 下载图片 '+APicUrl);
       ANetHTTPClient.Get(APicUrl,AResponseStream);
+//      AResponseStream.SaveToFile(APicFilePath);
+      Result:=True;
+    except
+      on E:Exception do
+      begin
+        uBaseLog.HandleException(E,'DownloadImage 下载图片 '+APicUrl);
+      end;
+    end;
+  finally
+    FreeAndNil(ANetHTTPClient);
+//    FreeAndNil(AResponseStream);
+  end;
+
+end;
+
+function DownloadImage(APicUrl:String;APicFilePath:String;AIsRandomUserAgent:Boolean=False):Boolean;
+var
+//  AHttpControl:THttpControl;
+//  ANetHTTPClient:TNetHTTPClient;
+  AResponseStream:TMemoryStream;
+begin
+  Result:=False;
+//  ANetHTTPClient:=TNetHTTPClient.Create(nil);
+  AResponseStream:=TMemoryStream.Create;
+  try
+    try
+//      if AIsRandomUserAgent then
+//      begin
+//        //facebook防爬,但是tiktok不能加这一段
+//        Randomize();
+//        ANetHTTPClient.CustomHeaders['user-agent']:=user_agent_list[Random(Length(user_agent_list))];
+//      end;
+//
+//      ANetHTTPClient.Get(APicUrl,AResponseStream);
+      if not DownloadImage(APicUrl,AResponseStream,AIsRandomUserAgent) then
+      begin
+        Exit;
+      end;
       AResponseStream.SaveToFile(APicFilePath);
       Result:=True;
     except
       on E:Exception do
       begin
-        uBaseLog.HandleException(E,'DownloadImage '+APicUrl);
+        uBaseLog.HandleException(E,'DownloadImage 下载图片 '+APicUrl);
       end;
     end;
   finally
-    FreeAndNil(ANetHTTPClient);
+//    FreeAndNil(ANetHTTPClient);
     FreeAndNil(AResponseStream);
   end;
 end;
@@ -790,20 +832,49 @@ end;
 
 procedure TSystemHttpControl.SetCustomHeader(ACustomHeaderPairs:TVariantDynArray);
 var
-  ANameValuePair:TNameValuePair;
+//  ANameValuePair:TNameValuePair;
   I: Integer;
 begin
   SetLength(Self.FNetHTTPRequestHeaders,Length(ACustomHeaderPairs) div 2);
   for I := 0 to Length(ACustomHeaderPairs) div 2 - 1 do
   begin
-    ANameValuePair.Name:= ACustomHeaderPairs[I*2];//'Content-type';
-    ANameValuePair.Value:= ACustomHeaderPairs[I*2+1];//AContentType;//'application/json';
-    Self.FNetHTTPRequestHeaders[I]:=ANameValuePair;
+    FNetHTTPRequestHeaders[I].Name:= ACustomHeaderPairs[I*2];//'Content-type';
+    FNetHTTPRequestHeaders[I].Value:= ACustomHeaderPairs[I*2+1];//AContentType;//'application/json';
+//    Self.FNetHTTPRequestHeaders[I]:=ANameValuePair;
   end;
 end;
 
 {$ENDIF}
 
+function GetCustomHeader(ACustomHeaderPairs:TStringList):TNetHeaders;overload;
+var
+//  ANameValuePair:TNameValuePair;
+  I: Integer;
+begin
+//  SetLength(Self.FNetHTTPRequestHeaders,Length(ACustomHeaderPairs) div 2);
+  SetLength(Result,ACustomHeaderPairs.Count);
+  for I := 0 to ACustomHeaderPairs.Count-1 do
+  begin
+    Result[I].Name:= ACustomHeaderPairs.Names[I];//'Content-type';
+    Result[I].Value:= ACustomHeaderPairs.Values[ACustomHeaderPairs.Names[I]];//AContentType;//'application/json';
+//    Result[I]:=ANameValuePair;
+  end;
+end;
+
+function GetCustomHeader(ACustomHeaderPairs:TVariantDynArray):TNetHeaders;
+var
+//  ANameValuePair:TNameValuePair;
+  I: Integer;
+begin
+//  SetLength(Self.FNetHTTPRequestHeaders,Length(ACustomHeaderPairs) div 2);
+  SetLength(Result,Length(ACustomHeaderPairs) div 2);
+  for I := 0 to Length(ACustomHeaderPairs) div 2 - 1 do
+  begin
+    Result[I].Name:= ACustomHeaderPairs[I*2];//'Content-type';
+    Result[I].Value:= ACustomHeaderPairs[I*2+1];//AContentType;//'application/json';
+//    Result[I]:=ANameValuePair;
+  end;
+end;
 
 
 { THttpControl }

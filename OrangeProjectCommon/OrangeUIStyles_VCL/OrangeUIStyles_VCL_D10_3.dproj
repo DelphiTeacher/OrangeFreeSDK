@@ -208,12 +208,25 @@
         <DCCReference Include="ListItemStyle_IconCaptionLeft_DetailRight.pas">
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="ListItemStyle_GoodsSelectItem.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_GoodsItem.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_AddFriendsDemoSelectItem.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_GroupsSelectItem.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ListItemStyle_PublishSettingItem.pas">
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="ListItemStyle_CaptionTopDetailBottom.pas">
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected.pas">
-            <FormType>dfm</FormType>
-        </DCCReference>
+        <DCCReference Include="ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected.pas"/>
         <DCCReference Include="ListItemStyle_CaptionTopDetailBottom_Summary.pas"/>
         <DCCReference Include="ListItemStyle_Default.pas">
             <Form>FrameListItemStyle_Default</Form>
@@ -225,9 +238,7 @@
             <Form>FrameListItemStyle_IconCaptionLeft_NotifyIconRight</Form>
         </DCCReference>
         <DCCReference Include="ListItemStyle_IconCaptionLeft_ArrowRight.pas"/>
-        <DCCReference Include="ListItemStyle_DashBoardSummaryItem.pas">
-            <FormType>dfm</FormType>
-        </DCCReference>
+        <DCCReference Include="ListItemStyle_DashBoardSummaryItem.pas"/>
         <DCCReference Include="ListItemStyle_ProgressBar.pas"/>
         <DCCReference Include="ListItemStyle_IconTop_CaptionDetailBottom.pas"/>
         <DCCReference Include="ListItemStyle_TwoIconButton.pas"/>
@@ -236,6 +247,10 @@
             <Form>FrameListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite</Form>
         </DCCReference>
         <DCCReference Include="ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont.pas"/>
+        <DCCReference Include="ListItemStyle_MessageHintCard.pas"/>
+        <DCCReference Include="ListItemStyle_MessageHintCard2.pas"/>
+        <DCCReference Include="ListItemStyle_CaptionSelectedMark.pas"/>
+        <DCCReference Include="ListItemStyle_VertSelectedSignIconLeft_CaptionRight.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

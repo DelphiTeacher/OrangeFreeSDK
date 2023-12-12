@@ -270,6 +270,12 @@ type
                  [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
 
 
+      [kbmMW_Method]
+      [kbmMW_Rest('method:post, path: "update_record_post_3"')]
+      function update_record_post_3([kbmMW_Rest('value: "$key", required: false')] const AKey:String;
+                 [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
+
+
       //修改记录列表
       [kbmMW_Method]
       [kbmMW_Rest('method:get, path: "update_record_list"')]
@@ -364,24 +370,12 @@ type
                 [kbmMW_Rest('value: "$is_need_sub_query_list", required: false')] const AIsNeedSubQueryList:String;
                 [kbmMW_Rest('value: "$is_need_sum_count", required: false')] const is_need_sum_count:String;
                 [kbmMW_Rest('value: "$is_need_record_list", required: false')] const is_need_record_list:String;
+//                [kbmMW_Rest('value: "$params_json", required: false')] const params_json:String;
                 [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
       [kbmMW_Method]
       [kbmMW_Rest('method:post, path: "get_record_list_post"')]
       function get_record_list_post(
-                [kbmMW_Rest('value: "$appid", required: false')] const AAppID:String;
-                [kbmMW_Rest('value: "$user_fid", required: false')] const AUserFID:String;
                 [kbmMW_Rest('value: "$key", required: false')] const AKey:String;
-//                [kbmMW_Rest('value: "$pageindex", required: false')] const APageIndex:Integer;
-//                [kbmMW_Rest('value: "$pagesize", required: false')] const APageSize:Integer;
-//                [kbmMW_Rest('value: "$rest_name", required: false')] const ARestName:String;
-//                [kbmMW_Rest('value: "$where_key_json", required: false')] const AWhereKeyJson:String;
-//                [kbmMW_Rest('value: "$where_sql", required: false')] const ACustomConditionSQL:String;
-//                [kbmMW_Rest('value: "$order_by", required: false')] const AOrderBy:String;
-//                [kbmMW_Rest('value: "$is_need_return_level", required: false')] const AIsNeedReturnLevel:String;
-//                [kbmMW_Rest('value: "$record_data_json", required: false')] const ARecordDataJson:String;
-//                [kbmMW_Rest('value: "$is_need_sub_query_list", required: false')] const AIsNeedSubQueryList:String;
-//                [kbmMW_Rest('value: "$is_need_sum_count", required: false')] const is_need_sum_count:String;
-//                [kbmMW_Rest('value: "$is_need_record_list", required: false')] const is_need_record_list:String;
                 [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
 
       //获取用户的记录列表
@@ -450,6 +444,28 @@ type
       function GetFieldList([kbmMW_Rest('value: "$appid", required: false')] const AAppID:String;
                 [kbmMW_Rest('value: "$user_fid", required: false')] const AUserFID:String;
                 [kbmMW_Rest('value: "$key", required: false')] const AKey:String;
+                [kbmMW_Rest('value: "$rest_name", required: false')] const ARestName:String;
+                [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
+      //添加字段列表
+      [kbmMW_Method]
+      [kbmMW_Rest('method:post, path: "update_field_list_post"')]
+      function update_field_list_post(
+                [kbmMW_Rest('value: "$key", required: false')] const AKey:String;
+                [kbmMW_Rest('value: "$rest_name", required: false')] const ARestName:String;
+                [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
+      //更新字段列表
+      //https://datasearch.laifuyun.com/tablecommonrest/init_intf_item?rest_name=es_searched_user
+      //https://savesearch.laifuyun.com/tablecommonrest/init_intf_item?rest_name=es_searched_user
+      //https://savesearch.laifuyun.com/tablecommonrest/init_intf_item?rest_name=find_auto_dev_detail
+      //https://datasearch.laifuyun.com/tablecommonrest/init_intf_item?rest_name=search_subscribe_keyword_detail
+      //https://datasearch.fumamx.com/tablecommonrest/init_intf_item?rest_name=account
+      //https://datasearch.fumamx.com/tablecommonrest/init_intf_item?rest_name=search_subscribe_keyword_detail
+      //https://savesearch.fumamx.com/tablecommonrest/init_intf_item?rest_name=find_auto_dev_detail
+      [kbmMW_Method]
+      [kbmMW_Rest('method:get, path: "init_intf_item"')]
+      function init_intf_item(//[kbmMW_Rest('value: "$appid", required: false')] const AAppID:String;
+                //[kbmMW_Rest('value: "$user_fid", required: false')] const AUserFID:String;
+//                [kbmMW_Rest('value: "$key", required: false')] const AKey:String;
                 [kbmMW_Rest('value: "$rest_name", required: false')] const ARestName:String;
                 [kbmMW_Arg(mwatRemoteLocation)] const ARemoteLocation:String):String;
 
@@ -595,8 +611,8 @@ type
 
 var
   CommonRestServiceModule:TCommonRestServiceModule;
-  //是否可以添加记录的事件
-  GlobalOnCanAddRecord:TCanAddRecordEvent;
+//  //是否可以添加记录的事件
+//  GlobalOnCanAddRecord:TCanAddRecordEvent;
 
 
 
@@ -634,7 +650,7 @@ var
 
   ARecordJson:ISuperObject;
   ATableItem:TCommonRestIntfItem;
-  AIsCanAddRecord:Boolean;
+//  AIsCanAddRecord:Boolean;
 begin
 
   ACode:=FAIL;
@@ -709,14 +725,14 @@ begin
 //    ARecordJson:=SO(ARecordDataJson);
     ARecordJson:=TSuperObject.Create(ARecordDataJson);
 
-    AIsCanAddRecord:=True;
-    if Assigned(GlobalOnCanAddRecord) then
-    begin
-      AIsCanAddRecord:=GlobalOnCanAddRecord(Self,AAppID,AUserFID,AKey,ARestName,ARemoteLocation,ARecordJson,ACode,ADesc);
-    end;
-
-    if AIsCanAddRecord then
-    begin
+//    AIsCanAddRecord:=True;
+//    if Assigned(GlobalOnCanAddRecord) then
+//    begin
+//      AIsCanAddRecord:=GlobalOnCanAddRecord(Self,AAppID,AUserFID,AKey,ARestName,ARemoteLocation,ARecordJson,ACode,ADesc);
+//    end;
+//
+//    if AIsCanAddRecord then
+//    begin
       ATableItem.AddRecord(ATableItem.DBModule,
                             nil,
                             AAppID,
@@ -725,7 +741,7 @@ begin
                             ACode,
                             ADesc,
                             ADataJson);
-    end;
+//    end;
 
 
   finally
@@ -826,6 +842,82 @@ begin
       FreeAndNil(AStringStream);
     end;
     {$ENDIF}
+
+end;
+
+function TsrvTableCommonRestService.update_field_list_post(const AKey, ARestName,
+  ARemoteLocation: String): String;
+var
+  ACode:Integer;
+  ADesc:String;
+  ADataJson:ISuperObject;
+
+//  AHttpResponse:String;
+//  AHttpResponseJson:ISuperObject;
+  ATableItem:TCommonRestIntfItem;
+  AStringStream:TStringStream;
+  AFieldListJson: ISuperObject;
+begin
+
+  ACode:=FAIL;
+  ADesc:='';
+  ADataJson:=nil;
+
+
+//  if AAppID='' then
+//  begin
+//    ADesc:=('AppID不能为空');
+//    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+//    Exit;
+//  end;
+
+//  if (Trim(AUserFID)='') or (Trim(AUserFID)='0') then
+//  begin
+//    ADesc:=('UserFID不能为空');
+//    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+//    Exit;
+//  end;
+
+  if ARestName='' then
+  begin
+    ADesc:=('RestName不能为空');
+    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+    Exit;
+  end;
+
+
+  ATableItem:=CommonRestServiceModule.IntfList.Find(ARestName);
+  if (ATableItem=nil) then
+  begin
+    ADesc:=('不存在'+ARestName+'服务');
+    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+    Exit;
+  end;
+
+
+  Result:='';
+
+  AStringStream:=TStringStream.Create('',TEncoding.UTF8);
+  RequestStream.Position:=0;
+  AStringStream.LoadFromStream(RequestStream);
+  try
+      AFieldListJson:=SO(AStringStream.DataString);
+      //查询记录列表
+      if ATableItem<>nil then
+      begin
+        ATableItem.UpdateFieldList(
+                                  ATableItem.DBModule,
+                                  nil,
+                                  AFieldListJson,
+                                  ACode,
+                                  ADesc,
+                                  ADataJson
+                                  );
+      end;
+  finally
+    if Result='' then Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+    FreeAndNil(AStringStream);
+  end;
 
 end;
 
@@ -1456,12 +1548,12 @@ begin
   ADataJson:=nil;
 
 
-  if AAppID='' then
-  begin
-    ADesc:=('AppID不能为空');
-    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
-    Exit;
-  end;
+//  if AAppID='' then
+//  begin
+//    ADesc:=('AppID不能为空');
+//    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+//    Exit;
+//  end;
 
 //  if (Trim(AUserFID)='') or (Trim(AUserFID)='0') then
 //  begin
@@ -1493,33 +1585,6 @@ begin
 
 
   try
-
-//    //接口验证用户是否合法
-//    AHttpResponse:=SimpleCallAPI(GlobalServiceProject.IsValidUserRestUrl,
-//                                nil,
-//                                '',
-//                                ['appid',
-//                                'user_fid',
-//                                'key'],
-//                                [AAppID,
-//                                AUserFID,
-//                                AKey],
-//                      GlobalServiceProject.GetAppSignType(AAppID),
-//                      GlobalServiceProject.GetAppSecret(AAppID)
-//                                );
-//    AHttpResponseJson:=TSuperObject.Create(AHttpResponse);
-//
-//    if AHttpResponseJson.I['Code']=SUCC then
-//    begin
-//      //用户身份合法
-//    end
-//    else
-//    begin
-//      ADesc:=(AHttpResponseJson.S['Desc']);
-//      Exit;
-//    end;
-
-
 
 
     //查询记录列表
@@ -2323,7 +2388,7 @@ begin
                       ATableItem.DBModule,
                       nil,
                       AAppID,
-                      AWhereKeyJson,
+                      AWhereKeyJsonArray.AsJSON(),//AWhereKeyJson,
                       ACustomConditionSQL,
                       ARecordDataJson,
                       ACode,
@@ -2353,8 +2418,9 @@ begin
 
 end;
 
-function TsrvTableCommonRestService.get_record_list_post(const AAppID:String;const
-  AUserFID: String; const AKey:String;
+function TsrvTableCommonRestService.get_record_list_post(//const AAppID:String;const
+  //AUserFID: String;
+  const AKey:String;
   const ARemoteLocation: String): String;
 var
   ACode:Integer;
@@ -2363,7 +2429,7 @@ var
 
   APostJson:ISuperObject;
   AStringStream:TStringStream;
-//  ASubServerItem:TWebSearchTaskProcessSubServerRegItem;
+//  AClientItem:TWebSearchTaskProcessClientRegItem;
 begin
 //  uBaseLog.HandleException(nil,'TsrvSearchCenterRestService.sub_server_register Begin '
 ////                              +' appid:'+appid
@@ -2400,22 +2466,23 @@ begin
   try
     APostJson:=SO(AStringStream.DataString);
 
-    Result:=Self.GetRecordList(AAppID,
-                                AUserFID,
-                                AKey,
+    Result:=Self.GetRecordList(VarToStr(APostJson.V['appid']),//AAppID,
+                               APostJson.S['user_fid'],// AUserFID,
+                               AKey,
                                APostJson.I['pageindex'],
                                APostJson.I['pagesize'],
                                APostJson.S['rest_name'],
-                               APostJson.A['where_key_json'].AsJson,
+                               APostJson.S['where_key_json'],
                                APostJson.S['where_sql'],
                                APostJson.S['order_by'],
-                               APostJson.S['is_need_return_level'],
-                               APostJson.O['record_data_json'].AsJson,
-                               APostJson.S['is_need_sub_query_list'],
-                               APostJson.S['is_need_sum_count'],
-                               APostJson.S['is_need_record_list'],
+                               VarToStr(APostJson.V['is_need_return_level']),
+                               //ARecordDataJson
+                               APostJson.AsJson,//APostJson.S['record_data_json'],//.AsJson,
+                               VarToStr(APostJson.V['is_need_sub_query_list']),
+                               VarToStr(APostJson.V['is_need_sum_count']),
+                               VarToStr(APostJson.V['is_need_record_list']),
                                ARemoteLocation
-                                );
+                               );
 
   finally
     if Result='' then Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
@@ -2570,6 +2637,7 @@ begin
   ARestName:='';
   if (length(Args)>2)
     and (Args[0]<>'/tablecommonrest/get_record')
+    and (Args[0]<>'/tablecommonrest/init_intf_item')
   then
   begin
     //Args[2]=appid=1016&user_fid=B25FF37922F54D98AAA5C6E4B2C90154&key=830F5B18BCC9450C9E15FC072738235A&
@@ -2597,7 +2665,16 @@ begin
   end;
 
 
-  Result:=Inherited;
+
+  try
+    Result:=Inherited;
+  except
+    on E:Exception do
+    begin
+      //异常
+      Result:=ReturnJson(FAIL,Args[0]+' Error:'+E.Message,nil).AsJSON;
+    end;
+  end;
 
 
   //判断是否需要压缩
@@ -2910,6 +2987,61 @@ begin
     Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
   end;
 
+end;
+
+function TsrvTableCommonRestService.init_intf_item(const ARestName,
+  ARemoteLocation: String): String;
+var
+  ACode:Integer;
+  ADesc:String;
+  ADataJson:ISuperObject;
+
+//  AHttpResponse:String;
+//  AHttpResponseJson:ISuperObject;
+  ATableItem:TCommonRestIntfItem;
+begin
+
+  ACode:=FAIL;
+  ADesc:='';
+  ADataJson:=nil;
+
+
+
+  if ARestName='' then
+  begin
+    ADesc:=('RestName不能为空');
+    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+    Exit;
+  end;
+
+
+  ATableItem:=nil;
+
+  ATableItem:=CommonRestServiceModule.IntfList.Find(ARestName);
+
+
+  if (ATableItem=nil) then
+  begin
+    ADesc:=('不存在'+ARestName+'服务');
+    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+    Exit;
+  end;
+
+
+
+  try
+
+
+    if not ATableItem.Init(ATableItem.DBModule,ADesc) then
+    begin
+      Exit;
+    end;
+
+    ACode:=SUCC;
+
+  finally
+    Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+  end;
 end;
 
 {$ENDIF}
@@ -3238,6 +3370,72 @@ begin
     {$ENDIF}
 end;
 
+function TsrvTableCommonRestService.update_record_post_3(const AKey,
+  ARemoteLocation: String): String;
+var
+  ACode:Integer;
+  ADesc:String;
+  ADataJson:ISuperObject;
+
+  AAppID, AUserFID: String;
+  AUserAccessToken:TUserAccessToken;
+
+  AStringStream:TStringStream;
+  ASuperObject:ISuperObject;
+begin
+    ACode:=FAIL;
+    ADesc:='';
+    ADataJson:=nil;
+
+    if AKey='' then
+    begin
+
+        ADesc:=('Key不能为空');
+        Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+        Exit;
+
+    end
+    else
+    begin
+
+        AUserAccessToken:=GlobalServiceProject.FUserAccessTokenList.Find(AKey);
+
+        if AUserAccessToken=nil then
+        begin
+          ADesc:='key:'+AKey+'无效或已过期';
+          Result:=ReturnJson(ACode,ADesc,ADataJson).AsJSON;
+          Exit;
+        end;
+
+        AAppID:=AUserAccessToken.AppID;
+        AUserFID:=AUserAccessToken.UserFID;
+
+    end;
+
+    {$IFDEF USE_IDHTTPSERVERMODE}
+    {$ELSE}
+    AStringStream:=TStringStream.Create('',TEncoding.UTF8);
+    try
+      RequestStream.Position:=0;
+      AStringStream.LoadFromStream(RequestStream);
+
+      ASuperObject:=SO(AStringStream.DataString);
+
+      Result:=UpdateRecord(AAppID,
+                            AUserFID,
+                            AKey,
+                            ASuperObject.S['rest_name'],//ARestName,
+                            ASuperObject.O['record_data_json'].AsJson,//AStringStream.DataString,
+                            ASuperObject.A['where_key_json'].AsJson,//AWhereKeyJson,
+                            ASuperObject.S['where_sql'],//ACustomConditionSQL,
+                            ARemoteLocation);
+    finally
+      FreeAndNil(AStringStream);
+    end;
+    {$ENDIF}
+
+end;
+
 { TCommonRestServiceModule }
 
 function TCommonRestServiceModule.AddRecord(ARestName:String;
@@ -3406,7 +3604,7 @@ begin
   Result:=Inherited;
   {$ENDIF}
 
-
+  GlobalCommonRestIntf_ASyncCallTaskManager:=TCommonRestIntf_ASyncCallTaskManager.Create;
 
 //  if not Result then Exit;
 //
@@ -3467,6 +3665,12 @@ function TCommonRestServiceModule.DoPrepareStop: Boolean;
 var
   I: Integer;
 begin
+
+  if GlobalCommonRestIntf_ASyncCallTaskManager<>nil then
+  begin
+    GlobalCommonRestIntf_ASyncCallTaskManager.StopTaskList;
+    FreeAndNil(GlobalCommonRestIntf_ASyncCallTaskManager);
+  end;
 
   for I := 0 to IntfList.Count-1 do
   begin

@@ -49,7 +49,7 @@ uses
   uDrawPicture,
   uBasePageStructure,
   ViewPictureListFrame,
-  TakePictureMenuFrame,
+//  TakePictureMenuFrame,
 //  AllImageFrame,
   uBaseHttpControl,
 

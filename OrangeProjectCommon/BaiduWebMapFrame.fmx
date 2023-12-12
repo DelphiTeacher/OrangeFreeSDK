@@ -35,7 +35,6 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
     SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.Left = 50.000000000000000000
     SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.Enabled = True
     SelfOwnMaterial.DrawCaptionParam.DrawRectSetting.SizeType = dpstPixel
-    MouseDownFocus = False
     Align = Top
     Size.Width = 353.000000000000000000
     Size.Height = 50.000000000000000000
@@ -57,6 +56,7 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
       SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
       SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
       SelfOwnMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+      SelfOwnMaterial.ArrowPicture.IsClipRound = False
       SelfOwnMaterial.IsAutoCenterIconAndCaption = False
       SelfOwnMaterial.DrawDetailParam.FontTrimming = fttNone
       SelfOwnMaterial.DrawDetailParam.FontHorzAlign = fhaLeft
@@ -118,7 +118,6 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
       SelfOwnMaterial.DrawPictureParam.DrawRectSetting.SizeType = dpstPixel
       SelfOwnMaterial.DrawPictureParam.DrawRectSetting.PositionVertType = dppvtCenter
       SelfOwnMaterial.DrawPictureParam.DrawEffectSetting.MouseDownEffect.CommonEffectTypes = [dpcetOffsetChange, dpcetAlphaChange]
-      MouseDownFocus = False
       Align = Left
       Size.Width = 89.000000000000000000
       Size.Height = 50.000000000000000000
@@ -145,6 +144,7 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
       SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
       SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
       SelfOwnMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
+      SelfOwnMaterial.ArrowPicture.IsClipRound = False
       SelfOwnMaterial.IsAutoCenterIconAndCaption = False
       SelfOwnMaterial.DrawDetailParam.FontTrimming = fttNone
       SelfOwnMaterial.DrawDetailParam.FontHorzAlign = fhaLeft
@@ -172,7 +172,6 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
       SelfOwnMaterial.DisabledPicture.IsClipRound = False
       SelfOwnMaterial.FocusedPicture.IsClipRound = False
       SelfOwnMaterial.PushedPicture.IsClipRound = False
-      MouseDownFocus = False
       Align = Right
       Position.X = 253.000000000000000000
       Size.Width = 100.000000000000000000
@@ -202,7 +201,6 @@ object FrameBaiduWebMap: TFrameBaiduWebMap
     SelfOwnMaterial.BackColor.DrawEffectSetting.PushedEffect.FillColorChangeType = cctNone
     SelfOwnMaterial.BackColor.DrawEffectSetting.DisabledEffect.FillColorChangeType = cctNone
     SelfOwnMaterial.BackColor.DrawEffectSetting.FocusedEffect.FillColorChangeType = cctNone
-    MouseDownFocus = False
     Align = Client
     Size.Width = 353.000000000000000000
     Size.Height = 424.000000000000000000

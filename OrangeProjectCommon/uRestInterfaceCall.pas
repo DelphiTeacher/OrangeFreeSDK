@@ -186,6 +186,7 @@ function SimpleCallAPI(API: String;
                       ASignSecret:String='';
                       AIsPost:Boolean=False;
                       APostStream:TStream=nil;
+                      APostString:String='';
                       ACustomHeaderPairs:TVariantDynArray=[]): String;overload;
 function SimpleCallAPIPostString(API: String;
                       AHttpControl: THttpControl;
@@ -738,6 +739,7 @@ var
   ACode: Integer;
   AFIDIsEmpty:Boolean;
   AWhereKeyJsonStr:String;
+  ASuperObject:ISuperObject;
 begin
   uBaseLog.HandleException(nil,'SaveRecordToServer Begin');
 
@@ -844,7 +846,7 @@ begin
                               ARecordDataJson.AsJson
                               ) or (ACode<>SUCC) then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToServer '+ADesc);
         Exit;
       end;
 
@@ -877,7 +879,7 @@ begin
                               ASignType,
                               ASignSecret) or (ACode<>SUCC)  then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToServer '+ADesc);
         Exit;
       end;
 
@@ -886,6 +888,45 @@ begin
   else
   begin
       //更新记录
+      {$IFDEF NEW_SERVER_V2}
+      ASuperObject:=SO();
+      ASuperObject.S['rest_name']:=ATableCommonRestName;
+      ASuperObject.O['record_data_json']:=ARecordDataJson;
+      ASuperObject.A['where_key_json']:=SA(AWhereKeyJsonStr);
+
+      if not SimpleCallAPI('update_record_post_3',
+                              nil,
+                              AInterfaceUrl+'tablecommonrest/',
+                              ConvertToStringDynArray([//'appid',
+                                                      //'user_fid',
+                                                      'key'//,
+                                                      //'rest_name',
+//                                                      'record_data_json',
+                                                      //'where_key_json',
+                                                      //'where_sql'
+                                                      ]),
+                              ConvertToVariantDynArray([//AAppID,
+                                                        //AUserFID,
+                                                        AKey//,
+                                                        //ATableCommonRestName,
+//                                                        ARecordDataJson.AsJson,
+                                                        //AWhereKeyJsonStr,//GetWhereKeyJson(['appid','fid'],[AAppID,AFID])
+                                                        //AUpdateRecordCustomWhereSQL
+                                                        ]),
+                              ACode,
+                              ADesc,
+                              ADataJson,
+                              ASignType,
+                              ASignSecret,
+                              True,
+                              nil,
+                              ASuperObject.AsJson
+                              ) or (ACode<>SUCC)  then
+      begin
+        uBaseLog.HandleError(nil,'SaveRecordToServer '+ADesc);
+        Exit;
+      end;
+      {$ELSE}
       if not SimpleCallAPI('update_record_post',
                               nil,
                               AInterfaceUrl+'tablecommonrest/',
@@ -914,9 +955,12 @@ begin
                               ARecordDataJson.AsJson
                               ) or (ACode<>SUCC)  then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToServer '+ADesc);
         Exit;
       end;
+      {$ENDIF}
+
+
 
       Result:=True;
   end;
@@ -1125,6 +1169,7 @@ function SimpleCallAPI(API: String;
                       ASignSecret:String;
                       AIsPost:Boolean;
                       APostStream:TStream;
+                      APostString:String;
                       ACustomHeaderPairs:TVariantDynArray): String;
 var
   ACallResult:Boolean;
@@ -1134,6 +1179,11 @@ begin
 //  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'begin');
 
   Result:='';
+
+  if APostString<>'' then
+  begin
+    APostStream:=TStringStream.Create(APostString,TEncoding.UTF8);
+  end;
 
   AResponseStream:=TStringStream.Create('',TEncoding.UTF8);
   try
@@ -1149,7 +1199,8 @@ begin
                           ASignType,
                           ASignSecret,
                           AIsPost,
-                          APostStream,ACustomHeaderPairs
+                          APostStream,
+                          ACustomHeaderPairs
                          );
 
 
@@ -1194,6 +1245,10 @@ begin
 
   finally
     SysUtils.FreeAndNil(AResponseStream);
+    if APostString<>'' then
+    begin
+      SysUtils.FreeAndNil(APostStream);
+    end;
   end;
 
 //  FMX.Types.Log.d('SimpleCallAPI '+API+' '+'end');
@@ -1208,7 +1263,7 @@ function SimpleCallAPIPostString(API: String;
                                   ASignSecret:String;
                                   AIsPost:Boolean;
                                   APostString:String;
-                                  ACustomHeaderPairs:TVariantDynArray): String;
+                                   ACustomHeaderPairs:TVariantDynArray): String;
 var
   APostStream:TStringStream;
 begin
@@ -1230,7 +1285,9 @@ begin
                           ASignType,
                           ASignSecret,
                           AIsPost,
-                          APostStream,ACustomHeaderPairs
+                          APostStream,
+                          '',
+                          ACustomHeaderPairs
                          );
   finally
     SysUtils.FreeAndNil(APostStream);
@@ -1347,6 +1404,7 @@ begin
               uBaseLog.HandleError(nil,'SimpleCallAPI '
                                             +' API:'+API
                                             +' Url:'+AInterfaceUrl
+                                            +' Desc:'+ADesc
                                             );
               if ADataJson<>nil then
               begin
@@ -1894,7 +1952,7 @@ begin
     end;
   end;
 
-  uBaseLog.HandleException(nil,'SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'耗时'+IntToStr(DateUtils.MilliSecondsBetween(ABefore,Now)));
+//  uBaseLog.HandleException(nil,'SimpleGet'+' '+AInterfaceUrl+API+' '+'end'+' '+'耗时'+IntToStr(DateUtils.MilliSecondsBetween(ABefore,Now)));
 
 end;
 

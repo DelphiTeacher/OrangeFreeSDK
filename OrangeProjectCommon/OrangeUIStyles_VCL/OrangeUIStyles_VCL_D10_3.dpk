@@ -59,6 +59,11 @@ contains
   ListItemStyle_CarLocation in 'ListItemStyle_CarLocation.pas',
   ListItemStyle_CheckBoxIconLeft_CaptionRight in 'ListItemStyle_CheckBoxIconLeft_CaptionRight.pas',
   ListItemStyle_IconCaptionLeft_DetailRight in 'ListItemStyle_IconCaptionLeft_DetailRight.pas',
+  ListItemStyle_GoodsSelectItem in 'ListItemStyle_GoodsSelectItem.pas',
+  ListItemStyle_GoodsItem in 'ListItemStyle_GoodsItem.pas',
+  ListItemStyle_AddFriendsDemoSelectItem in 'ListItemStyle_AddFriendsDemoSelectItem.pas',
+  ListItemStyle_GroupsSelectItem in 'ListItemStyle_GroupsSelectItem.pas',
+  ListItemStyle_PublishSettingItem in 'ListItemStyle_PublishSettingItem.pas',
   ListItemStyle_CaptionTopDetailBottom in 'ListItemStyle_CaptionTopDetailBottom.pas',
   ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected in 'ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected.pas',
   ListItemStyle_CaptionTopDetailBottom_Summary in 'ListItemStyle_CaptionTopDetailBottom_Summary.pas',
@@ -72,6 +77,10 @@ contains
   ListItemStyle_TwoIconButton in 'ListItemStyle_TwoIconButton.pas',
   ListItemStyle_IconLeft_CaptionLeft in 'ListItemStyle_IconLeft_CaptionLeft.pas',
   ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite in 'ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite.pas' {FrameListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite},
-  ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont in 'ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont.pas';
+  ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont in 'ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont.pas',
+  ListItemStyle_MessageHintCard in 'ListItemStyle_MessageHintCard.pas',
+  ListItemStyle_MessageHintCard2 in 'ListItemStyle_MessageHintCard2.pas',
+  ListItemStyle_CaptionSelectedMark in 'ListItemStyle_CaptionSelectedMark.pas',
+  ListItemStyle_VertSelectedSignIconLeft_CaptionRight in 'ListItemStyle_VertSelectedSignIconLeft_CaptionRight.pas';
 
 end.

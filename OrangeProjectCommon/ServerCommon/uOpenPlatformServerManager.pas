@@ -16,6 +16,7 @@ uses
   System.Classes,
   DateUtils,
   StrUtils,
+  Math,
 
 //  uLang,
   IniFiles,
@@ -35,7 +36,7 @@ uses
   uRestInterfaceCall,
   uBaseDataBaseModule,
   uCommandLineHelper,
-
+//  XSuperObject,
 
 
 //  {$IFDEF HAS_REDIS}
@@ -98,6 +99,7 @@ uses
 //  uBaseDataBaseModule,
   Data.DB,
   Uni;
+
 
 
 
@@ -239,6 +241,8 @@ type
     function DoPrepareStop: Boolean; virtual;
     //启动后
     procedure DoAfterStart; virtual;
+
+    function GetStatusStr:String;virtual;
   end;
 
 
@@ -297,23 +301,34 @@ type
   end;
 
 
+  TUserAccessTokenClass=class of TUserAccessToken;
+
   //用户Token
   TUserAccessToken=class
     AppID:String;
     UserFID:String;
     IsSystem:Boolean;
+    AppType:String;//pc?app?
     AccessToken:String;
     AccessTokenCreateTime:TDateTime;
+    class function GetUserSelectSQL:String;virtual;
+    procedure LoadFromJson(AUserJson:ISuperObject);virtual;
+    procedure LoadFromDataset(AUserDataset:TDataset);virtual;
   end;
   TUserAccessTokenList=class(TBaseList)
   private
     function GetItem(Index: Integer): TUserAccessToken;
   public
-    function Add(AAppID:String;AUserFID:String;AAccessToken:String;AIsSystem:Boolean=False):TUserAccessToken;overload;
-    function Find(AAppID:String;AUserFID:String;AIsSystem:Boolean=False):TUserAccessToken;overload;
+    function Add(AUserRecord:TDataset):TUserAccessToken;overload;
+    function Add(AUserJson:ISuperObject):TUserAccessToken;overload;
+    function Add(AAppID:String;AUserFID:String;AAccessToken:String;AAppType:String='';AIsSystem:Boolean=False):TUserAccessToken;overload;
+    function Find(AAppID:String;AUserFID:String;AAppType:String='';AIsSystem:Boolean=False):TUserAccessToken;overload;
     function Find(AAccessToken:String):TUserAccessToken;overload;
     property Items[Index:Integer]:TUserAccessToken read GetItem;default;
   end;
+
+
+
 
 
   TServiceStartEndNotifyEvent=procedure(Sender:TObject;AIsStartSucc:Boolean;AError:String) of object;
@@ -328,6 +343,8 @@ type
     SSLPort: Integer;
     //域名
     Domain:String;
+
+    FVersion:String;
 
     //只需要一个数据库
     IsNeedOneDatabase:Boolean;
@@ -415,6 +432,7 @@ type
 //    //有效期几秒
 //    FTimerInval_VerifyExpire:Integer;
   public
+    FConfigFileName:String;
     procedure Load;
     procedure Save;
   public
@@ -452,6 +470,7 @@ type
     constructor Create; virtual;
     destructor Destroy;override;
   public
+//    FIsStarting:Boolean;
     FSerivceStartThread:TSerivceStartThread;
     FOnStartEnd:TServiceStartEndNotifyEvent;
     procedure Start;
@@ -462,6 +481,8 @@ type
     function GetRedisClient:TRedisClient;
     procedure FreeRedisClient(ARedisClient:TRedisClient);
 
+    //获取状态字符串
+    function GetStatusStr:String;
   public
     function ServerUrl:String;
     function DomainUrl:String;
@@ -536,7 +557,7 @@ var
   //是否需要从Ini文件加载端口的配置,像汽修服务就不需要从配置中加载
   IsNeedLoadServiceProjectFromIni:Boolean;
   IsNeedSaveServiceProjectFromIni:Boolean;
-
+  GlobalUserAccessTokenClass:TUserAccessTokenClass;
 
 var
   //REDIS默认的缓存时间
@@ -1293,6 +1314,7 @@ begin
   SSLPort:=0;
   Domain:='www.orangeui.cn';
 
+  FConfigFileName:='Config.ini';
 
   FRedis_Host:='127.0.0.1';
   FRedis_Port:=6379;
@@ -1540,6 +1562,129 @@ begin
   Result:=ScoreCenterServer+'get_app_score_rule_list';
 end;
 
+function TServiceProject.GetStatusStr: String;
+var
+  I: Integer;
+  ASumCurCount:Integer;
+  AServiceModule:TServiceModule;
+  AAPICallStatisticsItem:TAPICallStatisticsItem;
+  ALog:String;
+begin
+
+
+    //    //上次总调用数
+    //    LastSumCallCount:Integer;
+    //    //最高每秒并发
+    //    MaxParallelCallCountPerSecond:Integer;
+
+      //刷新服务端状态
+
+      ALog:='服务端状态:'+#13#10;
+
+    //  Self.lblSumCallCount.Caption:=IntToStr(Self.SumCallCount);
+      ALog:=ALog+'接口总调用次数:'+IntToStr(Self.SumCallCount)+#13#10;
+
+
+
+      if Self.SumCallCount-Self.LastSumCallCount>Self.MaxParallelCallCountPerSecond then
+      begin
+        Self.MaxParallelCallCountPerSecond:=Self.SumCallCount-Self.LastSumCallCount;
+      end;
+//      Self.lblMaxCallCountPerSecond.Caption:=IntToStr(Self.MaxParallelCallCountPerSecond);
+      ALog:=ALog+'每秒最高并发数:'+IntToStr(Self.MaxParallelCallCountPerSecond)+#13#10;
+
+
+      Self.LastSumCallCount:=Self.SumCallCount;
+    //  Self.lblInvalidCallCount.Caption:=IntToStr(Self.InvalidCallCount);
+      ALog:=ALog+'无效调用次数:'+IntToStr(Self.InvalidCallCount)+#13#10;
+
+
+
+      //Redis缓存池
+    //  Self.lblRedisPoolCount.Caption:=IntToStr(GetGlobalRedisClientPool.FCustomObjects.Count);
+
+
+
+      ASumCurCount:=0;
+    //  Self.gridDatabasePool.RowCount:=Self.ServiceModuleList.Count+2;
+    //  Self.gridDatabasePool.ColCount:=9;
+    //
+    //  Self.gridDatabasePool.Cells[0,0]:='模块名';
+    //  Self.gridDatabasePool.Cells[1,0]:='最大数';
+    //  Self.gridDatabasePool.Cells[2,0]:='当前数';
+    //  Self.gridDatabasePool.Cells[3,0]:='使用次数';
+    //  Self.gridDatabasePool.Cells[4,0]:='归还次数';
+    //  Self.gridDatabasePool.Cells[5,0]:='检测连接状态次数';
+    //  Self.gridDatabasePool.Cells[6,0]:='连接成功次数';
+    //  Self.gridDatabasePool.Cells[7,0]:='连接断开次数';
+    //  Self.gridDatabasePool.Cells[8,0]:='重连成功次数';
+      //先将数据库模块显示出来
+      for I := 0 to Self.ServiceModuleList.Count-1 do
+      begin
+        AServiceModule:=TServiceModule(Self.ServiceModuleList[I]);
+
+    //    Self.gridDatabasePool.Cells[0,I+1]:=AServiceModule.Name;
+        ALog:=ALog+'数据模块名:'+AServiceModule.Name+#9;
+        if AServiceModule is TKbmMWServiceModule then
+        begin
+
+          ALog:=ALog+TKbmMWServiceModule(AServiceModule).DBModule.GetStatusStr;
+
+        end;
+
+      end;
+
+      //先将服务模块显示出来
+      for I := 0 to Self.ServiceModuleList.Count-1 do
+      begin
+        AServiceModule:=TServiceModule(Self.ServiceModuleList[I]);
+
+    //    Self.gridDatabasePool.Cells[0,I+1]:=AServiceModule.Name;
+        ALog:=ALog+'服务模块名:'+AServiceModule.Name+#9;
+
+        ALog:=ALog+AServiceModule.GetStatusStr+#13#10;
+
+      end;
+
+
+
+
+    //  //汇总
+    //  Self.gridDatabasePool.Cells[0,I+1]:='汇总';
+    //  Self.gridDatabasePool.Cells[2,I+1]:=IntToStr(ASumCurCount);
+
+
+      ALog:=ALog+'输出接口调用统计:'+#13#10;
+      ALog:=ALog
+                  +'测用次数'+#9
+                  +'最大耗时(毫秒)'+#9
+                  +'平均耗时(毫秒)'+#9
+                  +'接口名称'
+                  +#13#10;
+      //输出接口调用统计
+      //先将数据库模块显示出来
+      for I := 0 to Self.FAPICallStatisticsList.Count-1 do
+      begin
+        AAPICallStatisticsItem:=Self.FAPICallStatisticsList.Items[I];
+        ALog:=ALog
+                  +FloatToStr(AAPICallStatisticsItem.FCount)+#9
+                  +FloatToStr(AAPICallStatisticsItem.FMaxCostMilliSeconds)+#9
+                  +FloatToStr(Ceil(AAPICallStatisticsItem.FSumCostMilliSeconds / AAPICallStatisticsItem.FCount))+#9
+                  +AAPICallStatisticsItem.FAPI
+                  +#13#10;
+
+      end;
+
+
+      //GlobalJSONCount
+      ALog:=ALog+'JSON对象个数:'+IntToStr(GlobalJSONCount)+#13#10;
+
+
+
+      Result:=ALog;
+
+end;
+
 function TServiceProject.GetUserScoreRestUrl: String;
 begin
   Result:=ScoreCenterServer+'calc_gift_score';
@@ -1594,9 +1739,9 @@ begin
     FIPWhiteList.LoadFromFile(GetApplicationPath+'IPWhiteList.txt');
   end;
 
-  if IsNeedLoadServiceProjectFromIni and FileExists(GetApplicationPath+'Config.ini') then
+  if IsNeedLoadServiceProjectFromIni and FileExists(GetApplicationPath+FConfigFileName) then
   begin
-    AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFDEF MSWINDOWS}{$ELSE},TEncoding.UTF8{$ENDIF});
+    AIniFile:=TIniFile.Create(GetApplicationPath+FConfigFileName{$IFDEF MSWINDOWS}{$ELSE},TEncoding.UTF8{$ENDIF});
     try
 
       Self.Name:=AIniFile.ReadString('','Name',Name);
@@ -1666,7 +1811,7 @@ begin
 
 
 
-  AIniFile:=TIniFile.Create(GetApplicationPath+'Config.ini'{$IFDEF MSWINDOWS}{$ELSE},TEncoding.UTF8{$ENDIF});
+  AIniFile:=TIniFile.Create(GetApplicationPath+FConfigFileName{$IFDEF MSWINDOWS}{$ELSE},TEncoding.UTF8{$ENDIF});
   try
 
     AIniFile.WriteString('','Name',Self.Name);
@@ -1675,6 +1820,7 @@ begin
     AIniFile.WriteInteger('','Port',Self.Port);
     AIniFile.WriteInteger('','SSLPort',Self.SSLPort);
     AIniFile.WriteString('','Domain',Self.Domain);
+    AIniFile.WriteString('','Version',Self.FVersion);
 
   finally
     FreeAndNil(AIniFile);
@@ -1725,8 +1871,18 @@ var
 begin
   uBaseLog.HandleException(nil,'TServiceProject.DoStart Begin');
 
-
   Result := False;
+
+
+//  if FIsStarting then
+//  begin
+//    AMessages:='服务正在启动中';
+//    uBaseLog.HandleException(nil,'TServiceProject.DoStart 服务正在启动中...');
+//    Exit;
+//  end;
+//
+//  FIsStarting:=True;
+
 
 
   //因为服务启动的时候，SQLServer服务不一定已经启动,所以要重复启动
@@ -1847,7 +2003,7 @@ begin
         //ShowMessage(AMessages);
         {$ENDIF}
 
-        uBaseLog.HandleException(nil,'TServiceProject.DoStart '+AMessages);
+        uBaseLog.HandleError(nil,'TServiceProject.DoStart '+AMessages);
         Exit;
       end;
 
@@ -1897,11 +2053,23 @@ begin
 
 
 
+              while True do
+              begin
+                try
+                  //启动服务
+                  //提供数据服务
+                  kbmMWServer1.Active := True;
+                  Break;
+                except
+                  on E:Exception do
+                  begin
+                    uBaseLog.HandleError(E,'TServiceProject.DoStart kbmMWServer1.Active := True; '+AMessages);
+                    Sleep(3000);
+                  end;
 
-              //启动服务
-              //提供数据服务
-              kbmMWServer1.Active := True;
+                end;
 
+              end;
 
         //      //定时更新AppList
         //      Scheduler
@@ -1960,6 +2128,7 @@ begin
       FOnStartEnd(Self,Result,AMessages);
     end;
 
+//    FIsStarting:=False;
     uBaseLog.HandleException(nil,'TServiceProject.Start End');
   end;
 
@@ -2292,6 +2461,11 @@ begin
 
 end;
 
+function TServiceModule.GetStatusStr: String;
+begin
+  Result:='';
+end;
+
 procedure TServiceModule.Init;
 begin
 
@@ -2400,11 +2574,11 @@ end;
 
 procedure TServiceStatusOutputThread.Execute;
 var
-  I: Integer;
-  ASumCurCount:Integer;
-  AServiceModule:TServiceModule;
-  ADatabaseModuleStatus:TDatabaseModuleStatus;
-  AAPICallStatisticsItem:TAPICallStatisticsItem;
+//  I: Integer;
+//  ASumCurCount:Integer;
+//  AServiceModule:TServiceModule;
+//  ADatabaseModuleStatus:TDatabaseModuleStatus;
+//  AAPICallStatisticsItem:TAPICallStatisticsItem;
   ALog:String;
 begin
 
@@ -2413,7 +2587,7 @@ begin
 
       SleepThread(60*1000);
       //加载日志设置,因为可能会更新,有时候需要输出日志
-      uBaseLog.GetGlobalLog.LoadConfig;
+      uBaseLog.GetGlobalLog.LoadConfig();
 
     //    //上次总调用数
     //    LastSumCallCount:Integer;
@@ -2422,113 +2596,115 @@ begin
 
       //刷新服务端状态
 
-      ALog:='服务端状态:'+#13#10;
+      ALog:=FServiceProject.GetStatusStr;
 
-    //  Self.lblSumCallCount.Caption:=IntToStr(FServiceProject.SumCallCount);
-      ALog:=ALog+'接口总调用次数:'+IntToStr(FServiceProject.SumCallCount)+#13#10;
+//      '服务端状态:'+#13#10;
+//
+//    //  Self.lblSumCallCount.Caption:=IntToStr(FServiceProject.SumCallCount);
+//      ALog:=ALog+'接口总调用次数:'+IntToStr(FServiceProject.SumCallCount)+#13#10;
+//
+//
+//
+//      if FServiceProject.SumCallCount-FServiceProject.LastSumCallCount>FServiceProject.MaxParallelCallCountPerSecond then
+//      begin
+//        FServiceProject.MaxParallelCallCountPerSecond:=FServiceProject.SumCallCount-FServiceProject.LastSumCallCount;
+//      end;
+////      Self.lblMaxCallCountPerSecond.Caption:=IntToStr(FServiceProject.MaxParallelCallCountPerSecond);
+//      ALog:=ALog+'每秒最高并发数:'+IntToStr(FServiceProject.MaxParallelCallCountPerSecond)+#13#10;
+//
+//
+//      FServiceProject.LastSumCallCount:=FServiceProject.SumCallCount;
+//    //  Self.lblInvalidCallCount.Caption:=IntToStr(FServiceProject.InvalidCallCount);
+//      ALog:=ALog+'无效调用次数:'+IntToStr(FServiceProject.InvalidCallCount)+#13#10;
+//
+//
+//
+//      //Redis缓存池
+//    //  Self.lblRedisPoolCount.Caption:=IntToStr(GetGlobalRedisClientPool.FCustomObjects.Count);
+//
+//
+//
+//      ASumCurCount:=0;
+//    //  Self.gridDatabasePool.RowCount:=FServiceProject.ServiceModuleList.Count+2;
+//    //  Self.gridDatabasePool.ColCount:=9;
+//    //
+//    //  Self.gridDatabasePool.Cells[0,0]:='模块名';
+//    //  Self.gridDatabasePool.Cells[1,0]:='最大数';
+//    //  Self.gridDatabasePool.Cells[2,0]:='当前数';
+//    //  Self.gridDatabasePool.Cells[3,0]:='使用次数';
+//    //  Self.gridDatabasePool.Cells[4,0]:='归还次数';
+//    //  Self.gridDatabasePool.Cells[5,0]:='检测连接状态次数';
+//    //  Self.gridDatabasePool.Cells[6,0]:='连接成功次数';
+//    //  Self.gridDatabasePool.Cells[7,0]:='连接断开次数';
+//    //  Self.gridDatabasePool.Cells[8,0]:='重连成功次数';
+//      //先将数据库模块显示出来
+//      for I := 0 to FServiceProject.ServiceModuleList.Count-1 do
+//      begin
+//        AServiceModule:=TServiceModule(FServiceProject.ServiceModuleList[I]);
+//
+//    //    Self.gridDatabasePool.Cells[0,I+1]:=AServiceModule.Name;
+//        ALog:=ALog+'模块名:'+AServiceModule.Name+#9;
+//        if AServiceModule is TKbmMWServiceModule then
+//        begin
+//
+//          ADatabaseModuleStatus:=TKbmMWServiceModule(AServiceModule).DBModule.GetStatus;
+//
+//
+//    //      Self.gridDatabasePool.Cells[1,I+1]:=IntToStr(ADatabaseModuleStatus.MaxCount);
+//          ALog:=ALog+'最大数:'+IntToStr(ADatabaseModuleStatus.MaxCount)+#9;
+//    //      Self.gridDatabasePool.Cells[2,I+1]:=IntToStr(ADatabaseModuleStatus.CurCount);
+//          ALog:=ALog+'当前数:'+IntToStr(ADatabaseModuleStatus.CurCount)+#9;
+//          ASumCurCount:=ASumCurCount+ADatabaseModuleStatus.CurCount;
+//
+//    //      Self.gridDatabasePool.Cells[3,I+1]:=IntToStr(ADatabaseModuleStatus.LockTimes);
+//          ALog:=ALog+'使用次数:'+IntToStr(ADatabaseModuleStatus.LockTimes)+#9;
+//    //      Self.gridDatabasePool.Cells[4,I+1]:=IntToStr(ADatabaseModuleStatus.UnlockTimes);
+//          ALog:=ALog+'归还次数:'+IntToStr(ADatabaseModuleStatus.UnlockTimes)+#9;
+//    //      Self.gridDatabasePool.Cells[5,I+1]:=IntToStr(ADatabaseModuleStatus.CheckConnectTimes);
+//          ALog:=ALog+'检测连接状态次数:'+IntToStr(ADatabaseModuleStatus.CheckConnectTimes)+#9;
+//    //      Self.gridDatabasePool.Cells[6,I+1]:=IntToStr(ADatabaseModuleStatus.ConnectedTimes);
+//          ALog:=ALog+'连接成功次数:'+IntToStr(ADatabaseModuleStatus.ConnectedTimes)+#9;
+//    //      Self.gridDatabasePool.Cells[7,I+1]:=IntToStr(ADatabaseModuleStatus.DisconnectedTimes);
+//          ALog:=ALog+'连接断开次数:'+IntToStr(ADatabaseModuleStatus.DisconnectedTimes)+#9;
+//    //      Self.gridDatabasePool.Cells[8,I+1]:=IntToStr(ADatabaseModuleStatus.ReConnectedTimes);
+//          ALog:=ALog+'重连成功次数:'+IntToStr(ADatabaseModuleStatus.ReConnectedTimes)+#13#10;
+//
+//
+//
+//        end;
+//
+//      end;
+//
+//
+//
+//
+//    //  //汇总
+//    //  Self.gridDatabasePool.Cells[0,I+1]:='汇总';
+//    //  Self.gridDatabasePool.Cells[2,I+1]:=IntToStr(ASumCurCount);
+//
+//
+//      ALog:=ALog+'输出接口调用统计:'+#13#10;
+//      ALog:=ALog
+//                  +'最大耗时(毫秒)'+#9
+//                  +'平均耗时(毫秒)'+#9
+//                  +'接口名称'
+//                  +#13#10;
+//      //输出接口调用统计
+//      //先将数据库模块显示出来
+//      for I := 0 to FServiceProject.FAPICallStatisticsList.Count-1 do
+//      begin
+//        AAPICallStatisticsItem:=FServiceProject.FAPICallStatisticsList.Items[I];
+//        ALog:=ALog
+//                  +FloatToStr(AAPICallStatisticsItem.FMaxCostMilliSeconds)+#9
+//                  +FloatToStr(AAPICallStatisticsItem.FSumCostMilliSeconds / AAPICallStatisticsItem.FCount)+#9
+//                  +AAPICallStatisticsItem.FAPI
+//                  +#13#10;
+//
+//      end;
 
 
 
-      if FServiceProject.SumCallCount-FServiceProject.LastSumCallCount>FServiceProject.MaxParallelCallCountPerSecond then
-      begin
-        FServiceProject.MaxParallelCallCountPerSecond:=FServiceProject.SumCallCount-FServiceProject.LastSumCallCount;
-      end;
-//      Self.lblMaxCallCountPerSecond.Caption:=IntToStr(FServiceProject.MaxParallelCallCountPerSecond);
-      ALog:=ALog+'每秒最高并发数:'+IntToStr(FServiceProject.MaxParallelCallCountPerSecond)+#13#10;
-
-
-      FServiceProject.LastSumCallCount:=FServiceProject.SumCallCount;
-    //  Self.lblInvalidCallCount.Caption:=IntToStr(FServiceProject.InvalidCallCount);
-      ALog:=ALog+'无效调用次数:'+IntToStr(FServiceProject.InvalidCallCount)+#13#10;
-
-
-
-      //Redis缓存池
-    //  Self.lblRedisPoolCount.Caption:=IntToStr(GetGlobalRedisClientPool.FCustomObjects.Count);
-
-
-
-      ASumCurCount:=0;
-    //  Self.gridDatabasePool.RowCount:=FServiceProject.ServiceModuleList.Count+2;
-    //  Self.gridDatabasePool.ColCount:=9;
-    //
-    //  Self.gridDatabasePool.Cells[0,0]:='模块名';
-    //  Self.gridDatabasePool.Cells[1,0]:='最大数';
-    //  Self.gridDatabasePool.Cells[2,0]:='当前数';
-    //  Self.gridDatabasePool.Cells[3,0]:='使用次数';
-    //  Self.gridDatabasePool.Cells[4,0]:='归还次数';
-    //  Self.gridDatabasePool.Cells[5,0]:='检测连接状态次数';
-    //  Self.gridDatabasePool.Cells[6,0]:='连接成功次数';
-    //  Self.gridDatabasePool.Cells[7,0]:='连接断开次数';
-    //  Self.gridDatabasePool.Cells[8,0]:='重连成功次数';
-      //先将数据库模块显示出来
-      for I := 0 to FServiceProject.ServiceModuleList.Count-1 do
-      begin
-        AServiceModule:=TServiceModule(FServiceProject.ServiceModuleList[I]);
-
-    //    Self.gridDatabasePool.Cells[0,I+1]:=AServiceModule.Name;
-        ALog:=ALog+'模块名:'+AServiceModule.Name+#9;
-        if AServiceModule is TKbmMWServiceModule then
-        begin
-
-          ADatabaseModuleStatus:=TKbmMWServiceModule(AServiceModule).DBModule.GetStatus;
-
-
-    //      Self.gridDatabasePool.Cells[1,I+1]:=IntToStr(ADatabaseModuleStatus.MaxCount);
-          ALog:=ALog+'最大数:'+IntToStr(ADatabaseModuleStatus.MaxCount)+#9;
-    //      Self.gridDatabasePool.Cells[2,I+1]:=IntToStr(ADatabaseModuleStatus.CurCount);
-          ALog:=ALog+'当前数:'+IntToStr(ADatabaseModuleStatus.CurCount)+#9;
-          ASumCurCount:=ASumCurCount+ADatabaseModuleStatus.CurCount;
-
-    //      Self.gridDatabasePool.Cells[3,I+1]:=IntToStr(ADatabaseModuleStatus.LockTimes);
-          ALog:=ALog+'使用次数:'+IntToStr(ADatabaseModuleStatus.LockTimes)+#9;
-    //      Self.gridDatabasePool.Cells[4,I+1]:=IntToStr(ADatabaseModuleStatus.UnlockTimes);
-          ALog:=ALog+'归还次数:'+IntToStr(ADatabaseModuleStatus.UnlockTimes)+#9;
-    //      Self.gridDatabasePool.Cells[5,I+1]:=IntToStr(ADatabaseModuleStatus.CheckConnectTimes);
-          ALog:=ALog+'检测连接状态次数:'+IntToStr(ADatabaseModuleStatus.CheckConnectTimes)+#9;
-    //      Self.gridDatabasePool.Cells[6,I+1]:=IntToStr(ADatabaseModuleStatus.ConnectedTimes);
-          ALog:=ALog+'连接成功次数:'+IntToStr(ADatabaseModuleStatus.ConnectedTimes)+#9;
-    //      Self.gridDatabasePool.Cells[7,I+1]:=IntToStr(ADatabaseModuleStatus.DisconnectedTimes);
-          ALog:=ALog+'连接断开次数:'+IntToStr(ADatabaseModuleStatus.DisconnectedTimes)+#9;
-    //      Self.gridDatabasePool.Cells[8,I+1]:=IntToStr(ADatabaseModuleStatus.ReConnectedTimes);
-          ALog:=ALog+'重连成功次数:'+IntToStr(ADatabaseModuleStatus.ReConnectedTimes)+#13#10;
-
-
-
-        end;
-
-      end;
-
-
-
-
-    //  //汇总
-    //  Self.gridDatabasePool.Cells[0,I+1]:='汇总';
-    //  Self.gridDatabasePool.Cells[2,I+1]:=IntToStr(ASumCurCount);
-
-
-      ALog:=ALog+'输出接口调用统计:'+#13#10;
-      ALog:=ALog
-                  +'最大耗时(毫秒)'+#9
-                  +'平均耗时(毫秒)'+#9
-                  +'接口名称'
-                  +#13#10;
-      //输出接口调用统计
-      //先将数据库模块显示出来
-      for I := 0 to FServiceProject.FAPICallStatisticsList.Count-1 do
-      begin
-        AAPICallStatisticsItem:=FServiceProject.FAPICallStatisticsList.Items[I];
-        ALog:=ALog
-                  +FloatToStr(AAPICallStatisticsItem.FMaxCostMilliSeconds)+#9
-                  +FloatToStr(AAPICallStatisticsItem.FSumCostMilliSeconds / AAPICallStatisticsItem.FCount)+#9
-                  +AAPICallStatisticsItem.FAPI
-                  +#13#10;
-
-      end;
-
-
-
-      uBaseLog.HandleException(nil,ALog);
+      uBaseLog.HandleError(nil,ALog);
 
 
   end;
@@ -2615,12 +2791,12 @@ begin
 
     if AStarted then
     begin
-      uBaseLog.HandleException(nil,'TSerivceStartThread.Execute 服务启动成功');
+      uBaseLog.HandleError(nil,'TSerivceStartThread.Execute 服务启动成功');
       uBaseLog.GetGlobalLog.OutputDebugString('TSerivceStartThread.Execute 服务启动成功');
     end
     else
     begin
-      uBaseLog.HandleException(nil,'TSerivceStartThread.Execute 服务启动失败:'+AMessage+',10秒后重试');
+      uBaseLog.HandleError(nil,'TSerivceStartThread.Execute 服务启动失败:'+AMessage+',10秒后重试');
       uBaseLog.GetGlobalLog.OutputDebugString('TSerivceStartThread.Execute 服务启动失败:'+AMessage+',10秒后重试');
       SleepThread(5*1000);
     end;
@@ -2634,17 +2810,32 @@ end;
 
 { TUserAccessTokenList }
 
-function TUserAccessTokenList.Add(AAppID, AUserFID,AAccessToken: String;AIsSystem:Boolean=False): TUserAccessToken;
+function TUserAccessTokenList.Add(AUserJson:ISuperObject):TUserAccessToken;
 begin
-  Result:=TUserAccessToken.Create;
+  Result:=GlobalUserAccessTokenClass.Create;
+  Result.LoadFromJson(AUserJson);
+  Self.Add(Result);
+end;
+
+function TUserAccessTokenList.Add(AAppID, AUserFID,AAccessToken: String;AAppType:String;AIsSystem:Boolean): TUserAccessToken;
+begin
+  Result:=GlobalUserAccessTokenClass.Create;
   Result.AppID:=AAppID;
   Result.UserFID:=AUserFID;
+  Result.AppType:=AAppType;
   Result.AccessToken:=AAccessToken;
   Result.IsSystem:=AIsSystem;
   Self.Add(Result);
 end;
 
-function TUserAccessTokenList.Find(AAppID, AUserFID: String;AIsSystem:Boolean=False): TUserAccessToken;
+function TUserAccessTokenList.Add(AUserRecord: TDataset): TUserAccessToken;
+begin
+  Result:=GlobalUserAccessTokenClass.Create;
+  Result.LoadFromDataset(AUserRecord);
+  Self.Add(Result);
+end;
+
+function TUserAccessTokenList.Find(AAppID, AUserFID: String;AAppType:String;AIsSystem:Boolean): TUserAccessToken;
 var
   I: Integer;
 begin
@@ -2653,6 +2844,7 @@ begin
   begin
     if (Items[I].AppID=AAppID)
       and (Items[I].UserFID=AUserFID)
+      and (Items[I].AppType=AAppType)
       and (Items[I].IsSystem=AIsSystem) then
     begin
       Result:=Items[I];
@@ -2681,15 +2873,50 @@ begin
   Result:=TUserAccessToken(Inherited Items[Index]);
 end;
 
+
+{ TUserAccessToken }
+
+class function TUserAccessToken.GetUserSelectSQL: String;
+begin
+  Result:='SELECT appid,fid,login_key FROM tbluser WHERE IFNULL(login_key,'''')<>'''' ';
+end;
+
+procedure TUserAccessToken.LoadFromDataset(AUserDataset: TDataset);
+begin
+//        AUserAccessToken.AppID:=IntToStr(ASQLDBHelper.Query.FieldByName('appid').AsInteger);
+//        AUserAccessToken.UserFID:=ASQLDBHelper.Query.FieldByName('fid').AsString;
+//        AUserAccessToken.AccessToken:=ASQLDBHelper.Query.FieldByName('login_key').AsString;
+  Self.AppID:=IntToStr(AUserDataset.FieldByName('appid').AsInteger);
+  Self.UserFID:=AUserDataset.FieldByName('fid').AsString;
+  Self.AppType:='';
+  Self.AccessToken:=AUserDataset.FieldByName('login_key').AsString;
+  Self.IsSystem:=False;
+
+end;
+
+procedure TUserAccessToken.LoadFromJson(AUserJson: ISuperObject);
+begin
+  Self.AppID:=IntToStr(AUserJson.I['appid']);
+  Self.UserFID:=AUserJson.S['fid'];
+  Self.AppType:='';
+  Self.AccessToken:=AUserJson.S['login_key'];
+  Self.IsSystem:=False;
+
+end;
+
 initialization
   //需要记录日志
-  uBaseLog.GetGlobalLog.IsWriteLog:=True;
-  uBaseLog.GetGlobalLog.SaveConfig;
+//  uBaseLog.GetGlobalLog.IsOutputLog:=True;
+//  uBaseLog.GetGlobalLog.IsWriteLog:=True;
+//  uBaseLog.GetGlobalLog.SaveConfig;
 //  {$IFDEF CONSOLE}
-  //经测试在Windows下,Console程序打印日志会卡死
-  GetGlobalLog.IsOutputLog:=False;
+//  //经测试在Windows下,Console程序打印日志会卡死
+//  GetGlobalLog.IsOutputLog:=False;
 //  {$ENDIF}
   uBaseLog.GetGlobalLog.HandleException(nil,'服务端初始');
+
+
+  GlobalUserAccessTokenClass:=TUserAccessToken;
 
 
   GlobalServiceProject:=GetGlobalServiceProject;
@@ -2701,7 +2928,9 @@ initialization
 
   IsNeedLoadServiceProjectFromIni:=True;
 //  IsNeedSaveServiceProjectFromIni:=True;
-
+  //2023-09-08 1.1 门业加入
+  //2023-10-08 1.2 门业加入工作重点
+  GlobalServiceProject.FVersion:='1.2';
 
   //REDIS默认的缓存时间
   REDIS_COMMON_TIMEOUT:=10*60;

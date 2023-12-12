@@ -1,0 +1,84 @@
+package OrangeUIStyles_VCL_D11;
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  vclimg,
+  dbrtl,
+  OrangeUIDesign_VCL_D11;
+
+contains
+  ListItemStyle_IconTop_CaptionBottom in 'ListItemStyle_IconTop_CaptionBottom.pas' {FrameListItemStyle_IconTop_CaptionBottom: TFrame},
+  ListItemStyle_TreeMainMenu in 'ListItemStyle_TreeMainMenu.pas',
+  ListItemStyle_TreeMainMenuItem in 'ListItemStyle_TreeMainMenuItem.pas',
+  ListItemStyle_TreeHistoryMadicalList_Child in 'ListItemStyle_TreeHistoryMadicalList_Child.pas' {FrameListItemStyle_TreeHistoryMadicalList_Child: TFrame},
+  ListItemStyle_TreeHistoryMadicalList_Item in 'ListItemStyle_TreeHistoryMadicalList_Item.pas' {FrameListItemStyle_TreeHistoryMadicalList_Item: TFrame},
+  ListItemStyle_TreeHistoryMadicalList_Diag in 'ListItemStyle_TreeHistoryMadicalList_Diag.pas' {FrameListItemStyle_TreeHistoryMadicalList_Diag: TFrame},
+  ListItemStyle_TreeChildListBox in 'ListItemStyle_TreeChildListBox.pas' {FrameListItemStyle_TreeChildListBox: TFrame},
+  ListItemStyle_IconLeft_CaptionRight in 'ListItemStyle_IconLeft_CaptionRight.pas',
+  ListItemStyle_ClassifyHasSelectedEffect in 'ListItemStyle_ClassifyHasSelectedEffect.pas',
+  ListItemStyle_HospitalDoctorForRegisterNumber in 'ListItemStyle_HospitalDoctorForRegisterNumber.pas',
+  ListItemStyle_VertSelectedSignLeft_CaptionRight in 'ListItemStyle_VertSelectedSignLeft_CaptionRight.pas',
+  ListItemStyle_Edit in 'ListItemStyle_Edit.pas',
+  ListItemStyle_TwoButton in 'ListItemStyle_TwoButton.pas',
+  EasyServiceCommonMaterialDataMoudle_VCL in '..\EasyServiceCommonMaterialDataMoudle_VCL.pas' {dmEasyServiceCommonMaterial: TDataModule},
+  ListItemStyle_CustomerTag in 'ListItemStyle_CustomerTag.pas',
+  ListItemStyle_IconButton in 'ListItemStyle_IconButton.pas' {FrameListItemStyle_IconButton: TFrame},
+  ListItemStyle_TreeMainMenu_LabelAndArrow in 'ListItemStyle_TreeMainMenu_LabelAndArrow.pas',
+  ListItemStyle_CaptionDetailItem in 'ListItemStyle_CaptionDetailItem.pas',
+  ListItemStyle_VertSelectedGray_CaptionLeft in 'ListItemStyle_VertSelectedGray_CaptionLeft.pas',
+  ListItemStyle_HorzSelectedSignBottom_CaptionCenter in 'ListItemStyle_HorzSelectedSignBottom_CaptionCenter.pas' {FrameListItemStyle_HorzSelectedSignBottom_CaptionCenter: TFrame},
+  ListItemStyle_IconLeft_CaptionRight_CloseBtnRight in 'ListItemStyle_IconLeft_CaptionRight_CloseBtnRight.pas' {FrameListItemStyle_IconLeft_CaptionRight_CloseBtnRight: TFrame},
+  ListItemStyle_CarLocation in 'ListItemStyle_CarLocation.pas',
+  ListItemStyle_CheckBoxIconLeft_CaptionRight in 'ListItemStyle_CheckBoxIconLeft_CaptionRight.pas',
+  ListItemStyle_IconCaptionLeft_DetailRight in 'ListItemStyle_IconCaptionLeft_DetailRight.pas',
+  ListItemStyle_CaptionTopDetailBottom in 'ListItemStyle_CaptionTopDetailBottom.pas',
+  ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected in 'ListItemStyle_CaptionCenter_CloseBtnRight_TopBorderSelected.pas',
+  ListItemStyle_CaptionTopDetailBottom_Summary in 'ListItemStyle_CaptionTopDetailBottom_Summary.pas',
+  ListItemStyle_Default in 'ListItemStyle_Default.pas' {FrameListItemStyle_Default},
+  ListItemStyle_IconCaptionLeft_NotifyNumberRight in 'ListItemStyle_IconCaptionLeft_NotifyNumberRight.pas' {FrameListItemStyle_IconCaptionLeft_NotifyNumberRight},
+  ListItemStyle_IconCaptionLeft_NotifyIconRight in 'ListItemStyle_IconCaptionLeft_NotifyIconRight.pas' {FrameListItemStyle_IconCaptionLeft_NotifyIconRight},
+  ListItemStyle_IconCaptionLeft_ArrowRight in 'ListItemStyle_IconCaptionLeft_ArrowRight.pas',
+  ListItemStyle_DashBoardSummaryItem in 'ListItemStyle_DashBoardSummaryItem.pas',
+  ListItemStyle_ProgressBar in 'ListItemStyle_ProgressBar.pas',
+  ListItemStyle_IconTop_CaptionDetailBottom in 'ListItemStyle_IconTop_CaptionDetailBottom.pas',
+  ListItemStyle_TwoIconButton in 'ListItemStyle_TwoIconButton.pas',
+  ListItemStyle_IconLeft_CaptionLeft in 'ListItemStyle_IconLeft_CaptionLeft.pas',
+  ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite in 'ListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite.pas' {FrameListItemStyle_IconTop_CaptionWhiteBottom_BackSelectedWhite},
+  ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont in 'ListItemStyle_CaptionCenter_SelectedWhiteBackThemeFont.pas',
+  ListItemStyle_MessageHintCard in 'ListItemStyle_MessageHintCard.pas',
+  ListItemStyle_CaptionSelectedMark in 'ListItemStyle_CaptionSelectedMark.pas',
+  ListItemStyle_MessageHintCard2 in 'ListItemStyle_MessageHintCard2.pas',
+  ListItemStyle_RoundColorLabel in 'ListItemStyle_RoundColorLabel.pas',
+  ListItemStyle_TreeParentNode in 'ListItemStyle_TreeParentNode.pas',
+  ListItemStyle_CarLocationSummary in 'ListItemStyle_CarLocationSummary.pas',
+  ListItemStyle_RoundColorRectAndLabel in 'ListItemStyle_RoundColorRectAndLabel.pas',
+  ListItemStyle_ConstructionSiteCarProgress in 'ListItemStyle_ConstructionSiteCarProgress.pas';
+
+end.

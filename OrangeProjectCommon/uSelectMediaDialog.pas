@@ -1,6 +1,7 @@
 unit uSelectMediaDialog;
 
 interface
+//{$I OpenPlatformClient.inc}
 
 uses
   Classes,
@@ -140,18 +141,18 @@ var
 
 implementation
 
-{$IFDEF USE_NATIVE_SELECTMEDIA}
-//  {$IFDEF ANDROID}
-//  uses
-//    uAndroidDmcBigSelectMedia;
+//{$IFDEF USE_NATIVE_SELECTMEDIA}
+////  {$IFDEF ANDROID}
+////  uses
+////    uAndroidDmcBigSelectMedia;
+////  {$ENDIF}
+////  {$IFDEF IOS}
+////  uses
+////    uIOSHXPhotoPickerSelectMediaUI;
+////  {$ENDIF}
+//  {$IFDEF MSWINDOWS}
 //  {$ENDIF}
-  {$IFDEF IOS}
-  uses
-    uIOSHXPhotoPickerSelectMediaUI;
-  {$ENDIF}
-  {$IFDEF MSWINDOWS}
-  {$ENDIF}
-{$ENDIF}
+//{$ENDIF}
 
 
 { TSelectMediaDialog }
@@ -187,17 +188,17 @@ begin
   if FBaseSelectMediaUI=nil then
   begin
 
-      {$IFDEF USE_NATIVE_SELECTMEDIA}
-    //    {$IFDEF ANDROID}
-    //    GlobalSelectMediaUIClass:=TAndroidDmcBigSelectMediaUI;
-    //    {$ENDIF}
-        {$IFDEF IOS}
-        GlobalSelectMediaUIClass:=TIOSHXPhotoPickerSelectMediaUI;
-        {$ENDIF}
-        {$IFDEF MSWINDOWS}
-        {$ENDIF}
-      {$ELSE}
-      {$ENDIF}
+//      {$IFDEF USE_NATIVE_SELECTMEDIA}
+//    //    {$IFDEF ANDROID}
+//    //    GlobalSelectMediaUIClass:=TAndroidDmcBigSelectMediaUI;
+//    //    {$ENDIF}
+//        {$IFDEF IOS}
+//        GlobalSelectMediaUIClass:=TIOSHXPhotoPickerSelectMediaUI;
+//        {$ENDIF}
+//        {$IFDEF MSWINDOWS}
+//        {$ENDIF}
+//      {$ELSE}
+//      {$ENDIF}
       if GlobalSelectMediaUIClass=nil then
       begin
         raise Exception.Create('GlobalSelectMediaUIClass Can Not Be Nil,Please Use uCommonSelectMediaUI.pas');

@@ -1,0 +1,29 @@
+object frmHint: TfrmHint
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  AlphaBlendValue = 230
+  BorderIcons = []
+  BorderStyle = bsNone
+  ClientHeight = 41
+  ClientWidth = 325
+  Color = clBlack
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDefault
+  OnPaint = FormPaint
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object tmrWaiting: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = tmrWaitingTimer
+    Left = 256
+    Top = 8
+  end
+end

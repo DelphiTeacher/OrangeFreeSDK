@@ -111,6 +111,7 @@ type
     lvButtonMaterial: TSkinListViewDefaultMaterial;
     lblRedBackCaptionVertCenterMaterial: TSkinLabelDefaultMaterial;
     lblBackBlackOpacityCaptionWhiteVertCenterMaterial: TSkinLabelDefaultMaterial;
+    detInputMaterial: TSkinDateEditDefaultMaterial;
   private
     { Private declarations }
   public

@@ -261,10 +261,12 @@ begin
           except
             on E:Exception do
             begin
+              Self.LastExceptMessage:=E.Message;
 //              ShowException('数据库连接错误，请确认正确参数配置并重启服务端');
               uBaseLog.HandleException(nil,'TUniDBHelper.Connect '+E.Message);
             end;
           end;
+
       end;
 
 
@@ -444,7 +446,7 @@ begin
   if Length(AParamNames)<>Length(AParamValues) then
   begin
     FLastExceptMessage:='参数与值的个数不匹配 '+AQueryString;
-    uBaseLog.HandleException(nil,'TnbUniDBHelper.SelfQuery '+FLastExceptMessage+' '+AQueryString);
+    uBaseLog.HandleError(nil,'TnbUniDBHelper.SelfQuery '+FLastExceptMessage+' '+AQueryString);
     Exit;
   end;
   
@@ -571,7 +573,7 @@ begin
             else
             begin
                 FLastExceptMessage:='数据库未连接';
-                uBaseLog.HandleException(nil,'TUniDBHelper.SelfQuery '+FLastExceptMessage+' '+AQueryString);
+                uBaseLog.HandleError(nil,'TUniDBHelper.SelfQuery '+FLastExceptMessage+' '+AQueryString);
             end;
         except
           on E: Exception do

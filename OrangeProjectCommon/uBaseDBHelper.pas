@@ -148,7 +148,8 @@ type
                       ):Boolean;virtual;
     //获取字段列表
     function GetFieldList(ATableName:String;ASelectText:String;
-                           var ARecordList:ISuperArray
+                           var ARecordList:ISuperArray;
+                           ADataJson:ISuperObject
                            ):Boolean;virtual;
     //获取一条记录
     function GetRecord(ATableName:String;
@@ -161,19 +162,29 @@ type
                           APageIndex:Integer;
                           APageSize:Integer;
                           AWhereKeyJsonArray:ISuperArray;
-                          var ADataJson:ISuperObject
+                          var ADataJson:ISuperObject;
+                          AIsNeedRecordList:Boolean=True;
+                          AOrderBy:String='';
+                          AHTTPRequestParamJson:ISuperObject=nil
                           ):Boolean;virtual;
     //更新一条记录
     function UpdateRecord(ATableName:String;AUpdateRecordDataJson:ISuperObject;
                           AKeyFieldName:String;
                           AKeyFieldValue:Variant;
-                          var AUpdatedRecordDataJson:ISuperObject
+                          var AUpdatedRecordDataJson:ISuperObject;
+                          AOldRecordDataJson:ISuperObject=nil
                           ):Boolean;overload;virtual;
     function UpdateRecord(ATableName:String;AUpdateRecordDataJson:ISuperObject;
                           AKeyFieldName:String;
                           AWhereKeyJsonArray:ISuperArray;
-                          var AUpdatedRecordDataJson:ISuperObject
+                          var AUpdatedRecordDataJson:ISuperObject;
+                          AOldRecordDataJson:ISuperObject=nil
                           ):Boolean;overload;virtual;
+
+    //更新字段列表
+    function UpdateFieldList(ATableName:String;
+                            AFieldListJson:ISuperObject;
+                            var ARecordDataJson:ISuperObject):Boolean;virtual;abstract;
   public
     property S[AFieldName:String]:String read GetFieldStringValue;
     property I[AFieldName:String]:Integer read GetFieldIntegerValue;
@@ -186,6 +197,7 @@ var
   OnDBHelperLog: TOnDBHelperLogEvent;
   GlobalDBHelper:TBaseDBHelper;
 
+function GetIFNULLName(ADBType:String):String;
 
 //用于孚盟
 function GetMaxFID(ASQLDBHelper:TBaseDBHelper;
@@ -196,6 +208,26 @@ function GetGlobalDBLog:TBaseLog;
 
 function TransSelectSQL(ASelect:String;ADBType:String):String;
 
+//获取查询语句的查询分页条件,主要是为了兼容MySQL和SQLServer分页不兼容的问题
+function GetQueryQueryPageSQL(
+                              ASQLDBHelper:TBaseDBHelper;
+                              //查询语句,不要条件和排序
+                              ASelect:String;
+                              //数据库类型,MYSQL还是MSSQL
+                              ADBType:String;
+                              //页号,从1开始
+                              APageIndex:Integer;
+                              //每页记录数,如果为MaxInt则全部返回
+                              APageSize:Integer;
+                              //条件语句
+                              AWhere:String;
+                              //排序语句
+                              AOrderBy:String;
+                              AParamNames:TStringDynArray;
+                              AParamValues:TVariantDynArray;
+                              AIsProcedure:Boolean;
+                              AExecProcParams:String
+                              ):String;
 
 implementation
 
@@ -211,6 +243,233 @@ begin
     GlobalDBLog.IsWriteLog:=True;
   end;
   Result:=GlobalDBLog;
+end;
+
+
+
+function GetIFNULLName(ADBType:String):String;
+begin
+  if (ADBType='MSSQL') or (ADBType='MSSQL2000') then
+  begin
+    Result:='ISNULL';
+  end
+  else
+  begin
+    Result:='IFNULL';
+  end;
+
+end;
+
+function GetQueryQueryPageSQL(
+                              ASQLDBHelper:TBaseDBHelper;
+                              ASelect:String;
+                              ADBType:String;
+                              APageIndex:Integer;
+                              APageSize:Integer;
+                              AWhere:String;
+                              AOrderBy:String;
+                              AParamNames:TStringDynArray;
+                              AParamValues:TVariantDynArray;
+                              AIsProcedure:Boolean;
+                              AExecProcParams:String
+                              ):String;
+  function RemoveOrderByTalbeAlias(AOrderBy:String):String;
+  begin
+
+    //把OrderBy中的表别名去除掉
+    AOrderBy:=ReplaceStr(AOrderBy,'A.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'B.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'C.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'D.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'E.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'F.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'G.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'H.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'I.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'J.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'K.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'L.','');
+
+    AOrderBy:=ReplaceStr(AOrderBy,'X.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'Y.','');
+    AOrderBy:=ReplaceStr(AOrderBy,'Z.','');
+    Result:=AOrderBy;
+
+  end;
+var
+  AOrderByFieldNames:TStringList;
+  AOrderByFieldName:String;
+  AOrderByType:String;
+  AIndex:Integer;
+  AMaxValue:String;
+  AOrderByWhere:String;
+begin
+  Result:=ASelect+' '+AWhere+AOrderBy;
+
+  if (APageSize=MaxInt) then
+  begin
+    Exit;
+  end;
+
+
+      //返回分页数据
+      if (ADBType='') or SameText(ADBType,'MYSQL') or SameText(ADBType,'SQLite') then
+      begin
+              Result:=ASelect+' '
+                      +AWhere
+                      +AOrderBy
+                      //从0开始
+                      +' LIMIT '+IntToStr((APageIndex-1)*APageSize)+','+IntToStr(APageSize)+' ';
+      end
+      else if SameText(ADBType,'MSSQL') or SameText(ADBType,'MSSQL2000') then
+      begin
+
+
+          //这样查询,OrderBy不会字段不明确
+          //Result:='SELECT * FROM ('+ASelect+' '+AWhere+') QueryPageSQLView '+AOrderBy;
+
+
+          if not AIsProcedure then// Pos('exec ',LowerCase(ASelect))=0 then
+          begin
+//                if (AOrderBy='') then
+//                begin
+//
+//                end;
+
+                //{$IFDEF SQLSERVER_2000}
+                  if SameText(ADBType,'MSSQL2000') {$IFDEF SQLSERVER_2000} or True{$ENDIF} then
+                  begin
+                      //低版本的SQLServer,不支持ROW_NUMBER
+                      if (APageIndex>1) then
+                      begin
+                          //第二页要分页
+                          //先找出主键
+                          AOrderByFieldName:=AOrderBy;
+                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
+                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
+                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
+                          AOrderByFieldName:=Trim(AOrderByFieldName);
+                          AOrderByFieldNames:=TStringList.Create;
+                          try
+                              AOrderByFieldNames.Delimiter:=' ';
+                              AOrderByFieldNames.StrictDelimiter:=True;
+                              AOrderByFieldNames.DelimitedText:=AOrderByFieldName;
+                              AOrderByFieldName:=AOrderByFieldNames[2];
+                              AOrderByType:=AOrderByFieldNames[3];
+
+                          finally
+                            FreeAndNil(AOrderByFieldNames);
+                          end;
+
+
+                          //根据排序字段,找到之前分页结束的那个值,麻烦的是会有相同值的情况
+                          //ASC,1,2,3,4,5,6
+                          //DESC,6,5,4,3,2,1
+                          AIndex:=Pos('FROM',UpperCase(ASelect));
+                          if not ASQLDBHelper.SelfQuery(
+                                                        'SELECT TOP '+IntToStr((APageIndex-1)*APageSize)+' '+AOrderByFieldName+' '
+                                                        +Copy(ASelect,AIndex-1,MaxInt)
+                                                        +AWhere+AOrderBy,
+                                                        AParamNames,
+                                                        AParamValues,
+                                                        asoOpen) then
+                          begin
+                            Exit;
+                          end;
+
+
+                          //取到之前分页结束的那个值
+                          AMaxValue:='';
+                          ASQLDBHelper.Query.First;
+                          while not ASQLDBHelper.Query.Eof do
+                          begin
+                            AMaxValue:=ASQLDBHelper.Query.Fields[0].AsString;
+                            ASQLDBHelper.Query.Next;
+                          end;
+
+                          //条件
+                          AOrderByWhere:='';
+                          if SameText(AOrderByType,'ASC') then
+                          begin
+                            //顺序,1,2,3,4,5,6
+                            AOrderByWhere:=' '+AOrderByFieldName+'>'+QuotedStr(AMaxValue);
+                          end
+                          else
+                          begin
+                            //倒序,1,2,3,4,5,6
+                            AOrderByWhere:=' '+AOrderByFieldName+'<'+QuotedStr(AMaxValue);
+                          end;
+                          if Trim(AWhere)='' then
+                          begin
+                            AOrderByWhere:=' WHERE '+AOrderByWhere;
+                          end
+                          else
+                          begin
+                            AOrderByWhere:=' AND '+AOrderByWhere;
+                          end;
+
+
+                          Result:=ASelect
+                                  +' '
+                                  +AWhere
+                                  +AOrderByWhere
+                                  +AOrderBy;
+
+                      end
+                      else
+                      begin
+                          //第一页
+
+                      end;
+
+                      AIndex:=Pos('SELECT',UpperCase(Result));
+                      Result:='SELECT '+' TOP '+IntToStr(APageSize)+' '
+                              +Copy(Result,AIndex+6,MaxInt);
+
+
+        //            Result:=
+        //              ' SELECT TOP '+IntToStr(APageSize)+' * '
+        //                +' FROM ( '
+        //                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
+        //                    +' FROM '+'('+ASelect+AWhere+') Z'+' '
+        //                +' ) Y '
+        //                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
+        //                +AOrderBy;
+                  end
+                  else
+                  //{$ELSE}
+                  begin
+
+
+                      //高版本的SQLServer,支持ROW_NUMBER
+                      AOrderBy:=RemoveOrderByTalbeAlias(AOrderBy);
+                      Result:=
+                              ' SELECT TOP '+IntToStr(APageSize)+' * '
+                                +' FROM ( '
+                                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
+                                    +' FROM '+'('+ASelect+' '+AWhere+') Z'+' '
+                                +' ) Y '
+                                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
+                                +AOrderBy;
+
+
+                  //{$ENDIF}
+                  end;
+
+
+          end
+          else
+          begin
+
+              //存储过程
+              Result:=ASelect+' '+AExecProcParams;
+
+          end;
+
+
+      end;
+
+
 end;
 
 
@@ -288,7 +547,7 @@ end;
 function TBaseDBHelper.AddRecord(ATableName: String;
   ARecordDataJson: ISuperObject; AKeyFieldName: String;
   ASelectAfterInsert:String;
-                      var AAddedRecordDataJson:ISuperObject): Boolean;
+                       var AAddedRecordDataJson:ISuperObject): Boolean;
 var
   AParamNames:TStringDynArray;
   AParamValues:TVariantDynArray;
@@ -380,11 +639,13 @@ begin
 end;
 
 function TBaseDBHelper.GetFieldList(ATableName, ASelectText: String;
-  var ARecordList: ISuperArray): Boolean;
+  var ARecordList: ISuperArray;
+  ADataJson:ISuperObject): Boolean;
 begin
   Result:=False;
 
   ARecordList:=nil;
+  ADataJson:=nil;
 
   if ASelectText='' then
   begin
@@ -445,9 +706,82 @@ begin
 end;
 
 function TBaseDBHelper.GetRecordList(ATableName: String; APageIndex,
-  APageSize: Integer; AWhereKeyJsonArray: ISuperArray;
-  var ADataJson: ISuperObject): Boolean;
+  APageSize: Integer;
+  AWhereKeyJsonArray: ISuperArray;
+  var ADataJson: ISuperObject;
+  AIsNeedRecordList:Boolean=True;
+  AOrderBy:String='';
+  AHTTPRequestParamJson:ISuperObject=nil): Boolean;
+var
+  ATempWhere:String;
 begin
+  Result:=False;
+  ADataJson:=SO();
+
+  ATempWhere:=GetWhereConditionSQL(AWhereKeyJsonArray,nil,nil);
+
+  if not AIsNeedRecordList then
+  begin
+    //只要总数
+              if not Self.SelfQuery(
+//                    'SELECT COUNT(*) AS SumCount'+ASummaryQueryFields+' FROM '
+//                        +'('+Select.Text+ATempWhere+') Z ',
+                    //经测试发现，外面包一层，会慢个1秒多
+                    //所以直接去掉查询字段
+                    'SELECT COUNT(*) FROM '+ATableName+' WHERE (1=1) '+ATempWhere,
+                    [],//ASelectParamNames,
+                    [],//ASelectParamValues,
+                    asoOpen) then
+              begin
+
+                  //查询失败
+                  Exit;
+              end;
+
+              ADataJson.I['SumCount']:=Self.Query.FieldByName('SumCount').AsInteger;
+  end;
+
+  if AIsNeedRecordList then
+  begin
+    //需要返回数据集
+    if (AOrderBy<>'') then
+    begin
+      AOrderBy:=' ORDER BY '+AOrderBy;
+    end;
+
+
+    if not Self.SelfQuery(
+
+            //生成分页查询条件
+            GetQueryQueryPageSQL(
+                                  Self,
+                                  'SELECT * FROM '+ATableName,//ASelect,//Self.Select.Text,
+                                  Self.DBType,
+                                  APageIndex,
+                                  APageSize,
+                                  ' WHERE (1=1) '+ATempWhere,
+                                  AOrderBy,//ATempOrderBy,
+                                  [],//ASelectParamNames,
+                                  [],//ASelectParamValues,
+                                  False,//IsStoreProcedure,
+                                  ''//ATempExecProcParams
+                                  ),
+
+            [],//ASelectParamNames,
+            [],//ASelectParamValues,
+            asoOpen
+            ) then
+    begin
+        //查询失败
+        Exit;
+    end;
+
+    //成功
+    //ADataJson:=JSonFromDataSet(ASQLDBHelper.Query,'RecordList');
+    JSonFromDataSetTo(Self.Query,'RecordList',ADataJson);
+  end;
+
+  Result:=True;
 
 end;
 
@@ -633,7 +967,7 @@ begin
   end
   else
   begin
-      if AIsNeedUpdate then
+      if (AIsNeedUpdate) then
       begin
           //更新
           Result:=SelfQuery_EasyUpdate(ATableName,
@@ -769,7 +1103,8 @@ function TBaseDBHelper.UpdateRecord(ATableName: String;
   AUpdateRecordDataJson: ISuperObject;
   AKeyFieldName:String;
   AWhereKeyJsonArray: ISuperArray;
-  var AUpdatedRecordDataJson: ISuperObject): Boolean;
+  var AUpdatedRecordDataJson: ISuperObject;
+  AOldRecordDataJson:ISuperObject=nil): Boolean;
 var
   AParamNames:TStringDynArray;
   AParamValues:TVariantDynArray;
@@ -828,7 +1163,8 @@ function TBaseDBHelper.UpdateRecord(ATableName: String;
   AUpdateRecordDataJson: ISuperObject;
   AKeyFieldName:String;
   AKeyFieldValue:Variant;
-                          var AUpdatedRecordDataJson:ISuperObject
+  var AUpdatedRecordDataJson:ISuperObject;
+  AOldRecordDataJson:ISuperObject=nil
   ): Boolean;
 var
   AParamNames:TStringDynArray;
@@ -856,7 +1192,7 @@ begin
                                           ATableName,
                                           AParamNames,
                                           AParamValues,
-                                          ' AND '+AKeyFieldName+'=:'+AKeyFieldName,
+                                          ' WHERE '+AKeyFieldName+'=:'+AKeyFieldName,
                                           ConvertToStringDynArray([AKeyFieldName]),
                                           ConvertToVariantDynArray([AKeyFieldValue]),
                                           'SELECT * FROM '+ATableName+' WHERE '+AKeyFieldName+'='+QuotedStr(VarToStr(AKeyFieldValue)),//+ATempWhere,
@@ -887,5 +1223,6 @@ Finalization
   uFuncCommon.FreeAndNil(GlobalDBLog);
 
 end.
+
 
 

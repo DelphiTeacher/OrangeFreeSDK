@@ -26,6 +26,8 @@ uses
 
 
   uObjectPool,
+  uTimerTask,
+  uTaskManager,
 
   uFileCommon,
 //  ServerDataBaseModule,
@@ -593,6 +595,14 @@ type
                            var ADataJson:ISuperObject
                            ):Boolean;overload;
 
+    function UpdateFieldList(ADBModule: TBaseDatabaseModule;
+                          ASQLDBHelper:TBaseDBHelper;
+                          AFieldListJson: ISuperObject;
+                           var ACode:Integer;
+                           var ADesc:String;
+                           var ADataJson:ISuperObject
+                           ):Boolean;
+
     //添加一条记录
     function AddRecord(ADBModule: TBaseDatabaseModule;
                         ASQLDBHelper:TBaseDBHelper;
@@ -942,7 +952,43 @@ type
   {$ENDREGION 'TCommonRestIntfItem 接口项'}
 
 
+  TCommonRestIntfCallType=(
+    ctAddRecord,
+    ctUpdateRecord,
+    ctDeleteRecord
+  );
 
+  //数据库接口异步操作项
+  TCommonRestIntf_ASyncCallTaskItem=class(TTaskItem)
+    FRestName:String;
+    FCallType:TCommonRestIntfCallType;
+    FRecordDataJson:ISuperObject;
+    FWhereKeyJson:String;
+  public
+    //执行任务
+    procedure DoWorkInWorkThreadExecute(Sender:TObject;
+                                        AWorkThreadItem:TTaskWorkThreadItem;
+                                        ATaskItem:TTaskItem);override;
+  end;
+
+
+  //接口操作管理
+  TCommonRestIntf_ASyncCallTaskManager=class(TTaskManager)
+  public
+    //添加一条记录
+    procedure AddRecord(ARestName:String;
+                        AAppID:String;
+                        ARecordDataJson:ISuperObject
+                        );
+    //修改一条记录
+    procedure UpdateRecord(ARestName:String;
+                          AAppID:String;
+                          ARecordDataJson:ISuperObject;
+                          //更新条件数组,Json数组
+                          AWhereKeyJson:String
+                          );
+
+  end;
 
 
 
@@ -1000,28 +1046,8 @@ type
 
 var
   GlobalCommonRestIntfList:TCommonRestIntfList;
+  GlobalCommonRestIntf_ASyncCallTaskManager:TCommonRestIntf_ASyncCallTaskManager;
 
-
-//获取查询语句的查询分页条件,主要是为了兼容MySQL和SQLServer分页不兼容的问题
-function GetQueryQueryPageSQL(
-                              ASQLDBHelper:TBaseDBHelper;
-                              //查询语句,不要条件和排序
-                              ASelect:String;
-                              //数据库类型,MYSQL还是MSSQL
-                              ADBType:String;
-                              //页号,从1开始
-                              APageIndex:Integer;
-                              //每页记录数,如果为MaxInt则全部返回
-                              APageSize:Integer;
-                              //条件语句
-                              AWhere:String;
-                              //排序语句
-                              AOrderBy:String;
-                              AParamNames:TStringDynArray;
-                              AParamValues:TVariantDynArray;
-                              AIsProcedure:Boolean;
-                              AExecProcParams:String
-                              ):String;
 
 
 ////获取默认的条件
@@ -1040,7 +1066,6 @@ function GetQueryQueryPageSQL(
 //                                        AValue: Variant;
 //                            AFieldValueIsField:Boolean=False;AFieldTableAlias:String=''): String;
 
-function GetIFNULLName(ADBType:String):String;
 
 
 //将对象保存到数据库
@@ -1053,6 +1078,8 @@ function SaveObjectToDB(ADBModule:TBaseDataBaseModule;
                         var ADesc:String;
                         var ADataJson:ISuperObject;
                         AIsDeleted:Boolean=False):Boolean;
+
+
 
 implementation
 
@@ -1208,231 +1235,6 @@ begin
 
 
   Result:=(ACode=SUCC);
-
-end;
-
-function GetIFNULLName(ADBType:String):String;
-begin
-  if (ADBType='MSSQL') or (ADBType='MSSQL2000') then
-  begin
-    Result:='ISNULL';
-  end
-  else
-  begin
-    Result:='IFNULL';
-  end;
-
-end;
-
-function GetQueryQueryPageSQL(
-                              ASQLDBHelper:TBaseDBHelper;
-                              ASelect:String;
-                              ADBType:String;
-                              APageIndex:Integer;
-                              APageSize:Integer;
-                              AWhere:String;
-                              AOrderBy:String;
-                              AParamNames:TStringDynArray;
-                              AParamValues:TVariantDynArray;
-                              AIsProcedure:Boolean;
-                              AExecProcParams:String
-                              ):String;
-  function RemoveOrderByTalbeAlias(AOrderBy:String):String;
-  begin
-
-    //把OrderBy中的表别名去除掉
-    AOrderBy:=ReplaceStr(AOrderBy,'A.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'B.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'C.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'D.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'E.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'F.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'G.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'H.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'I.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'J.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'K.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'L.','');
-
-    AOrderBy:=ReplaceStr(AOrderBy,'X.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'Y.','');
-    AOrderBy:=ReplaceStr(AOrderBy,'Z.','');
-    Result:=AOrderBy;
-
-  end;
-var
-  AOrderByFieldNames:TStringList;
-  AOrderByFieldName:String;
-  AOrderByType:String;
-  AIndex:Integer;
-  AMaxValue:String;
-  AOrderByWhere:String;
-begin
-  Result:=ASelect+' '+AWhere+AOrderBy;
-
-  if (APageSize=MaxInt) then
-  begin
-    Exit;
-  end;
-
-
-      //返回分页数据
-      if (ADBType='') or SameText(ADBType,'MYSQL') or SameText(ADBType,'SQLite') then
-      begin
-              Result:=ASelect+' '
-                      +AWhere
-                      +AOrderBy
-                      //从0开始
-                      +' LIMIT '+IntToStr((APageIndex-1)*APageSize)+','+IntToStr(APageSize)+' ';
-      end
-      else if SameText(ADBType,'MSSQL') or SameText(ADBType,'MSSQL2000') then
-      begin
-
-
-          //这样查询,OrderBy不会字段不明确
-          //Result:='SELECT * FROM ('+ASelect+' '+AWhere+') QueryPageSQLView '+AOrderBy;
-
-
-          if not AIsProcedure then// Pos('exec ',LowerCase(ASelect))=0 then
-          begin
-//                if (AOrderBy='') then
-//                begin
-//
-//                end;
-
-                //{$IFDEF SQLSERVER_2000}
-                  if SameText(ADBType,'MSSQL2000') {$IFDEF SQLSERVER_2000} or True{$ENDIF} then
-                  begin
-                      //低版本的SQLServer,不支持ROW_NUMBER
-                      if (APageIndex>1) then
-                      begin
-                          //第二页要分页
-                          //先找出主键
-                          AOrderByFieldName:=AOrderBy;
-                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
-                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
-                          AOrderByFieldName:=ReplaceText(AOrderByFieldName,'  ',' ');
-                          AOrderByFieldName:=Trim(AOrderByFieldName);
-                          AOrderByFieldNames:=TStringList.Create;
-                          try
-                              AOrderByFieldNames.Delimiter:=' ';
-                              AOrderByFieldNames.StrictDelimiter:=True;
-                              AOrderByFieldNames.DelimitedText:=AOrderByFieldName;
-                              AOrderByFieldName:=AOrderByFieldNames[2];
-                              AOrderByType:=AOrderByFieldNames[3];
-
-                          finally
-                            FreeAndNil(AOrderByFieldNames);
-                          end;
-
-
-                          //根据排序字段,找到之前分页结束的那个值,麻烦的是会有相同值的情况
-                          //ASC,1,2,3,4,5,6
-                          //DESC,6,5,4,3,2,1
-                          AIndex:=Pos('FROM',UpperCase(ASelect));
-                          if not ASQLDBHelper.SelfQuery(
-                                                        'SELECT TOP '+IntToStr((APageIndex-1)*APageSize)+' '+AOrderByFieldName+' '
-                                                        +Copy(ASelect,AIndex-1,MaxInt)
-                                                        +AWhere+AOrderBy,
-                                                        AParamNames,
-                                                        AParamValues,
-                                                        asoOpen) then
-                          begin
-                            Exit;
-                          end;
-
-
-                          //取到之前分页结束的那个值
-                          AMaxValue:='';
-                          ASQLDBHelper.Query.First;
-                          while not ASQLDBHelper.Query.Eof do
-                          begin
-                            AMaxValue:=ASQLDBHelper.Query.Fields[0].AsString;
-                            ASQLDBHelper.Query.Next;
-                          end;
-
-                          //条件
-                          AOrderByWhere:='';
-                          if SameText(AOrderByType,'ASC') then
-                          begin
-                            //顺序,1,2,3,4,5,6
-                            AOrderByWhere:=' '+AOrderByFieldName+'>'+QuotedStr(AMaxValue);
-                          end
-                          else
-                          begin
-                            //倒序,1,2,3,4,5,6
-                            AOrderByWhere:=' '+AOrderByFieldName+'<'+QuotedStr(AMaxValue);
-                          end;
-                          if Trim(AWhere)='' then
-                          begin
-                            AOrderByWhere:=' WHERE '+AOrderByWhere;
-                          end
-                          else
-                          begin
-                            AOrderByWhere:=' AND '+AOrderByWhere;
-                          end;
-
-
-                          Result:=ASelect
-                                  +' '
-                                  +AWhere
-                                  +AOrderByWhere
-                                  +AOrderBy;
-
-                      end
-                      else
-                      begin
-                          //第一页
-
-                      end;
-
-                      AIndex:=Pos('SELECT',UpperCase(Result));
-                      Result:='SELECT '+' TOP '+IntToStr(APageSize)+' '
-                              +Copy(Result,AIndex+6,MaxInt);
-
-
-        //            Result:=
-        //              ' SELECT TOP '+IntToStr(APageSize)+' * '
-        //                +' FROM ( '
-        //                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
-        //                    +' FROM '+'('+ASelect+AWhere+') Z'+' '
-        //                +' ) Y '
-        //                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
-        //                +AOrderBy;
-                  end
-                  else
-                  //{$ELSE}
-                  begin
-
-
-                      //高版本的SQLServer,支持ROW_NUMBER
-                      AOrderBy:=RemoveOrderByTalbeAlias(AOrderBy);
-                      Result:=
-                              ' SELECT TOP '+IntToStr(APageSize)+' * '
-                                +' FROM ( '
-                                    +' SELECT '+' ROW_NUMBER() OVER ('+AOrderBy+') AS RowNumber, '+' * '
-                                    +' FROM '+'('+ASelect+' '+AWhere+') Z'+' '
-                                +' ) Y '
-                                +' WHERE RowNumber > '+IntToStr(APageSize)+'*('+IntToStr(APageIndex)+'-1) '
-                                +AOrderBy;
-
-
-                  //{$ENDIF}
-                  end;
-
-
-          end
-          else
-          begin
-
-              //存储过程
-              Result:=ASelect+' '+AExecProcParams;
-
-          end;
-
-
-      end;
-
 
 end;
 
@@ -1795,7 +1597,7 @@ function TCommonRestIntfItem.GetRecordList(
                        var ADesc:String;
                        var ADataJson:ISuperObject;
                        AMasterRecordJson:ISuperObject=nil;
-                           AIsNeedRecordList:Boolean=True
+                       AIsNeedRecordList:Boolean=True
                        ):Boolean;
 begin
   Result:=GetRecordList(DBModule,
@@ -2343,7 +2145,8 @@ begin
   end;
 
   //如果是ES数据库，不能传表中不存在的字段过来，避免结构乱掉，统一
-  if SameText(ADBModule.DBConfig.FDBType,'ES') then
+  if ( (ADBModule<>nil ) and (SameText(ADBModule.DBConfig.FDBType,'ES') ))
+    or ( (ASQLDBHelper<>nil ) and (SameText(ASQLDBHelper.DBType,'ES')) ) then
   begin
     ADesc:='';
     if IsJsonHasNotExistsField(ARecordDataJson,Self.TableFieldDefList,'',ADesc) then
@@ -4129,6 +3932,7 @@ begin
   end
   else
   begin
+    //没有搜索条件,直接使用查询语句
     Result:=DoGetFieldList(
               ADBModule,
               ASQLDBHelper,
@@ -4262,7 +4066,7 @@ begin
           ADataJson.S['name']:=Self.Name;
           ADataJson.S['caption']:=Self.Caption;
           //ADataJson.A['FieldList']:=GetDatasetFieldDefsJson(ASQLDBHelper.Query);
-          if not ASQLDBHelper.GetFieldList(TableName,ASelect,AFieldList) then
+          if not ASQLDBHelper.GetFieldList(TableName,ASelect,AFieldList,ADataJson) then
           begin
             //查询失败
             ADesc:=ASQLDBHelper.LastExceptMessage;
@@ -4427,6 +4231,8 @@ begin
 
 
       try
+
+
           if (AWhereKeyJson='null') or (AWhereKeyJson='') or (AWhereKeyJson='{}') then
           begin
             AWhereKeyJsonArray:=TSuperArray.Create('[]');
@@ -4440,6 +4246,57 @@ begin
           begin
             Exit;
           end;
+
+
+          //排序规则
+          ATempOrderBy:='';
+          if (AOrderBy<>'') then
+          begin
+            ATempOrderBy:=' ORDER BY '+AOrderBy;
+          end
+          else if DefaultOrderBy<>'' then
+          begin
+            ATempOrderBy:=' ORDER BY '+DefaultOrderBy;
+          end;
+
+
+
+
+          if SameText(ASQLDBHelper.DBType,'ES') then
+          begin
+              if ARecordDataJsonStr='' then
+              begin
+                ARecordDataJson:=nil;
+              end
+              else
+              begin
+                ARecordDataJson:=SO(ARecordDataJsonStr);
+              end;
+
+              //ES数据库不是用SQL的方式插入的
+              if not ASQLDBHelper.GetRecordList(Self.FTableName,
+                                                APageIndex,
+                                                APageSize,
+                                                AWhereKeyJsonArray,
+                                                ADataJson,
+                                                AIsNeedRecordList,
+                                                ATempOrderBy,
+                                                ARecordDataJson) then
+              begin
+                //查询失败
+                ADesc:=ASQLDBHelper.LastExceptMessage;
+                Exit;
+              end;
+
+              ADesc:=(Caption+'列表查询成功');
+              ACode:=SUCC;
+              Result:=True;
+
+              Exit;
+          end;
+
+
+
 
 
           if ARecordDataJsonStr='' then
@@ -4488,19 +4345,6 @@ begin
               ATempWhere:=' WHERE (1=1) '+ATempWhere;
             end;
           end;
-
-
-          //排序规则
-          ATempOrderBy:='';
-          if (AOrderBy<>'') then
-          begin
-            ATempOrderBy:=' ORDER BY '+AOrderBy;
-          end
-          else if DefaultOrderBy<>'' then
-          begin
-            ATempOrderBy:=' ORDER BY '+DefaultOrderBy;
-          end;
-
 
 
 
@@ -4693,8 +4537,8 @@ begin
               ACode:=SUCC;
               Result:=True;
           end;
-//
-//
+
+
 //          ADesc:=(Caption+'列表查询成功');
 //          ACode:=SUCC;
 //          Result:=True;
@@ -4703,7 +4547,7 @@ begin
         on E:Exception do
         begin
           ADesc:=E.Message;
-          uBaseLog.HandleException(E,'TQueryCommonRestServerItem.GetRecordList');
+          uBaseLog.HandleException(E,'TBaseQueryItem.GetRecordList');
         end;
       end;
 
@@ -5271,6 +5115,121 @@ begin
   ACode:=SUCC;
   ADesc:='保存成功';
   Result:=True;
+end;
+
+function TBaseQueryItem.UpdateFieldList(ADBModule: TBaseDatabaseModule;
+  ASQLDBHelper:TBaseDBHelper;
+  AFieldListJson: ISuperObject;
+  var ACode: Integer; var ADesc: String; var ADataJson: ISuperObject): Boolean;
+var
+//  I: Integer;
+//
+//  AParamNames:TStringDynArray;
+//  AParamValues:TVariantDynArray;
+//
+  AIsTempSQLDBHelper:Boolean;
+begin
+  ACode:=FAIL;
+  ADesc:='';
+  ADataJson:=nil;
+  Result:=False;
+
+
+
+  if Self.TableName='' then
+  begin
+    ADesc:=(Name+'的TableName不能为空');
+    Exit;
+  end;
+
+  if not FIsStarted then
+  begin
+    if not Self.DoPrepareStart(ADesc) then
+    begin
+      Exit;
+    end;
+    FIsStarted:=True;
+  end;
+
+
+
+
+  AIsTempSQLDBHelper:=False;
+  if ASQLDBHelper=nil then
+  begin
+    //从连接池中取一个DBHelper
+    if not ADBModule.GetDBHelperFromPool(ASQLDBHelper,ADesc) then
+    begin
+      Exit;
+    end;
+    AIsTempSQLDBHelper:=True;
+  end;
+  try
+
+
+      try
+
+
+
+//          //提交的字段检测
+//          if Self.FieldValueCheckList.Count>0 then
+//          begin
+//            if not Self.FieldValueCheckList.Check(ASQLDBHelper,ARecordDataJson,ADesc) then
+//            begin
+//              Exit;
+//            end;
+//          end;
+//
+//
+//
+//
+//          //需要更新的字段
+//          ConvertJsonToArray(ARecordDataJson,AParamNames,AParamValues,Self.TableFieldNameList,'fid');
+//
+//
+//
+//          if Length(AParamNames)=0 then
+//          begin
+//            ACode:=SUCC;
+//            ADesc:=('没有要更新的字段');
+//            Exit;
+//          end;
+
+
+
+          if not ASQLDBHelper.UpdateFieldList(TableName,AFieldListJson,ADataJson) then
+          begin
+              //修改失败
+              ADesc:=ASQLDBHelper.LastExceptMessage;
+              Exit;
+          end;
+
+
+
+          //成功
+          ADesc:=(Caption+'修改成功');
+          ACode:=SUCC;
+
+
+
+          Result:=True;
+
+
+      except
+        on E:Exception do
+        begin
+          ADesc:=E.Message;
+          uBaseLog.HandleException(E,'TTableCommonRestServerItem.UpdateFieldList');
+        end;
+      end;
+
+  finally
+    if AIsTempSQLDBHelper then
+    begin
+      ADBModule.FreeDBHelperToPool(ASQLDBHelper);
+    end;
+  end;
+
 end;
 
 function TBaseQueryItem.UpdateRecord(
@@ -6759,7 +6718,7 @@ var
   AWhereKeyJsonStr:String;
   ACommonRestIntfItem:TCommonRestIntfItem;
 begin
-  uBaseLog.HandleException(nil,'SaveRecordToServer Begin');
+  uBaseLog.HandleException(nil,'SaveRecordToLocal Begin');
 
 
   Result:=False;
@@ -6864,7 +6823,7 @@ begin
 //
                               or (ACode<>SUCC) then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToLocal '+ADesc);
         Exit;
       end;
 
@@ -6898,7 +6857,7 @@ begin
 //                              ASignSecret)
                               or (ACode<>SUCC)  then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToLocal '+ADesc);
         Exit;
       end;
 
@@ -6935,7 +6894,7 @@ begin
 //                              )
                               or (ACode<>SUCC)  then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToLocal '+ADesc);
         Exit;
       end;
 
@@ -6964,7 +6923,7 @@ var
 //  AWhereKeyJsonStr:String;
   ACommonRestIntfItem:TCommonRestIntfItem;
 begin
-  uBaseLog.HandleException(nil,'SaveRecordToServer Begin');
+  uBaseLog.HandleException(nil,'SaveRecordToLocal2 Begin');
 
 
   Result:=False;
@@ -7140,7 +7099,7 @@ begin
 //                              )
                               or (ACode<>SUCC)  then
       begin
-        uBaseLog.HandleException(nil,'SaveRecordToServer '+ADesc);
+        uBaseLog.HandleError(nil,'SaveRecordToLocal2 '+ADesc);
         Exit;
       end;
 
@@ -7323,16 +7282,87 @@ begin
 
 end;
 
+{ TCommonRestIntf_ASyncCallItem }
+
+procedure TCommonRestIntf_ASyncCallTaskItem.DoWorkInWorkThreadExecute(
+  Sender: TObject; AWorkThreadItem: TTaskWorkThreadItem; ATaskItem: TTaskItem);
+var
+  ACode:Integer;
+  ADesc:String;
+  ADataJson:ISuperObject;
+  AResult:Boolean;
+  AIntfItem:TCommonRestIntfItem;
+begin
+  inherited;
+
+  AResult:=False;
+
+  AIntfItem:=GlobalCommonRestIntfList.Find(FRestName);
+  if AIntfItem=nil then
+  begin
+    uBaseLog.HandleException(nil,'TCommonRestIntf_ASyncCallTaskItem.DoWorkInWorkThreadExecute 接口'+FRestName+'不存在');
+    Exit;
+  end;
+
+  case FCallType of
+    ctAddRecord:
+    begin
+      AResult:=AIntfItem.AddRecord(AIntfItem.DBModule,nil,FAppID,FRecordDataJson,nil,ACode,ADesc,ADataJson);
+    end;
+    ctUpdateRecord:
+    begin
+      AResult:=AIntfItem.UpdateRecord(AIntfItem.DBModule,nil,FAppID,FRecordDataJson,FWhereKeyJson,'',ACode,ADesc,ADataJson);
+    end;
+    ctDeleteRecord:
+    begin
+      AResult:=AIntfItem.DeleteRecord(AIntfItem.DBModule,nil,FAppID,FWhereKeyJson,'',ACode,ADesc,ADataJson);
+    end;
+  end;
+
+end;
+
+{ TCommonRestIntf_ASyncCallTaskManager }
+
+procedure TCommonRestIntf_ASyncCallTaskManager.AddRecord(ARestName,
+  AAppID: String; ARecordDataJson: ISuperObject);
+var
+  ATaskItem:TCommonRestIntf_ASyncCallTaskItem;
+begin
+  ATaskItem:=TCommonRestIntf_ASyncCallTaskItem.Create(Self);
+  ATaskItem.FAppID:=AAppID;
+  ATaskItem.FRestName:=ARestName;
+  ATaskItem.FRecordDataJson:=ARecordDataJson;
+  ATaskItem.FCallType:=ctAddRecord;
+  Self.StartTask(ATaskItem);
+end;
+
+procedure TCommonRestIntf_ASyncCallTaskManager.UpdateRecord(ARestName:String;AAppID: String;
+  ARecordDataJson: ISuperObject; AWhereKeyJson: String);
+var
+  ATaskItem:TCommonRestIntf_ASyncCallTaskItem;
+begin
+  ATaskItem:=TCommonRestIntf_ASyncCallTaskItem.Create(Self);
+  ATaskItem.FAppID:=AAppID;
+  ATaskItem.FRestName:=ARestName;
+  ATaskItem.FRecordDataJson:=ARecordDataJson;
+  ATaskItem.FWhereKeyJson:=AWhereKeyJson;
+  ATaskItem.FCallType:=ctUpdateRecord;
+  Self.StartTask(ATaskItem);
+
+end;
+
 initialization
   GlobalDataInterfaceClass:=TCommonRestIntfItem;
   GlobalCommonRestIntfList:=TCommonRestIntfList.Create();
 
   GlobalDataInterfaceClassRegList.Add('TableCommonLocal',TTableCommonLocalDataInterface);
 
+//  GlobalCommonRestIntf_ASyncCallTaskManager:=TCommonRestIntf_ASyncCallTaskManager.Create;
 
 
 finalization
   FreeAndNil(GlobalCommonRestIntfList);
+//  FreeAndNil(GlobalCommonRestIntf_ASyncCallTaskManager);
 
 end.
 

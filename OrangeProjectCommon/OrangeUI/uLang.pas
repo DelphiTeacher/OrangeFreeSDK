@@ -17,15 +17,16 @@ interface
 
 
 uses
-  {$IFDEF FMX}
-  FMX.Types,
-  FMX.Forms,
-  FMX.Controls,
-  {$ENDIF}
+//  {$IFDEF FMX}
+//  //安卓服务中不能有FMX.***的单元。不然服务启动不成功
+////  FMX.Types,
+////  FMX.Forms,
+////  FMX.Controls,
+//  {$ENDIF}
 
-  {$IFDEF VCL}
-  Controls,
-  {$ENDIF}
+//  {$IFDEF VCL}
+//  Controls,
+//  {$ENDIF}
 
   {$IFDEF MSWINDOWS}
     {$IF CompilerVersion >= 30.0}
@@ -51,26 +52,26 @@ const
 
 type
   //控件Parent的类,以及子控件的类型,用于遍历子控件
-  {$IFDEF VCL}
-    //在VCL下,父控件是WinControl,可以放子控件在里面
-    TParentControl=TWinControl;
-    TChildControl=TControl;
-  {$ENDIF}
-  {$IFDEF FMX}
-    TParentControl=TFmxObject;
-    TChildControl=TFmxObject;
-  {$ELSE}
-      {$IFDEF LINUX}
-      TControl=TObject;
-      TParentControl=TObject;
-      TChildControl=TObject;
-      TLang=TObject;
-      {$ENDIF}
-  {$ENDIF}
-
-
-  {$IFDEF MSWINDOWS}
-  {$ENDIF}
+//  {$IFDEF VCL}
+//    //在VCL下,父控件是WinControl,可以放子控件在里面
+//    TParentControl=TWinControl;
+//    TChildControl=TControl;
+//  {$ENDIF}
+//  {$IFDEF FMX}
+//    TParentControl=TFmxObject;
+//    TChildControl=TFmxObject;
+//  {$ELSE}
+//      {$IFDEF LINUX}
+//      TControl=TObject;
+//      TParentControl=TObject;
+//      TChildControl=TObject;
+//      TLang=TObject;
+//      {$ENDIF}
+//  {$ENDIF}
+//
+//
+//  {$IFDEF MSWINDOWS}
+//  {$ENDIF}
 
 
 
@@ -86,7 +87,7 @@ type
   TLangStrings=array[Low(TLangKind)..High(TLangKind)] of string;
 
 
-  {$IFDEF VCL}
+//  {$IFDEF VCL}
   TLang = class//(TFmxObject)
   private
     FLang: string;
@@ -119,7 +120,7 @@ type
     property StoreInForm: Boolean read FStoreInForm write FStoreInForm default True;
     property Lang: string read FLang write SetLang;
   end;
-  {$ENDIF}
+//  {$ENDIF}
 
 
   TLangKindStringArray=array[Low(TLangKind)..High(TLangKind)] of string;
@@ -196,42 +197,6 @@ function RecAndTrans(ALang:TLang;
 function Trans(AIndex:String):String;
 
 
-//记录父控件的所有子控件的语言索引,仅Windows平台
-procedure DoRecordSubControlsLangIndex(
-                            //父控件,Frame或Form
-                            AParent:TChildControl;
-                            //语言控件
-                            ALang:TLang;
-                            //当前的语言
-                            ACurLang:String='cn';
-                            //前缀,如FrameLogin.btnLogin.
-                            APrefix:String='');
-//翻译父控件的所有子控件
-procedure DoTranslateSubControlsLang(
-                            //父控件,Frame或Form
-                            AParent:TChildControl;
-                            //语言控件
-                            ALang:TLang;
-                            //当前的语言
-                            ACurLang:String='cn';
-                            //前缀,如FrameLogin.btnLogin.
-                            APrefix:String='');
-//记录并翻译子控件
-function RecAndTransControl(
-                  //父控件,Frame或Form
-                  AParent:TChildControl;
-                  //子控件
-                  ASub:TControl;
-                  //属性或关键字,比如Caption
-                  AProperty:String;
-                  //语言控件
-                  ALang:TLang;
-                  //记录的语言
-                  ARecLang:String;
-                  //当前语言的翻译
-                  ARecLangIndexValue:String;
-                  //翻译的语言
-                  ATransLang:String):String;
 
 {$IFDEF MSWINDOWS}
 function GetWindowsLanguage: string;
@@ -294,198 +259,7 @@ end;
 
 
 
-//{$IFDEF FMX}
-function RecAndTransControl(
-                  //父控件,Frame或Form
-                  AParent:TChildControl;
-                  //子控件
-                  ASub:TControl;
-                  //属性,比如Caption
-                  AProperty:String;
-                  //语言控件
-                  ALang:TLang;
-                  //记录的语言
-                  ARecLang:String;
-                  //当前语言的翻译
-                  ARecLangIndexValue:String;
-                  //翻译的语言
-                  ATransLang:String):String;
-begin
-  if not IsEnableMultiLang then Exit;
-  {$IFDEF LINUX}
-  {$ELSE}
-  Result:=RecAndTrans(ALang,
-            //比如FrameLogin.btnLogin.Caption
-            AParent.Name+'.'+ASub.Name+'.'+AProperty,
-            //比如cn
-            ARecLang,
-            //比如登陆
-            ARecLangIndexValue,
-            //翻译的语言,比如en
-            ATransLang);
-  {$ENDIF}
-end;
 
-procedure DoRecordSubControlsLangIndex(
-                            //父控件,Frame或Form
-                            AParent:TChildControl;
-                            //语言控件
-                            ALang:TLang;
-                            //当前的语言
-                            ACurLang:String;
-                            //前缀,如FrameLogin.btnLogin.
-                            APrefix:String);
-var
-  I: Integer;
-  ALangProcess:ILangProcess;
-begin
-  {$IFDEF FMX}
-  //仅在Windows下面记录
-  {$IFDEF MSWINDOWS}
-
-  if not IsEnableMultiLang then Exit;
-
-  
-  //只需要FrameLogin.btnLogin.Caption,
-  //不需要加上父控件,避免太长,如FrameLogin.pnlUserName.edtLogin.HelpText
-  if APrefix='' then
-  begin
-    APrefix:=AParent.ClassName.Substring(1,MaxInt)+'.';
-  end;
-
-
-  if AParent is TControl then
-  begin
-      //遍历子控件
-      for I := 0 to TControl(AParent).ControlsCount-1 do
-      begin
-        if TControl(AParent).Controls[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.RecordControlLangIndex(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //遍历子控件的子控件
-          DoRecordSubControlsLangIndex(TControl(AParent).Controls[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-
-
-  if AParent is TForm then
-  begin
-      //遍历子控件
-      for I := 0 to TForm(AParent).ChildrenCount-1 do
-      begin
-        if TForm(AParent).Children[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.RecordControlLangIndex(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //遍历子控件的子控件
-          DoRecordSubControlsLangIndex(TForm(AParent).Children[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-
-
-  {$ENDIF}
-  {$ENDIF}
-end;
-
-
-procedure DoTranslateSubControlsLang(
-                            //父控件,Frame或Form
-                            AParent:TChildControl;
-                            //语言控件
-                            ALang:TLang;
-                            //当前的语言
-                            ACurLang:String;
-                            //前缀,如FrameLogin.btnLogin.
-                            APrefix:String);
-var
-  I: Integer;
-  ALangProcess:ILangProcess;
-begin
-  {$IFDEF FMX}
-  if not IsEnableMultiLang then Exit;
-  
-
-  
-  //只需要FrameLogin.btnLogin.Caption,
-  //不需要加上父控件,避免太长,如FrameLogin.pnlUserName.edtLogin.HelpText
-  if APrefix='' then
-  begin
-    APrefix:=AParent.ClassName.Substring(1,MaxInt)+'.';
-  end;
-
-
-  if AParent is TControl then
-  begin
-      //遍历子控件
-      for I := 0 to TControl(AParent).ControlsCount-1 do
-      begin
-        if TControl(AParent).Controls[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.TranslateControlLang(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //遍历子控件的子控件
-          DoTranslateSubControlsLang(TControl(AParent).Controls[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-
-
-
-  if AParent is TForm then
-  begin
-      //遍历子控件
-      for I := 0 to TForm(AParent).ChildrenCount-1 do
-      begin
-        if TForm(AParent).Children[I].GetInterface(IID_ILangProcess,ALangProcess) then
-        begin
-          ALangProcess.TranslateControlLang(
-            APrefix,
-            ALang,
-            ACurLang
-            );
-
-          //遍历子控件的子控件
-          DoTranslateSubControlsLang(TForm(AParent).Children[I],
-                                ALang,
-                                ACurLang,
-                                APrefix
-                                );
-        end;
-      end;
-  end;
-  {$ENDIF FMX}
-
-end;
-//{$ENDIF FMX}
 
 
 
@@ -639,7 +413,7 @@ begin
   end;
 end;
 
-{$IFDEF VCL}
+//{$IFDEF VCL}
 
 { TLang }
 
@@ -804,7 +578,7 @@ begin
 //      LoadLangFromStrings(LangStr[FLang]);
 //  end;
 end;
-{$ENDIF VCL}
+//{$ENDIF VCL}
 
 function GlobalCurLang:String;
 begin

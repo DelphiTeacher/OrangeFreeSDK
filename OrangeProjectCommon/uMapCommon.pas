@@ -130,6 +130,10 @@ type
     //是否已经添加到地图上
     IsAddedMarkerToMap:Boolean;
     IsAddedPolylineToMap:Boolean;
+
+    // 是否已更新遮盖物
+    IsUpdatedMarkerToMap:Boolean;
+
     procedure Clear;
     function IconUrl:String;
   end;

@@ -15,6 +15,7 @@ uses
   HintFrame,
   WaitingFrame,
   MessageBoxFrame,
+  uFrameContext,
 
   uTimerTask,
   uUIFunction,

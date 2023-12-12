@@ -1,0 +1,294 @@
+object FrameBaseWebBrowser: TFrameBaseWebBrowser
+  Size.Width = 993.000000000000000000
+  Size.Height = 524.000000000000000000
+  Size.PlatformDefault = False
+  TabOrder = 0
+  OnResize = FrameResize
+  object Button1: TButton
+    Size.Width = 993.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'Button1'
+    Visible = False
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Position.Y = 25.000000000000000000
+    Size.Width = 993.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #27979#35797#33050#26412#26159#21542#21152#36733'/'#33719#21462#29992#25143#20449#24687
+    Visible = False
+    OnClick = Button2Click
+  end
+  object pnlTest: TPanel
+    Position.Y = 50.000000000000000000
+    Size.Width = 993.000000000000000000
+    Size.Height = 87.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    object btnLoadFacebookAPI: TButton
+      Position.X = 17.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = #21152#36733#33050#26412
+      OnClick = btnLoadFacebookAPIClick
+    end
+    object btnTransferPicContent: TButton
+      Position.X = 96.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 90.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      Text = #36716#21457#22270#29255#24086#23376
+      OnClick = btnTransferPicContentClick
+    end
+    object btnTransferVideoContent: TButton
+      Position.X = 199.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 90.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      Text = #36716#21457#35270#39057#24086#23376
+      OnClick = btnTransferVideoContentClick
+    end
+    object btnTransferGroupContent: TButton
+      Position.X = 304.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 97.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      Text = #36716#21457#32676#32452#24086#23376
+      OnClick = btnTransferGroupContentClick
+    end
+    object btnLogin: TButton
+      Position.X = 457.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 10
+      Text = #30331#24405
+      OnClick = btnLoginClick
+    end
+    object btnGetLoginCaptcha: TButton
+      Position.X = 538.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 90.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 11
+      Text = #33719#21462#30331#24405#39564#35777#30721
+      OnClick = btnGetLoginCaptchaClick
+    end
+    object btnSetSearchWord: TButton
+      Position.X = 105.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = #35774#32622#25628#32034#35789
+      OnClick = btnSetSearchWordClick
+    end
+    object btnOpenSearch: TButton
+      Position.X = 17.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      Text = #28857#20987#25628#32034#26694
+      OnClick = btnOpenSearchClick
+    end
+    object btnIsShop: TButton
+      Position.X = 193.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      Text = #36807#28388#21830#24215
+      OnClick = btnIsShopClick
+    end
+    object btnCertified: TButton
+      Position.X = 281.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      Text = #36807#28388#24050#35748#35777
+      OnClick = btnCertifiedClick
+    end
+    object btnCatrgory: TButton
+      Position.X = 369.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      Text = #36807#28388#31867#21035
+      OnClick = btnCatrgoryClick
+    end
+    object btnChoseCountry: TButton
+      Position.X = 458.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 9
+      Text = #22478#24066#36873#25321
+      OnClick = btnChoseCountryClick
+    end
+    object btnLoadFacebook: TButton
+      Position.X = 640.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 12
+      Text = #21152#36733'Facebook'
+      OnClick = btnLoadFacebookClick
+    end
+    object Button3: TButton
+      Position.X = 539.000000000000000000
+      Position.Y = 47.000000000000000000
+      Size.Width = 89.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 13
+      Text = #33719#21462#36755#20837#26694#20301#32622
+      OnClick = Button3Click
+    end
+    object edtX: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 14
+      Position.X = 643.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 46.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edtY: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 15
+      Position.X = 695.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 46.000000000000000000
+      Size.Height = 23.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Button4: TButton
+      Position.X = 747.000000000000000000
+      Position.Y = 56.000000000000000000
+      Size.Width = 142.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 16
+      Text = #27169#25311#40736#26631#28857#20987#33719#21462#28966#28857
+      OnClick = Button4Click
+    end
+    object Button5: TButton
+      Position.X = 895.000000000000000000
+      Position.Y = 48.000000000000000000
+      Size.Width = 90.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 17
+      Text = #21033#29992'js'#30340'focus'
+    end
+    object ComboBox1: TComboBox
+      Position.X = 840.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 145.000000000000000000
+      Size.Height = 27.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 18
+    end
+    object btnGetAccountInfo: TButton
+      Position.X = 736.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 75.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 19
+      Text = #33719#21462#29992#25143#20449#24687
+      OnClick = btnGetAccountInfoClick
+    end
+  end
+  object StatusBar1: TStatusBar
+    Position.Y = 505.000000000000000000
+    ShowSizeGrip = True
+    Size.Width = 993.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object tmrInit: TTimer
+    Enabled = False
+    Interval = 300
+    OnTimer = tmrInitTimer
+    Left = 88
+    Top = 192
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = Timer1Timer
+    Left = 56
+    Top = 112
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 3000
+    Left = 96
+    Top = 80
+  end
+  object tmrFreeWindowParent: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = tmrFreeWindowParentTimer
+    Left = 368
+    Top = 208
+  end
+  object tmrResizeChild: TTimer
+    Enabled = False
+    Interval = 500
+    Left = 352
+    Top = 320
+  end
+  object Chromium1: TFMXChromium
+    OnCookiesVisited = Chromium1CookiesVisited
+    OnCookieVisitorDestroyed = Chromium1CookieVisitorDestroyed
+    OnZoomPctAvailable = Chromium1ZoomPctAvailable
+    OnRenderCompMsg = Chromium1RenderCompMsg
+    OnProcessMessageReceived = Chromium1ProcessMessageReceived
+    OnLoadEnd = Chromium1LoadEnd
+    OnLoadError = Chromium1LoadError
+    OnLoadingStateChange = Chromium1LoadingStateChange
+    OnSetFocus = Chromium1SetFocus
+    OnBeforeContextMenu = Chromium1BeforeContextMenu
+    OnContextMenuCommand = Chromium1ContextMenuCommand
+    OnFullScreenModeChange = Chromium1FullScreenModeChange
+    OnStatusMessage = Chromium1StatusMessage
+    OnLoadingProgressChange = Chromium1LoadingProgressChange
+    OnDownloadUpdated = Chromium1DownloadUpdated
+    OnDialogClosed = Chromium1DialogClosed
+    OnAfterCreated = Chromium1AfterCreated
+    OnBeforeClose = Chromium1BeforeClose
+    OnClose = Chromium1Close
+    OnResourceResponse = Chromium1ResourceResponse
+    OnGetResourceResponseFilter = Chromium1GetResourceResponseFilter
+    OnFileDialog = Chromium1FileDialog
+    Left = 144
+    Top = 16
+  end
+end

@@ -107,6 +107,12 @@ type
     btnThemeColorIconLeftCaptionRightGroupMiddle: TSkinButtonDefaultMaterial;
     btnTransparentDropDownButtonMaterial: TSkinButtonDefaultMaterial;
     lbFilterClassify_Material: TSkinListBoxDefaultMaterial;
+    btnWhiteColorGrayBorderThemeCaptionMaterial: TSkinButtonDefaultMaterial;
+    btnDropDownGrayBorderBlackCaptionMaterial: TSkinButtonDefaultMaterial;
+    edtGrayBorderFocusedThemeBorderEffectMaterial: TSkinEditDefaultMaterial;
+    cmbGrayBorderFocusedThemeBorderEffectMaterial: TSkinComboBoxDefaultMaterial;
+    dateedtGrayBorderFocusedThemeBorderEffectMaterial: TSkinDateEditDefaultMaterial;
+    btnWhiteColorGrayBorderBlackCaptionMaterial: TSkinButtonDefaultMaterial;
   private
     { Private declarations }
   public
@@ -191,13 +197,13 @@ begin
   //工具栏
   Self.pnlToolBarMaterial.BackColor.FillColor.Color:=uGraphicCommon.SkinThemeColor;
 
-  //常用背景色按钮
-  Self.btnRedColorButtonMaterial.BackColor.FillColor.Color:=uGraphicCommon.SkinThemeColor1;
-  Self.btnRedRectButtonMaterial.BackColor.FillColor.Color:=uGraphicCommon.SkinThemeColor1;
+//  //常用背景色按钮
+//  Self.btnRedColorButtonMaterial.BackColor.FillColor.Color:=uGraphicCommon.SkinThemeColor1;
+//  Self.btnRedRectButtonMaterial.BackColor.FillColor.Color:=uGraphicCommon.SkinThemeColor1;
 
-  //常用边框按钮
-  Self.btnRedBorderButtonMaterial.BackColor.BorderColor.Color:=uGraphicCommon.SkinThemeColor;
-  Self.btnRedBorderButtonMaterial.DrawCaptionParam.FontColor:=uGraphicCommon.SkinThemeColor;
+//  //常用边框按钮
+//  Self.btnRedBorderButtonMaterial.BackColor.BorderColor.Color:=uGraphicCommon.SkinThemeColor;
+//  Self.btnRedBorderButtonMaterial.DrawCaptionParam.FontColor:=uGraphicCommon.SkinThemeColor;
 
   Self.btnBlueColorButtonMaterial.BackColor.FillColor.Color:=uGraphicCommon.SkinThemeColor;
 
@@ -220,8 +226,8 @@ begin
   Self.rbRedRadioButtonMaterial.DrawCheckStateParam.DrawEffectSetting.PushedEffect.FillColor.Color:=uGraphicCommon.SkinThemeColor;
 
 
-  //删除按钮
-  Self.btnDeleteButtonMaterial.DrawCaptionParam.FontColor:=SkinThemeColor;
+//  //删除按钮
+//  Self.btnDeleteButtonMaterial.DrawCaptionParam.FontColor:=SkinThemeColor;
 
 
   //未读数按钮

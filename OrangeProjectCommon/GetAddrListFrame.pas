@@ -28,6 +28,7 @@ uses
 
   uGPSUtils,
   uDrawCanvas,
+  uFrameContext,
 
   HintFrame,
   SelectAreaFrame,

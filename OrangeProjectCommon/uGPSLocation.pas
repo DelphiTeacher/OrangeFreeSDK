@@ -34,7 +34,9 @@ interface
 //使用百度定位(Android)
 //在Android下面定位比较快
 //{$DEFINE USE_BAIDULOCATION}
-
+{$IFDEF USE_BAIDULOCATION}
+  {$UNDEF USE_LOCATIONSENSOR}
+{$ENDIF}
 
 
 
@@ -117,10 +119,12 @@ uses
 
 
   {$IFDEF USE_BAIDULOCATION}
-  FlyUtils.Android.PostRunnableAndTimer,
-  com.baidu.location.LocationClient,
-  com.baidu.location.LocationClientOption,
-  baidu.locTest.Location,
+//  FlyUtils.Android.PostRunnableAndTimer,
+//  com.baidu.location.LocationClient,
+//  com.baidu.location.LocationClientOption,
+//  baidu.locTest.Location,
+//  Androidapi.JNI.Location,
+  Androidapi.JNI.BaiduLBS_Android,
   {$ENDIF}
 
 
@@ -322,6 +326,13 @@ type
   {$ENDIF}
 
 
+  {$IFDEF USE_BAIDULOCATION}
+  TJBDLocationListener=class(TJavaLocal,JBDLocationListener)
+    FGPSLocation:TGPSLocation;
+    procedure onReceiveLocation(P1: JBDLocation); cdecl;
+    constructor Create(AGPSLocation:TGPSLocation);
+  end;
+  {$ENDIF}
 
 
 
@@ -335,6 +346,8 @@ type
 //    Constructor Create(CreateSuspended: Boolean;
 //                        AGPSLocation:TGPSLocation);
 //  end;
+
+
   TPermissionSuccProc=reference to procedure();
 
 
@@ -390,6 +403,7 @@ type
 
     FOnGeocodeAddrTimeout: TNotifyEvent;
     FOnGeocodeAddrError: TNotifyEvent;
+    FDistance: Double;
 
 //    FPermissionStatus:TAuthorizationType;
 
@@ -399,6 +413,8 @@ type
     procedure SetLongitude(const Value: Double);
     function GetGPSType: TGPSType;
     procedure SetGPSType(const Value: TGPSType);
+    procedure SetScanSpan(const Value: Integer);
+    procedure SetDistance(const Value: Double);
   public
     //是否需要调用API获取Addr
     LocationChanged:Boolean;
@@ -450,8 +466,11 @@ type
   public
     //使用百度定位
     {$IFDEF USE_BAIDULOCATION}
-    mBaiduLocationApp: TBaiduLocationApp;
-    mLocClient: JBDLocationClient;
+//    mBaiduLocationApp: TBaiduLocationApp;
+//    mLocClient: JBDLocationClient;
+    mLocClient:JLocationClient;
+    locationOption:JLocationClientOption;
+    myLocationListener:JBDLocationListener;
     {$ENDIF}
   public
     //使用LocationSensor
@@ -525,8 +544,8 @@ type
     //清除数据和状态
     procedure Clear;
 
-    //设置定位参数
-    procedure SetLocationOption;
+//    //设置定位参数
+//    procedure SetLocationOption;
 
     //检查权限
     class procedure CheckPermission(ASuccMethod:TPermissionSuccProc;AFailMethod:TPermissionSuccProc);
@@ -549,7 +568,8 @@ type
   published
     //百度定位下使用
     //扫描间隔(毫秒)
-    property ScanSpan:Integer read FScanSpan write FScanSpan;
+    property ScanSpan:Integer read FScanSpan write SetScanSpan;
+    property Distance:Double read FDistance write SetDistance;
     //定位模式-精度
     property Mode:TLocationMode read FMode write FMode;
   published
@@ -743,16 +763,17 @@ begin
 
 
   {$IFDEF USE_BAIDULOCATION}
-  //使用百度定位
-  mLocClient := nil;
-  mBaiduLocationApp := nil;
+//  //使用百度定位
+//  mLocClient := nil;
+//  mBaiduLocationApp := nil;
   {$ENDIF}
 
 
 
 
   //百度定位-地址扫描时间间隔
-  FScanSpan:=5000;
+//  FScanSpan:=5000;
+  FScanSpan:=60*1000;
 
 //  IsNeedGeocodeAddr:=True;
 
@@ -819,7 +840,7 @@ begin
   begin
     mLocClient.stop;
   end;
-  FreeAndNil(mBaiduLocationApp);
+//  FreeAndNil(mBaiduLocationApp);
   {$ENDIF}
 
 
@@ -874,6 +895,8 @@ begin
   begin
     OnAddrChange(Self);
   end;
+
+  FSkinObjectChangeManager.DoChange(Self,'AddrChange');
 
   HandleException(nil,'TGPSLocation.DoReceiveAddr End');
 end;
@@ -1404,6 +1427,19 @@ end;
 //
 //end;
 
+procedure TGPSLocation.SetDistance(const Value: Double);
+begin
+  if FDistance<>Value then
+  begin
+    FDistance := Value;
+
+    if Self.FLocationSensor<>nil then
+    begin
+      FLocationSensor.Distance:=FDistance;
+    end;
+  end;
+end;
+
 procedure TGPSLocation.SetGPSType(const Value: TGPSType);
 begin
   Self.Location.GPSType:=Value;
@@ -1415,68 +1451,143 @@ begin
   LocationTime:=Now;
 end;
 
-procedure TGPSLocation.SetLocationOption;
-  {$IFDEF USE_BAIDULOCATION}
-var
-  option: JBDLocationClientOption;
-  tempMode: JBDLocationClientOption_LocationMode;
-  tempcoor: string;
-  {$ENDIF USE_BAIDULOCATION}
-begin
-  {$IFDEF USE_BAIDULOCATION}
-
-
-
-  if not Assigned(mLocClient) then exit;
-  tempcoor := 'gps';
-  case Self.GPSType of
-    gtWGS84: tempcoor := 'gps';
-    gtGCJ02: tempcoor := 'gcj02';
-  end;
-
-  case Mode of
-    lmGPSAndNetwork:
-    begin
-      tempMode := TJBDLocationClientOption_LocationMode.JavaClass.Hight_Accuracy;
-      HandleException(nil,'TGPSLocation.Mode lmGPSAndNetwork');
-    end;
-    lmNetwork:
-    begin
-      tempMode := TJBDLocationClientOption_LocationMode.JavaClass.Battery_Saving;
-      HandleException(nil,'TGPSLocation.Mode lmNetwork');
-    end;
-    lmGPS:
-    begin
-      tempMode := TJBDLocationClientOption_LocationMode.JavaClass.Device_Sensors;
-      HandleException(nil,'TGPSLocation.Mode lmGPS');
-    end;
-  end;
-
-  option := TJBDLocationClientOption.JavaClass.init;
-
-  //设置定位模式
-  option.setLocationMode(tempMode);
-
-  //设置GPS格式
-  option.setCoorType(StringToJString(tempcoor));
-
-
-  //地址扫描时间间隔
-  option.setScanSpan(ScanSpan);
-
-  //是否需要获取地址
-  //不需要了,统一使用线程去获取
-//  option.setIsNeedAddress(True);
-
-
-  mLocClient.setLocOption(option);
-  {$ENDIF USE_BAIDULOCATION}
-end;
+//procedure TGPSLocation.SetLocationOption;
+////  {$IFDEF USE_BAIDULOCATION}
+////var
+////  option: JBDLocationClientOption;
+////  tempMode: JBDLocationClientOption_LocationMode;
+////  tempcoor: string;
+////  {$ENDIF}
+//begin
+//
+//
+//  {$IFDEF USE_BAIDULOCATION}
+//  if not Assigned(mLocClient) then exit;
+////  tempcoor := 'gps';
+////  case Self.GPSType of
+////    gtWGS84: tempcoor := 'gps';
+////    gtGCJ02: tempcoor := 'gcj02';
+////  end;
+////
+////  case Mode of
+////    lmGPSAndNetwork:
+////    begin
+////      tempMode := TJBDLocationClientOption_LocationMode.JavaClass.Hight_Accuracy;
+////      HandleException(nil,'TGPSLocation.Mode lmGPSAndNetwork');
+////    end;
+////    lmNetwork:
+////    begin
+////      tempMode := TJBDLocationClientOption_LocationMode.JavaClass.Battery_Saving;
+////      HandleException(nil,'TGPSLocation.Mode lmNetwork');
+////    end;
+////    lmGPS:
+////    begin
+////      tempMode := TJBDLocationClientOption_LocationMode.JavaClass.Device_Sensors;
+////      HandleException(nil,'TGPSLocation.Mode lmGPS');
+////    end;
+////  end;
+////
+////  option := TJBDLocationClientOption.JavaClass.init;
+////
+////  //设置定位模式
+////  option.setLocationMode(tempMode);
+////
+////  //设置GPS格式
+////  option.setCoorType(StringToJString(tempcoor));
+////
+////
+////  //地址扫描时间间隔
+////  option.setScanSpan(ScanSpan);
+////
+////  //是否需要获取地址
+////  //不需要了,统一使用线程去获取
+//////  option.setIsNeedAddress(True);
+////
+////
+////  mLocClient.setLocOption(option);
+//
+//
+//
+//  TJLocationClient.JavaClass.setAgreePrivacy(true);
+//  //setAgreePrivacy接口需要在LocationClient实例化之前调用
+//  //如果setAgreePrivacy接口参数设置为了false，则定位功能不会实现
+//  //true，表示用户同意隐私合规政策
+//  //false，表示用户不同意隐私合规政策
+//
+//
+//
+//  ///**
+//  //* 初始化定位参数配置
+//  //*/
+//
+//  //定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
+//  mLocClient := TJLocationClient.JavaClass.init(TAndroidHelper.Context.getApplicationContext());
+//  //声明LocationClient类实例并配置定位参数
+//  locationOption := TJLocationClientOption.Create;
+//  myLocationListener := TJBDLocationListener.Create(Self);
+//  //注册监听函数
+//  mLocClient.registerLocationListener(myLocationListener);
+//
+//  //可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
+//  locationOption.setLocationMode(TJLocationClientOption_LocationMode.JavaClass.Hight_Accuracy);
+//  //可选，默认gcj02，设置返回的定位结果坐标系，如果配合百度地图使用，建议设置为bd09ll;
+//  locationOption.setCoorType(StringToJString('gcj02'));
+//  //可选，默认0，即仅定位一次，设置发起连续定位请求的间隔需要大于等于1000ms才是有效的
+//  locationOption.setScanSpan(1000);
+//  //可选，设置是否需要地址信息，默认不需要
+////  locationOption.setIsNeedAddress(true);
+//  //可选，设置是否需要地址描述
+////  locationOption.setIsNeedLocationDescribe(true);
+//  //可选，设置是否需要设备方向结果
+//  locationOption.setNeedDeviceDirect(false);
+////  //可选，默认false，设置是否当卫星定位有效时按照1S1次频率输出卫星定位结果
+////  locationOption.setLocationNotify(true);
+//  //可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
+//  locationOption.setIgnoreKillProcess(true);
+////  //可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
+////  locationOption.setIsNeedLocationDescribe(true);
+////  //可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+////  locationOption.setIsNeedLocationPoiList(true);
+//  //可选，默认false，设置是否收集CRASH信息，默认收集
+//  locationOption.SetIgnoreCacheException(false);
+//  //可选，默认false，设置是否开启卫星定位
+//  locationOption.setOpenGnss(true);
+//  //可选，默认false，设置定位时是否需要海拔信息，默认不需要，除基础定位版本都可用
+//  locationOption.setIsNeedAltitude(false);
+//  //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者，该模式下开发者无需再关心定位间隔是多少，定位SDK本身发现位置变化就会及时回调给开发者
+//  locationOption.setOpenAutoNotifyMode();
+//  //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者
+//  locationOption.setOpenAutoNotifyMode(3000,1, TJLocationClientOption.JavaClass.LOC_SENSITIVITY_HIGHT);
+//  //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
+//  mLocClient.setLocOption(locationOption);
+//  //开始定位
+//  mLocClient.start();
+//  {$ENDIF USE_BAIDULOCATION}
+//
+//
+//end;
 
 procedure TGPSLocation.SetLongitude(const Value: Double);
 begin
   Self.Location.Longitude:=Value;
   LocationTime:=Now;
+end;
+
+procedure TGPSLocation.SetScanSpan(const Value: Integer);
+begin
+  if FScanSpan<>Value then
+  begin
+    FScanSpan := Value;
+    {$IFDEF USE_BAIDULOCATION}
+    if locationOption<>nil then
+    begin
+      locationOption.setScanSpan(FScanSpan*1000);
+      //要加这一句，不然不起作用。
+      mLocClient.setLocOption(locationOption);
+    end;
+    {$ENDIF}
+
+  end;
 end;
 
 function TGPSLocation.DoStartLocation:Boolean;
@@ -1636,27 +1747,86 @@ begin
 
 
   {$IFDEF USE_BAIDULOCATION}
-      HandleException(nil,'TGPSLocation.StartLocation Begin 1');
+      HandleException(nil,'TGPSLocation.StartLocation Baidu Begin 1');
 
-      {$IFDEF IN_ANDROIDSERVICE}
-      //服务中使用CallInPostRunnable
-      CallInPostRunnable(
-      {$ELSE}
-      //APP中使用CallInUIThread
-      CallInUIThread(
-      {$ENDIF}
-      procedure
-      begin
+//      {$IFDEF IN_ANDROIDSERVICE}
+//      //服务中使用CallInPostRunnable
+//      CallInPostRunnable(
+//      {$ELSE}
+//      //APP中使用CallInUIThread
+//      CallInUIThread(
+//      {$ENDIF}
+//      procedure
+//      begin
 
           try
-              //创建百度定位组件
-              if mBaiduLocationApp=nil then
-              begin
-                HandleException(nil,'TGPSLocation.StartLocation FirstInit');
+//              //创建百度定位组件
+//              if mBaiduLocationApp=nil then
+//              begin
+//                HandleException(nil,'TGPSLocation.StartLocation FirstInit');
+//
+//                mBaiduLocationApp := TBaiduLocationApp.Create;
+//                mBaiduLocationApp.LocationObject:=Self;
+//                mLocClient := mBaiduLocationApp.mLocationClient;
+//              end;
 
-                mBaiduLocationApp := TBaiduLocationApp.Create;
-                mBaiduLocationApp.LocationObject:=Self;
-                mLocClient := mBaiduLocationApp.mLocationClient;
+              if mLocClient=nil then
+              begin
+                TJLocationClient.JavaClass.setAgreePrivacy(true);
+                //setAgreePrivacy接口需要在LocationClient实例化之前调用
+                //如果setAgreePrivacy接口参数设置为了false，则定位功能不会实现
+                //true，表示用户同意隐私合规政策
+                //false，表示用户不同意隐私合规政策
+
+
+
+                ///**
+                //* 初始化定位参数配置
+                //*/
+
+                //定位服务的客户端。宿主程序在客户端声明此类，并调用，目前只支持在主线程中启动
+                mLocClient := TJLocationClient.JavaClass.init(TAndroidHelper.Context.getApplicationContext());
+                //声明LocationClient类实例并配置定位参数
+                locationOption := TJLocationClientOption.Create;
+                myLocationListener := TJBDLocationListener.Create(Self);
+                //注册监听函数
+                mLocClient.registerLocationListener(myLocationListener);
+
+                //可选，默认高精度，设置定位模式，高精度，低功耗，仅设备
+                locationOption.setLocationMode(TJLocationClientOption_LocationMode.JavaClass.Hight_Accuracy);
+                //可选，默认gcj02，设置返回的定位结果坐标系，如果配合百度地图使用，建议设置为bd09ll;
+                locationOption.setCoorType(StringToJString('gcj02'));
+                //可选，默认0，即仅定位一次，设置发起连续定位请求的间隔需要大于等于1000ms才是有效的
+                //locationOption.setScanSpan(1000);
+                locationOption.setScanSpan(FScanSpan*1000);
+                //可选，设置是否需要地址信息，默认不需要
+              //  locationOption.setIsNeedAddress(true);
+                //可选，设置是否需要地址描述
+              //  locationOption.setIsNeedLocationDescribe(true);
+                //可选，设置是否需要设备方向结果
+                locationOption.setNeedDeviceDirect(false);
+              //  //可选，默认false，设置是否当卫星定位有效时按照1S1次频率输出卫星定位结果
+              //  locationOption.setLocationNotify(true);
+                //可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死
+                locationOption.setIgnoreKillProcess(true);
+              //  //可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”
+              //  locationOption.setIsNeedLocationDescribe(true);
+              //  //可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到
+              //  locationOption.setIsNeedLocationPoiList(true);
+                //可选，默认false，设置是否收集CRASH信息，默认收集
+                locationOption.SetIgnoreCacheException(false);
+                //可选，默认false，设置是否开启卫星定位
+                locationOption.setOpenGnss(true);
+                //可选，默认false，设置定位时是否需要海拔信息，默认不需要，除基础定位版本都可用
+                locationOption.setIsNeedAltitude(false);
+                //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者，该模式下开发者无需再关心定位间隔是多少，定位SDK本身发现位置变化就会及时回调给开发者
+                //locationOption.setOpenAutoNotifyMode();
+                //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者
+                //locationOption.setOpenAutoNotifyMode(3000,1, TJLocationClientOption.JavaClass.LOC_SENSITIVITY_HIGHT);
+                //需将配置好的LocationClientOption对象，通过setLocOption方法传递给LocationClient对象使用
+                mLocClient.setLocOption(locationOption);
+                //开始定位
+//                mLocClient.start();
               end;
 
               if not Assigned(mLocClient) then
@@ -1673,20 +1843,20 @@ begin
 
               if not IsStartedLocation then
               begin
-                HandleException(nil,'TGPSLocation.StartLocation mLocClient.start');
+                HandleException(nil,'TGPSLocation.StartLocation Baidu mLocClient.start');
 
-                SetLocationOption;
+//                SetLocationOption;
                 mLocClient.start;
 
                 IsStartedLocation:=True;
 
-                HandleException(nil,'TGPSLocation.StartLocation End');
+                HandleException(nil,'TGPSLocation.StartLocation Baidu End');
               end;
 
           except
             on E:Exception do
             begin
-              HandleException(E,'TGPSLocation.StartLocation');
+              HandleException(E,'TGPSLocation.StartLocation Baidu');
               //启动定位出错了
               IsStartError:=True;
               if Assigned(Self.FOnStartError) then
@@ -1696,7 +1866,7 @@ begin
             end;
           end;
 
-      end);
+//      end);
       Result:=True;
   {$ENDIF}
 
@@ -2404,6 +2574,7 @@ begin
 
 
 
+        {$IFDEF USE_LOCATIONSENSOR}
         if (FGPSLocation.FLocationSensor.Sensor<>nil)
              and (FloatToStr(FGPSLocation.FLocationSensor.Sensor.latitude)<>'NAN') then
         begin
@@ -2440,6 +2611,7 @@ begin
 
             Exit;
         end;
+        {$ENDIF}
 
     except
       on E:Exception do
@@ -2451,6 +2623,49 @@ begin
   end;
 
 end;
+
+
+
+{$IFDEF USE_BAIDULOCATION}
+
+{ TJBDLocationListener }
+
+constructor TJBDLocationListener.Create(AGPSLocation:TGPSLocation);
+begin
+  Inherited Create;
+  FGPSLocation:=AGPSLocation;
+end;
+
+procedure TJBDLocationListener.onReceiveLocation(P1: JBDLocation);
+begin
+//  FMX.Types.Log.d('OrangeUI TJBDLocationListener.onReceiveLocation');
+  uBaseLog.HandleException(nil,'TJBDLocationListener.onReceiveLocation');
+  //此处的BDLocation为定位结果信息类，通过它的各种get方法可获取定位相关的全部结果
+  //以下只列举部分获取经纬度相关（常用）的结果信息
+  //更多结果信息获取说明，请参照类参考中BDLocation类中的说明
+  FGPSLocation.DoReceiveLocation(P1.getLongitude(),P1.getLatitude());
+
+//  //获取纬度信息
+//  double latitude = location.getLatitude();
+//  //获取经度信息
+//  double longitude = location.getLongitude();
+//  //获取定位精度，默认值为0.0f
+//  float radius = location.getRadius();
+//  //获取经纬度坐标类型，以LocationClientOption中设置过的坐标类型为准
+//  String coorType = location.getCoorType();
+//  //获取定位类型、定位错误返回码，具体信息可参照类参考中BDLocation类中的说明
+//  int errorCode = location.getLocType();
+
+//  TThread.Synchronize(nil,procedure
+//  begin
+//    Form3.Memo1.Lines.Insert(0,FloatToStr(P1.getLatitude)+','+FloatToStr(P1.getLongitude));
+//  end);
+
+
+end;
+{$ENDIF}
+
+
 
 initialization
   GPSTypeNames[gtWGS84]:='wgs84';

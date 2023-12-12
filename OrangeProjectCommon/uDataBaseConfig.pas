@@ -9,6 +9,12 @@ uses
   IniFiles,
   StrUtils,
 
+  {$IF CompilerVersion>31}
+  System.NetEncoding,
+  System.Net.URLClient, System.Net.HttpClient, System.Net.HttpClientComponent,
+  {$ENDIF}
+
+
   {$IFDEF MSWINDOWS}
   DES,
   {$ENDIF}
@@ -62,6 +68,9 @@ type
     function IsEmpty:Boolean;
     function GetTablePrefix:String;
     function ServerUrl: String;
+    {$IF CompilerVersion>31}
+    function GetESDBNetHTTPRequestHeaders:TNetHeaders;
+    {$ENDIF}
   end;
 
 
@@ -155,6 +164,35 @@ begin
   inherited;
 end;
 
+    {$IF CompilerVersion>31}
+function TDataBaseConfig.GetESDBNetHTTPRequestHeaders: TNetHeaders;
+var
+  ANameValuePair:TNameValuePair;
+begin
+  if Self.FDBUserName<>'' then
+  begin
+    SetLength(Result,2);
+    ANameValuePair.Name:= 'Authorization';
+    //Basic bXhlczptZjJvZWc2VVU0ViM=
+    ANameValuePair.Value:= 'Basic '+TNetEncoding.Base64.Encode(Self.FDBUserName+':'+Self.FDBPassword);
+    Result[0]:=ANameValuePair;
+
+    ANameValuePair.Name:= 'Content-type';
+    ANameValuePair.Value:= 'application/json';
+    Result[1]:=ANameValuePair;
+  end
+  else
+  begin
+    SetLength(Result,1);
+
+    ANameValuePair.Name:= 'Content-type';
+    ANameValuePair.Value:= 'application/json';
+    Result[0]:=ANameValuePair;
+  end;
+
+end;
+    {$ENDIF}
+
 function TDataBaseConfig.GetTablePrefix: String;
 begin
   Result:='';
@@ -240,7 +278,7 @@ begin
   Self.FDBCharset:=AIniFile.ReadString('','DBCharset','utf8');
 
 
-  //连接方式
+  //连接方式  prAuto prDirect等等，有很多选项，在有些电脑上prDirect会报错
   Self.FSpecificOptions_Provider:=AIniFile.ReadString('','SpecificOptions_Provider','prDirect');
 //  Self.FSpecificOptions_Provider:=AIniFile.ReadString('','SpecificOptions_Provider','');
   Self.FSpecificOptions_NativeClientVersion:=AIniFile.ReadString('','SpecificOptions_NativeClientVersion','ncAuto');

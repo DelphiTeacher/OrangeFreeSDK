@@ -1,0 +1,55 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+desc "自动打包上传"
+    lane :beta do |options|
+    scheme = options[:scheme]
+    date = Time.new.strftime("%Y%m%d-%h%M")
+    gym(
+        clean: true,
+        output_directory: './fastlane/beta',
+        output_name: "#{scheme}-#{date}.ipa",
+        scheme: "#{scheme}",
+        configuration: 'Release',
+        include_symbols: true,
+        export_method: "enterprise"
+        )
+
+    updateVersionDes = "修复指令文件bug"
+    pgyer(
+        api_key: "4b704ea49aeb3d2647fc5e32a6b7de63",
+        user_key: "75566dd90c684e825df42ba0b95ef7bd",
+        update_description: updateVersionDes
+        )
+    end
+
+    lane :app_store do |options|
+        scheme = options[:scheme]
+        date = Time.new.strftime("%Y%m%d-%h%M")
+        gym(
+            clean: true,
+            output_directory: './fastlane/appStore',
+            output_name: "#{scheme}-#{date}.ipa",
+            scheme: "#{scheme}",
+            configuration: 'Release',
+            include_symbols: true,
+            export_method: "app-store",
+            buildlog_path: "./fastlane/online/fastlanelog"
+        )
+    end
+end

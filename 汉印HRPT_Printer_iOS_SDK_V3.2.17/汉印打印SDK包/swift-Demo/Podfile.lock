@@ -1,0 +1,62 @@
+PODS:
+  - Alamofire (4.8.2)
+  - HMSegmentedControl (1.5.5)
+  - IQKeyboardManagerSwift (6.3.0)
+  - MJExtension (3.0.17)
+  - MJRefresh (3.2.0)
+  - Reusable (4.1.0):
+    - Reusable/Storyboard (= 4.1.0)
+    - Reusable/View (= 4.1.0)
+  - Reusable/Storyboard (4.1.0)
+  - Reusable/View (4.1.0)
+  - SDWebImage (5.0.3):
+    - SDWebImage/Core (= 5.0.3)
+  - SDWebImage/Core (5.0.3)
+  - SnapKit (4.2.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (5.0.0)
+  - Then (2.4.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - HMSegmentedControl
+  - IQKeyboardManagerSwift
+  - MJExtension
+  - MJRefresh
+  - Reusable
+  - SDWebImage
+  - SnapKit
+  - SVProgressHUD
+  - SwiftyJSON
+  - Then
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - HMSegmentedControl
+    - IQKeyboardManagerSwift
+    - MJExtension
+    - MJRefresh
+    - Reusable
+    - SDWebImage
+    - SnapKit
+    - SVProgressHUD
+    - SwiftyJSON
+    - Then
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
+  MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
+  SDWebImage: d4f87d7d36c8a4d9f9459dc282e0caa057fdf935
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+
+PODFILE CHECKSUM: 4fa053dd5c8406ad41297a9b29416711c68e5482
+
+COCOAPODS: 1.11.2

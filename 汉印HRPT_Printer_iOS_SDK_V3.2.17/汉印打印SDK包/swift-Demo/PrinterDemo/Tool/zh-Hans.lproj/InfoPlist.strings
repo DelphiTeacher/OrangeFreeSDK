@@ -1,0 +1,14 @@
+/* 
+  InfoPlist.strings
+  PrinterDemo
+
+  Created by ios on 2019/9/12.
+  Copyright © 2019 XiamenHY. All rights reserved.
+*/
+
+NSBluetoothPeripheralUsageDescription = "我们可能需要使用您的蓝牙与打印进行机通信。";
+NSPhotoLibraryUsageDescription = "我们需要获取您的相片用于图片打印。";
+NSBluetoothAlwaysUsageDescription = "我们可能需要使用您的蓝牙与打印进行机通信。";
+NSLocationWhenInUseUsageDescription = "需要您的位置权限获取当前连接Wi-Fi信息";
+NSLocationAlwaysUsageDescription = "需要您的位置权限获取当前连接Wi-Fi信息";
+

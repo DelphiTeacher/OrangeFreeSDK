@@ -1,0 +1,12 @@
+platform :ios, '9.0'
+use_frameworks!
+inhibit_all_warnings!
+target 'HDemo' do
+pod 'SVProgressHUD'
+pod 'MJRefresh'
+pod 'SDWebImage'
+pod 'HMSegmentedControl'
+#pod 'YYKit'
+pod 'Masonry'
+
+end

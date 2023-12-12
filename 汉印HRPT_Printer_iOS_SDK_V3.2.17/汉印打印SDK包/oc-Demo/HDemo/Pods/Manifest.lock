@@ -1,0 +1,34 @@
+PODS:
+  - HMSegmentedControl (1.5.6)
+  - Masonry (1.1.0)
+  - MJRefresh (3.4.3)
+  - SDWebImage (5.9.1):
+    - SDWebImage/Core (= 5.9.1)
+  - SDWebImage/Core (5.9.1)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - HMSegmentedControl
+  - Masonry
+  - MJRefresh
+  - SDWebImage
+  - SVProgressHUD
+
+SPEC REPOS:
+  trunk:
+    - HMSegmentedControl
+    - Masonry
+    - MJRefresh
+    - SDWebImage
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  HMSegmentedControl: 34c1f54d822d8308e7b24f5d901ec674dfa31352
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 53e3e3219f204425ee6d3e62e8733d3295944cd6
+  SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 9a9642a4aa7b5e4bfd50fe061035811fdfae42c3
+
+COCOAPODS: 1.10.1

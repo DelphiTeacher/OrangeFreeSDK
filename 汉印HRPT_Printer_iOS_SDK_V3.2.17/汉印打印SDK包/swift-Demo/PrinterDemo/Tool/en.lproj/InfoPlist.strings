@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  PrinterDemo
+
+  Created by ios on 2019/9/12.
+  Copyright © 2019 XiamenHY. All rights reserved.
+*/
+
+NSPhotoLibraryUsageDescription = "We need to get your photo for picture printing.";
+NSBluetoothPeripheralUsageDescription = "We need to use bluetooth to connect to the printer.";
+NSBluetoothAlwaysUsageDescription = "We may need to use your bluetooth for printer communication.";
+NSLocationWhenInUseUsageDescription = "Your location permission is required to get current connection Wi-Fi information";
+NSLocationAlwaysUsageDescription = "Your location permission is required to get current connection Wi-Fi informatio";

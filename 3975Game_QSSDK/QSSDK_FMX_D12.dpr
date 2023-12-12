@@ -4,9 +4,6 @@ uses
   System.StartUpCopy,
   FMX.Forms,
   Unit1 in 'Unit1.pas' {Form1},
-  iOSApi.QsSdkOrderInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkOrderInfo.pas',
-  iOSApi.QsSdkRoleInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkRoleInfo.pas',
-  iOSApi.QsSdkUtils in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkUtils.pas',
   iOSApi.QsSdk in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdk.pas',
   iOSApi.QsSdkAppInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkAppInfo.pas',
   iOSApi.QsSdkBoxInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkBoxInfo.pas',
@@ -14,7 +11,10 @@ uses
   iOSApi.QsSdkDef in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkDef.pas',
   iOSApi.QsSdkDeviceInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkDeviceInfo.pas',
   iOSApi.QsSdkHttpResponse in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkHttpResponse.pas',
-  iOSApi.QsSdkHttpsApi in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkHttpsApi.pas';
+  iOSApi.QsSdkHttpsApi in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkHttpsApi.pas',
+  iOSApi.QsSdkOrderInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkOrderInfo.pas',
+  iOSApi.QsSdkRoleInfo in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkRoleInfo.pas',
+  iOSApi.QsSdkUtils in 'QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkUtils.pas';
 
 {$R *.res}
 

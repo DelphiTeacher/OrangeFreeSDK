@@ -290,9 +290,6 @@
             <Form>Form1</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkOrderInfo.pas"/>
-        <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkRoleInfo.pas"/>
-        <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkUtils.pas"/>
         <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdk.pas"/>
         <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkAppInfo.pas"/>
         <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkBoxInfo.pas"/>
@@ -301,6 +298,9 @@
         <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkDeviceInfo.pas"/>
         <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkHttpResponse.pas"/>
         <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkHttpsApi.pas"/>
+        <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkOrderInfo.pas"/>
+        <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkRoleInfo.pas"/>
+        <DCCReference Include="QsSdk\IOS\QsSdk.framework\Headers\iOSApi.QsSdkUtils.pas"/>
         <None Include="QsSdk\IOS\QsSdk.framework\Headers\FrameworkDylibPath_QsSdk.inc"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

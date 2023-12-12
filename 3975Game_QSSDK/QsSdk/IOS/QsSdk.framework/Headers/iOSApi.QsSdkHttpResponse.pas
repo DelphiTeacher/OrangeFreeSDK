@@ -26,7 +26,7 @@ type
 	//@interface QsSdkHttpResponse : NSObject
 	//@interface QsSdkHttpResponse : NSObject
 	QsSdkHttpResponse=interface(NSObject)//
-	['{B9881631-9029-421B-B4A4-27E7DD8D1EDE}']
+	['{7773372E-FB39-43CC-9F0D-BB08ED8CB24C}']
 		
 		//@property (nonatomic, retain) NSString *codeQsSdk;
 		function codeQsSdk:NSString;cdecl;
@@ -41,7 +41,7 @@ type
 	end;
 	
 	QsSdkHttpResponseClass=interface(NSObjectClass)//
-	['{8503C984-7DE0-41CE-B248-A2BB739D9F9A}']
+	['{F20D1A4D-27F9-458A-AC7E-80CD1E9BDDF4}']
 	end;
 	
 	TQsSdkHttpResponse=class(TOCGenericImport<QsSdkHttpResponseClass,QsSdkHttpResponse>)

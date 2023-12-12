@@ -24,7 +24,7 @@ type
 	//@interface QsSdkOrderInfo : NSObject
 	//@interface QsSdkOrderInfo : NSObject
 	QsSdkOrderInfo=interface(NSObject)//
-	['{95804FA9-F00C-44F0-ADC9-B70D2871EFCD}']
+	['{746E1C76-EA99-4BD3-ABF3-7C15B1D4EC48}']
 		
 		//@property (nonatomic, strong) NSString *cpOrderIdQsSdk;     //CP¶©µ¥ºÅ
 		function cpOrderIdQsSdk:NSString;cdecl;//CP¶©µ¥ºÅ
@@ -59,7 +59,7 @@ type
 	end;
 	
 	QsSdkOrderInfoClass=interface(NSObjectClass)//
-	['{23AAB4D2-4B10-4247-862F-3230E9BC0E69}']
+	['{AD78DAF6-D5D1-40C1-A1AF-2912AF0DEFC5}']
 	end;
 	
 	TQsSdkOrderInfo=class(TOCGenericImport<QsSdkOrderInfoClass,QsSdkOrderInfo>)

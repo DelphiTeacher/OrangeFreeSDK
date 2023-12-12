@@ -24,7 +24,7 @@ type
 	//@interface QsSdkUtils : NSObject
 	//@interface QsSdkUtils : NSObject
 	QsSdkUtils=interface(NSObject)//
-	['{28A718E5-825E-42BB-8F78-5CAD44C1D08C}']
+	['{90A8C224-808F-4AD0-98B8-8DD624C0EFB0}']
 		
 		
 		
@@ -32,7 +32,7 @@ type
 	end;
 	
 	QsSdkUtilsClass=interface(NSObjectClass)//
-	['{2B99C55C-4526-4470-8B48-9788A3035AE3}']
+	['{D7BC30A5-1E15-429F-92BB-1A64B2FEF62E}']
 		//+(void)saveScreenCutPhotoQsSdk:(UIView *)view;
 		procedure saveScreenCutPhotoQsSdk(view:UIView);cdecl;
 		

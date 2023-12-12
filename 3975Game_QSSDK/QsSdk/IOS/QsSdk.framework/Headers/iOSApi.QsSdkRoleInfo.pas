@@ -50,7 +50,7 @@ type
 	//@interface QsSdkRoleInfo : NSObject
 	//@interface QsSdkRoleInfo : NSObject
 	QsSdkRoleInfo=interface(NSObject)//
-	['{7BE51D02-3E51-4B22-AC8F-FC3BE4057FCD}']
+	['{BEF416DA-58E8-46FD-8A3B-FBCCC95C86A3}']
 		
 		//@property (nonatomic, strong) NSString *roleIdQsSdk;            //½ÇÉ«ID
 		function roleIdQsSdk:NSString;cdecl;//½ÇÉ«ID
@@ -93,7 +93,7 @@ type
 	end;
 	
 	QsSdkRoleInfoClass=interface(NSObjectClass)//
-	['{1BD0BEA8-481B-43E5-A693-556722D57A12}']
+	['{80A966BA-A678-429B-97E3-CDF06526527D}']
 	end;
 	
 	TQsSdkRoleInfo=class(TOCGenericImport<QsSdkRoleInfoClass,QsSdkRoleInfo>)

@@ -28,21 +28,22 @@ type
 	
 	
 	
-	TQsSdkRequestSuccessEvent=procedure (response:QsSdkHttpResponse) of object;
+	TQsSdkRequestSuccessEvent=procedure () of object;
 	//typedef void (^QsSdkRequestSuccess)(QsSdkHttpResponse*);
   QsSdkRequestSuccess=TQsSdkRequestSuccessEvent;
 
 	//typedef void (^QsSdkRequestSuccess)(QsSdkHttpResponse*);
-	TQsSdkRequestErrorEvent=procedure (error:NSString) of object;
+	TQsSdkRequestErrorEvent=procedure () of object;
 	//typedef void (^QsSdkRequestError)(NSString*);
   QsSdkRequestError=TQsSdkRequestErrorEvent;
+
 
 	//typedef void (^QsSdkRequestError)(NSString*);
 	
 	//@interface QsSdkHttpsApi : NSObject
 	//@interface QsSdkHttpsApi : NSObject
 	QsSdkHttpsApi=interface(NSObject)//
-	['{73012BB7-9E8E-4EF7-B748-2DA07A4789A9}']
+	['{4BF5EAD5-32AB-41B6-8F09-00FAD9B567C8}']
 		
 		
 		//-(NSString *)getQsSdkPayUrl;
@@ -180,7 +181,7 @@ type
 	end;
 	
 	QsSdkHttpsApiClass=interface(NSObjectClass)//
-	['{3BB43F7D-017B-499E-8CBD-D787846869AE}']
+	['{4F5C8FB8-E47F-42B7-B308-E86F43EA9027}']
 		//+(QsSdkHttpsApi*)insQsSdk;
 		function insQsSdk:QsSdkHttpsApi;cdecl;
 		

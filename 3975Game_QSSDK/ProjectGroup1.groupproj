@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{DB314C0E-E1AA-41C4-86C9-F80DF90E637D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="QSSDK_FMX_D12.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\MyFiles\ThirdPartySDK\微信支付接口\APP\WeiChatSDK_FMX_D12.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\MyFiles\ThirdPartySDK\百度身份验证\BaiduFaceCheck_FMX_D12.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\MyFiles\ThirdPartySDK\腾讯超级播放器\App\TencentSuperPlayer_FMX_D11.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="D:\MyFiles\ThirdPartySDK\讯飞语音接口\XunFeiTest_D12.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="QSSDK_FMX_D12">
+        <MSBuild Projects="QSSDK_FMX_D12.dproj"/>
+    </Target>
+    <Target Name="QSSDK_FMX_D12:Clean">
+        <MSBuild Projects="QSSDK_FMX_D12.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="QSSDK_FMX_D12:Make">
+        <MSBuild Projects="QSSDK_FMX_D12.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="WeiChatSDK_FMX_D12">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\微信支付接口\APP\WeiChatSDK_FMX_D12.dproj"/>
+    </Target>
+    <Target Name="WeiChatSDK_FMX_D12:Clean">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\微信支付接口\APP\WeiChatSDK_FMX_D12.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WeiChatSDK_FMX_D12:Make">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\微信支付接口\APP\WeiChatSDK_FMX_D12.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="BaiduFaceCheck_FMX_D12">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\百度身份验证\BaiduFaceCheck_FMX_D12.dproj"/>
+    </Target>
+    <Target Name="BaiduFaceCheck_FMX_D12:Clean">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\百度身份验证\BaiduFaceCheck_FMX_D12.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BaiduFaceCheck_FMX_D12:Make">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\百度身份验证\BaiduFaceCheck_FMX_D12.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TencentSuperPlayer_FMX_D11">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\腾讯超级播放器\App\TencentSuperPlayer_FMX_D11.dproj"/>
+    </Target>
+    <Target Name="TencentSuperPlayer_FMX_D11:Clean">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\腾讯超级播放器\App\TencentSuperPlayer_FMX_D11.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TencentSuperPlayer_FMX_D11:Make">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\腾讯超级播放器\App\TencentSuperPlayer_FMX_D11.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="XunFeiTest_D12">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\讯飞语音接口\XunFeiTest_D12.dproj"/>
+    </Target>
+    <Target Name="XunFeiTest_D12:Clean">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\讯飞语音接口\XunFeiTest_D12.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="XunFeiTest_D12:Make">
+        <MSBuild Projects="D:\MyFiles\ThirdPartySDK\讯飞语音接口\XunFeiTest_D12.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="QSSDK_FMX_D12;WeiChatSDK_FMX_D12;BaiduFaceCheck_FMX_D12;TencentSuperPlayer_FMX_D11;XunFeiTest_D12"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="QSSDK_FMX_D12:Clean;WeiChatSDK_FMX_D12:Clean;BaiduFaceCheck_FMX_D12:Clean;TencentSuperPlayer_FMX_D11:Clean;XunFeiTest_D12:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="QSSDK_FMX_D12:Make;WeiChatSDK_FMX_D12:Make;BaiduFaceCheck_FMX_D12:Make;TencentSuperPlayer_FMX_D11:Make;XunFeiTest_D12:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

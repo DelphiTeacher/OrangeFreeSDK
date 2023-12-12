@@ -13,8 +13,8 @@ uses
 	iOSApi.CoreLocation,
 	Macapi.ObjCRuntime,
 	SysUtils,Types,FMX.Types,Classes;
-	//#define QsSdkVersion @"1.0.1"
-	 const QsSdkVersion='1.0.1'; //#define QsSdkVersion @"1.0.1"
+//	//#define QsSdkVersion @"1.0.1"
+//	 const QsSdkVersion=@"1.0.1"; //#define QsSdkVersion @"1.0.1"
 
 type
 	//declare pointer
@@ -33,10 +33,12 @@ type
 	//typedef void (^InitQsSdkFail)(NSString *code, NSString *msg);
 	TLoginQsSdkSuccessEvent=procedure (userId:NSString;token:NSString) of object;
 	//typedef void (^LoginQsSdkSuccess)(NSString *userId, NSString *token);
+  LoginQsSdkSuccess=TLoginQsSdkSuccessEvent;
 
 	//typedef void (^LoginQsSdkSuccess)(NSString *userId, NSString *token);
 	TLoginQsSdkFailEvent=procedure (code:NSString;msg:NSString) of object;
 	//typedef void (^LoginQsSdkFail)(NSString *code, NSString *msg);
+  LoginQsSdkFail=TLoginQsSdkFailEvent;
 
 	//typedef void (^LoginQsSdkFail)(NSString *code, NSString *msg);
 	TLogoutQsSdkSuccessEvent=procedure () of object;
@@ -45,20 +47,24 @@ type
 	//typedef void (^LogoutQsSdkSuccess)(void);
 	TPayQsSdkSuccessEvent=procedure (orderId:NSString) of object;
 	//typedef void (^PayQsSdkSuccess)(NSString *orderId);
+  PayQsSdkSuccess=TPayQsSdkSuccessEvent;
 
 	//typedef void (^PayQsSdkSuccess)(NSString *orderId);
 	TPayQsSdkFailEvent=procedure (code:NSString;msg:NSString) of object;
 	//typedef void (^PayQsSdkFail)(NSString *code, NSString *msg);
+  PayQsSdkFail=TPayQsSdkFailEvent;
 
 	//typedef void (^PayQsSdkFail)(NSString *code, NSString *msg);
 	TUploadRoleInfoQsSdkSuccessEvent=procedure () of object;
 	//typedef void (^UploadRoleInfoQsSdkSuccess)(void);
+  UploadRoleInfoQsSdkSuccess=TUploadRoleInfoQsSdkSuccessEvent;
 
 	//typedef void (^UploadRoleInfoQsSdkSuccess)(void);
 	TUploadRoleInfoQsSdkFailEvent=procedure (code:NSString;msg:NSString) of object;
 	//typedef void (^UploadRoleInfoQsSdkFail)(NSString *code, NSString *msg);
 
 	//typedef void (^UploadRoleInfoQsSdkFail)(NSString *code, NSString *msg);
+  UploadRoleInfoQsSdkFail=TUploadRoleInfoQsSdkFailEvent;
 	
 	
 	TQsSdkCommonCbEvent=procedure () of object;

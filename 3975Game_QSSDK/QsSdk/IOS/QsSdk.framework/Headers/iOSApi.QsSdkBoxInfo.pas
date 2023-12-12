@@ -23,7 +23,7 @@ type
 	//@interface QsSdkBoxInfo : NSObject
 	//@interface QsSdkBoxInfo : NSObject
 	QsSdkBoxInfo=interface(NSObject)//
-	['{5C17718F-0BEE-40FC-A89B-7EF5FE326E06}']
+	['{9E86634C-5152-46C3-ACE3-50D7E6A096DB}']
 		
 		//@property (nonatomic, strong) NSString *mainUserIdQsSdk;       //Ö÷ÕÊºÅid
 		function mainUserIdQsSdk:NSString;cdecl;//Ö÷ÕÊºÅid
@@ -58,7 +58,7 @@ type
 	end;
 	
 	QsSdkBoxInfoClass=interface(NSObjectClass)//
-	['{F2D08836-6444-498F-95BC-7999E62EE961}']
+	['{5FA62A63-6AC6-4546-9C51-D59DFA3E34BB}']
 	end;
 	
 	TQsSdkBoxInfo=class(TOCGenericImport<QsSdkBoxInfoClass,QsSdkBoxInfo>)

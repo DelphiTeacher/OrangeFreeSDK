@@ -34,7 +34,7 @@ type
 	//@interface QsSdk : NSObject
 	//@interface QsSdk : NSObject
 	QsSdk=interface(NSObject)//
-	['{4469444E-5480-46C3-8B14-F310327C15F0}']
+	['{91B30444-5488-4908-8EDF-184C8B65A47C}']
 		
 		
 		
@@ -66,9 +66,11 @@ type
 		
 		
 	end;
+
+  NSUserActivity=Pointer;
 	
 	QsSdkClass=interface(NSObjectClass)//
-	['{73FE343C-B581-4474-9E59-865DFACAC405}']
+	['{F01DA975-61A1-4977-9A68-9B2D911669E2}']
 		//+ (void)initQsSdk:(InitQsSdkSuccess _Nonnull )initSuccess initFail:(InitQsSdkFail _Nonnull)initFail loginSuccess:(LoginQsSdkSuccess _Nonnull)loginSuccess loginFail:(LoginQsSdkFail _Nonnull)loginFail logoutSuccess:(LogoutQsSdkSuccess _Nonnull)logoutSuccess paySuccess:(PayQsSdkSuccess _Nonnull)paySuccess payFail:(PayQsSdkFail _Nonnull)payFail uploadSuccess:(UploadRoleInfoQsSdkSuccess _Nonnull)uploadSuccess uploadFail:(UploadRoleInfoQsSdkFail _Nonnull)uploadFail;
 //		[MethodName('initQsSdk:initFail:loginSuccess:loginFail:logoutSuccess:paySuccess:payFail:uploadSuccess:uploadFail:')]
 //		procedure initQsSdkinitFailloginSuccessloginFaillogoutSuccesspaySuccesspayFailuploadSuccessuploadFail(initSuccess:{_Nonnull}InitQsSdkSuccess;initFail:{_Nonnull}InitQsSdkFail;loginSuccess:{_Nonnull}LoginQsSdkSuccess;loginFail:{_Nonnull}LoginQsSdkFail;logoutSuccess:{_Nonnull}LogoutQsSdkSuccess;paySuccess:{_Nonnull}PayQsSdkSuccess;payFail:{_Nonnull}PayQsSdkFail;uploadSuccess:{_Nonnull}UploadRoleInfoQsSdkSuccess;uploadFail:{_Nonnull}UploadRoleInfoQsSdkFail);cdecl;
@@ -81,11 +83,11 @@ type
 		
 		//+ (void)payQsSdk:(QsSdkOrderInfo *_Nonnull)orderInfo;
 		procedure payQsSdk(orderInfo:{_Nonnull}QsSdkOrderInfo);cdecl;
-		
+
 		//+ (void)uploadQsSdkRoleInfo:(QsSdkRoleInfo *_Nonnull)roleInfo type:(QsSdkUploadType)type;
 		[MethodName('uploadQsSdkRoleInfo:type:')]
 		procedure uploadQsSdkRoleInfotype(roleInfo:{_Nonnull}QsSdkRoleInfo;_type:QsSdkUploadType);cdecl;
-		
+
 		//+ (BOOL)application:(UIApplication *_Nullable)application didFinishLaunchingWithOptions:(NSDictionary *_Nullable)launchOptions;
 		[MethodName('application:didFinishLaunchingWithOptions:')]
 		function applicationdidFinishLaunchingWithOptions(application:{_Nullable}UIApplication;launchOptions:{_Nullable}NSDictionary):Boolean;cdecl;
@@ -134,18 +136,18 @@ type
 		function applicationopenURLoptions(application:{_Nullable}UIApplication;url:{_Nullable}NSURL;options:{_Nullable}NSDictionary{<UIApplicationOpenURLOptionsKey,id>}):Boolean;cdecl;
 		
 		//+ (BOOL)application:(UIApplication *_Nullable)application continueUserActivity:(NSUserActivity *_Nullable)userActivity restorationHandler:(void(^_Nullable)(NSArray *_Nullable restorableObjects))restorationHandler;
-//		[MethodName('application:continueUserActivity:restorationHandler:')]
-//		function applicationcontinueUserActivityrestorationHandler(application:{_Nullable}UIApplication;userActivity:{_Nullable}NSUserActivity;restorationHandler:{_Nullable}void(^)(NSArray * restorableObjects)):Boolean;cdecl;
+		[MethodName('application:continueUserActivity:restorationHandler:')]
+		function applicationcontinueUserActivityrestorationHandler(application:{_Nullable}UIApplication;userActivity:{_Nullable}NSUserActivity;restorationHandler:Pointer{_Nullable}{void(^)(NSArray * restorableObjects)}):Boolean;cdecl;
 
 		//+(void)setQsSdkBoxParams:(QsSdkBoxInfo *_Nullable)boxInfo;
 		procedure setQsSdkBoxParams(boxInfo:{_Nullable}QsSdkBoxInfo);cdecl;
-		
-//		//+(void)boxInitQsSdk:(PayQsSdkSuccess _Nonnull)paySuccess payFail:(PayQsSdkFail _Nonnull)payFail uploadSuccess:(UploadRoleInfoQsSdkSuccess _Nonnull)uploadSuccess uploadFail:(UploadRoleInfoQsSdkFail _Nonnull)uploadFail;
-//		[MethodName('boxInitQsSdk:payFail:uploadSuccess:uploadFail:')]
-//		procedure boxInitQsSdkpayFailuploadSuccessuploadFail(paySuccess:{_Nonnull}PayQsSdkSuccess;payFail:{_Nonnull}PayQsSdkFail;uploadSuccess:{_Nonnull}UploadRoleInfoQsSdkSuccess;uploadFail:{_Nonnull}UploadRoleInfoQsSdkFail);cdecl;
-//
-//		//+(void)boxLoginQsSdk:(LoginQsSdkSuccess _Nonnull)loginSuccess;
-//		procedure boxLoginQsSdk(loginSuccess:{_Nonnull}LoginQsSdkSuccess);cdecl;
+
+		//+(void)boxInitQsSdk:(PayQsSdkSuccess _Nonnull)paySuccess payFail:(PayQsSdkFail _Nonnull)payFail uploadSuccess:(UploadRoleInfoQsSdkSuccess _Nonnull)uploadSuccess uploadFail:(UploadRoleInfoQsSdkFail _Nonnull)uploadFail;
+		[MethodName('boxInitQsSdk:payFail:uploadSuccess:uploadFail:')]
+		procedure boxInitQsSdkpayFailuploadSuccessuploadFail(paySuccess:{_Nonnull}PayQsSdkSuccess;payFail:{_Nonnull}PayQsSdkFail;uploadSuccess:{_Nonnull}UploadRoleInfoQsSdkSuccess;uploadFail:{_Nonnull}UploadRoleInfoQsSdkFail);cdecl;
+
+		//+(void)boxLoginQsSdk:(LoginQsSdkSuccess _Nonnull)loginSuccess;
+		procedure boxLoginQsSdk(loginSuccess:{_Nonnull}LoginQsSdkSuccess);cdecl;
 
 		//+(void)boxShowAgeTipsQsSdk;
 		procedure boxShowAgeTipsQsSdk;cdecl;

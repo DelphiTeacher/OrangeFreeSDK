@@ -24,7 +24,7 @@ type
 	//@interface QsSdkDeviceInfo : NSObject
 	//@interface QsSdkDeviceInfo : NSObject
 	QsSdkDeviceInfo=interface(NSObject)//
-	['{596F0626-7382-407E-AFF6-C42C274A17C5}']
+	['{713B8913-688D-4436-8A4F-80898F6B3229}']
 		
 		
 		//-(NSString *)getQsSdkIDFA;
@@ -75,7 +75,7 @@ type
 	end;
 	
 	QsSdkDeviceInfoClass=interface(NSObjectClass)//
-	['{D79D1F46-3C58-4560-8B5F-C8FFC854BE5B}']
+	['{0D00AD42-34BB-4A73-BDED-810E6FCE956D}']
 		//+(QsSdkDeviceInfo *)insQsSdk;
 		function insQsSdk:QsSdkDeviceInfo;cdecl;
 		

@@ -24,7 +24,7 @@ type
 	//@interface QsSdkAppInfo : NSObject
 	//@interface QsSdkAppInfo : NSObject
 	QsSdkAppInfo=interface(NSObject)//
-	['{C4F7B0BE-71A3-4380-AD69-0190C9A4A2D1}']
+	['{D705ACD0-A5E6-4E3E-BEEE-651533010392}']
 		
 		
 		//-(NSString *)getQsSdkVersion;
@@ -59,7 +59,7 @@ type
 	end;
 	
 	QsSdkAppInfoClass=interface(NSObjectClass)//
-	['{F3F7A203-B95A-4502-A11C-71F79F134C4F}']
+	['{95C0DABA-DE30-4B5C-9B43-DC2E84CF3398}']
 		//+(QsSdkAppInfo *)insQsSdk;
 		function insQsSdk:QsSdkAppInfo;cdecl;
 		

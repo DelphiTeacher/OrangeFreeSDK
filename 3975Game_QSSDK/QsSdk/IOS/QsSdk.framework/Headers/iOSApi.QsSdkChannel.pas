@@ -23,33 +23,42 @@ type
 	//declare pointer
 	id=Pointer;
 
-	
+  instancetype=Pointer;
+  NSUserActivity=Pointer;
+
 	TChannelInitQsSdkSuccessEvent=procedure () of object;
 	//typedef void (^ChannelInitQsSdkSuccess)(void);
+  ChannelInitQsSdkSuccess=TChannelInitQsSdkSuccessEvent;
 
 	//typedef void (^ChannelInitQsSdkSuccess)(void);
 	TChannelInitQsSdkFailEvent=procedure (code:NSString;msg:NSString) of object;
 	//typedef void (^ChannelInitQsSdkFail)(NSString * _Nullable code, NSString * _Nullable msg);
+  ChannelInitQsSdkFail=TChannelInitQsSdkFailEvent;
 
 	//typedef void (^ChannelInitQsSdkFail)(NSString * _Nullable code, NSString * _Nullable msg);
 	TChannelLoginQsSdkSuccessEvent=procedure (userId:NSString;token:NSString;ext:NSString) of object;
 	//typedef void (^ChannelLoginQsSdkSuccess)(NSString * _Nullable userId, NSString * _Nullable token, NSString * _Nullable ext);
+  ChannelLoginQsSdkSuccess=TChannelLoginQsSdkSuccessEvent;
 
 	//typedef void (^ChannelLoginQsSdkSuccess)(NSString * _Nullable userId, NSString * _Nullable token, NSString * _Nullable ext);
 	TChannelLoginQsSdkFailEvent=procedure (code:NSString;msg:NSString) of object;
 	//typedef void (^ChannelLoginQsSdkFail)(NSString * _Nullable code, NSString * _Nullable msg);
+  ChannelLoginQsSdkFail=TChannelLoginQsSdkFailEvent;
 
 	//typedef void (^ChannelLoginQsSdkFail)(NSString * _Nullable code, NSString * _Nullable msg);
 	TChannelLogoutQsSdkSuccessEvent=procedure () of object;
 	//typedef void (^ChannelLogoutQsSdkSuccess)(void);
+  ChannelLogoutQsSdkSuccess=TChannelLogoutQsSdkSuccessEvent;
 
 	//typedef void (^ChannelLogoutQsSdkSuccess)(void);
 	TChannelPayQsSdkSuccessEvent=procedure (orderId:NSString) of object;
 	//typedef void (^ChannelPayQsSdkSuccess)(NSString * _Nullable orderId);
+  ChannelPayQsSdkSuccess=TChannelPayQsSdkSuccessEvent;
 
 	//typedef void (^ChannelPayQsSdkSuccess)(NSString * _Nullable orderId);
 	TChannelPayQsSdkFailEvent=procedure (code:NSString;msg:NSString) of object;
 	//typedef void (^ChannelPayQsSdkFail)(NSString * _Nullable code, NSString * _Nullable msg);
+  ChannelPayQsSdkFail=TChannelPayQsSdkFailEvent;
 
 	//typedef void (^ChannelPayQsSdkFail)(NSString * _Nullable code, NSString * _Nullable msg);
 	
@@ -58,7 +67,7 @@ type
 	//@interface QsSdkChannel : NSObject
 	//@interface QsSdkChannel : NSObject
 	QsSdkChannel=interface(NSObject)//
-	['{30F8FB37-2594-4010-8294-344865B645A5}']
+	['{4269F16B-2492-4BE1-839E-B981B238D7B5}']
 		
 		
 		//-(NSString *_Nonnull)getQsSdkChannelVersion;
@@ -66,13 +75,13 @@ type
 		
 		
 		//- (void)channelInitQsSdk:(ChannelInitQsSdkSuccess _Nonnull )initSuccess initFail:(ChannelInitQsSdkFail _Nonnull)initFail loginSuccess:(ChannelLoginQsSdkSuccess _Nonnull)loginSuccess loginFail:(ChannelLoginQsSdkFail _Nonnull)loginFail logoutSuccess:(ChannelLogoutQsSdkSuccess _Nonnull)logoutSuccess paySuccess:(ChannelPayQsSdkSuccess _Nonnull)paySuccess payFail:(ChannelPayQsSdkFail _Nonnull)payFail;
-//		[MethodName('channelInitQsSdk:initFail:loginSuccess:loginFail:logoutSuccess:paySuccess:payFail:')]
-//		procedure channelInitQsSdkinitFailloginSuccessloginFaillogoutSuccesspaySuccesspayFail(initSuccess:{_Nonnull}ChannelInitQsSdkSuccess;initFail:{_Nonnull}ChannelInitQsSdkFail;loginSuccess:{_Nonnull}ChannelLoginQsSdkSuccess;loginFail:{_Nonnull}ChannelLoginQsSdkFail;logoutSuccess:{_Nonnull}ChannelLogoutQsSdkSuccess;paySuccess:{_Nonnull}ChannelPayQsSdkSuccess;payFail:{_Nonnull}ChannelPayQsSdkFail);cdecl;
-
+		[MethodName('channelInitQsSdk:initFail:loginSuccess:loginFail:logoutSuccess:paySuccess:payFail:')]
+		procedure channelInitQsSdkinitFailloginSuccessloginFaillogoutSuccesspaySuccesspayFail(initSuccess:{_Nonnull}ChannelInitQsSdkSuccess;initFail:{_Nonnull}ChannelInitQsSdkFail;loginSuccess:{_Nonnull}ChannelLoginQsSdkSuccess;loginFail:{_Nonnull}ChannelLoginQsSdkFail;logoutSuccess:{_Nonnull}ChannelLogoutQsSdkSuccess;paySuccess:{_Nonnull}ChannelPayQsSdkSuccess;payFail:{_Nonnull}ChannelPayQsSdkFail);cdecl;
+		
 		
 		//- (void)channelLoginQsSdk;
 		procedure channelLoginQsSdk;cdecl;
-		
+
 		
 		//- (void)channelLogoutQsSdk;
 		procedure channelLogoutQsSdk;cdecl;
@@ -133,7 +142,7 @@ type
 		//-(UIInterfaceOrientationMask)application:(UIApplication *_Nullable)application supportedInterfaceOrientationsForWindow:(UIWindow *_Nullable)window;
 		[MethodName('application:supportedInterfaceOrientationsForWindow:')]
 		function applicationsupportedInterfaceOrientationsForWindow(application:{_Nullable}UIApplication;window:{_Nullable}UIWindow):UIInterfaceOrientationMask;cdecl;
-
+		
 		
 		//- (BOOL)application:(UIApplication *_Nullable)application handleOpenURL:(NSURL *_Nullable)url;
 		[MethodName('application:handleOpenURL:')]
@@ -150,16 +159,16 @@ type
 		function applicationopenURLoptions(application:{_Nullable}UIApplication;url:{_Nullable}NSURL;options:{_Nullable}NSDictionary{<UIApplicationOpenURLOptionsKey,id>}):Boolean;cdecl;
 		
 		
-//		//- (BOOL)application:(UIApplication *_Nullable)application continueUserActivity:(NSUserActivity *_Nullable)userActivity restorationHandler:(void(^_Nullable)(NSArray *_Nullable restorableObjects))restorationHandler;
-//		[MethodName('application:continueUserActivity:restorationHandler:')]
-//		function applicationcontinueUserActivityrestorationHandler(application:{_Nullable}UIApplication;userActivity:{_Nullable}NSUserActivity;restorationHandler:{_Nullable}void(^)(NSArray * restorableObjects)):Boolean;cdecl;
-
+		//- (BOOL)application:(UIApplication *_Nullable)application continueUserActivity:(NSUserActivity *_Nullable)userActivity restorationHandler:(void(^_Nullable)(NSArray *_Nullable restorableObjects))restorationHandler;
+		[MethodName('application:continueUserActivity:restorationHandler:')]
+		function applicationcontinueUserActivityrestorationHandler(application:{_Nullable}UIApplication;userActivity:{_Nullable}NSUserActivity;restorationHandler:Pointer{_Nullable}{void(^)(NSArray * restorableObjects)}):Boolean;cdecl;
+		
 	end;
 	
 	QsSdkChannelClass=interface(NSObjectClass)//
-	['{5C2411E9-D55C-4D43-9AC0-7EC95E5A0CD3}']
+	['{E04A949B-F40B-4538-A7E8-DE2A7CD12883}']
 		//+(instancetype _Nonnull )insQsSdk;
-//		function insQsSdk:{_Nonnull}instancetype;cdecl;
+		function insQsSdk:{_Nonnull}instancetype;cdecl;
 		
 	end;
 	

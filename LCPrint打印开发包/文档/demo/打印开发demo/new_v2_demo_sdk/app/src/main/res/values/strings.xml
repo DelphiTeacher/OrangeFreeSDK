@@ -1,0 +1,137 @@
+<resources>
+    <string name="app_name">Print Test</string>
+
+    <string name="btn_labeltxt">Label</string>
+    <string name="btn_thermaltxt">Thermal</string>
+
+    <!-- fragment -->
+    <string name="btn_label_TXT1">Label Text Print</string>
+    <string name="btn_label_TXT2">Label Barcode Print</string>
+    <string name="btn_label_TXT3">Label Image Print</string>
+    <string name="btn_label_TXT4">Label Templet Print</string>
+
+    <string name="btn_NO_label_TXT1">Thermal Text Print</string>
+    <string name="btn_NO_label_TXT2">Thermal Barcode Print</string>
+    <string name="btn_NO_label_TXT3">Thermal Image Print</string>
+    <string name="btn_NO_label_TXT4">Thermal Templet Print</string>
+
+    <!-- comm -->
+    <string name="btn_print">Print</string>
+    <string name="btn_print2">Print2</string>
+    <string name="in_txt">Please enter text</string>
+    <string name="txt_check">Self-check info</string>
+    <string name="about_f_version">Firmware version: </string>
+    <string name="txt_set_def">Reset printer</string>
+    <string name="edit_hint">Print density 1~39</string>
+    <string name="edit_hint_distance">Paper distance > 0</string>
+    <string name="txt_density">Density: </string>
+    <string name="txt_distance">Distance: </string>
+
+    <!-- LabelTextActivity -->
+    <string name="align_left">Align left</string>
+    <string name="align_create">Centered</string>
+    <string name="align_right">Align right</string>
+    <string name="small_font">Small</string>
+    <string name="medium_font">Medium</string>
+    <string name="large_font">Large</string>
+    <string name="txt_bold">Bold</string>
+    <string name="underscore">Underscore</string>
+
+    <!-- LabelBarcodeActivity -->
+    <string name="code_type">Barcode type</string>
+    <string name="upca">UPC-A</string>
+    <string name="ean8">EAN8</string>
+    <string name="ean13">EAN13</string>
+    <string name="code39">CODE39</string>
+    <string name="itf">ITF</string>
+    <string name="codebar">CODEBAR</string>
+    <string name="code128">CODE128</string>
+    <string name="qr">QR</string>
+    <string name="preview">Preview</string>
+    <string name="preview1">Preview:CODE128</string>
+    <string name="create">generate</string>
+    <string name="prompt">Use default barcode printing or input content to generate barcode printing</string>
+
+    <string name="upca_prompt">Number of characters: 11, range: 0-9, automatic verification</string>
+    <string name="ean8_prompt">Number of characters: 7, range: 0~9, automatic verification</string>
+    <string name="ean13_prompt">Number of characters: 12, range: 0-9, automatic verification</string>
+    <string name="code39_prompt">Number of characters: 1~24, range: 0~9, A~Z, empty, "$", "%", "+", "-", ".", "/"</string>
+    <string name="itf_prompt">Number of characters: ≤24 (even number), range: 0~9</string>
+    <string name="codebar_prompt">Number of characters: 1~30, range: 0~9, A~D, empty, "$", "%", "+", "-", ".", "/", ":", AD is only the beginning And terminator</string>
+    <string name="code128_prompt">Number of characters: 1~30, range: any character</string>
+    <string name="qr_prompt">Range: any character</string>
+
+    <!-- LabelPicActivity -->
+    <string name="photo_preview">Picture Preview</string>
+    <string name="camera">Camera</string>
+    <string name="photo_album">Album</string>
+    <string name="loading">Printing……</string>
+
+    <!-- toast -->
+    <string name="toast_print_success">Print completed</string>
+    <string name="toast_print_error">Print failed</string>
+    <string name="toast_high_temperature">high temperature</string>
+    <string name="toast_no_paper">Out of paper</string>
+    <string name="toast_no_data">Print data cannot be empty</string>
+    <string name="toast_no_img">Unable to get picture</string>
+    <string name="toast_str">Characters are too long to print</string>
+    <string name="toast_number_check">Please enter a number from 0-9</string>
+    <string name="toast_density">Print density cannot be empty</string>
+    <string name="toast_content">the content can not be blank</string>
+    <string name="reset_completed">Reset printer completely!</string>
+    <string name="toast_barcode_error">Bar code data error!</string>
+    <string name="toast_density_outofrange">Print concentration output range [1 ~ 39]!</string>
+    <string name="toast_distance_invalid">Incorrect paper distance!</string>
+    <string name="toast_input_parameter_error">input parameter error!</string>
+    <string name="toast_Instruction_error">Instruction error!</string>
+    <string name="toast_data_is_invalid">data is invalid!</string>
+    <string name="toast_abnormal_black_mark_detection">abnormal black mark detection!</string>
+    <string name="toast_moving_paper">moving paper!</string>
+    <string name="toast_device_busy">device busy!</string>
+    <string name="toast_device_is_not_turned_on">device is not turned on!</string>
+    <string name="toast_low_electricity">low electricity!</string>
+    <string name="toast_print_now">print now!</string>
+    <string name="toast_illegal_concentrationr">illegal concentrationr!</string>
+    <string name="toast_error_printing_barcode">error printing barcode!</string>
+    <string name="toast_error_printing_bitmap">error printing bitmap!</string>
+    <string name="toast_print_bitmap_width_overflow">print bitmap width overflow!</string>
+    <string name="toast_mac_check_error">mac check error!</string>
+    <string name="toast_parameter_error">parameter error!</string>
+    <string name="toast_error_printing_qrcode">error printing qrcode!</string>
+    <string name="toast_print_text_error">print text error!</string>
+    <string name="toast_unknown_error">unknown error!</string>
+    <string name="toast_result_already_exists">result already exists!</string>
+    <string name="toast_overtime">overtime!</string>
+    <!-- 标签 -->
+    <string name="Label_test1">Label test</string>
+    <string name="Label_test2">This is a line of test labels</string>
+    <string name="Label_test3">This is a line of test labels</string>
+    <string name="Label_test4">range: 58mm*40mm</string>
+
+    <!-- 小票 -->
+    <string name="no_Label_test1">Cashier voucher</string>
+    <string name="no_Label_test2">Time   : 2016-11-15     16:00</string>
+    <string name="no_Label_test3">operator:admin</string>
+    <string name="no_Label_test4">Receipt number：1234567890</string>
+    <string name="no_Label_test5">No. Quantity Unit Price Discount Subtotal</string>
+    <string name="no_Label_test6">-----------------------------</string>
+    <string name="no_Label_test7">AM126   1  1200  0   1200</string>
+    <string name="no_Label_test8">AM127   1  1300  0   1300</string>
+    <string name="no_Label_test9">AM128   1  1400  0   1400</string>
+    <string name="no_Label_test10">-----------------------------</string>
+    <string name="no_Label_test11">Total sales quantity: 3 </string>
+    <string name="no_Label_test12">Total selling price(RMB): 3900</string>
+    <string name="no_Label_test13">Actual amount(RMB): 3900</string>
+    <string name="no_Label_test14">Change amount(RMB): 0</string>
+    <string name="no_Label_test15">Payment method: WeChat Pay</string>
+    <string name="no_Label_test16">Welcome again！</string>
+    <string name="no_Label_test17">Please keep the receipt。</string>
+    <string name="no_Label_test18">range： 58mm</string>
+    <string name="app_set_about">About</string>
+    <string name="about_scan_version">version: </string>
+    <string name="default_density">25</string>
+    <string name="default_distance">1000</string>
+    <string name="return_distance">ReturnPapaer:</string>
+    <string name="toast_rerurn_distance_invalid">Illegal paper return distance</string>
+    <string name="save_density">save_density</string>
+</resources>

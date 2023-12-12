@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <root-path
+        name="camera_photos"
+        path="" />
+
+    <!--    <external-path-->
+    <!--        name="."-->
+    <!--        path="." />-->
+
+    <!--<files-path name = "name" path = "path" />
+    表示files/应用程序内部存储区域的子目录中的文件。该子目录与返回的值相同Context.getFilesDir()。
+    <cache-path name = "name" path = "path"/>
+    表示应用程序内部存储区域的缓存子目录中的文件。该子目录的根路径与返回的值相同getCacheDir()。
+    <external-path name = "name" path = "path" />
+    表示外部存储区域根目录中的文件。该子目录的根路径与返回的值相同 Environment.getExternalStorageDirectory()。
+    <external-files-path name = "name" path = "path" />
+    表示应用程序外部存储区域根目录中的文件。该子目录的根路径与返回的值相同 Context#getExternalFilesDir(String) Context.getExternalFilesDir(null)。
+    <external-cache-path name = "name" path = "path" />
+    表示应用程序外部缓存区域根目录中的文件。该子目录的根路径与返回的值相同 Context.getExternalCacheDir()。
+    <external-media-path name = "name" path = "path" />
+    表示应用外部媒体区域根目录中的文件。该子目录的根路径与第一个结果返回的值相同 Context.getExternalMediaDirs()。-->
+    <!--Context.getExternalMediaDirs()。-->
+    <!--注意：此目录仅适用于API 21+设备。-->
+</paths>

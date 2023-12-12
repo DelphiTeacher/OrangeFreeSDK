@@ -1,0 +1,138 @@
+<resources>
+    <string name="app_name">打印测试</string>
+
+    <string name="btn_labeltxt">标签</string>
+    <string name="btn_thermaltxt">热敏</string>
+
+    <!-- fragment -->
+    <string name="btn_label_TXT1">标签文本打印</string>
+    <string name="btn_label_TXT2">标签条码打印</string>
+    <string name="btn_label_TXT3">标签图片打印</string>
+    <string name="btn_label_TXT4">标签样板打印</string>
+
+    <string name="btn_NO_label_TXT1">热敏文本打印</string>
+    <string name="btn_NO_label_TXT2">热敏条码打印</string>
+    <string name="btn_NO_label_TXT3">热敏图片打印</string>
+    <string name="btn_NO_label_TXT4">热敏样板打印</string>
+
+    <!-- comm -->
+    <string name="btn_print">打印</string>
+    <string name="btn_print2">打印2</string>
+    <string name="in_txt">请输入文本</string>
+    <string name="txt_check">打印自检</string>
+    <string name="txt_set_def">重置打印机</string>
+    <string name="loading">打印中……</string>
+    <string name="edit_hint">打印浓度1~39</string>
+    <string name="edit_hint_distance">Paper distance > 0</string>
+    <string name="txt_density">浓度: </string>
+    <string name="txt_distance">走纸距离: </string>
+
+    <!-- LabelTextActivity -->
+    <string name="align_left">左对齐</string>
+    <string name="align_create">居中</string>
+    <string name="align_right">右对齐</string>
+    <string name="small_font">小字体</string>
+    <string name="medium_font">中字体</string>
+    <string name="large_font">大字体</string>
+    <string name="txt_bold">加粗</string>
+    <string name="underscore">下划线</string>
+
+    <!-- LabelBarcodeActivity -->
+    <string name="code_type">条码类型</string>
+    <string name="upca">UPC-A</string>
+    <string name="ean8">EAN8</string>
+    <string name="ean13">EAN13</string>
+    <string name="code39">CODE39</string>
+    <string name="itf">ITF</string>
+    <string name="codebar">CODEBAR</string>
+    <string name="code128">CODE128</string>
+    <string name="qr">QR</string>
+    <string name="preview">预览</string>
+    <string name="preview1">预览:CODE128</string>
+    <string name="create">生成</string>
+    <string name="prompt">使用默认条码打印或者输入内容生成条码打印</string>
+
+    <string name="upca_prompt">字符数：11,范围：0~9,自动校验</string>
+    <string name="ean8_prompt">字符数：7,范围：0~9,自动校验</string>
+    <string name="ean13_prompt">字符数：12,范围：0~9,自动校验</string>
+    <string name="code39_prompt">字符数：1~24,范围：0~9、A~Z、空、"$"、"%"、"+"、"-"、"."、"/"</string>
+    <string name="itf_prompt">字符数：≤24(偶数),范围：0~9</string>
+    <string name="codebar_prompt">字符数：1~30,范围：0~9、A~D、"$"、"%"、"+"、"-"、"."、"/"、":",A-D仅做起始符和终止符</string>
+    <string name="code128_prompt">字符数：1~30,范围：任意字符,不包括汉字</string>
+    <string name="qr_prompt">范围：任意字符</string>
+
+    <!-- LabelPicActivity -->
+    <string name="photo_preview">图片预览</string>
+    <string name="camera">相机</string>
+    <string name="photo_album">相册</string>
+
+    <!-- toast -->
+    <string name="toast_print_success">打印完成</string>
+    <string name="toast_print_error">打印失败</string>
+    <string name="toast_high_temperature">高温</string>
+    <string name="toast_no_paper">缺纸</string>
+    <string name="toast_no_data">打印数据不能为空</string>
+    <string name="toast_no_img">无法获取图片</string>
+    <string name="toast_str">字符超长无法打印</string>
+    <string name="toast_number_check">请输入0-9的数字</string>
+    <string name="toast_density">打印浓度不能为空</string>
+    <string name="toast_content">内容不能为空</string>
+    <string name="reset_completed">打印机复位完成！</string>
+    <string name="toast_barcode_error">条码数据错误!</string>
+    <string name="toast_density_outofrange">打印浓度超出范围[1~39]！</string>
+    <string name="toast_distance_invalid">走纸距离值不合法!</string>
+    <string name="toast_input_parameter_error">输入参数错误!</string>
+    <string name="toast_Instruction_error">指令错误!</string>
+    <string name="toast_data_is_invalid">数据非法!</string>
+    <string name="toast_abnormal_black_mark_detection">黑标检测异常!</string>
+    <string name="toast_moving_paper">正在走纸!</string>
+    <string name="toast_device_busy">设备忙!</string>
+    <string name="toast_device_is_not_turned_on">设备未打开!</string>
+    <string name="toast_low_electricity">低电!</string>
+    <string name="toast_print_now">正在打印!</string>
+    <string name="toast_illegal_concentrationr">浓度非法!</string>
+    <string name="toast_error_printing_barcode">打印条码错误!</string>
+    <string name="toast_error_printing_bitmap">打印位图错误!</string>
+    <string name="toast_print_bitmap_width_overflow">打印位图宽度溢出!</string>
+    <string name="toast_mac_check_error">mac校验错误!</string>
+    <string name="toast_parameter_error">参数错误!</string>
+    <string name="toast_error_printing_qrcode">打印二维码错误!</string>
+    <string name="toast_print_text_error">打印文本错误!</string>
+    <string name="toast_unknown_error">未知错误!</string>
+    <string name="toast_result_already_exists">结果已存在!</string>
+    <string name="toast_overtime">超时!</string>
+    <!-- 标签 -->
+    <string name="Label_test1">标签测试</string>
+    <string name="Label_test2">这是一行测试标签</string>
+    <string name="Label_test3">这是一行测试标签</string>
+    <string name="Label_test4">规格： 58mm*40mm</string>
+
+    <string name="default_density">25</string>
+    <string name="default_distance">1000</string>
+
+    <!-- 小票 -->
+    <string name="no_Label_test1">收银凭据</string>
+    <string name="no_Label_test2">时间   : 2016-11-15     16:00</string>
+    <string name="no_Label_test3">操作员:admin</string>
+    <string name="no_Label_test4">收据单号：1234567890</string>
+    <string name="no_Label_test5">编号  数量  单价  折扣  小计</string>
+    <string name="no_Label_test6">-----------------------------</string>
+    <string name="no_Label_test7">AM126   1  1200  0   1200</string>
+    <string name="no_Label_test8">AM127   1  1300  0   1300</string>
+    <string name="no_Label_test9">AM128   1  1400  0   1400</string>
+    <string name="no_Label_test10">-----------------------------</string>
+    <string name="no_Label_test11">共销售数量: 3 </string>
+    <string name="no_Label_test12">售价合计(RMB): 3900</string>
+    <string name="no_Label_test13">实收金额(RMB): 3900</string>
+    <string name="no_Label_test14">找零金额(RMB): 0</string>
+    <string name="no_Label_test15">付款方式：微信支付</string>
+    <string name="no_Label_test16">欢迎再次光临！</string>
+    <string name="no_Label_test17">请保留收据。</string>
+    <string name="no_Label_test18">规格： 58mm</string>
+    <string name="app_set_about">关于</string>
+    <string name="about_scan_version">版本: </string>
+    <string name="about_f_version">固件版本: </string>
+    <string name="return_distance">回纸: </string>
+    <string name="toast_rerurn_distance_invalid">回纸距离不合法</string>
+    <string name="save_density">保存浓度</string>
+</resources>

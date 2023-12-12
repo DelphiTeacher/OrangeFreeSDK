@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lckj.printsdk">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ESCPrintDemoV2">
+
+        <activity
+            android:name=".no_label_ui.NoLabelTemplateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".label_ui.LabelTemplateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".label_ui.LabelPicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".label_ui.LabelBarcodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".label_ui.LabelTextActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".BaseActivity"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity android:name=".AboutActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.escprintdemov2.label_ui.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+    </application>
+
+</manifest>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray2"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/code_type"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <com.example.escprintdemov2.navigatorBar.RadioGroupEx
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_upca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/upca" />
+
+        <RadioButton
+            android:id="@+id/rb_ean8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ean8" />
+
+        <RadioButton
+            android:id="@+id/rb_ean13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ean13" />
+
+        <RadioButton
+            android:id="@+id/rb_code39"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/code39" />
+
+        <RadioButton
+            android:id="@+id/rb_itf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="ITF" />
+
+        <RadioButton
+            android:id="@+id/rb_code128"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/code128" />
+
+        <RadioButton
+            android:id="@+id/rb_qr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/qr" />
+
+    </com.example.escprintdemov2.navigatorBar.RadioGroupEx>
+
+
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="130dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/text_view_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_barcode_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/preview1"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/iamg_barcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_barcaode_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/code128_prompt"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edit_codebar_in"
+        android:layout_width="340dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/text_view_shape"
+        android:gravity="top"
+        android:text="123456789ABC"
+        android:hint="@string/in_txt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/prompt"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/black"
+            android:text="@string/txt_density"/>
+
+
+        <EditText
+            android:id="@+id/edit_bar_con"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:hint="@string/edit_hint"
+            android:maxLength="2"
+            android:text="25"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_barcode_create"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@color/blue_light"
+            android:text="@string/create"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_barcode_print"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@color/blue_light"
+            android:text="@string/btn_print"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</LinearLayout>

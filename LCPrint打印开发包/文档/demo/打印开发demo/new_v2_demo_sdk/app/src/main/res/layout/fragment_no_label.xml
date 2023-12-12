@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.lckj.printsdk.navigatorBar.CustomNavigatorBar
+        android:id="@+id/btn_no_label_text"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:leftImage="@mipmap/text"
+        app:leftText="@string/btn_NO_label_TXT1"
+        app:leftTextColor="@color/black"
+        app:midTextVisiable="false"
+        app:rightImage="@mipmap/arrow_right"
+        app:rightTextVisible="false" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light" />
+
+
+    <com.lckj.printsdk.navigatorBar.CustomNavigatorBar
+        android:id="@+id/btn_no_label_barcode"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:leftImage="@mipmap/barcode"
+        app:leftText="@string/btn_NO_label_TXT2"
+        app:leftTextColor="@color/black"
+        app:midTextVisiable="false"
+        app:rightImage="@mipmap/arrow_right"
+        app:rightTextVisible="false" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light" />
+
+    <com.lckj.printsdk.navigatorBar.CustomNavigatorBar
+        android:id="@+id/btn_no_label_pic"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:leftImage="@mipmap/picture"
+        app:leftText="@string/btn_NO_label_TXT3"
+        app:leftTextColor="@color/black"
+        app:midTextVisiable="false"
+        app:rightImage="@mipmap/arrow_right"
+        app:rightTextVisible="false" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light" />
+
+    <com.lckj.printsdk.navigatorBar.CustomNavigatorBar
+        android:id="@+id/btn_no_label_temp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:leftImage="@mipmap/templet"
+        app:leftText="@string/btn_NO_label_TXT4"
+        app:leftTextColor="@color/black"
+        app:midTextVisiable="false"
+        app:rightImage="@mipmap/arrow_right"
+        app:rightTextVisible="false" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light" />
+</LinearLayout>

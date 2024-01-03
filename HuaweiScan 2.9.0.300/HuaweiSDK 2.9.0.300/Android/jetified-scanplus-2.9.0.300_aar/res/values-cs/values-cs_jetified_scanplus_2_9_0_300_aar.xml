@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Pro více světla klepněte</string>
+    <string name="scankit_light_off">Vypnout světlo</string>
+    <string name="scankit_no_code_tip">Nebyl zjištěn žádný kód.</string>
+    <string name="scankit_scan_tip">Umístěte kód do rámečku</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skenovat</string>
+    <string name="scankit_title_all" priority="translator">"Naskenujte QR kód / čárový kód"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Zarovnejte QR kód / čárový kód níže"</string>
+    <string name="scankit_title_qr" priority="translator">"Naskenujte QR kód"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Zarovnejte QR kód níže"</string>
+</resources>

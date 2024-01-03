@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Tikken voor meer licht</string>
+    <string name="scankit_light_off">Licht uitschakelen</string>
+    <string name="scankit_no_code_tip">Geen code gedetecteerd.</string>
+    <string name="scankit_scan_tip">Plaats de code binnen het frame</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scannen</string>
+    <string name="scankit_title_all" priority="translator">"De QR-code/streepjescode scannen"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"De onderstaande QR-code/streepjescode uitlijnen"</string>
+    <string name="scankit_title_qr" priority="translator">"QR-code scannen"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"De onderstaande QR-code uitlijnen"</string>
+</resources>

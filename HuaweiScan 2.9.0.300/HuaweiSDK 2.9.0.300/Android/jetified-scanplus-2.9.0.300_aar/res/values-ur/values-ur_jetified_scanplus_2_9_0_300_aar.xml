@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">اوکے</string>
+    <string name="scankit_light">مزید روشنی کے لیے چھوئیں</string>
+    <string name="scankit_light_off">روشنی کو آف کریں</string>
+    <string name="scankit_no_code_tip">کسی کوڈ کا پتہ نہیں چلا ہے۔</string>
+    <string name="scankit_scan_tip">کوڈ کو فریم کے اندر رکھیں</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">اسکین کریں</string>
+    <string name="scankit_title_all" priority="translator">"‏‏QR کوڈ/بار کوڈ اسکین کریں"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"‏‏QR کوڈ/بار کوڈ کو نیچے سیدھ میں رکھیں"</string>
+    <string name="scankit_title_qr" priority="translator">"‏‏QR کوڈ اسکین کریں"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"‏‏QR کوڈ کو نیچے سیدھ میں رکھیں"</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">حسنًا</string>
+    <string name="scankit_light">انقر هنا لتشغيل الإضاءة</string>
+    <string name="scankit_light_off">إغلاق الإضاءة</string>
+    <string name="scankit_no_code_tip">تعذر العثور على الرمز.</string>
+    <string name="scankit_scan_tip">أظهر الرمز ضمن الإطار</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">قراءة الرموز</string>
+    <string name="scankit_title_all" priority="translator">"قراءة رمز QR‏/الرمز الشريطي"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"أظهر رمز QR‏/الرمز الشريطي ضمن الإطار أدناه"</string>
+    <string name="scankit_title_qr" priority="translator">"قراءة رمز QR"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"أظهر رمز QR ضمن الإطار أدناه"</string>
+</resources>

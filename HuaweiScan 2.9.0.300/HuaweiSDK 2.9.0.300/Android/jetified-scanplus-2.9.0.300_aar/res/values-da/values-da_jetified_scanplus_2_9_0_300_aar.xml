@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Tryk for mere lys</string>
+    <string name="scankit_light_off">Slå lys fra</string>
+    <string name="scankit_no_code_tip">Der blev ikke registreret nogen kode.</string>
+    <string name="scankit_scan_tip">Placer koden inden for rammen</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scan</string>
+    <string name="scankit_title_all" priority="translator">"Scan QR-kode/stregkode"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Juster QR-koden/stregkoden herunder"</string>
+    <string name="scankit_title_qr" priority="translator">"Scan QR-kode"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Juster QR-koden herunder"</string>
+</resources>

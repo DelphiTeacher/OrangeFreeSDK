@@ -1,0 +1,16 @@
+-keep class com.huawei.hianalytics.**{*;}
+-dontwarn com.huawei.hianalytics.**
+-keep class com.huawei.updatesdk.**{*;}
+-dontwarn com.huawei.updatesdk.**
+-keep class com.huawei.hms.feature.**{*;}
+-dontwarn com.huawei.hms.feature.**
+-keep class com.huawei.hms.hmsscankit.**{*;}
+-dontwarn com.huawei.hms.hmsscankit.**
+-keep class com.huawei.hms.scankit.**{*;}
+-dontwarn com.huawei.hms.scankit.**
+-keep class com.huawei.hms.ml.**{*;}
+-dontwarn com.huawei.hms.ml.**
+-keep class com.huawei.hms.mlsdk.**{*;}
+-dontwarn com.huawei.hms.mlsdk.**
+-keep class com.huawei.hms.mlkit.**{*;}
+-dontwarn com.huawei.hms.mlkit.**

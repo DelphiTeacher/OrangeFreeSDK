@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="scankit_mask">#19000000</color>
+    <color name="scankit_viewfinder_corner">#FF1FB3E2</color>
+    <color name="scankit_viewfinder_frame">#7F1FB3E2</color>
+    <color name="scankit_viewfinder_lasers">#ffffff</color>
+    <color name="scankit_viewfinder_mask">#60000000</color>
+    <color name="scankit_viewfinder_result_point_color">#C0FFBD21</color>
+    <color name="scankit_viewfinder_text_color">#FFC0C0C0</color>
+    <color name="scankit_viewfinder_translant">#00000000</color>
+    <item name="auto_focus" type="id"/>
+    <item name="scankit_decode" type="id"/>
+    <item name="scankit_decode_failed" type="id"/>
+    <item name="scankit_decode_succeeded" type="id"/>
+    <item name="scankit_launch_product_query" type="id"/>
+    <item name="scankit_quit" type="id"/>
+    <item name="scankit_restart_preview" type="id"/>
+    <item name="scankit_return_scan_result" type="id"/>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Turn light on</string>
+    <string name="scankit_light_off">Turn off light</string>
+    <string name="scankit_no_code_tip">No code detected.</string>
+    <string name="scankit_scan_tip">Place the code within the frame</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scan</string>
+    <string name="scankit_title_all" priority="translator">Scan QR code/barcode</string>
+    <string name="scankit_title_all_level_two" priority="translator">Align the QR code/barcode below</string>
+    <string name="scankit_title_qr" priority="translator">Scan QR code</string>
+    <string name="scankit_title_qr_level_two" priority="translator">Align the QR code below</string>
+    <style name="Scankit_OnClick">
+        <item name="android:clickable">true</item>
+        <item name="android:onClick">onClick</item>
+    </style>
+    <declare-styleable name="ViewfinderView">
+        <attr format="color" name="scankit_maskColor"/>
+        <attr format="color" name="scankit_frameColor"/>
+        <attr format="color" name="scankit_cornerColor"/>
+        <attr format="color" name="scankit_laserColor"/>
+        <attr format="color" name="scankit_resultPointColor"/>
+        <attr format="string" name="scankit_labelText"/>
+        <attr format="color" name="scankit_labelTextColor"/>
+        <attr format="dimension" name="scankit_labelTextSize"/>
+        <attr format="dimension" name="scankit_labelTextPadding"/>
+        <attr format="enum" name="scankit_labelTextLocation">
+            <enum name="top" value="0"/>
+            <enum name="bottom" value="1"/>
+        </attr>
+        <attr format="boolean" name="scankit_showResultPoint"/>
+        <attr format="dimension" name="scankit_frameWidth"/>
+        <attr format="dimension" name="scankit_frameHeight"/>
+        <attr format="integer" name="scankit_gridColumn"/>
+        <attr format="dimension" name="scankit_gridHeight"/>
+        <attr format="enum" name="scankit_laserStyle">
+            <enum name="none" value="0"/>
+            <enum name="line" value="1"/>
+            <enum name="grid" value="2"/>
+        </attr>
+        <attr format="color" name="scankit_titleColor"/>
+        <attr format="dimension" name="scankit_titleSize"/>
+        <attr format="boolean" name="scankit_line_anim"/>
+    </declare-styleable>
+</resources>

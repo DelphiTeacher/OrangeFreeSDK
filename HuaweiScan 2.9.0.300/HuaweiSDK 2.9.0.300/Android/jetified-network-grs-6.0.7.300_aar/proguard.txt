@@ -1,0 +1,9 @@
+-keep class com.huawei.hms.framework.network.grs.BuildConfig {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsApi {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsBaseInfo {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsBaseInfo$* {*;}
+-keep class com.huawei.hms.framework.network.grs.IQueryUrlCallBack {   *; }
+-keep class com.huawei.hms.framework.network.grs.IQueryUrlsCallBack {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsClient {   *; }
+-keep class com.huawei.hms.framework.network.grs.local.model.CountryCodeBean {   *; }
+-keep class com.huawei.hms.framework.network.grs.GrsApp {   *; }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">እሺ</string>
+    <string name="scankit_light">ለተጨማሪ ብርሃን ይንኩ</string>
+    <string name="scankit_light_off">ብርሃን አጥፋ</string>
+    <string name="scankit_no_code_tip">ምንም ኮድ አልተገኘም።</string>
+    <string name="scankit_scan_tip">ኮዱን በፍሬሙ ውስጥ ያኑሩ</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">ስካን አድርግ</string>
+    <string name="scankit_title_all" priority="translator">"QR ኮድ/ባርኮድ ይቃኙ"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"ከታች QR ኮዱን/ባርኮዱን ያሰልፉት"</string>
+    <string name="scankit_title_qr" priority="translator">"QR ኮዱን ይቃኙ"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"ከታች QR ኮዱን ያሰልፉት"</string>
+</resources>

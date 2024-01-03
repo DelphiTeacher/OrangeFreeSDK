@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Peka för mer ljus</string>
+    <string name="scankit_light_off">Slå av ljuset</string>
+    <string name="scankit_no_code_tip">Ingen kod detekterades.</string>
+    <string name="scankit_scan_tip">Placera koden inuti ramen</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skanna</string>
+    <string name="scankit_title_all" priority="translator">"Skanna QR-koden/streckkoden"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Rikta in QR-koden/streckkoden nedan"</string>
+    <string name="scankit_title_qr" priority="translator">"Skanna QR-koden"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Rikta in QR-koden nedan"</string>
+</resources>

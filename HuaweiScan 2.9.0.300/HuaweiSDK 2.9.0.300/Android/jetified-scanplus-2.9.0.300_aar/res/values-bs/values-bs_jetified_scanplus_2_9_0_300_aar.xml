@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">U redu</string>
+    <string name="scankit_light">Dodirni za više svjetlosti</string>
+    <string name="scankit_light_off">Isključi svjetlo</string>
+    <string name="scankit_no_code_tip">Nije otkriven kôd.</string>
+    <string name="scankit_scan_tip">Postavite kôd unutar kadra</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skeniraj</string>
+    <string name="scankit_title_all" priority="translator">"Skeniranje QR kôda/linijskog kôda"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Poravnajte QR kôd/linijski kôd ispod"</string>
+    <string name="scankit_title_qr" priority="translator">"Skeniranje QR kôda"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Poravnajte QR kôd ispod"</string>
+</resources>

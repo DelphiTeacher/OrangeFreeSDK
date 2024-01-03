@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">ОК</string>
+    <string name="scankit_light">Гэрэл нэмэх бол дарна уу</string>
+    <string name="scankit_light_off">Гэрэл унтраах</string>
+    <string name="scankit_no_code_tip">Код илэрсэнгүй.</string>
+    <string name="scankit_scan_tip">Кодыг хүрээнд байрлуулна уу</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Скан</string>
+    <string name="scankit_title_all" priority="translator">"QR код/баркодыг уншуулна уу"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Доор QR код/баркодыг зэрэгцүүлнэ үү"</string>
+    <string name="scankit_title_qr" priority="translator">"QR кодыг уншуулна уу"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Доор QR кодыг зэрэгцүүлнэ үү"</string>
+</resources>

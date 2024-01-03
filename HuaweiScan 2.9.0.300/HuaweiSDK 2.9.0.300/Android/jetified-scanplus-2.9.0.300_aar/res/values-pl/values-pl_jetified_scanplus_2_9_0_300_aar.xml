@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Dotknij, aby włączyć oświetlenie</string>
+    <string name="scankit_light_off">Wyłącz oświetlenie</string>
+    <string name="scankit_no_code_tip">Nie wykryto kodu.</string>
+    <string name="scankit_scan_tip">Umieść kod w ramce</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Szukaj</string>
+    <string name="scankit_title_all" priority="translator">"Zeskanuj kod QR lub kod kreskowy"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Umieść kod QR lub kod kreskowy poniżej"</string>
+    <string name="scankit_title_qr" priority="translator">"Zeskanuj kod QR"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Umieść kod QR poniżej"</string>
+</resources>

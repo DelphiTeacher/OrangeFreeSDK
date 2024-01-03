@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">SAWA</string>
+    <string name="scankit_light">Gusa ili kupata mwangaza zaidi</string>
+    <string name="scankit_light_off">Zima mwangaza</string>
+    <string name="scankit_no_code_tip">Hakuna msimbo uliotambuliwa.</string>
+    <string name="scankit_scan_tip">Weka msimbo ndani ya fremu</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Changanua</string>
+    <string name="scankit_title_all" priority="translator">"Changanua msimbo wa QR/msimbo pau"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Panga katika mstari msimbo wa QR/msimbo pau ulio hapa chini"</string>
+    <string name="scankit_title_qr" priority="translator">"Changanua msimbo wa QR"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Panga katika mstari msimbo wa QR ulio hapa chini"</string>
+</resources>

@@ -1,0 +1,76 @@
+# Add project specific ProGuard rules here.
+# You can control the set of applied configuration files using the
+# proguardFiles setting in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# Uncomment this to preserve the line number information for
+# debugging stack traces.
+#-keepattributes SourceFile,LineNumberTable
+
+# If you keep the line number information, uncomment this to
+# hide the original source file name.
+#-renamesourcefileattribute SourceFile
+
+-keep public class com.huawei.hms.feature.dynamic.DynamicModule** {
+    public *;
+}
+-keep class com.huawei.hms.feature.dynamic.ObjectWrapper {
+    public *;
+}
+-keep class com.huawei.hms.feature.dynamic.IDynamicLoader** {
+    public *;
+}
+-keep class com.huawei.hms.feature.dynamic.IDynamicInstall** {
+    public *;
+}
+-keep class com.huawei.hms.feature.dynamic.IObjectWrapper** {
+    public *;
+}
+-keep public class com.huawei.hms.common.Preconditions {
+    public *;
+}
+-keep public class com.huawei.hms.common.util.Objects** {
+    public *;
+}
+-keep public class com.huawei.hms.common.util.Logger** {
+    public *;
+}
+-keep public class com.huawei.hms.common.util.EmuiUtil** {
+    public *;
+}
+-keep public class com.huawei.hms.common.util.ExtractNativeUtils
+-keep public class com.huawei.hms.common.util.FileUtil
+-keep public class com.huawei.hms.common.parcel.Parcel** {
+    public *;
+}
+-keep public class com.huawei.hms.feature.dynamic.RuntimeRemoteException {
+    public *;
+}
+-keep public class com.huawei.hms.feature.dynamic.LifecycleDelegate {
+    public *;
+}
+-keep public class com.huawei.hms.feature.dynamic.DeferredLifecycleHelper {
+    public *;
+    protected *;
+}
+-keep public class com.huawei.hms.feature.dynamic.OnDelegateCreatedListener {
+    public *;
+}
+-keep class com.huawei.hms.feature.dynamic.descriptors.*.**{
+    public *;
+}
+-keep public class com.huawei.hms.feature.dynamic.AssetLoadManager** {
+    public *;
+}
+-keep public class com.huawei.hms.feature.dynamic.ModuleCopy** {
+    public *;
+}

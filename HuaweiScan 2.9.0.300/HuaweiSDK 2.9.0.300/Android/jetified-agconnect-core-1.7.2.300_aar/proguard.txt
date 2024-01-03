@@ -1,0 +1,4 @@
+-keep class * implements com.huawei.agconnect.core.ServiceRegistrar
+-keepclassmembers class **{
+    public <init>(android.content.Context, com.huawei.agconnect.AGConnectInstance);
+}

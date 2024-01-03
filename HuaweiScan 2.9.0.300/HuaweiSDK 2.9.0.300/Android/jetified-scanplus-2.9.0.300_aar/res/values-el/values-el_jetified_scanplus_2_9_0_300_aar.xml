@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Αγγίξτε για περισσότερο φως</string>
+    <string name="scankit_light_off">Απενεργοποίηση φωτισμού</string>
+    <string name="scankit_no_code_tip">Δεν ανιχνεύτηκε κωδικός</string>
+    <string name="scankit_scan_tip">Τοποθετήστε τον κωδικό μέσα στο πλαίσιο</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Σάρωση</string>
+    <string name="scankit_title_all" priority="translator">"Σαρώστε τον κωδικό QR/γραμμικό κώδικα"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Ευθυγραμμίστε τον κωδικό QR/γραμμικό κώδικα στην περιοχή παρακάτω"</string>
+    <string name="scankit_title_qr" priority="translator">"Σάρωση κωδικού QR"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Ευθυγραμμίστε τον κωδικό QR στην περιοχή παρακάτω"</string>
+</resources>

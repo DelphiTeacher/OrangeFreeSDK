@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">ઑકે</string>
+    <string name="scankit_light">વધુ પ્રકાશ માટે ટચ કરો</string>
+    <string name="scankit_light_off">પ્રકાશ બંધ કરો</string>
+    <string name="scankit_no_code_tip">કોઈ કોડ શોધાયો નથી.</string>
+    <string name="scankit_scan_tip">કોડને ફ્રેમની અંદર મૂકો</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">સ્કૅન કરો</string>
+</resources>

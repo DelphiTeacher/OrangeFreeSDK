@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">Aceptar</string>
+    <string name="scankit_light">Pulse para obtener más luz</string>
+    <string name="scankit_light_off">Apagar luz</string>
+    <string name="scankit_no_code_tip">No se ha detectado ningún código.</string>
+    <string name="scankit_scan_tip">Coloque el código dentro del recuadro</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Escanear</string>
+    <string name="scankit_title_all" priority="translator">"Escanear código QR/código de barras"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Alinea el código QR/código de barras a continuación"</string>
+    <string name="scankit_title_qr" priority="translator">"Escanear el código QR"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Alinea el código QR a continuación"</string>
+</resources>

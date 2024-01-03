@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Нажмите, чтобы усилить подсветку</string>
+    <string name="scankit_light_off">Выключить подсветку</string>
+    <string name="scankit_no_code_tip">Код не определен.</string>
+    <string name="scankit_scan_tip">Разместите код в рамке</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Сканер</string>
+    <string name="scankit_title_all" priority="translator">"Отсканируйте QR-код или штрихкод"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Разместите QR-код или штрихкод в нижней области"</string>
+    <string name="scankit_title_qr" priority="translator">"Отсканируйте QR-код"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Разместите QR-код в нижней области"</string>
+</resources>

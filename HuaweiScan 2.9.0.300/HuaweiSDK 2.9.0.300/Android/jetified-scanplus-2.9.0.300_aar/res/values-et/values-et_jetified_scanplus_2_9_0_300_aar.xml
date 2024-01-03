@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Puudutage valguse sisselülitamiseks</string>
+    <string name="scankit_light_off">Lülita valgus välja</string>
+    <string name="scankit_no_code_tip">Koodi ei tuvastatud.</string>
+    <string name="scankit_scan_tip">Paigutage kood raami</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skanni</string>
+    <string name="scankit_title_all" priority="translator">"QR-koodi/vöötkoodi skannimine"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Paigutage allolev QR-kood/vöötkood keskele"</string>
+    <string name="scankit_title_qr" priority="translator">"QR-koodi skannimine"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Paigutage allolev QR-kood keskele"</string>
+</resources>

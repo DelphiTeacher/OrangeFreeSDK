@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">ਠੀਕ ਹੈ</string>
+    <string name="scankit_light">ਹੋਰ ਰੋਸ਼ਨੀ ਲਈ ਟੱਚ ਕਰੋ</string>
+    <string name="scankit_light_off">ਰੋਸ਼ਨੀ ਬੰਦ ਕਰੋ</string>
+    <string name="scankit_no_code_tip">ਕੋਈ ਕੋਡ ਨਹੀਂ ਲੱਭਿਆ।</string>
+    <string name="scankit_scan_tip">ਕੋਡ ਨੂੰ ਫ੍ਰੇਮ ਦੇ ਅੰਦਰ ਰੱਖੋ</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">ਸਕੈਨ ਕਰੋ</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">Gerai</string>
+    <string name="scankit_light">Palieskite, kad būtų daugiau šviesos</string>
+    <string name="scankit_light_off">Išjungti šviesą</string>
+    <string name="scankit_no_code_tip">Kodo neaptikta.</string>
+    <string name="scankit_scan_tip">Sukomponuokite kodą rėmelyje</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Nuskaityti</string>
+    <string name="scankit_title_all" priority="translator">"Nuskaityti QR kodą (brūkšninį kodą)"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Sulygiuoti QR kodą (brūkšninį kodą) toliau"</string>
+    <string name="scankit_title_qr" priority="translator">"Nuskaityti QR kodą"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Sulygiuoti QR kodą toliau"</string>
+</resources>

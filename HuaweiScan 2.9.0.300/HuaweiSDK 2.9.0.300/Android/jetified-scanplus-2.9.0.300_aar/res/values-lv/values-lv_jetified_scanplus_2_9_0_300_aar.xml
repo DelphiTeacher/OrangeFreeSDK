@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">Labi</string>
+    <string name="scankit_light">Pieskarieties, lai uzlabotu apgaismojumu</string>
+    <string name="scankit_light_off">Izslēgt apgaismojumu</string>
+    <string name="scankit_no_code_tip">Kods nav noteikts.</string>
+    <string name="scankit_scan_tip">Novietojiet kodu rāmītī</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skenēt</string>
+    <string name="scankit_title_all" priority="translator">"QR koda/svītrkoda skenēšana"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Tālāk izvietojiet QR kodu/svītrkodu"</string>
+    <string name="scankit_title_qr" priority="translator">"QR koda skenēšana"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Tālāk izvietojiet QR kodu"</string>
+</resources>

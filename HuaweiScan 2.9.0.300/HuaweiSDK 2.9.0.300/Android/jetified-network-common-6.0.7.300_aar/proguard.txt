@@ -1,0 +1,31 @@
+# 业务引用打点SDK时，要保留这几个类,用于动态加载打点
+-keep class com.huawei.hianalytics.process.HiAnalyticsInstance{
+    public <methods>;
+}
+-keep class com.huawei.hianalytics.process.HiAnalyticsManager{
+    public <methods>;
+}
+-keep class com.huawei.hianalytics.v2.HiAnalytics{
+    public <methods>;
+}
+# 解决HBase打点的能力问题,避免业务混淆后，NetworkKit无法打点的问题
+-keep class com.huawei.hms.utils.HMSBIInitializer{
+    public static com.huawei.hms.utils.HMSBIInitializer getInstance(android.content.Context);
+    public void initBI();
+}
+-keep class com.huawei.hms.support.hianalytics.HiAnalyticsUtils{
+    public static com.huawei.hms.support.hianalytics.HiAnalyticsUtils getInstance();
+    public void onNewEvent(android.content.Context, java.lang.String, java.util.Map);
+}
+-keep public enum com.huawei.hms.network.SceneType {
+    *;
+}
+# 保留所有的public protected的api实现类，httpclient目录下的
+-keep class com.huawei.secure.android.common.util.SafeBase64{
+ public *;
+ protected *;
+ }
+-keep class com.huawei.secure.android.common.util.SafeString{
+ public *;
+ protected *;
+}

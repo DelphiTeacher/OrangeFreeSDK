@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">Ados</string>
+    <string name="scankit_light">Ukitu argi gehiago izateko</string>
+    <string name="scankit_light_off">Itzali argia</string>
+    <string name="scankit_no_code_tip">Ez da detektatu koderik.</string>
+    <string name="scankit_scan_tip">Jarri kodea markoan</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Eskaneatu</string>
+    <string name="scankit_title_all" priority="translator">"Eskaneatu QR kodea/barra-kodea"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Lerrokatu beheko QR kodea/barra-kodea"</string>
+    <string name="scankit_title_qr" priority="translator">"Eskaneatu QR kodea"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Lerrokatu beheko QR kodea"</string>
+</resources>

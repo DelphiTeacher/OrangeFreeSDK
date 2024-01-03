@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Kosketa lisävaloa varten</string>
+    <string name="scankit_light_off">Sammuta valo</string>
+    <string name="scankit_no_code_tip">Koodia ei havaittu.</string>
+    <string name="scankit_scan_tip">Aseta koodi kehyksen sisään</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skannaus</string>
+    <string name="scankit_title_all" priority="translator">"Skannaa QR-koodi/viivakoodi"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"Kohdista QR-koodi/viivakoodi alla"</string>
+    <string name="scankit_title_qr" priority="translator">"Skannaa QR-koodi"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"Kohdista QR-koodi alla"</string>
+</resources>

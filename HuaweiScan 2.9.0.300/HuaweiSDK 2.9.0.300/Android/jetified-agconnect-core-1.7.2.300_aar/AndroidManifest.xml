@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huawei.agconnect.core"
+    android:versionName="1.7.2.300" >
+
+    <uses-sdk
+        android:minSdkVersion="18"
+        android:targetSdkVersion="30" />
+
+    <application>
+        <provider
+            android:name="com.huawei.agconnect.core.provider.AGConnectInitializeProvider"
+            android:authorities="${applicationId}.AGCInitializeProvider"
+            android:exported="false" />
+
+        <service
+            android:name="com.huawei.agconnect.core.ServiceDiscovery"
+            android:exported="false" />
+    </application>
+
+</manifest>

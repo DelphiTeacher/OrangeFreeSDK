@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">ശരി</string>
+    <string name="scankit_light">കൂടുതൽ ലൈറ്റിനായി സ്‌പർശിക്കുക</string>
+    <string name="scankit_light_off">ലൈറ്റ് ഓഫ് ചെയ്യുക</string>
+    <string name="scankit_no_code_tip">കോഡ് ഒന്നും കണ്ടെത്തിയില്ല.</string>
+    <string name="scankit_scan_tip">കോഡ് ഫ്രെയിമിനകത്ത് കൊണ്ടുവരുക</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">സ്‌കാൻ ചെയ്യുക</string>
+</resources>

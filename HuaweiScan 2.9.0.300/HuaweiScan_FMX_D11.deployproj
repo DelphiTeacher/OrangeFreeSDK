@@ -4,26 +4,25 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'">b559c25e02ef</DeviceId>
-        <DeviceId Condition="'$(Platform)'=='Android64'">b559c25e02ef</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android'"/>
+        <DeviceId Condition="'$(Platform)'=='Android64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
     </PropertyGroup>
     <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
-    <ItemGroup Condition="'$(Platform)'=='Win32'"/>
     <ItemGroup Condition="'$(Platform)'=='Android64'">
-        <DeployFile Include="Android64\D11\Release\colors.xml" Condition="'$(Config)'=='Release'">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values\</RemoteDir>
-            <RemoteName>colors.xml</RemoteName>
-            <DeployClass>Android_Colors</DeployClass>
-            <Operation>1</Operation>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-be\values-be_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-be\</RemoteDir>
+            <RemoteName>values-be_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-be\values-be_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-be\</RemoteDir>
-            <RemoteName>values-be_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ml\values-ml_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -201,18 +200,18 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka-rGE\values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-ka-rGE\</RemoteDir>
-            <RemoteName>values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_layout.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\layout\</RemoteDir>
+            <RemoteName>scankit_layout.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_layout.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\layout\</RemoteDir>
-            <RemoteName>scankit_layout.xml</RemoteName>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka-rGE\values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-ka-rGE\</RemoteDir>
+            <RemoteName>values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -246,18 +245,18 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-te\values-te_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-te\</RemoteDir>
-            <RemoteName>values-te_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sp.bks">
+            <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
+            <RemoteName>grs_sp.bks</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sp.bks">
-            <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
-            <RemoteName>grs_sp.bks</RemoteName>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-te\values-te_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-te\</RemoteDir>
+            <RemoteName>values-te_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -958,20 +957,20 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-tr\values-tr_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-tr\</RemoteDir>
-            <RemoteName>values-tr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
             <RemoteDir>HuaweiScan_FMX_D11\res\drawable-xxxhdpi\</RemoteDir>
             <RemoteName>ic_notification.png</RemoteName>
             <DeployClass>Android_NotificationIcon96</DeployClass>
             <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-tr\values-tr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -1318,15 +1317,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
-            <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
-            <RemoteName>agconnect-services.json</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-eu-rES\values-eu-rES_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-eu-rES\</RemoteDir>
             <RemoteName>values-eu-rES_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
@@ -1357,6 +1347,15 @@
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ta\values-ta_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-ta\</RemoteDir>
             <RemoteName>values-ta_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
+            <RemoteName>agconnect-services.json</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1507,15 +1506,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ml\values-ml_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-ml\</RemoteDir>
-            <RemoteName>values-ml_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-am\values-am_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-am\</RemoteDir>
             <RemoteName>values-am_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
@@ -1525,11 +1515,30 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="Android64\D11\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
     </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSXARM64'"/>
     <ItemGroup Condition="'$(Platform)'=='Android'">
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-be\values-be_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-be\</RemoteDir>
             <RemoteName>values-be_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ml\values-ml_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1698,15 +1707,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka-rGE\values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-ka-rGE\</RemoteDir>
-            <RemoteName>values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_layout.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\layout\</RemoteDir>
             <RemoteName>scankit_layout.xml</RemoteName>
@@ -1716,9 +1716,9 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
-            <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
-            <RemoteName>agconnect-services.json</RemoteName>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka-rGE\values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-ka-rGE\</RemoteDir>
+            <RemoteName>values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1743,15 +1743,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-te\values-te_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-te\</RemoteDir>
-            <RemoteName>values-te_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sp.bks">
             <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
             <RemoteName>grs_sp.bks</RemoteName>
@@ -1761,9 +1752,27 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-te\values-te_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-te\</RemoteDir>
+            <RemoteName>values-te_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-security-ssl-1.2.0.300_aar\assets\hmsincas.bks">
             <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
             <RemoteName>hmsincas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D11\assets\</RemoteDir>
+            <RemoteName>agconnect-services.json</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
             <LocalCommand/>
@@ -1937,15 +1946,6 @@
             <RemoteName>scankit_ic_photo.webp</RemoteName>
             <DeployClass>File</DeployClass>
             <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
-        <DeployFile Include="$(NDKBasePath)\prebuilt\android-arm\gdbserver\gdbserver" Condition="'$(Config)'=='Release'">
-            <RemoteDir>HuaweiScan_FMX_D11\library\lib\armeabi-v7a\</RemoteDir>
-            <RemoteName>gdbserver</RemoteName>
-            <DeployClass>AndroidGDBServer</DeployClass>
-            <Operation>1</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
@@ -2752,6 +2752,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D11\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ko\values-ko_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-ko\</RemoteDir>
             <RemoteName>values-ko_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
@@ -2968,6 +2977,15 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\release\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D11\library\lib\mips\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-km-rKH\values-km-rKH_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-km-rKH\</RemoteDir>
             <RemoteName>values-km-rKH_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
@@ -3013,15 +3031,6 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ml\values-ml_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-ml\</RemoteDir>
-            <RemoteName>values-ml_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-am\values-am_jetified_scanplus_2_9_0_300_aar.xml">
             <RemoteDir>HuaweiScan_FMX_D11\res\values-am\</RemoteDir>
             <RemoteName>values-am_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
@@ -3032,7 +3041,7 @@
             <Overwrite>True</Overwrite>
         </DeployFile>
     </ItemGroup>
-    <ItemGroup Condition="'$(Platform)'=='OSXARM64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win32'"/>
     <ItemGroup Condition="'$(Platform)'=='Win64'"/>
     <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
     <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>

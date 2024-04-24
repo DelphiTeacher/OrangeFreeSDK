@@ -493,7 +493,8 @@ end;
 ////      //        Log.e("media","s:"+media.size);
 ////      //        imageView.setImageURI(Uri.parse(media.path));
 ////      //    }
-////      //}////      select := AMessageResultNotification.Value.getParcelableArrayListExtra(TJPickerConfig.JavaClass.EXTRA_RESULT);
+////      //}
+////      select := AMessageResultNotification.Value.getParcelableArrayListExtra(TJPickerConfig.JavaClass.EXTRA_RESULT);
 ////      //ArrayList<Media> select;
 ////      FMX.Types.Log.d('OrangeUI TForm17.HandleActivityMessage select count is '+IntToStr(select.size));
 ////      for I := 0 to select.size-1 do

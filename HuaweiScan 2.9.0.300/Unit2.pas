@@ -7,8 +7,9 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
 
-  DateUtils,
+  DateUtils,Math,
   System.Messaging,
+  FMX.MultiResBitmap,
 
   {$IFDEF ANDROID}
   FMX.Platform.Android,
@@ -36,18 +37,27 @@ uses
 
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.Controls.Presentation, FMX.StdCtrls, FMX.ScrollBox, FMX.Memo,
-  FMX.Memo.Types;
+  FMX.Memo.Types, FMX.Objects;
 
 type
   TForm2 = class(TForm)
     Button1: TButton;
     Memo1: TMemo;
     Button2: TButton;
+    Timer1: TTimer;
+    PaintBox1: TPaintBox;
+    Image1: TImage;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure PaintBox1Paint(Sender: TObject; Canvas: TCanvas);
   private
+    FLeft:Double;
+    FBufferBitmap:TBitmap;
+    FCanvas:TCanvas;
+
     FStartTime:TDateTime;
 
     FMessageSubscriptionID: integer;
@@ -95,6 +105,7 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   FMX.Types.Log.d('OrangeUI TForm2.FormCreate Begin');
+//  FCanvas := TDirect2DCanvas.Create(Handle, ClientWidth, ClientHeight);
 
 end;
 
@@ -170,6 +181,51 @@ begin
   {$ENDIF}
 
 
+end;
+
+procedure TForm2.PaintBox1Paint(Sender: TObject; Canvas: TCanvas);
+//var
+//  ABitmap:TFixedBitmapItem;
+begin
+//  if FBufferBitmap=nil then
+//  begin
+//    FBufferBitmap:=TBitmap.Create(Ceil(PaintBox1.Width),Ceil(PaintBox1.Height));
+//  end;
+//
+//
+//  //绘制
+//  ABitmap:=Self.Image1.MultiResBitmap.Items[0];
+//  FBufferBitmap.Canvas.BeginScene();
+//  FBufferBitmap.Clear(TAlphaColorRec.White);
+//  FBufferBitmap.Canvas.DrawBitmap(ABitmap.Bitmap,RectF(0,0,ABitmap.Width,ABitmap.Height),RectF(FLeft,0,FLeft+100,100),1,True);
+//  FBufferBitmap.Canvas.EndScene;
+//
+//  Canvas.DrawBitmap(FBufferBitmap,RectF(0,0,FBufferBitmap.Width,FBufferBitmap.Height),RectF(0,0,FBufferBitmap.Width,FBufferBitmap.Height),1,True);
+
+end;
+
+procedure TForm2.Timer1Timer(Sender: TObject);
+//var
+//  ABitmap:TFixedBitmapItem;
+begin
+  //
+//  FLeft:=FLeft+1;
+//  //绘制
+//  ABitmap:=Self.Image1.MultiResBitmap.Items[0];
+//  FBufferBitmap.Canvas.BeginScene();
+//  FBufferBitmap.Clear(TAlphaColorRec.White);
+//  FBufferBitmap.Canvas.DrawBitmap(ABitmap.Bitmap,RectF(0,0,ABitmap.Width,ABitmap.Height),RectF(FLeft,0,FLeft+100,100),1,True);
+//  FBufferBitmap.Canvas.EndScene;
+//
+//
+//
+//  PaintBox1.Canvas.BeginScene();
+//  PaintBox1.Canvas.DrawBitmap(FBufferBitmap,RectF(0,0,FBufferBitmap.Width,FBufferBitmap.Height),
+//  RectF(PaintBox1.Position.X,
+//        PaintBox1.Position.Y,
+//        PaintBox1.Position.X+FBufferBitmap.Width,
+//        PaintBox1.Position.Y+FBufferBitmap.Height),1,True);
+//  PaintBox1.Canvas.EndScene;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);

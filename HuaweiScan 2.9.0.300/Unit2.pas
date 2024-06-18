@@ -93,13 +93,12 @@ var
 begin
   {$IFDEF ANDROID}
   FStartTime:=Now;
-
-
+  //跳转到华为扫码页面
   AIntent:=TJIntent.JavaClass.init;
-  AIntent.setClassName(TAndroidHelper.Context,StringToJString('com.huawei.hms.hmsscankit.ScanKitActivity'));
+  AIntent.setClassName(TAndroidHelper.Context,
+    StringToJString('com.huawei.hms.hmsscankit.ScanKitActivity'));
   TAndroidHelper.Activity.startActivityForResult(AIntent,666);
   {$ENDIF}
-
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);

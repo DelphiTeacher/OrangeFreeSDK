@@ -1,12 +1,12 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{C3B7F035-C4C1-4FC2-B666-E143D23BD716}</ProjectGuid>
+        <ProjectGuid>{90A75004-5A51-4E77-9675-2F43EC9D208B}</ProjectGuid>
         <ProjectVersion>19.5</ProjectVersion>
         <FrameworkType>FMX</FrameworkType>
         <MainSource>HuaweiScan_FMX_D11.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Config Condition="'$(Config)'==''">Release</Config>
+        <Platform Condition="'$(Platform)'==''">Android</Platform>
         <TargetedPlatforms>37907</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>

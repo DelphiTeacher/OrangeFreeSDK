@@ -1,0 +1,3050 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Condition="Exists('$(BDS)\bin\CodeGear.Deployment.targets')" Project="$(BDS)\bin\CodeGear.Deployment.targets"/>
+    <ProjectExtensions>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <PropertyGroup>
+        <DeviceId Condition="'$(Platform)'=='Android'"/>
+        <DeviceId Condition="'$(Platform)'=='Android64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
+        <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSX64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Android64'">
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ml\values-ml_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mk\values-mk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mk\</RemoteDir>
+            <RemoteName>values-mk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-az-rAZ\values-az-rAZ_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-az-rAZ\</RemoteDir>
+            <RemoteName>values-az-rAZ_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-et\values-et_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-et\</RemoteDir>
+            <RemoteName>values-et_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\grs_sdk_global_route_config_mlkit.json">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>grs_sdk_global_route_config_mlkit.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-my-rZG\values-my-rZG_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-my-rZG\</RemoteDir>
+            <RemoteName>values-my-rZG_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sl\values-sl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sl\</RemoteDir>
+            <RemoteName>values-sl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\jni\arm64-v8a\libscannative.so">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\arm64-v8a\</RemoteDir>
+            <RemoteName>libscannative.so</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-mdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\colors-night-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-night-v21\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_ColorsDark</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-gl-rES\values-gl-rES_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-gl-rES\</RemoteDir>
+            <RemoteName>values-gl-rES_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lv\values-lv_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lv\</RemoteDir>
+            <RemoteName>values-lv_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-si-rLK\values-si-rLK_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-si-rLK\</RemoteDir>
+            <RemoteName>values-si-rLK_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\angle.ms">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>angle.ms</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\mips\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_layer_off.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_layer_off.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ar\values-ar_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ar\</RemoteDir>
+            <RemoteName>values-ar_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-en-rGB\values-en-rGB_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-en-rGB\</RemoteDir>
+            <RemoteName>values-en-rGB_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka-rGE\values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ka-rGE\</RemoteDir>
+            <RemoteName>values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_layout.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lo-rLA\values-lo-rLA_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lo-rLA\</RemoteDir>
+            <RemoteName>values-lo-rLA_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sk\values-sk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sk\</RemoteDir>
+            <RemoteName>values-sk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi-v7a\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiv7aFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-te\values-te_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-te\</RemoteDir>
+            <RemoteName>values-te_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sp.bks">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>grs_sp.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-security-ssl-1.2.0.300_aar\assets\hmsincas.bks">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>hmsincas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ms\values-ms_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ms\</RemoteDir>
+            <RemoteName>values-ms_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values\values_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>values_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\detect.ms">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>detect.ms</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-hdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xhdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxhdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxxhdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-si\values-si_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-si\</RemoteDir>
+            <RemoteName>values-si_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sv\values-sv_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sv\</RemoteDir>
+            <RemoteName>values-sv_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_light_off.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_light_off.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_on.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_on.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\libHuaweiScan_FMX_D12.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\arm64-v8a\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D12.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+jv+Latn\values-b+jv+Latn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-b+jv+Latn\</RemoteDir>
+            <RemoteName>values-b+jv+Latn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-fr\values-fr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-fr\</RemoteDir>
+            <RemoteName>values-fr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-en\values-en_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-en\</RemoteDir>
+            <RemoteName>values-en_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ur\values-ur_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ur\</RemoteDir>
+            <RemoteName>values-ur_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_photo.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_photo.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\jni\armeabi-v7a\libscannative.so">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libscannative.so</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\mipmap-xxxhdpi-v4\scankit_ic_photo.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\mipmap-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_photo.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-as\values-as_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-as\</RemoteDir>
+            <RemoteName>values-as_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-da\values-da_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-da\</RemoteDir>
+            <RemoteName>values-da_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-el\values-el_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-el\</RemoteDir>
+            <RemoteName>values-el_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-es\values-es_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-es\</RemoteDir>
+            <RemoteName>values-es_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mai\values-mai_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mai\</RemoteDir>
+            <RemoteName>values-mai_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-uz\values-uz_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-uz\</RemoteDir>
+            <RemoteName>values-uz_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-security-ssl-1.2.0.300_aar\assets\hmsrootcas.bks">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>hmsrootcas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_appbar_pressed_shape.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_appbar_pressed_shape.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-hu\values-hu_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-hu\</RemoteDir>
+            <RemoteName>values-hu_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ja\values-ja_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ja\</RemoteDir>
+            <RemoteName>values-ja_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-my\values-my_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-my\</RemoteDir>
+            <RemoteName>values-my_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-hdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xhdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxhdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxxhdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-ldpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_scan_light.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_scan_light.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pt\values-pt_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pt\</RemoteDir>
+            <RemoteName>values-pt_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ro\values-ro_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ro\</RemoteDir>
+            <RemoteName>values-ro_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bs\values-bs_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bs\</RemoteDir>
+            <RemoteName>values-bs_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-eu\values-eu_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-eu\</RemoteDir>
+            <RemoteName>values-eu_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-hi\values-hi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-hi\</RemoteDir>
+            <RemoteName>values-hi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pa\values-pa_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pa\</RemoteDir>
+            <RemoteName>values-pa_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh-rTW\values-zh-rTW_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh-rTW\</RemoteDir>
+            <RemoteName>values-zh-rTW_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-anydpi-v24\scankit_ic_light_on.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_title_landscape.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_title_landscape.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-km\values-km_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-km\</RemoteDir>
+            <RemoteName>values-km_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-vi\values-vi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-vi\</RemoteDir>
+            <RemoteName>values-vi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sdk_server_config.json">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>grs_sdk_server_config.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-az\values-az_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-az\</RemoteDir>
+            <RemoteName>values-az_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-kn\values-kn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-kn\</RemoteDir>
+            <RemoteName>values-kn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lo\values-lo_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lo\</RemoteDir>
+            <RemoteName>values-lo_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-my-rMM\values-my-rMM_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-my-rMM\</RemoteDir>
+            <RemoteName>values-my-rMM_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh-rCN\values-zh-rCN_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh-rCN\</RemoteDir>
+            <RemoteName>values-zh-rCN_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_appbar_pressed_selected.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_appbar_pressed_selected.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bg\values-bg_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bg\</RemoteDir>
+            <RemoteName>values-bg_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-gu\values-gu_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-gu\</RemoteDir>
+            <RemoteName>values-gu_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-it\values-it_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-it\</RemoteDir>
+            <RemoteName>values-it_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-uk\values-uk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-uk\</RemoteDir>
+            <RemoteName>values-uk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh\values-zh_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh\</RemoteDir>
+            <RemoteName>values-zh_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-iw\values-iw_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-iw\</RemoteDir>
+            <RemoteName>values-iw_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-kk-rKZ\values-kk-rKZ_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-kk-rKZ\</RemoteDir>
+            <RemoteName>values-kk-rKZ_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lt\values-lt_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lt\</RemoteDir>
+            <RemoteName>values-lt_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+sr+Latn\values-b+sr+Latn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-b+sr+Latn\</RemoteDir>
+            <RemoteName>values-b+sr+Latn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\HuaweiScan_FMX_D12.classes" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\classes\</RemoteDir>
+            <RemoteName>HuaweiScan_FMX_D12.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-de\values-de_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-de\</RemoteDir>
+            <RemoteName>values-de_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-es-rUS\values-es-rUS_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-es-rUS\</RemoteDir>
+            <RemoteName>values-es-rUS_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-nl\values-nl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-nl\</RemoteDir>
+            <RemoteName>values-nl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-fi\values-fi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-fi\</RemoteDir>
+            <RemoteName>values-fi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-hr\values-hr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-hr\</RemoteDir>
+            <RemoteName>values-hr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-tr\values-tr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-fa\values-fa_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-fa\</RemoteDir>
+            <RemoteName>values-fa_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-gl\values-gl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-gl\</RemoteDir>
+            <RemoteName>values-gl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bo-rCN\values-bo-rCN_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bo-rCN\</RemoteDir>
+            <RemoteName>values-bo-rCN_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flash_selected_selector2.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flash_selected_selector2.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-kk\values-kk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-kk\</RemoteDir>
+            <RemoteName>values-kk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_back.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mr\values-mr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mr\</RemoteDir>
+            <RemoteName>values-mr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ru\values-ru_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ru\</RemoteDir>
+            <RemoteName>values-ru_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_zxl_capture_new.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture_new.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_photo.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_photo.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_dialog_bg.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_dialog_bg.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_zxl_capture_customed.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture_customed.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh-rHK\values-zh-rHK_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh-rHK\</RemoteDir>
+            <RemoteName>values-zh-rHK_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-mdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_zxl_capture.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sw\values-sw_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sw\</RemoteDir>
+            <RemoteName>values-sw_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-th\values-th_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-th\</RemoteDir>
+            <RemoteName>values-th_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-tl\values-tl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-tl\</RemoteDir>
+            <RemoteName>values-tl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ug\values-ug_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ug\</RemoteDir>
+            <RemoteName>values-ug_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+my+Qaag\values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-b+my+Qaag\</RemoteDir>
+            <RemoteName>values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ko\values-ko_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ko\</RemoteDir>
+            <RemoteName>values-ko_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-anydpi-v24\scankit_hivision_light.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>scankit_hivision_light.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-nb\values-nb_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-nb\</RemoteDir>
+            <RemoteName>values-nb_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\mipmap-xxxhdpi-v4\scankit_back_mirroring.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\mipmap-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_back_mirroring.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-in\values-in_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-in\</RemoteDir>
+            <RemoteName>values-in_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-uz-rUZ\values-uz-rUZ_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-uz-rUZ\</RemoteDir>
+            <RemoteName>values-uz-rUZ_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_back_mirroring.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_back_mirroring.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_scan_tail.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_scan_tail.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ne\values-ne_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ne\</RemoteDir>
+            <RemoteName>values-ne_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bn\values-bn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bn\</RemoteDir>
+            <RemoteName>values-bn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-eu-rES\values-eu-rES_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-eu-rES\</RemoteDir>
+            <RemoteName>values-eu-rES_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-ldpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_dialog_layout.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_dialog_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-or\values-or_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-or\</RemoteDir>
+            <RemoteName>values-or_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pl\values-pl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pl\</RemoteDir>
+            <RemoteName>values-pl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ta\values-ta_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ta\</RemoteDir>
+            <RemoteName>values-ta_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>agconnect-services.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_layer_on.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_layer_on.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka\values-ka_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ka\</RemoteDir>
+            <RemoteName>values-ka_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mn\values-mn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mn\</RemoteDir>
+            <RemoteName>values-mn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_off.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_off.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pt-rPT\values-pt-rPT_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pt-rPT\</RemoteDir>
+            <RemoteName>values-pt-rPT_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flash_selector.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flash_selector.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_back.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_back.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-km-rKH\values-km-rKH_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-km-rKH\</RemoteDir>
+            <RemoteName>values-km-rKH_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\corner.ms">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>corner.ms</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mi\values-mi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mi\</RemoteDir>
+            <RemoteName>values-mi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android64\D12\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-am\values-am_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-am\</RemoteDir>
+            <RemoteName>values-am_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-be\values-be_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-be\</RemoteDir>
+            <RemoteName>values-be_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ca\values-ca_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ca\</RemoteDir>
+            <RemoteName>values-ca_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-cs\values-cs_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-cs\</RemoteDir>
+            <RemoteName>values-cs_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='OSXARM64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Android'">
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ml\values-ml_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ml\</RemoteDir>
+            <RemoteName>values-ml_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\colors-night-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-night-v21\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_ColorsDark</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mk\values-mk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mk\</RemoteDir>
+            <RemoteName>values-mk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-az-rAZ\values-az-rAZ_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-az-rAZ\</RemoteDir>
+            <RemoteName>values-az-rAZ_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\splash_image_def.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>splash_image_def.xml</RemoteName>
+            <DeployClass>AndroidSplashImageDef</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-et\values-et_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-et\</RemoteDir>
+            <RemoteName>values-et_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\grs_sdk_global_route_config_mlkit.json">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>grs_sdk_global_route_config_mlkit.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-my-rZG\values-my-rZG_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-my-rZG\</RemoteDir>
+            <RemoteName>values-my-rZG_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sl\values-sl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sl\</RemoteDir>
+            <RemoteName>values-sl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-mdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-gl-rES\values-gl-rES_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-gl-rES\</RemoteDir>
+            <RemoteName>values-gl-rES_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lv\values-lv_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lv\</RemoteDir>
+            <RemoteName>values-lv_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-si-rLK\values-si-rLK_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-si-rLK\</RemoteDir>
+            <RemoteName>values-si-rLK_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\angle.ms">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>angle.ms</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_layer_off.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_layer_off.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ar\values-ar_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ar\</RemoteDir>
+            <RemoteName>values-ar_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-en-rGB\values-en-rGB_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-en-rGB\</RemoteDir>
+            <RemoteName>values-en-rGB_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka-rGE\values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ka-rGE\</RemoteDir>
+            <RemoteName>values-ka-rGE_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_layout.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lo-rLA\values-lo-rLA_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lo-rLA\</RemoteDir>
+            <RemoteName>values-lo-rLA_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sk\values-sk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sk\</RemoteDir>
+            <RemoteName>values-sk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-te\values-te_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-te\</RemoteDir>
+            <RemoteName>values-te_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sp.bks">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>grs_sp.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-security-ssl-1.2.0.300_aar\assets\hmsincas.bks">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>hmsincas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="agconnect-services.json" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>agconnect-services.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ms\values-ms_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ms\</RemoteDir>
+            <RemoteName>values-ms_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values\values_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>values_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\detect.ms">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>detect.ms</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\styles-v21.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-v21\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStylesV21</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-hdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-ldpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xhdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxhdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxxhdpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-si\values-si_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-si\</RemoteDir>
+            <RemoteName>values-si_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sv\values-sv_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sv\</RemoteDir>
+            <RemoteName>values-sv_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_light_off.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_light_off.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_on.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_on.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+jv+Latn\values-b+jv+Latn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-b+jv+Latn\</RemoteDir>
+            <RemoteName>values-b+jv+Latn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-fr\values-fr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-fr\</RemoteDir>
+            <RemoteName>values-fr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-en\values-en_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-en\</RemoteDir>
+            <RemoteName>values-en_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ur\values-ur_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ur\</RemoteDir>
+            <RemoteName>values-ur_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_photo.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_photo.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\jni\armeabi-v7a\libscannative.so">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libscannative.so</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\mipmap-xxxhdpi-v4\scankit_ic_photo.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\mipmap-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_photo.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-normal\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage470</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-as\values-as_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-as\</RemoteDir>
+            <RemoteName>values-as_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_72x72.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon72</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-da\values-da_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-da\</RemoteDir>
+            <RemoteName>values-da_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-el\values-el_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-el\</RemoteDir>
+            <RemoteName>values-el_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon144</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_192x192.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon192</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-es\values-es_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-es\</RemoteDir>
+            <RemoteName>values-es_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mai\values-mai_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mai\</RemoteDir>
+            <RemoteName>values-mai_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-uz\values-uz_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-uz\</RemoteDir>
+            <RemoteName>values-uz_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-security-ssl-1.2.0.300_aar\assets\hmsrootcas.bks">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>hmsrootcas.bks</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_appbar_pressed_shape.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_appbar_pressed_shape.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-hu\values-hu_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-hu\</RemoteDir>
+            <RemoteName>values-hu_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ja\values-ja_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ja\</RemoteDir>
+            <RemoteName>values-ja_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-my\values-my_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-my\</RemoteDir>
+            <RemoteName>values-my_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-hdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xhdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxhdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-xxxhdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-ldpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_scan_light.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_scan_light.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pt\values-pt_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pt\</RemoteDir>
+            <RemoteName>values-pt_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ro\values-ro_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ro\</RemoteDir>
+            <RemoteName>values-ro_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bs\values-bs_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bs\</RemoteDir>
+            <RemoteName>values-bs_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-eu\values-eu_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-eu\</RemoteDir>
+            <RemoteName>values-eu_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-hi\values-hi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-hi\</RemoteDir>
+            <RemoteName>values-hi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pa\values-pa_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pa\</RemoteDir>
+            <RemoteName>values-pa_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh-rTW\values-zh-rTW_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh-rTW\</RemoteDir>
+            <RemoteName>values-zh-rTW_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-anydpi-v24\scankit_ic_light_on.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\libHuaweiScan_FMX_D12.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\armeabi-v7a\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D12.so</RemoteName>
+            <DeployClass>ProjectOutput</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+            <Required>True</Required>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_title_landscape.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_title_landscape.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-km\values-km_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-km\</RemoteDir>
+            <RemoteName>values-km_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-vi\values-vi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-vi\</RemoteDir>
+            <RemoteName>values-vi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_24x24.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon24</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\mips\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\mips\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D12.so</RemoteName>
+            <DeployClass>AndroidLibnativeMipsFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-small\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage426</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-network-grs-6.0.7.300_aar\assets\grs_sdk_server_config.json">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>grs_sdk_server_config.json</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-az\values-az_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-az\</RemoteDir>
+            <RemoteName>values-az_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-kn\values-kn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-kn\</RemoteDir>
+            <RemoteName>values-kn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lo\values-lo_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lo\</RemoteDir>
+            <RemoteName>values-lo_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-my-rMM\values-my-rMM_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-my-rMM\</RemoteDir>
+            <RemoteName>values-my-rMM_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh-rCN\values-zh-rCN_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh-rCN\</RemoteDir>
+            <RemoteName>values-zh-rCN_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_appbar_pressed_selected.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_appbar_pressed_selected.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\styles.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>styles.xml</RemoteName>
+            <DeployClass>AndroidSplashStyles</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bg\values-bg_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bg\</RemoteDir>
+            <RemoteName>values-bg_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-gu\values-gu_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-gu\</RemoteDir>
+            <RemoteName>values-gu_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-it\values-it_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-it\</RemoteDir>
+            <RemoteName>values-it_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-uk\values-uk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-uk\</RemoteDir>
+            <RemoteName>values-uk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-large\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage640</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh\values-zh_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh\</RemoteDir>
+            <RemoteName>values-zh_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-iw\values-iw_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-iw\</RemoteDir>
+            <RemoteName>values-iw_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-kk-rKZ\values-kk-rKZ_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-kk-rKZ\</RemoteDir>
+            <RemoteName>values-kk-rKZ_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-lt\values-lt_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-lt\</RemoteDir>
+            <RemoteName>values-lt_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+sr+Latn\values-b+sr+Latn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-b+sr+Latn\</RemoteDir>
+            <RemoteName>values-b+sr+Latn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-de\values-de_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-de\</RemoteDir>
+            <RemoteName>values-de_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-es-rUS\values-es-rUS_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-es-rUS\</RemoteDir>
+            <RemoteName>values-es-rUS_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-nl\values-nl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-nl\</RemoteDir>
+            <RemoteName>values-nl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi\</RemoteDir>
+            <RemoteName>ic_launcher.png</RemoteName>
+            <DeployClass>Android_LauncherIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xlarge\</RemoteDir>
+            <RemoteName>splash_image.png</RemoteName>
+            <DeployClass>Android_SplashImage960</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-fi\values-fi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-fi\</RemoteDir>
+            <RemoteName>values-fi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-hr\values-hr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-hr\</RemoteDir>
+            <RemoteName>values-hr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-tr\values-tr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-tr\</RemoteDir>
+            <RemoteName>values-tr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-fa\values-fa_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-fa\</RemoteDir>
+            <RemoteName>values-fa_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-gl\values-gl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-gl\</RemoteDir>
+            <RemoteName>values-gl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\colors.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>colors.xml</RemoteName>
+            <DeployClass>Android_Colors</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\strings.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values\</RemoteDir>
+            <RemoteName>strings.xml</RemoteName>
+            <DeployClass>Android_Strings</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_48x48.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon48</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\AndroidManifest.xml" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\</RemoteDir>
+            <RemoteName>AndroidManifest.xml</RemoteName>
+            <DeployClass>ProjectAndroidManifest</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bo-rCN\values-bo-rCN_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bo-rCN\</RemoteDir>
+            <RemoteName>values-bo-rCN_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flash_selected_selector2.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flash_selected_selector2.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-kk\values-kk_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-kk\</RemoteDir>
+            <RemoteName>values-kk_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\lib\android\debug\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\library\lib\armeabi\</RemoteDir>
+            <RemoteName>libHuaweiScan_FMX_D12.so</RemoteName>
+            <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_back.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_back.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mr\values-mr_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mr\</RemoteDir>
+            <RemoteName>values-mr_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ru\values-ru_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ru\</RemoteDir>
+            <RemoteName>values-ru_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_36x36.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-hdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon36</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_zxl_capture_new.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture_new.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_photo.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_photo.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_dialog_bg.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_dialog_bg.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_zxl_capture_customed.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture_customed.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-zh-rHK\values-zh-rHK_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-zh-rHK\</RemoteDir>
+            <RemoteName>values-zh-rHK_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-mdpi-v4\scankit_hivision_light.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-mdpi-v4\</RemoteDir>
+            <RemoteName>scankit_hivision_light.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_zxl_capture.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_zxl_capture.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-sw\values-sw_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-sw\</RemoteDir>
+            <RemoteName>values-sw_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-th\values-th_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-th\</RemoteDir>
+            <RemoteName>values-th_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="$(BDS)\bin\Artwork\Android\FM_NotificationIcon_96x96.png" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-xxxhdpi\</RemoteDir>
+            <RemoteName>ic_notification.png</RemoteName>
+            <DeployClass>Android_NotificationIcon96</DeployClass>
+            <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-tl\values-tl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-tl\</RemoteDir>
+            <RemoteName>values-tl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ug\values-ug_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ug\</RemoteDir>
+            <RemoteName>values-ug_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+my+Qaag\values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-b+my+Qaag\</RemoteDir>
+            <RemoteName>values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ko\values-ko_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ko\</RemoteDir>
+            <RemoteName>values-ko_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-anydpi-v24\scankit_hivision_light.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-anydpi-v24\</RemoteDir>
+            <RemoteName>scankit_hivision_light.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-nb\values-nb_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-nb\</RemoteDir>
+            <RemoteName>values-nb_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\mipmap-xxxhdpi-v4\scankit_back_mirroring.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\mipmap-xxxhdpi-v4\</RemoteDir>
+            <RemoteName>scankit_back_mirroring.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-in\values-in_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-in\</RemoteDir>
+            <RemoteName>values-in_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-uz-rUZ\values-uz-rUZ_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-uz-rUZ\</RemoteDir>
+            <RemoteName>values-uz-rUZ_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_back_mirroring.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_back_mirroring.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_scan_tail.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_scan_tail.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ne\values-ne_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ne\</RemoteDir>
+            <RemoteName>values-ne_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-bn\values-bn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-bn\</RemoteDir>
+            <RemoteName>values-bn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-eu-rES\values-eu-rES_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-eu-rES\</RemoteDir>
+            <RemoteName>values-eu-rES_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable-ldpi-v4\scankit_ic_light_on.png">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable-ldpi-v4\</RemoteDir>
+            <RemoteName>scankit_ic_light_on.png</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\layout\scankit_dialog_layout.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\layout\</RemoteDir>
+            <RemoteName>scankit_dialog_layout.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-or\values-or_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-or\</RemoteDir>
+            <RemoteName>values-or_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pl\values-pl_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pl\</RemoteDir>
+            <RemoteName>values-pl_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ta\values-ta_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ta\</RemoteDir>
+            <RemoteName>values-ta_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_layer_on.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_layer_on.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ka\values-ka_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ka\</RemoteDir>
+            <RemoteName>values-ka_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mn\values-mn_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mn\</RemoteDir>
+            <RemoteName>values-mn_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flashlight_off.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flashlight_off.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-pt-rPT\values-pt-rPT_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-pt-rPT\</RemoteDir>
+            <RemoteName>values-pt-rPT_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_flash_selector.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_flash_selector.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\drawable\scankit_ic_back.webp">
+            <RemoteDir>HuaweiScan_FMX_D12\res\drawable\</RemoteDir>
+            <RemoteName>scankit_ic_back.webp</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-km-rKH\values-km-rKH_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-km-rKH\</RemoteDir>
+            <RemoteName>values-km-rKH_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\assets\corner.ms">
+            <RemoteDir>HuaweiScan_FMX_D12\assets\</RemoteDir>
+            <RemoteName>corner.ms</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-mi\values-mi_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-mi\</RemoteDir>
+            <RemoteName>values-mi_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="Android\D12\Release\HuaweiScan_FMX_D12.classes" Condition="'$(Config)'=='Release'">
+            <RemoteDir>HuaweiScan_FMX_D12\classes\</RemoteDir>
+            <RemoteName>HuaweiScan_FMX_D12.classes</RemoteName>
+            <DeployClass>AndroidClasses</DeployClass>
+            <Operation>64</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-am\values-am_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-am\</RemoteDir>
+            <RemoteName>values-am_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-be\values-be_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-be\</RemoteDir>
+            <RemoteName>values-be_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-ca\values-ca_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-ca\</RemoteDir>
+            <RemoteName>values-ca_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-cs\values-cs_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D12\res\values-cs\</RemoteDir>
+            <RemoteName>values-cs_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+    </ItemGroup>
+    <ItemGroup Condition="'$(Platform)'=='Win32'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSDevice64'"/>
+    <ItemGroup Condition="'$(Platform)'=='iOSSimARM64'"/>
+    <ItemGroup Condition="'$(Platform)'=='Win64x'"/>
+    <ItemGroup Condition="'$(Platform)'=='Linux64'"/>
+</Project>

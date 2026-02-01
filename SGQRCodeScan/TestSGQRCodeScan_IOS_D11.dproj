@@ -335,7 +335,7 @@
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="D:\DelphiThirdPartyComponent\Steema TeeChart Pro VCL FMX Source Code 2022.34\Source\..\Compiled\Delphi28.win32\Bin\DclTeePro928.bpl">TeeChart Pro 2022 VCL Components</Excluded_Packages>
-                    <Excluded_Packages Name="D:\DelphiThirdPartyComponent\Steema TeeChart Pro VCL FMX Source Code 2022.34\Source\..\Compiled\Delphi28.win32\Bin\DclTeeMaker128.bpl">TeeMaker </Excluded_Packages>
+                    <Excluded_Packages Name="D:\DelphiThirdPartyComponent\Steema TeeChart Pro VCL FMX Source Code 2022.34\Source\..\Compiled\Delphi28.win32\Bin\DclTeeMaker128.bpl">TeeMaker</Excluded_Packages>
                     <Excluded_Packages Name="D:\DelphiThirdPartyComponent\Steema TeeChart Pro VCL FMX Source Code 2022.34\Source\..\TeeTree\Compiled\Delphi28.win32\Bin\DclTree2D28Tee9.bpl">TeeTree 2 Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k280.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp280.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>

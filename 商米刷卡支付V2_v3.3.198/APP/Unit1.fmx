@@ -58,6 +58,7 @@ object FrmMain: TFrmMain
     Size.Height = 23.000000000000000000
     Size.PlatformDefault = False
     Text = #33719#21462#30913#26465'2'#36712#21495#30721
+    TabOrder = 11
   end
   object Label2: TLabel
     Position.X = 16.000000000000000000
@@ -66,6 +67,7 @@ object FrmMain: TFrmMain
     Size.Height = 23.000000000000000000
     Size.PlatformDefault = False
     Text = #25159#21306
+    TabOrder = 12
   end
   object edtBlock: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -84,6 +86,7 @@ object FrmMain: TFrmMain
     Size.Height = 23.000000000000000000
     Size.PlatformDefault = False
     Text = #23494#30721
+    TabOrder = 13
   end
   object Edit3: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
@@ -112,6 +115,7 @@ object FrmMain: TFrmMain
     Size.Height = 23.000000000000000000
     Size.PlatformDefault = False
     Text = #20869#23481
+    TabOrder = 14
   end
   object edtContent: TEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"අවලංගු කරන්න"</string>
+    <string name="dialog_go_setting" priority="LT">"සැකසුම්"</string>
+    <string name="permission_dialog_info" priority="LT">"ස්කෑන් කිරීමේ සේවා සැපයීම සඳහා මෙය භාවිතා කෙරේ."</string>
+    <string name="permission_dialog_title" priority="LT">"සැකසුම් > යෙදුම් > අවසර කළමනාකරු තුළ කැමරා අවසරය ප්‍රදානය කරන්න"</string>
+    <string name="scankit_confirm">හරි</string>
+    <string name="scankit_light">තවත් ආලෝකය සඳහා ස්පර්ශ කරන්න</string>
+    <string name="scankit_light_off">ආලෝකය අක්‍රීය කරන්න</string>
+    <string name="scankit_no_code_tip">කේතයක් හඳුනා නොගන්නා ලදී.</string>
+    <string name="scankit_scan_tip">කේතය රාමුව තුළ තබන්න</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">ස්කෑන් කරන්න</string>
+    <string name="scankit_title_all" priority="LT">"QR කේතය/තීරු කේතය ස්කෑන් කරන්න"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"පහතින් QR කේතය/තීරු කේතය එකේළි කරන්න"</string>
+    <string name="scankit_title_qr" priority="LT">"QR කේතය ස්කෑන් කරන්න"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"පහත QR කේතය එකේළි කරන්න"</string>
+</resources>

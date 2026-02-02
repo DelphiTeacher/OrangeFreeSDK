@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"ຍົກເລີກ"</string>
+    <string name="dialog_go_setting" priority="LT">"ການຕັ້ງຄ່າ"</string>
+    <string name="permission_dialog_info" priority="LT">"ໃຊ້​ສິ່ງ​ນີ້​ເພື່ອ​ໃຫ້​ການ​ບໍ​ລິ​ການ​ສະ​ແກນ."</string>
+    <string name="permission_dialog_title" priority="LT">"ໃຫ້​ການ​ອະ​ນຸ​ຍາດ​ກ້ອງຖ່າຍຮູບ​ຢູ່​ໃນ ການຕັ້ງຄ່າ > ແອັບ > ຕົວ​ຈັດການ​ການ​ອະນຸຍາດ"</string>
+    <string name="scankit_confirm">ຕົກລົງ</string>
+    <string name="scankit_light">ສຳຜັດ​ສຳລັບ​ແສງ​ເພີ່ມ​ຂຶ້ນ</string>
+    <string name="scankit_light_off">ປິດ​ແສງ</string>
+    <string name="scankit_no_code_tip">ກວດບໍ່​ພົບ​ລະຫັດ​ໃດ.</string>
+    <string name="scankit_scan_tip">ວາງລະ​ຫັດໃສ່​ພາຍ​ໃນ​ຂອບ</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">ສະແກນ</string>
+    <string name="scankit_title_all" priority="LT">"ສະ​ແກນລະ​ຫັດ QR/ບາ​ຣໂຄດ"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"ຈັດ​ວາງ​ລະ​ຫັດ QR/ບາ​ຣໂຄດ ຢູ່​ຂ້າງ​ລຸ່ມ"</string>
+    <string name="scankit_title_qr" priority="LT">"ສະ​ແກນລະ​ຫັດ QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"ຈັດ​ວາງ​ລະ​ຫັດ QR ຢູ່​ຂ້າງ​ລຸ່ມ"</string>
+</resources>

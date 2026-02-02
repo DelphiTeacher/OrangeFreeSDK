@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huawei.hms.framework.network.grs"
+    android:versionCode="80001313"
+    android:versionName="8.0.1.313" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="33" />
+
+</manifest>

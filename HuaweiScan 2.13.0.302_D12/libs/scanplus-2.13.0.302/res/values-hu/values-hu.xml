@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Mégse"</string>
+    <string name="dialog_go_setting" priority="LT">"Beállítások"</string>
+    <string name="permission_dialog_info" priority="LT">"Ez a beolvasási szolgáltatások biztosítására használatos."</string>
+    <string name="permission_dialog_title" priority="LT">"Adja meg a Kamera jogosultságot a Beállítások > Alkalmazások > Jogosultságkezelő menüpontban"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Érintse meg a több fényhez</string>
+    <string name="scankit_light_off">Fény kikapcsolása</string>
+    <string name="scankit_no_code_tip">Nem észlelhető kód.</string>
+    <string name="scankit_scan_tip">Illessze a kódot a kereten belülre</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Beolvasás</string>
+    <string name="scankit_title_all" priority="LT">"Olvassa be a QR-kódot/vonalkódot"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Igazítsa a QR-kódot/vonalkódot az alábbi keretbe"</string>
+    <string name="scankit_title_qr" priority="LT">"Olvassa be a QR-kódot"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Igazítsa a QR-kódot az alábbi keretbe"</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Hủy"</string>
+    <string name="dialog_go_setting" priority="LT">"Cài đặt"</string>
+    <string name="permission_dialog_info" priority="LT">"Quyền này được dùng để cung cấp các dịch vụ quét."</string>
+    <string name="permission_dialog_title" priority="LT">"Hãy cấp quyền truy cập Máy ảnh trong mục Cài đặt > Ứng dụng > Quản lý quyền hạn"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Chạm để bổ sung thêm ánh sáng</string>
+    <string name="scankit_light_off">Tắt đèn</string>
+    <string name="scankit_no_code_tip">Không phát hiện mã.</string>
+    <string name="scankit_scan_tip">Đặt mã bên trong khung</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Quét</string>
+    <string name="scankit_title_all" priority="LT">"Quét mã QR/mã vạch"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Căn chỉnh mã QR/mã vạch theo bên dưới"</string>
+    <string name="scankit_title_qr" priority="LT">"Quét mã QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Căn chỉnh mã QR theo bên dưới"</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Kanselahin"</string>
+    <string name="dialog_go_setting" priority="LT">"Mga Setting"</string>
+    <string name="permission_dialog_info" priority="LT">"Ginagamit ito para magbigay ng mga serbisyo sa pag-scan."</string>
+    <string name="permission_dialog_title" priority="LT">"Ibigay ang pahintulot sa Camera sa Mga Setting > Mga App > Manager ng pahintulot"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Pindutin para mas lumiwanag</string>
+    <string name="scankit_light_off">I-off ang ilaw</string>
+    <string name="scankit_no_code_tip">Walang natukoy na code.</string>
+    <string name="scankit_scan_tip">Ilagay ang code sa loob ng frame</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">I-scan</string>
+    <string name="scankit_title_all" priority="LT">"I-scan ang QR code/barcode"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Itapat ang QR code/barcode sa ibaba"</string>
+    <string name="scankit_title_qr" priority="LT">"I-scan ang QR code"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Itapat ang QR code sa ibaba"</string>
+</resources>

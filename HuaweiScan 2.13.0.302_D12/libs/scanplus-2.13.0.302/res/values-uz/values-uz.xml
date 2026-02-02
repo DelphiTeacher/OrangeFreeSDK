@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Bekor qilish"</string>
+    <string name="dialog_go_setting" priority="LT">"Sozlamalar"</string>
+    <string name="permission_dialog_info" priority="LT">"Bu ruxsat skanerlash xizmatlarini taqdim etish uchun ishlatiladi."</string>
+    <string name="permission_dialog_title" priority="LT">"Sozlamalar > Ilovalar > Ruxsatlar menejeri ruknida Kamera ruxsatini bering"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Yoritishni kuchaytirish uchun bosing</string>
+    <string name="scankit_light_off">Chiroqni oʻchirish</string>
+    <string name="scankit_no_code_tip">Hech qanday kod aniqlanmadi.</string>
+    <string name="scankit_scan_tip">Kodni hoshiya ichiga joylashtiring</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skanerlash</string>
+    <string name="scankit_title_all" priority="LT">"QR kod/shtrix-kodni skanerlang"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Quyidagi QR kod/shtrix-kodga tekislang"</string>
+    <string name="scankit_title_qr" priority="LT">"QR kodni skanerlash"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Quyidagi QR kodga tekislang"</string>
+</resources>

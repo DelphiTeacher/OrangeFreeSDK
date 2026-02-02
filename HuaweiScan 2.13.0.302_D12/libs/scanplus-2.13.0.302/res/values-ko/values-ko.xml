@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"취소"</string>
+    <string name="dialog_go_setting" priority="LT">"설정"</string>
+    <string name="permission_dialog_info" priority="LT">"스캔 서비스를 제공하는 데 사용됩니다."</string>
+    <string name="permission_dialog_title" priority="LT">"설정 > 앱 > 권한 관리자에서 카메라 권한 허용"</string>
+    <string name="scankit_confirm">확인</string>
+    <string name="scankit_light">터치하여 조명을 높입니다</string>
+    <string name="scankit_light_off">조명을 끕니다</string>
+    <string name="scankit_no_code_tip">코드가 감지되지 않았습니다.</string>
+    <string name="scankit_scan_tip">프레임 안에 코드를 넣습니다</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">스캔</string>
+    <string name="scankit_title_all" priority="LT">"QR 코드/바코드 스캔"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"아래에 QR 코드/바코드를 정렬합니다"</string>
+    <string name="scankit_title_qr" priority="LT">"QR 코드 스캔"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"아래에 QR 코드를 정렬합니다"</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Cancelar"</string>
+    <string name="dialog_go_setting" priority="LT">"Configurações"</string>
+    <string name="permission_dialog_info" priority="LT">"Isso é usado para fornecer serviços de leitura."</string>
+    <string name="permission_dialog_title" priority="LT">"Conceda a permissão de Câmera em Configurações > Aplicativos > Gerenciador de permissões"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Toque para obter mais luz</string>
+    <string name="scankit_light_off">Apagar luz</string>
+    <string name="scankit_no_code_tip">Nenhum código detectado.</string>
+    <string name="scankit_scan_tip">Coloque o código dentro do quadro</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Ler</string>
+    <string name="scankit_title_all" priority="LT">"Ler código QR/código de barras"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Alinhe o código QR/código de barras abaixo"</string>
+    <string name="scankit_title_qr" priority="LT">"Ler código QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Alinhe o código QR ​abaixo"</string>
+</resources>

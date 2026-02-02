@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Annuleren"</string>
+    <string name="dialog_go_setting" priority="LT">"Instellingen"</string>
+    <string name="permission_dialog_info" priority="LT">"Dit wordt gebruikt om scanservices te bieden."</string>
+    <string name="permission_dialog_title" priority="LT">"Verleen de toestemming voor Camera in Instellingen > Apps > Toestemmingsbeheer"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Tikken voor meer licht</string>
+    <string name="scankit_light_off">Licht uitschakelen</string>
+    <string name="scankit_no_code_tip">Geen code gedetecteerd.</string>
+    <string name="scankit_scan_tip">Plaats de code binnen het frame</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scannen</string>
+    <string name="scankit_title_all" priority="LT">"De QR-code/streepjescode scannen"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"De onderstaande QR-code/streepjescode uitlijnen"</string>
+    <string name="scankit_title_qr" priority="LT">"QR-code scannen"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"De onderstaande QR-code uitlijnen"</string>
+</resources>

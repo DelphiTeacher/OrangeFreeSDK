@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"འདོར་བ།"</string>
+    <string name="dialog_go_setting" priority="LT">"སྒྲིག་འགོད།"</string>
+    <string name="permission_dialog_info" priority="LT">"རྩོལ་ནུས་འདི་རྟགས་རིས་བཤེར་འབེབས་ཞབས་ཞུ་མཁོ་འདོན་བྱ་བར་བེད་སྤྱོད་བྱེད།"</string>
+    <string name="permission_dialog_title" priority="LT">"༼སྒྲིག་འགོད་༽>༼ཉེར་སྤྱོད་༽ཀྱི་༼དབང་ཚད་དོ་དམ་༽ཁྲོད་ནས་༼ པར་ཆས་༽ཀྱི་དབང་ཚད་ཁ་འབྱེད་རོགས།"</string>
+    <string name="scankit_confirm">གཏན་འཁེལ།</string>
+    <string name="scankit_light">རྡེབ་ནས་འོད་གསལ།</string>
+    <string name="scankit_light_off">རྡེབ་ནས་ཁ་རྒྱག</string>
+    <string name="scankit_no_code_tip">པར་རིས་ཀྱི་ཁྲོད་ནས་བཤེར་ཨང་མ་རྙེད།</string>
+    <string name="scankit_scan_tip">བཤེར་ཨང་ལྗོངས་ལེན་སྒྲོམ་གྱི་ནང་དུ་བཞག་ཚེ། རང་འགུལ་གྱིས་བཤར་འབེབས་བྱེད།</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">བཤེར་ཨང་བཤེར་བ།</string>
+    <string name="scankit_title_all" priority="LT">"རྩ་གཉིས་རྟགས་རིས་ཡང་ན་ཐིག་རིས་གསང་རྟགས་བཤེར་འབེབས།"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"རྩ་གཉིས་རྟགས་རིས་ཡང་ན་ཐིག་རིས་གསང་རྟགས་ལ་ཁ་གཏད་ན། རང་འགུལ་གྱིས་བཤེར་འབེབས་ཐུབ།"</string>
+    <string name="scankit_title_qr" priority="LT">"རྩ་གཉིས་རྟགས་རིས་བཤེར་འབེབས།"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"རྩ་གཉིས་རྟགས་རིས་ལ་ཁ་གཏད་ན། རང་འགུལ་གྱིས་བཤེར་འབེབས་ཐུབ།"</string>
+</resources>

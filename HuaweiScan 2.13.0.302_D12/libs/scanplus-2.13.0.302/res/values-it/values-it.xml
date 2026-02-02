@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Annulla"</string>
+    <string name="dialog_go_setting" priority="LT">"Impostazioni"</string>
+    <string name="permission_dialog_info" priority="LT">"Per fornire i servizi di scansione."</string>
+    <string name="permission_dialog_title" priority="LT">"Concedi l\'autorizzazione Fotocamera in Impostazioni > App > Gestione autorizzazioni"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Tocca per attivare il flash</string>
+    <string name="scankit_light_off">Spegni</string>
+    <string name="scankit_no_code_tip">Nessun codice rilevato.</string>
+    <string name="scankit_scan_tip">Posiziona il codice all\'interno del riquadro</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scansiona</string>
+    <string name="scankit_title_all" priority="LT">"Scansiona il codice QR/codice a barre"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Allinea il codice QR/codice a barre qui di seguito"</string>
+    <string name="scankit_title_qr" priority="translator">"Scansiona il codice QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Allinea il codice QR qui di seguito"</string>
+</resources>

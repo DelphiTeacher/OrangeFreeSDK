@@ -1,0 +1,36 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 'Form2'
+  ClientHeight = 480
+  ClientWidth = 339
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object btnScan: TButton
+    Position.X = 28.000000000000000000
+    Position.Y = 16.000000000000000000
+    Size.Width = 93.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = #25195#25551
+    TextSettings.Trimming = None
+    OnClick = btnScanClick
+  end
+  object Memo1: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    TextSettings.WordWrap = True
+    Position.X = 12.000000000000000000
+    Position.Y = 76.000000000000000000
+    Size.Width = 289.000000000000000000
+    Size.Height = 353.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Viewport.Width = 285.000000000000000000
+    Viewport.Height = 349.000000000000000000
+  end
+end

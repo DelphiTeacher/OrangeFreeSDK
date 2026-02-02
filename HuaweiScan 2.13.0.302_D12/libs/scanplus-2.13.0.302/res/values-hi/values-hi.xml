@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"रद्द करें"</string>
+    <string name="dialog_go_setting" priority="LT">"सेटिंग्स"</string>
+    <string name="permission_dialog_info" priority="LT">"इसका उपयोग स्कैनिंग सेवाएँ देने के लिए किया जाता है।"</string>
+    <string name="permission_dialog_title" priority="LT">"\'सेटिंग्स > ऐप्स > अनुमति प्रबंधक\' में जाकर कैमरा की अनुमति दें"</string>
+    <string name="scankit_confirm">ठीक</string>
+    <string name="scankit_light">और अधिक प्रकाश के लिए टच करें</string>
+    <string name="scankit_light_off">પलाइट बंद करें</string>
+    <string name="scankit_no_code_tip">किसी भी कोड की पहचान नहीं की गई।</string>
+    <string name="scankit_scan_tip">कोड को फ़्रेम के भीतर रखें</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">स्कैन करें</string>
+    <string name="scankit_title_all" priority="LT">"QR कोड/बारकोड स्कैन करें"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"नीचे QR कोड/बारकोड अलाइन करें"</string>
+    <string name="scankit_title_qr" priority="LT">"QR कोड स्कैन करें"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"नीचे QR कोड अलाइन करें"</string>
+</resources>

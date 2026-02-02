@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Abbrechen"</string>
+    <string name="dialog_go_setting" priority="LT">"Einstellungen"</string>
+    <string name="permission_dialog_info" priority="LT">"Diese Berechtigung dient zum Bereitstellen von Scan-Services."</string>
+    <string name="permission_dialog_title" priority="LT">"Kameraberechtigung unter Einstellungen > Apps > Berechtigungsverwaltung erteilen"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Für mehr Licht antippen</string>
+    <string name="scankit_light_off">Licht ausschalten</string>
+    <string name="scankit_no_code_tip">Kein Code erkannt.</string>
+    <string name="scankit_scan_tip">Code im Rahmen positionieren</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scannen</string>
+    <string name="scankit_title_all" priority="LT">"QR-Code/Barcode scannen"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Richten Sie den unteren QR-Code/Barcode aus"</string>
+    <string name="scankit_title_qr" priority="LT">"QR-Code scannen"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Richten Sie den QR-Code unten aus"</string>
+</resources>

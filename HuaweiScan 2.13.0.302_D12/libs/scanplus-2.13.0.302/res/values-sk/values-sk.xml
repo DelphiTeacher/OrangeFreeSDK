@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Zrušiť"</string>
+    <string name="dialog_go_setting" priority="LT">"Nastavenia"</string>
+    <string name="permission_dialog_info" priority="LT">"Používa sa na poskytovanie služieb skenovania."</string>
+    <string name="permission_dialog_title" priority="LT">"Udeľte povolenie pre funkciu Fotoaparát v položke Nastavenia > Aplikácie > Správca povolení"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Stlačením zapnite svetlo</string>
+    <string name="scankit_light_off">Vypnúť svetlo</string>
+    <string name="scankit_no_code_tip">Nenašiel sa žiadny kód.</string>
+    <string name="scankit_scan_tip">Umiestnite kód do rámika</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skenovať</string>
+    <string name="scankit_title_all" priority="LT">"Skenovanie kódu QR/čiarového kódu"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Zarovnajte kód QR/čiarový kód do rámika"</string>
+    <string name="scankit_title_qr" priority="LT">"Skenovanie kódu QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Zarovnajte kód QR do rámika"</string>
+</resources>

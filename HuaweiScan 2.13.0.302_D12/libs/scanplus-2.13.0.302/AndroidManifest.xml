@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.huawei.hms.scankit" >
+
+    <uses-sdk android:minSdkVersion="21" />
+
+    <application>
+        <meta-data
+            android:name="huawei_module_scankit_local"
+            android:value="21200301" />
+        <meta-data
+            android:name="huawei_module_scankit_sdk_version"
+            android:value="scanplus:2.13.0.302" />
+        <meta-data
+            android:name="com.huawei.hms.client.service.name:scanplus"
+            android:value="scanplus:2.13.0.302" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:scanplus:huawei_module_scankit"
+            android:value="1" />
+        <meta-data
+            android:name="com.huawei.hms.min_api_level:scanplus:hmscore"
+            android:value="1" />
+
+        <activity
+            android:name="com.huawei.hms.hmsscankit.ScanKitActivity"
+            android:configChanges="orientation|navigation|screenSize|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="singleTask" >
+        </activity>
+    </application>
+
+</manifest>

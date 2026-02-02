@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Cancel·lar"</string>
+    <string name="dialog_go_setting" priority="LT">"Configuració"</string>
+    <string name="permission_dialog_info" priority="LT">"S\'utilitza per prestar els serveis d\'escaneig."</string>
+    <string name="permission_dialog_title" priority="LT">"Concediu el permís Càmera a Configuració > Aplicacions > Administrador de permisos"</string>
+    <string name="scankit_confirm">D\'ACORD</string>
+    <string name="scankit_light">Toqueu per a més il·luminació</string>
+    <string name="scankit_light_off">Apagar el llum</string>
+    <string name="scankit_no_code_tip">No s\'ha detectat cap codi.</string>
+    <string name="scankit_scan_tip">Col·loqueu el codi dins del marc</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Escaneja</string>
+    <string name="scankit_title_all" priority="LT">"Escanegeu el codi QR/codi de barres"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Enquadreu el codi QR/codi de barres següent"</string>
+    <string name="scankit_title_qr" priority="LT">"Escanegeu el codi QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Enquadreu el codi QR següent"</string>
+</resources>

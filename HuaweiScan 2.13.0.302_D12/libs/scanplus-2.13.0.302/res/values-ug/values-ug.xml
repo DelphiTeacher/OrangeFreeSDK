@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"بىكار قىلىش"</string>
+    <string name="dialog_go_setting" priority="LT">"تەڭشەك"</string>
+    <string name="permission_dialog_info" priority="LT">"بۇ ئىقتىدار كود سايىلەش مۇلازىمىتى تەمىنلەش ئۈچۈن ئىشلىتىلىدۇ."</string>
+    <string name="permission_dialog_title" priority="LT">"تەڭشەك > ئەپ > ئىجازەت باشقۇرۇش بېتىدىن كامېرا ئىجازىتى بېرىڭ"</string>
+    <string name="scankit_confirm">جەزملەش</string>
+    <string name="scankit_light">چىراق ئېچىش</string>
+    <string name="scankit_light_off">چىراق ئېتىش</string>
+    <string name="scankit_no_code_tip">رەسىمدىن ئىككىلىك ياكى تاياقچە كود تېپىلمىدى</string>
+    <string name="scankit_scan_tip">ئىككىلىك ياكى تاياقچە كودنى رامكىغا توغرىلىسىڭىز سايىلىنىدۇ</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">اسکین کریں</string>
+    <string name="scankit_title_all" priority="LT">"ئىككىلىك/تاياقچە كود سايىلەش"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"كودنى تۆۋەندىكى رامكىغا توغرىلىسىڭىز سايىلەيدۇ."</string>
+    <string name="scankit_title_qr" priority="LT">"كود سايىلەش"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"ئىككىلىك كودنى رامكىغا توغرىلىسىڭىز سايىلەيدۇ."</string>
+</resources>

@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://developer.huawei.com/repo/' }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.2.2"
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    namespace "temp.download"
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 34
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://developer.huawei.com/repo/' }
+}
+
+dependencies {
+    implementation 'com.huawei.hms:scanplus:2.13.0.302'
+}
+
+/**
+ * ✅ 正确做法：
+ * 创建一个“可解析”的 configuration
+ * 继承 implementation
+ */
+configurations {
+    downloadRuntime {
+        canBeResolved = true
+        canBeConsumed = false
+        extendsFrom implementation
+    }
+}
+
+task copyDeps {
+    doLast {
+        def outDir = file("libs")
+        outDir.mkdirs()
+
+        configurations.downloadRuntime
+                .resolvedConfiguration
+                .resolvedArtifacts
+                .each { artifact ->
+                    copy {
+                        from artifact.file
+                        into outDir
+                    }
+                }
+    }
+}

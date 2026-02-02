@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scan_title_landscape"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/back_layout_landscape"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/scankit_appbar_pressed_selected">
+
+        <ImageView
+            android:id="@+id/scankit_back_img_in_land"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:layout_margin="12dp"
+            android:clickable="true"
+            android:contentDescription="@string/scankit_talkback_back"
+            android:gravity="center"
+            android:src="@drawable/scankit_ic_back" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/gallery_Layout_landscape"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/scankit_appbar_pressed_selected">
+
+        <ImageView
+            android:id="@+id/scankit_img_btn_in_land"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center"
+            android:layout_margin="12dp"
+            android:clickable="true"
+            android:contentDescription="@string/scankit_talkback_photo"
+            android:gravity="center"
+            android:src="@drawable/scankit_ic_photo" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/scankit_title_scan_land"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/scankit_title_all"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:shadowColor="#4d000000"
+        android:shadowRadius="4.0"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/scankit_title_scan_land_level_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scankit_title_scan_land"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="68dp"
+        android:gravity="center_horizontal"
+        android:shadowColor="#4d000000"
+        android:shadowRadius="4.0"
+        android:text="@string/scankit_title_all_level_two"
+        android:textAllCaps="false"
+        android:textColor="#99ffffff"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+</RelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Prekliči"</string>
+    <string name="dialog_go_setting" priority="LT">"Nastavitve"</string>
+    <string name="permission_dialog_info" priority="LT">"To se uporablja za zagotavljanje storitev optičnega branja."</string>
+    <string name="permission_dialog_title" priority="LT">"Podelite dovoljenje za Kamero v razdelku Nastavitve > Aplikacije > Upravitelj dovoljenj"</string>
+    <string name="scankit_confirm">V redu</string>
+    <string name="scankit_light">Dotaknite se za močnejšo svetlobo</string>
+    <string name="scankit_light_off">Izklopi luč</string>
+    <string name="scankit_no_code_tip">Zaznana ni bila nobena koda.</string>
+    <string name="scankit_scan_tip">Kodo poravnajte z okvirjem</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Optično branje</string>
+    <string name="scankit_title_all" priority="LT">"Optično branje kode QR/črtne kode"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Spodaj poravnajte kodo QR/črtno kodo"</string>
+    <string name="scankit_title_qr" priority="LT">"Optično branje kode QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Spodaj poravnajte kodo QR"</string>
+</resources>

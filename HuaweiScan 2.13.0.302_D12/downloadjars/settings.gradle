@@ -1,0 +1,2 @@
+// settings.gradle
+rootProject.name = 'huawei-dependency-downloader'

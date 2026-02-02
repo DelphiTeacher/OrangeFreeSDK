@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Anulare"</string>
+    <string name="dialog_go_setting" priority="LT">"Setări"</string>
+    <string name="permission_dialog_info" priority="LT">"Acesta este utilizat pentru a furniza servicii de scanare."</string>
+    <string name="permission_dialog_title" priority="LT">"Acordați permisiunea pentru Cameră foto în Setări > Aplicații > Manager permisiuni"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Atingeți pentru lumină suplimentară</string>
+    <string name="scankit_light_off">Stingeți lumina</string>
+    <string name="scankit_no_code_tip">Niciun cod detectat.</string>
+    <string name="scankit_scan_tip">Așezați codul în cadru</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Scanare</string>
+    <string name="scankit_title_all" priority="LT">"Scanați un cod QR/cod de bare"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Aliniați codul QR/codul de bare mai jos"</string>
+    <string name="scankit_title_qr" priority="LT">"Scanați codul QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Aliniați codul QR mai jos"</string>
+</resources>

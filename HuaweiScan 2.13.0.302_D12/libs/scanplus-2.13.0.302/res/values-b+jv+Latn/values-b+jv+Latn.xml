@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Wurung"</string>
+    <string name="dialog_go_setting" priority="LT">"Setelan"</string>
+    <string name="permission_dialog_info" priority="LT">"Iki digunakake kanggo nyedhiyakake layanan pamindaian."</string>
+    <string name="permission_dialog_title" priority="LT">"Wenehi idin Kamera ing Setelan > Apl > Pangatur idin"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Dumuk supaya cahyane luwih akeh</string>
+    <string name="scankit_light_off">Pateni cahya</string>
+    <string name="scankit_no_code_tip">Ora ana kode kadeteksi.</string>
+    <string name="scankit_scan_tip">Selehake kode sajrone bingkai</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Pindai</string>
+    <string name="scankit_title_all" priority="LT">"Pindai kode QR/kode wilah"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Lempengake kode QR/kode wilah ing ngisor iki"</string>
+    <string name="scankit_title_qr" priority="LT">"Pindai kode QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Lempengake kode QR ing ngisor iki"</string>
+</resources>

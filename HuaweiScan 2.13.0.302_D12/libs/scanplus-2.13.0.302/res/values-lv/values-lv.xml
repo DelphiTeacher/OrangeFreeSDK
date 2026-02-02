@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Atcelt"</string>
+    <string name="dialog_go_setting" priority="LT">"Iestatījumi"</string>
+    <string name="permission_dialog_info" priority="LT">"To izmanto, lai nodrošinātu skenēšanas pakalpojumus."</string>
+    <string name="permission_dialog_title" priority="LT">"Piešķiriet atļauju Kamera sadaļā Iestatījumi > Lietotnes > Atļauju pārvaldnieks"</string>
+    <string name="scankit_confirm">Labi</string>
+    <string name="scankit_light">Pieskarieties, lai uzlabotu apgaismojumu</string>
+    <string name="scankit_light_off">Izslēgt apgaismojumu</string>
+    <string name="scankit_no_code_tip">Kods nav noteikts.</string>
+    <string name="scankit_scan_tip">Novietojiet kodu rāmītī</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skenēt</string>
+    <string name="scankit_title_all" priority="LT">"QR koda/svītrkoda skenēšana"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Tālāk izvietojiet QR kodu/svītrkodu"</string>
+    <string name="scankit_title_qr" priority="LT">"QR koda skenēšana"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Tālāk izvietojiet QR kodu"</string>
+</resources>

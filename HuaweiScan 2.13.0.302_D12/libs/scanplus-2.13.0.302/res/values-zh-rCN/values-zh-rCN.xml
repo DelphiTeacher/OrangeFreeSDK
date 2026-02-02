@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="translator">"取消"</string>
+    <string name="dialog_go_setting" priority="translator">前往设置</string>
+    <string name="permission_dialog_info" priority="translator">"该功能用于提供扫码服务。"</string>
+    <string name="permission_dialog_title" priority="translator">"请在“设置”>“应用”的“权限管理”中开启“相机”权限。"</string>
+    <string name="scankit_confirm">确认</string>
+    <string name="scankit_light">轻触照亮</string>
+    <string name="scankit_light_off">轻触关闭</string>
+    <string name="scankit_no_code_tip">图中未发现码</string>
+    <string name="scankit_scan_tip">将码放入取景框，即可自动扫描</string>
+    <string name="scankit_talkback_back">返回</string>
+    <string name="scankit_talkback_photo">图库</string>
+    <string name="scankit_title">扫码</string>
+    <string name="scankit_title_all" priority="translator">"扫描二维码/条码"</string>
+    <string name="scankit_title_all_level_two" priority="translator">"对准二维码/条码，即可自动扫描"</string>
+    <string name="scankit_title_qr" priority="translator">"扫描二维码"</string>
+    <string name="scankit_title_qr_level_two" priority="translator">"对准二维码，即可自动扫描"</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Адмяніць"</string>
+    <string name="dialog_go_setting" priority="LT">"Налады"</string>
+    <string name="permission_dialog_info" priority="LT">"Выкарыстоўваецца для забеспячэння сэрвісаў сканіравання."</string>
+    <string name="permission_dialog_title" priority="LT">"Дайце дазвол «Камера» ў меню «Налады > Праграмы > Дыспетчар дазволаў»"</string>
+    <string name="scankit_confirm">ОК</string>
+    <string name="scankit_light">Націсніце, каб дадаць святла</string>
+    <string name="scankit_light_off">Выключыць святло</string>
+    <string name="scankit_no_code_tip">Код не знойдзены.</string>
+    <string name="scankit_scan_tip">Памясціце код унутры рамкі</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Сканіраваць</string>
+    <string name="scankit_title_all" priority="LT">"Сканіруйце QR-код або штрыхкод"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Сумясціце QR-код або штрыхкод ніжэй"</string>
+    <string name="scankit_title_qr" priority="LT">"Сканіруйце QR-код"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Сумясціце QR-код ніжэй"</string>
+</resources>

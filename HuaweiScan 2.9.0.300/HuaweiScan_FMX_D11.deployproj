@@ -4,8 +4,8 @@
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
     <PropertyGroup>
-        <DeviceId Condition="'$(Platform)'=='Android'"/>
-        <DeviceId Condition="'$(Platform)'=='Android64'"/>
+        <DeviceId Condition="'$(Platform)'=='Android'">EYPVB20C02001136</DeviceId>
+        <DeviceId Condition="'$(Platform)'=='Android64'">EYPVB20C02001136</DeviceId>
         <DeviceId Condition="'$(Platform)'=='iOSDevice64'"/>
         <DeviceId Condition="'$(Platform)'=='iOSSimARM64'"/>
     </PropertyGroup>
@@ -2743,20 +2743,20 @@
             <RemoteCommand/>
             <Overwrite>True</Overwrite>
         </DeployFile>
-        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+my+Qaag\values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml">
-            <RemoteDir>HuaweiScan_FMX_D11\res\values-b+my+Qaag\</RemoteDir>
-            <RemoteName>values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
-            <DeployClass>File</DeployClass>
-            <Operation>0</Operation>
-            <LocalCommand/>
-            <RemoteCommand/>
-            <Overwrite>True</Overwrite>
-        </DeployFile>
         <DeployFile Include="$(BDS)\lib\android\release\armeabi\libnative-activity.so" Condition="'$(Config)'=='Release'">
             <RemoteDir>HuaweiScan_FMX_D11\library\lib\armeabi\</RemoteDir>
             <RemoteName>libHuaweiScan_FMX_D11.so</RemoteName>
             <DeployClass>AndroidLibnativeArmeabiFile</DeployClass>
             <Operation>1</Operation>
+            <LocalCommand/>
+            <RemoteCommand/>
+            <Overwrite>True</Overwrite>
+        </DeployFile>
+        <DeployFile Include="HuaweiSDK 2.9.0.300\Android\jetified-scanplus-2.9.0.300_aar\res\values-b+my+Qaag\values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml">
+            <RemoteDir>HuaweiScan_FMX_D11\res\values-b+my+Qaag\</RemoteDir>
+            <RemoteName>values-b+my+Qaag_jetified_scanplus_2_9_0_300_aar.xml</RemoteName>
+            <DeployClass>File</DeployClass>
+            <Operation>0</Operation>
             <LocalCommand/>
             <RemoteCommand/>
             <Overwrite>True</Overwrite>

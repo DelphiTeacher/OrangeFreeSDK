@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Отказ"</string>
+    <string name="dialog_go_setting" priority="LT">"Настройки"</string>
+    <string name="permission_dialog_info" priority="LT">"Това се използва за предоставяне на услуги, свързани със сканиране."</string>
+    <string name="permission_dialog_title" priority="LT">"Дайте разрешението на „Камера“ в „Настройки > Приложения > Мениджър на разрешенията“"</string>
+    <string name="scankit_confirm">ОК</string>
+    <string name="scankit_light">Докоснете за още светлина</string>
+    <string name="scankit_light_off">Изключване на светлината</string>
+    <string name="scankit_no_code_tip">Не е засечен код.</string>
+    <string name="scankit_scan_tip">Поставете кода в рамката</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Сканиране</string>
+    <string name="scankit_title_all" priority="LT">"Сканиране на QR код/баркод"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Подравняване на QR кода/баркода по-долу"</string>
+    <string name="scankit_title_qr" priority="LT">"Сканиране на QR кода"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Подравняване на QR кода по-долу"</string>
+</resources>

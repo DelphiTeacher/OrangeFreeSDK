@@ -15,7 +15,7 @@ object Form2: TForm2
     Size.Width = 346.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 2
+    TabOrder = 3
     Text = #21326#20026#25195#30721'-'#20869#32622#39029#38754
     TextSettings.Trimming = None
     OnClick = Button1Click
@@ -25,18 +25,18 @@ object Form2: TForm2
     DataDetectorTypes = []
     Align = Top
     Margins.Top = 20.000000000000000000
-    Position.Y = 84.000000000000000000
+    Position.Y = 106.000000000000000000
     Size.Width = 346.000000000000000000
     Size.Height = 163.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 3
+    TabOrder = 4
     Viewport.Width = 338.000000000000000000
     Viewport.Height = 155.000000000000000000
   end
   object Button2: TButton
     Align = Top
     Margins.Top = 20.000000000000000000
-    Position.Y = 42.000000000000000000
+    Position.Y = 64.000000000000000000
     Size.Width = 346.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
@@ -7857,5 +7857,16 @@ object Form2: TForm2
     OnTimer = Timer1Timer
     Left = 56
     Top = 296
+  end
+  object Button3: TButton
+    Align = Top
+    Position.Y = 22.000000000000000000
+    Size.Width = 346.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = #21326#20026#25195#30721'-'#20869#32622#39029#38754'-ScanUtil'
+    TextSettings.Trimming = None
+    OnClick = Button3Click
   end
 end

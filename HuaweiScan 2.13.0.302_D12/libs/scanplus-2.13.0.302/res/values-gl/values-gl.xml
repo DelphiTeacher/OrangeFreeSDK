@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Cancelar"</string>
+    <string name="dialog_go_setting" priority="LT">"Configuración"</string>
+    <string name="permission_dialog_info" priority="LT">"Úsase para fornecer servizos de escaneamento."</string>
+    <string name="permission_dialog_title" priority="LT">"Conceda o permiso Cámara en Configuración > Aplicacións > Xestor de permisos"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Toque para aumentar a luz</string>
+    <string name="scankit_light_off">Apagar a luz</string>
+    <string name="scankit_no_code_tip">Non se detectou ningún código.</string>
+    <string name="scankit_scan_tip">Sitúe o código dentro do marco</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Escanear</string>
+    <string name="scankit_title_all" priority="LT">"Escanear código QR/código de barras"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Enfoque o código QR/código de barras a continuación"</string>
+    <string name="scankit_title_qr" priority="LT">"Escanear código QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Enfoque o código QR a continuación"</string>
+</resources>

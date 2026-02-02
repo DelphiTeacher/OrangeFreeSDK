@@ -47,12 +47,14 @@ type
     Timer1: TTimer;
     PaintBox1: TPaintBox;
     Image1: TImage;
+    Button3: TButton;
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure PaintBox1Paint(Sender: TObject; Canvas: TCanvas);
+    procedure Button3Click(Sender: TObject);
   private
     FLeft:Double;
     FBufferBitmap:TBitmap;
@@ -241,6 +243,20 @@ begin
   end;
   FOrangeScanCodeForm.StartScan;
   {$ENDIF OrangeSDK_TEST}
+end;
+
+procedure TForm2.Button3Click(Sender: TObject);
+var
+  creator: JHmsScanAnalyzerOptions_Creator;
+  options: JHmsScanAnalyzerOptions;
+begin
+  // 扫描
+  creator:=TJHmsScanAnalyzerOptions_Creator.JavaClass.init;
+  creator.setHmsScanTypes(TJHmsScanBase.JavaClass.QRCODE_SCAN_TYPE,nil);
+//  creator.setHmsScanTypes(TJHmsScanBase.JavaClass.EAN13_SCAN_TYPE,nil);
+  options:=creator.create;
+  TJScanUtil.JavaClass.startScan(TAndroidHelper.Activity,666,options);
+
 end;
 
 procedure TForm2.DoScanResultEvent(Sender: TObject; ACode, AFormat: String;

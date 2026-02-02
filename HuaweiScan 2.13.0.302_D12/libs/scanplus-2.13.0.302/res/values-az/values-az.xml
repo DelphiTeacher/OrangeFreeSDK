@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Ləğv edin"</string>
+    <string name="dialog_go_setting" priority="LT">"Parametrlər"</string>
+    <string name="permission_dialog_info" priority="LT">"Bundan skanlama xidmətləri təmin etmək üçün istifadə edilir."</string>
+    <string name="permission_dialog_title" priority="LT">"Parametrlər > Proqramlar > İcazə meneceri bölməsində Kamera icazəsi verin"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Daha çox işıq üçün toxunun</string>
+    <string name="scankit_light_off">İşığı söndürün</string>
+    <string name="scankit_no_code_tip">Kod aşkarlanmadı.</string>
+    <string name="scankit_scan_tip">Kodu çərçivəyə yerləşdirin</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skanlayın</string>
+    <string name="scankit_title_all" priority="LT">"QR kodunu/ştrix-kodu skanlayın"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Aşağıda QR kodunu/ştrix-kodu düzləndirin"</string>
+    <string name="scankit_title_qr" priority="LT">"QR kodunu skanlayın"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Aşağıda QR kodunu düzləndirin"</string>
+</resources>

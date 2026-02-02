@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"取消"</string>
+    <string name="dialog_go_setting" priority="LT">"前往設定"</string>
+    <string name="permission_dialog_info" priority="LT">"此功能用以提供掃碼服務。"</string>
+    <string name="permission_dialog_title" priority="LT">"請在「設定」>「應用程式」的「權限管理」中啟用「相機」權限。"</string>
+    <string name="scankit_confirm">確認</string>
+    <string name="scankit_light">輕觸照亮</string>
+    <string name="scankit_light_off">輕觸關閉</string>
+    <string name="scankit_no_code_tip">圖片中未發現碼</string>
+    <string name="scankit_scan_tip">將碼置入取景器內即可自動掃描</string>
+    <string name="scankit_talkback_back">返回</string>
+    <string name="scankit_talkback_photo">圖庫</string>
+    <string name="scankit_title">掃描</string>
+    <string name="scankit_title_all" priority="LT">"掃描 QR 碼/條碼"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"對準 QR 碼/條碼，即可自動掃描"</string>
+    <string name="scankit_title_qr" priority="LT">"掃描 QR 碼"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"對準 QR 碼，即可自動掃描"</string>
+</resources>

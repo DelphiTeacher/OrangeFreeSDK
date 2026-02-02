@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"გაუქმება"</string>
+    <string name="dialog_go_setting" priority="LT">"პარამეტრები"</string>
+    <string name="permission_dialog_info" priority="LT">"ეს გამოიყენება სკანირების სერვისების უზრუნველსაყოფად."</string>
+    <string name="permission_dialog_title" priority="LT">"გაეცით კამერის ნებართვა მენიუდან: პარამეტრები > აპები > ნებართვების მენეჯერი"</string>
+    <string name="scankit_confirm">კარგი</string>
+    <string name="scankit_light">შეეხეთ მეტი სინათლისთვის</string>
+    <string name="scankit_light_off">სინათლის გამორთვა</string>
+    <string name="scankit_no_code_tip">კოდი აღმოჩენილი არ არის.</string>
+    <string name="scankit_scan_tip">მოათავსეთ კოდი ჩარჩოში</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">სკანირება</string>
+    <string name="scankit_title_all" priority="LT">"QR კოდის/შტრიხკოდის სკანირება"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"გაასწორეთ QR კოდი/შტრიხკოდი ქვემოთ"</string>
+    <string name="scankit_title_qr" priority="LT">"QR კოდის სკანირება"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"გაასწორეთ QR კოდი ქვემოთ"</string>
+</resources>

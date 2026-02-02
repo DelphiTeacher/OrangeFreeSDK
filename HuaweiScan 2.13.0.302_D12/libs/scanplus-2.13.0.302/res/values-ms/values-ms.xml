@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Batalkan"</string>
+    <string name="dialog_go_setting" priority="LT">"Tetapan"</string>
+    <string name="permission_dialog_info" priority="LT">"Digunakan untuk menyediakan perkhidmatan pengimbasan."</string>
+    <string name="permission_dialog_title" priority="LT">"Berikan kebenaran Kamera dalam Tetapan > Aplikasi > Pengurus kebenaran"</string>
+    <string name="scankit_confirm">OK</string>
+    <string name="scankit_light">Sentuh untuk lebih banyak cahaya</string>
+    <string name="scankit_light_off">Tutup lampu</string>
+    <string name="scankit_no_code_tip">Tiada kod dikesan.</string>
+    <string name="scankit_scan_tip">Letakkan kod dalam bingkai</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Imbas</string>
+    <string name="scankit_title_all" priority="LT">"Imbas kod QR/barkod"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Jajarkan kod QR/barkod di bawah"</string>
+    <string name="scankit_title_qr" priority="LT">"Imbas kod QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Jajarkan kod QR di bawah"</string>
+</resources>

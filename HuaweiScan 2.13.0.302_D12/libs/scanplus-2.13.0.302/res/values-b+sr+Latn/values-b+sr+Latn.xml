@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Otkaži"</string>
+    <string name="dialog_go_setting" priority="LT">"Podešavanja"</string>
+    <string name="permission_dialog_info" priority="LT">"Ovo se koristi za pružanje usluga skeniranja."</string>
+    <string name="permission_dialog_title" priority="LT">"Odobrite dozvolu za opciju Kamera u opciji Podešavanja > Aplikacije > Menadžer dozvola"</string>
+    <string name="scankit_confirm">U redu</string>
+    <string name="scankit_light">Dodirnite za više svetla</string>
+    <string name="scankit_light_off">Isključite svetlo</string>
+    <string name="scankit_no_code_tip">Kôd nije detektovan.</string>
+    <string name="scankit_scan_tip">Postavite kôd u okvir</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Skeniranje</string>
+    <string name="scankit_title_all" priority="LT">"Skeniranje QR koda/bar-koda"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Poravnajte QR kod/bar-kod u nastavku"</string>
+    <string name="scankit_title_qr" priority="LT">"Skeniranje QR koda"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Poravnajte QR kod u nastavku"</string>
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Цуцлах"</string>
+    <string name="dialog_go_setting" priority="LT">"Тохиргоо"</string>
+    <string name="permission_dialog_info" priority="LT">"Үүнийг шалгах үйлчилгээ үзүүлэхэд ашиглана."</string>
+    <string name="permission_dialog_title" priority="LT">"Камерын зөвшөөрлийг Тохиргоо > Апликэйшнүүд > Зөвшөөрлийн менежер дотроос олгоно уу"</string>
+    <string name="scankit_confirm">ОК</string>
+    <string name="scankit_light">Гэрэл нэмэх бол дарна уу</string>
+    <string name="scankit_light_off">Гэрэл унтраах</string>
+    <string name="scankit_no_code_tip">Код илэрсэнгүй.</string>
+    <string name="scankit_scan_tip">Кодыг хүрээнд байрлуулна уу</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Скан</string>
+    <string name="scankit_title_all" priority="LT">"QR код/баркодыг уншуулна уу"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Доор QR код/баркодыг зэрэгцүүлнэ үү"</string>
+    <string name="scankit_title_qr" priority="LT">"QR кодыг уншуулна уу"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Доор QR кодыг зэрэгцүүлнэ үү"</string>
+</resources>

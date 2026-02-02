@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="scankit_confirm">确认</string>
+    <string name="scankit_light">轻触照亮</string>
+    <string name="scankit_light_off">轻触关闭</string>
+    <string name="scankit_no_code_tip">图中未发现码</string>
+    <string name="scankit_scan_tip">将码放入取景框，即可自动扫描</string>
+    <string name="scankit_talkback_back">返回</string>
+    <string name="scankit_talkback_photo">图库</string>
+    <string name="scankit_title">扫码</string>
+</resources>

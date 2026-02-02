@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_cancel" priority="LT">"Whakakore"</string>
+    <string name="dialog_go_setting" priority="LT">"Ngā tautuhinga"</string>
+    <string name="permission_dialog_info" priority="LT">"Ka whakamahia tēnei hei tuku i ngā ratonga karapa."</string>
+    <string name="permission_dialog_title" priority="LT">"Tukuna te whakaaetanga Kāmera i Ngā Tautuhinga > Ngā taupānga > Kaiwhakahaere whakaaetanga"</string>
+    <string name="scankit_confirm">ĀE</string>
+    <string name="scankit_light">Pā atu mō ngā tūrama atu anō</string>
+    <string name="scankit_light_off">Whakaweto tūrama</string>
+    <string name="scankit_no_code_tip">Kāore i kitea he waehere.</string>
+    <string name="scankit_scan_tip">Raua te waehere ki roto i te tāpare</string>
+    <string name="scankit_talkback_back">Back</string>
+    <string name="scankit_talkback_photo">Gallery</string>
+    <string name="scankit_title">Karapa</string>
+    <string name="scankit_title_all" priority="LT">"Karapa waehere QR/waeherepae"</string>
+    <string name="scankit_title_all_level_two" priority="LT">"Tīarohia te waehere QR/waeherepae i raro nei"</string>
+    <string name="scankit_title_qr" priority="LT">"Karapa waehere QR"</string>
+    <string name="scankit_title_qr_level_two" priority="LT">"Tīarohia te waehere QR i raro nei"</string>
+</resources>
